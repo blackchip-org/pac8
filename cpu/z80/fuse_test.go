@@ -36,6 +36,9 @@ func TestOps(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			cpu := load(test)
 			cpu.Next()
+			if cpu.skip {
+				t.SkipNow()
+			}
 			expected := load(fuseResults[test.name])
 			testRegisters(t, cpu, expected)
 			testMemory(t, cpu, fuseResults[test.name])

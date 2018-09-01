@@ -3,11 +3,18 @@ package memory
 import (
 	"fmt"
 	"strings"
+
+	"github.com/blackchip-org/pac8/bits"
 )
 
 type Memory interface {
 	Load(address uint16) uint8
 	Store(address uint16, value uint8)
+}
+
+type Memory16 interface {
+	Load(address uint16) uint16
+	Store(address uint16, value uint16)
 }
 
 type RAM struct {
@@ -42,6 +49,26 @@ func (r ROM) Load(address uint16) uint8 {
 }
 
 func (r ROM) Store(address uint16, value uint8) {}
+
+type LittleEndian struct {
+	mem Memory
+}
+
+func NewLittleEndian(mem Memory) LittleEndian {
+	return LittleEndian{mem: mem}
+}
+
+func (e LittleEndian) Load(address uint16) uint16 {
+	lo := e.mem.Load(address)
+	hi := e.mem.Load(address + 1)
+	return bits.Join(hi, lo)
+}
+
+func (e LittleEndian) Store(address uint16, value uint16) {
+	hi, lo := bits.Split(value)
+	e.mem.Store(address, lo)
+	e.mem.Store(address+1, hi)
+}
 
 type Snapshot struct {
 	Address uint16

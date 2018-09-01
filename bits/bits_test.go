@@ -76,3 +76,37 @@ func ExampleSplit() {
 	fmt.Printf("%x %x", hi, lo)
 	// Output: ab cd
 }
+
+func TestSlice(t *testing.T) {
+	b := Parse
+	tests := []struct {
+		lo   int
+		hi   int
+		in   uint8
+		out  uint8
+		name string
+	}{
+		{6, 7, b("11000000"), b("011"), "high one"},
+		{6, 7, b("00111111"), b("000"), "high zero"},
+		{3, 5, b("00111000"), b("111"), "middle one"},
+		{3, 5, b("11000111"), b("000"), "middle zero"},
+		{0, 2, b("00000111"), b("111"), "low one"},
+		{0, 2, b("11111000"), b("000"), "low zero"},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			have := Slice(test.in, test.lo, test.hi)
+			want := test.out
+			if have != want {
+				t.Errorf("\n have: %08b \n want: %08b", have, want)
+			}
+		})
+	}
+}
+
+func ExampleSlice() {
+	value := Parse("00111000")
+	fmt.Printf("%03b", Slice(value, 3, 5))
+	// Output: 111
+}

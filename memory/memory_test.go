@@ -48,3 +48,24 @@ func ExampleVerify() {
 	// 0001: 34 ff
 	// 0003: 67 ff
 }
+
+func TestLittleEndianLoad(t *testing.T) {
+	mem := NewROM([]uint8{0xcd, 0xab})
+	mem16 := NewLittleEndian(mem)
+	have := mem16.Load(0)
+	want := uint16(0xabcd)
+	if have != want {
+		t.Errorf("\n have: %02x \n want: %02x", have, want)
+	}
+}
+
+func TestLittleEndianStore(t *testing.T) {
+	mem := NewRAM(0x10)
+	mem16 := NewLittleEndian(mem)
+	mem16.Store(0, 0xabcd)
+	have := []uint8{mem.Load(0), mem.Load(1)}
+	want := []uint8{0xcd, 0xab}
+	if !reflect.DeepEqual(have, want) {
+		t.Errorf("\n have: %02x \n want: %02x", have, want)
+	}
+}

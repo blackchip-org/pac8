@@ -47,11 +47,16 @@ type CPU struct {
 	IFF1 bool
 	IFF2 bool
 
-	mem memory.Memory
+	mem   memory.Memory
+	mem16 memory.Memory16
+	skip  bool
 }
 
 func New(m memory.Memory) *CPU {
-	c := &CPU{mem: m}
+	c := &CPU{
+		mem:   m,
+		mem16: memory.NewLittleEndian(m),
+	}
 	return c
 }
 
@@ -98,4 +103,10 @@ func (cpu *CPU) String() string {
 func (cpu *CPU) fetch() uint8 {
 	cpu.PC++
 	return cpu.mem.Load(cpu.PC - 1)
+}
+
+func (cpu *CPU) fetch16() uint16 {
+	lo := cpu.fetch()
+	hi := cpu.fetch()
+	return bits.Join(hi, lo)
 }

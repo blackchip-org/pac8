@@ -1,4 +1,7 @@
 package cpu
 
-type ModeGet func() uint8
-type ModePut func(uint8)
+type In func() uint8
+type Out func(uint8)
+
+type In16 func() uint16
+type Out16 func(uint16)
