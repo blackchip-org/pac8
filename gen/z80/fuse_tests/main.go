@@ -13,7 +13,7 @@ import (
 )
 
 //go:generate go run main.go
-//go:generate go fmt ../../../cpu/z80/fuse_test.gen.go
+//go:generate go fmt ../../../cpu/z80/fuse_gen_test.go
 
 var out bytes.Buffer
 
@@ -29,7 +29,7 @@ func main() {
 	loadResults()
 	out.WriteString("}\n")
 
-	err := ioutil.WriteFile("../../../cpu/z80/fuse_test.gen.go", out.Bytes(), 0644)
+	err := ioutil.WriteFile("../../../cpu/z80/fuse_gen_test.go", out.Bytes(), 0644)
 	if err != nil {
 		fatal("unable to save file", err)
 	}
