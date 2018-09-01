@@ -32,14 +32,42 @@ var rp = map[int]string{
 	3: "SP",
 }
 
+var cc = map[int]string{
+	0: "FlagZ, false",
+	1: "FlagZ, true",
+	2: "FlagC, false",
+	3: "FlagC, true",
+	4: "FlagV, false",
+	5: "FlagV, true",
+	6: "FlagS, false",
+	7: "FlagS, true",
+}
+
 func process(op uint8) string {
 	x := bits.Slice(op, 6, 7)
-	//y := bits.Slice(op, 3, 5)
+	y := int(bits.Slice(op, 3, 5))
 	z := bits.Slice(op, 0, 2)
 	p := int(bits.Slice(op, 4, 5))
 	q := bits.Slice(op, 3, 3)
 
 	if x == 0 {
+		if z == 0 {
+			if y == 0 {
+				return fmt.Sprintf("nop()")
+			}
+			if y == 1 {
+				return fmt.Sprintf("ex(c, c.loadAF, c.storeAF, c.loadAF1, c.storeAF1)")
+			}
+			if y == 2 {
+				return fmt.Sprintf("djnz(c, c.loadImm)")
+			}
+			if y == 3 {
+				return fmt.Sprintf("jra(c, c.loadImm)")
+			}
+			if y >= 4 && y <= 7 {
+				return fmt.Sprintf("jr(c, c.loadImm, %v)", cc[y-4])
+			}
+		}
 		if z == 1 {
 			if q == 0 {
 				return fmt.Sprintf("ld16(c, c.store%v, c.loadImm16)", rp[p])

@@ -47,6 +47,8 @@ type CPU struct {
 	IFF1 bool
 	IFF2 bool
 
+	Halt bool
+
 	mem   memory.Memory
 	mem16 memory.Memory16
 	skip  bool
@@ -71,8 +73,8 @@ func (cpu *CPU) Next() {
 func (cpu *CPU) String() string {
 	return fmt.Sprintf(""+
 		" pc   af   bc   de   hl   ix   iy   sp   i  r\n"+
-		"%04x %04x %04x %04x %04x %04x %04x %04x %02x %02x\n"+
-		"     %04x %04x %04x %04x      %v %v %v %v %v %v %v %v\n",
+		"%04x %04x %04x %04x %04x %04x %04x %04x %02x %02x %v\n"+
+		"     %04x %04x %04x %04x      %v %v %v %v %v %v %v %v %v\n",
 		// line 1
 		cpu.PC,
 		bits.Join(cpu.A, cpu.F),
@@ -84,6 +86,7 @@ func (cpu *CPU) String() string {
 		cpu.SP,
 		cpu.I,
 		cpu.R,
+		bits.FormatB(cpu.IFF1, "", "iff1"),
 		// line 2
 		bits.Join(cpu.A1, cpu.F1),
 		bits.Join(cpu.B1, cpu.C1),
@@ -97,7 +100,8 @@ func (cpu *CPU) String() string {
 		bits.Format(cpu.F, Flag3, ".", "3"),
 		bits.Format(cpu.F, FlagV, ".", "V"),
 		bits.Format(cpu.F, FlagN, ".", "N"),
-		bits.Format(cpu.F, FlagC, ".", "C"))
+		bits.Format(cpu.F, FlagC, ".", "C"),
+		bits.FormatB(cpu.IFF2, "", "iff2"))
 }
 
 func (cpu *CPU) fetch() uint8 {

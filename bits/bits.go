@@ -23,6 +23,14 @@ func Format(n uint8, bit int, off string, on string) string {
 	}
 }
 
+func FormatB(n bool, off string, on string) string {
+	if n {
+		return on
+	} else {
+		return off
+	}
+}
+
 // Get returns the bit value from uint8 n as a bool.
 func Get(n uint8, bit int) bool {
 	return n&(1<<uint8(bit)) != 0
@@ -76,4 +84,14 @@ func Slice(value uint8, lo int, hi int) uint8 {
 	bits := uint(hi - lo + 1)
 	mask := uint8(1)<<bits - 1
 	return value & mask
+}
+
+func Displace(value uint16, delta uint8) uint16 {
+	sdelta := int8(delta)
+	if sdelta >= 0 {
+		value += uint16(sdelta)
+	} else {
+		value -= uint16(sdelta * -1)
+	}
+	return value
 }

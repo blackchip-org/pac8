@@ -110,3 +110,10 @@ func ExampleSlice() {
 	fmt.Printf("%03b", Slice(value, 3, 5))
 	// Output: 111
 }
+
+func ExampleDisplace() {
+	plus := Displace(0x8000, 0x01)
+	minus := Displace(0x8000, 0xff)
+	fmt.Printf("%04x %04x", plus, minus)
+	// Output: 8001 7fff
+}

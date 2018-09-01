@@ -1,6 +1,7 @@
 package z80
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/blackchip-org/pac8/bits"
@@ -65,4 +66,36 @@ func TestClearFlags(t *testing.T) {
 			}
 		})
 	}
+}
+
+// Not a real test. Useful for visually looking at the CPU status layout.
+func TestString(t *testing.T) {
+	cpu := New(nil)
+	cpu.A = 0x0a
+	cpu.F = 0xff
+	cpu.B = 0x0b
+	cpu.C = 0x0c
+	cpu.D = 0x0d
+	cpu.E = 0x0e
+	cpu.H = 0xf0
+	cpu.L = 0x0f
+	cpu.IX = 0x1234
+	cpu.IY = 0x5678
+	cpu.SP = 0xabcd
+	cpu.I = 0xee
+	cpu.R = 0xff
+
+	cpu.A1 = 0xa0
+	cpu.F1 = 0x88
+	cpu.B1 = 0xb0
+	cpu.C1 = 0xc0
+	cpu.D1 = 0xd0
+	cpu.E1 = 0xe0
+	cpu.H1 = 0x0f
+	cpu.L1 = 0xf0
+
+	cpu.IFF1 = true
+	cpu.IFF2 = true
+
+	fmt.Println(cpu)
 }

@@ -35,13 +35,24 @@ func TestOps(t *testing.T) {
 	for _, test := range fuseTests {
 		t.Run(test.name, func(t *testing.T) {
 			cpu := load(test)
-			cpu.Next()
-			if cpu.skip {
-				t.SkipNow()
+			i := 0
+			for {
+				cpu.Next()
+				if cpu.skip {
+					t.SkipNow()
+				}
+				if cpu.mem.Load(cpu.PC) == 0 && cpu.PC != 0 {
+					break
+				}
+				if i > 100 {
+					t.Fatalf("exceeded execution limit")
+				}
+				i++
 			}
 			expected := load(fuseResults[test.name])
 			testRegisters(t, cpu, expected)
 			testMemory(t, cpu, fuseResults[test.name])
+			testHalt(t, cpu, fuseResults[test.name])
 		})
 	}
 
@@ -62,6 +73,14 @@ func testMemory(t *testing.T, cpu *CPU, expected fuseTest) {
 	}
 }
 
+func testHalt(t *testing.T, cpu *CPU, expected fuseTest) {
+	have := cpu.Halt
+	want := expected.halt != 0
+	if have != want {
+		t.Fatalf("\n have: %v \n want: %v", have, want)
+	}
+}
+
 func load(test fuseTest) *CPU {
 	mem := memory.NewRAM(0x10000)
 	cpu := New(mem)
@@ -70,6 +89,12 @@ func load(test fuseTest) *CPU {
 	cpu.B, cpu.C = bits.Split(test.bc)
 	cpu.D, cpu.E = bits.Split(test.de)
 	cpu.H, cpu.L = bits.Split(test.hl)
+
+	cpu.A1, cpu.F1 = bits.Split(test.af1)
+	cpu.B1, cpu.C1 = bits.Split(test.bc1)
+	cpu.D1, cpu.E1 = bits.Split(test.de1)
+	cpu.H1, cpu.L1 = bits.Split(test.hl1)
+
 	cpu.IX = test.ix
 	cpu.IY = test.iy
 	cpu.SP = test.sp
