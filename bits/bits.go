@@ -105,3 +105,18 @@ func Displace(value uint16, delta uint8) uint16 {
 func Parity(value uint8) bool {
 	return bits.OnesCount8(value)%2 == 0
 }
+
+// https://stackoverflow.com/questions/8034566/overflow-and-carry-flags-on-z80
+func Overflow(a1 uint8, a2 uint8, r uint8) bool {
+	a17 := Get(a1, 7)
+	a27 := Get(a2, 7)
+	r7 := Get(r, 7)
+
+	if a17 != a27 {
+		return false
+	}
+	if a17 != r7 {
+		return true
+	}
+	return false
+}

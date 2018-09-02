@@ -59,7 +59,7 @@ func dec(cpu *CPU, put cpu.Out, get cpu.In) {
 	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
 	bits.Set(&cpu.F, FlagH, c1 == 0)
 	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, overflow(arg, 0xff, result))
+	bits.Set(&cpu.F, FlagV, bits.Overflow(arg, 0xff, result))
 	bits.Set(&cpu.F, FlagN, true)
 
 	put(result)
@@ -104,7 +104,7 @@ func inc(cpu *CPU, put cpu.Out, get cpu.In) {
 	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
 	bits.Set(&cpu.F, FlagH, c1 == 1)
 	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, overflow(arg, 1, result))
+	bits.Set(&cpu.F, FlagV, bits.Overflow(arg, 1, result))
 	bits.Set(&cpu.F, FlagN, false)
 
 	put(result)
@@ -222,19 +222,4 @@ func rrca(cpu *CPU) {
 	bits.Set(&cpu.F, FlagC, carry)
 
 	cpu.A = result
-}
-
-// https://stackoverflow.com/questions/8034566/overflow-and-carry-flags-on-z80
-func overflow(a1 uint8, a2 uint8, r uint8) bool {
-	a17 := bits.Get(a1, 7)
-	a27 := bits.Get(a2, 7)
-	r7 := bits.Get(r, 7)
-
-	if a17 != a27 {
-		return false
-	}
-	if a17 != r7 {
-		return true
-	}
-	return false
 }
