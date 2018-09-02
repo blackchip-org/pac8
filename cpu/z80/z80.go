@@ -63,7 +63,8 @@ func New(m memory.Memory) *CPU {
 }
 
 func (cpu *CPU) Next() {
-	execute := ops[cpu.fetch()]
+	opcode := cpu.fetch()
+	execute := ops[opcode]
 	// Lower 7 bits of the refresh register are incremented on an instruction
 	// fetch
 	cpu.R = (cpu.R + 1) & 0x7f

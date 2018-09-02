@@ -11,14 +11,14 @@ import (
 	"github.com/blackchip-org/pac8/bits"
 )
 
-var tableR = map[int]string{
+var r = map[int]string{
 	0: "B",
 	1: "C",
 	2: "D",
 	3: "E",
 	4: "H",
 	5: "L",
-	6: "IndirectHL",
+	6: "IndHL",
 	7: "A",
 }
 
@@ -50,16 +50,16 @@ func process(op uint8) string {
 	if x == 0 {
 		if z == 0 {
 			if y == 0 {
-				return fmt.Sprintf("nop()")
+				return "nop()"
 			}
 			if y == 1 {
-				return fmt.Sprintf("ex(c, c.loadAF, c.storeAF, c.loadAF1, c.storeAF1)")
+				return "ex(c, c.loadAF, c.storeAF, c.loadAF1, c.storeAF1)"
 			}
 			if y == 2 {
-				return fmt.Sprintf("djnz(c, c.loadImm)")
+				return "djnz(c, c.loadImm)"
 			}
 			if y == 3 {
-				return fmt.Sprintf("jra(c, c.loadImm)")
+				return "jra(c, c.loadImm)"
 			}
 			if y >= 4 && y <= 7 {
 				return fmt.Sprintf("jr(c, c.loadImm, %v)", cc[y-4])
@@ -69,35 +69,69 @@ func process(op uint8) string {
 			if q == 0 {
 				return fmt.Sprintf("ld16(c, c.store%v, c.loadImm16)", rp[p])
 			}
+			if q == 1 {
+				return fmt.Sprintf("add16(c, c.storeHL, c.loadHL, c.load%v)", rp[p])
+			}
 		}
 		if z == 2 {
 			if q == 0 {
 				if p == 0 {
-					return fmt.Sprintf("ld(c, c.storeIndBC, c.loadA)")
+					return "ld(c, c.storeIndBC, c.loadA)"
 				}
 				if p == 1 {
-					return fmt.Sprintf("ld(c, c.storeIndDE, c.loadA)")
+					return "ld(c, c.storeIndDE, c.loadA)"
 				}
 				if p == 2 {
-					return fmt.Sprintf("ld16(c, c.store16IndImm, c.loadHL)")
+					return "ld16(c, c.store16IndImm, c.loadHL)"
 				}
 				if p == 3 {
-					return fmt.Sprintf("ld(c, c.storeIndImm, c.loadA)")
+					return "ld(c, c.storeIndImm, c.loadA)"
 				}
 			}
 			if q == 1 {
 				if p == 0 {
-					return fmt.Sprintf("ld(c, c.storeA, c.loadIndBC)")
+					return "ld(c, c.storeA, c.loadIndBC)"
 				}
 				if p == 1 {
-					return fmt.Sprintf("ld(c, c.storeA, c.loadIndDE)")
+					return "ld(c, c.storeA, c.loadIndDE)"
 				}
 				if p == 2 {
-					return fmt.Sprintf("ld16(c, c.storeHL, c.load16IndImm)")
+					return "ld16(c, c.storeHL, c.load16IndImm)"
 				}
 				if p == 3 {
-					return fmt.Sprintf("ld(c, c.storeA, c.loadIndImm)")
+					return "ld(c, c.storeA, c.loadIndImm)"
 				}
+			}
+		}
+		if z == 3 {
+			if q == 0 {
+				return fmt.Sprintf("inc16(c, c.store%v, c.load%v)", rp[p], rp[p])
+			}
+			if q == 1 {
+				return fmt.Sprintf("dec16(c, c.store%v, c.load%v)", rp[p], rp[p])
+			}
+		}
+		if z == 4 {
+			return fmt.Sprintf("inc(c, c.store%v, c.load%v)", r[y], r[y])
+		}
+		if z == 5 {
+			return fmt.Sprintf("dec(c, c.store%v, c.load%v)", r[y], r[y])
+		}
+		if z == 6 {
+			return fmt.Sprintf("ld(c, c.store%v, c.loadImm)", r[y])
+		}
+		if z == 7 {
+			if y == 0 {
+				return "rlca(c)"
+			}
+			if y == 1 {
+				return "rrca(c)"
+			}
+			if y == 2 {
+				return "rla(c)"
+			}
+			if y == 3 {
+				return "rra(c)"
 			}
 		}
 	}

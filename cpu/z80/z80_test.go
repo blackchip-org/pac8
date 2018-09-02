@@ -1,7 +1,6 @@
 package z80
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/blackchip-org/pac8/bits"
@@ -97,5 +96,5 @@ func TestString(t *testing.T) {
 	cpu.IFF1 = true
 	cpu.IFF2 = true
 
-	fmt.Println(cpu)
+	cpu.String()
 }

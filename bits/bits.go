@@ -2,6 +2,7 @@
 package bits
 
 import (
+	"math/bits"
 	"strconv"
 )
 
@@ -34,6 +35,11 @@ func FormatB(n bool, off string, on string) string {
 // Get returns the bit value from uint8 n as a bool.
 func Get(n uint8, bit int) bool {
 	return n&(1<<uint8(bit)) != 0
+}
+
+// Get returns the bit value from uint16 n as a bool.
+func Get16(n uint16, bit int) bool {
+	return n&(1<<uint16(bit)) != 0
 }
 
 // Set changes the bit in uint8 n to value.
@@ -94,4 +100,8 @@ func Displace(value uint16, delta uint8) uint16 {
 		value -= uint16(sdelta * -1)
 	}
 	return value
+}
+
+func Parity(value uint8) bool {
+	return bits.OnesCount8(value)%2 == 0
 }
