@@ -133,6 +133,18 @@ func process(op uint8) string {
 			if y == 3 {
 				return "rra(c)"
 			}
+			if y == 4 {
+				return "daa(c)"
+			}
+			if y == 5 {
+				return "cpl(c)"
+			}
+			if y == 6 {
+				return "scf(c)"
+			}
+			if y == 7 {
+				return "ccf(c)"
+			}
 		}
 	}
 	return ""

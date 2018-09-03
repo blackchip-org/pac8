@@ -10,38 +10,100 @@ import (
 //go:generate go run ops/gen.go
 //go:generate go fmt ops.go
 
-func add4(arg1 uint8, arg2 uint8, carry uint8) (uint8, uint8) {
-	result := arg1 + arg2 + carry
-	carry = 0
-	if result > 0x0f {
-		carry = 1
-	}
-	return result & 0x0f, carry
-}
-
 // add
 // preserve s, z, p/v. h undefined
 func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16) {
 	a1 := arg1()
 	a2 := arg2()
 
-	r1, c1 := add4(uint8(a1)&0x0f, uint8(a2)&0x0f, 0)
-	r2, c2 := add4(uint8(a1>>4)&0x0f, uint8(a2>>4)&0x0f, c1)
-	lo := uint8(r1) + uint8(r2<<4)
-
-	r3, c3 := add4(uint8(a1>>8)&0x0f, uint8(a2>>8)&0x0f, c2)
-	r4, c4 := add4(uint8(a1>>12)&0x0f, uint8(a2>>12)&0x0f, c3)
-	hi := uint8(r3) + uint8(r4<<4)
-
-	result := uint16(lo) + uint16(hi)<<8
+	result := uint32(a1) + uint32(a2)
+	hresult := uint8(bits.Slice16(a1, 8, 11) + bits.Slice16(a2, 8, 11))
 
 	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, c4 == 1)
-	bits.Set(&cpu.F, FlagH, c3 == 1)
-	bits.Set(&cpu.F, Flag3, bits.Get(hi, 3))
-	bits.Set(&cpu.F, Flag5, bits.Get(hi, 5))
+	bits.Set(&cpu.F, FlagC, bits.Get32(result, 16))
+	bits.Set(&cpu.F, FlagH, bits.Get(hresult, 4))
+	bits.Set(&cpu.F, Flag3, bits.Get32(result, 11))
+	bits.Set(&cpu.F, Flag5, bits.Get32(result, 13))
 
-	put(result)
+	put(uint16(result))
+}
+
+// Inverts the carry flag
+//
+// Carry flag inverted. Also inverts H and clears N. Rest of the flags are
+// preserved.
+func ccf(cpu *CPU) {
+	bits.Set(&cpu.F, FlagC, !bits.Get(cpu.F, FlagC))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(cpu.A, 3))
+	bits.Set(&cpu.F, Flag5, bits.Get(cpu.A, 5))
+}
+
+// inverts all bits of A
+//
+// Sets H and N, other flags are unmodified.
+func cpl(cpu *CPU) {
+	cpu.A ^= 0xff
+	bits.Set(&cpu.F, FlagH, true)
+	bits.Set(&cpu.F, FlagN, true)
+	bits.Set(&cpu.F, Flag3, bits.Get(cpu.A, 3))
+	bits.Set(&cpu.F, Flag5, bits.Get(cpu.A, 5))
+}
+
+// decimal adjust in a
+//
+// When this instruction is executed, the A register is BCD corrected using
+// the contents of the flags. The exact process is the following: if the
+// least significant four bits of A contain a non-BCD digit (i. e. it is
+// greater than 9) or the H flag is set, then $06 is added to the register.
+// Then the four most significant bits are checked. If this more significant
+// digit also happens to be greater than 9 or the C flag is set, then $60
+// is added.
+//
+// If the second addition was needed, the C flag is set after execution,
+// otherwise it is reset. The N flag is preserved, P/V is parity and the
+// others are altered by definition.
+//
+// https://stackoverflow.com/questions/13572638/z80-daa-flags-affected
+//
+// Note: some documentation omits that the adjustment is negative when the
+// N flag is set.
+func daa(cpu *CPU) {
+	result := cpu.A
+
+	half := false
+	carry := false
+	if bits.Get(cpu.F, FlagN) {
+		if bits.Get(cpu.F, FlagH) || cpu.A&0xf > 9 {
+			result -= 0x06
+			if result < 6 {
+				half = true
+			}
+		}
+		if bits.Get(cpu.F, FlagC) || cpu.A > 0x99 {
+			result -= 0x60
+			carry = true
+		}
+	} else {
+		if bits.Get(cpu.F, FlagH) || cpu.A&0xf > 9 {
+			result += 0x06
+			half = true
+		}
+		if bits.Get(cpu.F, FlagC) || cpu.A > 0x99 {
+			result += 0x60
+			carry = true
+		}
+	}
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, half)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, FlagC, carry)
+
+	cpu.A = result
 }
 
 // decrement
@@ -50,14 +112,13 @@ func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16) {
 func dec(cpu *CPU, put cpu.Out, get cpu.In) {
 	arg := get()
 
-	r1, c1 := add4(arg&0x0f, 0xf, 0)
-	r2, _ := add4((arg>>4)&0xf, 0xf, c1)
-	result := r1 + (r2 << 4)
+	result := arg - 1
+	hresult := arg&0xf - 1
 
 	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
 	bits.Set(&cpu.F, FlagZ, result == 0)
 	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, c1 == 0)
+	bits.Set(&cpu.F, FlagH, bits.Get(hresult, 4))
 	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
 	bits.Set(&cpu.F, FlagV, bits.Overflow(arg, 0xff, result))
 	bits.Set(&cpu.F, FlagN, true)
@@ -95,14 +156,13 @@ func ex(cpu *CPU, geta cpu.In16, puta cpu.Out16, getb cpu.In16, putb cpu.Out16) 
 func inc(cpu *CPU, put cpu.Out, get cpu.In) {
 	arg := get()
 
-	r1, c1 := add4(arg&0x0f, 1, 0)
-	r2, _ := add4((arg>>4)&0xf, 0, c1)
-	result := r1 + (r2 << 4)
+	result := arg + 1
+	hresult := arg&0xf + 1
 
 	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
 	bits.Set(&cpu.F, FlagZ, result == 0)
 	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, c1 == 1)
+	bits.Set(&cpu.F, FlagH, bits.Get(hresult, 4))
 	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
 	bits.Set(&cpu.F, FlagV, bits.Overflow(arg, 1, result))
 	bits.Set(&cpu.F, FlagN, false)
@@ -205,6 +265,7 @@ func rra(cpu *CPU) {
 }
 
 // rotate A right with carry
+//
 // The carry becomes the value leaving on the right, H and N are reset,
 // P/V, S, and Z are preserved.
 func rrca(cpu *CPU) {
@@ -222,4 +283,15 @@ func rrca(cpu *CPU) {
 	bits.Set(&cpu.F, FlagC, carry)
 
 	cpu.A = result
+}
+
+// Set carry flag
+//
+// Carry flag set, H and N cleared, rest are preserved.
+func scf(cpu *CPU) {
+	bits.Set(&cpu.F, FlagC, true)
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, Flag5, bits.Get(cpu.A, 5))
+	bits.Set(&cpu.F, Flag3, bits.Get(cpu.A, 3))
 }

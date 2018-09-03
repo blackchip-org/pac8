@@ -42,6 +42,11 @@ func Get16(n uint16, bit int) bool {
 	return n&(1<<uint16(bit)) != 0
 }
 
+// Get returns the bit value from uint32 n as a bool.
+func Get32(n uint32, bit int) bool {
+	return n&(1<<uint32(bit)) != 0
+}
+
 // Set changes the bit in uint8 n to value.
 func Set(n *uint8, bit int, value bool) {
 	if value {
@@ -76,6 +81,10 @@ func Join(hi uint8, lo uint8) uint16 {
 	return uint16(hi)<<8 + uint16(lo)
 }
 
+func Join4(hi uint8, lo uint8) uint8 {
+	return hi<<4 + lo
+}
+
 // Split takes a uint16 and splits it out int a hi byte and a lo byte.
 func Split(value uint16) (hi uint8, lo uint8) {
 	hi = uint8(value >> 8)
@@ -89,6 +98,15 @@ func Slice(value uint8, lo int, hi int) uint8 {
 	value = value >> uint(lo)
 	bits := uint(hi - lo + 1)
 	mask := uint8(1)<<bits - 1
+	return value & mask
+}
+
+// Slice16 extracts a sequence of bits in value from bit lo to bit high,
+// inclusive.
+func Slice16(value uint16, lo int, hi int) uint16 {
+	value = value >> uint(lo)
+	bits := uint(hi - lo + 1)
+	mask := uint16(1)<<bits - 1
 	return value & mask
 }
 
