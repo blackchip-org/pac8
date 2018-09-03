@@ -41,11 +41,11 @@ var cc = map[int]string{
 }
 
 func process(op uint8) string {
-	x := bits.Slice(op, 6, 7)
+	x := int(bits.Slice(op, 6, 7))
 	y := int(bits.Slice(op, 3, 5))
-	z := bits.Slice(op, 0, 2)
+	z := int(bits.Slice(op, 0, 2))
 	p := int(bits.Slice(op, 4, 5))
-	q := bits.Slice(op, 3, 3)
+	q := int(bits.Slice(op, 3, 3))
 
 	if x == 0 {
 		if z == 0 {
@@ -145,6 +145,26 @@ func process(op uint8) string {
 			if y == 7 {
 				return "ccf(c)"
 			}
+		}
+	}
+	if x == 1 {
+		if z == 6 && y == 6 {
+			return "halt(c)"
+		}
+		return fmt.Sprintf("ld(c, c.store%v, c.load%v)", r[y], r[z])
+	}
+	if x == 2 {
+		if y == 0 {
+			return fmt.Sprintf("add(c, c.loadA, c.load%v, false)", r[z])
+		}
+		if y == 1 {
+			return fmt.Sprintf("add(c, c.loadA, c.load%v, c.F & 0x01 == 1)", r[z])
+		}
+		if y == 2 {
+			return fmt.Sprintf("sub(c, c.load%v, false)", r[z])
+		}
+		if y == 3 {
+			return fmt.Sprintf("sub(c, c.load%v, c.F & 0x01 == 1)", r[z])
 		}
 	}
 	return ""

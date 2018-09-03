@@ -22,6 +22,7 @@ type fuseTest struct {
 	r       uint8
 	iff1    int
 	iff2    int
+	im      int
 	halt    int
 	tstates int
 
@@ -22044,7 +22045,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
-		halt:    1,
+		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x4e}},
@@ -22237,7 +22238,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
-		halt:    1,
+		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x56}},
@@ -22431,7 +22432,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
-		halt:    1,
+		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x5e}},
@@ -22624,7 +22625,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
-		halt:    1,
+		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x66}},
@@ -23013,7 +23014,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
-		halt:    2,
+		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x76}},
@@ -35890,7 +35891,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x01,
 		iff1:      0,
 		iff2:      0,
-		halt:      0,
+		halt:      1,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
 	},
@@ -53196,7 +53197,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
-		halt:      1,
+		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
 	},
@@ -53372,7 +53373,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
-		halt:      2,
+		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
 	},
@@ -53908,7 +53909,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
-		halt:      1,
+		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
 	},
@@ -54062,7 +54063,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
-		halt:      2,
+		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
 	},

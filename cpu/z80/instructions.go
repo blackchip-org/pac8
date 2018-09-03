@@ -10,6 +10,35 @@ import (
 //go:generate go run ops/gen.go
 //go:generate go fmt ops.go
 
+// Add
+//
+// N flag is reset, P/V is interpreted as overflow.
+// Rest of the flags is modified by definition.
+func add(cpu *CPU, arg1 cpu.In, arg2 cpu.In, carry bool) {
+	a1 := arg1()
+	a2 := arg2()
+	c := uint8(0)
+
+	if carry {
+		c = 1
+	}
+
+	result16 := uint16(a1) + uint16(a2) + uint16(c)
+	result := uint8(result16)
+	hresult := a1&0xf + a2&0xf + c
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, bits.Get(hresult, 4))
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Overflow(a1, a2, result))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, bits.Get16(result16, 8))
+
+	cpu.A = result
+}
+
 // add
 // preserve s, z, p/v. h undefined
 func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16) {
@@ -148,6 +177,10 @@ func ex(cpu *CPU, geta cpu.In16, puta cpu.Out16, getb cpu.In16, putb cpu.Out16) 
 	b := getb()
 	puta(b)
 	putb(a)
+}
+
+func halt(cpu *CPU) {
+	cpu.Halt = true
 }
 
 // increment
@@ -294,4 +327,15 @@ func scf(cpu *CPU) {
 	bits.Set(&cpu.F, FlagN, false)
 	bits.Set(&cpu.F, Flag5, bits.Get(cpu.A, 5))
 	bits.Set(&cpu.F, Flag3, bits.Get(cpu.A, 3))
+}
+
+// Subtract
+//
+// N flag is reset, P/V is interpreted as overflow.
+// Rest of the flags is modified by definition.
+func sub(cpu *CPU, arg cpu.In, carry bool) {
+	add(cpu, cpu.loadA, func() uint8 { return ^arg() }, !carry)
+	bits.Set(&cpu.F, FlagN, true)
+	bits.Set(&cpu.F, FlagC, !bits.Get(cpu.F, FlagC))
+	bits.Set(&cpu.F, FlagH, !bits.Get(cpu.F, FlagH))
 }

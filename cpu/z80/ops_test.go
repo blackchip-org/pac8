@@ -23,6 +23,9 @@ func TestOps(t *testing.T) {
 				if cpu.mem.Load(cpu.PC) == 0 && cpu.PC != 0 {
 					break
 				}
+				if test.tstates == 1 {
+					break
+				}
 				if i > 100 {
 					t.Fatalf("exceeded execution limit")
 				}
