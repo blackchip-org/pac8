@@ -57,6 +57,49 @@ func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16) {
 	put(uint16(result))
 }
 
+// Logical and
+//
+// C and N flags cleared, P/V is parity, rest are altered by definition.
+// H flag set.
+func and(cpu *CPU, get cpu.In) {
+	a1 := cpu.A
+	a2 := get()
+
+	result := a1 & a2
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, true)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, false)
+
+	cpu.A = result
+}
+
+// call, conditional
+//
+// Pushes the address after the CALL instruction (PC+3) onto the stack and
+// jumps to the label. Can also take conditions.
+func call(cpu *CPU, flag int, condition bool, get cpu.In16) {
+	addr := get()
+	if bits.Get(cpu.F, flag) == condition {
+		cpu.SP -= 2
+		cpu.mem16.Store(cpu.SP, cpu.PC)
+		cpu.PC = addr
+	}
+}
+
+// call, always
+func calla(cpu *CPU, get cpu.In16) {
+	addr := get()
+	cpu.SP -= 2
+	cpu.mem16.Store(cpu.SP, cpu.PC)
+	cpu.PC = addr
+}
+
 // Inverts the carry flag
 //
 // Carry flag inverted. Also inverts H and clears N. Rest of the flags are
@@ -66,6 +109,19 @@ func ccf(cpu *CPU) {
 	bits.Set(&cpu.F, FlagN, false)
 	bits.Set(&cpu.F, Flag3, bits.Get(cpu.A, 3))
 	bits.Set(&cpu.F, Flag5, bits.Get(cpu.A, 5))
+}
+
+// CP is a subtraction from A that doesn't update A, only the flags it would
+// have set/reset if it really was subtracted.
+//
+// F5 and F3 are copied from the operand, not the result
+func cp(cpu *CPU, get cpu.In) {
+	a1 := cpu.A
+	a2 := get()
+	sub(cpu, func() uint8 { return a2 }, false)
+	cpu.A = a1
+	bits.Set(&cpu.F, Flag3, bits.Get(a2, 3))
+	bits.Set(&cpu.F, Flag5, bits.Get(a2, 5))
 }
 
 // inverts all bits of A
@@ -162,6 +218,9 @@ func dec16(cpu *CPU, put cpu.Out16, get cpu.In16) {
 	put(arg - 1)
 }
 
+// TODO: implement
+func di() {}
+
 // decrement B and jump if not zero
 func djnz(cpu *CPU, get cpu.In) {
 	delta := get()
@@ -171,6 +230,9 @@ func djnz(cpu *CPU, get cpu.In) {
 	}
 }
 
+// TODO: implmenet
+func ei() {}
+
 // exchange
 func ex(cpu *CPU, geta cpu.In16, puta cpu.Out16, getb cpu.In16, putb cpu.Out16) {
 	a := geta()
@@ -179,8 +241,20 @@ func ex(cpu *CPU, geta cpu.In16, puta cpu.Out16, getb cpu.In16, putb cpu.Out16) 
 	putb(a)
 }
 
+// EXX exchanges BC, DE, and HL with shadow registers with BC', DE', and HL'.
+func exx(cpu *CPU) {
+	ex(cpu, cpu.loadBC, cpu.storeBC, cpu.loadBC1, cpu.storeBC1)
+	ex(cpu, cpu.loadDE, cpu.storeDE, cpu.loadDE1, cpu.storeDE1)
+	ex(cpu, cpu.loadHL, cpu.storeHL, cpu.loadHL1, cpu.storeHL1)
+}
+
 func halt(cpu *CPU) {
 	cpu.Halt = true
+}
+
+// TODO: implement
+func in(cpu *CPU, put cpu.Out, get cpu.In) {
+	get()
 }
 
 // increment
@@ -210,8 +284,21 @@ func inc16(cpu *CPU, put cpu.Out16, get cpu.In16) {
 	put(arg + 1)
 }
 
+// jump absolute, conditional
+func jp(cpu *CPU, flag int, condition bool, get cpu.In16) {
+	addr := get()
+	if bits.Get(cpu.F, flag) == condition {
+		cpu.PC = addr
+	}
+}
+
+// jump absolute, always
+func jpa(cpu *CPU, get cpu.In16) {
+	cpu.PC = get()
+}
+
 // jump relative, conditional
-func jr(cpu *CPU, get cpu.In, flag int, condition bool) {
+func jr(cpu *CPU, flag int, condition bool, get cpu.In) {
 	delta := get()
 	if bits.Get(cpu.F, flag) == condition {
 		cpu.PC = bits.Displace(cpu.PC, delta)
@@ -236,6 +323,58 @@ func ld16(cpu *CPU, put cpu.Out16, get cpu.In16) {
 
 // no operation
 func nop() {}
+
+// Logical or
+//
+// C and N flags cleared, P/V is parity, rest are altered by definition.
+// H flag cleared.
+func or(cpu *CPU, get cpu.In) {
+	a1 := cpu.A
+	a2 := get()
+
+	result := a1 | a2
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, false)
+
+	cpu.A = result
+}
+
+// TODO: implement
+func out(cpu *CPU) {
+	cpu.fetch()
+}
+
+// Copies the two bytes from (SP) into the operand, then increases SP by 2.
+func pop(cpu *CPU, put cpu.Out16) {
+	put(cpu.mem16.Load(cpu.SP))
+	cpu.SP += 2
+}
+
+// Decrements the SP by 2 then copies the operand into (SP)
+func push(cpu *CPU, get cpu.In16) {
+	cpu.SP -= 2
+	cpu.mem16.Store(cpu.SP, get())
+}
+
+// return, conditional
+func ret(cpu *CPU, flag int, value bool) {
+	if bits.Get(cpu.F, flag) == value {
+		reta(cpu)
+	}
+}
+
+// return, always
+func reta(cpu *CPU) {
+	cpu.PC = cpu.mem16.Load(cpu.SP)
+	cpu.SP += 2
+}
 
 // 9-bit rotation to the left
 // Performs an RL A, but is much faster and S, Z, and P/V flags are preserved.
@@ -318,6 +457,12 @@ func rrca(cpu *CPU) {
 	cpu.A = result
 }
 
+func rst(cpu *CPU, y int) {
+	cpu.SP -= 2
+	cpu.mem16.Store(cpu.SP, cpu.PC)
+	cpu.PC = uint16(y) * 8
+}
+
 // Set carry flag
 //
 // Carry flag set, H and N cleared, rest are preserved.
@@ -338,4 +483,26 @@ func sub(cpu *CPU, arg cpu.In, carry bool) {
 	bits.Set(&cpu.F, FlagN, true)
 	bits.Set(&cpu.F, FlagC, !bits.Get(cpu.F, FlagC))
 	bits.Set(&cpu.F, FlagH, !bits.Get(cpu.F, FlagH))
+}
+
+// Logical exclusive or
+//
+// C and N flags cleared, P/V is parity, rest are altered by definition.
+// H flag cleared.
+func xor(cpu *CPU, get cpu.In) {
+	a1 := cpu.A
+	a2 := get()
+
+	result := a1 ^ a2
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, false)
+
+	cpu.A = result
 }

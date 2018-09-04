@@ -29,6 +29,13 @@ var rp = map[int]string{
 	3: "SP",
 }
 
+var rp2 = map[int]string{
+	0: "BC",
+	1: "DE",
+	2: "HL",
+	3: "AF",
+}
+
 var cc = map[int]string{
 	0: "FlagZ, false",
 	1: "FlagZ, true",
@@ -62,7 +69,7 @@ func process(op uint8) string {
 				return "jra(c, c.loadImm)"
 			}
 			if y >= 4 && y <= 7 {
-				return fmt.Sprintf("jr(c, c.loadImm, %v)", cc[y-4])
+				return fmt.Sprintf("jr(c, %v, c.loadImm)", cc[y-4])
 			}
 		}
 		if z == 1 {
@@ -165,6 +172,110 @@ func process(op uint8) string {
 		}
 		if y == 3 {
 			return fmt.Sprintf("sub(c, c.load%v, c.F & 0x01 == 1)", r[z])
+		}
+		if y == 4 {
+			return fmt.Sprintf("and(c, c.load%v)", r[z])
+		}
+		if y == 5 {
+			return fmt.Sprintf("xor(c, c.load%v)", r[z])
+		}
+		if y == 6 {
+			return fmt.Sprintf("or(c, c.load%v)", r[z])
+		}
+		if y == 7 {
+			return fmt.Sprintf("cp(c, c.load%v)", r[z])
+		}
+	}
+	if x == 3 {
+		if z == 0 {
+			return fmt.Sprintf("ret(c, %v)", cc[y])
+		}
+		if z == 1 {
+			if q == 0 {
+				return fmt.Sprintf("pop(c, c.store%v)", rp2[p])
+			}
+			if q == 1 {
+				if p == 0 {
+					return "reta(c)"
+				}
+				if p == 1 {
+					return "exx(c)"
+				}
+				if p == 2 {
+					return "jpa(c, c.loadHL)"
+				}
+				if p == 3 {
+					return "ld16(c, c.storeSP, c.loadHL)"
+				}
+			}
+		}
+		if z == 2 {
+			return fmt.Sprintf("jp(c, %v, c.loadImm16)", cc[y])
+		}
+		if z == 3 {
+			if y == 0 {
+				return "jpa(c, c.loadImm16)"
+			}
+			if y == 2 {
+				return "out(c)"
+			}
+			if y == 3 {
+				return "in(c, c.storeA, c.loadImm)"
+			}
+			if y == 4 {
+				return "ex(c, c.load16IndSP, c.store16IndSP, c.loadHL, c.storeHL)"
+			}
+			if y == 5 {
+				return "ex(c, c.loadDE, c.storeDE, c.loadHL, c.storeHL)"
+			}
+			if y == 6 {
+				return "di()"
+			}
+			if y == 7 {
+				return "ei()"
+			}
+		}
+		if z == 4 {
+			return fmt.Sprintf("call(c, %v, c.loadImm16)", cc[y])
+		}
+		if z == 5 {
+			if q == 0 {
+				return fmt.Sprintf("push(c, c.load%v)", rp2[p])
+			}
+			if q == 1 {
+				if p == 0 {
+					return "calla(c, c.loadImm16)"
+				}
+			}
+		}
+		if z == 6 {
+			if y == 0 {
+				return "add(c, c.loadImm, c.loadA, false)"
+			}
+			if y == 1 {
+				return "add(c, c.loadImm, c.loadA, c.F & 0x01 == 1)"
+			}
+			if y == 2 {
+				return "sub(c, c.loadImm, false)"
+			}
+			if y == 3 {
+				return "sub(c, c.loadImm, c.F & 0x01 == 1)"
+			}
+			if y == 4 {
+				return "and(c, c.loadImm)"
+			}
+			if y == 5 {
+				return "xor(c, c.loadImm)"
+			}
+			if y == 6 {
+				return "or(c, c.loadImm)"
+			}
+			if y == 7 {
+				return "cp(c, c.loadImm)"
+			}
+		}
+		if z == 7 {
+			return fmt.Sprintf("rst(c, %v)", y)
 		}
 	}
 	return ""

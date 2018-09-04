@@ -20,9 +20,14 @@ func (cpu *CPU) storeDE(v uint16) { cpu.D, cpu.E = bits.Split(v) }
 func (cpu *CPU) storeHL(v uint16) { cpu.H, cpu.L = bits.Split(v) }
 func (cpu *CPU) storeSP(v uint16) { cpu.SP = v }
 
-func (cpu *CPU) storeIndHL(v uint8) { cpu.mem.Store(bits.Join(cpu.H, cpu.L), v) }
+func (cpu *CPU) store16IndSP(v uint16) { cpu.mem16.Store(cpu.SP, v) }
 
 func (cpu *CPU) storeAF1(v uint16) { cpu.A1, cpu.F1 = bits.Split(v) }
+func (cpu *CPU) storeBC1(v uint16) { cpu.B1, cpu.C1 = bits.Split(v) }
+func (cpu *CPU) storeDE1(v uint16) { cpu.D1, cpu.E1 = bits.Split(v) }
+func (cpu *CPU) storeHL1(v uint16) { cpu.H1, cpu.L1 = bits.Split(v) }
+
+func (cpu *CPU) storeIndHL(v uint8) { cpu.mem.Store(bits.Join(cpu.H, cpu.L), v) }
 
 func (cpu *CPU) storeIndBC(v uint8) { cpu.mem.Store(bits.Join(cpu.B, cpu.C), v) }
 func (cpu *CPU) storeIndDE(v uint8) { cpu.mem.Store(bits.Join(cpu.D, cpu.E), v) }
@@ -47,9 +52,14 @@ func (cpu *CPU) loadDE() uint16 { return bits.Join(cpu.D, cpu.E) }
 func (cpu *CPU) loadHL() uint16 { return bits.Join(cpu.H, cpu.L) }
 func (cpu *CPU) loadSP() uint16 { return cpu.SP }
 
-func (cpu *CPU) loadIndHL() uint8 { return cpu.mem.Load(bits.Join(cpu.H, cpu.L)) }
+func (cpu *CPU) load16IndSP() uint16 { return cpu.mem16.Load(cpu.SP) }
 
 func (cpu *CPU) loadAF1() uint16 { return bits.Join(cpu.A1, cpu.F1) }
+func (cpu *CPU) loadBC1() uint16 { return bits.Join(cpu.B1, cpu.C1) }
+func (cpu *CPU) loadDE1() uint16 { return bits.Join(cpu.D1, cpu.E1) }
+func (cpu *CPU) loadHL1() uint16 { return bits.Join(cpu.H1, cpu.L1) }
+
+func (cpu *CPU) loadIndHL() uint8 { return cpu.mem.Load(bits.Join(cpu.H, cpu.L)) }
 
 func (cpu *CPU) loadIndBC() uint8 { return cpu.mem.Load(bits.Join(cpu.B, cpu.C)) }
 func (cpu *CPU) loadIndDE() uint8 { return cpu.mem.Load(bits.Join(cpu.D, cpu.E)) }
