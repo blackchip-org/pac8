@@ -100,6 +100,14 @@ func calla(cpu *CPU, get cpu.In16) {
 	cpu.PC = addr
 }
 
+func cb(cpu *CPU) {
+	opcode := cpu.fetch()
+	// Lower 7 bits of the refresh register are incremented on an instruction
+	// fetch
+	cpu.R = (cpu.R + 1) & 0x7f
+	opsCB[opcode](cpu)
+}
+
 // Inverts the carry flag
 //
 // Carry flag inverted. Also inverts H and clears N. Rest of the flags are
@@ -376,6 +384,31 @@ func reta(cpu *CPU) {
 	cpu.SP += 2
 }
 
+// 9-bit rotation to the left.
+// The register's bits are shifted left. The carry value is put into 0th bit
+// of the register, and the leaving 7th bit is put into the carry. C is
+// changed to the leaving 7th bit, H and N are reset, P/V is parity, S and Z
+// are modified by definition.
+func rl(cpu *CPU, put cpu.Out, get cpu.In) {
+	arg := get()
+	carry := bits.Get(arg, 7)
+	result := arg << 1
+	if bits.Get(cpu.F, FlagC) {
+		result++
+	}
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, carry)
+
+	put(result)
+}
+
 // 9-bit rotation to the left
 // Performs an RL A, but is much faster and S, Z, and P/V flags are preserved.
 // The carry value is put into 0th bit of the register, and the leaving
@@ -398,6 +431,31 @@ func rla(cpu *CPU) {
 }
 
 // rotate A left with carry
+//
+// 8-bit rotation to the left. The bit leaving on the left is copied into the
+// carry, and to bit 0.
+// H and N flags are reset, P/V is parity, S and Z are modified by definition.
+func rlc(cpu *CPU, put cpu.Out, get cpu.In) {
+	arg := get()
+	carry := bits.Get(arg, 7)
+	result := arg << 1
+	if carry {
+		result++
+	}
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, carry)
+
+	put(result)
+}
+
+// rotate A left with carry
 // S,Z, and P/V are preserved, H and N flags are reset
 func rlca(cpu *CPU) {
 	arg := cpu.A
@@ -414,6 +472,30 @@ func rlca(cpu *CPU) {
 	bits.Set(&cpu.F, FlagC, carry)
 
 	cpu.A = result
+}
+
+// 9-bit rotation to the right. The carry is copied into bit 7, and the bit
+// leaving on the right is copied into the carry. Carry becomes the bit
+// leaving on the right, H and N flags are reset, P/V is parity, S and Z are
+// modified by definition.
+func rr(cpu *CPU, put cpu.Out, get cpu.In) {
+	arg := get()
+	carry := bits.Get(arg, 0)
+	result := arg >> 1
+	if bits.Get(cpu.F, FlagC) {
+		bits.Set(&result, 7, true)
+	}
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, carry)
+
+	put(result)
 }
 
 // 9-bit rotation to the right.
@@ -434,6 +516,31 @@ func rra(cpu *CPU) {
 	bits.Set(&cpu.F, FlagC, carry)
 
 	cpu.A = result
+}
+
+// rotate right with carry
+//
+// 8-bit rotation to the right. the bit leaving on the right is copied into
+// the carry, and into bit 7. The carry becomes the value leaving on the right,
+// H and N are reset, P/V is parity, and S and Z are modified by definition.
+func rrc(cpu *CPU, put cpu.Out, get cpu.In) {
+	arg := get()
+	carry := bits.Get(arg, 0)
+	result := arg >> 1
+	if carry {
+		bits.Set(&result, 7, true)
+	}
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, carry)
+
+	put(result)
 }
 
 // rotate A right with carry

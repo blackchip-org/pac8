@@ -47,7 +47,7 @@ var cc = map[int]string{
 	7: "FlagS, true",
 }
 
-func process(op uint8) string {
+func processMain(op uint8) string {
 	x := int(bits.Slice(op, 6, 7))
 	y := int(bits.Slice(op, 3, 5))
 	z := int(bits.Slice(op, 0, 2))
@@ -216,6 +216,9 @@ func process(op uint8) string {
 			if y == 0 {
 				return "jpa(c, c.loadImm16)"
 			}
+			if y == 1 {
+				return "cb(c)"
+			}
 			if y == 2 {
 				return "out(c)"
 			}
@@ -281,6 +284,39 @@ func process(op uint8) string {
 	return ""
 }
 
+func processCB(op uint8) string {
+	x := int(bits.Slice(op, 6, 7))
+	y := int(bits.Slice(op, 3, 5))
+	z := int(bits.Slice(op, 0, 2))
+
+	if x == 0 {
+		if y == 0 {
+			return fmt.Sprintf("rlc(c, c.store%v, c.load%v)", r[z], r[z])
+		}
+		if y == 1 {
+			return fmt.Sprintf("rrc(c, c.store%v, c.load%v)", r[z], r[z])
+		}
+		if y == 2 {
+			return fmt.Sprintf("rl(c, c.store%v, c.load%v)", r[z], r[z])
+		}
+		if y == 3 {
+			return fmt.Sprintf("rr(c, c.store%v, c.load%v)", r[z], r[z])
+		}
+	}
+	return ""
+}
+
+func process(out *bytes.Buffer, getFn func(uint8) string) {
+	for i := 0; i < 0x100; i++ {
+		fn := getFn(uint8(i))
+		if fn == "" {
+			fn = "c.skip = true"
+		}
+		line := fmt.Sprintf("0x%02x: func(c *CPU){%v},\n", i, fn)
+		out.WriteString(line)
+	}
+}
+
 func main() {
 	var out bytes.Buffer
 
@@ -289,16 +325,13 @@ func main() {
 
 package z80
 
-var ops = map[uint8]func(c *CPU){
 `)
-	for i := 0; i < 0x100; i++ {
-		fn := process(uint8(i))
-		if fn == "" {
-			fn = "c.skip = true"
-		}
-		line := fmt.Sprintf("0x%02x: func(c *CPU){%v},\n", i, fn)
-		out.WriteString(line)
-	}
+	out.WriteString("var ops = map[uint8]func(c *CPU){")
+	process(&out, processMain)
+	out.WriteString("}\n")
+
+	out.WriteString("var opsCB = map[uint8]func(c *CPU){")
+	process(&out, processCB)
 	out.WriteString("}\n")
 
 	err := ioutil.WriteFile("ops.go", out.Bytes(), 0644)
