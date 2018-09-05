@@ -405,6 +405,7 @@ type leftShiftMode int
 
 const (
 	sla leftShiftMode = iota
+	sll
 	rl
 	rlc
 )
@@ -415,6 +416,9 @@ func shiftl(cpu *CPU, put cpu.Out, get cpu.In, mode leftShiftMode) {
 	carryIn := false
 
 	result := arg << 1
+	if mode == sll {
+		carryIn = true
+	}
 	if mode == rlc {
 		carryIn = carryOut
 	}
@@ -453,7 +457,8 @@ func shiftla(cpu *CPU, mode leftShiftMode) {
 type rightShiftMode int
 
 const (
-	sra rightShiftMode = iota
+	srl rightShiftMode = iota
+	sra
 	rr
 	rrc
 )
@@ -464,6 +469,9 @@ func shiftr(cpu *CPU, put cpu.Out, get cpu.In, mode rightShiftMode) {
 	carryIn := false
 
 	result := arg >> 1
+	if mode == sra {
+		carryIn = bits.Get(arg, 7)
+	}
 	if mode == rrc {
 		carryIn = carryOut
 	}
