@@ -384,186 +384,6 @@ func reta(cpu *CPU) {
 	cpu.SP += 2
 }
 
-// 9-bit rotation to the left.
-// The register's bits are shifted left. The carry value is put into 0th bit
-// of the register, and the leaving 7th bit is put into the carry. C is
-// changed to the leaving 7th bit, H and N are reset, P/V is parity, S and Z
-// are modified by definition.
-func rl(cpu *CPU, put cpu.Out, get cpu.In) {
-	arg := get()
-	carry := bits.Get(arg, 7)
-	result := arg << 1
-	if bits.Get(cpu.F, FlagC) {
-		result++
-	}
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Parity(result))
-	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, carry)
-
-	put(result)
-}
-
-// 9-bit rotation to the left
-// Performs an RL A, but is much faster and S, Z, and P/V flags are preserved.
-// The carry value is put into 0th bit of the register, and the leaving
-// 7th bit is put into the carry.
-func rla(cpu *CPU) {
-	arg := cpu.A
-	carry := bits.Get(arg, 7)
-	result := arg << 1
-	if bits.Get(cpu.F, FlagC) {
-		result++
-	}
-
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, carry)
-
-	cpu.A = result
-}
-
-// rotate A left with carry
-//
-// 8-bit rotation to the left. The bit leaving on the left is copied into the
-// carry, and to bit 0.
-// H and N flags are reset, P/V is parity, S and Z are modified by definition.
-func rlc(cpu *CPU, put cpu.Out, get cpu.In) {
-	arg := get()
-	carry := bits.Get(arg, 7)
-	result := arg << 1
-	if carry {
-		result++
-	}
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Parity(result))
-	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, carry)
-
-	put(result)
-}
-
-// rotate A left with carry
-// S,Z, and P/V are preserved, H and N flags are reset
-func rlca(cpu *CPU) {
-	arg := cpu.A
-	carry := bits.Get(arg, 7)
-	result := arg << 1
-	if carry {
-		result++
-	}
-
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, carry)
-
-	cpu.A = result
-}
-
-// 9-bit rotation to the right. The carry is copied into bit 7, and the bit
-// leaving on the right is copied into the carry. Carry becomes the bit
-// leaving on the right, H and N flags are reset, P/V is parity, S and Z are
-// modified by definition.
-func rr(cpu *CPU, put cpu.Out, get cpu.In) {
-	arg := get()
-	carry := bits.Get(arg, 0)
-	result := arg >> 1
-	if bits.Get(cpu.F, FlagC) {
-		bits.Set(&result, 7, true)
-	}
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Parity(result))
-	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, carry)
-
-	put(result)
-}
-
-// 9-bit rotation to the right.
-// The Carry becomes the bit leaving on the right, H, N flags are reset,
-// P/V, S, and Z are preserved.
-func rra(cpu *CPU) {
-	arg := cpu.A
-	carry := bits.Get(arg, 0)
-	result := arg >> 1
-	if bits.Get(cpu.F, FlagC) {
-		bits.Set(&result, 7, true)
-	}
-
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, carry)
-
-	cpu.A = result
-}
-
-// rotate right with carry
-//
-// 8-bit rotation to the right. the bit leaving on the right is copied into
-// the carry, and into bit 7. The carry becomes the value leaving on the right,
-// H and N are reset, P/V is parity, and S and Z are modified by definition.
-func rrc(cpu *CPU, put cpu.Out, get cpu.In) {
-	arg := get()
-	carry := bits.Get(arg, 0)
-	result := arg >> 1
-	if carry {
-		bits.Set(&result, 7, true)
-	}
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Parity(result))
-	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, carry)
-
-	put(result)
-}
-
-// rotate A right with carry
-//
-// The carry becomes the value leaving on the right, H and N are reset,
-// P/V, S, and Z are preserved.
-func rrca(cpu *CPU) {
-	arg := cpu.A
-	carry := bits.Get(arg, 0)
-	result := arg >> 1
-	if carry {
-		bits.Set(&result, 7, true)
-	}
-
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, carry)
-
-	cpu.A = result
-}
-
 func rst(cpu *CPU, y int) {
 	cpu.SP -= 2
 	cpu.mem16.Store(cpu.SP, cpu.PC)
@@ -579,6 +399,104 @@ func scf(cpu *CPU) {
 	bits.Set(&cpu.F, FlagN, false)
 	bits.Set(&cpu.F, Flag5, bits.Get(cpu.A, 5))
 	bits.Set(&cpu.F, Flag3, bits.Get(cpu.A, 3))
+}
+
+type leftShiftMode int
+
+const (
+	sla leftShiftMode = iota
+	rl
+	rlc
+)
+
+func shiftl(cpu *CPU, put cpu.Out, get cpu.In, mode leftShiftMode) {
+	arg := get()
+	carryOut := bits.Get(arg, 7)
+	carryIn := false
+
+	result := arg << 1
+	if mode == rlc {
+		carryIn = carryOut
+	}
+	if mode == rl {
+		carryIn = bits.Get(cpu.F, FlagC)
+	}
+	bits.Set(&result, 0, carryIn)
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, carryOut)
+
+	put(result)
+}
+
+// rotate A left with carry
+// S,Z, and P/V are preserved, H and N flags are reset
+func shiftla(cpu *CPU, mode leftShiftMode) {
+	flags := cpu.F
+	shiftl(cpu, cpu.storeA, cpu.loadA, mode)
+	carry := bits.Get(cpu.F, FlagC)
+	flag5 := bits.Get(cpu.F, Flag5)
+	flag3 := bits.Get(cpu.F, Flag3)
+
+	cpu.F = flags
+	bits.Set(&cpu.F, Flag5, flag5)
+	bits.Set(&cpu.F, Flag3, flag3)
+	bits.Set(&cpu.F, FlagC, carry)
+}
+
+type rightShiftMode int
+
+const (
+	sra rightShiftMode = iota
+	rr
+	rrc
+)
+
+func shiftr(cpu *CPU, put cpu.Out, get cpu.In, mode rightShiftMode) {
+	arg := get()
+	carryOut := bits.Get(arg, 0)
+	carryIn := false
+
+	result := arg >> 1
+	if mode == rrc {
+		carryIn = carryOut
+	}
+	if mode == rr {
+		carryIn = bits.Get(cpu.F, FlagC)
+	}
+	bits.Set(&result, 7, carryIn)
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, carryOut)
+
+	put(result)
+}
+
+// rotate A left with carry
+// S,Z, and P/V are preserved, H and N flags are reset
+func shiftra(cpu *CPU, mode rightShiftMode) {
+	flags := cpu.F
+	shiftr(cpu, cpu.storeA, cpu.loadA, mode)
+	carry := bits.Get(cpu.F, FlagC)
+	flag5 := bits.Get(cpu.F, Flag5)
+	flag3 := bits.Get(cpu.F, Flag3)
+
+	cpu.F = flags
+	bits.Set(&cpu.F, Flag5, flag5)
+	bits.Set(&cpu.F, Flag3, flag3)
+	bits.Set(&cpu.F, FlagC, carry)
 }
 
 // Subtract
