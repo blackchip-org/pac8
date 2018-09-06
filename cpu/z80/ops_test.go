@@ -12,6 +12,11 @@ import (
 
 func TestOps(t *testing.T) {
 	for _, test := range fuseTests {
+		/*
+			if test.name != "90" {
+				continue
+			}
+		*/
 		t.Run(test.name, func(t *testing.T) {
 			cpu := load(test)
 			i := 0

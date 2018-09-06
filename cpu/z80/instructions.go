@@ -10,16 +10,18 @@ import (
 //go:generate go run ops/gen.go
 //go:generate go fmt ops.go
 
+type carryMode int
+
 // Add
 //
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
-func add(cpu *CPU, arg1 cpu.In, arg2 cpu.In, carry bool) {
+func add(cpu *CPU, arg1 cpu.In, arg2 cpu.In, withCarry bool) {
 	a1 := arg1()
 	a2 := arg2()
 	c := uint8(0)
 
-	if carry {
+	if withCarry && bits.Get(cpu.F, FlagC) {
 		c = 1
 	}
 
@@ -77,6 +79,24 @@ func and(cpu *CPU, get cpu.In) {
 	bits.Set(&cpu.F, FlagC, false)
 
 	cpu.A = result
+}
+
+// Tests if the specified bit is set.
+//
+// Opposite of the nth bit is written into the Z flag. C is preserved,
+// N is reset, H is set, and S and P/V are undefined.
+//
+// PV as Z, S set only if n=7 and b7 of r set
+func bit(cpu *CPU, n int, get cpu.In) {
+	arg := get()
+
+	bits.Set(&cpu.F, FlagS, n == 7 && bits.Get(arg, 7))
+	bits.Set(&cpu.F, FlagZ, !bits.Get(arg, n))
+	bits.Set(&cpu.F, Flag5, bits.Get(arg, 5))
+	bits.Set(&cpu.F, FlagH, true)
+	bits.Set(&cpu.F, Flag3, bits.Get(arg, 3))
+	bits.Set(&cpu.F, FlagV, !bits.Get(arg, n))
+	bits.Set(&cpu.F, FlagN, false)
 }
 
 // call, conditional
@@ -238,6 +258,14 @@ func djnz(cpu *CPU, get cpu.In) {
 	}
 }
 
+func ed(cpu *CPU) {
+	opcode := cpu.fetch()
+	// Lower 7 bits of the refresh register are incremented on an instruction
+	// fetch
+	cpu.R = (cpu.R + 1) & 0x7f
+	opsED[opcode](cpu)
+}
+
 // TODO: implmenet
 func ei() {}
 
@@ -291,6 +319,8 @@ func inc16(cpu *CPU, put cpu.Out16, get cpu.In16) {
 	arg := get()
 	put(arg + 1)
 }
+
+func invalid() {}
 
 // jump absolute, conditional
 func jp(cpu *CPU, flag int, condition bool, get cpu.In16) {
@@ -371,6 +401,13 @@ func push(cpu *CPU, get cpu.In16) {
 	cpu.mem16.Store(cpu.SP, get())
 }
 
+// Resets the specified byte to zero
+func res(cpu *CPU, n int, put cpu.Out, get cpu.In) {
+	arg := get()
+	bits.Set(&arg, n, false)
+	put(arg)
+}
+
 // return, conditional
 func ret(cpu *CPU, flag int, value bool) {
 	if bits.Get(cpu.F, flag) == value {
@@ -399,6 +436,13 @@ func scf(cpu *CPU) {
 	bits.Set(&cpu.F, FlagN, false)
 	bits.Set(&cpu.F, Flag5, bits.Get(cpu.A, 5))
 	bits.Set(&cpu.F, Flag3, bits.Get(cpu.A, 3))
+}
+
+// Sets the specified byte to one
+func set(cpu *CPU, n int, put cpu.Out, get cpu.In) {
+	arg := get()
+	bits.Set(&arg, n, true)
+	put(arg)
 }
 
 type leftShiftMode int
@@ -511,11 +555,29 @@ func shiftra(cpu *CPU, mode rightShiftMode) {
 //
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
-func sub(cpu *CPU, arg cpu.In, carry bool) {
-	add(cpu, cpu.loadA, func() uint8 { return ^arg() }, !carry)
+func sub(cpu *CPU, arg cpu.In, withCarry bool) {
+	a1 := cpu.A
+	a2 := arg()
+	c := int(0)
+
+	if withCarry && bits.Get(cpu.F, FlagC) {
+		c = 1
+	}
+
+	resulti := int(a1) - int(a2) - int(c)
+	result := uint8(resulti)
+	hresult := int(a1)&0xf - int(a2)&0xf - c
+
+	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
+	bits.Set(&cpu.F, FlagZ, result == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagH, hresult < 0)
+	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
+	bits.Set(&cpu.F, FlagV, bits.Overflow(a1, ^a2+1, result))
 	bits.Set(&cpu.F, FlagN, true)
-	bits.Set(&cpu.F, FlagC, !bits.Get(cpu.F, FlagC))
-	bits.Set(&cpu.F, FlagH, !bits.Get(cpu.F, FlagH))
+	bits.Set(&cpu.F, FlagC, resulti < 0)
+
+	cpu.A = result
 }
 
 // Logical exclusive or

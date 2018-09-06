@@ -165,13 +165,13 @@ func processMain(op uint8) string {
 			return fmt.Sprintf("add(c, c.loadA, c.load%v, false)", r[z])
 		}
 		if y == 1 {
-			return fmt.Sprintf("add(c, c.loadA, c.load%v, c.F & 0x01 == 1)", r[z])
+			return fmt.Sprintf("add(c, c.loadA, c.load%v, true)", r[z])
 		}
 		if y == 2 {
 			return fmt.Sprintf("sub(c, c.load%v, false)", r[z])
 		}
 		if y == 3 {
-			return fmt.Sprintf("sub(c, c.load%v, c.F & 0x01 == 1)", r[z])
+			return fmt.Sprintf("sub(c, c.load%v, true)", r[z])
 		}
 		if y == 4 {
 			return fmt.Sprintf("and(c, c.load%v)", r[z])
@@ -249,6 +249,9 @@ func processMain(op uint8) string {
 				if p == 0 {
 					return "calla(c, c.loadImm16)"
 				}
+				if p == 2 {
+					return "ed(c)"
+				}
 			}
 		}
 		if z == 6 {
@@ -256,13 +259,13 @@ func processMain(op uint8) string {
 				return "add(c, c.loadImm, c.loadA, false)"
 			}
 			if y == 1 {
-				return "add(c, c.loadImm, c.loadA, c.F & 0x01 == 1)"
+				return "add(c, c.loadImm, c.loadA, true)"
 			}
 			if y == 2 {
 				return "sub(c, c.loadImm, false)"
 			}
 			if y == 3 {
-				return "sub(c, c.loadImm, c.F & 0x01 == 1)"
+				return "sub(c, c.loadImm, true)"
 			}
 			if y == 4 {
 				return "and(c, c.loadImm)"
@@ -315,6 +318,32 @@ func processCB(op uint8) string {
 			return fmt.Sprintf("shiftr(c, c.store%v, c.load%v, srl)", r[z], r[z])
 		}
 	}
+	if x == 1 {
+		return fmt.Sprintf("bit(c, %v, c.load%v)", y, r[z])
+	}
+	if x == 2 {
+		return fmt.Sprintf("res(c, %v, c.store%v, c.load%v)", y, r[z], r[z])
+	}
+	if x == 3 {
+		return fmt.Sprintf("set(c, %v, c.store%v, c.load%v)", y, r[z], r[z])
+	}
+	return ""
+}
+
+func processED(op uint8) string {
+	x := int(bits.Slice(op, 6, 7))
+	// y := int(bits.Slice(op, 3, 5))
+	z := int(bits.Slice(op, 0, 2))
+	//p := int(bits.Slice(op, 4, 5))
+
+	if x == 0 {
+		return "invalid()"
+	}
+	if x == 1 {
+		if z == 1 {
+			// return fmt.Sprintf("add16(c, c.storeHL, load%v)", rp[p])
+		}
+	}
 	return ""
 }
 
@@ -344,6 +373,10 @@ package z80
 
 	out.WriteString("var opsCB = map[uint8]func(c *CPU){")
 	process(&out, processCB)
+	out.WriteString("}\n")
+
+	out.WriteString("var opsED = map[uint8]func(c *CPU){")
+	process(&out, processED)
 	out.WriteString("}\n")
 
 	err := ioutil.WriteFile("ops.go", out.Bytes(), 0644)
