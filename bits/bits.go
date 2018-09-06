@@ -138,3 +138,17 @@ func Overflow(a1 uint8, a2 uint8, r uint8) bool {
 	}
 	return false
 }
+
+func Overflow16(a1 uint16, a2 uint16, r uint16) bool {
+	a17 := Get16(a1, 15)
+	a27 := Get16(a2, 15)
+	r7 := Get16(r, 15)
+
+	if a17 != a27 {
+		return false
+	}
+	if a17 != r7 {
+		return true
+	}
+	return false
+}

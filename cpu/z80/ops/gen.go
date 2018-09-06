@@ -77,7 +77,7 @@ func processMain(op uint8) string {
 				return fmt.Sprintf("ld16(c, c.store%v, c.loadImm16)", rp[p])
 			}
 			if q == 1 {
-				return fmt.Sprintf("add16(c, c.storeHL, c.loadHL, c.load%v)", rp[p])
+				return fmt.Sprintf("add16(c, c.storeHL, c.loadHL, c.load%v, false)", rp[p])
 			}
 		}
 		if z == 2 {
@@ -334,14 +334,18 @@ func processED(op uint8) string {
 	x := int(bits.Slice(op, 6, 7))
 	// y := int(bits.Slice(op, 3, 5))
 	z := int(bits.Slice(op, 0, 2))
-	//p := int(bits.Slice(op, 4, 5))
+	p := int(bits.Slice(op, 4, 5))
+	q := int(bits.Slice(op, 3, 3))
 
 	if x == 0 {
 		return "invalid()"
 	}
 	if x == 1 {
-		if z == 1 {
-			// return fmt.Sprintf("add16(c, c.storeHL, load%v)", rp[p])
+		if z == 2 {
+			// NOTE: Do subtraction next
+			if q == 1 {
+				return fmt.Sprintf("add16(c, c.storeHL, c.loadHL, c.load%v, true)", rp[p])
+			}
 		}
 	}
 	return ""

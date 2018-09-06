@@ -43,13 +43,23 @@ func add(cpu *CPU, arg1 cpu.In, arg2 cpu.In, withCarry bool) {
 
 // add
 // preserve s, z, p/v. h undefined
-func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16) {
+func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16, withCarry bool) {
 	a1 := arg1()
 	a2 := arg2()
+	c := uint32(0)
 
-	result := uint32(a1) + uint32(a2)
+	if withCarry && bits.Get(cpu.F, FlagC) {
+		c = 1
+	}
+
+	result := uint32(a1) + uint32(a2) + c
 	hresult := uint8(bits.Slice16(a1, 8, 11) + bits.Slice16(a2, 8, 11))
 
+	if withCarry {
+		bits.Set(&cpu.F, FlagS, bits.Get32(result, 15))
+		bits.Set(&cpu.F, FlagZ, result == 0)
+		bits.Set(&cpu.F, FlagV, bits.Overflow16(a1, a2, uint16(result)))
+	}
 	bits.Set(&cpu.F, FlagN, false)
 	bits.Set(&cpu.F, FlagC, bits.Get32(result, 16))
 	bits.Set(&cpu.F, FlagH, bits.Get(hresult, 4))
