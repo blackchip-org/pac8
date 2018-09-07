@@ -10,63 +10,68 @@ import (
 //go:generate go run ops/gen.go
 //go:generate go fmt ops.go
 
-type carryMode int
+var alu bits.ALU
 
 // Add
 //
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
 func add(cpu *CPU, arg1 cpu.In, arg2 cpu.In, withCarry bool) {
-	a1 := arg1()
-	a2 := arg2()
-	c := uint8(0)
+	alu.N = arg1()
+	alu.M = arg2()
 
+	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
-		c = 1
+		alu.SetCarry(true)
 	}
+	alu.Add()
 
-	result16 := uint16(a1) + uint16(a2) + uint16(c)
-	result := uint8(result16)
-	hresult := a1&0xf + a2&0xf + c
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, bits.Get(hresult, 4))
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Overflow(a1, a2, result))
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Result, 5))
+	bits.Set(&cpu.F, FlagH, alu.Carry4())
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Result, 3))
+	bits.Set(&cpu.F, FlagV, alu.Overflow())
 	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, bits.Get16(result16, 8))
+	bits.Set(&cpu.F, FlagC, alu.Carry())
 
-	cpu.A = result
+	cpu.A = alu.Result
 }
 
 // add
 // preserve s, z, p/v. h undefined
 func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16, withCarry bool) {
-	a1 := arg1()
-	a2 := arg2()
-	c := uint32(0)
+	n16 := arg1()
+	m16 := arg2()
 
+	alu.N = uint8(n16)
+	alu.M = uint8(m16)
+	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
-		c = 1
+		alu.SetCarry(true)
 	}
+	alu.Add()
+	lo := alu.Result
 
-	result := uint32(a1) + uint32(a2) + c
-	hresult := uint8(bits.Slice16(a1, 8, 11) + bits.Slice16(a2, 8, 11))
+	alu.N = uint8(n16 >> 8)
+	alu.M = uint8(m16 >> 8)
+	alu.Add()
+	hi := alu.Result
+
+	result := uint16(hi)<<8 | uint16(lo)
 
 	if withCarry {
-		bits.Set(&cpu.F, FlagS, bits.Get32(result, 15))
-		bits.Set(&cpu.F, FlagZ, result == 0)
-		bits.Set(&cpu.F, FlagV, bits.Overflow16(a1, a2, uint16(result)))
+		bits.Set(&cpu.F, FlagS, alu.Sign())
+		bits.Set(&cpu.F, FlagZ, alu.Zero())
+		bits.Set(&cpu.F, FlagV, alu.Overflow())
 	}
+	bits.Set(&cpu.F, Flag5, bits.Get(hi, 5))
+	bits.Set(&cpu.F, FlagH, alu.Carry4())
+	bits.Set(&cpu.F, Flag3, bits.Get(hi, 3))
 	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, bits.Get32(result, 16))
-	bits.Set(&cpu.F, FlagH, bits.Get(hresult, 4))
-	bits.Set(&cpu.F, Flag3, bits.Get32(result, 11))
-	bits.Set(&cpu.F, Flag5, bits.Get32(result, 13))
+	bits.Set(&cpu.F, FlagC, alu.Carry())
 
-	put(uint16(result))
+	put(result)
 }
 
 // Logical and
@@ -566,28 +571,59 @@ func shiftra(cpu *CPU, mode rightShiftMode) {
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
 func sub(cpu *CPU, arg cpu.In, withCarry bool) {
-	a1 := cpu.A
-	a2 := arg()
-	c := int(0)
+	alu.N = cpu.A
+	alu.M = arg()
 
+	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
-		c = 1
+		alu.SetCarry(true)
 	}
+	alu.Subtract()
 
-	resulti := int(a1) - int(a2) - int(c)
-	result := uint8(resulti)
-	hresult := int(a1)&0xf - int(a2)&0xf - c
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, hresult < 0)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Overflow(a1, ^a2+1, result))
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Result, 5))
+	bits.Set(&cpu.F, FlagH, alu.Carry4())
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Result, 3))
+	bits.Set(&cpu.F, FlagV, alu.Overflow())
 	bits.Set(&cpu.F, FlagN, true)
-	bits.Set(&cpu.F, FlagC, resulti < 0)
+	bits.Set(&cpu.F, FlagC, alu.Carry())
 
-	cpu.A = result
+	cpu.A = alu.Result
+}
+
+func sub16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16, withCarry bool) {
+	n16 := arg1()
+	m16 := arg2()
+
+	alu.N = uint8(n16)
+	alu.M = uint8(m16)
+	alu.SetCarry(false)
+	if withCarry && bits.Get(cpu.F, FlagC) {
+		alu.SetCarry(true)
+	}
+	alu.Subtract()
+	lo := alu.Result
+
+	alu.N = uint8(n16 >> 8)
+	alu.M = uint8(m16 >> 8)
+	alu.Subtract()
+	hi := alu.Result
+
+	result := uint16(hi)<<8 | uint16(lo)
+
+	if withCarry {
+		bits.Set(&cpu.F, FlagS, alu.Sign())
+		bits.Set(&cpu.F, FlagZ, alu.Zero())
+		bits.Set(&cpu.F, FlagV, alu.Overflow())
+	}
+	bits.Set(&cpu.F, Flag5, bits.Get(hi, 5))
+	bits.Set(&cpu.F, FlagH, alu.Carry4())
+	bits.Set(&cpu.F, Flag3, bits.Get(hi, 3))
+	bits.Set(&cpu.F, FlagN, true)
+	bits.Set(&cpu.F, FlagC, alu.Carry())
+
+	put(result)
 }
 
 // Logical exclusive or

@@ -6,6 +6,11 @@ import (
 	"strconv"
 )
 
+const (
+	MaxInt8 = 127
+	MinInt8 = -128
+)
+
 // Parse parses the base-2 string value s to a uint8. Panics if s is not
 // a valid number. Use strconv.ParseUint for input which may be malformed.
 func Parse(s string) uint8 {
@@ -88,6 +93,12 @@ func Join4(hi uint8, lo uint8) uint8 {
 // Split takes a uint16 and splits it out int a hi byte and a lo byte.
 func Split(value uint16) (hi uint8, lo uint8) {
 	hi = uint8(value >> 8)
+	lo = uint8(value)
+	return
+}
+
+func Split4(value uint8) (hi uint8, lo uint8) {
+	hi = uint8(value >> 4)
 	lo = uint8(value)
 	return
 }
