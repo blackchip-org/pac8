@@ -103,6 +103,17 @@ func (a *ALU) ShiftRight() {
 	}
 }
 
+func (a *ALU) ShiftRightSigned() {
+	sign := a.In0 & (1 << 7)
+	carryOut := a.In0&0x01 != 0
+	a.Out = a.In0 >> 1
+	a.Out |= sign
+	a.flags = szpFlags[a.Out]
+	if carryOut {
+		a.flags |= flagCarry
+	}
+}
+
 func (a ALU) Carry() bool {
 	return a.flags&flagCarry != 0
 }

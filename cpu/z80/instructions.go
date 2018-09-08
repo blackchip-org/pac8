@@ -479,6 +479,17 @@ func rotr(cpu *CPU, put cpu.Put, get cpu.Get) {
 	put(alu.Out)
 }
 
+func rotra(cpu *CPU) {
+	alu.In0 = cpu.A
+	alu.RotateRight()
+
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagC, alu.Carry())
+
+	cpu.A = alu.Out
+}
+
 func rst(cpu *CPU, y int) {
 	cpu.SP -= 2
 	cpu.mem16.Store(cpu.SP, cpu.PC)
@@ -535,57 +546,69 @@ func shiftla(cpu *CPU) {
 	cpu.A = alu.Out
 }
 
-type rightShiftMode int
-
-const (
-	srl rightShiftMode = iota
-	sra
-	rr
-	rrc
-)
-
-func shiftr(cpu *CPU, put cpu.Put, get cpu.Get, mode rightShiftMode) {
-	arg := get()
-	carryOut := bits.Get(arg, 0)
-	carryIn := false
-
-	result := arg >> 1
-	if mode == sra {
-		carryIn = bits.Get(arg, 7)
+func shiftr(cpu *CPU, put cpu.Put, get cpu.Get, withCarry bool) {
+	alu.In0 = get()
+	alu.SetCarry(false)
+	if withCarry && bits.Get(cpu.F, FlagC) {
+		alu.SetCarry(true)
 	}
-	if mode == rrc {
-		carryIn = carryOut
-	}
-	if mode == rr {
-		carryIn = bits.Get(cpu.F, FlagC)
-	}
-	bits.Set(&result, 7, carryIn)
+	alu.ShiftRight()
 
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, alu.Parity())
 	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, carryOut)
+	bits.Set(&cpu.F, FlagC, alu.Carry())
 
-	put(result)
+	put(alu.Out)
 }
 
-// rotate A left with carry
-// S,Z, and P/V are preserved, H and N flags are reset
-func shiftra(cpu *CPU, mode rightShiftMode) {
-	flags := cpu.F
-	shiftr(cpu, cpu.storeA, cpu.loadA, mode)
-	carry := bits.Get(cpu.F, FlagC)
-	flag5 := bits.Get(cpu.F, Flag5)
-	flag3 := bits.Get(cpu.F, Flag3)
+func shiftra(cpu *CPU) {
+	alu.In0 = cpu.A
+	alu.SetCarry(bits.Get(cpu.F, FlagC))
+	alu.ShiftRight()
 
-	cpu.F = flags
-	bits.Set(&cpu.F, Flag5, flag5)
-	bits.Set(&cpu.F, Flag3, flag3)
-	bits.Set(&cpu.F, FlagC, carry)
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagC, alu.Carry())
+
+	cpu.A = alu.Out
+}
+
+func sll(cpu *CPU, put cpu.Put, get cpu.Get) {
+	alu.In0 = get()
+	alu.SetCarry(true)
+	alu.ShiftLeft()
+
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, alu.Parity())
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, alu.Carry())
+
+	put(alu.Out)
+}
+
+func sra(cpu *CPU, put cpu.Put, get cpu.Get) {
+	alu.In0 = get()
+	alu.ShiftRightSigned()
+
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, alu.Parity())
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, alu.Carry())
+
+	put(alu.Out)
 }
 
 // Subtract
