@@ -1,11 +1,13 @@
 package bits
 
+type table [256]uint8
 type table2 [256 * 256]uint8
 
 var addFlags table2
 var adcFlags table2
 var subFlags table2
 var sbcFlags table2
+var szpFlags table
 
 const (
 	flagCarry    = uint8(1 << 0)
@@ -41,6 +43,37 @@ func (a *ALU) Subtract() {
 	} else {
 		a.flags = subFlags[a.index2()]
 	}
+}
+
+func (a *ALU) Increment() {
+	a.M = 1
+	a.Add()
+}
+
+func (a *ALU) Decrement() {
+	a.M = 1
+	a.Subtract()
+}
+
+func (a *ALU) RotateLeft() {
+	carryOut := a.N&0x80 != 0
+	a.Result = a.N << 1
+	if carryOut {
+		a.Result++
+	}
+	a.flags = szpFlags[a.Result]
+	if carryOut {
+		a.flags |= flagCarry
+	}
+}
+
+func (a *ALU) ShiftLeft() {
+	carryOut := a.N&0x80 != 0
+	a.N <<= 1
+	if a.Carry() {
+		a.N++
+	}
+	a.SetCarry(carryOut)
 }
 
 func (a ALU) Carry() bool {
@@ -84,6 +117,7 @@ func init() {
 	addTable(&adcFlags, 1)
 	subTable(&subFlags, 0)
 	subTable(&sbcFlags, 1)
+	szpTable()
 }
 
 func addTable(table *table2, carry int) {
@@ -157,5 +191,23 @@ func subTable(table *table2, carry int) {
 			flags |= flagSign
 		}
 		table[i] = flags
+	}
+}
+
+func szpTable() {
+	for i := 0; i < 256; i++ {
+		n := uint8(i)
+
+		var flags uint8
+		if n&0x80 != 0 {
+			flags |= flagSign
+		}
+		if n == 0 {
+			flags |= flagZero
+		}
+		if Parity(n) {
+			flags |= flagParity
+		}
+		szpFlags[i] = flags
 	}
 }

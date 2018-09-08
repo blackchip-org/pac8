@@ -238,20 +238,19 @@ func daa(cpu *CPU) {
 // C flag preserved, P/V detects overflow and rest modified by definition.
 // modified by definition.
 func dec(cpu *CPU, put cpu.Out, get cpu.In) {
-	arg := get()
+	alu.N = get()
+	alu.SetCarry(false)
+	alu.Decrement()
 
-	result := arg - 1
-	hresult := arg&0xf - 1
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, bits.Get(hresult, 4))
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Overflow(arg, 0xff, result))
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Result, 5))
+	bits.Set(&cpu.F, FlagH, alu.Carry4())
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Result, 3))
+	bits.Set(&cpu.F, FlagV, alu.Overflow())
 	bits.Set(&cpu.F, FlagN, true)
 
-	put(result)
+	put(alu.Result)
 }
 
 // decrement 16-bit
@@ -312,20 +311,19 @@ func in(cpu *CPU, put cpu.Out, get cpu.In) {
 // Preserves C flag, N flag is reset, P/V detects overflow and rest are
 // modified by definition.
 func inc(cpu *CPU, put cpu.Out, get cpu.In) {
-	arg := get()
+	alu.N = get()
+	alu.SetCarry(false)
+	alu.Increment()
 
-	result := arg + 1
-	hresult := arg&0xf + 1
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
-	bits.Set(&cpu.F, FlagH, bits.Get(hresult, 4))
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Overflow(arg, 1, result))
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Result, 5))
+	bits.Set(&cpu.F, FlagH, alu.Carry4())
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Result, 3))
+	bits.Set(&cpu.F, FlagV, alu.Overflow())
 	bits.Set(&cpu.F, FlagN, false)
 
-	put(result)
+	put(alu.Result)
 }
 
 // increment 16-bit
@@ -434,6 +432,22 @@ func ret(cpu *CPU, flag int, value bool) {
 func reta(cpu *CPU) {
 	cpu.PC = cpu.mem16.Load(cpu.SP)
 	cpu.SP += 2
+}
+
+func rotl(cpu *CPU, put cpu.Out, get cpu.In) {
+	alu.N = get()
+	alu.RotateLeft()
+
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Result, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Result, 3))
+	bits.Set(&cpu.F, FlagV, alu.Parity())
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, alu.Carry())
+
+	put(alu.Result)
 }
 
 func rst(cpu *CPU, y int) {

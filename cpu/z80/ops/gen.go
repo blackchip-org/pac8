@@ -294,7 +294,7 @@ func processCB(op uint8) string {
 
 	if x == 0 {
 		if y == 0 {
-			return fmt.Sprintf("shiftl(c, c.store%v, c.load%v, rlc)", r[z], r[z])
+			return fmt.Sprintf("rotl(c, c.store%v, c.load%v)", r[z], r[z])
 		}
 		if y == 1 {
 			return fmt.Sprintf("shiftr(c, c.store%v, c.load%v, rrc)", r[z], r[z])
@@ -373,15 +373,15 @@ func main() {
 package z80
 
 `)
-	out.WriteString("var ops = map[uint8]func(c *CPU){")
+	out.WriteString("var ops = map[uint8]func(c *CPU){\n")
 	process(&out, processMain)
 	out.WriteString("}\n")
 
-	out.WriteString("var opsCB = map[uint8]func(c *CPU){")
+	out.WriteString("var opsCB = map[uint8]func(c *CPU){\n")
 	process(&out, processCB)
 	out.WriteString("}\n")
 
-	out.WriteString("var opsED = map[uint8]func(c *CPU){")
+	out.WriteString("var opsED = map[uint8]func(c *CPU){\n")
 	process(&out, processED)
 	out.WriteString("}\n")
 
