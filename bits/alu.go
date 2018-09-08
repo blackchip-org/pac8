@@ -114,6 +114,26 @@ func (a *ALU) ShiftRightSigned() {
 	}
 }
 
+func (a *ALU) And() {
+	a.Out = a.In0 & a.In1
+	a.flags = szpFlags[a.Out]
+}
+
+func (a *ALU) Not() {
+	a.Out = ^a.In0
+	a.flags = szpFlags[a.Out]
+}
+
+func (a *ALU) Or() {
+	a.Out = a.In0 | a.In1
+	a.flags = szpFlags[a.Out]
+}
+
+func (a *ALU) ExclusiveOr() {
+	a.Out = a.In0 ^ a.In1
+	a.flags = szpFlags[a.Out]
+}
+
 func (a ALU) Carry() bool {
 	return a.flags&flagCarry != 0
 }

@@ -79,21 +79,20 @@ func add16(cpu *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bo
 // C and N flags cleared, P/V is parity, rest are altered by definition.
 // H flag set.
 func and(cpu *CPU, get cpu.Get) {
-	a1 := cpu.A
-	a2 := get()
+	alu.In0 = cpu.A
+	alu.In1 = get()
+	alu.And()
 
-	result := a1 & a2
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&cpu.F, FlagH, true)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, alu.Parity())
 	bits.Set(&cpu.F, FlagN, false)
 	bits.Set(&cpu.F, FlagC, false)
 
-	cpu.A = result
+	cpu.A = alu.Out
 }
 
 // Tests if the specified bit is set.
@@ -103,14 +102,14 @@ func and(cpu *CPU, get cpu.Get) {
 //
 // PV as Z, S set only if n=7 and b7 of r set
 func bit(cpu *CPU, n int, get cpu.Get) {
-	arg := get()
+	in0 := get()
 
-	bits.Set(&cpu.F, FlagS, n == 7 && bits.Get(arg, 7))
-	bits.Set(&cpu.F, FlagZ, !bits.Get(arg, n))
-	bits.Set(&cpu.F, Flag5, bits.Get(arg, 5))
+	bits.Set(&cpu.F, FlagS, n == 7 && bits.Get(in0, 7))
+	bits.Set(&cpu.F, FlagZ, !bits.Get(in0, n))
+	bits.Set(&cpu.F, Flag5, bits.Get(in0, 5))
 	bits.Set(&cpu.F, FlagH, true)
-	bits.Set(&cpu.F, Flag3, bits.Get(arg, 3))
-	bits.Set(&cpu.F, FlagV, !bits.Get(arg, n))
+	bits.Set(&cpu.F, Flag3, bits.Get(in0, 3))
+	bits.Set(&cpu.F, FlagV, !bits.Get(in0, n))
 	bits.Set(&cpu.F, FlagN, false)
 }
 
@@ -159,23 +158,27 @@ func ccf(cpu *CPU) {
 //
 // F5 and F3 are copied from the operand, not the result
 func cp(cpu *CPU, get cpu.Get) {
-	a1 := cpu.A
-	a2 := get()
-	sub(cpu, func() uint8 { return a2 }, false)
-	cpu.A = a1
-	bits.Set(&cpu.F, Flag3, bits.Get(a2, 3))
-	bits.Set(&cpu.F, Flag5, bits.Get(a2, 5))
+	in0 := cpu.A
+	in1 := get()
+	sub(cpu, func() uint8 { return in1 }, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(in1, 3))
+	bits.Set(&cpu.F, Flag5, bits.Get(in1, 5))
+	cpu.A = in0
 }
 
 // inverts all bits of A
 //
 // Sets H and N, other flags are unmodified.
 func cpl(cpu *CPU) {
-	cpu.A ^= 0xff
+	alu.In0 = cpu.A
+	alu.Not()
+
 	bits.Set(&cpu.F, FlagH, true)
 	bits.Set(&cpu.F, FlagN, true)
-	bits.Set(&cpu.F, Flag3, bits.Get(cpu.A, 3))
-	bits.Set(&cpu.F, Flag5, bits.Get(cpu.A, 5))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+
+	cpu.A = alu.Out
 }
 
 // decimal adjust in a
@@ -256,8 +259,8 @@ func dec(cpu *CPU, put cpu.Put, get cpu.Get) {
 // decrement 16-bit
 // No flags altered
 func dec16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
-	arg := get()
-	put(arg - 1)
+	in0 := get()
+	put(in0 - 1)
 }
 
 // TODO: implement
@@ -284,11 +287,11 @@ func ed(cpu *CPU) {
 func ei() {}
 
 // exchange
-func ex(cpu *CPU, geta cpu.Get16, puta cpu.Put16, getb cpu.Get16, putb cpu.Put16) {
-	a := geta()
-	b := getb()
-	puta(b)
-	putb(a)
+func ex(cpu *CPU, get0 cpu.Get16, put0 cpu.Put16, get1 cpu.Get16, put1 cpu.Put16) {
+	in0 := get0()
+	in1 := get1()
+	put0(in1)
+	put1(in0)
 }
 
 // EXX exchanges BC, DE, and HL with shadow registers with BC', DE', and HL'.
@@ -329,8 +332,8 @@ func inc(cpu *CPU, put cpu.Put, get cpu.Get) {
 // increment 16-bit
 // No flags altered
 func inc16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
-	arg := get()
-	put(arg + 1)
+	in0 := get()
+	put(in0 + 1)
 }
 
 func invalid() {}
@@ -380,21 +383,20 @@ func nop() {}
 // C and N flags cleared, P/V is parity, rest are altered by definition.
 // H flag cleared.
 func or(cpu *CPU, get cpu.Get) {
-	a1 := cpu.A
-	a2 := get()
+	alu.In0 = cpu.A
+	alu.In1 = get()
+	alu.Or()
 
-	result := a1 | a2
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, alu.Parity())
 	bits.Set(&cpu.F, FlagN, false)
 	bits.Set(&cpu.F, FlagC, false)
 
-	cpu.A = result
+	cpu.A = alu.Out
 }
 
 // TODO: implement
@@ -509,9 +511,9 @@ func scf(cpu *CPU) {
 
 // Sets the specified byte to one
 func set(cpu *CPU, n int, put cpu.Put, get cpu.Get) {
-	arg := get()
-	bits.Set(&arg, n, true)
-	put(arg)
+	in0 := get()
+	bits.Set(&in0, n, true)
+	put(in0)
 }
 
 func shiftl(cpu *CPU, put cpu.Put, get cpu.Get, withCarry bool) {
@@ -615,9 +617,9 @@ func sra(cpu *CPU, put cpu.Put, get cpu.Get) {
 //
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
-func sub(cpu *CPU, arg cpu.Get, withCarry bool) {
+func sub(cpu *CPU, get cpu.Get, withCarry bool) {
 	alu.In0 = cpu.A
-	alu.In1 = arg()
+	alu.In1 = get()
 
 	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
@@ -637,12 +639,12 @@ func sub(cpu *CPU, arg cpu.Get, withCarry bool) {
 	cpu.A = alu.Out
 }
 
-func sub16(cpu *CPU, put cpu.Put16, arg1 cpu.Get16, arg2 cpu.Get16, withCarry bool) {
-	n16 := arg1()
-	m16 := arg2()
+func sub16(cpu *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bool) {
+	in0 := get0()
+	in1 := get1()
 
-	alu.In0 = uint8(n16)
-	alu.In1 = uint8(m16)
+	alu.In0 = uint8(in0)
+	alu.In1 = uint8(in1)
 	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
 		alu.SetCarry(true)
@@ -650,8 +652,8 @@ func sub16(cpu *CPU, put cpu.Put16, arg1 cpu.Get16, arg2 cpu.Get16, withCarry bo
 	alu.Subtract()
 	lo := alu.Out
 
-	alu.In0 = uint8(n16 >> 8)
-	alu.In1 = uint8(m16 >> 8)
+	alu.In0 = uint8(in0 >> 8)
+	alu.In1 = uint8(in1 >> 8)
 	alu.Subtract()
 	hi := alu.Out
 
@@ -676,19 +678,18 @@ func sub16(cpu *CPU, put cpu.Put16, arg1 cpu.Get16, arg2 cpu.Get16, withCarry bo
 // C and N flags cleared, P/V is parity, rest are altered by definition.
 // H flag cleared.
 func xor(cpu *CPU, get cpu.Get) {
-	a1 := cpu.A
-	a2 := get()
+	alu.In0 = cpu.A
+	alu.In1 = get()
+	alu.ExclusiveOr()
 
-	result := a1 ^ a2
-
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, alu.Parity())
 	bits.Set(&cpu.F, FlagN, false)
 	bits.Set(&cpu.F, FlagC, false)
 
-	cpu.A = result
+	cpu.A = alu.Out
 }
