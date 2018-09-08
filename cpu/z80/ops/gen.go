@@ -224,10 +224,10 @@ func processMain(op uint8) string {
 				return "cb(c)"
 			}
 			if y == 2 {
-				return "out(c)"
+				return "todo2(c, c.loadImm)"
 			}
 			if y == 3 {
-				return "in(c, c.storeA, c.loadImm)"
+				return "todo2(c, c.loadImm)"
 			}
 			if y == 4 {
 				return "ex(c, c.load16IndSP, c.store16IndSP, c.loadHL, c.storeHL)"
@@ -236,10 +236,10 @@ func processMain(op uint8) string {
 				return "ex(c, c.loadDE, c.storeDE, c.loadHL, c.storeHL)"
 			}
 			if y == 6 {
-				return "di()"
+				return "todo(c)"
 			}
 			if y == 7 {
-				return "ei()"
+				return "todo(c)"
 			}
 		}
 		if z == 4 {
@@ -342,15 +342,31 @@ func processCB(op uint8) string {
 
 func processED(op uint8) string {
 	x := int(bits.Slice(op, 6, 7))
-	// y := int(bits.Slice(op, 3, 5))
+	y := int(bits.Slice(op, 3, 5))
 	z := int(bits.Slice(op, 0, 2))
 	p := int(bits.Slice(op, 4, 5))
 	q := int(bits.Slice(op, 3, 3))
 
-	if x == 0 {
+	if x == 0 || x == 3 {
 		return "invalid()"
 	}
 	if x == 1 {
+		if z == 0 {
+			if y != 6 {
+				return "todo(c)"
+			}
+			if y == 6 {
+				return "todo(c)"
+			}
+		}
+		if z == 1 {
+			if y != 6 {
+				return "todo(c)"
+			}
+			if y == 6 {
+				return "todo(c)"
+			}
+		}
 		if z == 2 {
 			if q == 0 {
 				return fmt.Sprintf("sub16(c, c.storeHL, c.loadHL, c.load%v, true)", rp[p])

@@ -20,6 +20,7 @@ func TestOps(t *testing.T) {
 		}
 		t.Run(test.name, func(t *testing.T) {
 			cpu := load(test)
+			cpu.testing = true
 			i := 0
 			for {
 				cpu.Next()

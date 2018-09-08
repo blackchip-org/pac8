@@ -49,9 +49,10 @@ type CPU struct {
 
 	Halt bool
 
-	mem   memory.Memory
-	mem16 memory.Memory16
-	skip  bool
+	mem     memory.Memory
+	mem16   memory.Memory16
+	skip    bool
+	testing bool
 }
 
 func New(m memory.Memory) *CPU {

@@ -263,9 +263,6 @@ func dec16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
 	put(in0 - 1)
 }
 
-// TODO: implement
-func di() {}
-
 // decrement B and jump if not zero
 func djnz(cpu *CPU, get cpu.Get) {
 	delta := get()
@@ -282,9 +279,6 @@ func ed(cpu *CPU) {
 	cpu.R = (cpu.R + 1) & 0x7f
 	opsED[opcode](cpu)
 }
-
-// TODO: implmenet
-func ei() {}
 
 // exchange
 func ex(cpu *CPU, get0 cpu.Get16, put0 cpu.Put16, get1 cpu.Get16, put1 cpu.Put16) {
@@ -303,11 +297,6 @@ func exx(cpu *CPU) {
 
 func halt(cpu *CPU) {
 	cpu.Halt = true
-}
-
-// TODO: implement
-func in(cpu *CPU, put cpu.Put, get cpu.Get) {
-	get()
 }
 
 // increment
@@ -397,11 +386,6 @@ func or(cpu *CPU, get cpu.Get) {
 	bits.Set(&cpu.F, FlagC, false)
 
 	cpu.A = alu.Out
-}
-
-// TODO: implement
-func out(cpu *CPU) {
-	cpu.fetch()
 }
 
 // Copies the two bytes from (SP) into the operand, then increases SP by 2.
@@ -671,6 +655,23 @@ func sub16(cpu *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bo
 	bits.Set(&cpu.F, FlagC, alu.Carry())
 
 	put(result)
+}
+
+func todo(cpu *CPU) {
+	if cpu.testing {
+		cpu.skip = true
+		return
+	}
+	panic("not implemented")
+}
+
+func todo2(cpu *CPU, get cpu.Get) {
+	get()
+	if cpu.testing {
+		cpu.skip = true
+		return
+	}
+	panic("not implemented")
 }
 
 // Logical exclusive or
