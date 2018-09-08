@@ -13,6 +13,8 @@ func (cpu *CPU) storeD(v uint8) { cpu.D = v }
 func (cpu *CPU) storeE(v uint8) { cpu.E = v }
 func (cpu *CPU) storeH(v uint8) { cpu.H = v }
 func (cpu *CPU) storeL(v uint8) { cpu.L = v }
+func (cpu *CPU) storeI(v uint8) { cpu.I = v }
+func (cpu *CPU) storeR(v uint8) { cpu.R = v }
 
 func (cpu *CPU) storeAF(v uint16) { cpu.A, cpu.F = bits.Split(v) }
 func (cpu *CPU) storeBC(v uint16) { cpu.B, cpu.C = bits.Split(v) }
@@ -45,6 +47,8 @@ func (cpu *CPU) loadD() uint8 { return cpu.D }
 func (cpu *CPU) loadE() uint8 { return cpu.E }
 func (cpu *CPU) loadH() uint8 { return cpu.H }
 func (cpu *CPU) loadL() uint8 { return cpu.L }
+func (cpu *CPU) loadI() uint8 { return cpu.I }
+func (cpu *CPU) loadR() uint8 { return cpu.R }
 
 func (cpu *CPU) loadAF() uint16 { return bits.Join(cpu.A, cpu.F) }
 func (cpu *CPU) loadBC() uint16 { return bits.Join(cpu.B, cpu.C) }

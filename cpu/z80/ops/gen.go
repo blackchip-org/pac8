@@ -375,6 +375,46 @@ func processED(op uint8) string {
 				return fmt.Sprintf("add16(c, c.storeHL, c.loadHL, c.load%v, true)", rp[p])
 			}
 		}
+		if z == 3 {
+			if q == 0 {
+				return fmt.Sprintf("ld16(c, c.store16IndImm, c.load%v)", rp[p])
+			}
+			if q == 1 {
+				return fmt.Sprintf("ld16(c, c.store%v, c.load16IndImm)", rp[p])
+			}
+		}
+		if z == 4 {
+			return "neg(c)"
+		}
+		if z == 5 {
+			return "todo(c)"
+		}
+		if z == 6 {
+			return "todo(c)"
+		}
+		if z == 7 {
+			if y == 0 {
+				return "ld(c, c.storeI, c.loadA)"
+			}
+			if y == 1 {
+				return "ld(c, c.storeR, c.loadA)"
+			}
+			if y == 2 {
+				// ld a, i
+				return "ldair(c, c.loadI)"
+			}
+			if y == 3 {
+				// ld a, r
+				return "ldair(c, c.loadR)"
+			}
+			if y == 4 {
+				return "rrd(c)"
+			}
+			if y == 5 {
+				return "rld(c)"
+			}
+			return "nop()"
+		}
 	}
 	return ""
 }

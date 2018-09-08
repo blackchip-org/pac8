@@ -99,7 +99,7 @@ func Split(value uint16) (hi uint8, lo uint8) {
 
 func Split4(value uint8) (hi uint8, lo uint8) {
 	hi = uint8(value >> 4)
-	lo = uint8(value)
+	lo = uint8(value & 0xf)
 	return
 }
 

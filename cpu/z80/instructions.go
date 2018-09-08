@@ -138,7 +138,7 @@ func cb(cpu *CPU) {
 	opcode := cpu.fetch()
 	// Lower 7 bits of the refresh register are incremented on an instruction
 	// fetch
-	cpu.R = (cpu.R + 1) & 0x7f
+	cpu.refreshR()
 	opsCB[opcode](cpu)
 }
 
@@ -276,7 +276,7 @@ func ed(cpu *CPU) {
 	opcode := cpu.fetch()
 	// Lower 7 bits of the refresh register are incremented on an instruction
 	// fetch
-	cpu.R = (cpu.R + 1) & 0x7f
+	cpu.refreshR()
 	opsED[opcode](cpu)
 }
 
@@ -359,9 +359,41 @@ func ld(cpu *CPU, put cpu.Put, get cpu.Get) {
 	put(get())
 }
 
+func ldair(cpu *CPU, get cpu.Get) {
+	in0 := get()
+
+	bits.Set(&cpu.F, FlagS, bits.Get(in0, 7))
+	bits.Set(&cpu.F, FlagZ, in0 == 0)
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, FlagV, cpu.IFF2)
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, Flag5, bits.Get(in0, 5))
+	bits.Set(&cpu.F, Flag3, bits.Get(in0, 3))
+
+	cpu.A = in0
+}
+
 // load, 16-bit
 func ld16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
 	put(get())
+}
+
+func neg(cpu *CPU) {
+	alu.In0 = 0
+	alu.In1 = cpu.A
+	alu.SetCarry(false)
+	alu.Subtract()
+
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&cpu.F, FlagH, alu.Carry4())
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, alu.Overflow())
+	bits.Set(&cpu.F, FlagN, true)
+	bits.Set(&cpu.F, FlagC, alu.Carry())
+
+	cpu.A = alu.Out
 }
 
 // no operation
@@ -420,6 +452,25 @@ func reta(cpu *CPU) {
 	cpu.SP += 2
 }
 
+func rld(cpu *CPU) {
+	addr := bits.Join(cpu.H, cpu.L)
+	ahi, alo := bits.Split4(cpu.A)
+	memhi, memlo := bits.Split4(cpu.mem.Load(addr))
+
+	cpu.A = bits.Join4(ahi, memhi)
+	memval := bits.Join4(memlo, alo)
+	cpu.mem.Store(addr, memval)
+
+	bits.Set(&cpu.F, FlagS, bits.Get(cpu.A, 7))
+	bits.Set(&cpu.F, FlagZ, cpu.A == 0)
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, FlagV, bits.Parity(cpu.A))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, Flag5, bits.Get(cpu.A, 5))
+	bits.Set(&cpu.F, Flag3, bits.Get(cpu.A, 3))
+
+}
+
 func rotl(cpu *CPU, put cpu.Put, get cpu.Get) {
 	alu.In0 = get()
 	alu.RotateLeft()
@@ -474,6 +525,25 @@ func rotra(cpu *CPU) {
 	bits.Set(&cpu.F, FlagC, alu.Carry())
 
 	cpu.A = alu.Out
+}
+
+func rrd(cpu *CPU) {
+	addr := bits.Join(cpu.H, cpu.L)
+	ahi, alo := bits.Split4(cpu.A)
+	memhi, memlo := bits.Split4(cpu.mem.Load(addr))
+
+	cpu.A = bits.Join4(ahi, memlo)
+	memval := bits.Join4(alo, memhi)
+	cpu.mem.Store(addr, memval)
+
+	bits.Set(&cpu.F, FlagS, bits.Get(cpu.A, 7))
+	bits.Set(&cpu.F, FlagZ, cpu.A == 0)
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, FlagV, bits.Parity(cpu.A))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, Flag5, bits.Get(cpu.A, 5))
+	bits.Set(&cpu.F, Flag3, bits.Get(cpu.A, 3))
+
 }
 
 func rst(cpu *CPU, y int) {

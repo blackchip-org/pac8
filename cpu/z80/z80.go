@@ -66,9 +66,7 @@ func New(m memory.Memory) *CPU {
 func (cpu *CPU) Next() {
 	opcode := cpu.fetch()
 	execute := ops[opcode]
-	// Lower 7 bits of the refresh register are incremented on an instruction
-	// fetch
-	cpu.R = (cpu.R + 1) & 0x7f
+	cpu.refreshR()
 	execute(cpu)
 }
 
@@ -115,4 +113,11 @@ func (cpu *CPU) fetch16() uint16 {
 	lo := cpu.fetch()
 	hi := cpu.fetch()
 	return bits.Join(hi, lo)
+}
+
+func (cpu *CPU) refreshR() {
+	// Lower 7 bits of the refresh register are incremented on an instruction
+	// fetch
+	bit7 := cpu.R & 0x80
+	cpu.R = (cpu.R+1)&0x7f | bit7
 }
