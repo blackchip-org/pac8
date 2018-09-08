@@ -297,7 +297,7 @@ func processCB(op uint8) string {
 			return fmt.Sprintf("rotl(c, c.store%v, c.load%v)", r[z], r[z])
 		}
 		if y == 1 {
-			return fmt.Sprintf("shiftr(c, c.store%v, c.load%v, rrc)", r[z], r[z])
+			return fmt.Sprintf("rotr(c, c.store%v, c.load%v)", r[z], r[z])
 		}
 		if y == 2 {
 			return fmt.Sprintf("shiftl(c, c.store%v, c.load%v, rl)", r[z], r[z])

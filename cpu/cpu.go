@@ -1,7 +1,7 @@
 package cpu
 
-type In func() uint8
-type Out func(uint8)
+type Get func() uint8
+type Put func(uint8)
 
-type In16 func() uint16
-type Out16 func(uint16)
+type Get16 func() uint16
+type Put16 func(uint16)

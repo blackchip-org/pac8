@@ -79,6 +79,30 @@ func (a *ALU) ShiftLeft() {
 	}
 }
 
+func (a *ALU) RotateRight() {
+	carryOut := a.In0&0x1 != 0
+	a.Out = a.In0 >> 1
+	if carryOut {
+		a.Out |= (1 << 7)
+	}
+	a.flags = szpFlags[a.Out]
+	if carryOut {
+		a.flags |= flagCarry
+	}
+}
+
+func (a *ALU) ShiftRight() {
+	carryOut := a.In0&0x01 != 0
+	a.Out = a.In0 >> 1
+	if a.flags&flagCarry != 0 {
+		a.Out |= (1 << 7)
+	}
+	a.flags = szpFlags[a.Out]
+	if carryOut {
+		a.flags |= flagCarry
+	}
+}
+
 func (a ALU) Carry() bool {
 	return a.flags&flagCarry != 0
 }

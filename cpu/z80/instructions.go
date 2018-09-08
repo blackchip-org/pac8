@@ -16,9 +16,9 @@ var alu bits.ALU
 //
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
-func add(cpu *CPU, arg1 cpu.In, arg2 cpu.In, withCarry bool) {
-	alu.In0 = arg1()
-	alu.In1 = arg2()
+func add(cpu *CPU, get0 cpu.Get, get1 cpu.Get, withCarry bool) {
+	alu.In0 = get0()
+	alu.In1 = get1()
 
 	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
@@ -40,12 +40,12 @@ func add(cpu *CPU, arg1 cpu.In, arg2 cpu.In, withCarry bool) {
 
 // add
 // preserve s, z, p/v. h undefined
-func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16, withCarry bool) {
-	n16 := arg1()
-	m16 := arg2()
+func add16(cpu *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bool) {
+	in0 := get0()
+	in1 := get1()
 
-	alu.In0 = uint8(n16)
-	alu.In1 = uint8(m16)
+	alu.In0 = uint8(in0)
+	alu.In1 = uint8(in1)
 	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
 		alu.SetCarry(true)
@@ -53,8 +53,8 @@ func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16, withCarry bool
 	alu.Add()
 	lo := alu.Out
 
-	alu.In0 = uint8(n16 >> 8)
-	alu.In1 = uint8(m16 >> 8)
+	alu.In0 = uint8(in0 >> 8)
+	alu.In1 = uint8(in1 >> 8)
 	alu.Add()
 	hi := alu.Out
 
@@ -78,7 +78,7 @@ func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16, withCarry bool
 //
 // C and N flags cleared, P/V is parity, rest are altered by definition.
 // H flag set.
-func and(cpu *CPU, get cpu.In) {
+func and(cpu *CPU, get cpu.Get) {
 	a1 := cpu.A
 	a2 := get()
 
@@ -102,7 +102,7 @@ func and(cpu *CPU, get cpu.In) {
 // N is reset, H is set, and S and P/V are undefined.
 //
 // PV as Z, S set only if n=7 and b7 of r set
-func bit(cpu *CPU, n int, get cpu.In) {
+func bit(cpu *CPU, n int, get cpu.Get) {
 	arg := get()
 
 	bits.Set(&cpu.F, FlagS, n == 7 && bits.Get(arg, 7))
@@ -118,7 +118,7 @@ func bit(cpu *CPU, n int, get cpu.In) {
 //
 // Pushes the address after the CALL instruction (PC+3) onto the stack and
 // jumps to the label. Can also take conditions.
-func call(cpu *CPU, flag int, condition bool, get cpu.In16) {
+func call(cpu *CPU, flag int, condition bool, get cpu.Get16) {
 	addr := get()
 	if bits.Get(cpu.F, flag) == condition {
 		cpu.SP -= 2
@@ -128,7 +128,7 @@ func call(cpu *CPU, flag int, condition bool, get cpu.In16) {
 }
 
 // call, always
-func calla(cpu *CPU, get cpu.In16) {
+func calla(cpu *CPU, get cpu.Get16) {
 	addr := get()
 	cpu.SP -= 2
 	cpu.mem16.Store(cpu.SP, cpu.PC)
@@ -158,7 +158,7 @@ func ccf(cpu *CPU) {
 // have set/reset if it really was subtracted.
 //
 // F5 and F3 are copied from the operand, not the result
-func cp(cpu *CPU, get cpu.In) {
+func cp(cpu *CPU, get cpu.Get) {
 	a1 := cpu.A
 	a2 := get()
 	sub(cpu, func() uint8 { return a2 }, false)
@@ -237,7 +237,7 @@ func daa(cpu *CPU) {
 // decrement
 // C flag preserved, P/V detects overflow and rest modified by definition.
 // modified by definition.
-func dec(cpu *CPU, put cpu.Out, get cpu.In) {
+func dec(cpu *CPU, put cpu.Put, get cpu.Get) {
 	alu.In0 = get()
 	alu.SetCarry(false)
 	alu.Decrement()
@@ -255,7 +255,7 @@ func dec(cpu *CPU, put cpu.Out, get cpu.In) {
 
 // decrement 16-bit
 // No flags altered
-func dec16(cpu *CPU, put cpu.Out16, get cpu.In16) {
+func dec16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
 	arg := get()
 	put(arg - 1)
 }
@@ -264,7 +264,7 @@ func dec16(cpu *CPU, put cpu.Out16, get cpu.In16) {
 func di() {}
 
 // decrement B and jump if not zero
-func djnz(cpu *CPU, get cpu.In) {
+func djnz(cpu *CPU, get cpu.Get) {
 	delta := get()
 	cpu.B--
 	if cpu.B != 0 {
@@ -284,7 +284,7 @@ func ed(cpu *CPU) {
 func ei() {}
 
 // exchange
-func ex(cpu *CPU, geta cpu.In16, puta cpu.Out16, getb cpu.In16, putb cpu.Out16) {
+func ex(cpu *CPU, geta cpu.Get16, puta cpu.Put16, getb cpu.Get16, putb cpu.Put16) {
 	a := geta()
 	b := getb()
 	puta(b)
@@ -303,14 +303,14 @@ func halt(cpu *CPU) {
 }
 
 // TODO: implement
-func in(cpu *CPU, put cpu.Out, get cpu.In) {
+func in(cpu *CPU, put cpu.Put, get cpu.Get) {
 	get()
 }
 
 // increment
 // Preserves C flag, N flag is reset, P/V detects overflow and rest are
 // modified by definition.
-func inc(cpu *CPU, put cpu.Out, get cpu.In) {
+func inc(cpu *CPU, put cpu.Put, get cpu.Get) {
 	alu.In0 = get()
 	alu.SetCarry(false)
 	alu.Increment()
@@ -328,7 +328,7 @@ func inc(cpu *CPU, put cpu.Out, get cpu.In) {
 
 // increment 16-bit
 // No flags altered
-func inc16(cpu *CPU, put cpu.Out16, get cpu.In16) {
+func inc16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
 	arg := get()
 	put(arg + 1)
 }
@@ -336,7 +336,7 @@ func inc16(cpu *CPU, put cpu.Out16, get cpu.In16) {
 func invalid() {}
 
 // jump absolute, conditional
-func jp(cpu *CPU, flag int, condition bool, get cpu.In16) {
+func jp(cpu *CPU, flag int, condition bool, get cpu.Get16) {
 	addr := get()
 	if bits.Get(cpu.F, flag) == condition {
 		cpu.PC = addr
@@ -344,12 +344,12 @@ func jp(cpu *CPU, flag int, condition bool, get cpu.In16) {
 }
 
 // jump absolute, always
-func jpa(cpu *CPU, get cpu.In16) {
+func jpa(cpu *CPU, get cpu.Get16) {
 	cpu.PC = get()
 }
 
 // jump relative, conditional
-func jr(cpu *CPU, flag int, condition bool, get cpu.In) {
+func jr(cpu *CPU, flag int, condition bool, get cpu.Get) {
 	delta := get()
 	if bits.Get(cpu.F, flag) == condition {
 		cpu.PC = bits.Displace(cpu.PC, delta)
@@ -357,18 +357,18 @@ func jr(cpu *CPU, flag int, condition bool, get cpu.In) {
 }
 
 // jump relative, always
-func jra(cpu *CPU, get cpu.In) {
+func jra(cpu *CPU, get cpu.Get) {
 	delta := get()
 	cpu.PC = bits.Displace(cpu.PC, delta)
 }
 
 // load
-func ld(cpu *CPU, put cpu.Out, get cpu.In) {
+func ld(cpu *CPU, put cpu.Put, get cpu.Get) {
 	put(get())
 }
 
 // load, 16-bit
-func ld16(cpu *CPU, put cpu.Out16, get cpu.In16) {
+func ld16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
 	put(get())
 }
 
@@ -379,7 +379,7 @@ func nop() {}
 //
 // C and N flags cleared, P/V is parity, rest are altered by definition.
 // H flag cleared.
-func or(cpu *CPU, get cpu.In) {
+func or(cpu *CPU, get cpu.Get) {
 	a1 := cpu.A
 	a2 := get()
 
@@ -403,19 +403,19 @@ func out(cpu *CPU) {
 }
 
 // Copies the two bytes from (SP) into the operand, then increases SP by 2.
-func pop(cpu *CPU, put cpu.Out16) {
+func pop(cpu *CPU, put cpu.Put16) {
 	put(cpu.mem16.Load(cpu.SP))
 	cpu.SP += 2
 }
 
 // Decrements the SP by 2 then copies the operand into (SP)
-func push(cpu *CPU, get cpu.In16) {
+func push(cpu *CPU, get cpu.Get16) {
 	cpu.SP -= 2
 	cpu.mem16.Store(cpu.SP, get())
 }
 
 // Resets the specified byte to zero
-func res(cpu *CPU, n int, put cpu.Out, get cpu.In) {
+func res(cpu *CPU, n int, put cpu.Put, get cpu.Get) {
 	arg := get()
 	bits.Set(&arg, n, false)
 	put(arg)
@@ -434,9 +434,25 @@ func reta(cpu *CPU) {
 	cpu.SP += 2
 }
 
-func rotl(cpu *CPU, put cpu.Out, get cpu.In) {
+func rotl(cpu *CPU, put cpu.Put, get cpu.Get) {
 	alu.In0 = get()
 	alu.RotateLeft()
+
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, alu.Parity())
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagC, alu.Carry())
+
+	put(alu.Out)
+}
+
+func rotr(cpu *CPU, put cpu.Put, get cpu.Get) {
+	alu.In0 = get()
+	alu.RotateRight()
 
 	bits.Set(&cpu.F, FlagS, alu.Sign())
 	bits.Set(&cpu.F, FlagZ, alu.Zero())
@@ -468,7 +484,7 @@ func scf(cpu *CPU) {
 }
 
 // Sets the specified byte to one
-func set(cpu *CPU, n int, put cpu.Out, get cpu.In) {
+func set(cpu *CPU, n int, put cpu.Put, get cpu.Get) {
 	arg := get()
 	bits.Set(&arg, n, true)
 	put(arg)
@@ -483,7 +499,7 @@ const (
 	rlc
 )
 
-func shiftl(cpu *CPU, put cpu.Out, get cpu.In, mode leftShiftMode) {
+func shiftl(cpu *CPU, put cpu.Put, get cpu.Get, mode leftShiftMode) {
 	arg := get()
 	carryOut := bits.Get(arg, 7)
 	carryIn := false
@@ -536,7 +552,7 @@ const (
 	rrc
 )
 
-func shiftr(cpu *CPU, put cpu.Out, get cpu.In, mode rightShiftMode) {
+func shiftr(cpu *CPU, put cpu.Put, get cpu.Get, mode rightShiftMode) {
 	arg := get()
 	carryOut := bits.Get(arg, 0)
 	carryIn := false
@@ -584,7 +600,7 @@ func shiftra(cpu *CPU, mode rightShiftMode) {
 //
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
-func sub(cpu *CPU, arg cpu.In, withCarry bool) {
+func sub(cpu *CPU, arg cpu.Get, withCarry bool) {
 	alu.In0 = cpu.A
 	alu.In1 = arg()
 
@@ -606,7 +622,7 @@ func sub(cpu *CPU, arg cpu.In, withCarry bool) {
 	cpu.A = alu.Out
 }
 
-func sub16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16, withCarry bool) {
+func sub16(cpu *CPU, put cpu.Put16, arg1 cpu.Get16, arg2 cpu.Get16, withCarry bool) {
 	n16 := arg1()
 	m16 := arg2()
 
@@ -644,7 +660,7 @@ func sub16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16, withCarry bool
 //
 // C and N flags cleared, P/V is parity, rest are altered by definition.
 // H flag cleared.
-func xor(cpu *CPU, get cpu.In) {
+func xor(cpu *CPU, get cpu.Get) {
 	a1 := cpu.A
 	a2 := get()
 

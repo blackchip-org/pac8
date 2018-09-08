@@ -2,7 +2,8 @@
 
 package z80
 
-var ops = map[uint8]func(c *CPU){0x00: func(c *CPU) { nop() },
+var ops = map[uint8]func(c *CPU){
+	0x00: func(c *CPU) { nop() },
 	0x01: func(c *CPU) { ld16(c, c.storeBC, c.loadImm16) },
 	0x02: func(c *CPU) { ld(c, c.storeIndBC, c.loadA) },
 	0x03: func(c *CPU) { inc16(c, c.storeBC, c.loadBC) },
@@ -259,7 +260,8 @@ var ops = map[uint8]func(c *CPU){0x00: func(c *CPU) { nop() },
 	0xfe: func(c *CPU) { cp(c, c.loadImm) },
 	0xff: func(c *CPU) { rst(c, 7) },
 }
-var opsCB = map[uint8]func(c *CPU){0x00: func(c *CPU) { rotl(c, c.storeB, c.loadB) },
+var opsCB = map[uint8]func(c *CPU){
+	0x00: func(c *CPU) { rotl(c, c.storeB, c.loadB) },
 	0x01: func(c *CPU) { rotl(c, c.storeC, c.loadC) },
 	0x02: func(c *CPU) { rotl(c, c.storeD, c.loadD) },
 	0x03: func(c *CPU) { rotl(c, c.storeE, c.loadE) },
@@ -267,14 +269,14 @@ var opsCB = map[uint8]func(c *CPU){0x00: func(c *CPU) { rotl(c, c.storeB, c.load
 	0x05: func(c *CPU) { rotl(c, c.storeL, c.loadL) },
 	0x06: func(c *CPU) { rotl(c, c.storeIndHL, c.loadIndHL) },
 	0x07: func(c *CPU) { rotl(c, c.storeA, c.loadA) },
-	0x08: func(c *CPU) { shiftr(c, c.storeB, c.loadB, rrc) },
-	0x09: func(c *CPU) { shiftr(c, c.storeC, c.loadC, rrc) },
-	0x0a: func(c *CPU) { shiftr(c, c.storeD, c.loadD, rrc) },
-	0x0b: func(c *CPU) { shiftr(c, c.storeE, c.loadE, rrc) },
-	0x0c: func(c *CPU) { shiftr(c, c.storeH, c.loadH, rrc) },
-	0x0d: func(c *CPU) { shiftr(c, c.storeL, c.loadL, rrc) },
-	0x0e: func(c *CPU) { shiftr(c, c.storeIndHL, c.loadIndHL, rrc) },
-	0x0f: func(c *CPU) { shiftr(c, c.storeA, c.loadA, rrc) },
+	0x08: func(c *CPU) { rotr(c, c.storeB, c.loadB) },
+	0x09: func(c *CPU) { rotr(c, c.storeC, c.loadC) },
+	0x0a: func(c *CPU) { rotr(c, c.storeD, c.loadD) },
+	0x0b: func(c *CPU) { rotr(c, c.storeE, c.loadE) },
+	0x0c: func(c *CPU) { rotr(c, c.storeH, c.loadH) },
+	0x0d: func(c *CPU) { rotr(c, c.storeL, c.loadL) },
+	0x0e: func(c *CPU) { rotr(c, c.storeIndHL, c.loadIndHL) },
+	0x0f: func(c *CPU) { rotr(c, c.storeA, c.loadA) },
 	0x10: func(c *CPU) { shiftl(c, c.storeB, c.loadB, rl) },
 	0x11: func(c *CPU) { shiftl(c, c.storeC, c.loadC, rl) },
 	0x12: func(c *CPU) { shiftl(c, c.storeD, c.loadD, rl) },
@@ -516,7 +518,8 @@ var opsCB = map[uint8]func(c *CPU){0x00: func(c *CPU) { rotl(c, c.storeB, c.load
 	0xfe: func(c *CPU) { set(c, 7, c.storeIndHL, c.loadIndHL) },
 	0xff: func(c *CPU) { set(c, 7, c.storeA, c.loadA) },
 }
-var opsED = map[uint8]func(c *CPU){0x00: func(c *CPU) { invalid() },
+var opsED = map[uint8]func(c *CPU){
+	0x00: func(c *CPU) { invalid() },
 	0x01: func(c *CPU) { invalid() },
 	0x02: func(c *CPU) { invalid() },
 	0x03: func(c *CPU) { invalid() },
