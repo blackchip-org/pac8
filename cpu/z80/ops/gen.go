@@ -129,15 +129,19 @@ func processMain(op uint8) string {
 		}
 		if z == 7 {
 			if y == 0 {
-				return "shiftla(c, rlc)"
+				// rlca
+				return "rotla(c)"
 			}
 			if y == 1 {
+				// rrca
 				return "shiftra(c, rrc)"
 			}
 			if y == 2 {
-				return "shiftla(c, rl)"
+				// rla
+				return "shiftla(c)"
 			}
 			if y == 3 {
+				// rra
 				return "shiftra(c, rr)"
 			}
 			if y == 4 {
@@ -300,19 +304,20 @@ func processCB(op uint8) string {
 			return fmt.Sprintf("rotr(c, c.store%v, c.load%v)", r[z], r[z])
 		}
 		if y == 2 {
-			return fmt.Sprintf("shiftl(c, c.store%v, c.load%v, rl)", r[z], r[z])
+			return fmt.Sprintf("shiftl(c, c.store%v, c.load%v, true)", r[z], r[z])
 		}
 		if y == 3 {
 			return fmt.Sprintf("shiftr(c, c.store%v, c.load%v, rr)", r[z], r[z])
 		}
 		if y == 4 {
-			return fmt.Sprintf("shiftl(c, c.store%v, c.load%v, sla)", r[z], r[z])
+			return fmt.Sprintf("shiftl(c, c.store%v, c.load%v, false)", r[z], r[z])
 		}
 		if y == 5 {
 			return fmt.Sprintf("shiftr(c, c.store%v, c.load%v, sra)", r[z], r[z])
 		}
 		if y == 6 {
-			return fmt.Sprintf("shiftl(c, c.store%v, c.load%v, sll)", r[z], r[z])
+			return ""
+			// return fmt.Sprintf("shiftl(c, c.store%v, c.load%v, sll)", r[z], r[z])
 		}
 		if y == 7 {
 			return fmt.Sprintf("shiftr(c, c.store%v, c.load%v, srl)", r[z], r[z])

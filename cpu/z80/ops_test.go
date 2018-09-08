@@ -10,8 +10,14 @@ import (
 //go:generate go run fuse/gen.go
 //go:generate go fmt fuse_test.go
 
+// Set a test name here to test a single test
+var testSingle = ""
+
 func TestOps(t *testing.T) {
 	for _, test := range fuseTests {
+		if testSingle != "" && test.name != testSingle {
+			continue
+		}
 		t.Run(test.name, func(t *testing.T) {
 			cpu := load(test)
 			i := 0

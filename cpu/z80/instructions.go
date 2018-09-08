@@ -450,6 +450,19 @@ func rotl(cpu *CPU, put cpu.Put, get cpu.Get) {
 	put(alu.Out)
 }
 
+// rotate A left with carry
+// S,Z, and P/V are preserved, H and N flags are reset
+func rotla(cpu *CPU) {
+	alu.In0 = cpu.A
+	alu.RotateLeft()
+
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagC, alu.Carry())
+
+	cpu.A = alu.Out
+}
+
 func rotr(cpu *CPU, put cpu.Put, get cpu.Get) {
 	alu.In0 = get()
 	alu.RotateRight()
@@ -490,57 +503,36 @@ func set(cpu *CPU, n int, put cpu.Put, get cpu.Get) {
 	put(arg)
 }
 
-type leftShiftMode int
-
-const (
-	sla leftShiftMode = iota
-	sll
-	rl
-	rlc
-)
-
-func shiftl(cpu *CPU, put cpu.Put, get cpu.Get, mode leftShiftMode) {
-	arg := get()
-	carryOut := bits.Get(arg, 7)
-	carryIn := false
-
-	result := arg << 1
-	if mode == sll {
-		carryIn = true
+func shiftl(cpu *CPU, put cpu.Put, get cpu.Get, withCarry bool) {
+	alu.In0 = get()
+	alu.SetCarry(false)
+	if withCarry && bits.Get(cpu.F, FlagC) {
+		alu.SetCarry(true)
 	}
-	if mode == rlc {
-		carryIn = carryOut
-	}
-	if mode == rl {
-		carryIn = bits.Get(cpu.F, FlagC)
-	}
-	bits.Set(&result, 0, carryIn)
+	alu.ShiftLeft()
 
-	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
-	bits.Set(&cpu.F, FlagZ, result == 0)
-	bits.Set(&cpu.F, Flag5, bits.Get(result, 5))
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(result, 3))
-	bits.Set(&cpu.F, FlagV, bits.Parity(result))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, alu.Parity())
 	bits.Set(&cpu.F, FlagN, false)
-	bits.Set(&cpu.F, FlagC, carryOut)
+	bits.Set(&cpu.F, FlagC, alu.Carry())
 
-	put(result)
+	put(alu.Out)
 }
 
-// rotate A left with carry
-// S,Z, and P/V are preserved, H and N flags are reset
-func shiftla(cpu *CPU, mode leftShiftMode) {
-	flags := cpu.F
-	shiftl(cpu, cpu.storeA, cpu.loadA, mode)
-	carry := bits.Get(cpu.F, FlagC)
-	flag5 := bits.Get(cpu.F, Flag5)
-	flag3 := bits.Get(cpu.F, Flag3)
+func shiftla(cpu *CPU) {
+	alu.In0 = cpu.A
+	alu.SetCarry(bits.Get(cpu.F, FlagC))
+	alu.ShiftLeft()
 
-	cpu.F = flags
-	bits.Set(&cpu.F, Flag5, flag5)
-	bits.Set(&cpu.F, Flag3, flag3)
-	bits.Set(&cpu.F, FlagC, carry)
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagC, alu.Carry())
+
+	cpu.A = alu.Out
 }
 
 type rightShiftMode int
