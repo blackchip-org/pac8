@@ -19,16 +19,16 @@ const (
 )
 
 type ALU struct {
-	N      uint8
-	M      uint8
-	Result uint8
-	flags  uint8
+	In0   uint8
+	In1   uint8
+	Out   uint8
+	flags uint8
 }
 
 func (a *ALU) Add() {
-	a.Result = a.N + a.M
+	a.Out = a.In0 + a.In1
 	if a.Carry() {
-		a.Result++
+		a.Out++
 		a.flags = adcFlags[a.index2()]
 	} else {
 		a.flags = addFlags[a.index2()]
@@ -36,9 +36,9 @@ func (a *ALU) Add() {
 }
 
 func (a *ALU) Subtract() {
-	a.Result = a.N - a.M
+	a.Out = a.In0 - a.In1
 	if a.Carry() {
-		a.Result--
+		a.Out--
 		a.flags = sbcFlags[a.index2()]
 	} else {
 		a.flags = subFlags[a.index2()]
@@ -46,34 +46,37 @@ func (a *ALU) Subtract() {
 }
 
 func (a *ALU) Increment() {
-	a.M = 1
+	a.In1 = 1
 	a.Add()
 }
 
 func (a *ALU) Decrement() {
-	a.M = 1
+	a.In1 = 1
 	a.Subtract()
 }
 
 func (a *ALU) RotateLeft() {
-	carryOut := a.N&0x80 != 0
-	a.Result = a.N << 1
+	carryOut := a.In0&0x80 != 0
+	a.Out = a.In0 << 1
 	if carryOut {
-		a.Result++
+		a.Out++
 	}
-	a.flags = szpFlags[a.Result]
+	a.flags = szpFlags[a.Out]
 	if carryOut {
 		a.flags |= flagCarry
 	}
 }
 
 func (a *ALU) ShiftLeft() {
-	carryOut := a.N&0x80 != 0
-	a.N <<= 1
-	if a.Carry() {
-		a.N++
+	carryOut := a.In0&0x80 != 0
+	a.Out = a.In0 << 1
+	if a.flags&flagCarry != 0 {
+		a.Out++
 	}
-	a.SetCarry(carryOut)
+	a.flags = szpFlags[a.Out]
+	if carryOut {
+		a.flags |= flagCarry
+	}
 }
 
 func (a ALU) Carry() bool {
@@ -109,7 +112,7 @@ func (a *ALU) SetCarry(v bool) {
 }
 
 func (a ALU) index2() int {
-	return int(a.N) | int(a.M)<<8
+	return int(a.In0) | int(a.In1)<<8
 }
 
 func init() {
@@ -122,17 +125,17 @@ func init() {
 
 func addTable(table *table2, carry int) {
 	for i := 0; i < 256*256; i++ {
-		n := uint8(i)
-		m := uint8(i >> 8)
+		in0 := uint8(i)
+		in1 := uint8(i >> 8)
 
 		// result of 8 bit addition into 16 bits
-		r := uint16(n) + uint16(m) + uint16(carry)
+		r := uint16(in0) + uint16(in1) + uint16(carry)
 		// signed result, 16-bit
-		sr := int16(int8(n)) + int16(int8(m)) + int16(carry)
+		sr := int16(int8(in0)) + int16(int8(in1)) + int16(carry)
 		// unsigned result, 8-bit
 		ur := uint8(r)
 		// result of half add
-		hr := n&0xf + m&0xf + uint8(carry)
+		hr := in0&0xf + in1&0xf + uint8(carry)
 
 		var flags uint8
 		if r > uint16(0xff) {
@@ -159,17 +162,17 @@ func addTable(table *table2, carry int) {
 
 func subTable(table *table2, carry int) {
 	for i := 0; i < 256*256; i++ {
-		n := uint8(i)
-		m := uint8(i >> 8)
+		in0 := uint8(i)
+		in1 := uint8(i >> 8)
 
 		// result of 8 bit subtraction into 16 bits
-		r := int16(n) - int16(m) - int16(carry)
+		r := int16(in0) - int16(in1) - int16(carry)
 		// signed result, 16-bit
-		sr := int16(int8(n)) - int16(int8(m)) - int16(carry)
+		sr := int16(int8(in0)) - int16(int8(in1)) - int16(carry)
 		// unsigned result, 8-bit
 		ur := uint8(r)
 		// result of half subtraction
-		hr := int8(n)&0xf - int8(m)&0xf - int8(carry)
+		hr := int8(in0)&0xf - int8(in1)&0xf - int8(carry)
 
 		var flags uint8
 		if r < 0 {
@@ -196,16 +199,16 @@ func subTable(table *table2, carry int) {
 
 func szpTable() {
 	for i := 0; i < 256; i++ {
-		n := uint8(i)
+		in0 := uint8(i)
 
 		var flags uint8
-		if n&0x80 != 0 {
+		if in0&0x80 != 0 {
 			flags |= flagSign
 		}
-		if n == 0 {
+		if in0 == 0 {
 			flags |= flagZero
 		}
-		if Parity(n) {
+		if Parity(in0) {
 			flags |= flagParity
 		}
 		szpFlags[i] = flags

@@ -17,8 +17,8 @@ var alu bits.ALU
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
 func add(cpu *CPU, arg1 cpu.In, arg2 cpu.In, withCarry bool) {
-	alu.N = arg1()
-	alu.M = arg2()
+	alu.In0 = arg1()
+	alu.In1 = arg2()
 
 	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
@@ -28,14 +28,14 @@ func add(cpu *CPU, arg1 cpu.In, arg2 cpu.In, withCarry bool) {
 
 	bits.Set(&cpu.F, FlagS, alu.Sign())
 	bits.Set(&cpu.F, FlagZ, alu.Zero())
-	bits.Set(&cpu.F, Flag5, bits.Get(alu.Result, 5))
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&cpu.F, FlagH, alu.Carry4())
-	bits.Set(&cpu.F, Flag3, bits.Get(alu.Result, 3))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
 	bits.Set(&cpu.F, FlagV, alu.Overflow())
 	bits.Set(&cpu.F, FlagN, false)
 	bits.Set(&cpu.F, FlagC, alu.Carry())
 
-	cpu.A = alu.Result
+	cpu.A = alu.Out
 }
 
 // add
@@ -44,19 +44,19 @@ func add16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16, withCarry bool
 	n16 := arg1()
 	m16 := arg2()
 
-	alu.N = uint8(n16)
-	alu.M = uint8(m16)
+	alu.In0 = uint8(n16)
+	alu.In1 = uint8(m16)
 	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
 		alu.SetCarry(true)
 	}
 	alu.Add()
-	lo := alu.Result
+	lo := alu.Out
 
-	alu.N = uint8(n16 >> 8)
-	alu.M = uint8(m16 >> 8)
+	alu.In0 = uint8(n16 >> 8)
+	alu.In1 = uint8(m16 >> 8)
 	alu.Add()
-	hi := alu.Result
+	hi := alu.Out
 
 	result := uint16(hi)<<8 | uint16(lo)
 
@@ -238,19 +238,19 @@ func daa(cpu *CPU) {
 // C flag preserved, P/V detects overflow and rest modified by definition.
 // modified by definition.
 func dec(cpu *CPU, put cpu.Out, get cpu.In) {
-	alu.N = get()
+	alu.In0 = get()
 	alu.SetCarry(false)
 	alu.Decrement()
 
 	bits.Set(&cpu.F, FlagS, alu.Sign())
 	bits.Set(&cpu.F, FlagZ, alu.Zero())
-	bits.Set(&cpu.F, Flag5, bits.Get(alu.Result, 5))
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&cpu.F, FlagH, alu.Carry4())
-	bits.Set(&cpu.F, Flag3, bits.Get(alu.Result, 3))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
 	bits.Set(&cpu.F, FlagV, alu.Overflow())
 	bits.Set(&cpu.F, FlagN, true)
 
-	put(alu.Result)
+	put(alu.Out)
 }
 
 // decrement 16-bit
@@ -311,19 +311,19 @@ func in(cpu *CPU, put cpu.Out, get cpu.In) {
 // Preserves C flag, N flag is reset, P/V detects overflow and rest are
 // modified by definition.
 func inc(cpu *CPU, put cpu.Out, get cpu.In) {
-	alu.N = get()
+	alu.In0 = get()
 	alu.SetCarry(false)
 	alu.Increment()
 
 	bits.Set(&cpu.F, FlagS, alu.Sign())
 	bits.Set(&cpu.F, FlagZ, alu.Zero())
-	bits.Set(&cpu.F, Flag5, bits.Get(alu.Result, 5))
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&cpu.F, FlagH, alu.Carry4())
-	bits.Set(&cpu.F, Flag3, bits.Get(alu.Result, 3))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
 	bits.Set(&cpu.F, FlagV, alu.Overflow())
 	bits.Set(&cpu.F, FlagN, false)
 
-	put(alu.Result)
+	put(alu.Out)
 }
 
 // increment 16-bit
@@ -435,19 +435,19 @@ func reta(cpu *CPU) {
 }
 
 func rotl(cpu *CPU, put cpu.Out, get cpu.In) {
-	alu.N = get()
+	alu.In0 = get()
 	alu.RotateLeft()
 
 	bits.Set(&cpu.F, FlagS, alu.Sign())
 	bits.Set(&cpu.F, FlagZ, alu.Zero())
-	bits.Set(&cpu.F, Flag5, bits.Get(alu.Result, 5))
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&cpu.F, FlagH, false)
-	bits.Set(&cpu.F, Flag3, bits.Get(alu.Result, 3))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
 	bits.Set(&cpu.F, FlagV, alu.Parity())
 	bits.Set(&cpu.F, FlagN, false)
 	bits.Set(&cpu.F, FlagC, alu.Carry())
 
-	put(alu.Result)
+	put(alu.Out)
 }
 
 func rst(cpu *CPU, y int) {
@@ -585,8 +585,8 @@ func shiftra(cpu *CPU, mode rightShiftMode) {
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
 func sub(cpu *CPU, arg cpu.In, withCarry bool) {
-	alu.N = cpu.A
-	alu.M = arg()
+	alu.In0 = cpu.A
+	alu.In1 = arg()
 
 	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
@@ -596,33 +596,33 @@ func sub(cpu *CPU, arg cpu.In, withCarry bool) {
 
 	bits.Set(&cpu.F, FlagS, alu.Sign())
 	bits.Set(&cpu.F, FlagZ, alu.Zero())
-	bits.Set(&cpu.F, Flag5, bits.Get(alu.Result, 5))
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&cpu.F, FlagH, alu.Carry4())
-	bits.Set(&cpu.F, Flag3, bits.Get(alu.Result, 3))
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
 	bits.Set(&cpu.F, FlagV, alu.Overflow())
 	bits.Set(&cpu.F, FlagN, true)
 	bits.Set(&cpu.F, FlagC, alu.Carry())
 
-	cpu.A = alu.Result
+	cpu.A = alu.Out
 }
 
 func sub16(cpu *CPU, put cpu.Out16, arg1 cpu.In16, arg2 cpu.In16, withCarry bool) {
 	n16 := arg1()
 	m16 := arg2()
 
-	alu.N = uint8(n16)
-	alu.M = uint8(m16)
+	alu.In0 = uint8(n16)
+	alu.In1 = uint8(m16)
 	alu.SetCarry(false)
 	if withCarry && bits.Get(cpu.F, FlagC) {
 		alu.SetCarry(true)
 	}
 	alu.Subtract()
-	lo := alu.Result
+	lo := alu.Out
 
-	alu.N = uint8(n16 >> 8)
-	alu.M = uint8(m16 >> 8)
+	alu.In0 = uint8(n16 >> 8)
+	alu.In1 = uint8(m16 >> 8)
 	alu.Subtract()
-	hi := alu.Result
+	hi := alu.Out
 
 	result := uint16(hi)<<8 | uint16(lo)
 
