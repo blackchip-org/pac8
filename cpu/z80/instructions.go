@@ -1,6 +1,7 @@
 package z80
 
 // http://z80-heaven.wikidot.com/instructions-set
+// https://www.worldofspectrum.org/faq/reference/z80reference.htm
 
 import (
 	"github.com/blackchip-org/pac8/bits"
@@ -111,6 +112,73 @@ func bit(cpu *CPU, n int, get cpu.Get) {
 	bits.Set(&cpu.F, Flag3, bits.Get(in0, 3))
 	bits.Set(&cpu.F, FlagV, !bits.Get(in0, n))
 	bits.Set(&cpu.F, FlagN, false)
+}
+
+func blockc(cpu *CPU, hlfn func(*CPU, cpu.Put16, cpu.Get16)) {
+	carry := bits.Get(cpu.F, FlagC)
+	in0 := cpu.A
+	sub(cpu, cpu.loadIndHL, false)
+	out := alu.Out
+	cpu.A = in0
+
+	hlfn(cpu, cpu.storeHL, cpu.loadHL)
+	dec16(cpu, cpu.storeBC, cpu.loadBC)
+
+	bits.Set(&cpu.F, FlagV, cpu.B != 0 || cpu.C != 0)
+	flagResult := out
+	if bits.Get(cpu.F, FlagH) {
+		flagResult--
+	}
+	bits.Set(&cpu.F, Flag3, bits.Get(flagResult, 3))
+	bits.Set(&cpu.F, Flag5, bits.Get(flagResult, 1)) // yes, one
+	bits.Set(&cpu.F, FlagC, carry)
+}
+
+func blockcr(cpu *CPU, hlfn func(*CPU, cpu.Put16, cpu.Get16)) {
+	blockc(cpu, hlfn)
+	for {
+		if cpu.B == 0 && cpu.C == 0 {
+			break
+		}
+		if cpu.A == cpu.mem.Load(bits.Join(cpu.H, cpu.L)-1) {
+			break
+		}
+		cpu.refreshR()
+		cpu.refreshR()
+		blockc(cpu, hlfn)
+	}
+}
+
+// Performs a "LD (DE),(HL)", then increments DE and HL, and decrements BC.
+//
+// P/V is reset in case of overflow (if BC=0 after calling LDI).
+func blockl(cpu *CPU, increment int) {
+	source := bits.Join(cpu.H, cpu.L)
+	target := bits.Join(cpu.D, cpu.E)
+	v := cpu.mem.Load(source)
+	cpu.mem.Store(target, v)
+
+	cpu.H, cpu.L = bits.Split(source + uint16(increment))
+	cpu.D, cpu.E = bits.Split(target + uint16(increment))
+
+	counter := bits.Join(cpu.B, cpu.C)
+	counter--
+	bits.Set(&cpu.F, FlagV, counter != 0)
+	cpu.B, cpu.C = bits.Split(counter)
+
+	bits.Set(&cpu.F, Flag5, bits.Get(v+cpu.A, 1)) // yes, bit one
+	bits.Set(&cpu.F, Flag3, bits.Get(v+cpu.A, 3))
+	bits.Set(&cpu.F, FlagN, false)
+	bits.Set(&cpu.F, FlagH, false)
+}
+
+func blocklr(cpu *CPU, increment int) {
+	blockl(cpu, increment)
+	for cpu.B != 0 || cpu.C != 0 {
+		cpu.refreshR()
+		cpu.refreshR()
+		blockl(cpu, increment)
+	}
 }
 
 // call, conditional
@@ -359,6 +427,11 @@ func ld(cpu *CPU, put cpu.Put, get cpu.Get) {
 	put(get())
 }
 
+// load, 16-bit
+func ld16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
+	put(get())
+}
+
 func ldair(cpu *CPU, get cpu.Get) {
 	in0 := get()
 
@@ -371,11 +444,6 @@ func ldair(cpu *CPU, get cpu.Get) {
 	bits.Set(&cpu.F, Flag3, bits.Get(in0, 3))
 
 	cpu.A = in0
-}
-
-// load, 16-bit
-func ld16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
-	put(get())
 }
 
 func neg(cpu *CPU) {

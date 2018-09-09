@@ -416,6 +416,51 @@ func processED(op uint8) string {
 			return "nop()"
 		}
 	}
+	if x == 2 {
+		if z == 0 { // b == 0
+			if y == 4 {
+				// ldi
+				return "blockl(c, 1)"
+			}
+			if y == 5 {
+				// ldd
+				return "blockl(c, -1)"
+			}
+			if y == 6 {
+				// ldir
+				return "blocklr(c, 1)"
+			}
+			if y == 7 {
+				// lddr
+				return "blocklr(c, -1)"
+			}
+		}
+		if z == 1 { // b == 1
+			if y == 4 {
+				// cpi
+				return "blockc(c, inc16)"
+			}
+			if y == 5 {
+				// cpd
+				return "blockc(c, dec16)"
+			}
+			if y == 6 {
+				// cpir
+				return "blockcr(c, inc16)"
+			}
+			if y == 7 {
+				// cpdr
+				return "blockcr(c, dec16)"
+			}
+		}
+		if z == 2 && y >= 4 && y <= 7 {
+			return "todo(c)"
+		}
+		if z == 3 && y >= 4 && y <= 7 {
+			return "todo(c)"
+		}
+		return "invalid()"
+	}
 	return ""
 }
 
