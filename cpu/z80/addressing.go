@@ -1,6 +1,8 @@
 package z80
 
-import "github.com/blackchip-org/pac8/bits"
+import (
+	"github.com/blackchip-org/pac8/bits"
+)
 
 func (cpu *CPU) storeIndImm(v uint8)    { cpu.mem.Store(cpu.fetch16(), v) }
 func (cpu *CPU) store16IndImm(v uint16) { cpu.mem16.Store(cpu.fetch16(), v) }

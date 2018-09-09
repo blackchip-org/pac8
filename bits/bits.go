@@ -123,12 +123,8 @@ func Slice16(value uint16, lo int, hi int) uint16 {
 
 func Displace(value uint16, delta uint8) uint16 {
 	sdelta := int8(delta)
-	if sdelta >= 0 {
-		value += uint16(sdelta)
-	} else {
-		value -= uint16(sdelta * -1)
-	}
-	return value
+	v := int(value) + int(sdelta)
+	return uint16(v)
 }
 
 func Parity(value uint8) bool {

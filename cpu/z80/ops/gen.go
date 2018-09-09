@@ -325,13 +325,19 @@ func processMain(tab *regtab, op uint8) string {
 					return "calla(c, c.loadImm16)"
 				}
 				if p == 1 && tab.name == "un" {
-					return "dd(c)"
+					return "ddfd(c, opsDD)"
 				}
 				if p == 1 && tab.name != "un" {
 					return "noni(c)"
 				}
 				if p == 2 {
 					return "ed(c)"
+				}
+				if p == 3 && tab.name == "un" {
+					return "ddfd(c, opsFD)"
+				}
+				if p == 3 && tab.name != "un" {
+					return "noni(c)"
 				}
 			}
 		}
@@ -549,16 +555,32 @@ func process(out *bytes.Buffer, getFn func(*regtab, uint8) string, tab *regtab) 
 		if fn == "" {
 			fn = "c.skip = true"
 		}
-		if strings.Contains(fn, "IndIX") || strings.Contains(fn, "IndIY") {
-			fn = "c.fetchd(); " + fn
+
+		emit := true
+		if tab.name != "un" {
+			// If there is an indirect call, the next byte needs to be
+			// fetched for the displacement
+			if strings.Contains(fn, "IndIX") || strings.Contains(fn, "IndIY") {
+				fn = "c.fetchd(); " + fn
+				// "any other instances of H and L will be unaffected".
+				// If (HL) was transformed, use H and L instead.
+				fn = strings.Replace(fn, "IXH", "H", -1)
+				fn = strings.Replace(fn, "IXL", "L", -1)
+				fn = strings.Replace(fn, "IYH", "H", -1)
+				fn = strings.Replace(fn, "IYL", "L", -1)
+			}
+			// If the unprefixed version of the op is the same as the
+			// prefixed one, just leave the function blank
+			unfn := getFn(un, uint8(i))
+			if unfn == fn {
+				emit = false
+			}
 		}
-		if strings.Contains(fn, "IndIX") && strings.Contains(fn, "IXH") {
-			fn = strings.Replace(fn, "IXH", "H", -1)
-		}
-		if strings.Contains(fn, "IndIX") && strings.Contains(fn, "IXL") {
-			fn = strings.Replace(fn, "IXL", "L", -1)
-		}
+
 		line := fmt.Sprintf("0x%02x: func(c *CPU){%v},\n", i, fn)
+		if !emit {
+			line = fmt.Sprintf("0x%02x: nil,\n", i)
+		}
 
 		out.WriteString(line)
 	}

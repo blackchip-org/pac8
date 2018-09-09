@@ -31,6 +31,10 @@ func TestOps(t *testing.T) {
 					if cpu.PC == 0x0003 {
 						break
 					}
+				} else if test.name == "ddfd00" {
+					if cpu.PC == 0x0004 {
+						break
+					}
 				} else {
 					if cpu.mem.Load(cpu.PC) == 0 && cpu.PC != 0 {
 						break

@@ -13,6 +13,8 @@ import (
 
 var alu bits.ALU
 
+type opsTable map[uint8]func(c *CPU)
+
 // Add
 //
 // N flag is reset, P/V is interpreted as overflow.
@@ -305,12 +307,20 @@ func daa(cpu *CPU) {
 	cpu.A = result
 }
 
-func dd(cpu *CPU) {
-	opcode := cpu.fetch()
+func ddfd(cpu *CPU, table opsTable) {
+	// Peek at the next opcode, it it doesn't have a function in the table,
+	// return now and let it execute as a normal instruction
+	opcode := cpu.mem.Load(cpu.PC)
+	fn := table[opcode]
+	if fn == nil {
+		return
+	}
+
 	// Lower 7 bits of the refresh register are incremented on an instruction
 	// fetch
+	cpu.PC++
 	cpu.refreshR()
-	opsDD[opcode](cpu)
+	fn(cpu)
 }
 
 // decrement
