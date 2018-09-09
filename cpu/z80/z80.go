@@ -37,12 +37,14 @@ type CPU struct {
 	H1 uint8
 	L1 uint8
 
-	I  uint8
-	R  uint8
-	IX uint16
-	IY uint16
-	SP uint16
-	PC uint16
+	I   uint8
+	R   uint8
+	IXH uint8
+	IXL uint8
+	IYH uint8
+	IYL uint8
+	SP  uint16
+	PC  uint16
 
 	IFF1 bool
 	IFF2 bool
@@ -51,6 +53,7 @@ type CPU struct {
 
 	mem     memory.Memory
 	mem16   memory.Memory16
+	delta   uint8
 	skip    bool
 	testing bool
 }
@@ -64,6 +67,7 @@ func New(m memory.Memory) *CPU {
 }
 
 func (cpu *CPU) Next() {
+	cpu.delta = 0
 	opcode := cpu.fetch()
 	execute := ops[opcode]
 	cpu.refreshR()
@@ -81,8 +85,8 @@ func (cpu *CPU) String() string {
 		bits.Join(cpu.B, cpu.C),
 		bits.Join(cpu.D, cpu.E),
 		bits.Join(cpu.H, cpu.L),
-		cpu.IX,
-		cpu.IY,
+		bits.Join(cpu.IXH, cpu.IXL),
+		bits.Join(cpu.IYH, cpu.IYL),
 		cpu.SP,
 		cpu.I,
 		cpu.R,
@@ -113,6 +117,10 @@ func (cpu *CPU) fetch16() uint16 {
 	lo := cpu.fetch()
 	hi := cpu.fetch()
 	return bits.Join(hi, lo)
+}
+
+func (cpu *CPU) fetchd() {
+	cpu.delta = cpu.fetch()
 }
 
 func (cpu *CPU) refreshR() {

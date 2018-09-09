@@ -27,11 +27,17 @@ func TestOps(t *testing.T) {
 				if cpu.skip {
 					t.SkipNow()
 				}
-				if cpu.mem.Load(cpu.PC) == 0 && cpu.PC != 0 {
-					break
-				}
-				if test.tstates == 1 {
-					break
+				if test.name == "dd00" {
+					if cpu.PC == 0x0003 {
+						break
+					}
+				} else {
+					if cpu.mem.Load(cpu.PC) == 0 && cpu.PC != 0 {
+						break
+					}
+					if test.tstates == 1 {
+						break
+					}
 				}
 				if i > 100 {
 					t.Fatalf("exceeded execution limit")
@@ -84,8 +90,8 @@ func load(test fuseTest) *CPU {
 	cpu.D1, cpu.E1 = bits.Split(test.de1)
 	cpu.H1, cpu.L1 = bits.Split(test.hl1)
 
-	cpu.IX = test.ix
-	cpu.IY = test.iy
+	cpu.IXH, cpu.IXL = bits.Split(test.ix)
+	cpu.IYH, cpu.IYL = bits.Split(test.iy)
 	cpu.SP = test.sp
 	cpu.PC = test.pc
 	cpu.I = test.i

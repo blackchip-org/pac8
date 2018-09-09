@@ -7,33 +7,97 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strings"
 
 	"github.com/blackchip-org/pac8/bits"
 )
 
-var r = map[int]string{
-	0: "B",
-	1: "C",
-	2: "D",
-	3: "E",
-	4: "H",
-	5: "L",
-	6: "IndHL",
-	7: "A",
+type regtab struct {
+	name string
+	r    map[int]string
+	rp   map[int]string
+	rp2  map[int]string
 }
 
-var rp = map[int]string{
-	0: "BC",
-	1: "DE",
-	2: "HL",
-	3: "SP",
+// unprefixed registers
+var un = &regtab{
+	name: "un",
+	r: map[int]string{
+		0: "B",
+		1: "C",
+		2: "D",
+		3: "E",
+		4: "H",
+		5: "L",
+		6: "IndHL",
+		7: "A",
+	},
+	rp: map[int]string{
+		0: "BC",
+		1: "DE",
+		2: "HL",
+		3: "SP",
+	},
+	rp2: map[int]string{
+		0: "BC",
+		1: "DE",
+		2: "HL",
+		3: "AF",
+	},
 }
 
-var rp2 = map[int]string{
-	0: "BC",
-	1: "DE",
-	2: "HL",
-	3: "AF",
+// dd-prefixed registers
+var dd = &regtab{
+	name: "dd",
+	r: map[int]string{
+		0: "B",
+		1: "C",
+		2: "D",
+		3: "E",
+		4: "IXH",
+		5: "IXL",
+		6: "IndIX",
+		7: "A",
+	},
+	rp: map[int]string{
+		0: "BC",
+		1: "DE",
+		2: "IX",
+		3: "SP",
+	},
+	rp2: map[int]string{
+		0: "BC",
+		1: "DE",
+		2: "IX",
+		3: "AF",
+	},
+}
+
+// fd-prefixed registers
+var fd = &regtab{
+	name: "fd",
+	r: map[int]string{
+		0: "B",
+		1: "C",
+		2: "D",
+		3: "E",
+		4: "IYH",
+		5: "IYL",
+		6: "IndIY",
+		7: "A",
+	},
+	rp: map[int]string{
+		0: "BC",
+		1: "DE",
+		2: "IY",
+		3: "SP",
+	},
+	rp2: map[int]string{
+		0: "BC",
+		1: "DE",
+		2: "IY",
+		3: "AF",
+	},
 }
 
 var cc = map[int]string{
@@ -47,7 +111,11 @@ var cc = map[int]string{
 	7: "FlagS, true",
 }
 
-func processMain(op uint8) string {
+func processMain(tab *regtab, op uint8) string {
+	r := tab.r
+	rp := tab.rp
+	rp2 := tab.rp2
+
 	x := int(bits.Slice(op, 6, 7))
 	y := int(bits.Slice(op, 3, 5))
 	z := int(bits.Slice(op, 0, 2))
@@ -77,7 +145,7 @@ func processMain(op uint8) string {
 				return fmt.Sprintf("ld16(c, c.store%v, c.loadImm16)", rp[p])
 			}
 			if q == 1 {
-				return fmt.Sprintf("add16(c, c.storeHL, c.loadHL, c.load%v, false)", rp[p])
+				return fmt.Sprintf("add16(c, c.store%v, c.load%v, c.load%v, false)", rp2[2], rp[2], rp[p])
 			}
 		}
 		if z == 2 {
@@ -89,7 +157,7 @@ func processMain(op uint8) string {
 					return "ld(c, c.storeIndDE, c.loadA)"
 				}
 				if p == 2 {
-					return "ld16(c, c.store16IndImm, c.loadHL)"
+					return fmt.Sprintf("ld16(c, c.store16IndImm, c.load%v)", rp2[2])
 				}
 				if p == 3 {
 					return "ld(c, c.storeIndImm, c.loadA)"
@@ -103,7 +171,7 @@ func processMain(op uint8) string {
 					return "ld(c, c.storeA, c.loadIndDE)"
 				}
 				if p == 2 {
-					return "ld16(c, c.storeHL, c.load16IndImm)"
+					return fmt.Sprintf("ld16(c, c.store%v, c.load16IndImm)", rp2[2])
 				}
 				if p == 3 {
 					return "ld(c, c.storeA, c.loadIndImm)"
@@ -206,10 +274,10 @@ func processMain(op uint8) string {
 					return "exx(c)"
 				}
 				if p == 2 {
-					return "jpa(c, c.loadHL)"
+					return fmt.Sprintf("jpa(c, c.load%v)", rp2[2])
 				}
 				if p == 3 {
-					return "ld16(c, c.storeSP, c.loadHL)"
+					return fmt.Sprintf("ld16(c, c.storeSP, c.load%v)", rp2[2])
 				}
 			}
 		}
@@ -220,8 +288,11 @@ func processMain(op uint8) string {
 			if y == 0 {
 				return "jpa(c, c.loadImm16)"
 			}
-			if y == 1 {
+			if y == 1 && tab.name == "un" {
 				return "cb(c)"
+			}
+			if y == 1 && tab.name != "un" {
+				return ""
 			}
 			if y == 2 {
 				return "todo2(c, c.loadImm)"
@@ -230,7 +301,7 @@ func processMain(op uint8) string {
 				return "todo2(c, c.loadImm)"
 			}
 			if y == 4 {
-				return "ex(c, c.load16IndSP, c.store16IndSP, c.loadHL, c.storeHL)"
+				return fmt.Sprintf("ex(c, c.load16IndSP, c.store16IndSP, c.load%v, c.store%v)", rp2[2], rp2[2])
 			}
 			if y == 5 {
 				return "ex(c, c.loadDE, c.storeDE, c.loadHL, c.storeHL)"
@@ -252,6 +323,12 @@ func processMain(op uint8) string {
 			if q == 1 {
 				if p == 0 {
 					return "calla(c, c.loadImm16)"
+				}
+				if p == 1 && tab.name == "un" {
+					return "dd(c)"
+				}
+				if p == 1 && tab.name != "un" {
+					return "noni(c)"
 				}
 				if p == 2 {
 					return "ed(c)"
@@ -291,7 +368,8 @@ func processMain(op uint8) string {
 	return ""
 }
 
-func processCB(op uint8) string {
+func processCB(tab *regtab, op uint8) string {
+	r := tab.r
 	x := int(bits.Slice(op, 6, 7))
 	y := int(bits.Slice(op, 3, 5))
 	z := int(bits.Slice(op, 0, 2))
@@ -340,7 +418,8 @@ func processCB(op uint8) string {
 	return ""
 }
 
-func processED(op uint8) string {
+func processED(tab *regtab, op uint8) string {
+	rp := tab.rp
 	x := int(bits.Slice(op, 6, 7))
 	y := int(bits.Slice(op, 3, 5))
 	z := int(bits.Slice(op, 0, 2))
@@ -464,13 +543,23 @@ func processED(op uint8) string {
 	return ""
 }
 
-func process(out *bytes.Buffer, getFn func(uint8) string) {
+func process(out *bytes.Buffer, getFn func(*regtab, uint8) string, tab *regtab) {
 	for i := 0; i < 0x100; i++ {
-		fn := getFn(uint8(i))
+		fn := getFn(tab, uint8(i))
 		if fn == "" {
 			fn = "c.skip = true"
 		}
+		if strings.Contains(fn, "IndIX") || strings.Contains(fn, "IndIY") {
+			fn = "c.fetchd(); " + fn
+		}
+		if strings.Contains(fn, "IndIX") && strings.Contains(fn, "IXH") {
+			fn = strings.Replace(fn, "IXH", "H", -1)
+		}
+		if strings.Contains(fn, "IndIX") && strings.Contains(fn, "IXL") {
+			fn = strings.Replace(fn, "IXL", "L", -1)
+		}
 		line := fmt.Sprintf("0x%02x: func(c *CPU){%v},\n", i, fn)
+
 		out.WriteString(line)
 	}
 }
@@ -485,15 +574,23 @@ package z80
 
 `)
 	out.WriteString("var ops = map[uint8]func(c *CPU){\n")
-	process(&out, processMain)
+	process(&out, processMain, un)
 	out.WriteString("}\n")
 
 	out.WriteString("var opsCB = map[uint8]func(c *CPU){\n")
-	process(&out, processCB)
+	process(&out, processCB, un)
 	out.WriteString("}\n")
 
 	out.WriteString("var opsED = map[uint8]func(c *CPU){\n")
-	process(&out, processED)
+	process(&out, processED, un)
+	out.WriteString("}\n")
+
+	out.WriteString("var opsDD = map[uint8]func(c *CPU){\n")
+	process(&out, processMain, dd)
+	out.WriteString("}\n")
+
+	out.WriteString("var opsFD = map[uint8]func(c *CPU){\n")
+	process(&out, processMain, fd)
 	out.WriteString("}\n")
 
 	err := ioutil.WriteFile("ops.go", out.Bytes(), 0644)

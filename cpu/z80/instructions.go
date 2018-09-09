@@ -305,6 +305,14 @@ func daa(cpu *CPU) {
 	cpu.A = result
 }
 
+func dd(cpu *CPU) {
+	opcode := cpu.fetch()
+	// Lower 7 bits of the refresh register are incremented on an instruction
+	// fetch
+	cpu.refreshR()
+	opsDD[opcode](cpu)
+}
+
 // decrement
 // C flag preserved, P/V detects overflow and rest modified by definition.
 // modified by definition.
@@ -463,6 +471,9 @@ func neg(cpu *CPU) {
 
 	cpu.A = alu.Out
 }
+
+// no operation, no interrupt
+func noni(cpu *CPU) {}
 
 // no operation
 func nop() {}

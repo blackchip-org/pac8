@@ -78,8 +78,10 @@ func TestString(t *testing.T) {
 	cpu.E = 0x0e
 	cpu.H = 0xf0
 	cpu.L = 0x0f
-	cpu.IX = 0x1234
-	cpu.IY = 0x5678
+	cpu.IXH = 0x12
+	cpu.IXL = 0x34
+	cpu.IYH = 0x56
+	cpu.IYL = 0x78
 	cpu.SP = 0xabcd
 	cpu.I = 0xee
 	cpu.R = 0xff
