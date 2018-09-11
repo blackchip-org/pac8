@@ -2,6 +2,7 @@ package z80
 
 // http://z80-heaven.wikidot.com/instructions-set
 // https://www.worldofspectrum.org/faq/reference/z80reference.htm
+// http://www.z80.info/zip/z80-documented.pdf
 
 import (
 	"github.com/blackchip-org/pac8/bits"
@@ -114,6 +115,14 @@ func bit(cpu *CPU, n int, get cpu.Get) {
 	bits.Set(&cpu.F, Flag3, bits.Get(in0, 3))
 	bits.Set(&cpu.F, FlagV, !bits.Get(in0, n))
 	bits.Set(&cpu.F, FlagN, false)
+}
+
+func biti(cpu *CPU, n int, get cpu.Get) {
+	bit(cpu, n, get)
+
+	// "This is where things start to get strange"
+	bits.Set(&cpu.F, Flag5, bits.Get(bits.Hi(cpu.iaddr), 5))
+	bits.Set(&cpu.F, Flag3, bits.Get(bits.Hi(cpu.iaddr), 3))
 }
 
 func blockc(cpu *CPU, hlfn func(*CPU, cpu.Put16, cpu.Get16)) {
@@ -307,7 +316,7 @@ func daa(cpu *CPU) {
 	cpu.A = result
 }
 
-func ddfd(cpu *CPU, table opsTable) {
+func ddfd(cpu *CPU, table opsTable, extendedTable opsTable) {
 	// Peek at the next opcode, it it doesn't have a function in the table,
 	// return now and let it execute as a normal instruction
 	opcode := cpu.mem.Load(cpu.PC)
@@ -318,9 +327,23 @@ func ddfd(cpu *CPU, table opsTable) {
 
 	// Lower 7 bits of the refresh register are incremented on an instruction
 	// fetch
-	cpu.PC++
+	cpu.fetch()
 	cpu.refreshR()
+
+	// If the opcode is 0xcb, then this is an extended ddcb or fdcb
+	// operation
+	if opcode == 0xcb {
+		ddfdcb(cpu, extendedTable)
+		return
+	}
+
 	fn(cpu)
+}
+
+func ddfdcb(cpu *CPU, table opsTable) {
+	cpu.fetchd()
+	opcode := cpu.fetch()
+	table[opcode](cpu)
 }
 
 // decrement

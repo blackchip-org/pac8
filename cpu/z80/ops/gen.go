@@ -100,6 +100,40 @@ var fd = &regtab{
 	},
 }
 
+// ddcb-prefixed registers
+var ddcb = &regtab{
+	name: "ddcb",
+	r: map[int]string{
+		0: "B",
+		1: "C",
+		2: "D",
+		3: "E",
+		4: "IXH",
+		5: "IXL",
+		6: "IndIX",
+		7: "A",
+	},
+	rp:  nil,
+	rp2: nil,
+}
+
+// fdcb-prefixed registers
+var fdcb = &regtab{
+	name: "fdcb",
+	r: map[int]string{
+		0: "B",
+		1: "C",
+		2: "D",
+		3: "E",
+		4: "IYH",
+		5: "IYL",
+		6: "IndIY",
+		7: "A",
+	},
+	rp:  nil,
+	rp2: nil,
+}
+
 var cc = map[int]string{
 	0: "FlagZ, false",
 	1: "FlagZ, true",
@@ -325,7 +359,7 @@ func processMain(tab *regtab, op uint8) string {
 					return "calla(c, c.loadImm16)"
 				}
 				if p == 1 && tab.name == "un" {
-					return "ddfd(c, opsDD)"
+					return "ddfd(c, opsDD, opsDDCB)"
 				}
 				if p == 1 && tab.name != "un" {
 					return "noni(c)"
@@ -334,7 +368,7 @@ func processMain(tab *regtab, op uint8) string {
 					return "ed(c)"
 				}
 				if p == 3 && tab.name == "un" {
-					return "ddfd(c, opsFD)"
+					return "ddfd(c, opsFD, opsFDCB)"
 				}
 				if p == 3 && tab.name != "un" {
 					return "noni(c)"
@@ -549,6 +583,20 @@ func processED(tab *regtab, op uint8) string {
 	return ""
 }
 
+func processXCB(tab *regtab, op uint8) string {
+	r := tab.r
+	x := int(bits.Slice(op, 6, 7))
+	y := int(bits.Slice(op, 3, 5))
+	//z := int(bits.Slice(op, 0, 2))
+	//p := int(bits.Slice(op, 4, 5))
+	//q := int(bits.Slice(op, 3, 3))
+
+	if x == 1 {
+		return fmt.Sprintf("biti(c, %v, c.load%v)", y, r[6])
+	}
+	return ""
+}
+
 func process(out *bytes.Buffer, getFn func(*regtab, uint8) string, tab *regtab) {
 	for i := 0; i < 0x100; i++ {
 		fn := getFn(tab, uint8(i))
@@ -557,7 +605,7 @@ func process(out *bytes.Buffer, getFn func(*regtab, uint8) string, tab *regtab) 
 		}
 
 		emit := true
-		if tab.name != "un" {
+		if tab.name == "dd" || tab.name == "fd" {
 			// If there is an indirect call, the next byte needs to be
 			// fetched for the displacement
 			if strings.Contains(fn, "IndIX") || strings.Contains(fn, "IndIY") {
@@ -613,6 +661,14 @@ package z80
 
 	out.WriteString("var opsFD = map[uint8]func(c *CPU){\n")
 	process(&out, processMain, fd)
+	out.WriteString("}\n")
+
+	out.WriteString("var opsDDCB = map[uint8]func(c *CPU){\n")
+	process(&out, processXCB, ddcb)
+	out.WriteString("}\n")
+
+	out.WriteString("var opsFDCB = map[uint8]func(c *CPU){\n")
+	process(&out, processXCB, fdcb)
 	out.WriteString("}\n")
 
 	err := ioutil.WriteFile("ops.go", out.Bytes(), 0644)

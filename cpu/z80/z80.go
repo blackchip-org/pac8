@@ -51,9 +51,11 @@ type CPU struct {
 
 	Halt bool
 
-	mem     memory.Memory
-	mem16   memory.Memory16
-	delta   uint8
+	mem   memory.Memory
+	mem16 memory.Memory16
+	delta uint8
+	// address used to load on the last (IX+d) or (IY+d) instruction
+	iaddr   uint16
 	skip    bool
 	testing bool
 }

@@ -83,14 +83,14 @@ func (cpu *CPU) loadIndDE() uint8 { return cpu.mem.Load(bits.Join(cpu.D, cpu.E))
 
 func (cpu *CPU) loadIndIX() uint8 {
 	ix := bits.Join(cpu.IXH, cpu.IXL)
-	addr := bits.Displace(ix, cpu.delta)
-	return cpu.mem.Load(addr)
+	cpu.iaddr = bits.Displace(ix, cpu.delta)
+	return cpu.mem.Load(cpu.iaddr)
 }
 
 func (cpu *CPU) loadIndIY() uint8 {
 	iy := bits.Join(cpu.IYH, cpu.IYL)
-	addr := bits.Displace(iy, cpu.delta)
-	return cpu.mem.Load(addr)
+	cpu.iaddr = bits.Displace(iy, cpu.delta)
+	return cpu.mem.Load(cpu.iaddr)
 }
 
 func (cpu *CPU) storeIndIX(v uint8) {
