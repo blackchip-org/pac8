@@ -104,3 +104,7 @@ func (cpu *CPU) storeIndIY(v uint8) {
 	addr := bits.Displace(iy, cpu.delta)
 	cpu.mem.Store(addr, v)
 }
+
+func (cpu *CPU) storeLastInd(v uint8) {
+	cpu.mem.Store(cpu.iaddr, v)
+}

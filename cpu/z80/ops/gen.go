@@ -587,13 +587,48 @@ func processXCB(tab *regtab, op uint8) string {
 	r := tab.r
 	x := int(bits.Slice(op, 6, 7))
 	y := int(bits.Slice(op, 3, 5))
-	//z := int(bits.Slice(op, 0, 2))
-	//p := int(bits.Slice(op, 4, 5))
-	//q := int(bits.Slice(op, 3, 3))
+	z := int(bits.Slice(op, 0, 2))
+	// p := int(bits.Slice(op, 4, 5))
+	// q := int(bits.Slice(op, 3, 3))
 
+	if x == 0 {
+		if z != 6 {
+			if y == 0 {
+				// rlc
+				return fmt.Sprintf("rotl(c, c.store%v, c.load%v); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
+			}
+			if y == 1 {
+				// rrc
+				return fmt.Sprintf("rotr(c, c.store%v, c.load%v); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
+			}
+			if y == 2 {
+				// rl
+				return fmt.Sprintf("shiftl(c, c.store%v, c.load%v, true); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
+			}
+			if y == 3 {
+				// rr
+				return fmt.Sprintf("shiftr(c, c.store%v, c.load%v, true); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
+			}
+			if y == 4 {
+				// sla
+				return fmt.Sprintf("shiftl(c, c.store%v, c.load%v, false); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
+			}
+			if y == 5 {
+				return fmt.Sprintf("sra(c, c.store%v, c.load%v); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
+			}
+			if y == 6 {
+				return fmt.Sprintf("sll(c, c.store%v, c.load%v); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
+			}
+			if y == 7 {
+				// srl
+				return fmt.Sprintf("shiftr(c, c.store%v, c.load%v, false); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
+			}
+		}
+	}
 	if x == 1 {
 		return fmt.Sprintf("biti(c, %v, c.load%v)", y, r[6])
 	}
+
 	return ""
 }
 

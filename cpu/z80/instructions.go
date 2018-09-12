@@ -585,6 +585,7 @@ func rld(cpu *CPU) {
 
 func rotl(cpu *CPU, put cpu.Put, get cpu.Get) {
 	alu.In0 = get()
+	alu.SetCarry(bits.Get(cpu.F, FlagC))
 	alu.RotateLeft()
 
 	bits.Set(&cpu.F, FlagS, alu.Sign())
