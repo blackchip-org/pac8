@@ -624,6 +624,38 @@ func processXCB(tab *regtab, op uint8) string {
 				return fmt.Sprintf("shiftr(c, c.store%v, c.load%v, false); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
 			}
 		}
+		if z == 6 {
+			if y == 0 {
+				// rlc
+				return fmt.Sprintf("rotl(c, c.storeLastInd, c.load%v)", r[6])
+			}
+			if y == 1 {
+				// rrc
+				return fmt.Sprintf("rotr(c, c.storeLastInd, c.load%v)", r[6])
+			}
+			if y == 2 {
+				// rl
+				return fmt.Sprintf("shiftl(c, c.storeLastInd, c.load%v, true)", r[6])
+			}
+			if y == 3 {
+				// rr
+				return fmt.Sprintf("shiftr(c, c.storeLastInd, c.load%v, true)", r[6])
+			}
+			if y == 4 {
+				// sla
+				return fmt.Sprintf("shiftl(c, c.storeLastInd, c.load%v, false)", r[6])
+			}
+			if y == 5 {
+				return fmt.Sprintf("sra(c, c.storeLastInd, c.load%v)", r[6])
+			}
+			if y == 6 {
+				return fmt.Sprintf("sll(c, c.storeLastInd, c.load%v)", r[6])
+			}
+			if y == 7 {
+				// srl
+				return fmt.Sprintf("shiftr(c, c.storeLastInd, c.load%v, false)", r[6])
+			}
+		}
 	}
 	if x == 1 {
 		return fmt.Sprintf("biti(c, %v, c.load%v)", y, r[6])
