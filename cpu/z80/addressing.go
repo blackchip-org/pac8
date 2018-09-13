@@ -8,7 +8,6 @@ func (cpu *CPU) storeIndImm(v uint8)    { cpu.mem.Store(cpu.fetch16(), v) }
 func (cpu *CPU) store16IndImm(v uint16) { cpu.mem16.Store(cpu.fetch16(), v) }
 
 func (cpu *CPU) storeA(v uint8)   { cpu.A = v }
-func (cpu *CPU) storeF(v uint8)   { cpu.F = v }
 func (cpu *CPU) storeB(v uint8)   { cpu.B = v }
 func (cpu *CPU) storeC(v uint8)   { cpu.C = v }
 func (cpu *CPU) storeD(v uint8)   { cpu.D = v }
@@ -48,7 +47,6 @@ func (cpu *CPU) loadIndImm() uint8    { return cpu.mem.Load(cpu.fetch16()) }
 func (cpu *CPU) load16IndImm() uint16 { return cpu.mem16.Load(cpu.fetch16()) }
 
 func (cpu *CPU) loadA() uint8   { return cpu.A }
-func (cpu *CPU) loadF() uint8   { return cpu.F }
 func (cpu *CPU) loadB() uint8   { return cpu.B }
 func (cpu *CPU) loadC() uint8   { return cpu.C }
 func (cpu *CPU) loadD() uint8   { return cpu.D }

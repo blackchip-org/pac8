@@ -660,7 +660,22 @@ func processXCB(tab *regtab, op uint8) string {
 	if x == 1 {
 		return fmt.Sprintf("biti(c, %v, c.load%v)", y, r[6])
 	}
-
+	if x == 2 {
+		if z != 6 {
+			return fmt.Sprintf("res(c, %v, c.store%v, c.load%v); ld(c, c.storeLastInd, c.load%v)", y, un.r[z], r[6], un.r[z])
+		}
+		if z == 6 {
+			return fmt.Sprintf("res(c, %v, c.storeLastInd, c.load%v)", y, r[6])
+		}
+	}
+	if x == 3 {
+		if z != 6 {
+			return fmt.Sprintf("set(c, %v, c.store%v, c.load%v); ld(c, c.storeLastInd, c.load%v)", y, un.r[z], r[6], un.r[z])
+		}
+		if z == 6 {
+			return fmt.Sprintf("set(c, %v, c.storeLastInd, c.load%v)", y, r[6])
+		}
+	}
 	return ""
 }
 

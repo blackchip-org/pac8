@@ -286,9 +286,11 @@ func daa(cpu *CPU) {
 	if bits.Get(cpu.F, FlagN) {
 		if bits.Get(cpu.F, FlagH) || cpu.A&0xf > 9 {
 			result -= 0x06
+			/* TODO: remove if works
 			if result < 6 {
 				half = true
 			}
+			*/
 		}
 		if bits.Get(cpu.F, FlagC) || cpu.A > 0x99 {
 			result -= 0x60
@@ -299,10 +301,12 @@ func daa(cpu *CPU) {
 			result += 0x06
 			half = true
 		}
+		/* TODO: remove if works
 		if bits.Get(cpu.F, FlagC) || cpu.A > 0x99 {
 			result += 0x60
 			carry = true
 		}
+		*/
 	}
 
 	bits.Set(&cpu.F, FlagS, bits.Get(result, 7))
