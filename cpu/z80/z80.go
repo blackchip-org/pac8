@@ -69,7 +69,6 @@ func New(m memory.Memory) *CPU {
 }
 
 func (cpu *CPU) Next() {
-	cpu.delta = 0
 	opcode := cpu.fetch()
 	execute := ops[opcode]
 	cpu.refreshR()

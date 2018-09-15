@@ -214,7 +214,7 @@ var ops = map[uint8]func(c *CPU){
 	0xd0: func(c *CPU) { ret(c, FlagC, false) },
 	0xd1: func(c *CPU) { pop(c, c.storeDE) },
 	0xd2: func(c *CPU) { jp(c, FlagC, false, c.loadImm16) },
-	0xd3: func(c *CPU) { todo2(c, c.loadImm) },
+	0xd3: func(c *CPU) { todo(c) },
 	0xd4: func(c *CPU) { call(c, FlagC, false, c.loadImm16) },
 	0xd5: func(c *CPU) { push(c, c.loadDE) },
 	0xd6: func(c *CPU) { sub(c, c.loadImm, false) },

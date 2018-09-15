@@ -329,7 +329,8 @@ func processMain(tab *regtab, op uint8) string {
 				return ""
 			}
 			if y == 2 {
-				return "todo2(c, c.loadImm)"
+				// OUT (n), A
+				return "todo(c)"
 			}
 			if y == 3 {
 				return "todo2(c, c.loadImm)"

@@ -27,6 +27,8 @@ type fuseTest struct {
 	tstates int
 
 	snapshots []memory.Snapshot
+	portRead  memory.Snapshot
+	portWrite memory.Snapshot
 }
 
 var fuseTests = []fuseTest{
@@ -53,6 +55,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "01",
@@ -77,6 +81,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x01, 0x12, 0x34}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "02",
@@ -101,6 +107,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x02}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "03",
@@ -125,6 +133,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x03}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "04",
@@ -149,6 +159,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x04}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "05",
@@ -173,6 +185,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x05}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "06",
@@ -197,6 +211,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x06, 0xbc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "07",
@@ -221,6 +237,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x07}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "08",
@@ -245,6 +263,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x08}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "09",
@@ -269,6 +289,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x09}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "0a",
@@ -293,6 +315,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x0a, 0xde}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "0b",
@@ -317,6 +341,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x0b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "0c",
@@ -341,6 +367,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x0c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "0d",
@@ -365,6 +393,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x0d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "0e",
@@ -389,6 +419,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x0e, 0xf0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "0f",
@@ -413,6 +445,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x0f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "10",
@@ -437,6 +471,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x00, 0x10, 0xfd, 0x0c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "11",
@@ -461,6 +497,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x11, 0x9a, 0xbc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "12",
@@ -485,6 +523,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x12}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "13",
@@ -509,6 +549,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x13}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "14",
@@ -533,6 +575,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x14}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "15",
@@ -557,6 +601,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x15}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "16",
@@ -581,6 +627,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x16, 0x12}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "17",
@@ -605,6 +653,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x17}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "18",
@@ -629,6 +679,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x18, 0x40}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "19",
@@ -653,6 +705,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x19}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "1a",
@@ -678,6 +732,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x1a}},
 			memory.Snapshot{Address: 0x8000, Values: []uint8{0x13}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "1b",
@@ -702,6 +758,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x1b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "1c",
@@ -726,6 +784,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x1c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "1d",
@@ -750,6 +810,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x1d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "1e",
@@ -774,6 +836,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x1e, 0xef}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "1f",
@@ -798,6 +862,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x1f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "20_1",
@@ -822,6 +888,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x20, 0x40}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "20_2",
@@ -846,6 +914,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x20, 0x40}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "21",
@@ -870,6 +940,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x21, 0x28, 0xed}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "22",
@@ -894,6 +966,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x22, 0xb0, 0xc3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "23",
@@ -918,6 +992,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x23}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "24",
@@ -942,6 +1018,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x24}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "25",
@@ -966,6 +1044,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x25}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "26",
@@ -990,6 +1070,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x26, 0x3a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "27_1",
@@ -1014,6 +1096,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x27}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "27",
@@ -1038,6 +1122,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x27}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "28_1",
@@ -1062,6 +1148,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x28, 0x8e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "28_2",
@@ -1086,6 +1174,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x28, 0x8e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "29",
@@ -1110,6 +1200,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x29}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "2a",
@@ -1135,6 +1227,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x2a, 0x45, 0xac}},
 			memory.Snapshot{Address: 0xac45, Values: []uint8{0xc4, 0xde}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "2b",
@@ -1159,6 +1253,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x2b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "2c",
@@ -1183,6 +1279,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x2c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "2d",
@@ -1207,6 +1305,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x2d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "2e",
@@ -1231,6 +1331,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x2e, 0x18}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "2f",
@@ -1255,6 +1357,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x2f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "30_1",
@@ -1279,6 +1383,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x30, 0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "30_2",
@@ -1303,6 +1409,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x30, 0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "31",
@@ -1327,6 +1435,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x31, 0xd4, 0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "32",
@@ -1351,6 +1461,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x32, 0xac, 0xad}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "33",
@@ -1375,6 +1487,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x33}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "34",
@@ -1400,6 +1514,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x34}},
 			memory.Snapshot{Address: 0xfe1d, Values: []uint8{0xfd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "35",
@@ -1425,6 +1541,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x35}},
 			memory.Snapshot{Address: 0x470c, Values: []uint8{0x82}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "36",
@@ -1449,6 +1567,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x36, 0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "37_1",
@@ -1473,6 +1593,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "37_2",
@@ -1497,6 +1619,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "37_3",
@@ -1521,6 +1645,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "37",
@@ -1545,6 +1671,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "38_1",
@@ -1569,6 +1697,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x38, 0x66}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "38_2",
@@ -1593,6 +1723,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x38, 0x66}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "39",
@@ -1617,6 +1749,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x29}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "3a",
@@ -1642,6 +1776,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x3a, 0x52, 0x99}},
 			memory.Snapshot{Address: 0x9952, Values: []uint8{0x28}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "3b",
@@ -1666,6 +1802,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x3b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "3c",
@@ -1690,6 +1828,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x3c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "3d",
@@ -1714,6 +1854,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x3d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "3e",
@@ -1738,6 +1880,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x3e, 0xd6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "3f",
@@ -1762,6 +1906,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x3f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "40",
@@ -1787,6 +1933,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x40}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "41",
@@ -1812,6 +1960,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x41}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "42",
@@ -1837,6 +1987,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x42}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "43",
@@ -1862,6 +2014,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x43}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "44",
@@ -1887,6 +2041,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x44}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "45",
@@ -1912,6 +2068,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x45}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "46",
@@ -1937,6 +2095,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x46}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "47",
@@ -1962,6 +2122,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x47}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "48",
@@ -1987,6 +2149,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x48}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "49",
@@ -2012,6 +2176,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x49}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "4a",
@@ -2037,6 +2203,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x4a}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "4b",
@@ -2062,6 +2230,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x4b}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "4c",
@@ -2087,6 +2257,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x4c}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "4d",
@@ -2112,6 +2284,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x4d}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "4e",
@@ -2137,6 +2311,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x4e}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "4f",
@@ -2162,6 +2338,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x4f}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "50",
@@ -2187,6 +2365,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x50}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "51",
@@ -2212,6 +2392,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x51}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "52",
@@ -2237,6 +2419,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x52}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "53",
@@ -2262,6 +2446,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x53}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "54",
@@ -2287,6 +2473,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x54}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "55",
@@ -2312,6 +2500,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x55}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "56",
@@ -2337,6 +2527,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x56}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "57",
@@ -2362,6 +2554,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x57}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "58",
@@ -2387,6 +2581,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x58}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "59",
@@ -2412,6 +2608,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x59}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "5a",
@@ -2437,6 +2635,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x5a}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "5b",
@@ -2462,6 +2662,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x5b}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "5c",
@@ -2487,6 +2689,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x5c}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "5d",
@@ -2512,6 +2716,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x5d}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "5e",
@@ -2537,6 +2743,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x5e}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "5f",
@@ -2562,6 +2770,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x5f}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "60",
@@ -2587,6 +2797,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x60}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "61",
@@ -2612,6 +2824,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x61}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "62",
@@ -2637,6 +2851,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x62}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "63",
@@ -2662,6 +2878,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x63}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "64",
@@ -2687,6 +2905,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x64}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "65",
@@ -2712,6 +2932,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x65}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "66",
@@ -2737,6 +2959,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x66}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "67",
@@ -2762,6 +2986,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x67}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "68",
@@ -2787,6 +3013,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x68}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "69",
@@ -2812,6 +3040,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x69}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "6a",
@@ -2837,6 +3067,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x6a}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "6b",
@@ -2862,6 +3094,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x6b}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "6c",
@@ -2887,6 +3121,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x6c}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "6d",
@@ -2912,6 +3148,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x6d}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "6e",
@@ -2937,6 +3175,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x6e}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "6f",
@@ -2962,6 +3202,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x6f}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "70",
@@ -2987,6 +3229,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x70}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "71",
@@ -3012,6 +3256,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x71}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "72",
@@ -3037,6 +3283,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x72}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "73",
@@ -3062,6 +3310,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x73}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "74",
@@ -3087,6 +3337,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x74}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "75",
@@ -3112,6 +3364,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x75}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "76",
@@ -3137,6 +3391,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x76}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "77",
@@ -3162,6 +3418,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x77}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "78",
@@ -3187,6 +3445,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x78}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "79",
@@ -3212,6 +3472,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x79}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "7a",
@@ -3237,6 +3499,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x7a}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "7b",
@@ -3262,6 +3526,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x7b}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "7c",
@@ -3287,6 +3553,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x7c}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "7d",
@@ -3312,6 +3580,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x7d}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "7e",
@@ -3337,6 +3607,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x7e}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "7f",
@@ -3362,6 +3634,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x7f}},
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "80",
@@ -3387,6 +3661,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x80}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "81",
@@ -3412,6 +3688,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x81}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "82",
@@ -3437,6 +3715,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x82}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "83",
@@ -3462,6 +3742,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x83}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "84",
@@ -3487,6 +3769,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x84}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "85",
@@ -3512,6 +3796,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x85}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "86",
@@ -3537,6 +3823,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x86}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "87",
@@ -3562,6 +3850,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x87}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "88",
@@ -3587,6 +3877,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x88}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "89",
@@ -3612,6 +3904,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x89}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "8a",
@@ -3637,6 +3931,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x8a}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "8b",
@@ -3662,6 +3958,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x8b}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "8c",
@@ -3687,6 +3985,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x8c}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "8d",
@@ -3712,6 +4012,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x8d}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "8e",
@@ -3737,6 +4039,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x8e}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "8f",
@@ -3762,6 +4066,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x8f}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "90",
@@ -3787,6 +4093,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x90}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "91",
@@ -3812,6 +4120,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x91}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "92",
@@ -3837,6 +4147,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x92}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "93",
@@ -3862,6 +4174,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x93}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "94",
@@ -3887,6 +4201,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x94}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "95",
@@ -3912,6 +4228,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x95}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "96",
@@ -3937,6 +4255,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x96}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "97",
@@ -3962,6 +4282,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x97}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "98",
@@ -3987,6 +4309,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x98}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "99",
@@ -4012,6 +4336,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x99}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "9a",
@@ -4037,6 +4363,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x9a}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "9b",
@@ -4062,6 +4390,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x9b}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "9c",
@@ -4087,6 +4417,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x9c}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "9d",
@@ -4112,6 +4444,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x9d}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "9e",
@@ -4137,6 +4471,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x9e}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "9f",
@@ -4162,6 +4498,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0x9f}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "a0",
@@ -4187,6 +4525,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xa0}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "a1",
@@ -4212,6 +4552,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xa1}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "a2",
@@ -4237,6 +4579,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xa2}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "a3",
@@ -4262,6 +4606,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xa3}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "a4",
@@ -4287,6 +4633,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xa4}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "a5",
@@ -4312,6 +4660,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xa5}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "a6",
@@ -4337,6 +4687,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xa6}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "a7",
@@ -4362,6 +4714,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xa7}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "a8",
@@ -4387,6 +4741,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xa8}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "a9",
@@ -4412,6 +4768,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xa9}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "aa",
@@ -4437,6 +4795,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xaa}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ab",
@@ -4462,6 +4822,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xab}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ac",
@@ -4487,6 +4849,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xac}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ad",
@@ -4512,6 +4876,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xad}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ae",
@@ -4537,6 +4903,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xae}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "af",
@@ -4562,6 +4930,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xaf}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "b0",
@@ -4587,6 +4957,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xb0}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "b1",
@@ -4612,6 +4984,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xb1}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "b2",
@@ -4637,6 +5011,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xb2}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "b3",
@@ -4662,6 +5038,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xb3}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "b4",
@@ -4687,6 +5065,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xb4}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "b5",
@@ -4712,6 +5092,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xb5}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "b6",
@@ -4737,6 +5119,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xb6}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "b7",
@@ -4762,6 +5146,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xb7}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "b8",
@@ -4787,6 +5173,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xb8}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "b9",
@@ -4812,6 +5200,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xb9}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ba",
@@ -4837,6 +5227,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xba}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "bb",
@@ -4862,6 +5254,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xbb}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "bc",
@@ -4887,6 +5281,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xbc}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "bd",
@@ -4912,6 +5308,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xbd}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "be",
@@ -4937,6 +5335,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xbe}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "bf",
@@ -4962,6 +5362,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xbf}},
 			memory.Snapshot{Address: 0xdca6, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c0_1",
@@ -4987,6 +5389,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc0}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c0_2",
@@ -5012,6 +5416,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc0}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c1",
@@ -5037,6 +5443,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc1}},
 			memory.Snapshot{Address: 0x4143, Values: []uint8{0xce, 0xe8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c2_1",
@@ -5061,6 +5469,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc2, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c2_2",
@@ -5085,6 +5495,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc2, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c3",
@@ -5109,6 +5521,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc3, 0xed, 0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c4_1",
@@ -5133,6 +5547,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc4, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c4_2",
@@ -5157,6 +5573,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc4, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c5",
@@ -5181,6 +5599,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c6",
@@ -5205,6 +5625,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc6, 0x6f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c7",
@@ -5229,6 +5651,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6d33, Values: []uint8{0xc7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c8_1",
@@ -5254,6 +5678,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc8}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c8_2",
@@ -5279,6 +5705,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc8}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "c9",
@@ -5304,6 +5732,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xc9}},
 			memory.Snapshot{Address: 0x887e, Values: []uint8{0x36, 0x11}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ca_1",
@@ -5328,6 +5758,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xca, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ca_2",
@@ -5352,6 +5784,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xca, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb00",
@@ -5377,6 +5811,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x00}},
 			memory.Snapshot{Address: 0xa806, Values: []uint8{0x76}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb01",
@@ -5402,6 +5838,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x01}},
 			memory.Snapshot{Address: 0xef65, Values: []uint8{0xfb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb02",
@@ -5427,6 +5865,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x02}},
 			memory.Snapshot{Address: 0xa7f2, Values: []uint8{0x4a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb03",
@@ -5452,6 +5892,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x03}},
 			memory.Snapshot{Address: 0xca71, Values: []uint8{0xe7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb04",
@@ -5477,6 +5919,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x04}},
 			memory.Snapshot{Address: 0x67b0, Values: []uint8{0xcd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb05",
@@ -5502,6 +5946,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x05}},
 			memory.Snapshot{Address: 0xcb32, Values: []uint8{0x1b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb06",
@@ -5527,6 +5973,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x06}},
 			memory.Snapshot{Address: 0x5b04, Values: []uint8{0xd4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb07",
@@ -5552,6 +6000,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x07}},
 			memory.Snapshot{Address: 0xdcaa, Values: []uint8{0x8d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb08",
@@ -5577,6 +6027,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x08}},
 			memory.Snapshot{Address: 0x2ee2, Values: []uint8{0x53}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb09",
@@ -5602,6 +6054,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x09}},
 			memory.Snapshot{Address: 0x59c6, Values: []uint8{0x9e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb0a",
@@ -5627,6 +6081,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x0a}},
 			memory.Snapshot{Address: 0x63ad, Values: []uint8{0x96}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb0b",
@@ -5652,6 +6108,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x0b}},
 			memory.Snapshot{Address: 0x0289, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb0c",
@@ -5677,6 +6135,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x0c}},
 			memory.Snapshot{Address: 0x34d9, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb0d",
@@ -5702,6 +6162,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x0d}},
 			memory.Snapshot{Address: 0x519a, Values: []uint8{0x7a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb0e",
@@ -5727,6 +6189,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x0e}},
 			memory.Snapshot{Address: 0x543e, Values: []uint8{0xd2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb0f",
@@ -5752,6 +6216,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x0f}},
 			memory.Snapshot{Address: 0x070b, Values: []uint8{0x86}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb10",
@@ -5777,6 +6243,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x10}},
 			memory.Snapshot{Address: 0x0d74, Values: []uint8{0x3d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb11",
@@ -5802,6 +6270,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x11}},
 			memory.Snapshot{Address: 0xed42, Values: []uint8{0xb7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb12",
@@ -5827,6 +6297,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x12}},
 			memory.Snapshot{Address: 0x29c6, Values: []uint8{0x88}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb13",
@@ -5852,6 +6324,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x13}},
 			memory.Snapshot{Address: 0x3ed7, Values: []uint8{0xea}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb14",
@@ -5877,6 +6351,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x14}},
 			memory.Snapshot{Address: 0x7c9a, Values: []uint8{0x0f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb15",
@@ -5902,6 +6378,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x15}},
 			memory.Snapshot{Address: 0x03e2, Values: []uint8{0xbc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb16",
@@ -5927,6 +6405,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x16}},
 			memory.Snapshot{Address: 0x684e, Values: []uint8{0xc3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb17",
@@ -5952,6 +6432,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x17}},
 			memory.Snapshot{Address: 0x0fa2, Values: []uint8{0x23}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb18",
@@ -5977,6 +6459,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x18}},
 			memory.Snapshot{Address: 0x9596, Values: []uint8{0xb6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb19",
@@ -6002,6 +6486,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x19}},
 			memory.Snapshot{Address: 0x71c8, Values: []uint8{0x85}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb1a",
@@ -6027,6 +6513,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x1a}},
 			memory.Snapshot{Address: 0x5279, Values: []uint8{0x26}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb1b",
@@ -6052,6 +6540,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x1b}},
 			memory.Snapshot{Address: 0xe8b4, Values: []uint8{0xb9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb1c",
@@ -6077,6 +6567,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x1c}},
 			memory.Snapshot{Address: 0x311d, Values: []uint8{0x11}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb1d",
@@ -6102,6 +6594,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x1d}},
 			memory.Snapshot{Address: 0xe451, Values: []uint8{0x47}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb1e",
@@ -6127,6 +6621,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x1e}},
 			memory.Snapshot{Address: 0x00ef, Values: []uint8{0x91}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb1f",
@@ -6152,6 +6648,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x1f}},
 			memory.Snapshot{Address: 0xace7, Values: []uint8{0x82}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb20",
@@ -6177,6 +6675,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x20}},
 			memory.Snapshot{Address: 0xccb6, Values: []uint8{0x1a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb21",
@@ -6202,6 +6702,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x21}},
 			memory.Snapshot{Address: 0x37a8, Values: []uint8{0xdd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb22",
@@ -6227,6 +6729,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x22}},
 			memory.Snapshot{Address: 0x0641, Values: []uint8{0x4d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb23",
@@ -6252,6 +6756,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x23}},
 			memory.Snapshot{Address: 0xaa59, Values: []uint8{0xc1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb24",
@@ -6277,6 +6783,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x24}},
 			memory.Snapshot{Address: 0x84b6, Values: []uint8{0x80}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb25",
@@ -6302,6 +6810,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x25}},
 			memory.Snapshot{Address: 0x85bc, Values: []uint8{0xef}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb26",
@@ -6327,6 +6837,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x26}},
 			memory.Snapshot{Address: 0x283a, Values: []uint8{0xee}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb27",
@@ -6352,6 +6864,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x27}},
 			memory.Snapshot{Address: 0x5ea2, Values: []uint8{0xbd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb28",
@@ -6377,6 +6891,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x28}},
 			memory.Snapshot{Address: 0x021b, Values: []uint8{0x90}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb29",
@@ -6402,6 +6918,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x29}},
 			memory.Snapshot{Address: 0xc306, Values: []uint8{0x5c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb2a",
@@ -6427,6 +6945,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x2a}},
 			memory.Snapshot{Address: 0x3473, Values: []uint8{0x34}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb2b",
@@ -6452,6 +6972,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x2b}},
 			memory.Snapshot{Address: 0xb78a, Values: []uint8{0xab}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb2c",
@@ -6477,6 +6999,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x2c}},
 			memory.Snapshot{Address: 0x1e7b, Values: []uint8{0x2c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb2d",
@@ -6502,6 +7026,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x2d}},
 			memory.Snapshot{Address: 0x78ea, Values: []uint8{0x85}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb2e",
@@ -6527,6 +7053,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x2e}},
 			memory.Snapshot{Address: 0x24bf, Values: []uint8{0xb5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb2f",
@@ -6552,6 +7080,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x2f}},
 			memory.Snapshot{Address: 0x5c65, Values: []uint8{0xc9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb30",
@@ -6577,6 +7107,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x30}},
 			memory.Snapshot{Address: 0x656b, Values: []uint8{0x32}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb31",
@@ -6602,6 +7134,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x31}},
 			memory.Snapshot{Address: 0x75a4, Values: []uint8{0x0c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb32",
@@ -6627,6 +7161,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x32}},
 			memory.Snapshot{Address: 0x5e56, Values: []uint8{0x8d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb33",
@@ -6652,6 +7188,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x33}},
 			memory.Snapshot{Address: 0x038f, Values: []uint8{0xba}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb34",
@@ -6677,6 +7215,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x34}},
 			memory.Snapshot{Address: 0xfb38, Values: []uint8{0x07}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb35",
@@ -6702,6 +7242,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x35}},
 			memory.Snapshot{Address: 0x7861, Values: []uint8{0x72}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb36",
@@ -6727,6 +7269,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x36}},
 			memory.Snapshot{Address: 0x6d38, Values: []uint8{0xf1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb37",
@@ -6752,6 +7296,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x37}},
 			memory.Snapshot{Address: 0x6e56, Values: []uint8{0xf8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb38",
@@ -6777,6 +7323,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x38}},
 			memory.Snapshot{Address: 0x4ff2, Values: []uint8{0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb39",
@@ -6802,6 +7350,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x39}},
 			memory.Snapshot{Address: 0x3c17, Values: []uint8{0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb3a",
@@ -6827,6 +7377,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x3a}},
 			memory.Snapshot{Address: 0xf1b1, Values: []uint8{0x6e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb3b",
@@ -6852,6 +7404,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x3b}},
 			memory.Snapshot{Address: 0x7419, Values: []uint8{0x11}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb3c",
@@ -6877,6 +7431,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x3c}},
 			memory.Snapshot{Address: 0x2ad8, Values: []uint8{0x8d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb3d",
@@ -6902,6 +7458,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x3d}},
 			memory.Snapshot{Address: 0x46cd, Values: []uint8{0xf9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb3e",
@@ -6927,6 +7485,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x3e}},
 			memory.Snapshot{Address: 0xa96c, Values: []uint8{0xa0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb3f",
@@ -6952,6 +7512,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x3f}},
 			memory.Snapshot{Address: 0x77f0, Values: []uint8{0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb40",
@@ -6977,6 +7539,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x40}},
 			memory.Snapshot{Address: 0x505f, Values: []uint8{0x59}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb41",
@@ -7002,6 +7566,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x41}},
 			memory.Snapshot{Address: 0x7be9, Values: []uint8{0xf7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb42",
@@ -7027,6 +7593,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x42}},
 			memory.Snapshot{Address: 0x551f, Values: []uint8{0xc9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb43",
@@ -7052,6 +7620,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x43}},
 			memory.Snapshot{Address: 0xbab4, Values: []uint8{0x76}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb44",
@@ -7077,6 +7647,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x44}},
 			memory.Snapshot{Address: 0x5b92, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb45",
@@ -7102,6 +7674,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x45}},
 			memory.Snapshot{Address: 0x409b, Values: []uint8{0x64}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb46",
@@ -7127,6 +7701,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x46}},
 			memory.Snapshot{Address: 0x6131, Values: []uint8{0xd5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb47_1",
@@ -7151,6 +7727,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x47}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb47",
@@ -7176,6 +7754,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x47}},
 			memory.Snapshot{Address: 0x8a8c, Values: []uint8{0x0e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb48",
@@ -7201,6 +7781,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x48}},
 			memory.Snapshot{Address: 0x6de0, Values: []uint8{0x8c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb49",
@@ -7226,6 +7808,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x49}},
 			memory.Snapshot{Address: 0xa040, Values: []uint8{0x5f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb4a",
@@ -7251,6 +7835,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x4a}},
 			memory.Snapshot{Address: 0x77a4, Values: []uint8{0x96}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb4b",
@@ -7276,6 +7862,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x4b}},
 			memory.Snapshot{Address: 0x40ca, Values: []uint8{0x8a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb4c",
@@ -7301,6 +7889,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x4c}},
 			memory.Snapshot{Address: 0x6d5d, Values: []uint8{0xe7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb4d",
@@ -7326,6 +7916,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x4d}},
 			memory.Snapshot{Address: 0x158d, Values: []uint8{0xe0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb4e",
@@ -7351,6 +7943,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x4e}},
 			memory.Snapshot{Address: 0xada3, Values: []uint8{0x5b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb4f_1",
@@ -7375,6 +7969,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb4f",
@@ -7400,6 +7996,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x4f}},
 			memory.Snapshot{Address: 0x0bcc, Values: []uint8{0xa3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb50",
@@ -7425,6 +8023,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x50}},
 			memory.Snapshot{Address: 0x84d2, Values: []uint8{0x6a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb51",
@@ -7450,6 +8050,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x51}},
 			memory.Snapshot{Address: 0xaafc, Values: []uint8{0xa6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb52",
@@ -7475,6 +8077,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x52}},
 			memory.Snapshot{Address: 0xac44, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb53",
@@ -7500,6 +8104,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x53}},
 			memory.Snapshot{Address: 0x7c75, Values: []uint8{0xab}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb54",
@@ -7525,6 +8131,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x54}},
 			memory.Snapshot{Address: 0x1999, Values: []uint8{0x98}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb55",
@@ -7550,6 +8158,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x55}},
 			memory.Snapshot{Address: 0xfb4b, Values: []uint8{0x0b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb56",
@@ -7575,6 +8185,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x56}},
 			memory.Snapshot{Address: 0xbbf9, Values: []uint8{0x10}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb57_1",
@@ -7599,6 +8211,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x57}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb57",
@@ -7624,6 +8238,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x57}},
 			memory.Snapshot{Address: 0xda50, Values: []uint8{0x30}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb58",
@@ -7649,6 +8265,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x58}},
 			memory.Snapshot{Address: 0x1479, Values: []uint8{0xa0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb59",
@@ -7674,6 +8292,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x59}},
 			memory.Snapshot{Address: 0x2075, Values: []uint8{0xc1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb5a",
@@ -7699,6 +8319,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x5a}},
 			memory.Snapshot{Address: 0xd99b, Values: []uint8{0xe8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb5b",
@@ -7724,6 +8346,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x5b}},
 			memory.Snapshot{Address: 0x1691, Values: []uint8{0xc7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb5c",
@@ -7749,6 +8373,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x5c}},
 			memory.Snapshot{Address: 0x13e9, Values: []uint8{0xae}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb5d",
@@ -7774,6 +8400,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x5d}},
 			memory.Snapshot{Address: 0xee49, Values: []uint8{0xa6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb5e",
@@ -7799,6 +8427,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x5e}},
 			memory.Snapshot{Address: 0x349a, Values: []uint8{0x3c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb5f_1",
@@ -7823,6 +8453,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x5f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb5f",
@@ -7848,6 +8480,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x5f}},
 			memory.Snapshot{Address: 0x6133, Values: []uint8{0x90}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb60",
@@ -7873,6 +8507,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x60}},
 			memory.Snapshot{Address: 0x5273, Values: []uint8{0x0a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb61",
@@ -7898,6 +8534,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x61}},
 			memory.Snapshot{Address: 0x7c44, Values: []uint8{0x77}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb62",
@@ -7923,6 +8561,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x62}},
 			memory.Snapshot{Address: 0x8cc5, Values: []uint8{0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb63",
@@ -7948,6 +8588,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x63}},
 			memory.Snapshot{Address: 0x84ca, Values: []uint8{0xe6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb64",
@@ -7973,6 +8615,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x64}},
 			memory.Snapshot{Address: 0xea94, Values: []uint8{0x0c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb65",
@@ -7998,6 +8642,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x65}},
 			memory.Snapshot{Address: 0x427a, Values: []uint8{0xee}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb66",
@@ -8023,6 +8669,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x66}},
 			memory.Snapshot{Address: 0xa44f, Values: []uint8{0xd2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb67_1",
@@ -8047,6 +8695,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x67}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb67",
@@ -8072,6 +8722,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x67}},
 			memory.Snapshot{Address: 0x394d, Values: []uint8{0x10}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb68",
@@ -8097,6 +8749,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x68}},
 			memory.Snapshot{Address: 0xddd2, Values: []uint8{0x16}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb69",
@@ -8122,6 +8776,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x69}},
 			memory.Snapshot{Address: 0x1dba, Values: []uint8{0x8a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb6a",
@@ -8147,6 +8803,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x6a}},
 			memory.Snapshot{Address: 0x4e09, Values: []uint8{0xd5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb6b",
@@ -8172,6 +8830,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x6b}},
 			memory.Snapshot{Address: 0x1ca9, Values: []uint8{0x86}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb6c",
@@ -8197,6 +8857,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x6c}},
 			memory.Snapshot{Address: 0x5605, Values: []uint8{0x2b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb6d",
@@ -8222,6 +8884,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x6d}},
 			memory.Snapshot{Address: 0xd9ad, Values: []uint8{0x4e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb6e",
@@ -8247,6 +8911,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x6e}},
 			memory.Snapshot{Address: 0xd8ba, Values: []uint8{0x31}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb6f_1",
@@ -8271,6 +8937,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x6f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb6f",
@@ -8296,6 +8964,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x6f}},
 			memory.Snapshot{Address: 0x4d34, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb70",
@@ -8321,6 +8991,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x70}},
 			memory.Snapshot{Address: 0xf913, Values: []uint8{0xcf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb71",
@@ -8346,6 +9018,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x71}},
 			memory.Snapshot{Address: 0x42fe, Values: []uint8{0x24}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb72",
@@ -8371,6 +9045,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x72}},
 			memory.Snapshot{Address: 0xad11, Values: []uint8{0x3b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb73",
@@ -8396,6 +9072,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x73}},
 			memory.Snapshot{Address: 0x2ecc, Values: []uint8{0xe0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb74",
@@ -8421,6 +9099,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x74}},
 			memory.Snapshot{Address: 0x983d, Values: []uint8{0xfa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb75",
@@ -8446,6 +9126,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x75}},
 			memory.Snapshot{Address: 0xd18d, Values: []uint8{0x11}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb76",
@@ -8471,6 +9153,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x76}},
 			memory.Snapshot{Address: 0xbc71, Values: []uint8{0x18}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb77_1",
@@ -8495,6 +9179,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x77}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb77",
@@ -8520,6 +9206,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x77}},
 			memory.Snapshot{Address: 0x736d, Values: []uint8{0x36}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb78",
@@ -8545,6 +9233,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x78}},
 			memory.Snapshot{Address: 0xc76a, Values: []uint8{0x1f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb79",
@@ -8570,6 +9260,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x79}},
 			memory.Snapshot{Address: 0x39e8, Values: []uint8{0x98}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb7a",
@@ -8595,6 +9287,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x7a}},
 			memory.Snapshot{Address: 0xd9af, Values: []uint8{0xed}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb7b",
@@ -8620,6 +9314,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x7b}},
 			memory.Snapshot{Address: 0x6bd0, Values: []uint8{0xa5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb7c",
@@ -8645,6 +9341,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x7c}},
 			memory.Snapshot{Address: 0x063b, Values: []uint8{0x34}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb7d",
@@ -8670,6 +9368,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x7d}},
 			memory.Snapshot{Address: 0x5f9b, Values: []uint8{0x97}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb7e",
@@ -8695,6 +9395,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x7e}},
 			memory.Snapshot{Address: 0xa25e, Values: []uint8{0xd7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb7f_1",
@@ -8719,6 +9421,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x7f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb7f",
@@ -8744,6 +9448,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x7f}},
 			memory.Snapshot{Address: 0x185b, Values: []uint8{0xf1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb80",
@@ -8769,6 +9475,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x80}},
 			memory.Snapshot{Address: 0xa706, Values: []uint8{0x0a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb81",
@@ -8794,6 +9502,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x81}},
 			memory.Snapshot{Address: 0x6616, Values: []uint8{0x74}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb82",
@@ -8819,6 +9529,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x82}},
 			memory.Snapshot{Address: 0x4572, Values: []uint8{0x2f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb83",
@@ -8844,6 +9556,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x83}},
 			memory.Snapshot{Address: 0xae9a, Values: []uint8{0x16}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb84",
@@ -8869,6 +9583,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x84}},
 			memory.Snapshot{Address: 0xd6c0, Values: []uint8{0x72}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb85",
@@ -8894,6 +9610,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x85}},
 			memory.Snapshot{Address: 0xdda0, Values: []uint8{0x8a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb86",
@@ -8919,6 +9637,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x86}},
 			memory.Snapshot{Address: 0x1b48, Values: []uint8{0x62}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb87",
@@ -8944,6 +9664,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x87}},
 			memory.Snapshot{Address: 0xdfc5, Values: []uint8{0xde}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb88",
@@ -8969,6 +9691,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x88}},
 			memory.Snapshot{Address: 0x674d, Values: []uint8{0x5f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb89",
@@ -8994,6 +9718,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x89}},
 			memory.Snapshot{Address: 0x1bd7, Values: []uint8{0xf2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb8a",
@@ -9019,6 +9745,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x8a}},
 			memory.Snapshot{Address: 0xb98e, Values: []uint8{0x2f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb8b",
@@ -9044,6 +9772,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x8b}},
 			memory.Snapshot{Address: 0x4a07, Values: []uint8{0x3f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb8c",
@@ -9069,6 +9799,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x8c}},
 			memory.Snapshot{Address: 0xdaef, Values: []uint8{0x0c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb8d",
@@ -9094,6 +9826,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x8d}},
 			memory.Snapshot{Address: 0xbd72, Values: []uint8{0x13}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb8e",
@@ -9119,6 +9853,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x8e}},
 			memory.Snapshot{Address: 0x63a7, Values: []uint8{0xd4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb8f",
@@ -9144,6 +9880,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x8f}},
 			memory.Snapshot{Address: 0x1c1a, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb90",
@@ -9169,6 +9907,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x90}},
 			memory.Snapshot{Address: 0xc73c, Values: []uint8{0xa2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb91",
@@ -9194,6 +9934,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x91}},
 			memory.Snapshot{Address: 0x97e0, Values: []uint8{0x5e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb92",
@@ -9219,6 +9961,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x92}},
 			memory.Snapshot{Address: 0x83d0, Values: []uint8{0x2b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb93",
@@ -9244,6 +9988,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x93}},
 			memory.Snapshot{Address: 0x2234, Values: []uint8{0xa0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb94",
@@ -9269,6 +10015,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x94}},
 			memory.Snapshot{Address: 0xd6a6, Values: []uint8{0xd0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb95",
@@ -9294,6 +10042,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x95}},
 			memory.Snapshot{Address: 0x36ff, Values: []uint8{0xcd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb96",
@@ -9319,6 +10069,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x96}},
 			memory.Snapshot{Address: 0x3324, Values: []uint8{0x21}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb97",
@@ -9344,6 +10096,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x97}},
 			memory.Snapshot{Address: 0x97bc, Values: []uint8{0x75}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb98",
@@ -9369,6 +10123,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x98}},
 			memory.Snapshot{Address: 0x5d5e, Values: []uint8{0xa4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb99",
@@ -9394,6 +10150,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x99}},
 			memory.Snapshot{Address: 0x8bec, Values: []uint8{0x0b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb9a",
@@ -9419,6 +10177,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x9a}},
 			memory.Snapshot{Address: 0xdcb2, Values: []uint8{0x09}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb9b",
@@ -9444,6 +10204,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x9b}},
 			memory.Snapshot{Address: 0x2bd6, Values: []uint8{0xd3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb9c",
@@ -9469,6 +10231,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x9c}},
 			memory.Snapshot{Address: 0xc7a0, Values: []uint8{0x75}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb9d",
@@ -9494,6 +10258,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x9d}},
 			memory.Snapshot{Address: 0x0800, Values: []uint8{0xcd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb9e",
@@ -9519,6 +10285,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x9e}},
 			memory.Snapshot{Address: 0x3a65, Values: []uint8{0x2a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cb9f",
@@ -9544,6 +10312,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0x9f}},
 			memory.Snapshot{Address: 0x72f6, Values: []uint8{0x72}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cba0",
@@ -9569,6 +10339,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xa0}},
 			memory.Snapshot{Address: 0xc80d, Values: []uint8{0xc0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cba1",
@@ -9594,6 +10366,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xa1}},
 			memory.Snapshot{Address: 0xd0ba, Values: []uint8{0xbd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cba2",
@@ -9619,6 +10393,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xa2}},
 			memory.Snapshot{Address: 0x6fc0, Values: []uint8{0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cba3",
@@ -9644,6 +10420,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xa3}},
 			memory.Snapshot{Address: 0x6666, Values: []uint8{0x8e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cba4",
@@ -9669,6 +10447,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xa4}},
 			memory.Snapshot{Address: 0x8bb1, Values: []uint8{0xbb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cba5",
@@ -9694,6 +10474,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xa5}},
 			memory.Snapshot{Address: 0x88ca, Values: []uint8{0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cba6",
@@ -9719,6 +10501,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xa6}},
 			memory.Snapshot{Address: 0xe70d, Values: []uint8{0x27}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cba7",
@@ -9744,6 +10528,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xa7}},
 			memory.Snapshot{Address: 0xc77b, Values: []uint8{0xff}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cba8",
@@ -9769,6 +10555,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xa8}},
 			memory.Snapshot{Address: 0xc9e7, Values: []uint8{0x46}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cba9",
@@ -9794,6 +10582,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xa9}},
 			memory.Snapshot{Address: 0xce0b, Values: []uint8{0x39}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbaa",
@@ -9819,6 +10609,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xaa}},
 			memory.Snapshot{Address: 0xfed5, Values: []uint8{0xb0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbab",
@@ -9844,6 +10636,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xab}},
 			memory.Snapshot{Address: 0x0812, Values: []uint8{0xf2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbac",
@@ -9869,6 +10663,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xac}},
 			memory.Snapshot{Address: 0xffaa, Values: []uint8{0x09}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbad",
@@ -9894,6 +10690,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xad}},
 			memory.Snapshot{Address: 0xae15, Values: []uint8{0x30}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbae",
@@ -9919,6 +10717,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xae}},
 			memory.Snapshot{Address: 0x190e, Values: []uint8{0x66}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbaf",
@@ -9944,6 +10744,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xaf}},
 			memory.Snapshot{Address: 0x5877, Values: []uint8{0x62}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbb0",
@@ -9969,6 +10771,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xb0}},
 			memory.Snapshot{Address: 0xc3ba, Values: []uint8{0x4c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbb1",
@@ -9994,6 +10798,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xb1}},
 			memory.Snapshot{Address: 0x1190, Values: []uint8{0xe3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbb2",
@@ -10019,6 +10825,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xb2}},
 			memory.Snapshot{Address: 0x6ff5, Values: []uint8{0x04}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbb3",
@@ -10044,6 +10852,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xb3}},
 			memory.Snapshot{Address: 0x5cb1, Values: []uint8{0x43}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbb4",
@@ -10069,6 +10879,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xb4}},
 			memory.Snapshot{Address: 0xe1bb, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbb5",
@@ -10094,6 +10906,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xb5}},
 			memory.Snapshot{Address: 0x4bba, Values: []uint8{0x70}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbb6",
@@ -10119,6 +10933,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xb6}},
 			memory.Snapshot{Address: 0x4fab, Values: []uint8{0xa5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbb7",
@@ -10144,6 +10960,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xb7}},
 			memory.Snapshot{Address: 0xd4a2, Values: []uint8{0xf2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbb8",
@@ -10169,6 +10987,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xb8}},
 			memory.Snapshot{Address: 0xd249, Values: []uint8{0xc4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbb9",
@@ -10194,6 +11014,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xb9}},
 			memory.Snapshot{Address: 0x5dee, Values: []uint8{0xcc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbba",
@@ -10219,6 +11041,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xba}},
 			memory.Snapshot{Address: 0x34c9, Values: []uint8{0xbc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbbb",
@@ -10244,6 +11068,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xbb}},
 			memory.Snapshot{Address: 0xcb30, Values: []uint8{0xf4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbbc",
@@ -10269,6 +11095,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xbc}},
 			memory.Snapshot{Address: 0x7b6e, Values: []uint8{0x45}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbbd",
@@ -10294,6 +11122,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xbd}},
 			memory.Snapshot{Address: 0x10b8, Values: []uint8{0x35}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbbe",
@@ -10319,6 +11149,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xbe}},
 			memory.Snapshot{Address: 0x77d5, Values: []uint8{0xea}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbbf",
@@ -10344,6 +11176,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xbf}},
 			memory.Snapshot{Address: 0x15de, Values: []uint8{0x1d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbc0",
@@ -10369,6 +11203,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xc0}},
 			memory.Snapshot{Address: 0xb3a1, Values: []uint8{0x5c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbc1",
@@ -10394,6 +11230,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xc1}},
 			memory.Snapshot{Address: 0x3343, Values: []uint8{0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbc2",
@@ -10419,6 +11257,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xc2}},
 			memory.Snapshot{Address: 0xe1f3, Values: []uint8{0x14}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbc3",
@@ -10444,6 +11284,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xc3}},
 			memory.Snapshot{Address: 0x8f3a, Values: []uint8{0x81}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbc4",
@@ -10469,6 +11311,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xc4}},
 			memory.Snapshot{Address: 0x5876, Values: []uint8{0x9d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbc5",
@@ -10494,6 +11338,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xc5}},
 			memory.Snapshot{Address: 0x4107, Values: []uint8{0xcc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbc6",
@@ -10519,6 +11365,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xc6}},
 			memory.Snapshot{Address: 0xf0be, Values: []uint8{0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbc7",
@@ -10544,6 +11392,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xc7}},
 			memory.Snapshot{Address: 0x583f, Values: []uint8{0x58}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbc8",
@@ -10569,6 +11419,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xc8}},
 			memory.Snapshot{Address: 0x7cf3, Values: []uint8{0x75}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbc9",
@@ -10594,6 +11446,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xc9}},
 			memory.Snapshot{Address: 0x72db, Values: []uint8{0x87}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbca",
@@ -10619,6 +11473,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xca}},
 			memory.Snapshot{Address: 0xfbc7, Values: []uint8{0x1a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbcb",
@@ -10644,6 +11500,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xcb}},
 			memory.Snapshot{Address: 0xf70d, Values: []uint8{0xa1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbcc",
@@ -10669,6 +11527,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xcc}},
 			memory.Snapshot{Address: 0x18fd, Values: []uint8{0xfe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbcd",
@@ -10694,6 +11554,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xcd}},
 			memory.Snapshot{Address: 0x2602, Values: []uint8{0x2d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbce",
@@ -10719,6 +11581,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xce}},
 			memory.Snapshot{Address: 0x8ec6, Values: []uint8{0xbf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbcf",
@@ -10744,6 +11608,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xcf}},
 			memory.Snapshot{Address: 0x98a0, Values: []uint8{0xd4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbd0",
@@ -10769,6 +11635,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xd0}},
 			memory.Snapshot{Address: 0x1724, Values: []uint8{0x30}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbd1",
@@ -10794,6 +11662,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xd1}},
 			memory.Snapshot{Address: 0x47f4, Values: []uint8{0xc7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbd2",
@@ -10819,6 +11689,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xd2}},
 			memory.Snapshot{Address: 0x7528, Values: []uint8{0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbd3",
@@ -10844,6 +11716,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xd3}},
 			memory.Snapshot{Address: 0x5fba, Values: []uint8{0x3a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbd4",
@@ -10869,6 +11743,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xd4}},
 			memory.Snapshot{Address: 0xbf2e, Values: []uint8{0x71}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbd5",
@@ -10894,6 +11770,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xd5}},
 			memory.Snapshot{Address: 0x8a77, Values: []uint8{0x52}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbd6",
@@ -10919,6 +11797,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xd6}},
 			memory.Snapshot{Address: 0x6029, Values: []uint8{0xb7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbd7",
@@ -10944,6 +11824,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xd7}},
 			memory.Snapshot{Address: 0x290a, Values: []uint8{0x42}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbd8",
@@ -10969,6 +11851,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xd8}},
 			memory.Snapshot{Address: 0x6d7e, Values: []uint8{0x6e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbd9",
@@ -10994,6 +11878,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xd9}},
 			memory.Snapshot{Address: 0xefc6, Values: []uint8{0x5b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbda",
@@ -11019,6 +11905,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xda}},
 			memory.Snapshot{Address: 0x1c87, Values: []uint8{0xb9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbdb",
@@ -11044,6 +11932,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xdb}},
 			memory.Snapshot{Address: 0xbc48, Values: []uint8{0xef}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbdc",
@@ -11069,6 +11959,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xdc}},
 			memory.Snapshot{Address: 0xb125, Values: []uint8{0x0e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbdd",
@@ -11094,6 +11986,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xdd}},
 			memory.Snapshot{Address: 0x5b9f, Values: []uint8{0x94}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbde",
@@ -11119,6 +12013,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xde}},
 			memory.Snapshot{Address: 0xba03, Values: []uint8{0x93}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbdf",
@@ -11144,6 +12040,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xdf}},
 			memory.Snapshot{Address: 0x0fa1, Values: []uint8{0xc5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbe0",
@@ -11169,6 +12067,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xe0}},
 			memory.Snapshot{Address: 0x3744, Values: []uint8{0x54}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbe1",
@@ -11194,6 +12094,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xe1}},
 			memory.Snapshot{Address: 0x5334, Values: []uint8{0x85}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbe2",
@@ -11219,6 +12121,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xe2}},
 			memory.Snapshot{Address: 0x3a4c, Values: []uint8{0x47}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbe3",
@@ -11244,6 +12148,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xe3}},
 			memory.Snapshot{Address: 0x2e78, Values: []uint8{0x48}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbe4",
@@ -11269,6 +12175,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xe4}},
 			memory.Snapshot{Address: 0x0978, Values: []uint8{0x84}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbe5",
@@ -11294,6 +12202,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xe5}},
 			memory.Snapshot{Address: 0xb48f, Values: []uint8{0xcf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbe6",
@@ -11319,6 +12229,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xe6}},
 			memory.Snapshot{Address: 0x9f9b, Values: []uint8{0xf6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbe7",
@@ -11344,6 +12256,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xe7}},
 			memory.Snapshot{Address: 0xf2e0, Values: []uint8{0xcf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbe8",
@@ -11369,6 +12283,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xe8}},
 			memory.Snapshot{Address: 0x4a05, Values: []uint8{0xe6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbe9",
@@ -11394,6 +12310,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xe9}},
 			memory.Snapshot{Address: 0xa4d0, Values: []uint8{0xb2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbea",
@@ -11419,6 +12337,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xea}},
 			memory.Snapshot{Address: 0xf32a, Values: []uint8{0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbeb",
@@ -11444,6 +12364,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xeb}},
 			memory.Snapshot{Address: 0x1a1a, Values: []uint8{0x21}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbec",
@@ -11469,6 +12391,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xec}},
 			memory.Snapshot{Address: 0xba08, Values: []uint8{0x82}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbed",
@@ -11494,6 +12418,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xed}},
 			memory.Snapshot{Address: 0x2dec, Values: []uint8{0xcb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbee",
@@ -11519,6 +12445,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xee}},
 			memory.Snapshot{Address: 0xe90d, Values: []uint8{0xf1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbef",
@@ -11544,6 +12472,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xef}},
 			memory.Snapshot{Address: 0x2c39, Values: []uint8{0xc8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbf0",
@@ -11569,6 +12499,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xf0}},
 			memory.Snapshot{Address: 0x6ff5, Values: []uint8{0xf6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbf1",
@@ -11594,6 +12526,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xf1}},
 			memory.Snapshot{Address: 0x5e1c, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbf2",
@@ -11619,6 +12553,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xf2}},
 			memory.Snapshot{Address: 0x9819, Values: []uint8{0xe4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbf3",
@@ -11644,6 +12580,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xf3}},
 			memory.Snapshot{Address: 0x263f, Values: []uint8{0xa1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbf4",
@@ -11669,6 +12607,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xf4}},
 			memory.Snapshot{Address: 0x75d9, Values: []uint8{0x3f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbf5",
@@ -11694,6 +12634,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xf5}},
 			memory.Snapshot{Address: 0x47e6, Values: []uint8{0xce}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbf6",
@@ -11719,6 +12661,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xf6}},
 			memory.Snapshot{Address: 0xa9bc, Values: []uint8{0xb1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbf7",
@@ -11744,6 +12688,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xf7}},
 			memory.Snapshot{Address: 0x188c, Values: []uint8{0x6c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbf8",
@@ -11769,6 +12715,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xf8}},
 			memory.Snapshot{Address: 0xd2b0, Values: []uint8{0xcb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbf9",
@@ -11794,6 +12742,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xf9}},
 			memory.Snapshot{Address: 0x0730, Values: []uint8{0xae}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbfa",
@@ -11819,6 +12769,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xfa}},
 			memory.Snapshot{Address: 0xed03, Values: []uint8{0x27}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbfb",
@@ -11844,6 +12796,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xfb}},
 			memory.Snapshot{Address: 0xd1ae, Values: []uint8{0xf2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbfc",
@@ -11869,6 +12823,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xfc}},
 			memory.Snapshot{Address: 0x500f, Values: []uint8{0x94}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbfd",
@@ -11894,6 +12850,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xfd}},
 			memory.Snapshot{Address: 0x28c5, Values: []uint8{0xab}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbfe",
@@ -11919,6 +12877,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xfe}},
 			memory.Snapshot{Address: 0x3a24, Values: []uint8{0xc3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cbff",
@@ -11944,6 +12904,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcb, 0xff}},
 			memory.Snapshot{Address: 0xe3f2, Values: []uint8{0x25}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cc_1",
@@ -11968,6 +12930,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcc, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cc_2",
@@ -11992,6 +12956,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcc, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cd",
@@ -12016,6 +12982,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xcd, 0x5d, 0x3a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ce",
@@ -12040,6 +13008,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xce, 0xb2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "cf",
@@ -12064,6 +13034,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6d33, Values: []uint8{0xcf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d0_1",
@@ -12089,6 +13061,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd0}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d0_2",
@@ -12114,6 +13088,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd0}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d1",
@@ -12139,6 +13115,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd1}},
 			memory.Snapshot{Address: 0x4143, Values: []uint8{0xce, 0xe8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d2_1",
@@ -12163,6 +13141,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd2, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d2_2",
@@ -12187,6 +13167,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd2, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d3_1",
@@ -12211,6 +13193,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd3, 0xed}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d3_2",
@@ -12235,6 +13219,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd3, 0xec}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d3_3",
@@ -12259,6 +13245,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd3, 0xed}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d3",
@@ -12283,6 +13271,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd3, 0xec}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d4_1",
@@ -12307,6 +13297,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd4, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d4_2",
@@ -12331,6 +13323,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd4, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d5",
@@ -12355,6 +13349,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d6",
@@ -12379,6 +13375,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd6, 0xdf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d7",
@@ -12403,6 +13401,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6d33, Values: []uint8{0xd7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d8_1",
@@ -12428,6 +13428,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd8}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d8_2",
@@ -12453,6 +13455,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd8}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "d9",
@@ -12477,6 +13481,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xd9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "da_1",
@@ -12501,6 +13507,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xda, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "da_2",
@@ -12525,6 +13533,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xda, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "db_1",
@@ -12549,6 +13559,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdb, 0xe3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "db_2",
@@ -12573,6 +13585,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdb, 0xe2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "db_3",
@@ -12597,6 +13611,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdb, 0xe3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "db",
@@ -12621,6 +13637,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdb, 0xe2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dc_1",
@@ -12645,6 +13663,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdc, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dc_2",
@@ -12669,6 +13689,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdc, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd00",
@@ -12693,6 +13715,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x00, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd09",
@@ -12717,6 +13741,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x09}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd19",
@@ -12741,6 +13767,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x19}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd21",
@@ -12765,6 +13793,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x21, 0xf2, 0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd22",
@@ -12789,6 +13819,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x22, 0x4f, 0xad}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd23",
@@ -12813,6 +13845,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x23}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd24",
@@ -12837,6 +13871,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x24}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd25",
@@ -12861,6 +13897,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x25}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd26",
@@ -12885,6 +13923,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x26, 0xad}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd29",
@@ -12909,6 +13949,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x29}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd2a",
@@ -12934,6 +13976,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x2a, 0xbc, 0x40}},
 			memory.Snapshot{Address: 0x40bc, Values: []uint8{0xb5, 0x30}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd2b",
@@ -12958,6 +14002,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x2b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd2c",
@@ -12982,6 +14028,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x2c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd2d",
@@ -13006,6 +14054,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x2d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd2e",
@@ -13030,6 +14080,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x2e, 0x1c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd34",
@@ -13055,6 +14107,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x34, 0xe6}},
 			memory.Snapshot{Address: 0xde8f, Values: []uint8{0x57}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd35",
@@ -13080,6 +14134,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x35, 0x60}},
 			memory.Snapshot{Address: 0xc793, Values: []uint8{0xf7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd36",
@@ -13104,6 +14160,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x36, 0x35, 0xb5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd39",
@@ -13128,6 +14186,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x39}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd44",
@@ -13152,6 +14212,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd45",
@@ -13176,6 +14238,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x45}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd46",
@@ -13201,6 +14265,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x46, 0x68}},
 			memory.Snapshot{Address: 0x5d2f, Values: []uint8{0x8d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd4c",
@@ -13225,6 +14291,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x4c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd4d",
@@ -13249,6 +14317,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x4d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd4e",
@@ -13274,6 +14344,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x4e, 0x2e}},
 			memory.Snapshot{Address: 0xd979, Values: []uint8{0x76}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd54",
@@ -13298,6 +14370,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x54}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd55",
@@ -13322,6 +14396,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x55}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd56",
@@ -13347,6 +14423,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x56, 0xf4}},
 			memory.Snapshot{Address: 0xa2fa, Values: []uint8{0xde}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd5c",
@@ -13371,6 +14449,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x5c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd5d",
@@ -13395,6 +14475,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x5d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd5e",
@@ -13420,6 +14502,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x5e, 0x8f}},
 			memory.Snapshot{Address: 0x8cc1, Values: []uint8{0xce}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd60",
@@ -13444,6 +14528,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x60}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd61",
@@ -13468,6 +14554,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd62",
@@ -13492,6 +14580,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x62}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd63",
@@ -13516,6 +14606,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x63}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd64",
@@ -13540,6 +14632,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x64}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd65",
@@ -13564,6 +14658,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x65}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd66",
@@ -13589,6 +14685,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x66, 0xb5}},
 			memory.Snapshot{Address: 0xce12, Values: []uint8{0x03}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd67",
@@ -13613,6 +14711,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x67}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd68",
@@ -13637,6 +14737,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x68}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd69",
@@ -13661,6 +14763,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x69}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd6a",
@@ -13685,6 +14789,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x6a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd6b",
@@ -13709,6 +14815,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x6b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd6c",
@@ -13733,6 +14841,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x6c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd6d",
@@ -13757,6 +14867,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd6e",
@@ -13782,6 +14894,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x6e, 0x2c}},
 			memory.Snapshot{Address: 0xc674, Values: []uint8{0x6b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd6f",
@@ -13806,6 +14920,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x6f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd70",
@@ -13830,6 +14946,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x70, 0xf6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd71",
@@ -13854,6 +14972,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x71, 0x23}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd72",
@@ -13878,6 +14998,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x72, 0x93}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd73",
@@ -13902,6 +15024,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x73, 0x57}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd74",
@@ -13926,6 +15050,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x74, 0xb9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd75",
@@ -13950,6 +15076,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x75, 0x30}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd77",
@@ -13974,6 +15102,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x77, 0x8c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd7c",
@@ -13998,6 +15128,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd7d",
@@ -14022,6 +15154,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x7d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd7e",
@@ -14047,6 +15181,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x7e, 0xbc}},
 			memory.Snapshot{Address: 0x1cb0, Values: []uint8{0x57}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd84",
@@ -14071,6 +15207,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x84}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd85",
@@ -14095,6 +15233,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x85}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd86",
@@ -14120,6 +15260,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x86, 0xc1}},
 			memory.Snapshot{Address: 0xb576, Values: []uint8{0x5b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd8c",
@@ -14144,6 +15286,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x8c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd8d",
@@ -14168,6 +15312,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x8d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd8e",
@@ -14193,6 +15339,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x8e, 0x25}},
 			memory.Snapshot{Address: 0xbbbc, Values: []uint8{0x32}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd94",
@@ -14217,6 +15365,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x94}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd95",
@@ -14241,6 +15391,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x95}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd96",
@@ -14266,6 +15418,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x96, 0x5f}},
 			memory.Snapshot{Address: 0x2cc5, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd9c",
@@ -14290,6 +15444,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd9d",
@@ -14314,6 +15470,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x9d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dd9e",
@@ -14339,6 +15497,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0x9e, 0x14}},
 			memory.Snapshot{Address: 0xb4e0, Values: []uint8{0xb5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dda4",
@@ -14363,6 +15523,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xa4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dda5",
@@ -14387,6 +15549,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xa5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dda6",
@@ -14412,6 +15576,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xa6, 0x41}},
 			memory.Snapshot{Address: 0x7ed6, Values: []uint8{0xc7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddac",
@@ -14436,6 +15602,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xac}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddad",
@@ -14460,6 +15628,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xad}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddae",
@@ -14485,6 +15655,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xae, 0x72}},
 			memory.Snapshot{Address: 0xe97b, Values: []uint8{0xc3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddb4",
@@ -14509,6 +15681,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xb4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddb5",
@@ -14533,6 +15707,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xb5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddb6",
@@ -14558,6 +15734,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xb6, 0x31}},
 			memory.Snapshot{Address: 0xc6a0, Values: []uint8{0x1c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddbc",
@@ -14582,6 +15760,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xbc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddbd",
@@ -14606,6 +15786,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xbd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddbe",
@@ -14631,6 +15813,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xbe, 0x48}},
 			memory.Snapshot{Address: 0x937a, Values: []uint8{0x5b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb00",
@@ -14656,6 +15840,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0d, 0x00}},
 			memory.Snapshot{Address: 0x1dae, Values: []uint8{0xa1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb01",
@@ -14681,6 +15867,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb7, 0x01}},
 			memory.Snapshot{Address: 0x28b4, Values: []uint8{0xe3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb02",
@@ -14706,6 +15894,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x91, 0x02}},
 			memory.Snapshot{Address: 0xc727, Values: []uint8{0x8d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb03",
@@ -14731,6 +15921,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x48, 0x03}},
 			memory.Snapshot{Address: 0x0466, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb04",
@@ -14756,6 +15948,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x48, 0x04}},
 			memory.Snapshot{Address: 0x5991, Values: []uint8{0x68}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb05",
@@ -14781,6 +15975,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xff, 0x05}},
 			memory.Snapshot{Address: 0x0076, Values: []uint8{0x95}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb06",
@@ -14806,6 +16002,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x07, 0x06}},
 			memory.Snapshot{Address: 0x5428, Values: []uint8{0x97}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb07",
@@ -14831,6 +16029,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x42, 0x07}},
 			memory.Snapshot{Address: 0x9845, Values: []uint8{0xae}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb08",
@@ -14856,6 +16056,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0a, 0x08}},
 			memory.Snapshot{Address: 0xef4a, Values: []uint8{0xda}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb09",
@@ -14881,6 +16083,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x3b, 0x09}},
 			memory.Snapshot{Address: 0x9d46, Values: []uint8{0x6f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb0a",
@@ -14906,6 +16110,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x83, 0x0a}},
 			memory.Snapshot{Address: 0x1f37, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb0b",
@@ -14931,6 +16137,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xfa, 0x0b}},
 			memory.Snapshot{Address: 0xcd03, Values: []uint8{0x92}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb0c",
@@ -14956,6 +16164,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x79, 0x0c}},
 			memory.Snapshot{Address: 0xbfe4, Values: []uint8{0x0d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb0d",
@@ -14981,6 +16191,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe4, 0x0d}},
 			memory.Snapshot{Address: 0x88a1, Values: []uint8{0x1f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb0e",
@@ -15006,6 +16218,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc6, 0x0e}},
 			memory.Snapshot{Address: 0xfd0f, Values: []uint8{0xad}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb0f",
@@ -15031,6 +16245,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x57, 0x0f}},
 			memory.Snapshot{Address: 0x749e, Values: []uint8{0xf8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb10",
@@ -15056,6 +16272,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x4f, 0x10}},
 			memory.Snapshot{Address: 0xbbf1, Values: []uint8{0x45}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb11",
@@ -15081,6 +16299,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xeb, 0x11}},
 			memory.Snapshot{Address: 0x17f4, Values: []uint8{0xd9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb12",
@@ -15106,6 +16326,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xa6, 0x12}},
 			memory.Snapshot{Address: 0xc0a1, Values: []uint8{0xe2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb13",
@@ -15131,6 +16353,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xff, 0x13}},
 			memory.Snapshot{Address: 0x5ac3, Values: []uint8{0xa7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb14",
@@ -15156,6 +16380,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xdd, 0x14}},
 			memory.Snapshot{Address: 0x0954, Values: []uint8{0x85}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb15",
@@ -15181,6 +16407,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x07, 0x15}},
 			memory.Snapshot{Address: 0xedf0, Values: []uint8{0x0e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb16",
@@ -15206,6 +16434,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x45, 0x16}},
 			memory.Snapshot{Address: 0x1703, Values: []uint8{0x5b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb17",
@@ -15231,6 +16461,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x1c, 0x17}},
 			memory.Snapshot{Address: 0xb8e5, Values: []uint8{0x7e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb18",
@@ -15256,6 +16488,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0e, 0x18}},
 			memory.Snapshot{Address: 0xa197, Values: []uint8{0x90}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb19",
@@ -15281,6 +16515,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xa3, 0x19}},
 			memory.Snapshot{Address: 0xf08a, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb1a",
@@ -15306,6 +16542,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xac, 0x1a}},
 			memory.Snapshot{Address: 0xde0d, Values: []uint8{0xcc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb1b",
@@ -15331,6 +16569,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x05, 0x1b}},
 			memory.Snapshot{Address: 0xb7c8, Values: []uint8{0x91}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb1c",
@@ -15356,6 +16596,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xff, 0x1c}},
 			memory.Snapshot{Address: 0xfef8, Values: []uint8{0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb1d",
@@ -15381,6 +16623,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x3a, 0x1d}},
 			memory.Snapshot{Address: 0x5b9d, Values: []uint8{0xf3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb1e",
@@ -15406,6 +16650,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xce, 0x1e}},
 			memory.Snapshot{Address: 0x7582, Values: []uint8{0x91}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb1f",
@@ -15431,6 +16677,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xa8, 0x1f}},
 			memory.Snapshot{Address: 0x1d43, Values: []uint8{0xb4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb20",
@@ -15456,6 +16704,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe8, 0x20}},
 			memory.Snapshot{Address: 0xdc21, Values: []uint8{0x0e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb21",
@@ -15481,6 +16731,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x9e, 0x21}},
 			memory.Snapshot{Address: 0x3432, Values: []uint8{0xf7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb22",
@@ -15506,6 +16758,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x43, 0x22}},
 			memory.Snapshot{Address: 0xbd82, Values: []uint8{0x9f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb23",
@@ -15531,6 +16785,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc1, 0x23}},
 			memory.Snapshot{Address: 0x229e, Values: []uint8{0xe0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb24",
@@ -15556,6 +16812,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe8, 0x24}},
 			memory.Snapshot{Address: 0x31d9, Values: []uint8{0xc3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb25",
@@ -15581,6 +16839,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc1, 0x25}},
 			memory.Snapshot{Address: 0xcc24, Values: []uint8{0xeb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb26",
@@ -15606,6 +16866,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf7, 0x26}},
 			memory.Snapshot{Address: 0x651f, Values: []uint8{0x89}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb27",
@@ -15631,6 +16893,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc3, 0x27}},
 			memory.Snapshot{Address: 0x1f2c, Values: []uint8{0xac}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb28",
@@ -15656,6 +16920,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb6, 0x28}},
 			memory.Snapshot{Address: 0x9951, Values: []uint8{0x24}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb29",
@@ -15681,6 +16947,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x9c, 0x29}},
 			memory.Snapshot{Address: 0x2083, Values: []uint8{0x82}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb2a",
@@ -15706,6 +16974,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd8, 0x2a}},
 			memory.Snapshot{Address: 0x94dd, Values: []uint8{0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb2b",
@@ -15731,6 +17001,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xbd, 0x2b}},
 			memory.Snapshot{Address: 0xb441, Values: []uint8{0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb2c",
@@ -15756,6 +17028,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x2c, 0x2c}},
 			memory.Snapshot{Address: 0xfe54, Values: []uint8{0x81}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb2d",
@@ -15781,6 +17055,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x9b, 0x2d}},
 			memory.Snapshot{Address: 0xb488, Values: []uint8{0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb2e",
@@ -15806,6 +17082,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x3d, 0x2e}},
 			memory.Snapshot{Address: 0x6a15, Values: []uint8{0x05}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb2f",
@@ -15831,6 +17109,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd3, 0x2f}},
 			memory.Snapshot{Address: 0x7a03, Values: []uint8{0xf2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb30",
@@ -15856,6 +17136,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xdf, 0x30}},
 			memory.Snapshot{Address: 0xeec7, Values: []uint8{0x32}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb31",
@@ -15881,6 +17163,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x49, 0x31}},
 			memory.Snapshot{Address: 0xf276, Values: []uint8{0xcd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb32",
@@ -15906,6 +17190,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe0, 0x32}},
 			memory.Snapshot{Address: 0x577f, Values: []uint8{0xe2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb33",
@@ -15931,6 +17217,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc9, 0x33}},
 			memory.Snapshot{Address: 0xef75, Values: []uint8{0x0b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb34",
@@ -15956,6 +17244,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x49, 0x34}},
 			memory.Snapshot{Address: 0xab91, Values: []uint8{0xef}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb35",
@@ -15981,6 +17271,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb9, 0x35}},
 			memory.Snapshot{Address: 0xead3, Values: []uint8{0x8f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb36",
@@ -16006,6 +17298,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb4, 0x36}},
 			memory.Snapshot{Address: 0x12e2, Values: []uint8{0x02}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb37",
@@ -16031,6 +17325,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc6, 0x37}},
 			memory.Snapshot{Address: 0x503d, Values: []uint8{0x3d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb38",
@@ -16056,6 +17352,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x8e, 0x38}},
 			memory.Snapshot{Address: 0xf623, Values: []uint8{0x5e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb39",
@@ -16081,6 +17379,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xdc, 0x39}},
 			memory.Snapshot{Address: 0xa871, Values: []uint8{0x83}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb3a",
@@ -16106,6 +17406,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0d, 0x3a}},
 			memory.Snapshot{Address: 0x259e, Values: []uint8{0x89}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb3b",
@@ -16131,6 +17433,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x20, 0x3b}},
 			memory.Snapshot{Address: 0x700d, Values: []uint8{0xa9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb3c",
@@ -16156,6 +17460,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe1, 0x3c}},
 			memory.Snapshot{Address: 0xf51c, Values: []uint8{0xd0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb3d",
@@ -16181,6 +17487,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xbe, 0x3d}},
 			memory.Snapshot{Address: 0x02de, Values: []uint8{0x58}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb3e",
@@ -16206,6 +17514,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0a, 0x3e}},
 			memory.Snapshot{Address: 0x7854, Values: []uint8{0x5d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb3f",
@@ -16231,6 +17541,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x31, 0x3f}},
 			memory.Snapshot{Address: 0x34b9, Values: []uint8{0x04}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb40",
@@ -16256,6 +17568,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xbd, 0x40}},
 			memory.Snapshot{Address: 0x8bbe, Values: []uint8{0xe7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb41",
@@ -16281,6 +17595,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x52, 0x41}},
 			memory.Snapshot{Address: 0xce21, Values: []uint8{0x75}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb42",
@@ -16306,6 +17622,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x1e, 0x42}},
 			memory.Snapshot{Address: 0xf058, Values: []uint8{0x90}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb43",
@@ -16331,6 +17649,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xbc, 0x43}},
 			memory.Snapshot{Address: 0xe872, Values: []uint8{0x6b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb44",
@@ -16356,6 +17676,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe8, 0x44}},
 			memory.Snapshot{Address: 0xedf2, Values: []uint8{0x62}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb45",
@@ -16381,6 +17703,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x02, 0x45}},
 			memory.Snapshot{Address: 0xa2c0, Values: []uint8{0x55}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb46",
@@ -16406,6 +17730,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe2, 0x46}},
 			memory.Snapshot{Address: 0xa381, Values: []uint8{0xd5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb47",
@@ -16431,6 +17757,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x7a, 0x47}},
 			memory.Snapshot{Address: 0x52a1, Values: []uint8{0x6a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb48",
@@ -16456,6 +17784,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x13, 0x48}},
 			memory.Snapshot{Address: 0x2759, Values: []uint8{0xa8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb49",
@@ -16481,6 +17811,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x94, 0x49}},
 			memory.Snapshot{Address: 0x415a, Values: []uint8{0x26}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb4a",
@@ -16506,6 +17838,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x3b, 0x4a}},
 			memory.Snapshot{Address: 0xc026, Values: []uint8{0xb5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb4b",
@@ -16531,6 +17865,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb0, 0x4b}},
 			memory.Snapshot{Address: 0xc1e9, Values: []uint8{0x18}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb4c",
@@ -16556,6 +17892,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x97, 0x4c}},
 			memory.Snapshot{Address: 0x86e3, Values: []uint8{0x63}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb4d",
@@ -16581,6 +17919,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x15, 0x4d}},
 			memory.Snapshot{Address: 0x7d3f, Values: []uint8{0x60}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb4e",
@@ -16606,6 +17946,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb0, 0x4e}},
 			memory.Snapshot{Address: 0xea8e, Values: []uint8{0x3b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb4f",
@@ -16631,6 +17973,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x8b, 0x4f}},
 			memory.Snapshot{Address: 0x884b, Values: []uint8{0x4c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb50",
@@ -16656,6 +18000,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x12, 0x50}},
 			memory.Snapshot{Address: 0xdb04, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb51",
@@ -16681,6 +18027,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x18, 0x51}},
 			memory.Snapshot{Address: 0x84ca, Values: []uint8{0x1c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb52",
@@ -16706,6 +18054,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x42, 0x52}},
 			memory.Snapshot{Address: 0x6198, Values: []uint8{0x53}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb53",
@@ -16731,6 +18081,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe3, 0x53}},
 			memory.Snapshot{Address: 0xae28, Values: []uint8{0xd6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb54",
@@ -16756,6 +18108,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x7d, 0x54}},
 			memory.Snapshot{Address: 0xf052, Values: []uint8{0x5d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb55",
@@ -16781,6 +18135,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x88, 0x55}},
 			memory.Snapshot{Address: 0xf2da, Values: []uint8{0x03}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb56",
@@ -16806,6 +18162,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x57, 0x56}},
 			memory.Snapshot{Address: 0x6d87, Values: []uint8{0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb57",
@@ -16831,6 +18189,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x06, 0x57}},
 			memory.Snapshot{Address: 0x5839, Values: []uint8{0x1d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb58",
@@ -16856,6 +18216,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x83, 0x58}},
 			memory.Snapshot{Address: 0x69c9, Values: []uint8{0x0f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb59",
@@ -16881,6 +18243,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xdb, 0x59}},
 			memory.Snapshot{Address: 0x9170, Values: []uint8{0x10}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb5a",
@@ -16906,6 +18270,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd1, 0x5a}},
 			memory.Snapshot{Address: 0x0db1, Values: []uint8{0xbe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb5b",
@@ -16931,6 +18297,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd5, 0x5b}},
 			memory.Snapshot{Address: 0x6282, Values: []uint8{0x67}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb5c",
@@ -16956,6 +18324,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x5c, 0x5c}},
 			memory.Snapshot{Address: 0x9e22, Values: []uint8{0xc9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb5d",
@@ -16981,6 +18351,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xff, 0x5d}},
 			memory.Snapshot{Address: 0xd192, Values: []uint8{0x0d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb5e",
@@ -17006,6 +18378,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x62, 0x5e}},
 			memory.Snapshot{Address: 0xed76, Values: []uint8{0xa7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb5f",
@@ -17031,6 +18405,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x3f, 0x5f}},
 			memory.Snapshot{Address: 0xdf85, Values: []uint8{0x9e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb60",
@@ -17056,6 +18432,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x65, 0x60}},
 			memory.Snapshot{Address: 0x3307, Values: []uint8{0x2e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb61",
@@ -17081,6 +18459,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xa8, 0x61}},
 			memory.Snapshot{Address: 0x3673, Values: []uint8{0xbc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb62",
@@ -17106,6 +18486,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd9, 0x62}},
 			memory.Snapshot{Address: 0x0aa5, Values: []uint8{0xea}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb63",
@@ -17131,6 +18513,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x79, 0x63}},
 			memory.Snapshot{Address: 0xe6f2, Values: []uint8{0x83}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb64",
@@ -17156,6 +18540,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x71, 0x64}},
 			memory.Snapshot{Address: 0xed6c, Values: []uint8{0x52}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb65",
@@ -17181,6 +18567,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x67, 0x65}},
 			memory.Snapshot{Address: 0x77e0, Values: []uint8{0xf5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb66",
@@ -17206,6 +18594,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x63, 0x66}},
 			memory.Snapshot{Address: 0xee78, Values: []uint8{0x70}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb67",
@@ -17231,6 +18621,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd7, 0x67}},
 			memory.Snapshot{Address: 0xee78, Values: []uint8{0x06}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb68",
@@ -17256,6 +18648,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb1, 0x68}},
 			memory.Snapshot{Address: 0xe919, Values: []uint8{0x20}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb69",
@@ -17281,6 +18675,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe8, 0x69}},
 			memory.Snapshot{Address: 0x33dc, Values: []uint8{0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb6a",
@@ -17306,6 +18702,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x33, 0x6a}},
 			memory.Snapshot{Address: 0x86e9, Values: []uint8{0x1c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb6b",
@@ -17331,6 +18729,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x11, 0x6b}},
 			memory.Snapshot{Address: 0x188c, Values: []uint8{0xbc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb6c",
@@ -17356,6 +18756,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x5e, 0x6c}},
 			memory.Snapshot{Address: 0x3e7f, Values: []uint8{0x2a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb6d",
@@ -17381,6 +18783,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xdd, 0x6d}},
 			memory.Snapshot{Address: 0xe2f1, Values: []uint8{0x41}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb6e",
@@ -17406,6 +18810,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb2, 0x6e}},
 			memory.Snapshot{Address: 0x3038, Values: []uint8{0x3f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb6f",
@@ -17431,6 +18837,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xbe, 0x6f}},
 			memory.Snapshot{Address: 0xfbd9, Values: []uint8{0x56}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb70",
@@ -17456,6 +18864,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb5, 0x70}},
 			memory.Snapshot{Address: 0x03e1, Values: []uint8{0x74}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb71",
@@ -17481,6 +18891,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf7, 0x71}},
 			memory.Snapshot{Address: 0x1b2a, Values: []uint8{0x08}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb72",
@@ -17506,6 +18918,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x22, 0x72}},
 			memory.Snapshot{Address: 0xce47, Values: []uint8{0x08}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb73",
@@ -17531,6 +18945,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x12, 0x73}},
 			memory.Snapshot{Address: 0x6454, Values: []uint8{0x3c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb74",
@@ -17556,6 +18972,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x08, 0x74}},
 			memory.Snapshot{Address: 0x7dc9, Values: []uint8{0xbe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb75",
@@ -17581,6 +18999,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x5b, 0x75}},
 			memory.Snapshot{Address: 0x6108, Values: []uint8{0xcf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb76",
@@ -17606,6 +19026,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x73, 0x76}},
 			memory.Snapshot{Address: 0x7efd, Values: []uint8{0x1e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb77",
@@ -17631,6 +19053,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x7f, 0x77}},
 			memory.Snapshot{Address: 0x05b6, Values: []uint8{0x97}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb78",
@@ -17656,6 +19080,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x70, 0x78}},
 			memory.Snapshot{Address: 0x9407, Values: []uint8{0x76}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb79",
@@ -17681,6 +19107,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc3, 0x79}},
 			memory.Snapshot{Address: 0x41a1, Values: []uint8{0xb8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb7a",
@@ -17706,6 +19134,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x3f, 0x7a}},
 			memory.Snapshot{Address: 0x0ae8, Values: []uint8{0xeb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb7b",
@@ -17731,6 +19161,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x88, 0x7b}},
 			memory.Snapshot{Address: 0x4fc8, Values: []uint8{0x22}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb7c",
@@ -17756,6 +19188,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x9e, 0x7c}},
 			memory.Snapshot{Address: 0x6821, Values: []uint8{0x3a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb7d",
@@ -17781,6 +19215,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x29, 0x7d}},
 			memory.Snapshot{Address: 0xb04a, Values: []uint8{0x2c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb7e",
@@ -17806,6 +19242,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x4f, 0x7e}},
 			memory.Snapshot{Address: 0xcf3f, Values: []uint8{0xf2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb7f",
@@ -17831,6 +19269,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x75, 0x7f}},
 			memory.Snapshot{Address: 0x5f37, Values: []uint8{0xa2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb80",
@@ -17856,6 +19296,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x70, 0x80}},
 			memory.Snapshot{Address: 0xad35, Values: []uint8{0x30}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb81",
@@ -17881,6 +19323,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x2a, 0x81}},
 			memory.Snapshot{Address: 0xbdfd, Values: []uint8{0x24}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb82",
@@ -17906,6 +19350,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x9a, 0x82}},
 			memory.Snapshot{Address: 0x5e0e, Values: []uint8{0x51}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb83",
@@ -17931,6 +19377,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0e, 0x83}},
 			memory.Snapshot{Address: 0x344f, Values: []uint8{0x01}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb84",
@@ -17956,6 +19404,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x47, 0x84}},
 			memory.Snapshot{Address: 0x016a, Values: []uint8{0xb0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb85",
@@ -17981,6 +19431,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x6c, 0x85}},
 			memory.Snapshot{Address: 0x0c0f, Values: []uint8{0xde}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb86",
@@ -18006,6 +19458,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x5c, 0x86}},
 			memory.Snapshot{Address: 0x1121, Values: []uint8{0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb87",
@@ -18031,6 +19485,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x02, 0x87}},
 			memory.Snapshot{Address: 0xede8, Values: []uint8{0xc4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb88",
@@ -18056,6 +19512,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x9b, 0x88}},
 			memory.Snapshot{Address: 0x8729, Values: []uint8{0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb89",
@@ -18081,6 +19539,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x2b, 0x89}},
 			memory.Snapshot{Address: 0x8f69, Values: []uint8{0xcf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb8a",
@@ -18106,6 +19566,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0a, 0x8a}},
 			memory.Snapshot{Address: 0x39b3, Values: []uint8{0xea}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb8b",
@@ -18131,6 +19593,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x62, 0x8b}},
 			memory.Snapshot{Address: 0x16e7, Values: []uint8{0x8a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb8c",
@@ -18156,6 +19620,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe8, 0x8c}},
 			memory.Snapshot{Address: 0xc68a, Values: []uint8{0x3e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb8d",
@@ -18181,6 +19647,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xcc, 0x8d}},
 			memory.Snapshot{Address: 0x22b2, Values: []uint8{0x9e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb8e",
@@ -18206,6 +19674,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0a, 0x8e}},
 			memory.Snapshot{Address: 0xd2f2, Values: []uint8{0x03}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb8f",
@@ -18231,6 +19701,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x7b, 0x8f}},
 			memory.Snapshot{Address: 0x4079, Values: []uint8{0x96}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb90",
@@ -18256,6 +19728,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x04, 0x90}},
 			memory.Snapshot{Address: 0xb505, Values: []uint8{0x46}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb91",
@@ -18281,6 +19755,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x11, 0x91}},
 			memory.Snapshot{Address: 0xc998, Values: []uint8{0x83}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb92",
@@ -18306,6 +19782,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x4b, 0x92}},
 			memory.Snapshot{Address: 0x91b1, Values: []uint8{0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb93",
@@ -18331,6 +19809,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x03, 0x93}},
 			memory.Snapshot{Address: 0xac31, Values: []uint8{0x93}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb94",
@@ -18356,6 +19836,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x11, 0x94}},
 			memory.Snapshot{Address: 0x5e95, Values: []uint8{0xb7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb95",
@@ -18381,6 +19863,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe6, 0x95}},
 			memory.Snapshot{Address: 0xfb5a, Values: []uint8{0xc6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb96",
@@ -18406,6 +19890,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd5, 0x96}},
 			memory.Snapshot{Address: 0x7a56, Values: []uint8{0xae}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb97",
@@ -18431,6 +19917,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x92, 0x97}},
 			memory.Snapshot{Address: 0x840e, Values: []uint8{0x23}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb98",
@@ -18456,6 +19944,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xdc, 0x98}},
 			memory.Snapshot{Address: 0x03fa, Values: []uint8{0x58}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb99",
@@ -18481,6 +19971,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x6d, 0x99}},
 			memory.Snapshot{Address: 0x0a6a, Values: []uint8{0xce}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb9a",
@@ -18506,6 +19998,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x8a, 0x9a}},
 			memory.Snapshot{Address: 0x6832, Values: []uint8{0xa8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb9b",
@@ -18531,6 +20025,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x97, 0x9b}},
 			memory.Snapshot{Address: 0x0686, Values: []uint8{0x62}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb9c",
@@ -18556,6 +20052,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x54, 0x9c}},
 			memory.Snapshot{Address: 0x84cf, Values: []uint8{0x1b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb9d",
@@ -18581,6 +20079,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0f, 0x9d}},
 			memory.Snapshot{Address: 0xe92f, Values: []uint8{0xe8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb9e",
@@ -18606,6 +20106,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb5, 0x9e}},
 			memory.Snapshot{Address: 0xd870, Values: []uint8{0xee}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcb9f",
@@ -18631,6 +20133,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb8, 0x9f}},
 			memory.Snapshot{Address: 0xe5f4, Values: []uint8{0xa6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcba0",
@@ -18656,6 +20160,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x02, 0xa0}},
 			memory.Snapshot{Address: 0xa2f2, Values: []uint8{0x39}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcba1",
@@ -18681,6 +20187,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf5, 0xa1}},
 			memory.Snapshot{Address: 0x45b0, Values: []uint8{0xd2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcba2",
@@ -18706,6 +20214,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0e, 0xa2}},
 			memory.Snapshot{Address: 0x6299, Values: []uint8{0xa1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcba3",
@@ -18731,6 +20241,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x2e, 0xa3}},
 			memory.Snapshot{Address: 0x043b, Values: []uint8{0x04}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcba4",
@@ -18756,6 +20268,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x03, 0xa4}},
 			memory.Snapshot{Address: 0xfe50, Values: []uint8{0x27}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcba5",
@@ -18781,6 +20295,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf6, 0xa5}},
 			memory.Snapshot{Address: 0x7b1d, Values: []uint8{0x6b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcba6",
@@ -18806,6 +20322,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x27, 0xa6}},
 			memory.Snapshot{Address: 0xae42, Values: []uint8{0x8f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcba7",
@@ -18831,6 +20349,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf2, 0xa7}},
 			memory.Snapshot{Address: 0x5eba, Values: []uint8{0x87}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcba8",
@@ -18856,6 +20376,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd0, 0xa8}},
 			memory.Snapshot{Address: 0xe81f, Values: []uint8{0x7e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcba9",
@@ -18881,6 +20403,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x9d, 0xa9}},
 			memory.Snapshot{Address: 0x0f7a, Values: []uint8{0x1f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbaa",
@@ -18906,6 +20430,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x9f, 0xaa}},
 			memory.Snapshot{Address: 0x66e6, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbab",
@@ -18931,6 +20457,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x16, 0xab}},
 			memory.Snapshot{Address: 0x6698, Values: []uint8{0xeb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbac",
@@ -18956,6 +20484,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc4, 0xac}},
 			memory.Snapshot{Address: 0xa4a1, Values: []uint8{0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbad",
@@ -18981,6 +20511,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x49, 0xad}},
 			memory.Snapshot{Address: 0xef3e, Values: []uint8{0x76}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbae",
@@ -19006,6 +20538,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x6e, 0xae}},
 			memory.Snapshot{Address: 0xb374, Values: []uint8{0x5a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbaf",
@@ -19031,6 +20565,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc2, 0xaf}},
 			memory.Snapshot{Address: 0x35db, Values: []uint8{0x15}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbb0",
@@ -19056,6 +20592,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x47, 0xb0}},
 			memory.Snapshot{Address: 0x591e, Values: []uint8{0x1e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbb1",
@@ -19081,6 +20619,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x86, 0xb1}},
 			memory.Snapshot{Address: 0xad58, Values: []uint8{0x46}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbb2",
@@ -19106,6 +20646,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x70, 0xb2}},
 			memory.Snapshot{Address: 0xe840, Values: []uint8{0x48}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbb3",
@@ -19131,6 +20673,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xde, 0xb3}},
 			memory.Snapshot{Address: 0x53d9, Values: []uint8{0x06}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbb4",
@@ -19156,6 +20700,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x6b, 0xb4}},
 			memory.Snapshot{Address: 0x50d1, Values: []uint8{0xdd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbb5",
@@ -19181,6 +20727,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xec, 0xb5}},
 			memory.Snapshot{Address: 0x145a, Values: []uint8{0xd6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbb6",
@@ -19206,6 +20754,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x15, 0xb6}},
 			memory.Snapshot{Address: 0x8787, Values: []uint8{0x8c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbb7",
@@ -19231,6 +20781,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd3, 0xb7}},
 			memory.Snapshot{Address: 0x60f3, Values: []uint8{0x54}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbb8",
@@ -19256,6 +20808,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x13, 0xb8}},
 			memory.Snapshot{Address: 0x0c09, Values: []uint8{0x87}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbb9",
@@ -19281,6 +20835,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x56, 0xb9}},
 			memory.Snapshot{Address: 0x05ba, Values: []uint8{0xc8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbba",
@@ -19306,6 +20862,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x86, 0xba}},
 			memory.Snapshot{Address: 0xf566, Values: []uint8{0x30}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbbb",
@@ -19331,6 +20889,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xef, 0xbb}},
 			memory.Snapshot{Address: 0xbd20, Values: []uint8{0xc9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbbc",
@@ -19356,6 +20916,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc0, 0xbc}},
 			memory.Snapshot{Address: 0x634e, Values: []uint8{0x28}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbbd",
@@ -19381,6 +20943,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xb9, 0xbd}},
 			memory.Snapshot{Address: 0xe37d, Values: []uint8{0xdd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbbe",
@@ -19406,6 +20970,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x4d, 0xbe}},
 			memory.Snapshot{Address: 0x5920, Values: []uint8{0xe8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbbf",
@@ -19431,6 +20997,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x26, 0xbf}},
 			memory.Snapshot{Address: 0x175a, Values: []uint8{0xe2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbc0",
@@ -19456,6 +21024,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x00, 0xc0}},
 			memory.Snapshot{Address: 0x792e, Values: []uint8{0x92}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbc1",
@@ -19481,6 +21051,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf7, 0xc1}},
 			memory.Snapshot{Address: 0xdcc3, Values: []uint8{0x1c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbc2",
@@ -19506,6 +21078,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x85, 0xc2}},
 			memory.Snapshot{Address: 0x0c7f, Values: []uint8{0x30}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbc3",
@@ -19531,6 +21105,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x32, 0xc3}},
 			memory.Snapshot{Address: 0x5458, Values: []uint8{0xdd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbc4",
@@ -19556,6 +21132,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xae, 0xc4}},
 			memory.Snapshot{Address: 0x7a7b, Values: []uint8{0x27}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbc5",
@@ -19581,6 +21159,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x9c, 0xc5}},
 			memory.Snapshot{Address: 0xba35, Values: []uint8{0x20}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbc6",
@@ -19606,6 +21186,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc4, 0xc6}},
 			memory.Snapshot{Address: 0xaaf0, Values: []uint8{0xb8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbc7",
@@ -19631,6 +21213,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf8, 0xc7}},
 			memory.Snapshot{Address: 0x64c3, Values: []uint8{0x94}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbc8",
@@ -19656,6 +21240,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x65, 0xc8}},
 			memory.Snapshot{Address: 0x6edf, Values: []uint8{0x8f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbc9",
@@ -19681,6 +21267,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xfb, 0xc9}},
 			memory.Snapshot{Address: 0xb66b, Values: []uint8{0xb9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbca",
@@ -19706,6 +21294,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x8a, 0xca}},
 			memory.Snapshot{Address: 0xa811, Values: []uint8{0x7e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbcb",
@@ -19731,6 +21321,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xa4, 0xcb}},
 			memory.Snapshot{Address: 0xa3eb, Values: []uint8{0x73}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbcc",
@@ -19756,6 +21348,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x65, 0xcc}},
 			memory.Snapshot{Address: 0x1fbf, Values: []uint8{0x72}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbcd",
@@ -19781,6 +21375,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe9, 0xcd}},
 			memory.Snapshot{Address: 0x535f, Values: []uint8{0x1c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbce",
@@ -19806,6 +21402,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x85, 0xce}},
 			memory.Snapshot{Address: 0x0298, Values: []uint8{0x10}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbcf",
@@ -19831,6 +21429,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xe2, 0xcf}},
 			memory.Snapshot{Address: 0xc5b2, Values: []uint8{0xb5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbd0",
@@ -19856,6 +21456,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x7f, 0xd0}},
 			memory.Snapshot{Address: 0xadc2, Values: []uint8{0x51}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbd1",
@@ -19881,6 +21483,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xa6, 0xd1}},
 			memory.Snapshot{Address: 0x1058, Values: []uint8{0x2c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbd2",
@@ -19906,6 +21510,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x9c, 0xd2}},
 			memory.Snapshot{Address: 0xb93d, Values: []uint8{0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbd3",
@@ -19931,6 +21537,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xbd, 0xd3}},
 			memory.Snapshot{Address: 0xd9f3, Values: []uint8{0x60}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbd4",
@@ -19956,6 +21564,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x58, 0xd4}},
 			memory.Snapshot{Address: 0xef7e, Values: []uint8{0x5e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbd5",
@@ -19981,6 +21591,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x41, 0xd5}},
 			memory.Snapshot{Address: 0x8dfd, Values: []uint8{0x71}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbd6",
@@ -20006,6 +21618,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xea, 0xd6}},
 			memory.Snapshot{Address: 0x5eed, Values: []uint8{0x73}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbd7",
@@ -20031,6 +21645,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x80, 0xd7}},
 			memory.Snapshot{Address: 0xe6a5, Values: []uint8{0x60}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbd8",
@@ -20056,6 +21672,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x4c, 0xd8}},
 			memory.Snapshot{Address: 0xb35b, Values: []uint8{0x96}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbd9",
@@ -20081,6 +21699,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x52, 0xd9}},
 			memory.Snapshot{Address: 0x2694, Values: []uint8{0xef}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbda",
@@ -20106,6 +21726,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xea, 0xda}},
 			memory.Snapshot{Address: 0x2d60, Values: []uint8{0x82}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbdb",
@@ -20131,6 +21753,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x4d, 0xdb}},
 			memory.Snapshot{Address: 0x2bca, Values: []uint8{0x10}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbdc",
@@ -20156,6 +21780,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd3, 0xdc}},
 			memory.Snapshot{Address: 0x7ea7, Values: []uint8{0x45}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbdd",
@@ -20181,6 +21807,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x6f, 0xdd}},
 			memory.Snapshot{Address: 0x5930, Values: []uint8{0x20}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbde",
@@ -20206,6 +21834,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x14, 0xde}},
 			memory.Snapshot{Address: 0x89e6, Values: []uint8{0x5e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbdf",
@@ -20231,6 +21861,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xef, 0xdf}},
 			memory.Snapshot{Address: 0xd216, Values: []uint8{0x72}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbe0",
@@ -20256,6 +21888,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x62, 0xe0}},
 			memory.Snapshot{Address: 0x1cad, Values: []uint8{0x46}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbe1",
@@ -20281,6 +21915,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x2e, 0xe1}},
 			memory.Snapshot{Address: 0xb95f, Values: []uint8{0x75}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbe2",
@@ -20306,6 +21942,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x85, 0xe2}},
 			memory.Snapshot{Address: 0xeed5, Values: []uint8{0x72}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbe3",
@@ -20331,6 +21969,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf4, 0xe3}},
 			memory.Snapshot{Address: 0x7eba, Values: []uint8{0x34}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbe4",
@@ -20356,6 +21996,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xbf, 0xe4}},
 			memory.Snapshot{Address: 0x9586, Values: []uint8{0x34}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbe5",
@@ -20381,6 +22023,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf2, 0xe5}},
 			memory.Snapshot{Address: 0x6aa2, Values: []uint8{0x2e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbe6",
@@ -20406,6 +22050,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x25, 0xe6}},
 			memory.Snapshot{Address: 0xd88b, Values: []uint8{0x4c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbe7",
@@ -20431,6 +22077,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf3, 0xe7}},
 			memory.Snapshot{Address: 0x2a0e, Values: []uint8{0xeb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbe8",
@@ -20456,6 +22104,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xf2, 0xe8}},
 			memory.Snapshot{Address: 0x4bcc, Values: []uint8{0xba}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbe9",
@@ -20481,6 +22131,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x8a, 0xe9}},
 			memory.Snapshot{Address: 0x7267, Values: []uint8{0x0a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbea",
@@ -20506,6 +22158,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x04, 0xea}},
 			memory.Snapshot{Address: 0xa7ed, Values: []uint8{0x5f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbeb",
@@ -20531,6 +22185,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x24, 0xeb}},
 			memory.Snapshot{Address: 0x1703, Values: []uint8{0xf3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbec",
@@ -20556,6 +22212,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x60, 0xec}},
 			memory.Snapshot{Address: 0xdde8, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbed",
@@ -20581,6 +22239,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xbe, 0xed}},
 			memory.Snapshot{Address: 0xf730, Values: []uint8{0x6b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbee",
@@ -20606,6 +22266,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xde, 0xee}},
 			memory.Snapshot{Address: 0x6c06, Values: []uint8{0xbd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbef",
@@ -20631,6 +22293,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x30, 0xef}},
 			memory.Snapshot{Address: 0xcc98, Values: []uint8{0x11}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbf0",
@@ -20656,6 +22320,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x2f, 0xf0}},
 			memory.Snapshot{Address: 0x13ef, Values: []uint8{0xad}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbf1",
@@ -20681,6 +22347,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x40, 0xf1}},
 			memory.Snapshot{Address: 0x47fa, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbf2",
@@ -20706,6 +22374,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x0f, 0xf2}},
 			memory.Snapshot{Address: 0xc956, Values: []uint8{0x21}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbf3",
@@ -20731,6 +22401,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x06, 0xf3}},
 			memory.Snapshot{Address: 0x1d9c, Values: []uint8{0xe4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbf4",
@@ -20756,6 +22428,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x3b, 0xf4}},
 			memory.Snapshot{Address: 0x173d, Values: []uint8{0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbf5",
@@ -20781,6 +22455,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x64, 0xf5}},
 			memory.Snapshot{Address: 0xeba3, Values: []uint8{0xc5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbf6",
@@ -20806,6 +22482,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x7b, 0xf6}},
 			memory.Snapshot{Address: 0xdcd5, Values: []uint8{0xa2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbf7",
@@ -20831,6 +22509,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xc3, 0xf7}},
 			memory.Snapshot{Address: 0x2fe1, Values: []uint8{0xa9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbf8",
@@ -20856,6 +22536,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x59, 0xf8}},
 			memory.Snapshot{Address: 0x42d8, Values: []uint8{0x28}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbf9",
@@ -20881,6 +22563,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x55, 0xf9}},
 			memory.Snapshot{Address: 0xd8e4, Values: []uint8{0x14}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbfa",
@@ -20906,6 +22590,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x74, 0xfa}},
 			memory.Snapshot{Address: 0x9494, Values: []uint8{0xfe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbfb",
@@ -20931,6 +22617,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xaf, 0xfb}},
 			memory.Snapshot{Address: 0x3402, Values: []uint8{0x02}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbfc",
@@ -20956,6 +22644,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xa1, 0xfc}},
 			memory.Snapshot{Address: 0x60da, Values: []uint8{0x10}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbfd",
@@ -20981,6 +22671,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0x28, 0xfd}},
 			memory.Snapshot{Address: 0x3ef8, Values: []uint8{0xc2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbfe",
@@ -21006,6 +22698,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xec, 0xfe}},
 			memory.Snapshot{Address: 0x41a1, Values: []uint8{0xa1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddcbff",
@@ -21031,6 +22725,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xcb, 0xd3, 0xff}},
 			memory.Snapshot{Address: 0x0628, Values: []uint8{0x2b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dde1",
@@ -21056,6 +22752,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xe1}},
 			memory.Snapshot{Address: 0x595f, Values: []uint8{0x9a, 0x09}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dde3",
@@ -21081,6 +22779,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xe3}},
 			memory.Snapshot{Address: 0x57bd, Values: []uint8{0x15, 0x3f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dde5",
@@ -21105,6 +22805,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xe5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "dde9",
@@ -21129,6 +22831,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xe9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddf9",
@@ -21153,6 +22857,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xf9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ddfd00",
@@ -21177,6 +22883,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xdd, 0xfd, 0x00, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "de",
@@ -21201,6 +22909,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xde, 0xa1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "df",
@@ -21225,6 +22935,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6d33, Values: []uint8{0xdf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e0_1",
@@ -21250,6 +22962,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe0}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e0_2",
@@ -21275,6 +22989,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe0}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e1",
@@ -21300,6 +23016,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe1}},
 			memory.Snapshot{Address: 0x4143, Values: []uint8{0xce, 0xe8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e2_1",
@@ -21324,6 +23042,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe2, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e2_2",
@@ -21348,6 +23068,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe2, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e3",
@@ -21373,6 +23095,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe3}},
 			memory.Snapshot{Address: 0x0373, Values: []uint8{0x8e, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e4_1",
@@ -21397,6 +23121,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe4, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e4_2",
@@ -21421,6 +23147,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe4, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e5",
@@ -21445,6 +23173,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e6",
@@ -21469,6 +23199,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe6, 0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e7",
@@ -21493,6 +23225,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6d33, Values: []uint8{0xe7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e8_1",
@@ -21518,6 +23252,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe8}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e8_2",
@@ -21543,6 +23279,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe8}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "e9",
@@ -21567,6 +23305,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xe9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ea_1",
@@ -21591,6 +23331,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xea, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ea_2",
@@ -21615,6 +23357,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xea, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eb",
@@ -21639,6 +23383,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xeb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ec_1",
@@ -21663,6 +23409,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xec, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ec_2",
@@ -21687,6 +23435,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xec, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed40",
@@ -21711,6 +23461,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x40}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed41",
@@ -21735,6 +23487,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x41}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed42",
@@ -21759,6 +23513,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x42}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed43",
@@ -21783,6 +23539,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x43, 0xc6, 0x54}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed44",
@@ -21807,6 +23565,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed45",
@@ -21832,6 +23592,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x45}},
 			memory.Snapshot{Address: 0x3100, Values: []uint8{0x1f, 0x22}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed46",
@@ -21856,6 +23618,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x46}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed47",
@@ -21880,6 +23644,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x47}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed48",
@@ -21904,6 +23670,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x48}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed49",
@@ -21928,6 +23696,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed4a",
@@ -21952,6 +23722,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x4a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed4b",
@@ -21977,6 +23749,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x4b, 0x1a, 0xa4}},
 			memory.Snapshot{Address: 0xa41a, Values: []uint8{0xf3, 0xd4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed4c",
@@ -22001,6 +23775,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x4c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed4d",
@@ -22026,6 +23802,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x4d}},
 			memory.Snapshot{Address: 0x680e, Values: []uint8{0x03, 0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed4e",
@@ -22050,6 +23828,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x4e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed4f",
@@ -22074,6 +23854,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed50",
@@ -22098,6 +23880,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed51",
@@ -22122,6 +23906,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x51}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed52",
@@ -22146,6 +23932,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x52}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed53",
@@ -22170,6 +23958,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x53, 0xff, 0x21}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed54",
@@ -22194,6 +23984,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x54}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed55",
@@ -22219,6 +24011,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x55}},
 			memory.Snapshot{Address: 0xd4b4, Values: []uint8{0xea, 0xc9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed56",
@@ -22243,6 +24037,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x56}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed57",
@@ -22267,6 +24063,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x57}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed58",
@@ -22291,6 +24089,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x58}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed59",
@@ -22315,6 +24115,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x59}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed5a",
@@ -22339,6 +24141,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x5a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed5b",
@@ -22364,6 +24168,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x5b, 0x04, 0x9f}},
 			memory.Snapshot{Address: 0x9f04, Values: []uint8{0x84, 0x4d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed5c",
@@ -22388,6 +24194,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x5c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed5d",
@@ -22413,6 +24221,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x5d}},
 			memory.Snapshot{Address: 0x5308, Values: []uint8{0x26, 0xe0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed5e",
@@ -22437,6 +24247,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x5e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed5f",
@@ -22461,6 +24273,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x5f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed60",
@@ -22485,6 +24299,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x60}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed61",
@@ -22509,6 +24325,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed62",
@@ -22533,6 +24351,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x62}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed63",
@@ -22557,6 +24377,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x63, 0x67, 0x65}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed64",
@@ -22581,6 +24403,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x64}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed65",
@@ -22606,6 +24430,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x65}},
 			memory.Snapshot{Address: 0xf207, Values: []uint8{0xeb, 0x0e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed66",
@@ -22630,6 +24456,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x66}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed67",
@@ -22655,6 +24483,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x67}},
 			memory.Snapshot{Address: 0xb9de, Values: []uint8{0x93}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed68",
@@ -22679,6 +24509,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x68}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed69",
@@ -22703,6 +24535,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x69}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed6a",
@@ -22727,6 +24561,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x6a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed6b",
@@ -22752,6 +24588,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x6b, 0x98, 0x61}},
 			memory.Snapshot{Address: 0x6198, Values: []uint8{0x3f, 0xbe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed6c",
@@ -22776,6 +24614,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x6c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed6d",
@@ -22801,6 +24641,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x6d}},
 			memory.Snapshot{Address: 0x5cd3, Values: []uint8{0xa9, 0x73}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed6e",
@@ -22825,6 +24667,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x6e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed6f",
@@ -22850,6 +24694,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x6f}},
 			memory.Snapshot{Address: 0x403c, Values: []uint8{0xc4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed70",
@@ -22874,6 +24720,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x70}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed71",
@@ -22898,6 +24746,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x71}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed72",
@@ -22922,6 +24772,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x72}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed73",
@@ -22946,6 +24798,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x73, 0x2a, 0x79}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed74",
@@ -22970,6 +24824,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x74}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed75",
@@ -22995,6 +24851,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x75}},
 			memory.Snapshot{Address: 0x7d00, Values: []uint8{0xfd, 0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed76",
@@ -23019,6 +24877,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x76}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed78",
@@ -23043,6 +24903,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed79",
@@ -23067,6 +24929,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x79}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed7a",
@@ -23091,6 +24955,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x7a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed7b",
@@ -23116,6 +24982,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x7b, 0x50, 0x8c}},
 			memory.Snapshot{Address: 0x8c50, Values: []uint8{0xd8, 0x48}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed7c",
@@ -23140,6 +25008,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed7d",
@@ -23165,6 +25035,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x7d}},
 			memory.Snapshot{Address: 0x66f0, Values: []uint8{0x4f, 0xfb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ed7e",
@@ -23189,6 +25061,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0x7e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda0",
@@ -23214,6 +25088,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa0}},
 			memory.Snapshot{Address: 0xd097, Values: []uint8{0xb7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda1",
@@ -23239,6 +25115,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa1}},
 			memory.Snapshot{Address: 0x3bc3, Values: []uint8{0xb4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda2",
@@ -23263,6 +25141,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda2_01",
@@ -23287,6 +25167,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda2_02",
@@ -23311,6 +25193,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda2_03",
@@ -23335,6 +25219,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3",
@@ -23360,6 +25246,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x32fa, Values: []uint8{0xb3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_01",
@@ -23385,6 +25273,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x01ff, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_02",
@@ -23410,6 +25300,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x0100, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_03",
@@ -23435,6 +25327,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x0107, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_04",
@@ -23460,6 +25354,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x01ff, Values: []uint8{0x80}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_05",
@@ -23485,6 +25381,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x01fd, Values: []uint8{0x12}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_06",
@@ -23510,6 +25408,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x01fe, Values: []uint8{0x12}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_07",
@@ -23535,6 +25435,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x01ff, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_08",
@@ -23560,6 +25462,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x01fe, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_09",
@@ -23585,6 +25489,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x01ff, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_10",
@@ -23610,6 +25516,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x01ff, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda3_11",
@@ -23635,6 +25543,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa3}},
 			memory.Snapshot{Address: 0x01ff, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda8",
@@ -23660,6 +25570,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa8}},
 			memory.Snapshot{Address: 0x12e8, Values: []uint8{0xd8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "eda9",
@@ -23685,6 +25597,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xa9}},
 			memory.Snapshot{Address: 0x0dbe, Values: []uint8{0x89}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edaa",
@@ -23709,6 +25623,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edaa_01",
@@ -23733,6 +25649,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edaa_02",
@@ -23757,6 +25675,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edaa_03",
@@ -23781,6 +25701,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edab",
@@ -23806,6 +25728,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xab}},
 			memory.Snapshot{Address: 0x199f, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edab_01",
@@ -23831,6 +25755,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xab}},
 			memory.Snapshot{Address: 0x007a, Values: []uint8{0x7f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edab_02",
@@ -23856,6 +25782,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xab}},
 			memory.Snapshot{Address: 0x00f1, Values: []uint8{0xcd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edb0",
@@ -23881,6 +25809,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xb0}},
 			memory.Snapshot{Address: 0x558e, Values: []uint8{0x53, 0x94, 0x30, 0x05, 0x44, 0x24, 0x22, 0xb9, 0xe9, 0x77, 0x23, 0x71, 0xe2, 0x5c, 0xfb, 0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edb1",
@@ -23906,6 +25836,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xb1}},
 			memory.Snapshot{Address: 0x9825, Values: []uint8{0x50, 0xe5, 0x41, 0xf4, 0x01, 0x9f, 0x11, 0x85}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edb2",
@@ -23930,6 +25862,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xb2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edb3",
@@ -23955,6 +25889,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xb3}},
 			memory.Snapshot{Address: 0x1d7c, Values: []uint8{0x9d, 0x24, 0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edb8",
@@ -23980,6 +25916,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xb8}},
 			memory.Snapshot{Address: 0x4dc8, Values: []uint8{0x29, 0x85, 0xa7, 0xc3, 0x55, 0x74, 0x23, 0x0a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edb9",
@@ -24005,6 +25943,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xb9}},
 			memory.Snapshot{Address: 0xc742, Values: []uint8{0xc6, 0x09, 0x85, 0xec, 0x5a, 0x01, 0x4e, 0x6c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edba",
@@ -24029,6 +25969,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xba}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "edbb",
@@ -24054,6 +25996,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xed, 0xbb}},
 			memory.Snapshot{Address: 0x1dcd, Values: []uint8{0xf9, 0x71, 0xc5, 0xb6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ee",
@@ -24078,6 +26022,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xee, 0xd0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ef",
@@ -24102,6 +26048,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6d33, Values: []uint8{0xef}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f0_1",
@@ -24127,6 +26075,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf0}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f0_2",
@@ -24152,6 +26102,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf0}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f1",
@@ -24177,6 +26129,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf1}},
 			memory.Snapshot{Address: 0x4143, Values: []uint8{0xce, 0xe8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f2_1",
@@ -24201,6 +26155,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf2, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f2_2",
@@ -24225,6 +26181,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf2, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f3",
@@ -24249,6 +26207,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f4_1",
@@ -24273,6 +26233,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf4, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f4_2",
@@ -24297,6 +26259,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf4, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f5",
@@ -24321,6 +26285,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f6",
@@ -24345,6 +26311,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf6, 0xa7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f7",
@@ -24369,6 +26337,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6d33, Values: []uint8{0xf7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f8_1",
@@ -24394,6 +26364,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf8}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f8_2",
@@ -24419,6 +26391,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf8}},
 			memory.Snapshot{Address: 0x43f7, Values: []uint8{0xe9, 0xaf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "f9",
@@ -24443,6 +26417,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xf9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fa_1",
@@ -24467,6 +26443,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfa, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fa_2",
@@ -24491,6 +26469,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfa, 0x1b, 0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fb",
@@ -24515,6 +26495,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fc_1",
@@ -24539,6 +26521,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfc, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fc_2",
@@ -24563,6 +26547,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfc, 0x61, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd09",
@@ -24587,6 +26573,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x09}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd19",
@@ -24611,6 +26599,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x19}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd21",
@@ -24635,6 +26625,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x21, 0x46, 0x47}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd22",
@@ -24659,6 +26651,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x22, 0x9a, 0xe2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd23",
@@ -24683,6 +26677,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x23}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd24",
@@ -24707,6 +26703,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x24}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd25",
@@ -24731,6 +26729,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x25}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd26",
@@ -24755,6 +26755,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x26, 0x77}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd29",
@@ -24779,6 +26781,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x29}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd2a",
@@ -24804,6 +26808,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x2a, 0x91, 0xf9}},
 			memory.Snapshot{Address: 0xf991, Values: []uint8{0x92, 0xbf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd2b",
@@ -24828,6 +26834,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x2b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd2c",
@@ -24852,6 +26860,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x2c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd2d",
@@ -24876,6 +26886,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x2d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd2e",
@@ -24900,6 +26912,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x2e, 0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd34",
@@ -24925,6 +26939,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x34, 0xb8}},
 			memory.Snapshot{Address: 0xef7c, Values: []uint8{0xe0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd35",
@@ -24950,6 +26966,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x35, 0xab}},
 			memory.Snapshot{Address: 0xae71, Values: []uint8{0xa6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd36",
@@ -24974,6 +26992,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x36, 0x81, 0xc5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd39",
@@ -24998,6 +27018,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x39}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd44",
@@ -25022,6 +27044,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd45",
@@ -25046,6 +27070,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x45}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd46",
@@ -25071,6 +27097,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x46, 0x4d}},
 			memory.Snapshot{Address: 0x3b49, Values: []uint8{0xc9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd4c",
@@ -25095,6 +27123,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x4c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd4d",
@@ -25119,6 +27149,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x4d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd4e",
@@ -25144,6 +27176,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x4e, 0x67}},
 			memory.Snapshot{Address: 0xbc01, Values: []uint8{0x9d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd54",
@@ -25168,6 +27202,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x54}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd55",
@@ -25192,6 +27228,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x55}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd56",
@@ -25217,6 +27255,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x56, 0xce}},
 			memory.Snapshot{Address: 0xfd70, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd5c",
@@ -25241,6 +27281,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x5c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd5d",
@@ -25265,6 +27307,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x5d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd5e",
@@ -25290,6 +27334,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x5e, 0xc6}},
 			memory.Snapshot{Address: 0x8a70, Values: []uint8{0x8c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd60",
@@ -25314,6 +27360,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x60}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd61",
@@ -25338,6 +27386,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd62",
@@ -25362,6 +27412,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x62}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd63",
@@ -25386,6 +27438,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x63}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd64",
@@ -25410,6 +27464,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x64}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd65",
@@ -25434,6 +27490,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x65}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd66",
@@ -25459,6 +27517,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x66, 0x80}},
 			memory.Snapshot{Address: 0x5aa4, Values: []uint8{0x77}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd67",
@@ -25483,6 +27543,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x67}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd68",
@@ -25507,6 +27569,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x68}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd69",
@@ -25531,6 +27595,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x69}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd6a",
@@ -25555,6 +27621,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x6a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd6b",
@@ -25579,6 +27647,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x6b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd6c",
@@ -25603,6 +27673,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x6c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd6d",
@@ -25627,6 +27699,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd6e",
@@ -25652,6 +27726,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x6e, 0x78}},
 			memory.Snapshot{Address: 0xb11b, Values: []uint8{0xf8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd6f",
@@ -25676,6 +27752,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x6f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd70",
@@ -25700,6 +27778,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x70, 0x53}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd71",
@@ -25724,6 +27804,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x71, 0xb4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd72",
@@ -25748,6 +27830,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x72, 0xe3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd73",
@@ -25772,6 +27856,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x73, 0x17}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd74",
@@ -25796,6 +27882,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x74, 0xf6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd75",
@@ -25820,6 +27908,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x75, 0xab}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd77",
@@ -25844,6 +27934,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x77, 0xf7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd7c",
@@ -25868,6 +27960,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd7d",
@@ -25892,6 +27986,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x7d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd7e",
@@ -25917,6 +28013,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x7e, 0xe4}},
 			memory.Snapshot{Address: 0xd443, Values: []uint8{0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd84",
@@ -25941,6 +28039,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x84}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd85",
@@ -25965,6 +28065,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x85}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd86",
@@ -25990,6 +28092,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x86, 0xce}},
 			memory.Snapshot{Address: 0x8b01, Values: []uint8{0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd8c",
@@ -26014,6 +28118,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x8c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd8d",
@@ -26038,6 +28144,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x8d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd8e",
@@ -26063,6 +28171,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x8e, 0x78}},
 			memory.Snapshot{Address: 0x1b1a, Values: []uint8{0xc0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd94",
@@ -26087,6 +28197,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x94}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd95",
@@ -26111,6 +28223,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x95}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd96",
@@ -26136,6 +28250,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x96, 0x55}},
 			memory.Snapshot{Address: 0xc0e0, Values: []uint8{0x7b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd9c",
@@ -26160,6 +28276,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd9d",
@@ -26184,6 +28302,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x9d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fd9e",
@@ -26209,6 +28329,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0x9e, 0xf9}},
 			memory.Snapshot{Address: 0xf665, Values: []uint8{0xf3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fda4",
@@ -26233,6 +28355,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xa4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fda5",
@@ -26257,6 +28381,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xa5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fda6",
@@ -26282,6 +28408,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xa6, 0x53}},
 			memory.Snapshot{Address: 0x65ee, Values: []uint8{0x95}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdac",
@@ -26306,6 +28434,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xac}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdad",
@@ -26330,6 +28460,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xad}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdae",
@@ -26355,6 +28487,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xae, 0x09}},
 			memory.Snapshot{Address: 0x8201, Values: []uint8{0xcb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdb4",
@@ -26379,6 +28513,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xb4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdb5",
@@ -26403,6 +28539,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xb5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdb6",
@@ -26428,6 +28566,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xb6, 0x4b}},
 			memory.Snapshot{Address: 0xdfb8, Values: []uint8{0x64}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdbc",
@@ -26452,6 +28592,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xbc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdbd",
@@ -26476,6 +28618,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xbd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdbe",
@@ -26501,6 +28645,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xbe, 0x6b}},
 			memory.Snapshot{Address: 0xa9d6, Values: []uint8{0xc0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb00",
@@ -26526,6 +28672,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x0b, 0x00}},
 			memory.Snapshot{Address: 0x2781, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb01",
@@ -26551,6 +28699,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc8, 0x01}},
 			memory.Snapshot{Address: 0x5bfd, Values: []uint8{0xcb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb02",
@@ -26576,6 +28726,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x14, 0x02}},
 			memory.Snapshot{Address: 0x3e06, Values: []uint8{0x58}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb03",
@@ -26601,6 +28753,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x3a, 0x03}},
 			memory.Snapshot{Address: 0x5821, Values: []uint8{0x1a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb04",
@@ -26626,6 +28780,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x67, 0x04}},
 			memory.Snapshot{Address: 0x50d8, Values: []uint8{0x92}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb05",
@@ -26651,6 +28807,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x1e, 0x05}},
 			memory.Snapshot{Address: 0xb279, Values: []uint8{0x66}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb06",
@@ -26676,6 +28834,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x72, 0x06}},
 			memory.Snapshot{Address: 0xff99, Values: []uint8{0xf1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb07",
@@ -26701,6 +28861,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x24, 0x07}},
 			memory.Snapshot{Address: 0x080f, Values: []uint8{0xae}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb08",
@@ -26726,6 +28888,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x25, 0x08}},
 			memory.Snapshot{Address: 0x615c, Values: []uint8{0x83}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb09",
@@ -26751,6 +28915,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xa0, 0x09}},
 			memory.Snapshot{Address: 0x197a, Values: []uint8{0x27}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb0a",
@@ -26776,6 +28942,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xe1, 0x0a}},
 			memory.Snapshot{Address: 0xeed7, Values: []uint8{0x19}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb0b",
@@ -26801,6 +28969,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x0c, 0x0b}},
 			memory.Snapshot{Address: 0xc69b, Values: []uint8{0xf2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb0c",
@@ -26826,6 +28996,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xd7, 0x0c}},
 			memory.Snapshot{Address: 0x8c74, Values: []uint8{0xae}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb0d",
@@ -26851,6 +29023,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x11, 0x0d}},
 			memory.Snapshot{Address: 0xfe3e, Values: []uint8{0x1b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb0e",
@@ -26876,6 +29050,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x0c, 0x0e}},
 			memory.Snapshot{Address: 0xf22f, Values: []uint8{0xf7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb0f",
@@ -26901,6 +29077,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x15, 0x0f}},
 			memory.Snapshot{Address: 0xce4d, Values: []uint8{0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb10",
@@ -26926,6 +29104,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7a, 0x10}},
 			memory.Snapshot{Address: 0x431c, Values: []uint8{0x1c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb11",
@@ -26951,6 +29131,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7b, 0x11}},
 			memory.Snapshot{Address: 0x9d0b, Values: []uint8{0x5e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb12",
@@ -26976,6 +29158,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x61, 0x12}},
 			memory.Snapshot{Address: 0x8598, Values: []uint8{0xa7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb13",
@@ -27001,6 +29185,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xb3, 0x13}},
 			memory.Snapshot{Address: 0xe74b, Values: []uint8{0xb3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb14",
@@ -27026,6 +29212,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc4, 0x14}},
 			memory.Snapshot{Address: 0xd900, Values: []uint8{0x06}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb15",
@@ -27051,6 +29239,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x17, 0x15}},
 			memory.Snapshot{Address: 0x2d92, Values: []uint8{0x12}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb16",
@@ -27076,6 +29266,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x23, 0x16}},
 			memory.Snapshot{Address: 0xf0d7, Values: []uint8{0x89}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb17",
@@ -27101,6 +29293,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x8a, 0x17}},
 			memory.Snapshot{Address: 0x1f9d, Values: []uint8{0xb8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb18",
@@ -27126,6 +29320,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc0, 0x18}},
 			memory.Snapshot{Address: 0x31d6, Values: []uint8{0xfa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb19",
@@ -27151,6 +29347,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xa2, 0x19}},
 			memory.Snapshot{Address: 0x4cd0, Values: []uint8{0x4b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb1a",
@@ -27176,6 +29374,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x78, 0x1a}},
 			memory.Snapshot{Address: 0x414b, Values: []uint8{0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb1b",
@@ -27201,6 +29401,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x16, 0x1b}},
 			memory.Snapshot{Address: 0x71c6, Values: []uint8{0xb8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb1c",
@@ -27226,6 +29428,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x86, 0x1c}},
 			memory.Snapshot{Address: 0xdee8, Values: []uint8{0x8f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb1d",
@@ -27251,6 +29455,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x27, 0x1d}},
 			memory.Snapshot{Address: 0xd68e, Values: []uint8{0xb7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb1e",
@@ -27276,6 +29482,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x3a, 0x1e}},
 			memory.Snapshot{Address: 0xda72, Values: []uint8{0x25}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb1f",
@@ -27301,6 +29509,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7b, 0x1f}},
 			memory.Snapshot{Address: 0x2110, Values: []uint8{0x04}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb20",
@@ -27326,6 +29536,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7a, 0x20}},
 			memory.Snapshot{Address: 0xda9f, Values: []uint8{0x89}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb21",
@@ -27351,6 +29563,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7b, 0x21}},
 			memory.Snapshot{Address: 0xdeb1, Values: []uint8{0x23}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb22",
@@ -27376,6 +29590,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x9a, 0x22}},
 			memory.Snapshot{Address: 0x88c0, Values: []uint8{0xd4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb23",
@@ -27401,6 +29617,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xf5, 0x23}},
 			memory.Snapshot{Address: 0x524a, Values: []uint8{0x65}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb24",
@@ -27426,6 +29644,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xb4, 0x24}},
 			memory.Snapshot{Address: 0xafb2, Values: []uint8{0x7e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb25",
@@ -27451,6 +29671,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xa6, 0x25}},
 			memory.Snapshot{Address: 0x238f, Values: []uint8{0x26}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb26",
@@ -27476,6 +29698,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xbd, 0x26}},
 			memory.Snapshot{Address: 0xd4a1, Values: []uint8{0xbf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb27",
@@ -27501,6 +29725,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x59, 0x27}},
 			memory.Snapshot{Address: 0x8d9b, Values: []uint8{0xa7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb28",
@@ -27526,6 +29752,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x83, 0x28}},
 			memory.Snapshot{Address: 0xaac6, Values: []uint8{0x5d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb29",
@@ -27551,6 +29779,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7d, 0x29}},
 			memory.Snapshot{Address: 0x03c0, Values: []uint8{0x84}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb2a",
@@ -27576,6 +29806,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xf9, 0x2a}},
 			memory.Snapshot{Address: 0xabe0, Values: []uint8{0xdd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb2b",
@@ -27601,6 +29833,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x4b, 0x2b}},
 			memory.Snapshot{Address: 0x4adf, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb2c",
@@ -27626,6 +29860,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xe6, 0x2c}},
 			memory.Snapshot{Address: 0xccb7, Values: []uint8{0x3c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb2d",
@@ -27651,6 +29887,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x5f, 0x2d}},
 			memory.Snapshot{Address: 0xe545, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb2e",
@@ -27676,6 +29914,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x06, 0x2e}},
 			memory.Snapshot{Address: 0x4303, Values: []uint8{0xad}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb2f",
@@ -27701,6 +29941,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x29, 0x2f}},
 			memory.Snapshot{Address: 0x16e1, Values: []uint8{0x18}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb30",
@@ -27726,6 +29968,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x1b, 0x30}},
 			memory.Snapshot{Address: 0xd661, Values: []uint8{0xa5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb31",
@@ -27751,6 +29995,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xf0, 0x31}},
 			memory.Snapshot{Address: 0xbfd0, Values: []uint8{0xf1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb32",
@@ -27776,6 +30022,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc5, 0x32}},
 			memory.Snapshot{Address: 0x5aa3, Values: []uint8{0x59}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb33",
@@ -27801,6 +30049,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7f, 0x33}},
 			memory.Snapshot{Address: 0x19e3, Values: []uint8{0xda}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb34",
@@ -27826,6 +30076,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xd2, 0x34}},
 			memory.Snapshot{Address: 0x5668, Values: []uint8{0xd4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb35",
@@ -27851,6 +30103,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x71, 0x35}},
 			memory.Snapshot{Address: 0x0169, Values: []uint8{0x0b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb36",
@@ -27876,6 +30130,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xda, 0x36}},
 			memory.Snapshot{Address: 0x1ab8, Values: []uint8{0x3c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb37",
@@ -27901,6 +30157,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xcb, 0x37}},
 			memory.Snapshot{Address: 0xe7b7, Values: []uint8{0x9f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb38",
@@ -27926,6 +30184,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x8e, 0x38}},
 			memory.Snapshot{Address: 0xd024, Values: []uint8{0x0d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb39",
@@ -27951,6 +30211,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7f, 0x39}},
 			memory.Snapshot{Address: 0xf4b2, Values: []uint8{0xf5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb3a",
@@ -27976,6 +30238,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x1d, 0x3a}},
 			memory.Snapshot{Address: 0xcb20, Values: []uint8{0xa8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb3b",
@@ -28001,6 +30265,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x05, 0x3b}},
 			memory.Snapshot{Address: 0xd268, Values: []uint8{0xb2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb3c",
@@ -28026,6 +30292,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xae, 0x3c}},
 			memory.Snapshot{Address: 0xa7bd, Values: []uint8{0x96}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb3d",
@@ -28051,6 +30319,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x13, 0x3d}},
 			memory.Snapshot{Address: 0xe53d, Values: []uint8{0xfb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb3e",
@@ -28076,6 +30346,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x2e, 0x3e}},
 			memory.Snapshot{Address: 0xb2ff, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb3f",
@@ -28101,6 +30373,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x21, 0x3f}},
 			memory.Snapshot{Address: 0xc1cd, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb40",
@@ -28126,6 +30400,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x3b, 0x40}},
 			memory.Snapshot{Address: 0x41d0, Values: []uint8{0x0d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb41",
@@ -28151,6 +30427,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xcc, 0x41}},
 			memory.Snapshot{Address: 0x0397, Values: []uint8{0xe9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb42",
@@ -28176,6 +30454,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x01, 0x42}},
 			memory.Snapshot{Address: 0x9f57, Values: []uint8{0xa8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb43",
@@ -28201,6 +30481,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x08, 0x43}},
 			memory.Snapshot{Address: 0x1fd9, Values: []uint8{0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb44",
@@ -28226,6 +30508,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x03, 0x44}},
 			memory.Snapshot{Address: 0xf4f6, Values: []uint8{0x89}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb45",
@@ -28251,6 +30535,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x8d, 0x45}},
 			memory.Snapshot{Address: 0x937a, Values: []uint8{0x8d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb46",
@@ -28276,6 +30562,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x8c, 0x46}},
 			memory.Snapshot{Address: 0x633d, Values: []uint8{0xfe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb47",
@@ -28301,6 +30589,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x96, 0x47}},
 			memory.Snapshot{Address: 0x6da4, Values: []uint8{0xd6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb48",
@@ -28326,6 +30616,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x44, 0x48}},
 			memory.Snapshot{Address: 0xabed, Values: []uint8{0xb0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb49",
@@ -28351,6 +30643,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x4e, 0x49}},
 			memory.Snapshot{Address: 0x3e6f, Values: []uint8{0xa9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb4a",
@@ -28376,6 +30670,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x52, 0x4a}},
 			memory.Snapshot{Address: 0xe82d, Values: []uint8{0xda}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb4b",
@@ -28401,6 +30697,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xea, 0x4b}},
 			memory.Snapshot{Address: 0x8829, Values: []uint8{0x4e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb4c",
@@ -28426,6 +30724,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xee, 0x4c}},
 			memory.Snapshot{Address: 0x7f10, Values: []uint8{0x70}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb4d",
@@ -28451,6 +30751,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x29, 0x4d}},
 			memory.Snapshot{Address: 0xa799, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb4e",
@@ -28476,6 +30778,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x20, 0x4e}},
 			memory.Snapshot{Address: 0xe1e8, Values: []uint8{0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb4f",
@@ -28501,6 +30805,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x9d, 0x4f}},
 			memory.Snapshot{Address: 0x1c95, Values: []uint8{0x18}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb50",
@@ -28526,6 +30832,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x6b, 0x50}},
 			memory.Snapshot{Address: 0xc7ca, Values: []uint8{0xfe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb51",
@@ -28551,6 +30859,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x86, 0x51}},
 			memory.Snapshot{Address: 0x341b, Values: []uint8{0x13}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb52",
@@ -28576,6 +30886,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xe6, 0x52}},
 			memory.Snapshot{Address: 0x8af3, Values: []uint8{0x87}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb53",
@@ -28601,6 +30913,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xd1, 0x53}},
 			memory.Snapshot{Address: 0x7eb2, Values: []uint8{0xe4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb54",
@@ -28626,6 +30940,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x08, 0x54}},
 			memory.Snapshot{Address: 0x5b73, Values: []uint8{0x07}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb55",
@@ -28651,6 +30967,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x54, 0x55}},
 			memory.Snapshot{Address: 0xb506, Values: []uint8{0x46}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb56",
@@ -28676,6 +30994,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x6f, 0x56}},
 			memory.Snapshot{Address: 0x69a1, Values: []uint8{0xdf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb57",
@@ -28701,6 +31021,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x3c, 0x57}},
 			memory.Snapshot{Address: 0xa3f7, Values: []uint8{0x6c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb58",
@@ -28726,6 +31048,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x4e, 0x58}},
 			memory.Snapshot{Address: 0x1ee2, Values: []uint8{0xf6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb59",
@@ -28751,6 +31075,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x2e, 0x59}},
 			memory.Snapshot{Address: 0xfb01, Values: []uint8{0x6f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb5a",
@@ -28776,6 +31102,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x88, 0x5a}},
 			memory.Snapshot{Address: 0x7b40, Values: []uint8{0x6e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb5b",
@@ -28801,6 +31129,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xe7, 0x5b}},
 			memory.Snapshot{Address: 0x3143, Values: []uint8{0xb1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb5c",
@@ -28826,6 +31156,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x74, 0x5c}},
 			memory.Snapshot{Address: 0x54b2, Values: []uint8{0xe3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb5d",
@@ -28851,6 +31183,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xdc, 0x5d}},
 			memory.Snapshot{Address: 0x3b60, Values: []uint8{0xef}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb5e",
@@ -28876,6 +31210,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xe2, 0x5e}},
 			memory.Snapshot{Address: 0xe147, Values: []uint8{0x17}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb5f",
@@ -28901,6 +31237,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xab, 0x5f}},
 			memory.Snapshot{Address: 0xf7c6, Values: []uint8{0xe2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb60",
@@ -28926,6 +31264,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x85, 0x60}},
 			memory.Snapshot{Address: 0x8bc9, Values: []uint8{0xb9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb61",
@@ -28951,6 +31291,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xbe, 0x61}},
 			memory.Snapshot{Address: 0x92a2, Values: []uint8{0x28}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb62",
@@ -28976,6 +31318,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x9d, 0x62}},
 			memory.Snapshot{Address: 0x7e4e, Values: []uint8{0x1a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb63",
@@ -29001,6 +31345,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xf4, 0x63}},
 			memory.Snapshot{Address: 0x1707, Values: []uint8{0x3b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb64",
@@ -29026,6 +31372,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x35, 0x64}},
 			memory.Snapshot{Address: 0xb36b, Values: []uint8{0x8c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb65",
@@ -29051,6 +31399,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x37, 0x65}},
 			memory.Snapshot{Address: 0x8a2b, Values: []uint8{0x08}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb66",
@@ -29076,6 +31426,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x9d, 0x66}},
 			memory.Snapshot{Address: 0x68e5, Values: []uint8{0x90}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb67",
@@ -29101,6 +31453,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xcb, 0x67}},
 			memory.Snapshot{Address: 0x653d, Values: []uint8{0x15}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb68",
@@ -29126,6 +31480,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xca, 0x68}},
 			memory.Snapshot{Address: 0x0388, Values: []uint8{0x83}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb69",
@@ -29151,6 +31507,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xe2, 0x69}},
 			memory.Snapshot{Address: 0xa5e5, Values: []uint8{0x01}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb6a",
@@ -29176,6 +31534,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xae, 0x6a}},
 			memory.Snapshot{Address: 0x936c, Values: []uint8{0x33}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb6b",
@@ -29201,6 +31561,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x1f, 0x6b}},
 			memory.Snapshot{Address: 0xaa4e, Values: []uint8{0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb6c",
@@ -29226,6 +31588,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x0d, 0x6c}},
 			memory.Snapshot{Address: 0x86c7, Values: []uint8{0x25}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb6d",
@@ -29251,6 +31615,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xf0, 0x6d}},
 			memory.Snapshot{Address: 0x62b8, Values: []uint8{0xe3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb6e",
@@ -29276,6 +31642,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x93, 0x6e}},
 			memory.Snapshot{Address: 0x41a3, Values: []uint8{0x1e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb6f",
@@ -29301,6 +31669,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x20, 0x6f}},
 			memory.Snapshot{Address: 0x006e, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb70",
@@ -29326,6 +31696,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xd9, 0x70}},
 			memory.Snapshot{Address: 0x3e41, Values: []uint8{0xc9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb71",
@@ -29351,6 +31723,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x27, 0x71}},
 			memory.Snapshot{Address: 0x99c1, Values: []uint8{0x3e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb72",
@@ -29376,6 +31750,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x98, 0x72}},
 			memory.Snapshot{Address: 0xfcc9, Values: []uint8{0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb73",
@@ -29401,6 +31777,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7a, 0x73}},
 			memory.Snapshot{Address: 0xf652, Values: []uint8{0x31}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb74",
@@ -29426,6 +31804,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x4b, 0x74}},
 			memory.Snapshot{Address: 0x5e95, Values: []uint8{0xfe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb75",
@@ -29451,6 +31831,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x57, 0x75}},
 			memory.Snapshot{Address: 0x6115, Values: []uint8{0x21}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb76",
@@ -29476,6 +31858,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x53, 0x76}},
 			memory.Snapshot{Address: 0x6676, Values: []uint8{0x3a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb77",
@@ -29501,6 +31885,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x02, 0x77}},
 			memory.Snapshot{Address: 0x8843, Values: []uint8{0xd8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb78",
@@ -29526,6 +31912,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7d, 0x78}},
 			memory.Snapshot{Address: 0xff48, Values: []uint8{0xec}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb79",
@@ -29551,6 +31939,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x23, 0x79}},
 			memory.Snapshot{Address: 0x1cd1, Values: []uint8{0x87}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb7a",
@@ -29576,6 +31966,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x42, 0x7a}},
 			memory.Snapshot{Address: 0xd965, Values: []uint8{0xb3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb7b",
@@ -29601,6 +31993,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x17, 0x7b}},
 			memory.Snapshot{Address: 0x0a9a, Values: []uint8{0xbd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb7c",
@@ -29626,6 +32020,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xf1, 0x7c}},
 			memory.Snapshot{Address: 0xd362, Values: []uint8{0x1b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb7d",
@@ -29651,6 +32047,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x9f, 0x7d}},
 			memory.Snapshot{Address: 0xabda, Values: []uint8{0x8a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb7e",
@@ -29676,6 +32074,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x40, 0x7e}},
 			memory.Snapshot{Address: 0x94c4, Values: []uint8{0x9e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb7f",
@@ -29701,6 +32101,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xa2, 0x7f}},
 			memory.Snapshot{Address: 0xce0b, Values: []uint8{0x47}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb80",
@@ -29726,6 +32128,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x8b, 0x80}},
 			memory.Snapshot{Address: 0x9198, Values: []uint8{0xa9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb81",
@@ -29751,6 +32155,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x55, 0x81}},
 			memory.Snapshot{Address: 0x82fa, Values: []uint8{0xfa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb82",
@@ -29776,6 +32182,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x9c, 0x82}},
 			memory.Snapshot{Address: 0x5d74, Values: []uint8{0x9d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb83",
@@ -29801,6 +32209,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x28, 0x83}},
 			memory.Snapshot{Address: 0x3772, Values: []uint8{0xd5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb84",
@@ -29826,6 +32236,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xaa, 0x84}},
 			memory.Snapshot{Address: 0xf16d, Values: []uint8{0xea}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb85",
@@ -29851,6 +32263,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x6c, 0x85}},
 			memory.Snapshot{Address: 0x049f, Values: []uint8{0xe0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb86",
@@ -29876,6 +32290,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7e, 0x86}},
 			memory.Snapshot{Address: 0x2ace, Values: []uint8{0x36}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb87",
@@ -29901,6 +32317,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x59, 0x87}},
 			memory.Snapshot{Address: 0x24c3, Values: []uint8{0x65}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb88",
@@ -29926,6 +32344,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xd4, 0x88}},
 			memory.Snapshot{Address: 0xc5e1, Values: []uint8{0xd6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb89",
@@ -29951,6 +32371,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc3, 0x89}},
 			memory.Snapshot{Address: 0x09c4, Values: []uint8{0xb0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb8a",
@@ -29976,6 +32398,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xf9, 0x8a}},
 			memory.Snapshot{Address: 0xd4cb, Values: []uint8{0xd8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb8b",
@@ -30001,6 +32425,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xed, 0x8b}},
 			memory.Snapshot{Address: 0xc70b, Values: []uint8{0xdc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb8c",
@@ -30026,6 +32452,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x97, 0x8c}},
 			memory.Snapshot{Address: 0xa199, Values: []uint8{0x67}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb8d",
@@ -30051,6 +32479,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc9, 0x8d}},
 			memory.Snapshot{Address: 0x5632, Values: []uint8{0x9a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb8e",
@@ -30076,6 +32506,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc2, 0x8e}},
 			memory.Snapshot{Address: 0x4c43, Values: []uint8{0x7f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb8f",
@@ -30101,6 +32533,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xd4, 0x8f}},
 			memory.Snapshot{Address: 0x6b25, Values: []uint8{0x59}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb90",
@@ -30126,6 +32560,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xfd, 0x90}},
 			memory.Snapshot{Address: 0xd7f2, Values: []uint8{0x70}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb91",
@@ -30151,6 +32587,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xbf, 0x91}},
 			memory.Snapshot{Address: 0x4791, Values: []uint8{0x0e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb92",
@@ -30176,6 +32614,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x0b, 0x92}},
 			memory.Snapshot{Address: 0x3145, Values: []uint8{0xf6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb93",
@@ -30201,6 +32641,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x52, 0x93}},
 			memory.Snapshot{Address: 0x2992, Values: []uint8{0x38}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb94",
@@ -30226,6 +32668,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x95, 0x94}},
 			memory.Snapshot{Address: 0xfdb1, Values: []uint8{0x48}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb95",
@@ -30251,6 +32695,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x90, 0x95}},
 			memory.Snapshot{Address: 0xe706, Values: []uint8{0xeb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb96",
@@ -30276,6 +32722,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x9e, 0x96}},
 			memory.Snapshot{Address: 0xe66d, Values: []uint8{0xfc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb97",
@@ -30301,6 +32749,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x64, 0x97}},
 			memory.Snapshot{Address: 0x18e3, Values: []uint8{0x9d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb98",
@@ -30326,6 +32776,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xda, 0x98}},
 			memory.Snapshot{Address: 0x4392, Values: []uint8{0x15}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb99",
@@ -30351,6 +32803,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x78, 0x99}},
 			memory.Snapshot{Address: 0xd8e4, Values: []uint8{0xb5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb9a",
@@ -30376,6 +32830,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x9c, 0x9a}},
 			memory.Snapshot{Address: 0xd6b3, Values: []uint8{0x9d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb9b",
@@ -30401,6 +32857,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x83, 0x9b}},
 			memory.Snapshot{Address: 0xcaa1, Values: []uint8{0x95}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb9c",
@@ -30426,6 +32884,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x1e, 0x9c}},
 			memory.Snapshot{Address: 0x03d1, Values: []uint8{0x78}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb9d",
@@ -30451,6 +32911,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xe6, 0x9d}},
 			memory.Snapshot{Address: 0xc06d, Values: []uint8{0x53}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb9e",
@@ -30476,6 +32938,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xeb, 0x9e}},
 			memory.Snapshot{Address: 0x41a8, Values: []uint8{0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcb9f",
@@ -30501,6 +32965,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x50, 0x9f}},
 			memory.Snapshot{Address: 0x9d99, Values: []uint8{0x89}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcba0",
@@ -30526,6 +32992,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x76, 0xa0}},
 			memory.Snapshot{Address: 0xd703, Values: []uint8{0xd4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcba1",
@@ -30551,6 +33019,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x31, 0xa1}},
 			memory.Snapshot{Address: 0x66f9, Values: []uint8{0xec}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcba2",
@@ -30576,6 +33046,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x0e, 0xa2}},
 			memory.Snapshot{Address: 0x04cd, Values: []uint8{0x47}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcba3",
@@ -30601,6 +33073,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x05, 0xa3}},
 			memory.Snapshot{Address: 0xad7c, Values: []uint8{0x59}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcba4",
@@ -30626,6 +33100,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x66, 0xa4}},
 			memory.Snapshot{Address: 0xc133, Values: []uint8{0xc5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcba5",
@@ -30651,6 +33127,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xa0, 0xa5}},
 			memory.Snapshot{Address: 0xf141, Values: []uint8{0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcba6",
@@ -30676,6 +33154,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x76, 0xa6}},
 			memory.Snapshot{Address: 0x9469, Values: []uint8{0xbc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcba7",
@@ -30701,6 +33181,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x66, 0xa7}},
 			memory.Snapshot{Address: 0x7a2a, Values: []uint8{0x2e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcba8",
@@ -30726,6 +33208,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xa9, 0xa8}},
 			memory.Snapshot{Address: 0x0cef, Values: []uint8{0xb7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcba9",
@@ -30751,6 +33235,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x2b, 0xa9}},
 			memory.Snapshot{Address: 0x0f7f, Values: []uint8{0x8f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbaa",
@@ -30776,6 +33262,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x0b, 0xaa}},
 			memory.Snapshot{Address: 0xb3dc, Values: []uint8{0x3a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbab",
@@ -30801,6 +33289,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xa9, 0xab}},
 			memory.Snapshot{Address: 0x8e77, Values: []uint8{0x1f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbac",
@@ -30826,6 +33316,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x23, 0xac}},
 			memory.Snapshot{Address: 0x0548, Values: []uint8{0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbad",
@@ -30851,6 +33343,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x4e, 0xad}},
 			memory.Snapshot{Address: 0x94dd, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbae",
@@ -30876,6 +33370,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x0c, 0xae}},
 			memory.Snapshot{Address: 0x0c29, Values: []uint8{0xa9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbaf",
@@ -30901,6 +33397,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x0d, 0xaf}},
 			memory.Snapshot{Address: 0x26f8, Values: []uint8{0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbb0",
@@ -30926,6 +33424,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x5a, 0xb0}},
 			memory.Snapshot{Address: 0xa125, Values: []uint8{0x76}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbb1",
@@ -30951,6 +33451,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x82, 0xb1}},
 			memory.Snapshot{Address: 0xf31a, Values: []uint8{0x79}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbb2",
@@ -30976,6 +33478,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x23, 0xb2}},
 			memory.Snapshot{Address: 0x341c, Values: []uint8{0x7b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbb3",
@@ -31001,6 +33505,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x6c, 0xb3}},
 			memory.Snapshot{Address: 0x523e, Values: []uint8{0x37}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbb4",
@@ -31026,6 +33532,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc5, 0xb4}},
 			memory.Snapshot{Address: 0x4cdc, Values: []uint8{0xe9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbb5",
@@ -31051,6 +33559,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x50, 0xb5}},
 			memory.Snapshot{Address: 0x8f2d, Values: []uint8{0x0f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbb6",
@@ -31076,6 +33586,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x3a, 0xb6}},
 			memory.Snapshot{Address: 0x1e50, Values: []uint8{0x13}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbb7",
@@ -31101,6 +33613,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc0, 0xb7}},
 			memory.Snapshot{Address: 0x0069, Values: []uint8{0x38}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbb8",
@@ -31126,6 +33640,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x31, 0xb8}},
 			memory.Snapshot{Address: 0xd0b8, Values: []uint8{0x17}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbb9",
@@ -31151,6 +33667,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x3b, 0xb9}},
 			memory.Snapshot{Address: 0xb889, Values: []uint8{0xb4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbba",
@@ -31176,6 +33694,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x38, 0xba}},
 			memory.Snapshot{Address: 0x3877, Values: []uint8{0xd6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbbb",
@@ -31201,6 +33721,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x07, 0xbb}},
 			memory.Snapshot{Address: 0xe305, Values: []uint8{0x6e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbbc",
@@ -31226,6 +33748,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xf8, 0xbc}},
 			memory.Snapshot{Address: 0xaf04, Values: []uint8{0xcf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbbd",
@@ -31251,6 +33775,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xaa, 0xbd}},
 			memory.Snapshot{Address: 0xdeb7, Values: []uint8{0x8d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbbe",
@@ -31276,6 +33802,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc8, 0xbe}},
 			memory.Snapshot{Address: 0x3cd7, Values: []uint8{0xa1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbbf",
@@ -31301,6 +33829,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xfd, 0xbf}},
 			memory.Snapshot{Address: 0xbde4, Values: []uint8{0xac}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbc0",
@@ -31326,6 +33856,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x0a, 0xc0}},
 			memory.Snapshot{Address: 0x2b3b, Values: []uint8{0xec}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbc1",
@@ -31351,6 +33883,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x87, 0xc1}},
 			memory.Snapshot{Address: 0xbcee, Values: []uint8{0xee}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbc2",
@@ -31376,6 +33910,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x8d, 0xc2}},
 			memory.Snapshot{Address: 0x5ab9, Values: []uint8{0xc2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbc3",
@@ -31401,6 +33937,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x5a, 0xc3}},
 			memory.Snapshot{Address: 0xe6c0, Values: []uint8{0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbc4",
@@ -31426,6 +33964,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x89, 0xc4}},
 			memory.Snapshot{Address: 0x5c99, Values: []uint8{0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbc5",
@@ -31451,6 +33991,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xa9, 0xc5}},
 			memory.Snapshot{Address: 0x0264, Values: []uint8{0xcd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbc6",
@@ -31476,6 +34018,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xee, 0xc6}},
 			memory.Snapshot{Address: 0x76b2, Values: []uint8{0x82}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbc7",
@@ -31501,6 +34045,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x9e, 0xc7}},
 			memory.Snapshot{Address: 0xf2a9, Values: []uint8{0xd7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbc8",
@@ -31526,6 +34072,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x10, 0xc8}},
 			memory.Snapshot{Address: 0xc422, Values: []uint8{0xe9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbc9",
@@ -31551,6 +34099,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x61, 0xc9}},
 			memory.Snapshot{Address: 0x8ba3, Values: []uint8{0xb7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbca",
@@ -31576,6 +34126,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x1a, 0xca}},
 			memory.Snapshot{Address: 0x51aa, Values: []uint8{0x90}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbcb",
@@ -31601,6 +34153,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x5e, 0xcb}},
 			memory.Snapshot{Address: 0x9ad0, Values: []uint8{0x70}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbcc",
@@ -31626,6 +34180,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x2d, 0xcc}},
 			memory.Snapshot{Address: 0x1526, Values: []uint8{0x4e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbcd",
@@ -31651,6 +34207,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xa1, 0xcd}},
 			memory.Snapshot{Address: 0xbb8a, Values: []uint8{0x66}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbce",
@@ -31676,6 +34234,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x36, 0xce}},
 			memory.Snapshot{Address: 0xb8d8, Values: []uint8{0x45}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbcf",
@@ -31701,6 +34261,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x70, 0xcf}},
 			memory.Snapshot{Address: 0xc30c, Values: []uint8{0x7a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbd0",
@@ -31726,6 +34288,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xbc, 0xd0}},
 			memory.Snapshot{Address: 0x3ba7, Values: []uint8{0x20}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbd1",
@@ -31751,6 +34315,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x11, 0xd1}},
 			memory.Snapshot{Address: 0x8c76, Values: []uint8{0xb9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbd2",
@@ -31776,6 +34342,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xfb, 0xd2}},
 			memory.Snapshot{Address: 0xc04c, Values: []uint8{0x51}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbd3",
@@ -31801,6 +34369,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x3e, 0xd3}},
 			memory.Snapshot{Address: 0x0ac5, Values: []uint8{0xe0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbd4",
@@ -31826,6 +34396,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x36, 0xd4}},
 			memory.Snapshot{Address: 0x94ae, Values: []uint8{0x7d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbd5",
@@ -31851,6 +34423,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x48, 0xd5}},
 			memory.Snapshot{Address: 0x8650, Values: []uint8{0x98}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbd6",
@@ -31876,6 +34450,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xc9, 0xd6}},
 			memory.Snapshot{Address: 0x6a6c, Values: []uint8{0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbd7",
@@ -31901,6 +34477,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xbe, 0xd7}},
 			memory.Snapshot{Address: 0x3669, Values: []uint8{0x95}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbd8",
@@ -31926,6 +34504,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xbc, 0xd8}},
 			memory.Snapshot{Address: 0x43b4, Values: []uint8{0xd8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbd9",
@@ -31951,6 +34531,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x16, 0xd9}},
 			memory.Snapshot{Address: 0x0a7c, Values: []uint8{0xf4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbda",
@@ -31976,6 +34558,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xe8, 0xda}},
 			memory.Snapshot{Address: 0xd0d8, Values: []uint8{0x6b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbdb",
@@ -32001,6 +34585,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x7a, 0xdb}},
 			memory.Snapshot{Address: 0x8ca3, Values: []uint8{0x15}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbdc",
@@ -32026,6 +34612,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x64, 0xdc}},
 			memory.Snapshot{Address: 0x599e, Values: []uint8{0x15}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbdd",
@@ -32051,6 +34639,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x75, 0xdd}},
 			memory.Snapshot{Address: 0x1e09, Values: []uint8{0x28}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbde",
@@ -32076,6 +34666,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x17, 0xde}},
 			memory.Snapshot{Address: 0xc9f7, Values: []uint8{0x41}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbdf",
@@ -32101,6 +34693,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x93, 0xdf}},
 			memory.Snapshot{Address: 0xea56, Values: []uint8{0xef}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbe0",
@@ -32126,6 +34720,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x56, 0xe0}},
 			memory.Snapshot{Address: 0x155d, Values: []uint8{0xb9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbe1",
@@ -32151,6 +34747,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xd1, 0xe1}},
 			memory.Snapshot{Address: 0x0dde, Values: []uint8{0x16}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbe2",
@@ -32176,6 +34774,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x50, 0xe2}},
 			memory.Snapshot{Address: 0xe4ec, Values: []uint8{0xc2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbe3",
@@ -32201,6 +34801,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xca, 0xe3}},
 			memory.Snapshot{Address: 0xad72, Values: []uint8{0xba}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbe4",
@@ -32226,6 +34828,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x62, 0xe4}},
 			memory.Snapshot{Address: 0x54d6, Values: []uint8{0x7b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbe5",
@@ -32251,6 +34855,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xda, 0xe5}},
 			memory.Snapshot{Address: 0xa507, Values: []uint8{0x4c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbe6",
@@ -32276,6 +34882,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x76, 0xe6}},
 			memory.Snapshot{Address: 0x8b7c, Values: []uint8{0x45}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbe7",
@@ -32301,6 +34909,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x11, 0xe7}},
 			memory.Snapshot{Address: 0xb5a8, Values: []uint8{0xa6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbe8",
@@ -32326,6 +34936,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xed, 0xe8}},
 			memory.Snapshot{Address: 0x0a64, Values: []uint8{0xd0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbe9",
@@ -32351,6 +34963,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x35, 0xe9}},
 			memory.Snapshot{Address: 0xa883, Values: []uint8{0x2f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbea",
@@ -32376,6 +34990,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x93, 0xea}},
 			memory.Snapshot{Address: 0x7526, Values: []uint8{0x1b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbeb",
@@ -32401,6 +35017,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xd0, 0xeb}},
 			memory.Snapshot{Address: 0x23e1, Values: []uint8{0x47}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbec",
@@ -32426,6 +35044,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xf3, 0xec}},
 			memory.Snapshot{Address: 0xd2de, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbed",
@@ -32451,6 +35071,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x58, 0xed}},
 			memory.Snapshot{Address: 0x0f03, Values: []uint8{0x10}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbee",
@@ -32476,6 +35098,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x02, 0xee}},
 			memory.Snapshot{Address: 0x42be, Values: []uint8{0xd0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbef",
@@ -32501,6 +35125,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x58, 0xef}},
 			memory.Snapshot{Address: 0x22ca, Values: []uint8{0x09}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbf0",
@@ -32526,6 +35152,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x45, 0xf0}},
 			memory.Snapshot{Address: 0xeee3, Values: []uint8{0x2c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbf1",
@@ -32551,6 +35179,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x2f, 0xf1}},
 			memory.Snapshot{Address: 0x47b2, Values: []uint8{0xdc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbf2",
@@ -32576,6 +35206,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x2c, 0xf2}},
 			memory.Snapshot{Address: 0xeac3, Values: []uint8{0x5e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbf3",
@@ -32601,6 +35233,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x38, 0xf3}},
 			memory.Snapshot{Address: 0x7dc8, Values: []uint8{0x0c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbf4",
@@ -32626,6 +35260,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xd0, 0xf4}},
 			memory.Snapshot{Address: 0x306c, Values: []uint8{0x0e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbf5",
@@ -32651,6 +35287,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x55, 0xf5}},
 			memory.Snapshot{Address: 0x6b74, Values: []uint8{0xf8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbf6",
@@ -32676,6 +35314,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x56, 0xf6}},
 			memory.Snapshot{Address: 0xc670, Values: []uint8{0x5d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbf7",
@@ -32701,6 +35341,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x9e, 0xf7}},
 			memory.Snapshot{Address: 0x5727, Values: []uint8{0x66}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbf8",
@@ -32726,6 +35368,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x54, 0xf8}},
 			memory.Snapshot{Address: 0xdece, Values: []uint8{0x7a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbf9",
@@ -32751,6 +35395,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x30, 0xf9}},
 			memory.Snapshot{Address: 0x9a13, Values: []uint8{0xc6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbfa",
@@ -32776,6 +35422,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x09, 0xfa}},
 			memory.Snapshot{Address: 0xbd82, Values: []uint8{0xf4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbfb",
@@ -32801,6 +35449,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xba, 0xfb}},
 			memory.Snapshot{Address: 0xf82f, Values: []uint8{0xed}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbfc",
@@ -32826,6 +35476,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x56, 0xfc}},
 			memory.Snapshot{Address: 0x6679, Values: []uint8{0x65}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbfd",
@@ -32851,6 +35503,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x25, 0xfd}},
 			memory.Snapshot{Address: 0x5d50, Values: []uint8{0x27}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbfe",
@@ -32876,6 +35530,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0x88, 0xfe}},
 			memory.Snapshot{Address: 0x4dd7, Values: []uint8{0x4a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdcbff",
@@ -32901,6 +35557,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xcb, 0xe4, 0xff}},
 			memory.Snapshot{Address: 0x2ad1, Values: []uint8{0x97}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fde1",
@@ -32926,6 +35584,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xe1}},
 			memory.Snapshot{Address: 0x716e, Values: []uint8{0xd5, 0x92}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fde3",
@@ -32951,6 +35611,8 @@ var fuseTests = []fuseTest{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xe3}},
 			memory.Snapshot{Address: 0x1a38, Values: []uint8{0xe0, 0x0f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fde5",
@@ -32975,6 +35637,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xe5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fde9",
@@ -32999,6 +35663,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xe9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fdf9",
@@ -33023,6 +35689,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfd, 0xf9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "fe",
@@ -33047,6 +35715,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0000, Values: []uint8{0xfe, 0x82}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	fuseTest{
 		name:    "ff",
@@ -33071,6 +35741,8 @@ var fuseTests = []fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6d33, Values: []uint8{0xff}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 }
 
@@ -33096,6 +35768,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"01": fuseTest{
 		name:      "01",
@@ -33118,6 +35792,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"02": fuseTest{
 		name:    "02",
@@ -33142,6 +35818,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0001, Values: []uint8{0x56}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"03": fuseTest{
 		name:      "03",
@@ -33164,6 +35842,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   6,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"04": fuseTest{
 		name:      "04",
@@ -33186,6 +35866,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"05": fuseTest{
 		name:      "05",
@@ -33208,6 +35890,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"06": fuseTest{
 		name:      "06",
@@ -33230,6 +35914,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"07": fuseTest{
 		name:      "07",
@@ -33252,6 +35938,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"08": fuseTest{
 		name:      "08",
@@ -33274,6 +35962,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"09": fuseTest{
 		name:      "09",
@@ -33296,6 +35986,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"0a": fuseTest{
 		name:      "0a",
@@ -33318,6 +36010,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"0b": fuseTest{
 		name:      "0b",
@@ -33340,6 +36034,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   6,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"0c": fuseTest{
 		name:      "0c",
@@ -33362,6 +36058,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"0d": fuseTest{
 		name:      "0d",
@@ -33384,6 +36082,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"0e": fuseTest{
 		name:      "0e",
@@ -33406,6 +36106,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"0f": fuseTest{
 		name:      "0f",
@@ -33428,6 +36130,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"10": fuseTest{
 		name:      "10",
@@ -33450,6 +36154,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   135,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"11": fuseTest{
 		name:      "11",
@@ -33472,6 +36178,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"12": fuseTest{
 		name:    "12",
@@ -33496,6 +36204,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8000, Values: []uint8{0x56}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"13": fuseTest{
 		name:      "13",
@@ -33518,6 +36228,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   6,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"14": fuseTest{
 		name:      "14",
@@ -33540,6 +36252,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"15": fuseTest{
 		name:      "15",
@@ -33562,6 +36276,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"16": fuseTest{
 		name:      "16",
@@ -33584,6 +36300,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"17": fuseTest{
 		name:      "17",
@@ -33606,6 +36324,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"18": fuseTest{
 		name:      "18",
@@ -33628,6 +36348,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"19": fuseTest{
 		name:      "19",
@@ -33650,6 +36372,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"1a": fuseTest{
 		name:      "1a",
@@ -33672,6 +36396,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"1b": fuseTest{
 		name:      "1b",
@@ -33694,6 +36420,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   6,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"1c": fuseTest{
 		name:      "1c",
@@ -33716,6 +36444,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"1d": fuseTest{
 		name:      "1d",
@@ -33738,6 +36468,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"1e": fuseTest{
 		name:      "1e",
@@ -33760,6 +36492,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"1f": fuseTest{
 		name:      "1f",
@@ -33782,6 +36516,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"20_1": fuseTest{
 		name:      "20_1",
@@ -33804,6 +36540,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"20_2": fuseTest{
 		name:      "20_2",
@@ -33826,6 +36564,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"21": fuseTest{
 		name:      "21",
@@ -33848,6 +36588,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"22": fuseTest{
 		name:    "22",
@@ -33872,6 +36614,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc3b0, Values: []uint8{0x4c, 0xc6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"23": fuseTest{
 		name:      "23",
@@ -33894,6 +36638,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   6,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"24": fuseTest{
 		name:      "24",
@@ -33916,6 +36662,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"25": fuseTest{
 		name:      "25",
@@ -33938,6 +36686,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"26": fuseTest{
 		name:      "26",
@@ -33960,6 +36710,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"27_1": fuseTest{
 		name:      "27_1",
@@ -33982,6 +36734,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"27": fuseTest{
 		name:      "27",
@@ -34004,6 +36758,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"28_1": fuseTest{
 		name:      "28_1",
@@ -34026,6 +36782,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"28_2": fuseTest{
 		name:      "28_2",
@@ -34048,6 +36806,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"29": fuseTest{
 		name:      "29",
@@ -34070,6 +36830,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"2a": fuseTest{
 		name:      "2a",
@@ -34092,6 +36854,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"2b": fuseTest{
 		name:      "2b",
@@ -34114,6 +36878,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   6,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"2c": fuseTest{
 		name:      "2c",
@@ -34136,6 +36902,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"2d": fuseTest{
 		name:      "2d",
@@ -34158,6 +36926,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"2e": fuseTest{
 		name:      "2e",
@@ -34180,6 +36950,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"2f": fuseTest{
 		name:      "2f",
@@ -34202,6 +36974,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"30_1": fuseTest{
 		name:      "30_1",
@@ -34224,6 +36998,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"30_2": fuseTest{
 		name:      "30_2",
@@ -34246,6 +37022,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"31": fuseTest{
 		name:      "31",
@@ -34268,6 +37046,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"32": fuseTest{
 		name:    "32",
@@ -34292,6 +37072,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xadac, Values: []uint8{0x0e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"33": fuseTest{
 		name:      "33",
@@ -34314,6 +37096,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   6,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"34": fuseTest{
 		name:    "34",
@@ -34338,6 +37122,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xfe1d, Values: []uint8{0xfe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"35": fuseTest{
 		name:    "35",
@@ -34362,6 +37148,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x470c, Values: []uint8{0x81}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"36": fuseTest{
 		name:    "36",
@@ -34386,6 +37174,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7d29, Values: []uint8{0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"37_1": fuseTest{
 		name:      "37_1",
@@ -34408,6 +37198,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"37_2": fuseTest{
 		name:      "37_2",
@@ -34430,6 +37222,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"37_3": fuseTest{
 		name:      "37_3",
@@ -34452,6 +37246,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"37": fuseTest{
 		name:      "37",
@@ -34474,6 +37270,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"38_1": fuseTest{
 		name:      "38_1",
@@ -34496,6 +37294,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"38_2": fuseTest{
 		name:      "38_2",
@@ -34518,6 +37318,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"39": fuseTest{
 		name:      "39",
@@ -34540,6 +37342,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"3a": fuseTest{
 		name:      "3a",
@@ -34562,6 +37366,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   13,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"3b": fuseTest{
 		name:      "3b",
@@ -34584,6 +37390,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   6,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"3c": fuseTest{
 		name:      "3c",
@@ -34606,6 +37414,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"3d": fuseTest{
 		name:      "3d",
@@ -34628,6 +37438,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"3e": fuseTest{
 		name:      "3e",
@@ -34650,6 +37462,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"3f": fuseTest{
 		name:      "3f",
@@ -34672,6 +37486,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"40": fuseTest{
 		name:      "40",
@@ -34694,6 +37510,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"41": fuseTest{
 		name:      "41",
@@ -34716,6 +37534,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"42": fuseTest{
 		name:      "42",
@@ -34738,6 +37558,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"43": fuseTest{
 		name:      "43",
@@ -34760,6 +37582,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"44": fuseTest{
 		name:      "44",
@@ -34782,6 +37606,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"45": fuseTest{
 		name:      "45",
@@ -34804,6 +37630,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"46": fuseTest{
 		name:      "46",
@@ -34826,6 +37654,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"47": fuseTest{
 		name:      "47",
@@ -34848,6 +37678,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"48": fuseTest{
 		name:      "48",
@@ -34870,6 +37702,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"49": fuseTest{
 		name:      "49",
@@ -34892,6 +37726,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"4a": fuseTest{
 		name:      "4a",
@@ -34914,6 +37750,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"4b": fuseTest{
 		name:      "4b",
@@ -34936,6 +37774,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"4c": fuseTest{
 		name:      "4c",
@@ -34958,6 +37798,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"4d": fuseTest{
 		name:      "4d",
@@ -34980,6 +37822,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"4e": fuseTest{
 		name:      "4e",
@@ -35002,6 +37846,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"4f": fuseTest{
 		name:      "4f",
@@ -35024,6 +37870,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"50": fuseTest{
 		name:      "50",
@@ -35046,6 +37894,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"51": fuseTest{
 		name:      "51",
@@ -35068,6 +37918,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"52": fuseTest{
 		name:      "52",
@@ -35090,6 +37942,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"53": fuseTest{
 		name:      "53",
@@ -35112,6 +37966,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"54": fuseTest{
 		name:      "54",
@@ -35134,6 +37990,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"55": fuseTest{
 		name:      "55",
@@ -35156,6 +38014,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"56": fuseTest{
 		name:      "56",
@@ -35178,6 +38038,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"57": fuseTest{
 		name:      "57",
@@ -35200,6 +38062,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"58": fuseTest{
 		name:      "58",
@@ -35222,6 +38086,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"59": fuseTest{
 		name:      "59",
@@ -35244,6 +38110,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"5a": fuseTest{
 		name:      "5a",
@@ -35266,6 +38134,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"5b": fuseTest{
 		name:      "5b",
@@ -35288,6 +38158,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"5c": fuseTest{
 		name:      "5c",
@@ -35310,6 +38182,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"5d": fuseTest{
 		name:      "5d",
@@ -35332,6 +38206,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"5e": fuseTest{
 		name:      "5e",
@@ -35354,6 +38230,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"5f": fuseTest{
 		name:      "5f",
@@ -35376,6 +38254,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"60": fuseTest{
 		name:      "60",
@@ -35398,6 +38278,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"61": fuseTest{
 		name:      "61",
@@ -35420,6 +38302,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"62": fuseTest{
 		name:      "62",
@@ -35442,6 +38326,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"63": fuseTest{
 		name:      "63",
@@ -35464,6 +38350,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"64": fuseTest{
 		name:      "64",
@@ -35486,6 +38374,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"65": fuseTest{
 		name:      "65",
@@ -35508,6 +38398,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"66": fuseTest{
 		name:      "66",
@@ -35530,6 +38422,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"67": fuseTest{
 		name:      "67",
@@ -35552,6 +38446,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"68": fuseTest{
 		name:      "68",
@@ -35574,6 +38470,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"69": fuseTest{
 		name:      "69",
@@ -35596,6 +38494,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"6a": fuseTest{
 		name:      "6a",
@@ -35618,6 +38518,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"6b": fuseTest{
 		name:      "6b",
@@ -35640,6 +38542,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"6c": fuseTest{
 		name:      "6c",
@@ -35662,6 +38566,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"6d": fuseTest{
 		name:      "6d",
@@ -35684,6 +38590,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"6e": fuseTest{
 		name:      "6e",
@@ -35706,6 +38614,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"6f": fuseTest{
 		name:      "6f",
@@ -35728,6 +38638,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"70": fuseTest{
 		name:    "70",
@@ -35752,6 +38664,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0xcf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"71": fuseTest{
 		name:    "71",
@@ -35776,6 +38690,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x98}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"72": fuseTest{
 		name:    "72",
@@ -35800,6 +38716,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x90}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"73": fuseTest{
 		name:    "73",
@@ -35824,6 +38742,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0xd8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"74": fuseTest{
 		name:    "74",
@@ -35848,6 +38768,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0xa1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"75": fuseTest{
 		name:    "75",
@@ -35872,6 +38794,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x69}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"76": fuseTest{
 		name:      "76",
@@ -35894,6 +38818,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      1,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"77": fuseTest{
 		name:    "77",
@@ -35918,6 +38844,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa169, Values: []uint8{0x02}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"78": fuseTest{
 		name:      "78",
@@ -35940,6 +38868,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"79": fuseTest{
 		name:      "79",
@@ -35962,6 +38892,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"7a": fuseTest{
 		name:      "7a",
@@ -35984,6 +38916,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"7b": fuseTest{
 		name:      "7b",
@@ -36006,6 +38940,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"7c": fuseTest{
 		name:      "7c",
@@ -36028,6 +38964,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"7d": fuseTest{
 		name:      "7d",
@@ -36050,6 +38988,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"7e": fuseTest{
 		name:      "7e",
@@ -36072,6 +39012,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"7f": fuseTest{
 		name:      "7f",
@@ -36094,6 +39036,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"80": fuseTest{
 		name:      "80",
@@ -36116,6 +39060,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"81": fuseTest{
 		name:      "81",
@@ -36138,6 +39084,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"82": fuseTest{
 		name:      "82",
@@ -36160,6 +39108,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"83": fuseTest{
 		name:      "83",
@@ -36182,6 +39132,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"84": fuseTest{
 		name:      "84",
@@ -36204,6 +39156,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"85": fuseTest{
 		name:      "85",
@@ -36226,6 +39180,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"86": fuseTest{
 		name:      "86",
@@ -36248,6 +39204,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"87": fuseTest{
 		name:      "87",
@@ -36270,6 +39228,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"88": fuseTest{
 		name:      "88",
@@ -36292,6 +39252,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"89": fuseTest{
 		name:      "89",
@@ -36314,6 +39276,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"8a": fuseTest{
 		name:      "8a",
@@ -36336,6 +39300,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"8b": fuseTest{
 		name:      "8b",
@@ -36358,6 +39324,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"8c": fuseTest{
 		name:      "8c",
@@ -36380,6 +39348,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"8d": fuseTest{
 		name:      "8d",
@@ -36402,6 +39372,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"8e": fuseTest{
 		name:      "8e",
@@ -36424,6 +39396,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"8f": fuseTest{
 		name:      "8f",
@@ -36446,6 +39420,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"90": fuseTest{
 		name:      "90",
@@ -36468,6 +39444,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"91": fuseTest{
 		name:      "91",
@@ -36490,6 +39468,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"92": fuseTest{
 		name:      "92",
@@ -36512,6 +39492,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"93": fuseTest{
 		name:      "93",
@@ -36534,6 +39516,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"94": fuseTest{
 		name:      "94",
@@ -36556,6 +39540,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"95": fuseTest{
 		name:      "95",
@@ -36578,6 +39564,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"96": fuseTest{
 		name:      "96",
@@ -36600,6 +39588,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"97": fuseTest{
 		name:      "97",
@@ -36622,6 +39612,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"98": fuseTest{
 		name:      "98",
@@ -36644,6 +39636,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"99": fuseTest{
 		name:      "99",
@@ -36666,6 +39660,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"9a": fuseTest{
 		name:      "9a",
@@ -36688,6 +39684,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"9b": fuseTest{
 		name:      "9b",
@@ -36710,6 +39708,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"9c": fuseTest{
 		name:      "9c",
@@ -36732,6 +39732,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"9d": fuseTest{
 		name:      "9d",
@@ -36754,6 +39756,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"9e": fuseTest{
 		name:      "9e",
@@ -36776,6 +39780,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"9f": fuseTest{
 		name:      "9f",
@@ -36798,6 +39804,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"a0": fuseTest{
 		name:      "a0",
@@ -36820,6 +39828,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"a1": fuseTest{
 		name:      "a1",
@@ -36842,6 +39852,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"a2": fuseTest{
 		name:      "a2",
@@ -36864,6 +39876,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"a3": fuseTest{
 		name:      "a3",
@@ -36886,6 +39900,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"a4": fuseTest{
 		name:      "a4",
@@ -36908,6 +39924,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"a5": fuseTest{
 		name:      "a5",
@@ -36930,6 +39948,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"a6": fuseTest{
 		name:      "a6",
@@ -36952,6 +39972,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"a7": fuseTest{
 		name:      "a7",
@@ -36974,6 +39996,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"a8": fuseTest{
 		name:      "a8",
@@ -36996,6 +40020,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"a9": fuseTest{
 		name:      "a9",
@@ -37018,6 +40044,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"aa": fuseTest{
 		name:      "aa",
@@ -37040,6 +40068,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ab": fuseTest{
 		name:      "ab",
@@ -37062,6 +40092,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ac": fuseTest{
 		name:      "ac",
@@ -37084,6 +40116,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ad": fuseTest{
 		name:      "ad",
@@ -37106,6 +40140,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ae": fuseTest{
 		name:      "ae",
@@ -37128,6 +40164,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"af": fuseTest{
 		name:      "af",
@@ -37150,6 +40188,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"b0": fuseTest{
 		name:      "b0",
@@ -37172,6 +40212,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"b1": fuseTest{
 		name:      "b1",
@@ -37194,6 +40236,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"b2": fuseTest{
 		name:      "b2",
@@ -37216,6 +40260,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"b3": fuseTest{
 		name:      "b3",
@@ -37238,6 +40284,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"b4": fuseTest{
 		name:      "b4",
@@ -37260,6 +40308,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"b5": fuseTest{
 		name:      "b5",
@@ -37282,6 +40332,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"b6": fuseTest{
 		name:      "b6",
@@ -37304,6 +40356,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"b7": fuseTest{
 		name:      "b7",
@@ -37326,6 +40380,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"b8": fuseTest{
 		name:      "b8",
@@ -37348,6 +40404,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"b9": fuseTest{
 		name:      "b9",
@@ -37370,6 +40428,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ba": fuseTest{
 		name:      "ba",
@@ -37392,6 +40452,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"bb": fuseTest{
 		name:      "bb",
@@ -37414,6 +40476,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"bc": fuseTest{
 		name:      "bc",
@@ -37436,6 +40500,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"bd": fuseTest{
 		name:      "bd",
@@ -37458,6 +40524,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"be": fuseTest{
 		name:      "be",
@@ -37480,6 +40548,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"bf": fuseTest{
 		name:      "bf",
@@ -37502,6 +40572,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c0_1": fuseTest{
 		name:      "c0_1",
@@ -37524,6 +40596,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c0_2": fuseTest{
 		name:      "c0_2",
@@ -37546,6 +40620,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   5,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c1": fuseTest{
 		name:      "c1",
@@ -37568,6 +40644,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c2_1": fuseTest{
 		name:      "c2_1",
@@ -37590,6 +40668,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c2_2": fuseTest{
 		name:      "c2_2",
@@ -37612,6 +40692,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c3": fuseTest{
 		name:      "c3",
@@ -37634,6 +40716,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c4_1": fuseTest{
 		name:    "c4_1",
@@ -37658,6 +40742,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5696, Values: []uint8{0x03, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c4_2": fuseTest{
 		name:      "c4_2",
@@ -37680,6 +40766,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c5": fuseTest{
 		name:    "c5",
@@ -37704,6 +40792,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xec10, Values: []uint8{0x59, 0x14}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c6": fuseTest{
 		name:      "c6",
@@ -37726,6 +40816,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c7": fuseTest{
 		name:    "c7",
@@ -37750,6 +40842,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5505, Values: []uint8{0x34, 0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c8_1": fuseTest{
 		name:      "c8_1",
@@ -37772,6 +40866,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   5,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c8_2": fuseTest{
 		name:      "c8_2",
@@ -37794,6 +40890,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"c9": fuseTest{
 		name:      "c9",
@@ -37816,6 +40914,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ca_1": fuseTest{
 		name:      "ca_1",
@@ -37838,6 +40938,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ca_2": fuseTest{
 		name:      "ca_2",
@@ -37860,6 +40962,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb00": fuseTest{
 		name:      "cb00",
@@ -37882,6 +40986,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb01": fuseTest{
 		name:      "cb01",
@@ -37904,6 +41010,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb02": fuseTest{
 		name:      "cb02",
@@ -37926,6 +41034,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb03": fuseTest{
 		name:      "cb03",
@@ -37948,6 +41058,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb04": fuseTest{
 		name:      "cb04",
@@ -37970,6 +41082,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb05": fuseTest{
 		name:      "cb05",
@@ -37992,6 +41106,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb06": fuseTest{
 		name:    "cb06",
@@ -38016,6 +41132,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5b04, Values: []uint8{0xa9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb07": fuseTest{
 		name:      "cb07",
@@ -38038,6 +41156,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb08": fuseTest{
 		name:      "cb08",
@@ -38060,6 +41180,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb09": fuseTest{
 		name:      "cb09",
@@ -38082,6 +41204,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb0a": fuseTest{
 		name:      "cb0a",
@@ -38104,6 +41228,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb0b": fuseTest{
 		name:      "cb0b",
@@ -38126,6 +41252,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb0c": fuseTest{
 		name:      "cb0c",
@@ -38148,6 +41276,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb0d": fuseTest{
 		name:      "cb0d",
@@ -38170,6 +41300,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb0e": fuseTest{
 		name:    "cb0e",
@@ -38194,6 +41326,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x543e, Values: []uint8{0x69}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb0f": fuseTest{
 		name:      "cb0f",
@@ -38216,6 +41350,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb10": fuseTest{
 		name:      "cb10",
@@ -38238,6 +41374,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb11": fuseTest{
 		name:      "cb11",
@@ -38260,6 +41398,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb12": fuseTest{
 		name:      "cb12",
@@ -38282,6 +41422,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb13": fuseTest{
 		name:      "cb13",
@@ -38304,6 +41446,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb14": fuseTest{
 		name:      "cb14",
@@ -38326,6 +41470,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb15": fuseTest{
 		name:      "cb15",
@@ -38348,6 +41494,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb16": fuseTest{
 		name:    "cb16",
@@ -38372,6 +41520,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x684e, Values: []uint8{0x86}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb17": fuseTest{
 		name:      "cb17",
@@ -38394,6 +41544,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb18": fuseTest{
 		name:      "cb18",
@@ -38416,6 +41568,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb19": fuseTest{
 		name:      "cb19",
@@ -38438,6 +41592,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb1a": fuseTest{
 		name:      "cb1a",
@@ -38460,6 +41616,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb1b": fuseTest{
 		name:      "cb1b",
@@ -38482,6 +41640,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb1c": fuseTest{
 		name:      "cb1c",
@@ -38504,6 +41664,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb1d": fuseTest{
 		name:      "cb1d",
@@ -38526,6 +41688,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb1e": fuseTest{
 		name:    "cb1e",
@@ -38550,6 +41714,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x00ef, Values: []uint8{0x48}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb1f": fuseTest{
 		name:      "cb1f",
@@ -38572,6 +41738,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb20": fuseTest{
 		name:      "cb20",
@@ -38594,6 +41762,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb21": fuseTest{
 		name:      "cb21",
@@ -38616,6 +41786,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb22": fuseTest{
 		name:      "cb22",
@@ -38638,6 +41810,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb23": fuseTest{
 		name:      "cb23",
@@ -38660,6 +41834,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb24": fuseTest{
 		name:      "cb24",
@@ -38682,6 +41858,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb25": fuseTest{
 		name:      "cb25",
@@ -38704,6 +41882,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb26": fuseTest{
 		name:    "cb26",
@@ -38728,6 +41908,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x283a, Values: []uint8{0xdc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb27": fuseTest{
 		name:      "cb27",
@@ -38750,6 +41932,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb28": fuseTest{
 		name:      "cb28",
@@ -38772,6 +41956,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb29": fuseTest{
 		name:      "cb29",
@@ -38794,6 +41980,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb2a": fuseTest{
 		name:      "cb2a",
@@ -38816,6 +42004,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb2b": fuseTest{
 		name:      "cb2b",
@@ -38838,6 +42028,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb2c": fuseTest{
 		name:      "cb2c",
@@ -38860,6 +42052,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb2d": fuseTest{
 		name:      "cb2d",
@@ -38882,6 +42076,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb2e": fuseTest{
 		name:    "cb2e",
@@ -38906,6 +42102,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x24bf, Values: []uint8{0xda}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb2f": fuseTest{
 		name:      "cb2f",
@@ -38928,6 +42126,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb30": fuseTest{
 		name:      "cb30",
@@ -38950,6 +42150,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb31": fuseTest{
 		name:      "cb31",
@@ -38972,6 +42174,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb32": fuseTest{
 		name:      "cb32",
@@ -38994,6 +42198,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb33": fuseTest{
 		name:      "cb33",
@@ -39016,6 +42222,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb34": fuseTest{
 		name:      "cb34",
@@ -39038,6 +42246,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb35": fuseTest{
 		name:      "cb35",
@@ -39060,6 +42270,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb36": fuseTest{
 		name:    "cb36",
@@ -39084,6 +42296,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6d38, Values: []uint8{0xe3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb37": fuseTest{
 		name:      "cb37",
@@ -39106,6 +42320,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb38": fuseTest{
 		name:      "cb38",
@@ -39128,6 +42344,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb39": fuseTest{
 		name:      "cb39",
@@ -39150,6 +42368,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb3a": fuseTest{
 		name:      "cb3a",
@@ -39172,6 +42392,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb3b": fuseTest{
 		name:      "cb3b",
@@ -39194,6 +42416,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb3c": fuseTest{
 		name:      "cb3c",
@@ -39216,6 +42440,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb3d": fuseTest{
 		name:      "cb3d",
@@ -39238,6 +42464,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb3e": fuseTest{
 		name:    "cb3e",
@@ -39262,6 +42490,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa96c, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb3f": fuseTest{
 		name:      "cb3f",
@@ -39284,6 +42514,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb40": fuseTest{
 		name:      "cb40",
@@ -39306,6 +42538,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb41": fuseTest{
 		name:      "cb41",
@@ -39328,6 +42562,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb42": fuseTest{
 		name:      "cb42",
@@ -39350,6 +42586,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb43": fuseTest{
 		name:      "cb43",
@@ -39372,6 +42610,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb44": fuseTest{
 		name:      "cb44",
@@ -39394,6 +42634,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb45": fuseTest{
 		name:      "cb45",
@@ -39416,6 +42658,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb46": fuseTest{
 		name:      "cb46",
@@ -39438,6 +42682,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb47_1": fuseTest{
 		name:      "cb47_1",
@@ -39460,6 +42706,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb47": fuseTest{
 		name:      "cb47",
@@ -39482,6 +42730,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb48": fuseTest{
 		name:      "cb48",
@@ -39504,6 +42754,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb49": fuseTest{
 		name:      "cb49",
@@ -39526,6 +42778,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb4a": fuseTest{
 		name:      "cb4a",
@@ -39548,6 +42802,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb4b": fuseTest{
 		name:      "cb4b",
@@ -39570,6 +42826,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb4c": fuseTest{
 		name:      "cb4c",
@@ -39592,6 +42850,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb4d": fuseTest{
 		name:      "cb4d",
@@ -39614,6 +42874,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb4e": fuseTest{
 		name:      "cb4e",
@@ -39636,6 +42898,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb4f_1": fuseTest{
 		name:      "cb4f_1",
@@ -39658,6 +42922,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb4f": fuseTest{
 		name:      "cb4f",
@@ -39680,6 +42946,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb50": fuseTest{
 		name:      "cb50",
@@ -39702,6 +42970,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb51": fuseTest{
 		name:      "cb51",
@@ -39724,6 +42994,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb52": fuseTest{
 		name:      "cb52",
@@ -39746,6 +43018,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb53": fuseTest{
 		name:      "cb53",
@@ -39768,6 +43042,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb54": fuseTest{
 		name:      "cb54",
@@ -39790,6 +43066,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb55": fuseTest{
 		name:      "cb55",
@@ -39812,6 +43090,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb56": fuseTest{
 		name:      "cb56",
@@ -39834,6 +43114,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb57_1": fuseTest{
 		name:      "cb57_1",
@@ -39856,6 +43138,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb57": fuseTest{
 		name:      "cb57",
@@ -39878,6 +43162,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb58": fuseTest{
 		name:      "cb58",
@@ -39900,6 +43186,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb59": fuseTest{
 		name:      "cb59",
@@ -39922,6 +43210,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb5a": fuseTest{
 		name:      "cb5a",
@@ -39944,6 +43234,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb5b": fuseTest{
 		name:      "cb5b",
@@ -39966,6 +43258,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb5c": fuseTest{
 		name:      "cb5c",
@@ -39988,6 +43282,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb5d": fuseTest{
 		name:      "cb5d",
@@ -40010,6 +43306,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb5e": fuseTest{
 		name:      "cb5e",
@@ -40032,6 +43330,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb5f_1": fuseTest{
 		name:      "cb5f_1",
@@ -40054,6 +43354,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb5f": fuseTest{
 		name:      "cb5f",
@@ -40076,6 +43378,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb60": fuseTest{
 		name:      "cb60",
@@ -40098,6 +43402,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb61": fuseTest{
 		name:      "cb61",
@@ -40120,6 +43426,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb62": fuseTest{
 		name:      "cb62",
@@ -40142,6 +43450,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb63": fuseTest{
 		name:      "cb63",
@@ -40164,6 +43474,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb64": fuseTest{
 		name:      "cb64",
@@ -40186,6 +43498,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb65": fuseTest{
 		name:      "cb65",
@@ -40208,6 +43522,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb66": fuseTest{
 		name:      "cb66",
@@ -40230,6 +43546,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb67_1": fuseTest{
 		name:      "cb67_1",
@@ -40252,6 +43570,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb67": fuseTest{
 		name:      "cb67",
@@ -40274,6 +43594,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb68": fuseTest{
 		name:      "cb68",
@@ -40296,6 +43618,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb69": fuseTest{
 		name:      "cb69",
@@ -40318,6 +43642,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb6a": fuseTest{
 		name:      "cb6a",
@@ -40340,6 +43666,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb6b": fuseTest{
 		name:      "cb6b",
@@ -40362,6 +43690,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb6c": fuseTest{
 		name:      "cb6c",
@@ -40384,6 +43714,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb6d": fuseTest{
 		name:      "cb6d",
@@ -40406,6 +43738,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb6e": fuseTest{
 		name:      "cb6e",
@@ -40428,6 +43762,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb6f_1": fuseTest{
 		name:      "cb6f_1",
@@ -40450,6 +43786,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb6f": fuseTest{
 		name:      "cb6f",
@@ -40472,6 +43810,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb70": fuseTest{
 		name:      "cb70",
@@ -40494,6 +43834,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb71": fuseTest{
 		name:      "cb71",
@@ -40516,6 +43858,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb72": fuseTest{
 		name:      "cb72",
@@ -40538,6 +43882,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb73": fuseTest{
 		name:      "cb73",
@@ -40560,6 +43906,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb74": fuseTest{
 		name:      "cb74",
@@ -40582,6 +43930,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb75": fuseTest{
 		name:      "cb75",
@@ -40604,6 +43954,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb76": fuseTest{
 		name:      "cb76",
@@ -40626,6 +43978,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb77_1": fuseTest{
 		name:      "cb77_1",
@@ -40648,6 +44002,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb77": fuseTest{
 		name:      "cb77",
@@ -40670,6 +44026,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb78": fuseTest{
 		name:      "cb78",
@@ -40692,6 +44050,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb79": fuseTest{
 		name:      "cb79",
@@ -40714,6 +44074,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb7a": fuseTest{
 		name:      "cb7a",
@@ -40736,6 +44098,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb7b": fuseTest{
 		name:      "cb7b",
@@ -40758,6 +44122,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb7c": fuseTest{
 		name:      "cb7c",
@@ -40780,6 +44146,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb7d": fuseTest{
 		name:      "cb7d",
@@ -40802,6 +44170,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb7e": fuseTest{
 		name:      "cb7e",
@@ -40824,6 +44194,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb7f_1": fuseTest{
 		name:      "cb7f_1",
@@ -40846,6 +44218,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb7f": fuseTest{
 		name:      "cb7f",
@@ -40868,6 +44242,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb80": fuseTest{
 		name:      "cb80",
@@ -40890,6 +44266,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb81": fuseTest{
 		name:      "cb81",
@@ -40912,6 +44290,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb82": fuseTest{
 		name:      "cb82",
@@ -40934,6 +44314,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb83": fuseTest{
 		name:      "cb83",
@@ -40956,6 +44338,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb84": fuseTest{
 		name:      "cb84",
@@ -40978,6 +44362,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb85": fuseTest{
 		name:      "cb85",
@@ -41000,6 +44386,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb86": fuseTest{
 		name:      "cb86",
@@ -41022,6 +44410,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb87": fuseTest{
 		name:      "cb87",
@@ -41044,6 +44434,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb88": fuseTest{
 		name:      "cb88",
@@ -41066,6 +44458,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb89": fuseTest{
 		name:      "cb89",
@@ -41088,6 +44482,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb8a": fuseTest{
 		name:      "cb8a",
@@ -41110,6 +44506,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb8b": fuseTest{
 		name:      "cb8b",
@@ -41132,6 +44530,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb8c": fuseTest{
 		name:      "cb8c",
@@ -41154,6 +44554,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb8d": fuseTest{
 		name:      "cb8d",
@@ -41176,6 +44578,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb8e": fuseTest{
 		name:      "cb8e",
@@ -41198,6 +44602,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb8f": fuseTest{
 		name:      "cb8f",
@@ -41220,6 +44626,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb90": fuseTest{
 		name:      "cb90",
@@ -41242,6 +44650,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb91": fuseTest{
 		name:      "cb91",
@@ -41264,6 +44674,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb92": fuseTest{
 		name:      "cb92",
@@ -41286,6 +44698,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb93": fuseTest{
 		name:      "cb93",
@@ -41308,6 +44722,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb94": fuseTest{
 		name:      "cb94",
@@ -41330,6 +44746,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb95": fuseTest{
 		name:      "cb95",
@@ -41352,6 +44770,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb96": fuseTest{
 		name:      "cb96",
@@ -41374,6 +44794,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb97": fuseTest{
 		name:      "cb97",
@@ -41396,6 +44818,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb98": fuseTest{
 		name:      "cb98",
@@ -41418,6 +44842,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb99": fuseTest{
 		name:      "cb99",
@@ -41440,6 +44866,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb9a": fuseTest{
 		name:      "cb9a",
@@ -41462,6 +44890,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb9b": fuseTest{
 		name:      "cb9b",
@@ -41484,6 +44914,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb9c": fuseTest{
 		name:      "cb9c",
@@ -41506,6 +44938,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb9d": fuseTest{
 		name:      "cb9d",
@@ -41528,6 +44962,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb9e": fuseTest{
 		name:    "cb9e",
@@ -41552,6 +44988,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x3a65, Values: []uint8{0x22}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cb9f": fuseTest{
 		name:      "cb9f",
@@ -41574,6 +45012,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cba0": fuseTest{
 		name:      "cba0",
@@ -41596,6 +45036,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cba1": fuseTest{
 		name:      "cba1",
@@ -41618,6 +45060,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cba2": fuseTest{
 		name:      "cba2",
@@ -41640,6 +45084,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cba3": fuseTest{
 		name:      "cba3",
@@ -41662,6 +45108,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cba4": fuseTest{
 		name:      "cba4",
@@ -41684,6 +45132,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cba5": fuseTest{
 		name:      "cba5",
@@ -41706,6 +45156,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cba6": fuseTest{
 		name:      "cba6",
@@ -41728,6 +45180,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cba7": fuseTest{
 		name:      "cba7",
@@ -41750,6 +45204,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cba8": fuseTest{
 		name:      "cba8",
@@ -41772,6 +45228,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cba9": fuseTest{
 		name:      "cba9",
@@ -41794,6 +45252,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbaa": fuseTest{
 		name:      "cbaa",
@@ -41816,6 +45276,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbab": fuseTest{
 		name:      "cbab",
@@ -41838,6 +45300,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbac": fuseTest{
 		name:      "cbac",
@@ -41860,6 +45324,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbad": fuseTest{
 		name:      "cbad",
@@ -41882,6 +45348,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbae": fuseTest{
 		name:    "cbae",
@@ -41906,6 +45374,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x190e, Values: []uint8{0x46}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbaf": fuseTest{
 		name:      "cbaf",
@@ -41928,6 +45398,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbb0": fuseTest{
 		name:      "cbb0",
@@ -41950,6 +45422,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbb1": fuseTest{
 		name:      "cbb1",
@@ -41972,6 +45446,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbb2": fuseTest{
 		name:      "cbb2",
@@ -41994,6 +45470,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbb3": fuseTest{
 		name:      "cbb3",
@@ -42016,6 +45494,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbb4": fuseTest{
 		name:      "cbb4",
@@ -42038,6 +45518,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbb5": fuseTest{
 		name:      "cbb5",
@@ -42060,6 +45542,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbb6": fuseTest{
 		name:      "cbb6",
@@ -42082,6 +45566,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbb7": fuseTest{
 		name:      "cbb7",
@@ -42104,6 +45590,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbb8": fuseTest{
 		name:      "cbb8",
@@ -42126,6 +45614,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbb9": fuseTest{
 		name:      "cbb9",
@@ -42148,6 +45638,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbba": fuseTest{
 		name:      "cbba",
@@ -42170,6 +45662,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbbb": fuseTest{
 		name:      "cbbb",
@@ -42192,6 +45686,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbbc": fuseTest{
 		name:      "cbbc",
@@ -42214,6 +45710,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbbd": fuseTest{
 		name:      "cbbd",
@@ -42236,6 +45734,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbbe": fuseTest{
 		name:    "cbbe",
@@ -42260,6 +45760,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x77d5, Values: []uint8{0x6a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbbf": fuseTest{
 		name:      "cbbf",
@@ -42282,6 +45784,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbc0": fuseTest{
 		name:      "cbc0",
@@ -42304,6 +45808,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbc1": fuseTest{
 		name:      "cbc1",
@@ -42326,6 +45832,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbc2": fuseTest{
 		name:      "cbc2",
@@ -42348,6 +45856,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbc3": fuseTest{
 		name:      "cbc3",
@@ -42370,6 +45880,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbc4": fuseTest{
 		name:      "cbc4",
@@ -42392,6 +45904,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbc5": fuseTest{
 		name:      "cbc5",
@@ -42414,6 +45928,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbc6": fuseTest{
 		name:    "cbc6",
@@ -42438,6 +45954,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xf0be, Values: []uint8{0x9d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbc7": fuseTest{
 		name:      "cbc7",
@@ -42460,6 +45978,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbc8": fuseTest{
 		name:      "cbc8",
@@ -42482,6 +46002,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbc9": fuseTest{
 		name:      "cbc9",
@@ -42504,6 +46026,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbca": fuseTest{
 		name:      "cbca",
@@ -42526,6 +46050,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbcb": fuseTest{
 		name:      "cbcb",
@@ -42548,6 +46074,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbcc": fuseTest{
 		name:      "cbcc",
@@ -42570,6 +46098,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbcd": fuseTest{
 		name:      "cbcd",
@@ -42592,6 +46122,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbce": fuseTest{
 		name:      "cbce",
@@ -42614,6 +46146,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbcf": fuseTest{
 		name:      "cbcf",
@@ -42636,6 +46170,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbd0": fuseTest{
 		name:      "cbd0",
@@ -42658,6 +46194,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbd1": fuseTest{
 		name:      "cbd1",
@@ -42680,6 +46218,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbd2": fuseTest{
 		name:      "cbd2",
@@ -42702,6 +46242,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbd3": fuseTest{
 		name:      "cbd3",
@@ -42724,6 +46266,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbd4": fuseTest{
 		name:      "cbd4",
@@ -42746,6 +46290,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbd5": fuseTest{
 		name:      "cbd5",
@@ -42768,6 +46314,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbd6": fuseTest{
 		name:      "cbd6",
@@ -42790,6 +46338,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbd7": fuseTest{
 		name:      "cbd7",
@@ -42812,6 +46362,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbd8": fuseTest{
 		name:      "cbd8",
@@ -42834,6 +46386,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbd9": fuseTest{
 		name:      "cbd9",
@@ -42856,6 +46410,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbda": fuseTest{
 		name:      "cbda",
@@ -42878,6 +46434,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbdb": fuseTest{
 		name:      "cbdb",
@@ -42900,6 +46458,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbdc": fuseTest{
 		name:      "cbdc",
@@ -42922,6 +46482,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbdd": fuseTest{
 		name:      "cbdd",
@@ -42944,6 +46506,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbde": fuseTest{
 		name:    "cbde",
@@ -42968,6 +46532,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xba03, Values: []uint8{0x9b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbdf": fuseTest{
 		name:      "cbdf",
@@ -42990,6 +46556,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbe0": fuseTest{
 		name:      "cbe0",
@@ -43012,6 +46580,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbe1": fuseTest{
 		name:      "cbe1",
@@ -43034,6 +46604,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbe2": fuseTest{
 		name:      "cbe2",
@@ -43056,6 +46628,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbe3": fuseTest{
 		name:      "cbe3",
@@ -43078,6 +46652,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbe4": fuseTest{
 		name:      "cbe4",
@@ -43100,6 +46676,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbe5": fuseTest{
 		name:      "cbe5",
@@ -43122,6 +46700,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbe6": fuseTest{
 		name:      "cbe6",
@@ -43144,6 +46724,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbe7": fuseTest{
 		name:      "cbe7",
@@ -43166,6 +46748,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbe8": fuseTest{
 		name:      "cbe8",
@@ -43188,6 +46772,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbe9": fuseTest{
 		name:      "cbe9",
@@ -43210,6 +46796,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbea": fuseTest{
 		name:      "cbea",
@@ -43232,6 +46820,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbeb": fuseTest{
 		name:      "cbeb",
@@ -43254,6 +46844,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbec": fuseTest{
 		name:      "cbec",
@@ -43276,6 +46868,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbed": fuseTest{
 		name:      "cbed",
@@ -43298,6 +46892,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbee": fuseTest{
 		name:      "cbee",
@@ -43320,6 +46916,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbef": fuseTest{
 		name:      "cbef",
@@ -43342,6 +46940,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbf0": fuseTest{
 		name:      "cbf0",
@@ -43364,6 +46964,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbf1": fuseTest{
 		name:      "cbf1",
@@ -43386,6 +46988,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbf2": fuseTest{
 		name:      "cbf2",
@@ -43408,6 +47012,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbf3": fuseTest{
 		name:      "cbf3",
@@ -43430,6 +47036,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbf4": fuseTest{
 		name:      "cbf4",
@@ -43452,6 +47060,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbf5": fuseTest{
 		name:      "cbf5",
@@ -43474,6 +47084,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbf6": fuseTest{
 		name:    "cbf6",
@@ -43498,6 +47110,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa9bc, Values: []uint8{0xf1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbf7": fuseTest{
 		name:      "cbf7",
@@ -43520,6 +47134,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbf8": fuseTest{
 		name:      "cbf8",
@@ -43542,6 +47158,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbf9": fuseTest{
 		name:      "cbf9",
@@ -43564,6 +47182,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbfa": fuseTest{
 		name:      "cbfa",
@@ -43586,6 +47206,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbfb": fuseTest{
 		name:      "cbfb",
@@ -43608,6 +47230,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbfc": fuseTest{
 		name:      "cbfc",
@@ -43630,6 +47254,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbfd": fuseTest{
 		name:      "cbfd",
@@ -43652,6 +47278,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbfe": fuseTest{
 		name:      "cbfe",
@@ -43674,6 +47302,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cbff": fuseTest{
 		name:      "cbff",
@@ -43696,6 +47326,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cc_1": fuseTest{
 		name:    "cc_1",
@@ -43720,6 +47352,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5696, Values: []uint8{0x03, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cc_2": fuseTest{
 		name:      "cc_2",
@@ -43742,6 +47376,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cd": fuseTest{
 		name:    "cd",
@@ -43766,6 +47402,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb07b, Values: []uint8{0x03, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ce": fuseTest{
 		name:      "ce",
@@ -43788,6 +47426,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"cf": fuseTest{
 		name:    "cf",
@@ -43812,6 +47452,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5505, Values: []uint8{0x34, 0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d0_1": fuseTest{
 		name:      "d0_1",
@@ -43834,6 +47476,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d0_2": fuseTest{
 		name:      "d0_2",
@@ -43856,6 +47500,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   5,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d1": fuseTest{
 		name:      "d1",
@@ -43878,6 +47524,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d2_1": fuseTest{
 		name:      "d2_1",
@@ -43900,6 +47548,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d2_2": fuseTest{
 		name:      "d2_2",
@@ -43922,6 +47572,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d3_1": fuseTest{
 		name:      "d3_1",
@@ -43944,6 +47596,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0xa2ed, Values: []uint8{0xa2},
+		},
 	},
 	"d3_2": fuseTest{
 		name:      "d3_2",
@@ -43966,6 +47622,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x42ec, Values: []uint8{0x42},
+		},
 	},
 	"d3_3": fuseTest{
 		name:      "d3_3",
@@ -43988,6 +47648,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x42ed, Values: []uint8{0x42},
+		},
 	},
 	"d3": fuseTest{
 		name:      "d3",
@@ -44010,6 +47674,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0xa2ec, Values: []uint8{0xa2},
+		},
 	},
 	"d4_1": fuseTest{
 		name:    "d4_1",
@@ -44034,6 +47702,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5696, Values: []uint8{0x03, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d4_2": fuseTest{
 		name:      "d4_2",
@@ -44056,6 +47726,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d5": fuseTest{
 		name:    "d5",
@@ -44080,6 +47752,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xec10, Values: []uint8{0x5f, 0x77}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d6": fuseTest{
 		name:      "d6",
@@ -44102,6 +47776,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d7": fuseTest{
 		name:    "d7",
@@ -44126,6 +47802,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5505, Values: []uint8{0x34, 0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d8_1": fuseTest{
 		name:      "d8_1",
@@ -44148,6 +47826,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   5,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d8_2": fuseTest{
 		name:      "d8_2",
@@ -44170,6 +47850,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"d9": fuseTest{
 		name:      "d9",
@@ -44192,6 +47874,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"da_1": fuseTest{
 		name:      "da_1",
@@ -44214,6 +47898,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"da_2": fuseTest{
 		name:      "da_2",
@@ -44236,6 +47922,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"db_1": fuseTest{
 		name:      "db_1",
@@ -44258,6 +47946,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0xc1e3, Values: []uint8{0xc1},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"db_2": fuseTest{
 		name:      "db_2",
@@ -44280,6 +47972,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0x71e2, Values: []uint8{0x71},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"db_3": fuseTest{
 		name:      "db_3",
@@ -44302,6 +47998,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0x71e3, Values: []uint8{0x71},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"db": fuseTest{
 		name:      "db",
@@ -44324,6 +48024,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0xc1e2, Values: []uint8{0xc1},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"dc_1": fuseTest{
 		name:    "dc_1",
@@ -44348,6 +48052,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5696, Values: []uint8{0x03, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dc_2": fuseTest{
 		name:      "dc_2",
@@ -44370,6 +48076,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd00": fuseTest{
 		name:      "dd00",
@@ -44392,6 +48100,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd09": fuseTest{
 		name:      "dd09",
@@ -44414,6 +48124,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd19": fuseTest{
 		name:      "dd19",
@@ -44436,6 +48148,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd21": fuseTest{
 		name:      "dd21",
@@ -44458,6 +48172,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd22": fuseTest{
 		name:    "dd22",
@@ -44482,6 +48198,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xad4f, Values: []uint8{0xe7, 0xeb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd23": fuseTest{
 		name:      "dd23",
@@ -44504,6 +48222,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd24": fuseTest{
 		name:      "dd24",
@@ -44526,6 +48246,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd25": fuseTest{
 		name:      "dd25",
@@ -44548,6 +48270,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd26": fuseTest{
 		name:      "dd26",
@@ -44570,6 +48294,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd29": fuseTest{
 		name:      "dd29",
@@ -44592,6 +48318,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd2a": fuseTest{
 		name:      "dd2a",
@@ -44614,6 +48342,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd2b": fuseTest{
 		name:      "dd2b",
@@ -44636,6 +48366,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd2c": fuseTest{
 		name:      "dd2c",
@@ -44658,6 +48390,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd2d": fuseTest{
 		name:      "dd2d",
@@ -44680,6 +48414,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd2e": fuseTest{
 		name:      "dd2e",
@@ -44702,6 +48438,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd34": fuseTest{
 		name:    "dd34",
@@ -44726,6 +48464,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xde8f, Values: []uint8{0x58}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd35": fuseTest{
 		name:    "dd35",
@@ -44750,6 +48490,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc793, Values: []uint8{0xf6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd36": fuseTest{
 		name:    "dd36",
@@ -44774,6 +48516,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb5fb, Values: []uint8{0xb5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd39": fuseTest{
 		name:      "dd39",
@@ -44796,6 +48540,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd44": fuseTest{
 		name:      "dd44",
@@ -44818,6 +48564,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd45": fuseTest{
 		name:      "dd45",
@@ -44840,6 +48588,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd46": fuseTest{
 		name:      "dd46",
@@ -44862,6 +48612,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd4c": fuseTest{
 		name:      "dd4c",
@@ -44884,6 +48636,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd4d": fuseTest{
 		name:      "dd4d",
@@ -44906,6 +48660,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd4e": fuseTest{
 		name:      "dd4e",
@@ -44928,6 +48684,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd54": fuseTest{
 		name:      "dd54",
@@ -44950,6 +48708,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd55": fuseTest{
 		name:      "dd55",
@@ -44972,6 +48732,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd56": fuseTest{
 		name:      "dd56",
@@ -44994,6 +48756,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd5c": fuseTest{
 		name:      "dd5c",
@@ -45016,6 +48780,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd5d": fuseTest{
 		name:      "dd5d",
@@ -45038,6 +48804,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd5e": fuseTest{
 		name:      "dd5e",
@@ -45060,6 +48828,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd60": fuseTest{
 		name:      "dd60",
@@ -45082,6 +48852,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd61": fuseTest{
 		name:      "dd61",
@@ -45104,6 +48876,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd62": fuseTest{
 		name:      "dd62",
@@ -45126,6 +48900,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd63": fuseTest{
 		name:      "dd63",
@@ -45148,6 +48924,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd64": fuseTest{
 		name:      "dd64",
@@ -45170,6 +48948,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd65": fuseTest{
 		name:      "dd65",
@@ -45192,6 +48972,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd66": fuseTest{
 		name:      "dd66",
@@ -45214,6 +48996,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd67": fuseTest{
 		name:      "dd67",
@@ -45236,6 +49020,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd68": fuseTest{
 		name:      "dd68",
@@ -45258,6 +49044,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd69": fuseTest{
 		name:      "dd69",
@@ -45280,6 +49068,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd6a": fuseTest{
 		name:      "dd6a",
@@ -45302,6 +49092,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd6b": fuseTest{
 		name:      "dd6b",
@@ -45324,6 +49116,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd6c": fuseTest{
 		name:      "dd6c",
@@ -45346,6 +49140,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd6d": fuseTest{
 		name:      "dd6d",
@@ -45368,6 +49164,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd6e": fuseTest{
 		name:      "dd6e",
@@ -45390,6 +49188,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd6f": fuseTest{
 		name:      "dd6f",
@@ -45412,6 +49212,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd70": fuseTest{
 		name:    "dd70",
@@ -45436,6 +49238,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x05f0, Values: []uint8{0xfe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd71": fuseTest{
 		name:    "dd71",
@@ -45460,6 +49264,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x3745, Values: []uint8{0x1c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd72": fuseTest{
 		name:    "dd72",
@@ -45484,6 +49290,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8d92, Values: []uint8{0x63}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd73": fuseTest{
 		name:    "dd73",
@@ -45508,6 +49316,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7a1d, Values: []uint8{0xde}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd74": fuseTest{
 		name:    "dd74",
@@ -45532,6 +49342,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x58c9, Values: []uint8{0x01}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd75": fuseTest{
 		name:    "dd75",
@@ -45556,6 +49368,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xae7c, Values: []uint8{0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd77": fuseTest{
 		name:    "dd77",
@@ -45580,6 +49394,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa10d, Values: []uint8{0xdc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd7c": fuseTest{
 		name:      "dd7c",
@@ -45602,6 +49418,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd7d": fuseTest{
 		name:      "dd7d",
@@ -45624,6 +49442,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd7e": fuseTest{
 		name:      "dd7e",
@@ -45646,6 +49466,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd84": fuseTest{
 		name:      "dd84",
@@ -45668,6 +49490,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd85": fuseTest{
 		name:      "dd85",
@@ -45690,6 +49514,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd86": fuseTest{
 		name:      "dd86",
@@ -45712,6 +49538,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd8c": fuseTest{
 		name:      "dd8c",
@@ -45734,6 +49562,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd8d": fuseTest{
 		name:      "dd8d",
@@ -45756,6 +49586,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd8e": fuseTest{
 		name:      "dd8e",
@@ -45778,6 +49610,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd94": fuseTest{
 		name:      "dd94",
@@ -45800,6 +49634,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd95": fuseTest{
 		name:      "dd95",
@@ -45822,6 +49658,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd96": fuseTest{
 		name:      "dd96",
@@ -45844,6 +49682,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd9c": fuseTest{
 		name:      "dd9c",
@@ -45866,6 +49706,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd9d": fuseTest{
 		name:      "dd9d",
@@ -45888,6 +49730,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dd9e": fuseTest{
 		name:      "dd9e",
@@ -45910,6 +49754,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dda4": fuseTest{
 		name:      "dda4",
@@ -45932,6 +49778,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dda5": fuseTest{
 		name:      "dda5",
@@ -45954,6 +49802,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dda6": fuseTest{
 		name:      "dda6",
@@ -45976,6 +49826,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddac": fuseTest{
 		name:      "ddac",
@@ -45998,6 +49850,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddad": fuseTest{
 		name:      "ddad",
@@ -46020,6 +49874,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddae": fuseTest{
 		name:      "ddae",
@@ -46042,6 +49898,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddb4": fuseTest{
 		name:      "ddb4",
@@ -46064,6 +49922,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddb5": fuseTest{
 		name:      "ddb5",
@@ -46086,6 +49946,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddb6": fuseTest{
 		name:      "ddb6",
@@ -46108,6 +49970,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddbc": fuseTest{
 		name:      "ddbc",
@@ -46130,6 +49994,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddbd": fuseTest{
 		name:      "ddbd",
@@ -46152,6 +50018,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddbe": fuseTest{
 		name:      "ddbe",
@@ -46174,6 +50042,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb00": fuseTest{
 		name:    "ddcb00",
@@ -46198,6 +50068,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x1dae, Values: []uint8{0x43}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb01": fuseTest{
 		name:    "ddcb01",
@@ -46222,6 +50094,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x28b4, Values: []uint8{0xc7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb02": fuseTest{
 		name:    "ddcb02",
@@ -46246,6 +50120,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc727, Values: []uint8{0x1b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb03": fuseTest{
 		name:    "ddcb03",
@@ -46270,6 +50146,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0466, Values: []uint8{0xf0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb04": fuseTest{
 		name:    "ddcb04",
@@ -46294,6 +50172,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5991, Values: []uint8{0xd0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb05": fuseTest{
 		name:    "ddcb05",
@@ -46318,6 +50198,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0076, Values: []uint8{0x2b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb06": fuseTest{
 		name:    "ddcb06",
@@ -46342,6 +50224,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5428, Values: []uint8{0x2f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb07": fuseTest{
 		name:    "ddcb07",
@@ -46366,6 +50250,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x9845, Values: []uint8{0x5d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb08": fuseTest{
 		name:    "ddcb08",
@@ -46390,6 +50276,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xef4a, Values: []uint8{0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb09": fuseTest{
 		name:    "ddcb09",
@@ -46414,6 +50302,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x9d46, Values: []uint8{0xb7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb0a": fuseTest{
 		name:    "ddcb0a",
@@ -46438,6 +50328,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x1f37, Values: []uint8{0x3c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb0b": fuseTest{
 		name:    "ddcb0b",
@@ -46462,6 +50354,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xcd03, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb0c": fuseTest{
 		name:    "ddcb0c",
@@ -46486,6 +50380,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xbfe4, Values: []uint8{0x86}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb0d": fuseTest{
 		name:    "ddcb0d",
@@ -46510,6 +50406,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x88a1, Values: []uint8{0x8f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb0e": fuseTest{
 		name:    "ddcb0e",
@@ -46534,6 +50432,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xfd0f, Values: []uint8{0xd6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb0f": fuseTest{
 		name:    "ddcb0f",
@@ -46558,6 +50458,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x749e, Values: []uint8{0x7c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb10": fuseTest{
 		name:    "ddcb10",
@@ -46582,6 +50484,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xbbf1, Values: []uint8{0x8b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb11": fuseTest{
 		name:    "ddcb11",
@@ -46606,6 +50510,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x17f4, Values: []uint8{0xb3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb12": fuseTest{
 		name:    "ddcb12",
@@ -46630,6 +50536,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc0a1, Values: []uint8{0xc5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb13": fuseTest{
 		name:    "ddcb13",
@@ -46654,6 +50562,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5ac3, Values: []uint8{0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb14": fuseTest{
 		name:    "ddcb14",
@@ -46678,6 +50588,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0954, Values: []uint8{0x0b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb15": fuseTest{
 		name:    "ddcb15",
@@ -46702,6 +50614,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xedf0, Values: []uint8{0x1d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb16": fuseTest{
 		name:    "ddcb16",
@@ -46726,6 +50640,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x1703, Values: []uint8{0xb6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb17": fuseTest{
 		name:    "ddcb17",
@@ -46750,6 +50666,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb8e5, Values: []uint8{0xfc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb18": fuseTest{
 		name:    "ddcb18",
@@ -46774,6 +50692,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa197, Values: []uint8{0x48}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb19": fuseTest{
 		name:    "ddcb19",
@@ -46798,6 +50718,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xf08a, Values: []uint8{0x9b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb1a": fuseTest{
 		name:    "ddcb1a",
@@ -46822,6 +50744,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xde0d, Values: []uint8{0x66}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb1b": fuseTest{
 		name:    "ddcb1b",
@@ -46846,6 +50770,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb7c8, Values: []uint8{0xc8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb1c": fuseTest{
 		name:    "ddcb1c",
@@ -46870,6 +50796,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xfef8, Values: []uint8{0x30}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb1d": fuseTest{
 		name:    "ddcb1d",
@@ -46894,6 +50822,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5b9d, Values: []uint8{0xf9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb1e": fuseTest{
 		name:    "ddcb1e",
@@ -46918,6 +50848,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7582, Values: []uint8{0xc8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb1f": fuseTest{
 		name:    "ddcb1f",
@@ -46942,6 +50874,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x1d43, Values: []uint8{0xda}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb20": fuseTest{
 		name:    "ddcb20",
@@ -46966,6 +50900,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xdc21, Values: []uint8{0x1c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb21": fuseTest{
 		name:    "ddcb21",
@@ -46990,6 +50926,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x3432, Values: []uint8{0xee}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb22": fuseTest{
 		name:    "ddcb22",
@@ -47014,6 +50952,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xbd82, Values: []uint8{0x3e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb23": fuseTest{
 		name:    "ddcb23",
@@ -47038,6 +50978,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x229e, Values: []uint8{0xc0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb24": fuseTest{
 		name:    "ddcb24",
@@ -47062,6 +51004,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x31d9, Values: []uint8{0x86}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb25": fuseTest{
 		name:    "ddcb25",
@@ -47086,6 +51030,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xcc24, Values: []uint8{0xd6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb26": fuseTest{
 		name:    "ddcb26",
@@ -47110,6 +51056,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x651f, Values: []uint8{0x12}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb27": fuseTest{
 		name:    "ddcb27",
@@ -47134,6 +51082,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x1f2c, Values: []uint8{0x58}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb28": fuseTest{
 		name:    "ddcb28",
@@ -47158,6 +51108,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x9951, Values: []uint8{0x12}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb29": fuseTest{
 		name:    "ddcb29",
@@ -47182,6 +51134,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x2083, Values: []uint8{0xc1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb2a": fuseTest{
 		name:    "ddcb2a",
@@ -47206,6 +51160,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x94dd, Values: []uint8{0x3e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb2b": fuseTest{
 		name:    "ddcb2b",
@@ -47230,6 +51186,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb441, Values: []uint8{0x22}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb2c": fuseTest{
 		name:    "ddcb2c",
@@ -47254,6 +51212,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xfe54, Values: []uint8{0xc0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb2d": fuseTest{
 		name:    "ddcb2d",
@@ -47278,6 +51238,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb488, Values: []uint8{0x22}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb2e": fuseTest{
 		name:    "ddcb2e",
@@ -47302,6 +51264,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6a15, Values: []uint8{0x02}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb2f": fuseTest{
 		name:    "ddcb2f",
@@ -47326,6 +51290,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7a03, Values: []uint8{0xf9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb30": fuseTest{
 		name:    "ddcb30",
@@ -47350,6 +51316,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xeec7, Values: []uint8{0x65}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb31": fuseTest{
 		name:    "ddcb31",
@@ -47374,6 +51342,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xf276, Values: []uint8{0x9b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb32": fuseTest{
 		name:    "ddcb32",
@@ -47398,6 +51368,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x577f, Values: []uint8{0xc5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb33": fuseTest{
 		name:    "ddcb33",
@@ -47422,6 +51394,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xef75, Values: []uint8{0x17}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb34": fuseTest{
 		name:    "ddcb34",
@@ -47446,6 +51420,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xab91, Values: []uint8{0xdf}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb35": fuseTest{
 		name:    "ddcb35",
@@ -47470,6 +51446,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xead3, Values: []uint8{0x1f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb36": fuseTest{
 		name:    "ddcb36",
@@ -47494,6 +51472,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x12e2, Values: []uint8{0x05}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb37": fuseTest{
 		name:    "ddcb37",
@@ -47518,6 +51498,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x503d, Values: []uint8{0x7b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb38": fuseTest{
 		name:    "ddcb38",
@@ -47542,6 +51524,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xf623, Values: []uint8{0x2f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb39": fuseTest{
 		name:    "ddcb39",
@@ -47566,6 +51550,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa871, Values: []uint8{0x41}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb3a": fuseTest{
 		name:    "ddcb3a",
@@ -47590,6 +51576,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x259e, Values: []uint8{0x44}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb3b": fuseTest{
 		name:    "ddcb3b",
@@ -47614,6 +51602,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x700d, Values: []uint8{0x54}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb3c": fuseTest{
 		name:    "ddcb3c",
@@ -47638,6 +51628,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xf51c, Values: []uint8{0x68}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb3d": fuseTest{
 		name:    "ddcb3d",
@@ -47662,6 +51654,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x02de, Values: []uint8{0x2c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb3e": fuseTest{
 		name:    "ddcb3e",
@@ -47686,6 +51680,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7854, Values: []uint8{0x2e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb3f": fuseTest{
 		name:    "ddcb3f",
@@ -47710,6 +51706,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x34b9, Values: []uint8{0x02}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb40": fuseTest{
 		name:      "ddcb40",
@@ -47732,6 +51730,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb41": fuseTest{
 		name:      "ddcb41",
@@ -47754,6 +51754,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb42": fuseTest{
 		name:      "ddcb42",
@@ -47776,6 +51778,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb43": fuseTest{
 		name:      "ddcb43",
@@ -47798,6 +51802,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb44": fuseTest{
 		name:      "ddcb44",
@@ -47820,6 +51826,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb45": fuseTest{
 		name:      "ddcb45",
@@ -47842,6 +51850,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb46": fuseTest{
 		name:      "ddcb46",
@@ -47864,6 +51874,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb47": fuseTest{
 		name:      "ddcb47",
@@ -47886,6 +51898,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb48": fuseTest{
 		name:      "ddcb48",
@@ -47908,6 +51922,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb49": fuseTest{
 		name:      "ddcb49",
@@ -47930,6 +51946,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb4a": fuseTest{
 		name:      "ddcb4a",
@@ -47952,6 +51970,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb4b": fuseTest{
 		name:      "ddcb4b",
@@ -47974,6 +51994,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb4c": fuseTest{
 		name:      "ddcb4c",
@@ -47996,6 +52018,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb4d": fuseTest{
 		name:      "ddcb4d",
@@ -48018,6 +52042,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb4e": fuseTest{
 		name:      "ddcb4e",
@@ -48040,6 +52066,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb4f": fuseTest{
 		name:      "ddcb4f",
@@ -48062,6 +52090,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb50": fuseTest{
 		name:      "ddcb50",
@@ -48084,6 +52114,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb51": fuseTest{
 		name:      "ddcb51",
@@ -48106,6 +52138,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb52": fuseTest{
 		name:      "ddcb52",
@@ -48128,6 +52162,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb53": fuseTest{
 		name:      "ddcb53",
@@ -48150,6 +52186,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb54": fuseTest{
 		name:      "ddcb54",
@@ -48172,6 +52210,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb55": fuseTest{
 		name:      "ddcb55",
@@ -48194,6 +52234,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb56": fuseTest{
 		name:      "ddcb56",
@@ -48216,6 +52258,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb57": fuseTest{
 		name:      "ddcb57",
@@ -48238,6 +52282,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb58": fuseTest{
 		name:      "ddcb58",
@@ -48260,6 +52306,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb59": fuseTest{
 		name:      "ddcb59",
@@ -48282,6 +52330,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb5a": fuseTest{
 		name:      "ddcb5a",
@@ -48304,6 +52354,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb5b": fuseTest{
 		name:      "ddcb5b",
@@ -48326,6 +52378,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb5c": fuseTest{
 		name:      "ddcb5c",
@@ -48348,6 +52402,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb5d": fuseTest{
 		name:      "ddcb5d",
@@ -48370,6 +52426,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb5e": fuseTest{
 		name:      "ddcb5e",
@@ -48392,6 +52450,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb5f": fuseTest{
 		name:      "ddcb5f",
@@ -48414,6 +52474,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb60": fuseTest{
 		name:      "ddcb60",
@@ -48436,6 +52498,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb61": fuseTest{
 		name:      "ddcb61",
@@ -48458,6 +52522,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb62": fuseTest{
 		name:      "ddcb62",
@@ -48480,6 +52546,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb63": fuseTest{
 		name:      "ddcb63",
@@ -48502,6 +52570,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb64": fuseTest{
 		name:      "ddcb64",
@@ -48524,6 +52594,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb65": fuseTest{
 		name:      "ddcb65",
@@ -48546,6 +52618,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb66": fuseTest{
 		name:      "ddcb66",
@@ -48568,6 +52642,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb67": fuseTest{
 		name:      "ddcb67",
@@ -48590,6 +52666,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb68": fuseTest{
 		name:      "ddcb68",
@@ -48612,6 +52690,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb69": fuseTest{
 		name:      "ddcb69",
@@ -48634,6 +52714,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb6a": fuseTest{
 		name:      "ddcb6a",
@@ -48656,6 +52738,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb6b": fuseTest{
 		name:      "ddcb6b",
@@ -48678,6 +52762,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb6c": fuseTest{
 		name:      "ddcb6c",
@@ -48700,6 +52786,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb6d": fuseTest{
 		name:      "ddcb6d",
@@ -48722,6 +52810,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb6e": fuseTest{
 		name:      "ddcb6e",
@@ -48744,6 +52834,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb6f": fuseTest{
 		name:      "ddcb6f",
@@ -48766,6 +52858,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb70": fuseTest{
 		name:      "ddcb70",
@@ -48788,6 +52882,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb71": fuseTest{
 		name:      "ddcb71",
@@ -48810,6 +52906,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb72": fuseTest{
 		name:      "ddcb72",
@@ -48832,6 +52930,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb73": fuseTest{
 		name:      "ddcb73",
@@ -48854,6 +52954,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb74": fuseTest{
 		name:      "ddcb74",
@@ -48876,6 +52978,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb75": fuseTest{
 		name:      "ddcb75",
@@ -48898,6 +53002,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb76": fuseTest{
 		name:      "ddcb76",
@@ -48920,6 +53026,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb77": fuseTest{
 		name:      "ddcb77",
@@ -48942,6 +53050,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb78": fuseTest{
 		name:      "ddcb78",
@@ -48964,6 +53074,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb79": fuseTest{
 		name:      "ddcb79",
@@ -48986,6 +53098,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb7a": fuseTest{
 		name:      "ddcb7a",
@@ -49008,6 +53122,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb7b": fuseTest{
 		name:      "ddcb7b",
@@ -49030,6 +53146,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb7c": fuseTest{
 		name:      "ddcb7c",
@@ -49052,6 +53170,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb7d": fuseTest{
 		name:      "ddcb7d",
@@ -49074,6 +53194,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb7e": fuseTest{
 		name:      "ddcb7e",
@@ -49096,6 +53218,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb7f": fuseTest{
 		name:      "ddcb7f",
@@ -49118,6 +53242,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb80": fuseTest{
 		name:      "ddcb80",
@@ -49140,6 +53266,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb81": fuseTest{
 		name:      "ddcb81",
@@ -49162,6 +53290,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb82": fuseTest{
 		name:    "ddcb82",
@@ -49186,6 +53316,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5e0e, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb83": fuseTest{
 		name:    "ddcb83",
@@ -49210,6 +53342,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x344f, Values: []uint8{0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb84": fuseTest{
 		name:      "ddcb84",
@@ -49232,6 +53366,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb85": fuseTest{
 		name:      "ddcb85",
@@ -49254,6 +53390,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb86": fuseTest{
 		name:      "ddcb86",
@@ -49276,6 +53414,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb87": fuseTest{
 		name:      "ddcb87",
@@ -49298,6 +53438,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb88": fuseTest{
 		name:      "ddcb88",
@@ -49320,6 +53462,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb89": fuseTest{
 		name:    "ddcb89",
@@ -49344,6 +53488,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8f69, Values: []uint8{0xcd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb8a": fuseTest{
 		name:    "ddcb8a",
@@ -49368,6 +53514,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x39b3, Values: []uint8{0xe8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb8b": fuseTest{
 		name:    "ddcb8b",
@@ -49392,6 +53540,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x16e7, Values: []uint8{0x88}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb8c": fuseTest{
 		name:    "ddcb8c",
@@ -49416,6 +53566,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc68a, Values: []uint8{0x3c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb8d": fuseTest{
 		name:    "ddcb8d",
@@ -49440,6 +53592,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x22b2, Values: []uint8{0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb8e": fuseTest{
 		name:    "ddcb8e",
@@ -49464,6 +53618,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd2f2, Values: []uint8{0x01}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb8f": fuseTest{
 		name:    "ddcb8f",
@@ -49488,6 +53644,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x4079, Values: []uint8{0x94}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb90": fuseTest{
 		name:    "ddcb90",
@@ -49512,6 +53670,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb505, Values: []uint8{0x42}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb91": fuseTest{
 		name:      "ddcb91",
@@ -49534,6 +53694,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb92": fuseTest{
 		name:      "ddcb92",
@@ -49556,6 +53718,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb93": fuseTest{
 		name:      "ddcb93",
@@ -49578,6 +53742,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb94": fuseTest{
 		name:    "ddcb94",
@@ -49602,6 +53768,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5e95, Values: []uint8{0xb3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb95": fuseTest{
 		name:    "ddcb95",
@@ -49626,6 +53794,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xfb5a, Values: []uint8{0xc2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb96": fuseTest{
 		name:    "ddcb96",
@@ -49650,6 +53820,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7a56, Values: []uint8{0xaa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb97": fuseTest{
 		name:      "ddcb97",
@@ -49672,6 +53844,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb98": fuseTest{
 		name:    "ddcb98",
@@ -49696,6 +53870,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x03fa, Values: []uint8{0x50}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb99": fuseTest{
 		name:    "ddcb99",
@@ -49720,6 +53896,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0a6a, Values: []uint8{0xc6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb9a": fuseTest{
 		name:    "ddcb9a",
@@ -49744,6 +53922,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6832, Values: []uint8{0xa0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb9b": fuseTest{
 		name:      "ddcb9b",
@@ -49766,6 +53946,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb9c": fuseTest{
 		name:    "ddcb9c",
@@ -49790,6 +53972,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x84cf, Values: []uint8{0x13}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb9d": fuseTest{
 		name:    "ddcb9d",
@@ -49814,6 +53998,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe92f, Values: []uint8{0xe0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb9e": fuseTest{
 		name:    "ddcb9e",
@@ -49838,6 +54024,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd870, Values: []uint8{0xe6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcb9f": fuseTest{
 		name:      "ddcb9f",
@@ -49860,6 +54048,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcba0": fuseTest{
 		name:    "ddcba0",
@@ -49884,6 +54074,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa2f2, Values: []uint8{0x29}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcba1": fuseTest{
 		name:    "ddcba1",
@@ -49908,6 +54100,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x45b0, Values: []uint8{0xc2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcba2": fuseTest{
 		name:      "ddcba2",
@@ -49930,6 +54124,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcba3": fuseTest{
 		name:      "ddcba3",
@@ -49952,6 +54148,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcba4": fuseTest{
 		name:      "ddcba4",
@@ -49974,6 +54172,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcba5": fuseTest{
 		name:      "ddcba5",
@@ -49996,6 +54196,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcba6": fuseTest{
 		name:      "ddcba6",
@@ -50018,6 +54220,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcba7": fuseTest{
 		name:      "ddcba7",
@@ -50040,6 +54244,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcba8": fuseTest{
 		name:    "ddcba8",
@@ -50064,6 +54270,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe81f, Values: []uint8{0x5e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcba9": fuseTest{
 		name:      "ddcba9",
@@ -50086,6 +54294,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbaa": fuseTest{
 		name:      "ddcbaa",
@@ -50108,6 +54318,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbab": fuseTest{
 		name:    "ddcbab",
@@ -50132,6 +54344,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6698, Values: []uint8{0xcb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbac": fuseTest{
 		name:      "ddcbac",
@@ -50154,6 +54368,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbad": fuseTest{
 		name:    "ddcbad",
@@ -50178,6 +54394,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xef3e, Values: []uint8{0x56}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbae": fuseTest{
 		name:      "ddcbae",
@@ -50200,6 +54418,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbaf": fuseTest{
 		name:      "ddcbaf",
@@ -50222,6 +54442,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbb0": fuseTest{
 		name:      "ddcbb0",
@@ -50244,6 +54466,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbb1": fuseTest{
 		name:    "ddcbb1",
@@ -50268,6 +54492,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xad58, Values: []uint8{0x06}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbb2": fuseTest{
 		name:    "ddcbb2",
@@ -50292,6 +54518,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe840, Values: []uint8{0x08}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbb3": fuseTest{
 		name:      "ddcbb3",
@@ -50314,6 +54542,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbb4": fuseTest{
 		name:    "ddcbb4",
@@ -50338,6 +54568,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x50d1, Values: []uint8{0x9d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbb5": fuseTest{
 		name:    "ddcbb5",
@@ -50362,6 +54594,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x145a, Values: []uint8{0x96}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbb6": fuseTest{
 		name:      "ddcbb6",
@@ -50384,6 +54618,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbb7": fuseTest{
 		name:    "ddcbb7",
@@ -50408,6 +54644,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x60f3, Values: []uint8{0x14}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbb8": fuseTest{
 		name:    "ddcbb8",
@@ -50432,6 +54670,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0c09, Values: []uint8{0x07}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbb9": fuseTest{
 		name:    "ddcbb9",
@@ -50456,6 +54696,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x05ba, Values: []uint8{0x48}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbba": fuseTest{
 		name:      "ddcbba",
@@ -50478,6 +54720,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbbb": fuseTest{
 		name:    "ddcbbb",
@@ -50502,6 +54746,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xbd20, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbbc": fuseTest{
 		name:      "ddcbbc",
@@ -50524,6 +54770,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbbd": fuseTest{
 		name:    "ddcbbd",
@@ -50548,6 +54796,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe37d, Values: []uint8{0x5d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbbe": fuseTest{
 		name:    "ddcbbe",
@@ -50572,6 +54822,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5920, Values: []uint8{0x68}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbbf": fuseTest{
 		name:    "ddcbbf",
@@ -50596,6 +54848,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x175a, Values: []uint8{0x62}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbc0": fuseTest{
 		name:    "ddcbc0",
@@ -50620,6 +54874,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x792e, Values: []uint8{0x93}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbc1": fuseTest{
 		name:    "ddcbc1",
@@ -50644,6 +54900,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xdcc3, Values: []uint8{0x1d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbc2": fuseTest{
 		name:    "ddcbc2",
@@ -50668,6 +54926,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0c7f, Values: []uint8{0x31}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbc3": fuseTest{
 		name:      "ddcbc3",
@@ -50690,6 +54950,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbc4": fuseTest{
 		name:      "ddcbc4",
@@ -50712,6 +54974,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbc5": fuseTest{
 		name:    "ddcbc5",
@@ -50736,6 +55000,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xba35, Values: []uint8{0x21}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbc6": fuseTest{
 		name:    "ddcbc6",
@@ -50760,6 +55026,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xaaf0, Values: []uint8{0xb9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbc7": fuseTest{
 		name:    "ddcbc7",
@@ -50784,6 +55052,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x64c3, Values: []uint8{0x95}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbc8": fuseTest{
 		name:      "ddcbc8",
@@ -50806,6 +55076,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbc9": fuseTest{
 		name:    "ddcbc9",
@@ -50830,6 +55102,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb66b, Values: []uint8{0xbb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbca": fuseTest{
 		name:      "ddcbca",
@@ -50852,6 +55126,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbcb": fuseTest{
 		name:      "ddcbcb",
@@ -50874,6 +55150,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbcc": fuseTest{
 		name:      "ddcbcc",
@@ -50896,6 +55174,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbcd": fuseTest{
 		name:    "ddcbcd",
@@ -50920,6 +55200,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x535f, Values: []uint8{0x1e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbce": fuseTest{
 		name:    "ddcbce",
@@ -50944,6 +55226,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0298, Values: []uint8{0x12}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbcf": fuseTest{
 		name:    "ddcbcf",
@@ -50968,6 +55252,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc5b2, Values: []uint8{0xb7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbd0": fuseTest{
 		name:    "ddcbd0",
@@ -50992,6 +55278,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xadc2, Values: []uint8{0x55}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbd1": fuseTest{
 		name:      "ddcbd1",
@@ -51014,6 +55302,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbd2": fuseTest{
 		name:      "ddcbd2",
@@ -51036,6 +55326,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbd3": fuseTest{
 		name:    "ddcbd3",
@@ -51060,6 +55352,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd9f3, Values: []uint8{0x64}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbd4": fuseTest{
 		name:      "ddcbd4",
@@ -51082,6 +55376,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbd5": fuseTest{
 		name:    "ddcbd5",
@@ -51106,6 +55402,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8dfd, Values: []uint8{0x75}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbd6": fuseTest{
 		name:    "ddcbd6",
@@ -51130,6 +55428,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5eed, Values: []uint8{0x77}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbd7": fuseTest{
 		name:    "ddcbd7",
@@ -51154,6 +55454,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe6a5, Values: []uint8{0x64}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbd8": fuseTest{
 		name:    "ddcbd8",
@@ -51178,6 +55480,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb35b, Values: []uint8{0x9e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbd9": fuseTest{
 		name:      "ddcbd9",
@@ -51200,6 +55504,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbda": fuseTest{
 		name:    "ddcbda",
@@ -51224,6 +55530,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x2d60, Values: []uint8{0x8a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbdb": fuseTest{
 		name:    "ddcbdb",
@@ -51248,6 +55556,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x2bca, Values: []uint8{0x18}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbdc": fuseTest{
 		name:    "ddcbdc",
@@ -51272,6 +55582,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7ea7, Values: []uint8{0x4d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbdd": fuseTest{
 		name:    "ddcbdd",
@@ -51296,6 +55608,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5930, Values: []uint8{0x28}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbde": fuseTest{
 		name:      "ddcbde",
@@ -51318,6 +55632,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbdf": fuseTest{
 		name:    "ddcbdf",
@@ -51342,6 +55658,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd216, Values: []uint8{0x7a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbe0": fuseTest{
 		name:    "ddcbe0",
@@ -51366,6 +55684,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x1cad, Values: []uint8{0x56}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbe1": fuseTest{
 		name:      "ddcbe1",
@@ -51388,6 +55708,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbe2": fuseTest{
 		name:      "ddcbe2",
@@ -51410,6 +55732,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbe3": fuseTest{
 		name:      "ddcbe3",
@@ -51432,6 +55756,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbe4": fuseTest{
 		name:      "ddcbe4",
@@ -51454,6 +55780,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbe5": fuseTest{
 		name:    "ddcbe5",
@@ -51478,6 +55806,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6aa2, Values: []uint8{0x3e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbe6": fuseTest{
 		name:    "ddcbe6",
@@ -51502,6 +55832,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd88b, Values: []uint8{0x5c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbe7": fuseTest{
 		name:    "ddcbe7",
@@ -51526,6 +55858,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x2a0e, Values: []uint8{0xfb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbe8": fuseTest{
 		name:      "ddcbe8",
@@ -51548,6 +55882,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbe9": fuseTest{
 		name:    "ddcbe9",
@@ -51572,6 +55908,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7267, Values: []uint8{0x2a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbea": fuseTest{
 		name:    "ddcbea",
@@ -51596,6 +55934,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa7ed, Values: []uint8{0x7f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbeb": fuseTest{
 		name:      "ddcbeb",
@@ -51618,6 +55958,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbec": fuseTest{
 		name:    "ddcbec",
@@ -51642,6 +55984,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xdde8, Values: []uint8{0x20}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbed": fuseTest{
 		name:      "ddcbed",
@@ -51664,6 +56008,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbee": fuseTest{
 		name:      "ddcbee",
@@ -51686,6 +56032,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbef": fuseTest{
 		name:    "ddcbef",
@@ -51710,6 +56058,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xcc98, Values: []uint8{0x31}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbf0": fuseTest{
 		name:    "ddcbf0",
@@ -51734,6 +56084,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x13ef, Values: []uint8{0xed}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbf1": fuseTest{
 		name:      "ddcbf1",
@@ -51756,6 +56108,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbf2": fuseTest{
 		name:    "ddcbf2",
@@ -51780,6 +56134,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc956, Values: []uint8{0x61}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbf3": fuseTest{
 		name:      "ddcbf3",
@@ -51802,6 +56158,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbf4": fuseTest{
 		name:      "ddcbf4",
@@ -51824,6 +56182,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbf5": fuseTest{
 		name:      "ddcbf5",
@@ -51846,6 +56206,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbf6": fuseTest{
 		name:    "ddcbf6",
@@ -51870,6 +56232,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xdcd5, Values: []uint8{0xe2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbf7": fuseTest{
 		name:    "ddcbf7",
@@ -51894,6 +56258,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x2fe1, Values: []uint8{0xe9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbf8": fuseTest{
 		name:    "ddcbf8",
@@ -51918,6 +56284,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x42d8, Values: []uint8{0xa8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbf9": fuseTest{
 		name:    "ddcbf9",
@@ -51942,6 +56310,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd8e4, Values: []uint8{0x94}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbfa": fuseTest{
 		name:      "ddcbfa",
@@ -51964,6 +56334,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbfb": fuseTest{
 		name:    "ddcbfb",
@@ -51988,6 +56360,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x3402, Values: []uint8{0x82}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbfc": fuseTest{
 		name:    "ddcbfc",
@@ -52012,6 +56386,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x60da, Values: []uint8{0x90}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbfd": fuseTest{
 		name:      "ddcbfd",
@@ -52034,6 +56410,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbfe": fuseTest{
 		name:      "ddcbfe",
@@ -52056,6 +56434,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddcbff": fuseTest{
 		name:    "ddcbff",
@@ -52080,6 +56460,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0628, Values: []uint8{0xab}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dde1": fuseTest{
 		name:      "dde1",
@@ -52102,6 +56484,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dde3": fuseTest{
 		name:    "dde3",
@@ -52126,6 +56510,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x57bd, Values: []uint8{0x05, 0xbe}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dde5": fuseTest{
 		name:    "dde5",
@@ -52150,6 +56536,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x075f, Values: []uint8{0x82, 0xb2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"dde9": fuseTest{
 		name:      "dde9",
@@ -52172,6 +56560,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddf9": fuseTest{
 		name:      "ddf9",
@@ -52194,6 +56584,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ddfd00": fuseTest{
 		name:      "ddfd00",
@@ -52216,6 +56608,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"de": fuseTest{
 		name:      "de",
@@ -52238,6 +56632,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"df": fuseTest{
 		name:    "df",
@@ -52262,6 +56658,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5505, Values: []uint8{0x34, 0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e0_1": fuseTest{
 		name:      "e0_1",
@@ -52284,6 +56682,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e0_2": fuseTest{
 		name:      "e0_2",
@@ -52306,6 +56706,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   5,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e1": fuseTest{
 		name:      "e1",
@@ -52328,6 +56730,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e2_1": fuseTest{
 		name:      "e2_1",
@@ -52350,6 +56754,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e2_2": fuseTest{
 		name:      "e2_2",
@@ -52372,6 +56778,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e3": fuseTest{
 		name:    "e3",
@@ -52396,6 +56804,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0373, Values: []uint8{0x22, 0x4d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e4_1": fuseTest{
 		name:    "e4_1",
@@ -52420,6 +56830,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5696, Values: []uint8{0x03, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e4_2": fuseTest{
 		name:      "e4_2",
@@ -52442,6 +56854,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e5": fuseTest{
 		name:    "e5",
@@ -52466,6 +56880,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xec10, Values: []uint8{0x2f, 0x1a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e6": fuseTest{
 		name:      "e6",
@@ -52488,6 +56904,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e7": fuseTest{
 		name:    "e7",
@@ -52512,6 +56930,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5505, Values: []uint8{0x34, 0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e8_1": fuseTest{
 		name:      "e8_1",
@@ -52534,6 +56954,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   5,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e8_2": fuseTest{
 		name:      "e8_2",
@@ -52556,6 +56978,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"e9": fuseTest{
 		name:      "e9",
@@ -52578,6 +57002,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ea_1": fuseTest{
 		name:      "ea_1",
@@ -52600,6 +57026,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ea_2": fuseTest{
 		name:      "ea_2",
@@ -52622,6 +57050,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"eb": fuseTest{
 		name:      "eb",
@@ -52644,6 +57074,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ec_1": fuseTest{
 		name:    "ec_1",
@@ -52668,6 +57100,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5696, Values: []uint8{0x03, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ec_2": fuseTest{
 		name:      "ec_2",
@@ -52690,6 +57124,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed40": fuseTest{
 		name:      "ed40",
@@ -52712,6 +57148,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0x296b, Values: []uint8{0x29},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"ed41": fuseTest{
 		name:      "ed41",
@@ -52734,6 +57174,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x0881, Values: []uint8{0x08},
+		},
 	},
 	"ed42": fuseTest{
 		name:      "ed42",
@@ -52756,6 +57200,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed43": fuseTest{
 		name:    "ed43",
@@ -52780,6 +57226,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x54c6, Values: []uint8{0x32, 0x27}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed44": fuseTest{
 		name:      "ed44",
@@ -52802,6 +57250,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed45": fuseTest{
 		name:      "ed45",
@@ -52824,6 +57274,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed46": fuseTest{
 		name:      "ed46",
@@ -52846,6 +57298,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed47": fuseTest{
 		name:      "ed47",
@@ -52868,6 +57322,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   9,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed48": fuseTest{
 		name:      "ed48",
@@ -52890,6 +57346,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0x7d1b, Values: []uint8{0x7d},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"ed49": fuseTest{
 		name:      "ed49",
@@ -52912,6 +57372,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x59ec, Values: []uint8{0xec},
+		},
 	},
 	"ed4a": fuseTest{
 		name:      "ed4a",
@@ -52934,6 +57398,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed4b": fuseTest{
 		name:      "ed4b",
@@ -52956,6 +57422,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed4c": fuseTest{
 		name:      "ed4c",
@@ -52978,6 +57446,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed4d": fuseTest{
 		name:      "ed4d",
@@ -53000,6 +57470,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed4e": fuseTest{
 		name:      "ed4e",
@@ -53022,6 +57494,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed4f": fuseTest{
 		name:      "ed4f",
@@ -53044,6 +57518,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   9,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed50": fuseTest{
 		name:      "ed50",
@@ -53066,6 +57542,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0xbbcc, Values: []uint8{0xbb},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"ed51": fuseTest{
 		name:      "ed51",
@@ -53088,6 +57568,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0xc0a4, Values: []uint8{0x53},
+		},
 	},
 	"ed52": fuseTest{
 		name:      "ed52",
@@ -53110,6 +57594,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed53": fuseTest{
 		name:    "ed53",
@@ -53134,6 +57620,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x21ff, Values: []uint8{0xb2, 0x5c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed54": fuseTest{
 		name:      "ed54",
@@ -53156,6 +57644,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed55": fuseTest{
 		name:      "ed55",
@@ -53178,6 +57668,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed56": fuseTest{
 		name:      "ed56",
@@ -53200,6 +57692,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed57": fuseTest{
 		name:      "ed57",
@@ -53222,6 +57716,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   9,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed58": fuseTest{
 		name:      "ed58",
@@ -53244,6 +57740,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0x4091, Values: []uint8{0x40},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"ed59": fuseTest{
 		name:      "ed59",
@@ -53266,6 +57766,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0xd512, Values: []uint8{0xc5},
+		},
 	},
 	"ed5a": fuseTest{
 		name:      "ed5a",
@@ -53288,6 +57792,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed5b": fuseTest{
 		name:      "ed5b",
@@ -53310,6 +57816,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed5c": fuseTest{
 		name:      "ed5c",
@@ -53332,6 +57840,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed5d": fuseTest{
 		name:      "ed5d",
@@ -53354,6 +57864,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed5e": fuseTest{
 		name:      "ed5e",
@@ -53376,6 +57888,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed5f": fuseTest{
 		name:      "ed5f",
@@ -53398,6 +57912,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   9,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed60": fuseTest{
 		name:      "ed60",
@@ -53420,6 +57936,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0x0dae, Values: []uint8{0x0d},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"ed61": fuseTest{
 		name:      "ed61",
@@ -53442,6 +57962,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x90ca, Values: []uint8{0xd8},
+		},
 	},
 	"ed62": fuseTest{
 		name:      "ed62",
@@ -53464,6 +57988,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed63": fuseTest{
 		name:    "ed63",
@@ -53488,6 +58014,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6567, Values: []uint8{0xd3, 0xe4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed64": fuseTest{
 		name:      "ed64",
@@ -53510,6 +58038,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed65": fuseTest{
 		name:      "ed65",
@@ -53532,6 +58062,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed66": fuseTest{
 		name:      "ed66",
@@ -53554,6 +58086,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed67": fuseTest{
 		name:    "ed67",
@@ -53578,6 +58112,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb9de, Values: []uint8{0x69}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed68": fuseTest{
 		name:      "ed68",
@@ -53600,6 +58136,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0x624b, Values: []uint8{0x62},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"ed69": fuseTest{
 		name:      "ed69",
@@ -53622,6 +58162,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x8d2f, Values: []uint8{0xd6},
+		},
 	},
 	"ed6a": fuseTest{
 		name:      "ed6a",
@@ -53644,6 +58188,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed6b": fuseTest{
 		name:      "ed6b",
@@ -53666,6 +58212,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed6c": fuseTest{
 		name:      "ed6c",
@@ -53688,6 +58236,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed6d": fuseTest{
 		name:      "ed6d",
@@ -53710,6 +58260,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed6e": fuseTest{
 		name:      "ed6e",
@@ -53732,6 +58284,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed6f": fuseTest{
 		name:    "ed6f",
@@ -53756,6 +58310,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x403c, Values: []uint8{0x45}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed70": fuseTest{
 		name:      "ed70",
@@ -53778,6 +58334,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0xf7d6, Values: []uint8{0xf7},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"ed71": fuseTest{
 		name:      "ed71",
@@ -53800,6 +58360,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x20b3, Values: []uint8{0x00},
+		},
 	},
 	"ed72": fuseTest{
 		name:      "ed72",
@@ -53822,6 +58386,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed73": fuseTest{
 		name:    "ed73",
@@ -53846,6 +58412,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x792a, Values: []uint8{0xd5, 0xae}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed74": fuseTest{
 		name:      "ed74",
@@ -53868,6 +58436,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed75": fuseTest{
 		name:      "ed75",
@@ -53890,6 +58460,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed76": fuseTest{
 		name:      "ed76",
@@ -53912,6 +58484,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed78": fuseTest{
 		name:      "ed78",
@@ -53934,6 +58508,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead: memory.Snapshot{
+			Address: 0xf206, Values: []uint8{0xf2},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"ed79": fuseTest{
 		name:      "ed79",
@@ -53956,6 +58534,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x4243, Values: []uint8{0xe0},
+		},
 	},
 	"ed7a": fuseTest{
 		name:      "ed7a",
@@ -53978,6 +58560,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed7b": fuseTest{
 		name:      "ed7b",
@@ -54000,6 +58584,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed7c": fuseTest{
 		name:      "ed7c",
@@ -54022,6 +58608,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed7d": fuseTest{
 		name:      "ed7d",
@@ -54044,6 +58632,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ed7e": fuseTest{
 		name:      "ed7e",
@@ -54066,6 +58656,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"eda0": fuseTest{
 		name:    "eda0",
@@ -54090,6 +58682,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x95c1, Values: []uint8{0xb7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"eda1": fuseTest{
 		name:      "eda1",
@@ -54112,6 +58706,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"eda2": fuseTest{
 		name:    "eda2",
@@ -54136,6 +58732,10 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x2666, Values: []uint8{0x9a}},
 		},
+		portRead: memory.Snapshot{
+			Address: 0x9a82, Values: []uint8{0x9a},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"eda2_01": fuseTest{
 		name:    "eda2_01",
@@ -54160,6 +58760,10 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8000, Values: []uint8{0x02}},
 		},
+		portRead: memory.Snapshot{
+			Address: 0x0200, Values: []uint8{0x02},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"eda2_02": fuseTest{
 		name:    "eda2_02",
@@ -54184,6 +58788,10 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8000, Values: []uint8{0x56}},
 		},
+		portRead: memory.Snapshot{
+			Address: 0x569a, Values: []uint8{0x56},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"eda2_03": fuseTest{
 		name:    "eda2_03",
@@ -54208,6 +58816,10 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8000, Values: []uint8{0xab}},
 		},
+		portRead: memory.Snapshot{
+			Address: 0xabcc, Values: []uint8{0xab},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"eda3": fuseTest{
 		name:      "eda3",
@@ -54230,6 +58842,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x6234, Values: []uint8{0xb3},
+		},
 	},
 	"eda3_01": fuseTest{
 		name:      "eda3_01",
@@ -54252,6 +58868,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x0000, Values: []uint8{0x00},
+		},
 	},
 	"eda3_02": fuseTest{
 		name:      "eda3_02",
@@ -54274,6 +58894,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x0000, Values: []uint8{0x00},
+		},
 	},
 	"eda3_03": fuseTest{
 		name:      "eda3_03",
@@ -54296,6 +58920,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x0000, Values: []uint8{0x00},
+		},
 	},
 	"eda3_04": fuseTest{
 		name:      "eda3_04",
@@ -54318,6 +58946,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x0000, Values: []uint8{0x80},
+		},
 	},
 	"eda3_05": fuseTest{
 		name:      "eda3_05",
@@ -54340,6 +58972,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x0000, Values: []uint8{0x12},
+		},
 	},
 	"eda3_06": fuseTest{
 		name:      "eda3_06",
@@ -54362,6 +58998,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x0000, Values: []uint8{0x12},
+		},
 	},
 	"eda3_07": fuseTest{
 		name:      "eda3_07",
@@ -54384,6 +59024,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x0100, Values: []uint8{0x00},
+		},
 	},
 	"eda3_08": fuseTest{
 		name:      "eda3_08",
@@ -54406,6 +59050,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x0700, Values: []uint8{0x00},
+		},
 	},
 	"eda3_09": fuseTest{
 		name:      "eda3_09",
@@ -54428,6 +59076,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x8000, Values: []uint8{0x00},
+		},
 	},
 	"eda3_10": fuseTest{
 		name:      "eda3_10",
@@ -54450,6 +59102,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x8100, Values: []uint8{0x00},
+		},
 	},
 	"eda3_11": fuseTest{
 		name:      "eda3_11",
@@ -54472,6 +59128,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0xa800, Values: []uint8{0x00},
+		},
 	},
 	"eda8": fuseTest{
 		name:    "eda8",
@@ -54496,6 +59156,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5938, Values: []uint8{0xd8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"eda9": fuseTest{
 		name:      "eda9",
@@ -54518,6 +59180,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"edaa": fuseTest{
 		name:    "edaa",
@@ -54542,6 +59206,10 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa533, Values: []uint8{0xd7}},
 		},
+		portRead: memory.Snapshot{
+			Address: 0xd791, Values: []uint8{0xd7},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"edaa_01": fuseTest{
 		name:    "edaa_01",
@@ -54566,6 +59234,10 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8000, Values: []uint8{0x01}},
 		},
+		portRead: memory.Snapshot{
+			Address: 0x0101, Values: []uint8{0x01},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"edaa_02": fuseTest{
 		name:    "edaa_02",
@@ -54590,6 +59262,10 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8000, Values: []uint8{0x56}},
 		},
+		portRead: memory.Snapshot{
+			Address: 0x56aa, Values: []uint8{0x56},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"edaa_03": fuseTest{
 		name:    "edaa_03",
@@ -54614,6 +59290,10 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8000, Values: []uint8{0xab}},
 		},
+		portRead: memory.Snapshot{
+			Address: 0xabcc, Values: []uint8{0xab},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"edab": fuseTest{
 		name:      "edab",
@@ -54636,6 +59316,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0xf234, Values: []uint8{0x49},
+		},
 	},
 	"edab_01": fuseTest{
 		name:      "edab_01",
@@ -54658,6 +59342,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x5700, Values: []uint8{0x7f},
+		},
 	},
 	"edab_02": fuseTest{
 		name:      "edab_02",
@@ -54680,6 +59368,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0xaa00, Values: []uint8{0xcd},
+		},
 	},
 	"edb0": fuseTest{
 		name:    "edb0",
@@ -54704,6 +59396,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xaad8, Values: []uint8{0x53, 0x94, 0x30, 0x05, 0x44, 0x24, 0x22, 0xb9, 0xe9, 0x77, 0x23, 0x71, 0xe2, 0x5c, 0xfb, 0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"edb1": fuseTest{
 		name:      "edb1",
@@ -54726,6 +59420,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   79,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"edb2": fuseTest{
 		name:    "edb2",
@@ -54750,6 +59446,10 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x37ce, Values: []uint8{0x0a, 0x09, 0x08, 0x07, 0x06, 0x05, 0x04, 0x03, 0x02, 0x01}},
 		},
+		portRead: memory.Snapshot{
+			Address: 0x0140, Values: []uint8{0x01},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"edb3": fuseTest{
 		name:      "edb3",
@@ -54772,6 +59472,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   58,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x00e0, Values: []uint8{0xaa},
+		},
 	},
 	"edb8": fuseTest{
 		name:    "edb8",
@@ -54796,6 +59500,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x68e1, Values: []uint8{0x29, 0x85, 0xa7, 0xc3, 0x55, 0x74, 0x23, 0x0a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"edb9": fuseTest{
 		name:      "edb9",
@@ -54818,6 +59524,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   163,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"edba": fuseTest{
 		name:    "edba",
@@ -54842,6 +59550,10 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6b50, Values: []uint8{0x01, 0x02, 0x03, 0x04, 0x05, 0x06}},
 		},
+		portRead: memory.Snapshot{
+			Address: 0x019f, Values: []uint8{0x01},
+		},
+		portWrite: memory.Snapshot{},
 	},
 	"edbb": fuseTest{
 		name:      "edbb",
@@ -54864,6 +59576,10 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   79,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{
+			Address: 0x003b, Values: []uint8{0xf9},
+		},
 	},
 	"ee": fuseTest{
 		name:      "ee",
@@ -54886,6 +59602,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ef": fuseTest{
 		name:    "ef",
@@ -54910,6 +59628,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5505, Values: []uint8{0x34, 0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f0_1": fuseTest{
 		name:      "f0_1",
@@ -54932,6 +59652,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f0_2": fuseTest{
 		name:      "f0_2",
@@ -54954,6 +59676,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   5,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f1": fuseTest{
 		name:      "f1",
@@ -54976,6 +59700,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f2_1": fuseTest{
 		name:      "f2_1",
@@ -54998,6 +59724,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f2_2": fuseTest{
 		name:      "f2_2",
@@ -55020,6 +59748,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f3": fuseTest{
 		name:      "f3",
@@ -55042,6 +59772,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f4_1": fuseTest{
 		name:    "f4_1",
@@ -55066,6 +59798,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5696, Values: []uint8{0x03, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f4_2": fuseTest{
 		name:      "f4_2",
@@ -55088,6 +59822,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f5": fuseTest{
 		name:    "f5",
@@ -55112,6 +59848,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xec10, Values: []uint8{0xe3, 0x53}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f6": fuseTest{
 		name:      "f6",
@@ -55134,6 +59872,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f7": fuseTest{
 		name:    "f7",
@@ -55158,6 +59898,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5505, Values: []uint8{0x34, 0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f8_1": fuseTest{
 		name:      "f8_1",
@@ -55180,6 +59922,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   5,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f8_2": fuseTest{
 		name:      "f8_2",
@@ -55202,6 +59946,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"f9": fuseTest{
 		name:      "f9",
@@ -55224,6 +59970,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   6,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fa_1": fuseTest{
 		name:      "fa_1",
@@ -55246,6 +59994,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fa_2": fuseTest{
 		name:      "fa_2",
@@ -55268,6 +60018,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fb": fuseTest{
 		name:      "fb",
@@ -55290,6 +60042,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   4,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fc_1": fuseTest{
 		name:    "fc_1",
@@ -55314,6 +60068,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5696, Values: []uint8{0x03, 0x00}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fc_2": fuseTest{
 		name:      "fc_2",
@@ -55336,6 +60092,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd09": fuseTest{
 		name:      "fd09",
@@ -55358,6 +60116,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd19": fuseTest{
 		name:      "fd19",
@@ -55380,6 +60140,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd21": fuseTest{
 		name:      "fd21",
@@ -55402,6 +60164,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd22": fuseTest{
 		name:    "fd22",
@@ -55426,6 +60190,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe29a, Values: []uint8{0xe4, 0x81}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd23": fuseTest{
 		name:      "fd23",
@@ -55448,6 +60214,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd24": fuseTest{
 		name:      "fd24",
@@ -55470,6 +60238,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd25": fuseTest{
 		name:      "fd25",
@@ -55492,6 +60262,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd26": fuseTest{
 		name:      "fd26",
@@ -55514,6 +60286,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd29": fuseTest{
 		name:      "fd29",
@@ -55536,6 +60310,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd2a": fuseTest{
 		name:      "fd2a",
@@ -55558,6 +60334,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd2b": fuseTest{
 		name:      "fd2b",
@@ -55580,6 +60358,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd2c": fuseTest{
 		name:      "fd2c",
@@ -55602,6 +60382,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd2d": fuseTest{
 		name:      "fd2d",
@@ -55624,6 +60406,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd2e": fuseTest{
 		name:      "fd2e",
@@ -55646,6 +60430,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd34": fuseTest{
 		name:    "fd34",
@@ -55670,6 +60456,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xef7c, Values: []uint8{0xe1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd35": fuseTest{
 		name:    "fd35",
@@ -55694,6 +60482,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xae71, Values: []uint8{0xa5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd36": fuseTest{
 		name:    "fd36",
@@ -55718,6 +60508,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xbd55, Values: []uint8{0xc5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd39": fuseTest{
 		name:      "fd39",
@@ -55740,6 +60532,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   15,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd44": fuseTest{
 		name:      "fd44",
@@ -55762,6 +60556,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd45": fuseTest{
 		name:      "fd45",
@@ -55784,6 +60580,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd46": fuseTest{
 		name:      "fd46",
@@ -55806,6 +60604,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd4c": fuseTest{
 		name:      "fd4c",
@@ -55828,6 +60628,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd4d": fuseTest{
 		name:      "fd4d",
@@ -55850,6 +60652,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd4e": fuseTest{
 		name:      "fd4e",
@@ -55872,6 +60676,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd54": fuseTest{
 		name:      "fd54",
@@ -55894,6 +60700,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd55": fuseTest{
 		name:      "fd55",
@@ -55916,6 +60724,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd56": fuseTest{
 		name:      "fd56",
@@ -55938,6 +60748,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd5c": fuseTest{
 		name:      "fd5c",
@@ -55960,6 +60772,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd5d": fuseTest{
 		name:      "fd5d",
@@ -55982,6 +60796,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd5e": fuseTest{
 		name:      "fd5e",
@@ -56004,6 +60820,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd60": fuseTest{
 		name:      "fd60",
@@ -56026,6 +60844,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd61": fuseTest{
 		name:      "fd61",
@@ -56048,6 +60868,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd62": fuseTest{
 		name:      "fd62",
@@ -56070,6 +60892,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd63": fuseTest{
 		name:      "fd63",
@@ -56092,6 +60916,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd64": fuseTest{
 		name:      "fd64",
@@ -56114,6 +60940,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd65": fuseTest{
 		name:      "fd65",
@@ -56136,6 +60964,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd66": fuseTest{
 		name:      "fd66",
@@ -56158,6 +60988,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd67": fuseTest{
 		name:      "fd67",
@@ -56180,6 +61012,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd68": fuseTest{
 		name:      "fd68",
@@ -56202,6 +61036,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd69": fuseTest{
 		name:      "fd69",
@@ -56224,6 +61060,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd6a": fuseTest{
 		name:      "fd6a",
@@ -56246,6 +61084,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd6b": fuseTest{
 		name:      "fd6b",
@@ -56268,6 +61108,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd6c": fuseTest{
 		name:      "fd6c",
@@ -56290,6 +61132,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd6d": fuseTest{
 		name:      "fd6d",
@@ -56312,6 +61156,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd6e": fuseTest{
 		name:      "fd6e",
@@ -56334,6 +61180,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd6f": fuseTest{
 		name:      "fd6f",
@@ -56356,6 +61204,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd70": fuseTest{
 		name:    "fd70",
@@ -56380,6 +61230,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x23f4, Values: []uint8{0x33}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd71": fuseTest{
 		name:    "fd71",
@@ -56404,6 +61256,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xbf5f, Values: []uint8{0xae}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd72": fuseTest{
 		name:    "fd72",
@@ -56428,6 +61282,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7c63, Values: []uint8{0xdd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd73": fuseTest{
 		name:    "fd73",
@@ -56452,6 +61308,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8779, Values: []uint8{0x09}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd74": fuseTest{
 		name:    "fd74",
@@ -56476,6 +61334,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x92d1, Values: []uint8{0x1f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd75": fuseTest{
 		name:    "fd75",
@@ -56500,6 +61360,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x16cf, Values: []uint8{0x7b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd77": fuseTest{
 		name:    "fd77",
@@ -56524,6 +61386,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6b44, Values: []uint8{0x6f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd7c": fuseTest{
 		name:      "fd7c",
@@ -56546,6 +61410,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd7d": fuseTest{
 		name:      "fd7d",
@@ -56568,6 +61434,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd7e": fuseTest{
 		name:      "fd7e",
@@ -56590,6 +61458,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd84": fuseTest{
 		name:      "fd84",
@@ -56612,6 +61482,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd85": fuseTest{
 		name:      "fd85",
@@ -56634,6 +61506,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd86": fuseTest{
 		name:      "fd86",
@@ -56656,6 +61530,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd8c": fuseTest{
 		name:      "fd8c",
@@ -56678,6 +61554,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd8d": fuseTest{
 		name:      "fd8d",
@@ -56700,6 +61578,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd8e": fuseTest{
 		name:      "fd8e",
@@ -56722,6 +61602,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd94": fuseTest{
 		name:      "fd94",
@@ -56744,6 +61626,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd95": fuseTest{
 		name:      "fd95",
@@ -56766,6 +61650,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd96": fuseTest{
 		name:      "fd96",
@@ -56788,6 +61674,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd9c": fuseTest{
 		name:      "fd9c",
@@ -56810,6 +61698,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd9d": fuseTest{
 		name:      "fd9d",
@@ -56832,6 +61722,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fd9e": fuseTest{
 		name:      "fd9e",
@@ -56854,6 +61746,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fda4": fuseTest{
 		name:      "fda4",
@@ -56876,6 +61770,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fda5": fuseTest{
 		name:      "fda5",
@@ -56898,6 +61794,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fda6": fuseTest{
 		name:      "fda6",
@@ -56920,6 +61818,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdac": fuseTest{
 		name:      "fdac",
@@ -56942,6 +61842,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdad": fuseTest{
 		name:      "fdad",
@@ -56964,6 +61866,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdae": fuseTest{
 		name:      "fdae",
@@ -56986,6 +61890,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdb4": fuseTest{
 		name:      "fdb4",
@@ -57008,6 +61914,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdb5": fuseTest{
 		name:      "fdb5",
@@ -57030,6 +61938,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdb6": fuseTest{
 		name:      "fdb6",
@@ -57052,6 +61962,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdbc": fuseTest{
 		name:      "fdbc",
@@ -57074,6 +61986,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdbd": fuseTest{
 		name:      "fdbd",
@@ -57096,6 +62010,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdbe": fuseTest{
 		name:      "fdbe",
@@ -57118,6 +62034,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   19,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb00": fuseTest{
 		name:    "fdcb00",
@@ -57142,6 +62060,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x2781, Values: []uint8{0xa0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb01": fuseTest{
 		name:    "fdcb01",
@@ -57166,6 +62086,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5bfd, Values: []uint8{0x97}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb02": fuseTest{
 		name:    "fdcb02",
@@ -57190,6 +62112,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x3e06, Values: []uint8{0xb0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb03": fuseTest{
 		name:    "fdcb03",
@@ -57214,6 +62138,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5821, Values: []uint8{0x34}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb04": fuseTest{
 		name:    "fdcb04",
@@ -57238,6 +62164,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x50d8, Values: []uint8{0x25}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb05": fuseTest{
 		name:    "fdcb05",
@@ -57262,6 +62190,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb279, Values: []uint8{0xcc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb06": fuseTest{
 		name:    "fdcb06",
@@ -57286,6 +62216,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xff99, Values: []uint8{0xe3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb07": fuseTest{
 		name:    "fdcb07",
@@ -57310,6 +62242,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x080f, Values: []uint8{0x5d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb08": fuseTest{
 		name:    "fdcb08",
@@ -57334,6 +62268,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x615c, Values: []uint8{0xc1}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb09": fuseTest{
 		name:    "fdcb09",
@@ -57358,6 +62294,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x197a, Values: []uint8{0x93}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb0a": fuseTest{
 		name:    "fdcb0a",
@@ -57382,6 +62320,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xeed7, Values: []uint8{0x8c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb0b": fuseTest{
 		name:    "fdcb0b",
@@ -57406,6 +62346,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc69b, Values: []uint8{0x79}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb0c": fuseTest{
 		name:    "fdcb0c",
@@ -57430,6 +62372,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8c74, Values: []uint8{0x57}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb0d": fuseTest{
 		name:    "fdcb0d",
@@ -57454,6 +62398,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xfe3e, Values: []uint8{0x8d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb0e": fuseTest{
 		name:    "fdcb0e",
@@ -57478,6 +62424,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xf22f, Values: []uint8{0xfb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb0f": fuseTest{
 		name:    "fdcb0f",
@@ -57502,6 +62450,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xce4d, Values: []uint8{0x22}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb10": fuseTest{
 		name:    "fdcb10",
@@ -57526,6 +62476,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x431c, Values: []uint8{0x39}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb11": fuseTest{
 		name:    "fdcb11",
@@ -57550,6 +62502,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x9d0b, Values: []uint8{0xbc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb12": fuseTest{
 		name:    "fdcb12",
@@ -57574,6 +62528,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8598, Values: []uint8{0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb13": fuseTest{
 		name:    "fdcb13",
@@ -57598,6 +62554,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe74b, Values: []uint8{0x66}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb14": fuseTest{
 		name:    "fdcb14",
@@ -57622,6 +62580,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd900, Values: []uint8{0x0d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb15": fuseTest{
 		name:    "fdcb15",
@@ -57646,6 +62606,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x2d92, Values: []uint8{0x24}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb16": fuseTest{
 		name:    "fdcb16",
@@ -57670,6 +62632,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xf0d7, Values: []uint8{0x12}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb17": fuseTest{
 		name:    "fdcb17",
@@ -57694,6 +62658,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x1f9d, Values: []uint8{0x71}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb18": fuseTest{
 		name:    "fdcb18",
@@ -57718,6 +62684,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x31d6, Values: []uint8{0xfd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb19": fuseTest{
 		name:    "fdcb19",
@@ -57742,6 +62710,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x4cd0, Values: []uint8{0xa5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb1a": fuseTest{
 		name:    "fdcb1a",
@@ -57766,6 +62736,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x414b, Values: []uint8{0x22}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb1b": fuseTest{
 		name:    "fdcb1b",
@@ -57790,6 +62762,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x71c6, Values: []uint8{0x5c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb1c": fuseTest{
 		name:    "fdcb1c",
@@ -57814,6 +62788,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xdee8, Values: []uint8{0xc7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb1d": fuseTest{
 		name:    "fdcb1d",
@@ -57838,6 +62814,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd68e, Values: []uint8{0xdb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb1e": fuseTest{
 		name:    "fdcb1e",
@@ -57862,6 +62840,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xda72, Values: []uint8{0x92}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb1f": fuseTest{
 		name:    "fdcb1f",
@@ -57886,6 +62866,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x2110, Values: []uint8{0x82}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb20": fuseTest{
 		name:    "fdcb20",
@@ -57910,6 +62892,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xda9f, Values: []uint8{0x12}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb21": fuseTest{
 		name:    "fdcb21",
@@ -57934,6 +62918,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xdeb1, Values: []uint8{0x46}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb22": fuseTest{
 		name:    "fdcb22",
@@ -57958,6 +62944,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x88c0, Values: []uint8{0xa8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb23": fuseTest{
 		name:    "fdcb23",
@@ -57982,6 +62970,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x524a, Values: []uint8{0xca}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb24": fuseTest{
 		name:    "fdcb24",
@@ -58006,6 +62996,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xafb2, Values: []uint8{0xfc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb25": fuseTest{
 		name:    "fdcb25",
@@ -58030,6 +63022,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x238f, Values: []uint8{0x4c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb26": fuseTest{
 		name:    "fdcb26",
@@ -58054,6 +63048,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd4a1, Values: []uint8{0x7e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb27": fuseTest{
 		name:    "fdcb27",
@@ -58078,6 +63074,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8d9b, Values: []uint8{0x4e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb28": fuseTest{
 		name:    "fdcb28",
@@ -58102,6 +63100,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xaac6, Values: []uint8{0x2e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb29": fuseTest{
 		name:    "fdcb29",
@@ -58126,6 +63126,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x03c0, Values: []uint8{0xc2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb2a": fuseTest{
 		name:    "fdcb2a",
@@ -58150,6 +63152,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xabe0, Values: []uint8{0xee}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb2b": fuseTest{
 		name:    "fdcb2b",
@@ -58174,6 +63178,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x4adf, Values: []uint8{0x24}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb2c": fuseTest{
 		name:    "fdcb2c",
@@ -58198,6 +63204,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xccb7, Values: []uint8{0x1e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb2d": fuseTest{
 		name:    "fdcb2d",
@@ -58222,6 +63230,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe545, Values: []uint8{0x3c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb2e": fuseTest{
 		name:    "fdcb2e",
@@ -58246,6 +63256,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x4303, Values: []uint8{0xd6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb2f": fuseTest{
 		name:    "fdcb2f",
@@ -58270,6 +63282,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x16e1, Values: []uint8{0x0c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb30": fuseTest{
 		name:    "fdcb30",
@@ -58294,6 +63308,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd661, Values: []uint8{0x4b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb31": fuseTest{
 		name:    "fdcb31",
@@ -58318,6 +63334,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xbfd0, Values: []uint8{0xe3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb32": fuseTest{
 		name:    "fdcb32",
@@ -58342,6 +63360,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5aa3, Values: []uint8{0xb3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb33": fuseTest{
 		name:    "fdcb33",
@@ -58366,6 +63386,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x19e3, Values: []uint8{0xb5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb34": fuseTest{
 		name:    "fdcb34",
@@ -58390,6 +63412,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5668, Values: []uint8{0xa9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb35": fuseTest{
 		name:    "fdcb35",
@@ -58414,6 +63438,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0169, Values: []uint8{0x17}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb36": fuseTest{
 		name:    "fdcb36",
@@ -58438,6 +63464,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x1ab8, Values: []uint8{0x79}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb37": fuseTest{
 		name:    "fdcb37",
@@ -58462,6 +63490,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe7b7, Values: []uint8{0x3f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb38": fuseTest{
 		name:    "fdcb38",
@@ -58486,6 +63516,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd024, Values: []uint8{0x06}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb39": fuseTest{
 		name:    "fdcb39",
@@ -58510,6 +63542,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xf4b2, Values: []uint8{0x7a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb3a": fuseTest{
 		name:    "fdcb3a",
@@ -58534,6 +63568,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xcb20, Values: []uint8{0x54}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb3b": fuseTest{
 		name:    "fdcb3b",
@@ -58558,6 +63594,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd268, Values: []uint8{0x59}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb3c": fuseTest{
 		name:    "fdcb3c",
@@ -58582,6 +63620,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa7bd, Values: []uint8{0x4b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb3d": fuseTest{
 		name:    "fdcb3d",
@@ -58606,6 +63646,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe53d, Values: []uint8{0x7d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb3e": fuseTest{
 		name:    "fdcb3e",
@@ -58630,6 +63672,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb2ff, Values: []uint8{0x28}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb3f": fuseTest{
 		name:    "fdcb3f",
@@ -58654,6 +63698,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc1cd, Values: []uint8{0x3c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb40": fuseTest{
 		name:      "fdcb40",
@@ -58676,6 +63722,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb41": fuseTest{
 		name:      "fdcb41",
@@ -58698,6 +63746,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb42": fuseTest{
 		name:      "fdcb42",
@@ -58720,6 +63770,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb43": fuseTest{
 		name:      "fdcb43",
@@ -58742,6 +63794,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb44": fuseTest{
 		name:      "fdcb44",
@@ -58764,6 +63818,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb45": fuseTest{
 		name:      "fdcb45",
@@ -58786,6 +63842,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb46": fuseTest{
 		name:      "fdcb46",
@@ -58808,6 +63866,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb47": fuseTest{
 		name:      "fdcb47",
@@ -58830,6 +63890,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb48": fuseTest{
 		name:      "fdcb48",
@@ -58852,6 +63914,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb49": fuseTest{
 		name:      "fdcb49",
@@ -58874,6 +63938,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb4a": fuseTest{
 		name:      "fdcb4a",
@@ -58896,6 +63962,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb4b": fuseTest{
 		name:      "fdcb4b",
@@ -58918,6 +63986,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb4c": fuseTest{
 		name:      "fdcb4c",
@@ -58940,6 +64010,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb4d": fuseTest{
 		name:      "fdcb4d",
@@ -58962,6 +64034,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb4e": fuseTest{
 		name:      "fdcb4e",
@@ -58984,6 +64058,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb4f": fuseTest{
 		name:      "fdcb4f",
@@ -59006,6 +64082,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb50": fuseTest{
 		name:      "fdcb50",
@@ -59028,6 +64106,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb51": fuseTest{
 		name:      "fdcb51",
@@ -59050,6 +64130,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb52": fuseTest{
 		name:      "fdcb52",
@@ -59072,6 +64154,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb53": fuseTest{
 		name:      "fdcb53",
@@ -59094,6 +64178,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb54": fuseTest{
 		name:      "fdcb54",
@@ -59116,6 +64202,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb55": fuseTest{
 		name:      "fdcb55",
@@ -59138,6 +64226,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb56": fuseTest{
 		name:      "fdcb56",
@@ -59160,6 +64250,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb57": fuseTest{
 		name:      "fdcb57",
@@ -59182,6 +64274,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb58": fuseTest{
 		name:      "fdcb58",
@@ -59204,6 +64298,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb59": fuseTest{
 		name:      "fdcb59",
@@ -59226,6 +64322,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb5a": fuseTest{
 		name:      "fdcb5a",
@@ -59248,6 +64346,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb5b": fuseTest{
 		name:      "fdcb5b",
@@ -59270,6 +64370,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb5c": fuseTest{
 		name:      "fdcb5c",
@@ -59292,6 +64394,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb5d": fuseTest{
 		name:      "fdcb5d",
@@ -59314,6 +64418,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb5e": fuseTest{
 		name:      "fdcb5e",
@@ -59336,6 +64442,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb5f": fuseTest{
 		name:      "fdcb5f",
@@ -59358,6 +64466,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb60": fuseTest{
 		name:      "fdcb60",
@@ -59380,6 +64490,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb61": fuseTest{
 		name:      "fdcb61",
@@ -59402,6 +64514,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb62": fuseTest{
 		name:      "fdcb62",
@@ -59424,6 +64538,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb63": fuseTest{
 		name:      "fdcb63",
@@ -59446,6 +64562,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb64": fuseTest{
 		name:      "fdcb64",
@@ -59468,6 +64586,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb65": fuseTest{
 		name:      "fdcb65",
@@ -59490,6 +64610,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb66": fuseTest{
 		name:      "fdcb66",
@@ -59512,6 +64634,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb67": fuseTest{
 		name:      "fdcb67",
@@ -59534,6 +64658,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb68": fuseTest{
 		name:      "fdcb68",
@@ -59556,6 +64682,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb69": fuseTest{
 		name:      "fdcb69",
@@ -59578,6 +64706,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb6a": fuseTest{
 		name:      "fdcb6a",
@@ -59600,6 +64730,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb6b": fuseTest{
 		name:      "fdcb6b",
@@ -59622,6 +64754,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb6c": fuseTest{
 		name:      "fdcb6c",
@@ -59644,6 +64778,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb6d": fuseTest{
 		name:      "fdcb6d",
@@ -59666,6 +64802,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb6e": fuseTest{
 		name:      "fdcb6e",
@@ -59688,6 +64826,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb6f": fuseTest{
 		name:      "fdcb6f",
@@ -59710,6 +64850,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb70": fuseTest{
 		name:      "fdcb70",
@@ -59732,6 +64874,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb71": fuseTest{
 		name:      "fdcb71",
@@ -59754,6 +64898,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb72": fuseTest{
 		name:      "fdcb72",
@@ -59776,6 +64922,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb73": fuseTest{
 		name:      "fdcb73",
@@ -59798,6 +64946,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb74": fuseTest{
 		name:      "fdcb74",
@@ -59820,6 +64970,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb75": fuseTest{
 		name:      "fdcb75",
@@ -59842,6 +64994,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb76": fuseTest{
 		name:      "fdcb76",
@@ -59864,6 +65018,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb77": fuseTest{
 		name:      "fdcb77",
@@ -59886,6 +65042,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb78": fuseTest{
 		name:      "fdcb78",
@@ -59908,6 +65066,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb79": fuseTest{
 		name:      "fdcb79",
@@ -59930,6 +65090,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb7a": fuseTest{
 		name:      "fdcb7a",
@@ -59952,6 +65114,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb7b": fuseTest{
 		name:      "fdcb7b",
@@ -59974,6 +65138,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb7c": fuseTest{
 		name:      "fdcb7c",
@@ -59996,6 +65162,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb7d": fuseTest{
 		name:      "fdcb7d",
@@ -60018,6 +65186,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb7e": fuseTest{
 		name:      "fdcb7e",
@@ -60040,6 +65210,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb7f": fuseTest{
 		name:      "fdcb7f",
@@ -60062,6 +65234,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   20,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb80": fuseTest{
 		name:    "fdcb80",
@@ -60086,6 +65260,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x9198, Values: []uint8{0xa8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb81": fuseTest{
 		name:      "fdcb81",
@@ -60108,6 +65284,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb82": fuseTest{
 		name:    "fdcb82",
@@ -60132,6 +65310,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5d74, Values: []uint8{0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb83": fuseTest{
 		name:    "fdcb83",
@@ -60156,6 +65336,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x3772, Values: []uint8{0xd4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb84": fuseTest{
 		name:      "fdcb84",
@@ -60178,6 +65360,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb85": fuseTest{
 		name:      "fdcb85",
@@ -60200,6 +65384,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb86": fuseTest{
 		name:      "fdcb86",
@@ -60222,6 +65408,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb87": fuseTest{
 		name:    "fdcb87",
@@ -60246,6 +65434,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x24c3, Values: []uint8{0x64}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb88": fuseTest{
 		name:    "fdcb88",
@@ -60270,6 +65460,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc5e1, Values: []uint8{0xd4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb89": fuseTest{
 		name:      "fdcb89",
@@ -60292,6 +65484,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb8a": fuseTest{
 		name:      "fdcb8a",
@@ -60314,6 +65508,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb8b": fuseTest{
 		name:      "fdcb8b",
@@ -60336,6 +65532,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb8c": fuseTest{
 		name:    "fdcb8c",
@@ -60360,6 +65558,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa199, Values: []uint8{0x65}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb8d": fuseTest{
 		name:    "fdcb8d",
@@ -60384,6 +65584,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5632, Values: []uint8{0x98}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb8e": fuseTest{
 		name:    "fdcb8e",
@@ -60408,6 +65610,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x4c43, Values: []uint8{0x7d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb8f": fuseTest{
 		name:      "fdcb8f",
@@ -60430,6 +65634,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb90": fuseTest{
 		name:      "fdcb90",
@@ -60452,6 +65658,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb91": fuseTest{
 		name:    "fdcb91",
@@ -60476,6 +65684,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x4791, Values: []uint8{0x0a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb92": fuseTest{
 		name:    "fdcb92",
@@ -60500,6 +65710,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x3145, Values: []uint8{0xf2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb93": fuseTest{
 		name:      "fdcb93",
@@ -60522,6 +65734,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb94": fuseTest{
 		name:      "fdcb94",
@@ -60544,6 +65758,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb95": fuseTest{
 		name:      "fdcb95",
@@ -60566,6 +65782,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb96": fuseTest{
 		name:    "fdcb96",
@@ -60590,6 +65808,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe66d, Values: []uint8{0xf8}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb97": fuseTest{
 		name:    "fdcb97",
@@ -60614,6 +65834,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x18e3, Values: []uint8{0x99}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb98": fuseTest{
 		name:      "fdcb98",
@@ -60636,6 +65858,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb99": fuseTest{
 		name:      "fdcb99",
@@ -60658,6 +65882,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb9a": fuseTest{
 		name:    "fdcb9a",
@@ -60682,6 +65908,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd6b3, Values: []uint8{0x95}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb9b": fuseTest{
 		name:      "fdcb9b",
@@ -60704,6 +65932,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb9c": fuseTest{
 		name:    "fdcb9c",
@@ -60728,6 +65958,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x03d1, Values: []uint8{0x70}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb9d": fuseTest{
 		name:      "fdcb9d",
@@ -60750,6 +65982,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb9e": fuseTest{
 		name:      "fdcb9e",
@@ -60772,6 +66006,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcb9f": fuseTest{
 		name:    "fdcb9f",
@@ -60796,6 +66032,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x9d99, Values: []uint8{0x81}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcba0": fuseTest{
 		name:    "fdcba0",
@@ -60820,6 +66058,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd703, Values: []uint8{0xc4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcba1": fuseTest{
 		name:      "fdcba1",
@@ -60842,6 +66082,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcba2": fuseTest{
 		name:      "fdcba2",
@@ -60864,6 +66106,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcba3": fuseTest{
 		name:    "fdcba3",
@@ -60888,6 +66132,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xad7c, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcba4": fuseTest{
 		name:      "fdcba4",
@@ -60910,6 +66156,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcba5": fuseTest{
 		name:      "fdcba5",
@@ -60932,6 +66180,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcba6": fuseTest{
 		name:    "fdcba6",
@@ -60956,6 +66206,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x9469, Values: []uint8{0xac}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcba7": fuseTest{
 		name:      "fdcba7",
@@ -60978,6 +66230,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcba8": fuseTest{
 		name:    "fdcba8",
@@ -61002,6 +66256,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0cef, Values: []uint8{0x97}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcba9": fuseTest{
 		name:      "fdcba9",
@@ -61024,6 +66280,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbaa": fuseTest{
 		name:    "fdcbaa",
@@ -61048,6 +66306,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb3dc, Values: []uint8{0x1a}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbab": fuseTest{
 		name:      "fdcbab",
@@ -61070,6 +66330,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbac": fuseTest{
 		name:      "fdcbac",
@@ -61092,6 +66354,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbad": fuseTest{
 		name:    "fdcbad",
@@ -61116,6 +66380,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x94dd, Values: []uint8{0x17}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbae": fuseTest{
 		name:    "fdcbae",
@@ -61140,6 +66406,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0c29, Values: []uint8{0x89}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbaf": fuseTest{
 		name:      "fdcbaf",
@@ -61162,6 +66430,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbb0": fuseTest{
 		name:    "fdcbb0",
@@ -61186,6 +66456,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa125, Values: []uint8{0x36}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbb1": fuseTest{
 		name:    "fdcbb1",
@@ -61210,6 +66482,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xf31a, Values: []uint8{0x39}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbb2": fuseTest{
 		name:    "fdcbb2",
@@ -61234,6 +66508,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x341c, Values: []uint8{0x3b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbb3": fuseTest{
 		name:      "fdcbb3",
@@ -61256,6 +66532,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbb4": fuseTest{
 		name:    "fdcbb4",
@@ -61280,6 +66558,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x4cdc, Values: []uint8{0xa9}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbb5": fuseTest{
 		name:      "fdcbb5",
@@ -61302,6 +66582,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbb6": fuseTest{
 		name:      "fdcbb6",
@@ -61324,6 +66606,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbb7": fuseTest{
 		name:      "fdcbb7",
@@ -61346,6 +66630,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbb8": fuseTest{
 		name:      "fdcbb8",
@@ -61368,6 +66654,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbb9": fuseTest{
 		name:    "fdcbb9",
@@ -61392,6 +66680,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb889, Values: []uint8{0x34}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbba": fuseTest{
 		name:    "fdcbba",
@@ -61416,6 +66706,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x3877, Values: []uint8{0x56}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbbb": fuseTest{
 		name:      "fdcbbb",
@@ -61438,6 +66730,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbbc": fuseTest{
 		name:    "fdcbbc",
@@ -61462,6 +66756,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xaf04, Values: []uint8{0x4f}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbbd": fuseTest{
 		name:    "fdcbbd",
@@ -61486,6 +66782,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xdeb7, Values: []uint8{0x0d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbbe": fuseTest{
 		name:    "fdcbbe",
@@ -61510,6 +66808,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x3cd7, Values: []uint8{0x21}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbbf": fuseTest{
 		name:    "fdcbbf",
@@ -61534,6 +66834,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xbde4, Values: []uint8{0x2c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbc0": fuseTest{
 		name:    "fdcbc0",
@@ -61558,6 +66860,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x2b3b, Values: []uint8{0xed}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbc1": fuseTest{
 		name:    "fdcbc1",
@@ -61582,6 +66886,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xbcee, Values: []uint8{0xef}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbc2": fuseTest{
 		name:    "fdcbc2",
@@ -61606,6 +66912,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5ab9, Values: []uint8{0xc3}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbc3": fuseTest{
 		name:      "fdcbc3",
@@ -61628,6 +66936,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbc4": fuseTest{
 		name:      "fdcbc4",
@@ -61650,6 +66960,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbc5": fuseTest{
 		name:      "fdcbc5",
@@ -61672,6 +66984,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbc6": fuseTest{
 		name:    "fdcbc6",
@@ -61696,6 +67010,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x76b2, Values: []uint8{0x83}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbc7": fuseTest{
 		name:      "fdcbc7",
@@ -61718,6 +67034,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbc8": fuseTest{
 		name:    "fdcbc8",
@@ -61742,6 +67060,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc422, Values: []uint8{0xeb}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbc9": fuseTest{
 		name:      "fdcbc9",
@@ -61764,6 +67084,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbca": fuseTest{
 		name:    "fdcbca",
@@ -61788,6 +67110,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x51aa, Values: []uint8{0x92}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbcb": fuseTest{
 		name:    "fdcbcb",
@@ -61812,6 +67136,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x9ad0, Values: []uint8{0x72}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbcc": fuseTest{
 		name:      "fdcbcc",
@@ -61834,6 +67160,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbcd": fuseTest{
 		name:      "fdcbcd",
@@ -61856,6 +67184,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbce": fuseTest{
 		name:    "fdcbce",
@@ -61880,6 +67210,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb8d8, Values: []uint8{0x47}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbcf": fuseTest{
 		name:      "fdcbcf",
@@ -61902,6 +67234,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbd0": fuseTest{
 		name:    "fdcbd0",
@@ -61926,6 +67260,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x3ba7, Values: []uint8{0x24}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbd1": fuseTest{
 		name:    "fdcbd1",
@@ -61950,6 +67286,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8c76, Values: []uint8{0xbd}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbd2": fuseTest{
 		name:    "fdcbd2",
@@ -61974,6 +67312,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc04c, Values: []uint8{0x55}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbd3": fuseTest{
 		name:    "fdcbd3",
@@ -61998,6 +67338,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0ac5, Values: []uint8{0xe4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbd4": fuseTest{
 		name:      "fdcbd4",
@@ -62020,6 +67362,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbd5": fuseTest{
 		name:    "fdcbd5",
@@ -62044,6 +67388,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8650, Values: []uint8{0x9c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbd6": fuseTest{
 		name:      "fdcbd6",
@@ -62066,6 +67412,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbd7": fuseTest{
 		name:      "fdcbd7",
@@ -62088,6 +67436,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbd8": fuseTest{
 		name:      "fdcbd8",
@@ -62110,6 +67460,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbd9": fuseTest{
 		name:    "fdcbd9",
@@ -62134,6 +67486,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0a7c, Values: []uint8{0xfc}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbda": fuseTest{
 		name:      "fdcbda",
@@ -62156,6 +67510,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbdb": fuseTest{
 		name:    "fdcbdb",
@@ -62180,6 +67536,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8ca3, Values: []uint8{0x1d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbdc": fuseTest{
 		name:    "fdcbdc",
@@ -62204,6 +67562,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x599e, Values: []uint8{0x1d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbdd": fuseTest{
 		name:      "fdcbdd",
@@ -62226,6 +67586,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbde": fuseTest{
 		name:    "fdcbde",
@@ -62250,6 +67612,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xc9f7, Values: []uint8{0x49}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbdf": fuseTest{
 		name:      "fdcbdf",
@@ -62272,6 +67636,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbe0": fuseTest{
 		name:      "fdcbe0",
@@ -62294,6 +67660,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbe1": fuseTest{
 		name:      "fdcbe1",
@@ -62316,6 +67684,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbe2": fuseTest{
 		name:    "fdcbe2",
@@ -62340,6 +67710,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xe4ec, Values: []uint8{0xd2}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbe3": fuseTest{
 		name:      "fdcbe3",
@@ -62362,6 +67734,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbe4": fuseTest{
 		name:      "fdcbe4",
@@ -62384,6 +67758,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbe5": fuseTest{
 		name:    "fdcbe5",
@@ -62408,6 +67784,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa507, Values: []uint8{0x5c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbe6": fuseTest{
 		name:    "fdcbe6",
@@ -62432,6 +67810,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x8b7c, Values: []uint8{0x55}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbe7": fuseTest{
 		name:    "fdcbe7",
@@ -62456,6 +67836,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xb5a8, Values: []uint8{0xb6}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbe8": fuseTest{
 		name:    "fdcbe8",
@@ -62480,6 +67862,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0a64, Values: []uint8{0xf0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbe9": fuseTest{
 		name:      "fdcbe9",
@@ -62502,6 +67886,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbea": fuseTest{
 		name:    "fdcbea",
@@ -62526,6 +67912,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7526, Values: []uint8{0x3b}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbeb": fuseTest{
 		name:    "fdcbeb",
@@ -62550,6 +67938,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x23e1, Values: []uint8{0x67}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbec": fuseTest{
 		name:    "fdcbec",
@@ -62574,6 +67964,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xd2de, Values: []uint8{0x69}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbed": fuseTest{
 		name:    "fdcbed",
@@ -62598,6 +67990,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x0f03, Values: []uint8{0x30}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbee": fuseTest{
 		name:    "fdcbee",
@@ -62622,6 +68016,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x42be, Values: []uint8{0xf0}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbef": fuseTest{
 		name:    "fdcbef",
@@ -62646,6 +68042,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x22ca, Values: []uint8{0x29}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbf0": fuseTest{
 		name:    "fdcbf0",
@@ -62670,6 +68068,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xeee3, Values: []uint8{0x6c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbf1": fuseTest{
 		name:      "fdcbf1",
@@ -62692,6 +68092,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbf2": fuseTest{
 		name:      "fdcbf2",
@@ -62714,6 +68116,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbf3": fuseTest{
 		name:    "fdcbf3",
@@ -62738,6 +68142,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x7dc8, Values: []uint8{0x4c}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbf4": fuseTest{
 		name:    "fdcbf4",
@@ -62762,6 +68168,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x306c, Values: []uint8{0x4e}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbf5": fuseTest{
 		name:      "fdcbf5",
@@ -62784,6 +68192,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbf6": fuseTest{
 		name:      "fdcbf6",
@@ -62806,6 +68216,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbf7": fuseTest{
 		name:      "fdcbf7",
@@ -62828,6 +68240,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbf8": fuseTest{
 		name:    "fdcbf8",
@@ -62852,6 +68266,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xdece, Values: []uint8{0xfa}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbf9": fuseTest{
 		name:      "fdcbf9",
@@ -62874,6 +68290,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbfa": fuseTest{
 		name:      "fdcbfa",
@@ -62896,6 +68314,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbfb": fuseTest{
 		name:      "fdcbfb",
@@ -62918,6 +68338,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbfc": fuseTest{
 		name:    "fdcbfc",
@@ -62942,6 +68364,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x6679, Values: []uint8{0xe5}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbfd": fuseTest{
 		name:    "fdcbfd",
@@ -62966,6 +68390,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5d50, Values: []uint8{0xa7}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbfe": fuseTest{
 		name:    "fdcbfe",
@@ -62990,6 +68416,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x4dd7, Values: []uint8{0xca}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdcbff": fuseTest{
 		name:      "fdcbff",
@@ -63012,6 +68440,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   23,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fde1": fuseTest{
 		name:      "fde1",
@@ -63034,6 +68464,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   14,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fde3": fuseTest{
 		name:    "fde3",
@@ -63058,6 +68490,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x1a38, Values: []uint8{0x10, 0x95}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fde5": fuseTest{
 		name:    "fde5",
@@ -63082,6 +68516,8 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0xa8df, Values: []uint8{0xda, 0xd4}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fde9": fuseTest{
 		name:      "fde9",
@@ -63104,6 +68540,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   8,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fdf9": fuseTest{
 		name:      "fdf9",
@@ -63126,6 +68564,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   10,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"fe": fuseTest{
 		name:      "fe",
@@ -63148,6 +68588,8 @@ var fuseResults = map[string]fuseTest{
 		halt:      0,
 		tstates:   7,
 		snapshots: []memory.Snapshot{},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 	"ff": fuseTest{
 		name:    "ff",
@@ -63172,5 +68614,7 @@ var fuseResults = map[string]fuseTest{
 		snapshots: []memory.Snapshot{
 			memory.Snapshot{Address: 0x5505, Values: []uint8{0x34, 0x6d}},
 		},
+		portRead:  memory.Snapshot{},
+		portWrite: memory.Snapshot{},
 	},
 }

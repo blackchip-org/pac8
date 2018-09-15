@@ -52,6 +52,7 @@ func TestOps(t *testing.T) {
 			testRegisters(t, cpu, expected)
 			testMemory(t, cpu, fuseResults[test.name])
 			testHalt(t, cpu, fuseResults[test.name])
+			testPorts(t, cpu, fuseResults[test.name])
 		})
 	}
 
@@ -78,6 +79,9 @@ func testHalt(t *testing.T, cpu *CPU, expected fuseTest) {
 	if have != want {
 		t.Fatalf("\n have: %v \n want: %v", have, want)
 	}
+}
+
+func testPorts(t *testing.T, cpu *CPU, expected fuseTest) {
 }
 
 func load(test fuseTest) *CPU {

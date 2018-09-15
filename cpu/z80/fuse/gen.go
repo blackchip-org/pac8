@@ -45,6 +45,8 @@ func main() {
 		tstates int
 
 		snapshots []memory.Snapshot
+		portRead memory.Snapshot
+		portWrite memory.Snapshot
 	}
 	`)
 
@@ -98,10 +100,7 @@ func loadResults() {
 			name := line
 			out.WriteString("\"" + name + "\": ")
 			line = ""
-			for line == "" || line[0] == ' ' {
-				scanner.Scan()
-				line = scanner.Text()
-			}
+			scanner.Scan()
 			parseTest(name, scanner)
 		}
 	}
@@ -111,32 +110,67 @@ func parseTest(name string, scanner *bufio.Scanner) {
 	t := make(map[string]string)
 	t["name"] = name
 
-	line1 := strings.Fields(scanner.Text())
-	t["af"] = line1[0]
-	t["bc"] = line1[1]
-	t["de"] = line1[2]
-	t["hl"] = line1[3]
-	t["af1"] = line1[4]
-	t["bc1"] = line1[5]
-	t["de1"] = line1[6]
-	t["hl1"] = line1[7]
-	t["ix"] = line1[8]
-	t["iy"] = line1[9]
-	t["sp"] = line1[10]
-	t["pc"] = line1[11]
+	// Scan for events (on expected results)
+	var prAddr, prValue, pwAddr, pwValue string
+
+	for {
+		line := scanner.Text()
+		// If the line does not start with a space, there are
+		// no more events
+		if !strings.HasPrefix(line, " ") {
+			break
+		}
+		line = whitespace.ReplaceAllString(line, " ")
+		f := strings.Fields(line)
+		if f[1] == "PR" {
+			prAddr = f[2]
+			prValue = f[3]
+		} else if f[1] == "PW" {
+			pwAddr = f[2]
+			pwValue = f[3]
+		}
+		scanner.Scan()
+	}
+
+	f1 := strings.Fields(scanner.Text())
+	t["af"] = f1[0]
+	t["bc"] = f1[1]
+	t["de"] = f1[2]
+	t["hl"] = f1[3]
+	t["af1"] = f1[4]
+	t["bc1"] = f1[5]
+	t["de1"] = f1[6]
+	t["hl1"] = f1[7]
+	t["ix"] = f1[8]
+	t["iy"] = f1[9]
+	t["sp"] = f1[10]
+	t["pc"] = f1[11]
 
 	scanner.Scan()
 	text2 := whitespace.ReplaceAllString(scanner.Text(), " ")
-	line2 := strings.Fields(text2)
-	t["i"] = line2[0]
-	t["r"] = line2[1]
-	t["iff1"] = line2[2]
-	t["iff2"] = line2[3]
-	t["im"] = line2[4]
-	t["halt"] = line2[5]
-	t["tstates"] = line2[6]
+	f2 := strings.Fields(text2)
+	t["i"] = f2[0]
+	t["r"] = f2[1]
+	t["iff1"] = f2[2]
+	t["iff2"] = f2[3]
+	t["im"] = f2[4]
+	t["halt"] = f2[5]
+	t["tstates"] = f2[6]
 
 	t["snapshots"] = parseSnapshots(scanner)
+
+	portRead := ""
+	if prAddr != "" {
+		portRead = fmt.Sprintf("Address: 0x%v, Values: []uint8{0x%v},", prAddr, prValue)
+	}
+	t["portRead"] = portRead
+
+	portWrite := ""
+	if pwAddr != "" {
+		portWrite = fmt.Sprintf("Address: 0x%v, Values: []uint8{0x%v},", pwAddr, pwValue)
+	}
+	t["portWrite"] = portWrite
+
 	testTemplate.Execute(&out, t)
 }
 
@@ -187,6 +221,12 @@ var testTemplate = template.Must(template.New("").Parse(`fuseTest{
 	tstates: {{.tstates}},
 	snapshots: []memory.Snapshot{
 		{{.snapshots}}
+	},
+	portRead: memory.Snapshot{
+		{{.portRead}}
+	},
+	portWrite: memory.Snapshot{
+		{{.portWrite}}
 	},
 },
 `))
