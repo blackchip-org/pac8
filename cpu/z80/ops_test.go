@@ -22,6 +22,7 @@ func TestOps(t *testing.T) {
 			cpu := load(test)
 			cpu.testing = true
 			i := 0
+			setupPorts(cpu, fuseResults[test.name])
 			for {
 				cpu.Next()
 				if cpu.skip {
@@ -81,7 +82,30 @@ func testHalt(t *testing.T, cpu *CPU, expected fuseTest) {
 	}
 }
 
+func setupPorts(cpu *CPU, expected fuseTest) {
+	if len(expected.portRead.Values) > 0 {
+		addr := expected.portRead.Address & 0xff
+		value := expected.portRead.Values[0]
+		cpu.Port[addr] = value
+	}
+}
+
 func testPorts(t *testing.T, cpu *CPU, expected fuseTest) {
+	if len(expected.portWrite.Values) > 0 {
+		if !cpu.IOREQ {
+			t.Fatalf("\n expected port write")
+		}
+		addr := expected.portWrite.Address & 0xff
+		have := cpu.Port[addr]
+		want := expected.portWrite.Values[0]
+		if have != want {
+			t.Fatalf("\n have: %v \n want: %v", have, want)
+		}
+	} else {
+		if cpu.IOREQ {
+			t.Fatalf("\n unexpected port write")
+		}
+	}
 }
 
 func load(test fuseTest) *CPU {

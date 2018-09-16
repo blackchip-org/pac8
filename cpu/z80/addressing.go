@@ -4,6 +4,8 @@ import (
 	"github.com/blackchip-org/pac8/bits"
 )
 
+func (cpu *CPU) storeNil(v uint8) {}
+
 func (cpu *CPU) storeIndImm(v uint8)    { cpu.mem.Store(cpu.fetch16(), v) }
 func (cpu *CPU) store16IndImm(v uint16) { cpu.mem16.Store(cpu.fetch16(), v) }
 
@@ -41,24 +43,26 @@ func (cpu *CPU) storeIndHL(v uint8) { cpu.mem.Store(bits.Join(cpu.H, cpu.L), v) 
 func (cpu *CPU) storeIndBC(v uint8) { cpu.mem.Store(bits.Join(cpu.B, cpu.C), v) }
 func (cpu *CPU) storeIndDE(v uint8) { cpu.mem.Store(bits.Join(cpu.D, cpu.E), v) }
 
+func (cpu *CPU) loadZero() uint8      { return 0 }
 func (cpu *CPU) loadImm() uint8       { return cpu.fetch() }
 func (cpu *CPU) loadImm16() uint16    { return cpu.fetch16() }
 func (cpu *CPU) loadIndImm() uint8    { return cpu.mem.Load(cpu.fetch16()) }
 func (cpu *CPU) load16IndImm() uint16 { return cpu.mem16.Load(cpu.fetch16()) }
 
-func (cpu *CPU) loadA() uint8   { return cpu.A }
-func (cpu *CPU) loadB() uint8   { return cpu.B }
-func (cpu *CPU) loadC() uint8   { return cpu.C }
-func (cpu *CPU) loadD() uint8   { return cpu.D }
-func (cpu *CPU) loadE() uint8   { return cpu.E }
-func (cpu *CPU) loadH() uint8   { return cpu.H }
-func (cpu *CPU) loadL() uint8   { return cpu.L }
-func (cpu *CPU) loadI() uint8   { return cpu.I }
-func (cpu *CPU) loadR() uint8   { return cpu.R }
-func (cpu *CPU) loadIXL() uint8 { return cpu.IXL }
-func (cpu *CPU) loadIXH() uint8 { return cpu.IXH }
-func (cpu *CPU) loadIYL() uint8 { return cpu.IYL }
-func (cpu *CPU) loadIYH() uint8 { return cpu.IYH }
+func (cpu *CPU) loadA() uint8    { return cpu.A }
+func (cpu *CPU) loadB() uint8    { return cpu.B }
+func (cpu *CPU) loadC() uint8    { return cpu.C }
+func (cpu *CPU) loadD() uint8    { return cpu.D }
+func (cpu *CPU) loadE() uint8    { return cpu.E }
+func (cpu *CPU) loadH() uint8    { return cpu.H }
+func (cpu *CPU) loadL() uint8    { return cpu.L }
+func (cpu *CPU) loadI() uint8    { return cpu.I }
+func (cpu *CPU) loadR() uint8    { return cpu.R }
+func (cpu *CPU) loadIXL() uint8  { return cpu.IXL }
+func (cpu *CPU) loadIXH() uint8  { return cpu.IXH }
+func (cpu *CPU) loadIYL() uint8  { return cpu.IYL }
+func (cpu *CPU) loadIYH() uint8  { return cpu.IYH }
+func (cpu *CPU) loadIndC() uint8 { return cpu.Port[cpu.C] }
 
 func (cpu *CPU) loadAF() uint16      { return bits.Join(cpu.A, cpu.F) }
 func (cpu *CPU) loadBC() uint16      { return bits.Join(cpu.B, cpu.C) }
@@ -105,4 +109,22 @@ func (cpu *CPU) storeIndIY(v uint8) {
 
 func (cpu *CPU) storeLastInd(v uint8) {
 	cpu.mem.Store(cpu.iaddr, v)
+}
+
+func (cpu *CPU) outIndImm(v uint8) {
+	addr := uint16(cpu.fetch())
+	cpu.IOREQ = true
+	cpu.IOAddr = addr
+	cpu.Port[addr] = v
+}
+
+func (cpu *CPU) inIndImm() uint8 {
+	addr := uint16(cpu.fetch())
+	return cpu.Port[addr]
+}
+
+func (cpu *CPU) outIndC(v uint8) {
+	cpu.IOREQ = true
+	cpu.IOAddr = uint16(cpu.C)
+	cpu.Port[cpu.C] = v
 }

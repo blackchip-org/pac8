@@ -412,6 +412,20 @@ func halt(cpu *CPU) {
 	cpu.Halt = true
 }
 
+func in(cpu *CPU, put cpu.Put, get cpu.Get) {
+	val := get()
+
+	bits.Set(&cpu.F, FlagS, bits.Get(val, 7))
+	bits.Set(&cpu.F, FlagZ, val == 0)
+	bits.Set(&cpu.F, Flag5, bits.Get(val, 5))
+	bits.Set(&cpu.F, FlagH, false)
+	bits.Set(&cpu.F, Flag3, bits.Get(val, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(val))
+	bits.Set(&cpu.F, FlagN, false)
+
+	put(val)
+}
+
 // increment
 // Preserves C flag, N flag is reset, P/V detects overflow and rest are
 // modified by definition.

@@ -330,10 +330,11 @@ func processMain(tab *regtab, op uint8) string {
 			}
 			if y == 2 {
 				// OUT (n), A
-				return "todo(c)"
+				return "ld(c, c.outIndImm, c.loadA)"
 			}
 			if y == 3 {
-				return "todo2(c, c.loadImm)"
+				// IN A, (n)
+				return "ld(c, c.storeA, c.inIndImm)"
 			}
 			if y == 4 {
 				return fmt.Sprintf("ex(c, c.load16IndSP, c.store16IndSP, c.load%v, c.store%v)", rp2[2], rp2[2])
@@ -460,6 +461,7 @@ func processCB(tab *regtab, op uint8) string {
 }
 
 func processED(tab *regtab, op uint8) string {
+	r := tab.r
 	rp := tab.rp
 	x := int(bits.Slice(op, 6, 7))
 	y := int(bits.Slice(op, 3, 5))
@@ -473,18 +475,22 @@ func processED(tab *regtab, op uint8) string {
 	if x == 1 {
 		if z == 0 {
 			if y != 6 {
-				return "todo(c)"
+				// IN r[y], (C)
+				return fmt.Sprintf("in(c, c.store%v, c.loadIndC)", r[y])
 			}
 			if y == 6 {
-				return "todo(c)"
+				// IN (C) ; undocumented
+				return "in(c, c.storeNil, c.loadIndC)"
 			}
 		}
 		if z == 1 {
 			if y != 6 {
-				return "todo(c)"
+				// OUT (C), r[y]
+				return fmt.Sprintf("ld(c, c.outIndC, c.load%v)", r[y])
 			}
 			if y == 6 {
-				return "todo(c)"
+				// OUT (C), 0 ; undocumented
+				return "ld(c, c.outIndC, c.loadZero)"
 			}
 		}
 		if z == 2 {

@@ -51,6 +51,10 @@ type CPU struct {
 
 	Halt bool
 
+	IOREQ  bool
+	IOAddr uint16
+	Port   [256]uint8
+
 	mem   memory.Memory
 	mem16 memory.Memory16
 	delta uint8
@@ -69,6 +73,7 @@ func New(m memory.Memory) *CPU {
 }
 
 func (cpu *CPU) Next() {
+	cpu.IOREQ = false
 	opcode := cpu.fetch()
 	execute := ops[opcode]
 	cpu.refreshR()
