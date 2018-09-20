@@ -125,11 +125,11 @@ func parseTest(name string, scanner *bufio.Scanner) {
 		f := strings.Fields(line)
 		if f[1] == "PR" {
 			portReads = append(portReads, fmt.Sprintf(
-				"memory.Snapshot{Address: 0x%v, Values: []uint8{0x%v}},",
+				"memory.Snapshot{Address: 0x%v, Values: []uint8{0x%v}},\n",
 				f[2][2:4], f[3]))
 		} else if f[1] == "PW" {
 			portWrites = append(portWrites, fmt.Sprintf(
-				"memory.Snapshot{Address: 0x%v, Values: []uint8{0x%v}},",
+				"memory.Snapshot{Address: 0x%v, Values: []uint8{0x%v}},\n",
 				f[2][2:4], f[3]))
 		}
 		scanner.Scan()

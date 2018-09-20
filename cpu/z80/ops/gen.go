@@ -588,6 +588,14 @@ func processED(tab *regtab, op uint8) string {
 				// ind
 				return "blockin(c, -1)"
 			}
+			if y == 6 {
+				// inir
+				return "blockinr(c, 1)"
+			}
+			if y == 7 {
+				// indr
+				return "blockinr(c, -1)"
+			}
 			return "todo(c)"
 		}
 		if z == 3 && y >= 4 && y <= 7 {

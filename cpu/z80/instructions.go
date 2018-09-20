@@ -7,8 +7,6 @@ package z80
 // TODO: rename cpu to c
 
 import (
-	"fmt"
-
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/cpu"
 )
@@ -171,8 +169,6 @@ func blockin(cpu *CPU, increment int) {
 	alu.In1 = 1
 	alu.Subtract()
 
-	fmt.Printf("IN %02x\n", in)
-
 	// https://github.com/mamedev/mame/blob/master/src/devices/cpu/z80/z80.cpp
 	// I was unable to figure this out by reading all the conflicting
 	// documentation for these "undefined" flags
@@ -192,6 +188,15 @@ func blockin(cpu *CPU, increment int) {
 	cpu.storeIndHL(in)
 	cpu.B = alu.Out
 	cpu.H, cpu.L = bits.Split(bits.Join(cpu.H, cpu.L) + uint16(increment))
+}
+
+func blockinr(cpu *CPU, increment int) {
+	blockin(cpu, increment)
+	for cpu.B != 0 {
+		cpu.refreshR()
+		cpu.refreshR()
+		blockin(cpu, increment)
+	}
 }
 
 // Performs a "LD (DE),(HL)", then increments DE and HL, and decrements BC.

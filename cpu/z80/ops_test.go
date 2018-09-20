@@ -53,8 +53,8 @@ func TestOps(t *testing.T) {
 			}
 			expected := load(fuseResults[test.name])
 
-			WithFormat(t, "\n%v").Expect(cpu.String()).ToBe(expected.String())
 			testMemory(t, cpu, fuseResults[test.name])
+			WithFormat(t, "\n%v").Expect(cpu.String()).ToBe(expected.String())
 			testHalt(t, cpu, fuseResults[test.name])
 			testPorts(t, cpu, fuseResults[test.name])
 		})
@@ -65,7 +65,7 @@ func TestOps(t *testing.T) {
 func testMemory(t *testing.T, cpu *CPU, expected fuseTest) {
 	diff, equal := memory.Verify(cpu.mem, expected.snapshots)
 	if !equal {
-		t.Fatalf("\n memory mismatch: \n%v", diff.String())
+		t.Fatalf("\nmemory mismatch (have, want): \n%v", diff.String())
 	}
 }
 
@@ -74,8 +74,8 @@ func testHalt(t *testing.T, cpu *CPU, expected fuseTest) {
 }
 
 func setupPorts(cpu *CPU, expected fuseTest) {
-	for _, toImport := range expected.portReads {
-		memory.Import(cpu.Ports, toImport)
+	if len(expected.portReads) > 0 {
+		cpu.Ports = newMockIO(expected.portReads)
 	}
 }
 
@@ -113,3 +113,39 @@ func load(test fuseTest) *CPU {
 
 	return cpu
 }
+
+type mockIO struct {
+	data map[uint8][]uint8
+}
+
+func newMockIO(snapshots []memory.Snapshot) *mockIO {
+	mio := &mockIO{
+		data: make(map[uint8][]uint8),
+	}
+	for _, snapshot := range snapshots {
+		addr := uint8(snapshot.Address)
+		stack, exists := mio.data[addr]
+		if !exists {
+			stack = make([]uint8, 0, 0)
+		}
+		stack = append(stack, snapshot.Values[0])
+		mio.data[addr] = stack
+	}
+	return mio
+}
+
+func (m *mockIO) Load(addr uint16) uint8 {
+	stack, exists := m.data[uint8(addr)]
+	if !exists {
+		return 0
+	}
+	if len(stack) == 0 {
+		return 0
+	}
+	v := stack[0]
+	stack = stack[1:]
+	m.data[uint8(addr)] = stack
+	return v
+}
+
+func (m *mockIO) Store(addr uint16, value uint8) {}
