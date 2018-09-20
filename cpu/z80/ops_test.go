@@ -3,6 +3,8 @@ package z80
 import (
 	"testing"
 
+	. "github.com/blackchip-org/pac8/expect"
+
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/memory"
 )
@@ -50,21 +52,14 @@ func TestOps(t *testing.T) {
 				i++
 			}
 			expected := load(fuseResults[test.name])
-			testRegisters(t, cpu, expected)
+
+			WithFormat(t, "\n%v").Expect(cpu.String()).ToBe(expected.String())
 			testMemory(t, cpu, fuseResults[test.name])
 			testHalt(t, cpu, fuseResults[test.name])
 			testPorts(t, cpu, fuseResults[test.name])
 		})
 	}
 
-}
-
-func testRegisters(t *testing.T, cpu *CPU, expected *CPU) {
-	have := cpu.String()
-	want := expected.String()
-	if have != want {
-		t.Fatalf("\n have: \n%v\n want: \n%v\n", have, want)
-	}
 }
 
 func testMemory(t *testing.T, cpu *CPU, expected fuseTest) {
@@ -75,36 +70,19 @@ func testMemory(t *testing.T, cpu *CPU, expected fuseTest) {
 }
 
 func testHalt(t *testing.T, cpu *CPU, expected fuseTest) {
-	have := cpu.Halt
-	want := expected.halt != 0
-	if have != want {
-		t.Fatalf("\n have: %v \n want: %v", have, want)
-	}
+	WithFormat(t, "halt(%v)").Expect(cpu.Halt).ToBe(expected.halt != 0)
 }
 
 func setupPorts(cpu *CPU, expected fuseTest) {
-	if len(expected.portRead.Values) > 0 {
-		addr := expected.portRead.Address & 0xff
-		value := expected.portRead.Values[0]
-		cpu.Port[addr] = value
+	for _, toImport := range expected.portReads {
+		memory.Import(cpu.Ports, toImport)
 	}
 }
 
 func testPorts(t *testing.T, cpu *CPU, expected fuseTest) {
-	if len(expected.portWrite.Values) > 0 {
-		if !cpu.IOREQ {
-			t.Fatalf("\n expected port write")
-		}
-		addr := expected.portWrite.Address & 0xff
-		have := cpu.Port[addr]
-		want := expected.portWrite.Values[0]
-		if have != want {
-			t.Fatalf("\n have: %v \n want: %v", have, want)
-		}
-	} else {
-		if cpu.IOREQ {
-			t.Fatalf("\n unexpected port write")
-		}
+	diff, ok := memory.Verify(cpu.Ports, expected.portWrites)
+	if !ok {
+		t.Fatalf("\n write ports mismatch: \n%v", diff.String())
 	}
 }
 

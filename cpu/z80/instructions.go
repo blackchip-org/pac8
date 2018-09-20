@@ -4,7 +4,11 @@ package z80
 // https://www.worldofspectrum.org/faq/reference/z80reference.htm
 // http://www.z80.info/zip/z80-documented.pdf
 
+// TODO: rename cpu to c
+
 import (
+	"fmt"
+
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/cpu"
 )
@@ -158,6 +162,36 @@ func blockcr(cpu *CPU, hlfn func(*CPU, cpu.Put16, cpu.Get16)) {
 		cpu.refreshR()
 		blockc(cpu, hlfn)
 	}
+}
+
+func blockin(cpu *CPU, increment int) {
+	in := cpu.inIndC()
+	alu.SetCarry(false)
+	alu.In0 = cpu.B
+	alu.In1 = 1
+	alu.Subtract()
+
+	fmt.Printf("IN %02x\n", in)
+
+	// https://github.com/mamedev/mame/blob/master/src/devices/cpu/z80/z80.cpp
+	// I was unable to figure this out by reading all the conflicting
+	// documentation for these "undefined" flags
+	t := uint16(cpu.C+uint8(increment)) + uint16(in)
+	p := uint8(t&0x07) ^ alu.Out // parity check
+	halfAndCarry := t&0x100 != 0
+
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&cpu.F, FlagH, halfAndCarry)
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(p))
+	bits.Set(&cpu.F, FlagN, bits.Get(in, 7))
+	bits.Set(&cpu.F, FlagC, halfAndCarry)
+
+	cpu.storeIndHL(in)
+	cpu.B = alu.Out
+	cpu.H, cpu.L = bits.Split(bits.Join(cpu.H, cpu.L) + uint16(increment))
 }
 
 // Performs a "LD (DE),(HL)", then increments DE and HL, and decrements BC.
@@ -450,6 +484,7 @@ func inc(cpu *CPU, put cpu.Put, get cpu.Get) {
 func inc16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
 	in0 := get()
 	put(in0 + 1)
+
 }
 
 func invalid() {}

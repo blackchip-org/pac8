@@ -3,6 +3,8 @@ package z80
 import (
 	"testing"
 
+	. "github.com/blackchip-org/pac8/expect"
+
 	"github.com/blackchip-org/pac8/bits"
 )
 
@@ -28,11 +30,7 @@ func TestSetFlags(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			cpu := New(nil)
 			bits.Set(&cpu.F, test.flag, true)
-			have := cpu.F
-			want := test.register
-			if have != want {
-				t.Errorf("\n have: %02x \n want: %02x", have, want)
-			}
+			WithFormat(t, "%08b").Expect(cpu.F).ToBe(test.register)
 		})
 	}
 }
@@ -58,11 +56,7 @@ func TestClearFlags(t *testing.T) {
 			cpu := New(nil)
 			cpu.F = 0xff
 			bits.Set(&cpu.F, test.flag, false)
-			have := cpu.F
-			want := test.register
-			if have != want {
-				t.Errorf("\n have: %02x \n want: %02x", have, want)
-			}
+			WithFormat(t, "%08b").Expect(cpu.F).ToBe(test.register)
 		})
 	}
 }

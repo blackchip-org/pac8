@@ -45,8 +45,8 @@ func main() {
 		tstates int
 
 		snapshots []memory.Snapshot
-		portRead memory.Snapshot
-		portWrite memory.Snapshot
+		portReads []memory.Snapshot
+		portWrites []memory.Snapshot
 	}
 	`)
 
@@ -111,7 +111,8 @@ func parseTest(name string, scanner *bufio.Scanner) {
 	t["name"] = name
 
 	// Scan for events (on expected results)
-	var prAddr, prValue, pwAddr, pwValue string
+	portReads := []string{}
+	portWrites := []string{}
 
 	for {
 		line := scanner.Text()
@@ -123,11 +124,13 @@ func parseTest(name string, scanner *bufio.Scanner) {
 		line = whitespace.ReplaceAllString(line, " ")
 		f := strings.Fields(line)
 		if f[1] == "PR" {
-			prAddr = f[2]
-			prValue = f[3]
+			portReads = append(portReads, fmt.Sprintf(
+				"memory.Snapshot{Address: 0x%v, Values: []uint8{0x%v}},",
+				f[2][2:4], f[3]))
 		} else if f[1] == "PW" {
-			pwAddr = f[2]
-			pwValue = f[3]
+			portWrites = append(portWrites, fmt.Sprintf(
+				"memory.Snapshot{Address: 0x%v, Values: []uint8{0x%v}},",
+				f[2][2:4], f[3]))
 		}
 		scanner.Scan()
 	}
@@ -158,18 +161,8 @@ func parseTest(name string, scanner *bufio.Scanner) {
 	t["tstates"] = f2[6]
 
 	t["snapshots"] = parseSnapshots(scanner)
-
-	portRead := ""
-	if prAddr != "" {
-		portRead = fmt.Sprintf("Address: 0x%v, Values: []uint8{0x%v},", prAddr, prValue)
-	}
-	t["portRead"] = portRead
-
-	portWrite := ""
-	if pwAddr != "" {
-		portWrite = fmt.Sprintf("Address: 0x%v, Values: []uint8{0x%v},", pwAddr, pwValue)
-	}
-	t["portWrite"] = portWrite
+	t["portReads"] = strings.Join(portReads, "")
+	t["portWrites"] = strings.Join(portWrites, "")
 
 	testTemplate.Execute(&out, t)
 }
@@ -222,11 +215,11 @@ var testTemplate = template.Must(template.New("").Parse(`fuseTest{
 	snapshots: []memory.Snapshot{
 		{{.snapshots}}
 	},
-	portRead: memory.Snapshot{
-		{{.portRead}}
+	portReads: []memory.Snapshot{
+		{{.portReads}}
 	},
-	portWrite: memory.Snapshot{
-		{{.portWrite}}
+	portWrites: []memory.Snapshot{
+		{{.portWrites}}
 	},
 },
 `))

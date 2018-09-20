@@ -1,6 +1,10 @@
 package bits
 
-import "testing"
+import (
+	"testing"
+
+	. "github.com/blackchip-org/pac8/expect"
+)
 
 func TestAdd(t *testing.T) {
 	alu := ALU{}
@@ -9,11 +13,7 @@ func TestAdd(t *testing.T) {
 	alu.SetCarry(false)
 	alu.Add()
 
-	have := alu.Out
-	want := uint8(2)
-	if have != want {
-		t.Errorf("\n have: %v \n want: %v", have, want)
-	}
+	With(t).Expect(alu.Out).ToBe(uint8(2))
 }
 
 func TestAddWithCarry(t *testing.T) {
@@ -23,9 +23,5 @@ func TestAddWithCarry(t *testing.T) {
 	alu.SetCarry(true)
 	alu.Add()
 
-	have := alu.Out
-	want := uint8(3)
-	if have != want {
-		t.Errorf("\n have: %v \n want: %v", have, want)
-	}
+	With(t).Expect(alu.Out).ToBe(uint8(3))
 }

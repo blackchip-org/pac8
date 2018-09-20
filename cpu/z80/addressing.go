@@ -62,7 +62,7 @@ func (cpu *CPU) loadIXL() uint8  { return cpu.IXL }
 func (cpu *CPU) loadIXH() uint8  { return cpu.IXH }
 func (cpu *CPU) loadIYL() uint8  { return cpu.IYL }
 func (cpu *CPU) loadIYH() uint8  { return cpu.IYH }
-func (cpu *CPU) loadIndC() uint8 { return cpu.Port[cpu.C] }
+func (cpu *CPU) loadIndC() uint8 { return cpu.Ports.Load(uint16(cpu.C)) }
 
 func (cpu *CPU) loadAF() uint16      { return bits.Join(cpu.A, cpu.F) }
 func (cpu *CPU) loadBC() uint16      { return bits.Join(cpu.B, cpu.C) }
@@ -115,16 +115,20 @@ func (cpu *CPU) outIndImm(v uint8) {
 	addr := uint16(cpu.fetch())
 	cpu.IOREQ = true
 	cpu.IOAddr = addr
-	cpu.Port[addr] = v
+	cpu.Ports.Store(addr, v)
 }
 
 func (cpu *CPU) inIndImm() uint8 {
 	addr := uint16(cpu.fetch())
-	return cpu.Port[addr]
+	return cpu.Ports.Load(addr)
 }
 
 func (cpu *CPU) outIndC(v uint8) {
 	cpu.IOREQ = true
 	cpu.IOAddr = uint16(cpu.C)
-	cpu.Port[cpu.C] = v
+	cpu.Ports.Store(uint16(cpu.C), v)
+}
+
+func (cpu *CPU) inIndC() uint8 {
+	return cpu.Ports.Load(uint16(cpu.C))
 }

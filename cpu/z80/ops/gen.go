@@ -579,7 +579,15 @@ func processED(tab *regtab, op uint8) string {
 				return "blockcr(c, dec16)"
 			}
 		}
-		if z == 2 && y >= 4 && y <= 7 {
+		if z == 2 {
+			if y == 4 { // b == 2
+				// ini
+				return "blockin(c, 1)"
+			}
+			if y == 5 {
+				// ind
+				return "blockin(c, -1)"
+			}
 			return "todo(c)"
 		}
 		if z == 3 && y >= 4 && y <= 7 {

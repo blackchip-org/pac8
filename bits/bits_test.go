@@ -3,6 +3,8 @@ package bits
 import (
 	"fmt"
 	"testing"
+
+	. "github.com/blackchip-org/pac8/expect"
 )
 
 func ExampleParse() {
@@ -12,12 +14,7 @@ func ExampleParse() {
 }
 
 func TestParse8Invalid(t *testing.T) {
-	defer func() {
-		if r := recover(); r == nil {
-			t.Error("expected panic")
-		}
-	}()
-	Parse("100x1000")
+	With(t).Expect(func() { Parse("100x1000") }).ToPanic()
 }
 
 func ExampleGet() {
@@ -96,11 +93,8 @@ func TestSlice(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			have := Slice(test.in, test.lo, test.hi)
-			want := test.out
-			if have != want {
-				t.Errorf("\n have: %08b \n want: %08b", have, want)
-			}
+			slice := Slice(test.in, test.lo, test.hi)
+			WithFormat(t, "%08b").Expect(slice).ToBe(test.out)
 		})
 	}
 }

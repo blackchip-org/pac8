@@ -53,7 +53,7 @@ type CPU struct {
 
 	IOREQ  bool
 	IOAddr uint16
-	Port   [256]uint8
+	Ports  memory.Memory
 
 	mem   memory.Memory
 	mem16 memory.Memory16
@@ -68,6 +68,7 @@ func New(m memory.Memory) *CPU {
 	c := &CPU{
 		mem:   m,
 		mem16: memory.NewLittleEndian(m),
+		Ports: memory.NewRAM(0x100),
 	}
 	return c
 }
