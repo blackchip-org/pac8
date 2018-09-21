@@ -254,7 +254,7 @@ var ops = map[uint8]func(c *CPU){
 	0xf8: func(c *CPU) { ret(c, FlagS, true) },
 	0xf9: func(c *CPU) { ld16(c, c.storeSP, c.loadHL) },
 	0xfa: func(c *CPU) { jp(c, FlagS, true, c.loadImm16) },
-	0xfb: func(c *CPU) { todo(c) },
+	0xfb: func(c *CPU) { ei(c) },
 	0xfc: func(c *CPU) { call(c, FlagS, true, c.loadImm16) },
 	0xfd: func(c *CPU) { ddfd(c, opsFD, opsFDCB) },
 	0xfe: func(c *CPU) { cp(c, c.loadImm) },

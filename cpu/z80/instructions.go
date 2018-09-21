@@ -453,6 +453,11 @@ func dec16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
 	put(in0 - 1)
 }
 
+func di(cpu *CPU) {
+	cpu.IFF1 = false
+	cpu.IFF2 = false
+}
+
 // decrement B and jump if not zero
 func djnz(cpu *CPU, get cpu.Get) {
 	delta := get()
@@ -468,6 +473,11 @@ func ed(cpu *CPU) {
 	// fetch
 	cpu.refreshR()
 	opsED[opcode](cpu)
+}
+
+func ei(cpu *CPU) {
+	cpu.IFF1 = true
+	cpu.IFF2 = true
 }
 
 // exchange

@@ -104,6 +104,8 @@ func load(test fuseTest) *CPU {
 	cpu.PC = test.pc
 	cpu.I = test.i
 	cpu.R = test.r
+	cpu.IFF1 = test.iff1 != 0
+	cpu.IFF2 = test.iff2 != 0
 
 	for _, snapshot := range test.snapshots {
 		memory.Import(mem, snapshot)

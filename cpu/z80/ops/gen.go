@@ -346,7 +346,7 @@ func processMain(tab *regtab, op uint8) string {
 				return "todo(c)"
 			}
 			if y == 7 {
-				return "todo(c)"
+				return "ei(c)"
 			}
 		}
 		if z == 4 {
