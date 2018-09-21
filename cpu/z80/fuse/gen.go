@@ -210,6 +210,7 @@ var testTemplate = template.Must(template.New("").Parse(`fuseTest{
 	r: 0x{{.r}},
 	iff1: {{.iff1}},
 	iff2: {{.iff2}},
+	im: {{.im}},
 	halt: {{.halt}},
 	tstates: {{.tstates}},
 	snapshots: []memory.Snapshot{

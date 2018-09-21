@@ -50,6 +50,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -76,6 +77,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -102,6 +104,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -128,6 +131,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -154,6 +158,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -180,6 +185,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -206,6 +212,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -232,6 +239,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -258,6 +266,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -284,6 +293,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -310,6 +320,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -336,6 +347,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -362,6 +374,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -388,6 +401,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -414,6 +428,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -440,6 +455,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -466,6 +482,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 132,
 		snapshots: []memory.Snapshot{
@@ -492,6 +509,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -518,6 +536,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -544,6 +563,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -570,6 +590,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -596,6 +617,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -622,6 +644,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -648,6 +671,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -674,6 +698,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -700,6 +725,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -726,6 +752,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -753,6 +780,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -779,6 +807,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -805,6 +834,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -831,6 +861,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -857,6 +888,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -883,6 +915,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -909,6 +942,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -935,6 +969,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -961,6 +996,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -987,6 +1023,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1013,6 +1050,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1039,6 +1077,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1065,6 +1104,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1091,6 +1131,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1117,6 +1158,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1143,6 +1185,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1169,6 +1212,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1195,6 +1239,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1221,6 +1266,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1248,6 +1294,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1274,6 +1321,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1300,6 +1348,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1326,6 +1375,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1352,6 +1402,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1378,6 +1429,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1404,6 +1456,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1430,6 +1483,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1456,6 +1510,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1482,6 +1537,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1508,6 +1564,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1535,6 +1592,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1562,6 +1620,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1588,6 +1647,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1614,6 +1674,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1640,6 +1701,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1666,6 +1728,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1692,6 +1755,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1718,6 +1782,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1744,6 +1809,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1770,6 +1836,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1797,6 +1864,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1823,6 +1891,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1849,6 +1918,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1875,6 +1945,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1901,6 +1972,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1927,6 +1999,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1954,6 +2027,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -1981,6 +2055,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2008,6 +2083,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2035,6 +2111,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2062,6 +2139,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2089,6 +2167,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2116,6 +2195,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2143,6 +2223,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2170,6 +2251,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2197,6 +2279,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2224,6 +2307,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2251,6 +2335,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2278,6 +2363,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2305,6 +2391,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2332,6 +2419,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2359,6 +2447,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2386,6 +2475,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2413,6 +2503,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2440,6 +2531,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2467,6 +2559,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2494,6 +2587,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2521,6 +2615,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2548,6 +2643,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2575,6 +2671,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2602,6 +2699,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2629,6 +2727,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2656,6 +2755,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2683,6 +2783,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2710,6 +2811,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2737,6 +2839,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2764,6 +2867,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2791,6 +2895,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2818,6 +2923,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2845,6 +2951,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2872,6 +2979,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2899,6 +3007,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2926,6 +3035,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2953,6 +3063,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -2980,6 +3091,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3007,6 +3119,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3034,6 +3147,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3061,6 +3175,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3088,6 +3203,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3115,6 +3231,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3142,6 +3259,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3169,6 +3287,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3196,6 +3315,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3223,6 +3343,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3250,6 +3371,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3277,6 +3399,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3304,6 +3427,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3331,6 +3455,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3358,6 +3483,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3385,6 +3511,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3412,6 +3539,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3439,6 +3567,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3466,6 +3595,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3493,6 +3623,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3520,6 +3651,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3547,6 +3679,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3574,6 +3707,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3601,6 +3735,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3628,6 +3763,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3655,6 +3791,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3682,6 +3819,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3709,6 +3847,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3736,6 +3875,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3763,6 +3903,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3790,6 +3931,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3817,6 +3959,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3844,6 +3987,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3871,6 +4015,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3898,6 +4043,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3925,6 +4071,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3952,6 +4099,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -3979,6 +4127,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4006,6 +4155,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4033,6 +4183,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4060,6 +4211,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4087,6 +4239,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4114,6 +4267,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4141,6 +4295,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4168,6 +4323,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4195,6 +4351,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4222,6 +4379,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4249,6 +4407,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4276,6 +4435,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4303,6 +4463,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4330,6 +4491,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4357,6 +4519,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4384,6 +4547,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4411,6 +4575,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4438,6 +4603,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4465,6 +4631,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4492,6 +4659,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4519,6 +4687,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4546,6 +4715,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4573,6 +4743,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4600,6 +4771,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4627,6 +4799,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4654,6 +4827,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4681,6 +4855,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4708,6 +4883,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4735,6 +4911,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4762,6 +4939,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4789,6 +4967,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4816,6 +4995,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4843,6 +5023,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4870,6 +5051,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4897,6 +5079,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4924,6 +5107,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4951,6 +5135,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -4978,6 +5163,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5005,6 +5191,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5032,6 +5219,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5059,6 +5247,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5086,6 +5275,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5113,6 +5303,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5140,6 +5331,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5167,6 +5359,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5194,6 +5387,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5221,6 +5415,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5248,6 +5443,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5275,6 +5471,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5302,6 +5499,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5329,6 +5527,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5356,6 +5555,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5383,6 +5583,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5410,6 +5611,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5437,6 +5639,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5464,6 +5667,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5490,6 +5694,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5516,6 +5721,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5542,6 +5748,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5568,6 +5775,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5594,6 +5802,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5620,6 +5829,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5646,6 +5856,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5672,6 +5883,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5699,6 +5911,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5726,6 +5939,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5753,6 +5967,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5779,6 +5994,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5805,6 +6021,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5832,6 +6049,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5859,6 +6077,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5886,6 +6105,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5913,6 +6133,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5940,6 +6161,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5967,6 +6189,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -5994,6 +6217,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6021,6 +6245,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6048,6 +6273,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6075,6 +6301,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6102,6 +6329,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6129,6 +6357,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6156,6 +6385,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6183,6 +6413,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6210,6 +6441,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6237,6 +6469,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6264,6 +6497,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6291,6 +6525,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6318,6 +6553,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6345,6 +6581,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6372,6 +6609,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6399,6 +6637,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6426,6 +6665,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6453,6 +6693,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6480,6 +6721,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6507,6 +6749,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6534,6 +6777,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6561,6 +6805,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6588,6 +6833,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6615,6 +6861,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6642,6 +6889,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6669,6 +6917,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6696,6 +6945,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6723,6 +6973,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6750,6 +7001,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6777,6 +7029,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6804,6 +7057,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6831,6 +7085,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6858,6 +7113,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6885,6 +7141,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6912,6 +7169,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6939,6 +7197,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6966,6 +7225,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -6993,6 +7253,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7020,6 +7281,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7047,6 +7309,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7074,6 +7337,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7101,6 +7365,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7128,6 +7393,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7155,6 +7421,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7182,6 +7449,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7209,6 +7477,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7236,6 +7505,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7263,6 +7533,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7290,6 +7561,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7317,6 +7589,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7344,6 +7617,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7371,6 +7645,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7398,6 +7673,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7425,6 +7701,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7452,6 +7729,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7479,6 +7757,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7506,6 +7785,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7533,6 +7813,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7560,6 +7841,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7587,6 +7869,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7614,6 +7897,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7641,6 +7925,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7668,6 +7953,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7695,6 +7981,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7722,6 +8009,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7748,6 +8036,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7775,6 +8064,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7802,6 +8092,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7829,6 +8120,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7856,6 +8148,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7883,6 +8176,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7910,6 +8204,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7937,6 +8232,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7964,6 +8260,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -7990,6 +8287,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8017,6 +8315,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8044,6 +8343,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8071,6 +8371,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8098,6 +8399,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8125,6 +8427,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8152,6 +8455,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8179,6 +8483,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8206,6 +8511,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8232,6 +8538,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8259,6 +8566,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8286,6 +8594,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8313,6 +8622,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8340,6 +8650,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8367,6 +8678,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8394,6 +8706,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8421,6 +8734,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8448,6 +8762,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8474,6 +8789,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8501,6 +8817,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8528,6 +8845,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8555,6 +8873,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8582,6 +8901,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8609,6 +8929,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8636,6 +8957,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8663,6 +8985,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8690,6 +9013,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8716,6 +9040,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8743,6 +9068,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8770,6 +9096,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8797,6 +9124,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8824,6 +9152,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8851,6 +9180,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8878,6 +9208,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8905,6 +9236,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8932,6 +9264,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8958,6 +9291,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -8985,6 +9319,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9012,6 +9347,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9039,6 +9375,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9066,6 +9403,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9093,6 +9431,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9120,6 +9459,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9147,6 +9487,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9174,6 +9515,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9200,6 +9542,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9227,6 +9570,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9254,6 +9598,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9281,6 +9626,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9308,6 +9654,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9335,6 +9682,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9362,6 +9710,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9389,6 +9738,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9416,6 +9766,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9442,6 +9793,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9469,6 +9821,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9496,6 +9849,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9523,6 +9877,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9550,6 +9905,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9577,6 +9933,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9604,6 +9961,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9631,6 +9989,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9658,6 +10017,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9685,6 +10045,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9712,6 +10073,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9739,6 +10101,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9766,6 +10129,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9793,6 +10157,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9820,6 +10185,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9847,6 +10213,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9874,6 +10241,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9901,6 +10269,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9928,6 +10297,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9955,6 +10325,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -9982,6 +10353,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10009,6 +10381,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10036,6 +10409,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10063,6 +10437,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10090,6 +10465,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10117,6 +10493,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10144,6 +10521,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10171,6 +10549,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10198,6 +10577,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10225,6 +10605,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10252,6 +10633,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10279,6 +10661,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10306,6 +10689,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10333,6 +10717,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10360,6 +10745,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10387,6 +10773,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10414,6 +10801,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10441,6 +10829,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10468,6 +10857,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10495,6 +10885,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10522,6 +10913,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10549,6 +10941,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10576,6 +10969,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10603,6 +10997,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10630,6 +11025,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10657,6 +11053,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10684,6 +11081,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10711,6 +11109,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10738,6 +11137,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10765,6 +11165,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10792,6 +11193,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10819,6 +11221,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10846,6 +11249,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10873,6 +11277,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10900,6 +11305,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10927,6 +11333,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10954,6 +11361,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -10981,6 +11389,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11008,6 +11417,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11035,6 +11445,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11062,6 +11473,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11089,6 +11501,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11116,6 +11529,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11143,6 +11557,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11170,6 +11585,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11197,6 +11613,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11224,6 +11641,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11251,6 +11669,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11278,6 +11697,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11305,6 +11725,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11332,6 +11753,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11359,6 +11781,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11386,6 +11809,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11413,6 +11837,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11440,6 +11865,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11467,6 +11893,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11494,6 +11921,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11521,6 +11949,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11548,6 +11977,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11575,6 +12005,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11602,6 +12033,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11629,6 +12061,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11656,6 +12089,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11683,6 +12117,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11710,6 +12145,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11737,6 +12173,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11764,6 +12201,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11791,6 +12229,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11818,6 +12257,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11845,6 +12285,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11872,6 +12313,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11899,6 +12341,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11926,6 +12369,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11953,6 +12397,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -11980,6 +12425,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12007,6 +12453,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12034,6 +12481,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12061,6 +12509,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12088,6 +12537,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12115,6 +12565,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12142,6 +12593,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12169,6 +12621,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12196,6 +12649,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12223,6 +12677,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12250,6 +12705,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12277,6 +12733,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12304,6 +12761,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12331,6 +12789,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12358,6 +12817,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12385,6 +12845,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12412,6 +12873,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12439,6 +12901,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12466,6 +12929,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12493,6 +12957,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12520,6 +12985,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12547,6 +13013,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12574,6 +13041,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12601,6 +13069,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12628,6 +13097,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12655,6 +13125,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12682,6 +13153,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12709,6 +13181,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12736,6 +13209,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12763,6 +13237,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12790,6 +13265,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12817,6 +13293,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12844,6 +13321,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12871,6 +13349,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12898,6 +13377,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12925,6 +13405,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12951,6 +13432,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -12977,6 +13459,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13003,6 +13486,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13029,6 +13513,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13055,6 +13540,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13082,6 +13568,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13109,6 +13596,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13136,6 +13624,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13162,6 +13651,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13188,6 +13678,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13214,6 +13705,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13240,6 +13732,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13266,6 +13759,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13292,6 +13786,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13318,6 +13813,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13344,6 +13840,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13370,6 +13867,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13396,6 +13894,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13422,6 +13921,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13449,6 +13949,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13476,6 +13977,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13502,6 +14004,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13528,6 +14031,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13554,6 +14058,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13580,6 +14085,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13606,6 +14112,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13632,6 +14139,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13658,6 +14166,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13684,6 +14193,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13710,6 +14220,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 9,
 		snapshots: []memory.Snapshot{
@@ -13736,6 +14247,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13762,6 +14274,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13788,6 +14301,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13814,6 +14328,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13840,6 +14355,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13866,6 +14382,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13892,6 +14409,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13918,6 +14436,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13944,6 +14463,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13970,6 +14490,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -13997,6 +14518,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14023,6 +14545,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14049,6 +14572,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14075,6 +14599,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14101,6 +14626,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14128,6 +14654,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14155,6 +14682,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14181,6 +14709,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14207,6 +14736,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14233,6 +14763,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14259,6 +14790,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14286,6 +14818,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14312,6 +14845,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14338,6 +14872,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14365,6 +14900,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14391,6 +14927,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14417,6 +14954,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14444,6 +14982,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14470,6 +15009,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14496,6 +15036,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14523,6 +15064,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14549,6 +15091,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14575,6 +15118,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14601,6 +15145,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14627,6 +15172,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14653,6 +15199,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14679,6 +15226,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14706,6 +15254,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14732,6 +15281,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14758,6 +15308,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14784,6 +15335,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14810,6 +15362,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14836,6 +15389,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14862,6 +15416,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14888,6 +15443,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14915,6 +15471,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14941,6 +15498,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14967,6 +15525,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -14993,6 +15552,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15019,6 +15579,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15045,6 +15606,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15071,6 +15633,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15097,6 +15660,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15123,6 +15687,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15149,6 +15714,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15175,6 +15741,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15202,6 +15769,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15228,6 +15796,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15254,6 +15823,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15281,6 +15851,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15307,6 +15878,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15333,6 +15905,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15360,6 +15933,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15386,6 +15960,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15412,6 +15987,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15439,6 +16015,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15465,6 +16042,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15491,6 +16069,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15518,6 +16097,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15544,6 +16124,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15570,6 +16151,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15597,6 +16179,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15623,6 +16206,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15649,6 +16233,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15676,6 +16261,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15702,6 +16288,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15728,6 +16315,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15755,6 +16343,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15781,6 +16370,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15807,6 +16397,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15834,6 +16425,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15861,6 +16453,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15888,6 +16481,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15915,6 +16509,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15942,6 +16537,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15969,6 +16565,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -15996,6 +16593,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16023,6 +16621,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16050,6 +16649,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16077,6 +16677,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16104,6 +16705,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16131,6 +16733,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16158,6 +16761,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16185,6 +16789,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16212,6 +16817,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16239,6 +16845,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16266,6 +16873,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16293,6 +16901,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16320,6 +16929,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16347,6 +16957,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16374,6 +16985,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16401,6 +17013,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16428,6 +17041,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16455,6 +17069,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16482,6 +17097,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16509,6 +17125,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16536,6 +17153,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16563,6 +17181,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16590,6 +17209,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16617,6 +17237,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16644,6 +17265,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16671,6 +17293,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16698,6 +17321,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16725,6 +17349,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16752,6 +17377,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16779,6 +17405,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16806,6 +17433,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16833,6 +17461,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16860,6 +17489,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16887,6 +17517,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16914,6 +17545,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16941,6 +17573,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16968,6 +17601,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -16995,6 +17629,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17022,6 +17657,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17049,6 +17685,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17076,6 +17713,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17103,6 +17741,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17130,6 +17769,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17157,6 +17797,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17184,6 +17825,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17211,6 +17853,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17238,6 +17881,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17265,6 +17909,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17292,6 +17937,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17319,6 +17965,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17346,6 +17993,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17373,6 +18021,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17400,6 +18049,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17427,6 +18077,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17454,6 +18105,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17481,6 +18133,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17508,6 +18161,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17535,6 +18189,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17562,6 +18217,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17589,6 +18245,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17616,6 +18273,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17643,6 +18301,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17670,6 +18329,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17697,6 +18357,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17724,6 +18385,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17751,6 +18413,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17778,6 +18441,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17805,6 +18469,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17832,6 +18497,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17859,6 +18525,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17886,6 +18553,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17913,6 +18581,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17940,6 +18609,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17967,6 +18637,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -17994,6 +18665,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18021,6 +18693,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18048,6 +18721,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18075,6 +18749,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18102,6 +18777,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18129,6 +18805,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18156,6 +18833,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18183,6 +18861,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18210,6 +18889,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18237,6 +18917,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18264,6 +18945,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18291,6 +18973,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18318,6 +19001,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18345,6 +19029,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18372,6 +19057,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18399,6 +19085,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18426,6 +19113,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18453,6 +19141,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18480,6 +19169,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18507,6 +19197,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18534,6 +19225,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18561,6 +19253,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18588,6 +19281,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18615,6 +19309,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18642,6 +19337,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18669,6 +19365,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18696,6 +19393,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18723,6 +19421,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18750,6 +19449,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18777,6 +19477,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18804,6 +19505,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18831,6 +19533,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18858,6 +19561,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18885,6 +19589,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18912,6 +19617,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18939,6 +19645,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18966,6 +19673,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -18993,6 +19701,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19020,6 +19729,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19047,6 +19757,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19074,6 +19785,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19101,6 +19813,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19128,6 +19841,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19155,6 +19869,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19182,6 +19897,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19209,6 +19925,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19236,6 +19953,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19263,6 +19981,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19290,6 +20009,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19317,6 +20037,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19344,6 +20065,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19371,6 +20093,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19398,6 +20121,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19425,6 +20149,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19452,6 +20177,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19479,6 +20205,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19506,6 +20233,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19533,6 +20261,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19560,6 +20289,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19587,6 +20317,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19614,6 +20345,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19641,6 +20373,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19668,6 +20401,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19695,6 +20429,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19722,6 +20457,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19749,6 +20485,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19776,6 +20513,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19803,6 +20541,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19830,6 +20569,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19857,6 +20597,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19884,6 +20625,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19911,6 +20653,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19938,6 +20681,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19965,6 +20709,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -19992,6 +20737,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20019,6 +20765,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20046,6 +20793,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20073,6 +20821,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20100,6 +20849,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20127,6 +20877,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20154,6 +20905,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20181,6 +20933,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20208,6 +20961,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20235,6 +20989,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20262,6 +21017,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20289,6 +21045,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20316,6 +21073,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20343,6 +21101,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20370,6 +21129,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20397,6 +21157,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20424,6 +21185,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20451,6 +21213,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20478,6 +21241,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20505,6 +21269,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20532,6 +21297,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20559,6 +21325,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20586,6 +21353,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20613,6 +21381,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20640,6 +21409,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20667,6 +21437,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20694,6 +21465,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20721,6 +21493,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20748,6 +21521,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20775,6 +21549,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20802,6 +21577,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20829,6 +21605,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20856,6 +21633,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20883,6 +21661,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20910,6 +21689,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20937,6 +21717,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20964,6 +21745,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -20991,6 +21773,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21018,6 +21801,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21045,6 +21829,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21072,6 +21857,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21099,6 +21885,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21126,6 +21913,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21153,6 +21941,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21180,6 +21969,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21207,6 +21997,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21234,6 +22025,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21261,6 +22053,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21288,6 +22081,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21315,6 +22109,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21342,6 +22137,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21369,6 +22165,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21396,6 +22193,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21423,6 +22221,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21450,6 +22249,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21477,6 +22277,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21504,6 +22305,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21531,6 +22333,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21558,6 +22361,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21585,6 +22389,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21612,6 +22417,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21639,6 +22445,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21666,6 +22473,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21693,6 +22501,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21720,6 +22529,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21747,6 +22557,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21774,6 +22585,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21801,6 +22613,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21828,6 +22641,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21855,6 +22669,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21882,6 +22697,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21909,6 +22725,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21936,6 +22753,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21963,6 +22781,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -21990,6 +22809,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22017,6 +22837,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22044,6 +22865,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22071,6 +22893,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22098,6 +22921,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22125,6 +22949,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22152,6 +22977,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22179,6 +23005,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22206,6 +23033,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22233,6 +23061,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22260,6 +23089,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22287,6 +23117,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22314,6 +23145,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22341,6 +23173,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22368,6 +23201,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22395,6 +23229,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22422,6 +23257,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22449,6 +23285,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22476,6 +23313,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22503,6 +23341,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22530,6 +23369,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22557,6 +23397,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22584,6 +23425,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22611,6 +23453,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22638,6 +23481,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22665,6 +23509,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22692,6 +23537,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22719,6 +23565,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22746,6 +23593,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22773,6 +23621,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22800,6 +23649,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22826,6 +23676,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22852,6 +23703,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22878,6 +23730,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 13,
 		snapshots: []memory.Snapshot{
@@ -22904,6 +23757,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22930,6 +23784,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22956,6 +23811,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -22983,6 +23839,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23010,6 +23867,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23037,6 +23895,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23063,6 +23922,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23089,6 +23949,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23116,6 +23977,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23142,6 +24004,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23168,6 +24031,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23194,6 +24058,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23220,6 +24085,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23246,6 +24112,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23273,6 +24140,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23300,6 +24168,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23326,6 +24195,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23352,6 +24222,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23378,6 +24249,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23404,6 +24276,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23430,6 +24303,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23456,6 +24330,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23482,6 +24357,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23508,6 +24384,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23534,6 +24411,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23560,6 +24438,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23586,6 +24465,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    1,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23613,6 +24493,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23639,6 +24520,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23665,6 +24547,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23691,6 +24574,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23717,6 +24601,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23743,6 +24628,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23770,6 +24656,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23796,6 +24683,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23823,6 +24711,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      1,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23849,6 +24738,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23875,6 +24765,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23901,6 +24792,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23927,6 +24819,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23953,6 +24846,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -23979,6 +24873,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24005,6 +24900,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    1,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24032,6 +24928,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      1,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24058,6 +24955,7 @@ var fuseTests = []fuseTest{
 		r:       0x17,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24084,6 +24982,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24110,6 +25009,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24136,6 +25036,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24162,6 +25063,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24189,6 +25091,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24215,6 +25118,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24242,6 +25146,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      1,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24268,6 +25173,7 @@ var fuseTests = []fuseTest{
 		r:       0xf3,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24294,6 +25200,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24320,6 +25227,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24346,6 +25254,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24372,6 +25281,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24398,6 +25308,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24424,6 +25335,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    1,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24451,6 +25363,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      1,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24477,6 +25390,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24504,6 +25418,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24530,6 +25445,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24556,6 +25472,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24582,6 +25499,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24609,6 +25527,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24635,6 +25554,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24662,6 +25582,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24688,6 +25609,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24715,6 +25637,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24741,6 +25664,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24767,6 +25691,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24793,6 +25718,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24819,6 +25745,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24845,6 +25772,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    1,
 		iff2:    1,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24872,6 +25800,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      2,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24898,6 +25827,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24924,6 +25854,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24950,6 +25881,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -24976,6 +25908,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25003,6 +25936,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25029,6 +25963,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    1,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25056,6 +25991,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25082,6 +26018,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25109,6 +26046,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25136,6 +26074,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25162,6 +26101,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25188,6 +26128,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25214,6 +26155,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25240,6 +26182,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25267,6 +26210,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25294,6 +26238,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25321,6 +26266,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25348,6 +26294,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25375,6 +26322,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25402,6 +26350,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25429,6 +26378,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25456,6 +26406,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25483,6 +26434,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25510,6 +26462,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25537,6 +26490,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25564,6 +26518,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25591,6 +26546,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25618,6 +26574,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25644,6 +26601,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25670,6 +26628,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25696,6 +26655,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25722,6 +26682,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25749,6 +26710,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25776,6 +26738,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -25803,6 +26766,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 331,
 		snapshots: []memory.Snapshot{
@@ -25830,6 +26794,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 79,
 		snapshots: []memory.Snapshot{
@@ -25857,6 +26822,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 205,
 		snapshots: []memory.Snapshot{
@@ -25883,6 +26849,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 58,
 		snapshots: []memory.Snapshot{
@@ -25910,6 +26877,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 163,
 		snapshots: []memory.Snapshot{
@@ -25937,6 +26905,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 163,
 		snapshots: []memory.Snapshot{
@@ -25964,6 +26933,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 121,
 		snapshots: []memory.Snapshot{
@@ -25990,6 +26960,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 79,
 		snapshots: []memory.Snapshot{
@@ -26017,6 +26988,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26043,6 +27015,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26069,6 +27042,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26096,6 +27070,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26123,6 +27098,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26150,6 +27126,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26176,6 +27153,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26202,6 +27180,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    1,
 		iff2:    1,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26228,6 +27207,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26254,6 +27234,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26280,6 +27261,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26306,6 +27288,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26332,6 +27315,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26358,6 +27342,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26385,6 +27370,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26412,6 +27398,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26438,6 +27425,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26464,6 +27452,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26490,6 +27479,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26516,6 +27506,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26542,6 +27533,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26568,6 +27560,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26594,6 +27587,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26620,6 +27614,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26646,6 +27641,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26672,6 +27668,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26698,6 +27695,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26724,6 +27722,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26750,6 +27749,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26776,6 +27776,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26802,6 +27803,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26829,6 +27831,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26855,6 +27858,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26881,6 +27885,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26907,6 +27912,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26933,6 +27939,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26960,6 +27967,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -26987,6 +27995,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27013,6 +28022,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27039,6 +28049,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27065,6 +28076,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27091,6 +28103,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27118,6 +28131,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27144,6 +28158,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27170,6 +28185,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27197,6 +28213,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27223,6 +28240,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27249,6 +28267,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27276,6 +28295,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27302,6 +28322,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27328,6 +28349,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27355,6 +28377,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27381,6 +28404,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27407,6 +28431,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27433,6 +28458,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27459,6 +28485,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27485,6 +28512,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27511,6 +28539,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27538,6 +28567,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27564,6 +28594,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27590,6 +28621,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27616,6 +28648,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27642,6 +28675,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27668,6 +28702,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27694,6 +28729,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27720,6 +28756,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27747,6 +28784,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27773,6 +28811,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27799,6 +28838,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27825,6 +28865,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27851,6 +28892,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27877,6 +28919,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27903,6 +28946,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27929,6 +28973,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27955,6 +29000,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -27981,6 +29027,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28007,6 +29054,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28034,6 +29082,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28060,6 +29109,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28086,6 +29136,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28113,6 +29164,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28139,6 +29191,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28165,6 +29218,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28192,6 +29246,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28218,6 +29273,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28244,6 +29300,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28271,6 +29328,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28297,6 +29355,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28323,6 +29382,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28350,6 +29410,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28376,6 +29437,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28402,6 +29464,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28429,6 +29492,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28455,6 +29519,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28481,6 +29546,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28508,6 +29574,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28534,6 +29601,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28560,6 +29628,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28587,6 +29656,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28613,6 +29683,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28639,6 +29710,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28666,6 +29738,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28693,6 +29766,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28720,6 +29794,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28747,6 +29822,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28774,6 +29850,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28801,6 +29878,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28828,6 +29906,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28855,6 +29934,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28882,6 +29962,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28909,6 +29990,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28936,6 +30018,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28963,6 +30046,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -28990,6 +30074,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29017,6 +30102,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29044,6 +30130,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29071,6 +30158,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29098,6 +30186,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29125,6 +30214,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29152,6 +30242,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29179,6 +30270,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29206,6 +30298,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29233,6 +30326,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29260,6 +30354,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29287,6 +30382,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29314,6 +30410,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29341,6 +30438,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29368,6 +30466,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29395,6 +30494,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29422,6 +30522,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29449,6 +30550,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29476,6 +30578,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29503,6 +30606,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29530,6 +30634,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29557,6 +30662,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29584,6 +30690,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29611,6 +30718,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29638,6 +30746,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29665,6 +30774,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29692,6 +30802,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29719,6 +30830,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29746,6 +30858,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29773,6 +30886,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29800,6 +30914,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29827,6 +30942,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29854,6 +30970,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29881,6 +30998,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29908,6 +31026,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29935,6 +31054,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29962,6 +31082,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -29989,6 +31110,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30016,6 +31138,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30043,6 +31166,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30070,6 +31194,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30097,6 +31222,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30124,6 +31250,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30151,6 +31278,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30178,6 +31306,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30205,6 +31334,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30232,6 +31362,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30259,6 +31390,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30286,6 +31418,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30313,6 +31446,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30340,6 +31474,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30367,6 +31502,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30394,6 +31530,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30421,6 +31558,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30448,6 +31586,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30475,6 +31614,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30502,6 +31642,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30529,6 +31670,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30556,6 +31698,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30583,6 +31726,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30610,6 +31754,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30637,6 +31782,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30664,6 +31810,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30691,6 +31838,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30718,6 +31866,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30745,6 +31894,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30772,6 +31922,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30799,6 +31950,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30826,6 +31978,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30853,6 +32006,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30880,6 +32034,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30907,6 +32062,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30934,6 +32090,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30961,6 +32118,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -30988,6 +32146,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31015,6 +32174,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31042,6 +32202,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31069,6 +32230,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31096,6 +32258,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31123,6 +32286,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31150,6 +32314,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31177,6 +32342,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31204,6 +32370,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31231,6 +32398,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31258,6 +32426,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31285,6 +32454,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31312,6 +32482,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31339,6 +32510,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31366,6 +32538,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31393,6 +32566,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31420,6 +32594,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31447,6 +32622,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31474,6 +32650,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31501,6 +32678,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31528,6 +32706,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31555,6 +32734,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31582,6 +32762,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31609,6 +32790,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31636,6 +32818,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31663,6 +32846,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31690,6 +32874,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31717,6 +32902,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31744,6 +32930,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31771,6 +32958,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31798,6 +32986,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31825,6 +33014,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31852,6 +33042,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31879,6 +33070,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31906,6 +33098,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31933,6 +33126,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31960,6 +33154,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -31987,6 +33182,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32014,6 +33210,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32041,6 +33238,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32068,6 +33266,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32095,6 +33294,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32122,6 +33322,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32149,6 +33350,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32176,6 +33378,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32203,6 +33406,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32230,6 +33434,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32257,6 +33462,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32284,6 +33490,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32311,6 +33518,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32338,6 +33546,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32365,6 +33574,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32392,6 +33602,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32419,6 +33630,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32446,6 +33658,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32473,6 +33686,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32500,6 +33714,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32527,6 +33742,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32554,6 +33770,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32581,6 +33798,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32608,6 +33826,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32635,6 +33854,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32662,6 +33882,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32689,6 +33910,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32716,6 +33938,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32743,6 +33966,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32770,6 +33994,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32797,6 +34022,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32824,6 +34050,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32851,6 +34078,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32878,6 +34106,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32905,6 +34134,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32932,6 +34162,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32959,6 +34190,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -32986,6 +34218,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33013,6 +34246,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33040,6 +34274,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33067,6 +34302,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33094,6 +34330,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33121,6 +34358,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33148,6 +34386,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33175,6 +34414,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33202,6 +34442,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33229,6 +34470,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33256,6 +34498,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33283,6 +34526,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33310,6 +34554,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33337,6 +34582,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33364,6 +34610,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33391,6 +34638,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33418,6 +34666,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33445,6 +34694,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33472,6 +34722,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33499,6 +34750,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33526,6 +34778,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33553,6 +34806,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33580,6 +34834,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33607,6 +34862,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33634,6 +34890,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33661,6 +34918,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33688,6 +34946,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33715,6 +34974,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33742,6 +35002,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33769,6 +35030,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33796,6 +35058,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33823,6 +35086,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33850,6 +35114,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33877,6 +35142,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33904,6 +35170,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33931,6 +35198,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33958,6 +35226,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -33985,6 +35254,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34012,6 +35282,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34039,6 +35310,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34066,6 +35338,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34093,6 +35366,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34120,6 +35394,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34147,6 +35422,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34174,6 +35450,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34201,6 +35478,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34228,6 +35506,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34255,6 +35534,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34282,6 +35562,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34309,6 +35590,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34336,6 +35618,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34363,6 +35646,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34390,6 +35674,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34417,6 +35702,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34444,6 +35730,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34471,6 +35758,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34498,6 +35786,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34525,6 +35814,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34552,6 +35842,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34579,6 +35870,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34606,6 +35898,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34633,6 +35926,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34660,6 +35954,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34687,6 +35982,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34714,6 +36010,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34741,6 +36038,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34768,6 +36066,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34795,6 +36094,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34822,6 +36122,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34849,6 +36150,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34876,6 +36178,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34903,6 +36206,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34930,6 +36234,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34957,6 +36262,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -34984,6 +36290,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35011,6 +36318,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35038,6 +36346,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35065,6 +36374,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35092,6 +36402,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35119,6 +36430,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35146,6 +36458,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35173,6 +36486,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35200,6 +36514,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35227,6 +36542,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35254,6 +36570,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35281,6 +36598,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35308,6 +36626,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35335,6 +36654,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35362,6 +36682,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35389,6 +36710,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35416,6 +36738,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35443,6 +36766,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35470,6 +36794,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35497,6 +36822,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35524,6 +36850,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35551,6 +36878,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35578,6 +36906,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35605,6 +36934,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35632,6 +36962,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35658,6 +36989,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35684,6 +37016,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35710,6 +37043,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35736,6 +37070,7 @@ var fuseTests = []fuseTest{
 		r:       0x00,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 1,
 		snapshots: []memory.Snapshot{
@@ -35765,6 +37100,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -35789,6 +37125,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -35813,6 +37150,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 7,
 		snapshots: []memory.Snapshot{
@@ -35839,6 +37177,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    6,
 		snapshots:  []memory.Snapshot{},
@@ -35863,6 +37202,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -35887,6 +37227,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -35911,6 +37252,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -35935,6 +37277,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -35959,6 +37302,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -35983,6 +37327,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -36007,6 +37352,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -36031,6 +37377,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    6,
 		snapshots:  []memory.Snapshot{},
@@ -36055,6 +37402,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36079,6 +37427,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36103,6 +37452,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -36127,6 +37477,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36151,6 +37502,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x11,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    135,
 		snapshots:  []memory.Snapshot{},
@@ -36175,6 +37527,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -36199,6 +37552,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 7,
 		snapshots: []memory.Snapshot{
@@ -36225,6 +37579,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    6,
 		snapshots:  []memory.Snapshot{},
@@ -36249,6 +37604,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36273,6 +37629,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36297,6 +37654,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -36321,6 +37679,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36345,6 +37704,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -36369,6 +37729,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -36393,6 +37754,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -36417,6 +37779,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    6,
 		snapshots:  []memory.Snapshot{},
@@ -36441,6 +37804,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36465,6 +37829,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36489,6 +37854,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -36513,6 +37879,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36537,6 +37904,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -36561,6 +37929,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -36585,6 +37954,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -36609,6 +37979,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -36635,6 +38006,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    6,
 		snapshots:  []memory.Snapshot{},
@@ -36659,6 +38031,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36683,6 +38056,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36707,6 +38081,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -36731,6 +38106,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36755,6 +38131,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36779,6 +38156,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -36803,6 +38181,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -36827,6 +38206,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -36851,6 +38231,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    16,
 		snapshots:  []memory.Snapshot{},
@@ -36875,6 +38256,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    6,
 		snapshots:  []memory.Snapshot{},
@@ -36899,6 +38281,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36923,6 +38306,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36947,6 +38331,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -36971,6 +38356,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -36995,6 +38381,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -37019,6 +38406,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -37043,6 +38431,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -37067,6 +38456,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 13,
 		snapshots: []memory.Snapshot{
@@ -37093,6 +38483,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    6,
 		snapshots:  []memory.Snapshot{},
@@ -37117,6 +38508,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -37143,6 +38535,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -37169,6 +38562,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 10,
 		snapshots: []memory.Snapshot{
@@ -37195,6 +38589,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37219,6 +38614,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37243,6 +38639,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37267,6 +38664,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37291,6 +38689,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -37315,6 +38714,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -37339,6 +38739,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -37363,6 +38764,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    13,
 		snapshots:  []memory.Snapshot{},
@@ -37387,6 +38789,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    6,
 		snapshots:  []memory.Snapshot{},
@@ -37411,6 +38814,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37435,6 +38839,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37459,6 +38864,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -37483,6 +38889,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37507,6 +38914,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37531,6 +38939,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37555,6 +38964,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37579,6 +38989,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37603,6 +39014,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37627,6 +39039,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37651,6 +39064,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -37675,6 +39089,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37699,6 +39114,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37723,6 +39139,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37747,6 +39164,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37771,6 +39189,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37795,6 +39214,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37819,6 +39239,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37843,6 +39264,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -37867,6 +39289,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37891,6 +39314,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37915,6 +39339,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37939,6 +39364,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37963,6 +39389,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -37987,6 +39414,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38011,6 +39439,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38035,6 +39464,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -38059,6 +39489,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38083,6 +39514,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38107,6 +39539,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38131,6 +39564,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38155,6 +39589,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38179,6 +39614,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38203,6 +39639,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38227,6 +39664,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -38251,6 +39689,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38275,6 +39714,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38299,6 +39739,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38323,6 +39764,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38347,6 +39789,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38371,6 +39814,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38395,6 +39839,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38419,6 +39864,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -38443,6 +39889,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38467,6 +39914,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38491,6 +39939,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38515,6 +39964,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38539,6 +39989,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38563,6 +40014,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38587,6 +40039,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38611,6 +40064,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -38635,6 +40089,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38659,6 +40114,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 7,
 		snapshots: []memory.Snapshot{
@@ -38685,6 +40141,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 7,
 		snapshots: []memory.Snapshot{
@@ -38711,6 +40168,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 7,
 		snapshots: []memory.Snapshot{
@@ -38737,6 +40195,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 7,
 		snapshots: []memory.Snapshot{
@@ -38763,6 +40222,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 7,
 		snapshots: []memory.Snapshot{
@@ -38789,6 +40249,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 7,
 		snapshots: []memory.Snapshot{
@@ -38815,6 +40276,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       1,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38839,6 +40301,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 7,
 		snapshots: []memory.Snapshot{
@@ -38865,6 +40328,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38889,6 +40353,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38913,6 +40378,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38937,6 +40403,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38961,6 +40428,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -38985,6 +40453,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39009,6 +40478,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -39033,6 +40503,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39057,6 +40528,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39081,6 +40553,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39105,6 +40578,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39129,6 +40603,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39153,6 +40628,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39177,6 +40653,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39201,6 +40678,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -39225,6 +40703,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39249,6 +40728,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39273,6 +40753,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39297,6 +40778,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39321,6 +40803,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39345,6 +40828,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39369,6 +40853,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39393,6 +40878,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -39417,6 +40903,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39441,6 +40928,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39465,6 +40953,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39489,6 +40978,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39513,6 +41003,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39537,6 +41028,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39561,6 +41053,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39585,6 +41078,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -39609,6 +41103,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39633,6 +41128,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39657,6 +41153,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39681,6 +41178,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39705,6 +41203,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39729,6 +41228,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39753,6 +41253,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39777,6 +41278,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -39801,6 +41303,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39825,6 +41328,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39849,6 +41353,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39873,6 +41378,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39897,6 +41403,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39921,6 +41428,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39945,6 +41453,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -39969,6 +41478,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -39993,6 +41503,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40017,6 +41528,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40041,6 +41553,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40065,6 +41578,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40089,6 +41603,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40113,6 +41628,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40137,6 +41653,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40161,6 +41678,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -40185,6 +41703,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40209,6 +41728,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40233,6 +41753,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40257,6 +41778,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40281,6 +41803,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40305,6 +41828,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40329,6 +41853,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40353,6 +41878,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -40377,6 +41903,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40401,6 +41928,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40425,6 +41953,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40449,6 +41978,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40473,6 +42003,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40497,6 +42028,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40521,6 +42053,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40545,6 +42078,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -40569,6 +42103,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -40593,6 +42128,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -40617,6 +42153,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    5,
 		snapshots:  []memory.Snapshot{},
@@ -40641,6 +42178,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -40665,6 +42203,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -40689,6 +42228,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -40713,6 +42253,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -40737,6 +42278,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 17,
 		snapshots: []memory.Snapshot{
@@ -40763,6 +42305,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -40787,6 +42330,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -40813,6 +42357,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -40837,6 +42382,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -40863,6 +42409,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    5,
 		snapshots:  []memory.Snapshot{},
@@ -40887,6 +42434,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -40911,6 +42459,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -40935,6 +42484,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -40959,6 +42509,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -40983,6 +42534,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41007,6 +42559,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41031,6 +42584,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41055,6 +42609,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41079,6 +42634,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41103,6 +42659,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41127,6 +42684,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -41153,6 +42711,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41177,6 +42736,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41201,6 +42761,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41225,6 +42786,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41249,6 +42811,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41273,6 +42836,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41297,6 +42861,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41321,6 +42886,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -41347,6 +42913,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41371,6 +42938,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41395,6 +42963,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41419,6 +42988,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41443,6 +43013,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41467,6 +43038,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41491,6 +43063,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41515,6 +43088,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -41541,6 +43115,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41565,6 +43140,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41589,6 +43165,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41613,6 +43190,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41637,6 +43215,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41661,6 +43240,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41685,6 +43265,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41709,6 +43290,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -41735,6 +43317,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41759,6 +43342,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41783,6 +43367,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41807,6 +43392,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41831,6 +43417,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41855,6 +43442,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41879,6 +43467,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41903,6 +43492,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -41929,6 +43519,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41953,6 +43544,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -41977,6 +43569,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42001,6 +43594,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42025,6 +43619,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42049,6 +43644,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42073,6 +43669,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42097,6 +43694,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -42123,6 +43721,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42147,6 +43746,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42171,6 +43771,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42195,6 +43796,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42219,6 +43821,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42243,6 +43846,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42267,6 +43871,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42291,6 +43896,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -42317,6 +43923,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42341,6 +43948,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42365,6 +43973,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42389,6 +43998,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42413,6 +44023,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42437,6 +44048,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42461,6 +44073,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42485,6 +44098,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -42511,6 +44125,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42535,6 +44150,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42559,6 +44175,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42583,6 +44200,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42607,6 +44225,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42631,6 +44250,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42655,6 +44275,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42679,6 +44300,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -42703,6 +44325,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42727,6 +44350,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42751,6 +44375,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42775,6 +44400,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42799,6 +44425,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42823,6 +44450,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42847,6 +44475,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42871,6 +44500,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42895,6 +44525,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -42919,6 +44550,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42943,6 +44575,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42967,6 +44600,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -42991,6 +44625,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43015,6 +44650,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43039,6 +44675,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43063,6 +44700,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43087,6 +44725,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43111,6 +44750,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -43135,6 +44775,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43159,6 +44800,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43183,6 +44825,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43207,6 +44850,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43231,6 +44875,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43255,6 +44900,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43279,6 +44925,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43303,6 +44950,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43327,6 +44975,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -43351,6 +45000,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43375,6 +45025,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43399,6 +45050,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43423,6 +45075,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43447,6 +45100,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43471,6 +45125,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43495,6 +45150,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43519,6 +45175,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43543,6 +45200,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -43567,6 +45225,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43591,6 +45250,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43615,6 +45275,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43639,6 +45300,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43663,6 +45325,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43687,6 +45350,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43711,6 +45375,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43735,6 +45400,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43759,6 +45425,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -43783,6 +45450,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43807,6 +45475,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43831,6 +45500,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43855,6 +45525,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43879,6 +45550,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43903,6 +45575,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43927,6 +45600,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43951,6 +45625,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -43975,6 +45650,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -43999,6 +45675,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44023,6 +45700,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44047,6 +45725,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44071,6 +45750,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44095,6 +45775,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44119,6 +45800,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44143,6 +45825,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44167,6 +45850,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44191,6 +45875,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -44215,6 +45900,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44239,6 +45925,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44263,6 +45950,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44287,6 +45975,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44311,6 +46000,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44335,6 +46025,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44359,6 +46050,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44383,6 +46075,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44407,6 +46100,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -44431,6 +46125,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44455,6 +46150,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44479,6 +46175,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44503,6 +46200,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44527,6 +46225,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44551,6 +46250,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44575,6 +46275,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44599,6 +46300,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -44623,6 +46325,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44647,6 +46350,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44671,6 +46375,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44695,6 +46400,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44719,6 +46425,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44743,6 +46450,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44767,6 +46475,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44791,6 +46500,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -44815,6 +46525,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44839,6 +46550,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44863,6 +46575,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44887,6 +46600,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44911,6 +46625,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44935,6 +46650,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44959,6 +46675,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -44983,6 +46700,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -45009,6 +46727,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45033,6 +46752,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45057,6 +46777,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45081,6 +46802,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45105,6 +46827,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45129,6 +46852,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45153,6 +46877,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45177,6 +46902,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -45201,6 +46927,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45225,6 +46952,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45249,6 +46977,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45273,6 +47002,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45297,6 +47027,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45321,6 +47052,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45345,6 +47077,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45369,6 +47102,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -45395,6 +47129,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45419,6 +47154,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45443,6 +47179,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45467,6 +47204,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45491,6 +47229,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45515,6 +47254,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45539,6 +47279,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45563,6 +47304,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -45587,6 +47329,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45611,6 +47354,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45635,6 +47379,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45659,6 +47404,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45683,6 +47429,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45707,6 +47454,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45731,6 +47479,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45755,6 +47504,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -45781,6 +47531,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45805,6 +47556,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45829,6 +47581,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45853,6 +47606,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45877,6 +47631,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45901,6 +47656,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45925,6 +47681,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45949,6 +47706,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -45975,6 +47733,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -45999,6 +47758,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46023,6 +47783,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46047,6 +47808,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46071,6 +47833,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46095,6 +47858,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46119,6 +47883,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46143,6 +47908,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -46167,6 +47933,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46191,6 +47958,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46215,6 +47983,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46239,6 +48008,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46263,6 +48033,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46287,6 +48058,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46311,6 +48083,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46335,6 +48108,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -46359,6 +48133,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46383,6 +48158,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46407,6 +48183,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46431,6 +48208,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46455,6 +48233,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46479,6 +48258,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46503,6 +48283,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46527,6 +48308,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -46553,6 +48335,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46577,6 +48360,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46601,6 +48385,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46625,6 +48410,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46649,6 +48435,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46673,6 +48460,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46697,6 +48485,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46721,6 +48510,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -46745,6 +48535,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46769,6 +48560,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46793,6 +48585,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46817,6 +48610,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46841,6 +48635,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46865,6 +48660,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46889,6 +48685,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46913,6 +48710,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -46937,6 +48735,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46961,6 +48760,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -46985,6 +48785,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47009,6 +48810,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47033,6 +48835,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47057,6 +48860,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47081,6 +48885,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47105,6 +48910,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -47131,6 +48937,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47155,6 +48962,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47179,6 +48987,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47203,6 +49012,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47227,6 +49037,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47251,6 +49062,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47275,6 +49087,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47299,6 +49112,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -47323,6 +49137,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -47347,6 +49162,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 17,
 		snapshots: []memory.Snapshot{
@@ -47373,6 +49189,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -47397,6 +49214,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 17,
 		snapshots: []memory.Snapshot{
@@ -47423,6 +49241,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -47447,6 +49266,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -47473,6 +49293,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -47497,6 +49318,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    5,
 		snapshots:  []memory.Snapshot{},
@@ -47521,6 +49343,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -47545,6 +49368,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -47569,6 +49393,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -47593,6 +49418,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x01,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
@@ -47619,6 +49445,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x01,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
@@ -47645,6 +49472,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x01,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
@@ -47671,6 +49499,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x01,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
@@ -47697,6 +49526,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 17,
 		snapshots: []memory.Snapshot{
@@ -47723,6 +49553,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -47747,6 +49578,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -47773,6 +49605,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -47797,6 +49630,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -47823,6 +49657,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    5,
 		snapshots:  []memory.Snapshot{},
@@ -47847,6 +49682,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -47871,6 +49707,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -47895,6 +49732,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -47919,6 +49757,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -47943,6 +49782,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x01,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
@@ -47969,6 +49809,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x01,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
@@ -47995,6 +49836,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x01,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
@@ -48021,6 +49863,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x01,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   11,
 		snapshots: []memory.Snapshot{},
@@ -48047,6 +49890,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 17,
 		snapshots: []memory.Snapshot{
@@ -48073,6 +49917,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -48097,6 +49942,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x03,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    12,
 		snapshots:  []memory.Snapshot{},
@@ -48121,6 +49967,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -48145,6 +49992,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -48169,6 +50017,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -48193,6 +50042,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 20,
 		snapshots: []memory.Snapshot{
@@ -48219,6 +50069,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -48243,6 +50094,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48267,6 +50119,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48291,6 +50144,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -48315,6 +50169,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -48339,6 +50194,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -48363,6 +50219,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -48387,6 +50244,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48411,6 +50269,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48435,6 +50294,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -48459,6 +50319,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -48485,6 +50346,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -48511,6 +50373,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -48537,6 +50400,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -48561,6 +50425,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48585,6 +50450,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48609,6 +50475,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -48633,6 +50500,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48657,6 +50525,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48681,6 +50550,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -48705,6 +50575,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48729,6 +50600,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48753,6 +50625,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -48777,6 +50650,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48801,6 +50675,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48825,6 +50700,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -48849,6 +50725,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48873,6 +50750,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48897,6 +50775,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48921,6 +50800,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48945,6 +50825,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48969,6 +50850,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -48993,6 +50875,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -49017,6 +50900,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49041,6 +50925,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49065,6 +50950,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49089,6 +50975,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49113,6 +51000,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49137,6 +51025,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49161,6 +51050,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49185,6 +51075,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -49209,6 +51100,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49233,6 +51125,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -49259,6 +51152,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -49285,6 +51179,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -49311,6 +51206,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -49337,6 +51233,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -49363,6 +51260,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -49389,6 +51287,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -49415,6 +51314,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49439,6 +51339,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49463,6 +51364,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -49487,6 +51389,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49511,6 +51414,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49535,6 +51439,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -49559,6 +51464,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49583,6 +51489,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49607,6 +51514,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -49631,6 +51539,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49655,6 +51564,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49679,6 +51589,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -49703,6 +51614,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49727,6 +51639,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49751,6 +51664,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -49775,6 +51689,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49799,6 +51714,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49823,6 +51739,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -49847,6 +51764,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49871,6 +51789,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49895,6 +51814,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -49919,6 +51839,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49943,6 +51864,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -49967,6 +51889,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -49991,6 +51914,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -50015,6 +51939,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -50039,6 +51964,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -50063,6 +51989,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50089,6 +52016,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50115,6 +52043,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50141,6 +52070,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50167,6 +52097,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50193,6 +52124,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50219,6 +52151,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50245,6 +52178,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50271,6 +52205,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50297,6 +52232,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50323,6 +52259,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50349,6 +52286,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50375,6 +52313,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50401,6 +52340,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50427,6 +52367,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50453,6 +52394,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50479,6 +52421,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50505,6 +52448,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50531,6 +52475,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50557,6 +52502,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50583,6 +52529,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50609,6 +52556,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50635,6 +52583,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50661,6 +52610,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50687,6 +52637,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50713,6 +52664,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50739,6 +52691,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50765,6 +52718,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50791,6 +52745,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50817,6 +52772,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50843,6 +52799,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50869,6 +52826,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50895,6 +52853,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50921,6 +52880,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50947,6 +52907,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50973,6 +52934,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -50999,6 +52961,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51025,6 +52988,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51051,6 +53015,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51077,6 +53042,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51103,6 +53069,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51129,6 +53096,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51155,6 +53123,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51181,6 +53150,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51207,6 +53177,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51233,6 +53204,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51259,6 +53231,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51285,6 +53258,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51311,6 +53285,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51337,6 +53312,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51363,6 +53339,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51389,6 +53366,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51415,6 +53393,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51441,6 +53420,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51467,6 +53447,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51493,6 +53474,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51519,6 +53501,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51545,6 +53528,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51571,6 +53555,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51597,6 +53582,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51623,6 +53609,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51649,6 +53636,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51675,6 +53663,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51701,6 +53690,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -51727,6 +53717,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51751,6 +53742,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51775,6 +53767,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51799,6 +53792,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51823,6 +53817,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51847,6 +53842,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51871,6 +53867,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51895,6 +53892,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51919,6 +53917,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51943,6 +53942,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51967,6 +53967,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -51991,6 +53992,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52015,6 +54017,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52039,6 +54042,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52063,6 +54067,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52087,6 +54092,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52111,6 +54117,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52135,6 +54142,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52159,6 +54167,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52183,6 +54192,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52207,6 +54217,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52231,6 +54242,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52255,6 +54267,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52279,6 +54292,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52303,6 +54317,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52327,6 +54342,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52351,6 +54367,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52375,6 +54392,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52399,6 +54417,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52423,6 +54442,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52447,6 +54467,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52471,6 +54492,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52495,6 +54517,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52519,6 +54542,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52543,6 +54567,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52567,6 +54592,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52591,6 +54617,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52615,6 +54642,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52639,6 +54667,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52663,6 +54692,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52687,6 +54717,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52711,6 +54742,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52735,6 +54767,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52759,6 +54792,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52783,6 +54817,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52807,6 +54842,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52831,6 +54867,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52855,6 +54892,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52879,6 +54917,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52903,6 +54942,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52927,6 +54967,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52951,6 +54992,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52975,6 +55017,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -52999,6 +55042,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53023,6 +55067,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53047,6 +55092,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53071,6 +55117,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53095,6 +55142,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53119,6 +55167,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53143,6 +55192,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53167,6 +55217,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53191,6 +55242,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53215,6 +55267,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53239,6 +55292,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -53263,6 +55317,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53287,6 +55342,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53311,6 +55367,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53337,6 +55394,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53363,6 +55421,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53387,6 +55446,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53411,6 +55471,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53435,6 +55496,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53459,6 +55521,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53483,6 +55546,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53509,6 +55573,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53535,6 +55600,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53561,6 +55627,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53587,6 +55654,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53613,6 +55681,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53639,6 +55708,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53665,6 +55735,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53691,6 +55762,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53715,6 +55787,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53739,6 +55812,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53763,6 +55837,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53789,6 +55864,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53815,6 +55891,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53841,6 +55918,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53865,6 +55943,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53891,6 +55970,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53917,6 +55997,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53943,6 +56024,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -53967,6 +56049,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -53993,6 +56076,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54019,6 +56103,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54045,6 +56130,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54069,6 +56155,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54095,6 +56182,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54121,6 +56209,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54145,6 +56234,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54169,6 +56259,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54193,6 +56284,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54217,6 +56309,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54241,6 +56334,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54265,6 +56359,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54291,6 +56386,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54315,6 +56411,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54339,6 +56436,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54365,6 +56463,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54389,6 +56488,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54415,6 +56515,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54439,6 +56540,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54463,6 +56565,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54487,6 +56590,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54513,6 +56617,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54539,6 +56644,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54563,6 +56669,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54589,6 +56696,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54615,6 +56723,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54639,6 +56748,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54665,6 +56775,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54691,6 +56802,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54717,6 +56829,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54741,6 +56854,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54767,6 +56881,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54791,6 +56906,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54817,6 +56933,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54843,6 +56960,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54869,6 +56987,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54895,6 +57014,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54921,6 +57041,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -54947,6 +57068,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54971,6 +57093,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -54995,6 +57118,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55021,6 +57145,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55047,6 +57172,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55073,6 +57199,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55097,6 +57224,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55123,6 +57251,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55147,6 +57276,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55171,6 +57301,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55195,6 +57326,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55221,6 +57353,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55247,6 +57380,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55273,6 +57407,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55299,6 +57434,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55323,6 +57459,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55347,6 +57484,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55373,6 +57511,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55397,6 +57536,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55423,6 +57563,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55449,6 +57590,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55475,6 +57617,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55501,6 +57644,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55525,6 +57669,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55551,6 +57696,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55577,6 +57723,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55603,6 +57750,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55629,6 +57777,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55653,6 +57802,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55679,6 +57829,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55705,6 +57856,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55729,6 +57881,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55753,6 +57906,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55777,6 +57931,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55801,6 +57956,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55827,6 +57983,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55853,6 +58010,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55879,6 +58037,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55903,6 +58062,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55929,6 +58089,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -55955,6 +58116,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -55979,6 +58141,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56005,6 +58168,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -56029,6 +58193,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -56053,6 +58218,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56079,6 +58245,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56105,6 +58272,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -56129,6 +58297,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56155,6 +58324,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -56179,6 +58349,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -56203,6 +58374,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -56227,6 +58399,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56253,6 +58426,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56279,6 +58453,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56305,6 +58480,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56331,6 +58507,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -56355,6 +58532,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56381,6 +58559,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56407,6 +58586,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -56431,6 +58611,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -56455,6 +58636,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56481,6 +58663,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -56505,6 +58688,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -56531,6 +58715,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -56557,6 +58742,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -56581,6 +58767,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -56605,6 +58792,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x04,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    16,
 		snapshots:  []memory.Snapshot{},
@@ -56629,6 +58817,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -56653,6 +58842,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -56679,6 +58869,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -56703,6 +58894,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    5,
 		snapshots:  []memory.Snapshot{},
@@ -56727,6 +58919,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -56751,6 +58944,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -56775,6 +58969,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -56799,6 +58994,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -56825,6 +59021,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 17,
 		snapshots: []memory.Snapshot{
@@ -56851,6 +59048,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -56875,6 +59073,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -56901,6 +59100,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -56925,6 +59125,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -56951,6 +59152,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    5,
 		snapshots:  []memory.Snapshot{},
@@ -56975,6 +59177,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -56999,6 +59202,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -57023,6 +59227,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -57047,6 +59252,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -57071,6 +59277,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -57095,6 +59302,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 17,
 		snapshots: []memory.Snapshot{
@@ -57121,6 +59329,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -57145,6 +59354,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -57171,6 +59381,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -57197,6 +59408,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -57221,6 +59433,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 20,
 		snapshots: []memory.Snapshot{
@@ -57247,6 +59460,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -57271,6 +59485,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       1,
 		iff2:       1,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -57295,6 +59510,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -57319,6 +59535,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    9,
 		snapshots:  []memory.Snapshot{},
@@ -57343,6 +59560,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -57369,6 +59587,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -57395,6 +59614,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -57419,6 +59639,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -57443,6 +59664,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -57467,6 +59689,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -57491,6 +59714,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -57515,6 +59739,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x2a,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    9,
 		snapshots:  []memory.Snapshot{},
@@ -57539,6 +59764,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -57565,6 +59791,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -57591,6 +59818,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -57615,6 +59843,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 20,
 		snapshots: []memory.Snapshot{
@@ -57641,6 +59870,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -57665,6 +59895,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -57689,6 +59920,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         1,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -57713,6 +59945,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x19,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    9,
 		snapshots:  []memory.Snapshot{},
@@ -57737,6 +59970,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -57763,6 +59997,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -57789,6 +60024,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -57813,6 +60049,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -57837,6 +60074,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -57861,6 +60099,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -57885,6 +60124,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         2,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -57909,6 +60149,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0xf5,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    9,
 		snapshots:  []memory.Snapshot{},
@@ -57933,6 +60174,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -57959,6 +60201,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -57985,6 +60228,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -58009,6 +60253,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 20,
 		snapshots: []memory.Snapshot{
@@ -58035,6 +60280,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -58059,6 +60305,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       1,
 		iff2:       1,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -58083,6 +60330,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -58107,6 +60355,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 18,
 		snapshots: []memory.Snapshot{
@@ -58133,6 +60382,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -58159,6 +60409,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -58185,6 +60436,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -58209,6 +60461,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -58233,6 +60486,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -58257,6 +60511,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -58281,6 +60536,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -58305,6 +60561,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 18,
 		snapshots: []memory.Snapshot{
@@ -58331,6 +60588,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -58357,6 +60615,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -58383,6 +60642,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -58407,6 +60667,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 20,
 		snapshots: []memory.Snapshot{
@@ -58433,6 +60694,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -58457,6 +60719,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       1,
 		iff2:       1,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -58481,6 +60744,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         1,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -58505,6 +60769,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -58531,6 +60796,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   12,
 		snapshots: []memory.Snapshot{},
@@ -58557,6 +60823,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -58581,6 +60848,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -58605,6 +60873,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -58629,6 +60898,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       1,
 		iff2:       1,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -58653,6 +60923,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         2,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -58677,6 +60948,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -58703,6 +60975,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    16,
 		snapshots:  []memory.Snapshot{},
@@ -58727,6 +61000,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -58755,6 +61029,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -58783,6 +61058,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -58811,6 +61087,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -58839,6 +61116,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -58865,6 +61143,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -58891,6 +61170,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -58917,6 +61197,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -58943,6 +61224,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -58969,6 +61251,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -58995,6 +61278,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -59021,6 +61305,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -59047,6 +61332,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -59073,6 +61359,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -59099,6 +61386,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -59125,6 +61413,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -59151,6 +61440,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -59177,6 +61467,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    16,
 		snapshots:  []memory.Snapshot{},
@@ -59201,6 +61492,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -59229,6 +61521,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -59257,6 +61550,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -59285,6 +61579,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 16,
 		snapshots: []memory.Snapshot{
@@ -59313,6 +61608,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -59339,6 +61635,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -59365,6 +61662,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x02,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   16,
 		snapshots: []memory.Snapshot{},
@@ -59391,6 +61689,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x20,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 331,
 		snapshots: []memory.Snapshot{
@@ -59417,6 +61716,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x08,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    79,
 		snapshots:  []memory.Snapshot{},
@@ -59441,6 +61741,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x14,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 205,
 		snapshots: []memory.Snapshot{
@@ -59478,6 +61779,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x06,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   58,
 		snapshots: []memory.Snapshot{},
@@ -59506,6 +61808,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x10,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 163,
 		snapshots: []memory.Snapshot{
@@ -59532,6 +61835,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x10,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    163,
 		snapshots:  []memory.Snapshot{},
@@ -59556,6 +61860,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x0c,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 121,
 		snapshots: []memory.Snapshot{
@@ -59589,6 +61894,7 @@ var fuseResults = map[string]fuseTest{
 		r:         0x08,
 		iff1:      0,
 		iff2:      0,
+		im:        0,
 		halt:      0,
 		tstates:   79,
 		snapshots: []memory.Snapshot{},
@@ -59618,6 +61924,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -59642,6 +61949,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -59668,6 +61976,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -59692,6 +62001,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    5,
 		snapshots:  []memory.Snapshot{},
@@ -59716,6 +62026,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -59740,6 +62051,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -59764,6 +62076,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -59788,6 +62101,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -59812,6 +62126,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 17,
 		snapshots: []memory.Snapshot{
@@ -59838,6 +62153,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -59862,6 +62178,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -59888,6 +62205,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -59912,6 +62230,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{
@@ -59938,6 +62257,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    5,
 		snapshots:  []memory.Snapshot{},
@@ -59962,6 +62282,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -59986,6 +62307,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    6,
 		snapshots:  []memory.Snapshot{},
@@ -60010,6 +62332,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -60034,6 +62357,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -60058,6 +62382,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       1,
 		iff2:       1,
+		im:         0,
 		halt:       0,
 		tstates:    4,
 		snapshots:  []memory.Snapshot{},
@@ -60082,6 +62407,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 17,
 		snapshots: []memory.Snapshot{
@@ -60108,6 +62434,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -60132,6 +62459,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -60156,6 +62484,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -60180,6 +62509,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -60204,6 +62534,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 20,
 		snapshots: []memory.Snapshot{
@@ -60230,6 +62561,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -60254,6 +62586,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60278,6 +62611,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60302,6 +62636,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -60326,6 +62661,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -60350,6 +62686,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -60374,6 +62711,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -60398,6 +62736,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60422,6 +62761,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60446,6 +62786,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    11,
 		snapshots:  []memory.Snapshot{},
@@ -60470,6 +62811,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -60496,6 +62838,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -60522,6 +62865,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -60548,6 +62892,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    15,
 		snapshots:  []memory.Snapshot{},
@@ -60572,6 +62917,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60596,6 +62942,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60620,6 +62967,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -60644,6 +62992,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60668,6 +63017,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60692,6 +63042,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -60716,6 +63067,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60740,6 +63092,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60764,6 +63117,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -60788,6 +63142,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60812,6 +63167,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60836,6 +63192,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -60860,6 +63217,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60884,6 +63242,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60908,6 +63267,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60932,6 +63292,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60956,6 +63317,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -60980,6 +63342,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61004,6 +63367,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -61028,6 +63392,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61052,6 +63417,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61076,6 +63442,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61100,6 +63467,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61124,6 +63492,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61148,6 +63517,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61172,6 +63542,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61196,6 +63567,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -61220,6 +63592,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61244,6 +63617,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -61270,6 +63644,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -61296,6 +63671,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -61322,6 +63698,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -61348,6 +63725,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -61374,6 +63752,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -61400,6 +63779,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 19,
 		snapshots: []memory.Snapshot{
@@ -61426,6 +63806,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61450,6 +63831,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61474,6 +63856,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -61498,6 +63881,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61522,6 +63906,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61546,6 +63931,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -61570,6 +63956,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61594,6 +63981,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61618,6 +64006,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -61642,6 +64031,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61666,6 +64056,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61690,6 +64081,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -61714,6 +64106,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61738,6 +64131,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61762,6 +64156,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -61786,6 +64181,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61810,6 +64206,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61834,6 +64231,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -61858,6 +64256,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61882,6 +64281,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61906,6 +64306,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -61930,6 +64331,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61954,6 +64356,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -61978,6 +64381,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -62002,6 +64406,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -62026,6 +64431,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -62050,6 +64456,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    19,
 		snapshots:  []memory.Snapshot{},
@@ -62074,6 +64481,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62100,6 +64508,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62126,6 +64535,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62152,6 +64562,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62178,6 +64589,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62204,6 +64616,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62230,6 +64643,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62256,6 +64670,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62282,6 +64697,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62308,6 +64724,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62334,6 +64751,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62360,6 +64778,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62386,6 +64805,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62412,6 +64832,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62438,6 +64859,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62464,6 +64886,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62490,6 +64913,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62516,6 +64940,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62542,6 +64967,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62568,6 +64994,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62594,6 +65021,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62620,6 +65048,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62646,6 +65075,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62672,6 +65102,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62698,6 +65129,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62724,6 +65156,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62750,6 +65183,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62776,6 +65210,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62802,6 +65237,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62828,6 +65264,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62854,6 +65291,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62880,6 +65318,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62906,6 +65345,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62932,6 +65372,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62958,6 +65399,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -62984,6 +65426,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63010,6 +65453,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63036,6 +65480,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63062,6 +65507,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63088,6 +65534,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63114,6 +65561,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63140,6 +65588,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63166,6 +65615,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63192,6 +65642,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63218,6 +65669,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63244,6 +65696,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63270,6 +65723,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63296,6 +65750,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63322,6 +65777,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63348,6 +65804,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63374,6 +65831,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63400,6 +65858,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63426,6 +65885,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63452,6 +65912,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63478,6 +65939,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63504,6 +65966,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63530,6 +65993,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63556,6 +66020,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63582,6 +66047,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63608,6 +66074,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63634,6 +66101,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63660,6 +66128,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63686,6 +66155,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63712,6 +66182,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -63738,6 +66209,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -63762,6 +66234,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -63786,6 +66259,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -63810,6 +66284,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -63834,6 +66309,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -63858,6 +66334,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -63882,6 +66359,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -63906,6 +66384,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -63930,6 +66409,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -63954,6 +66434,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -63978,6 +66459,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64002,6 +66484,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64026,6 +66509,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64050,6 +66534,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64074,6 +66559,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64098,6 +66584,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64122,6 +66609,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64146,6 +66634,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64170,6 +66659,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64194,6 +66684,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64218,6 +66709,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64242,6 +66734,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64266,6 +66759,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64290,6 +66784,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64314,6 +66809,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64338,6 +66834,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64362,6 +66859,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64386,6 +66884,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64410,6 +66909,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64434,6 +66934,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64458,6 +66959,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64482,6 +66984,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64506,6 +67009,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64530,6 +67034,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64554,6 +67059,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64578,6 +67084,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64602,6 +67109,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64626,6 +67134,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64650,6 +67159,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64674,6 +67184,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64698,6 +67209,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64722,6 +67234,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64746,6 +67259,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64770,6 +67284,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64794,6 +67309,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64818,6 +67334,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64842,6 +67359,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64866,6 +67384,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64890,6 +67409,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64914,6 +67434,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64938,6 +67459,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64962,6 +67484,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -64986,6 +67509,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65010,6 +67534,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65034,6 +67559,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65058,6 +67584,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65082,6 +67609,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65106,6 +67634,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65130,6 +67659,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65154,6 +67684,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65178,6 +67709,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65202,6 +67734,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65226,6 +67759,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65250,6 +67784,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    20,
 		snapshots:  []memory.Snapshot{},
@@ -65274,6 +67809,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65300,6 +67836,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65324,6 +67861,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65350,6 +67888,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65376,6 +67915,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65400,6 +67940,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65424,6 +67965,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65448,6 +67990,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65474,6 +68017,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65500,6 +68044,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65524,6 +68069,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65548,6 +68094,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65572,6 +68119,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65598,6 +68146,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65624,6 +68173,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65650,6 +68200,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65674,6 +68225,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65698,6 +68250,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65724,6 +68277,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65750,6 +68304,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65774,6 +68329,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65798,6 +68354,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65822,6 +68379,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65848,6 +68406,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65874,6 +68433,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65898,6 +68458,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65922,6 +68483,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65948,6 +68510,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -65972,6 +68535,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -65998,6 +68562,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66022,6 +68587,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66046,6 +68612,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66072,6 +68639,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66098,6 +68666,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66122,6 +68691,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66146,6 +68716,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66172,6 +68743,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66196,6 +68768,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66220,6 +68793,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66246,6 +68820,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66270,6 +68845,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66296,6 +68872,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66320,6 +68897,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66346,6 +68924,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66370,6 +68949,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66394,6 +68974,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66420,6 +69001,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66446,6 +69028,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66470,6 +69053,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66496,6 +69080,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66522,6 +69107,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66548,6 +69134,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66572,6 +69159,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66598,6 +69186,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66622,6 +69211,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66646,6 +69236,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66670,6 +69261,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66694,6 +69286,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66720,6 +69313,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66746,6 +69340,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66770,6 +69365,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66796,6 +69392,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66822,6 +69419,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66848,6 +69446,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66874,6 +69473,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66900,6 +69500,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66926,6 +69527,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -66952,6 +69554,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -66976,6 +69579,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67000,6 +69604,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67024,6 +69629,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67050,6 +69656,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67074,6 +69681,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67100,6 +69708,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67124,6 +69733,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67150,6 +69760,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67176,6 +69787,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67200,6 +69812,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67224,6 +69837,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67250,6 +69864,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67274,6 +69889,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67300,6 +69916,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67326,6 +69943,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67352,6 +69970,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67378,6 +69997,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67402,6 +70022,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67428,6 +70049,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67452,6 +70074,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67476,6 +70099,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67500,6 +70124,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67526,6 +70151,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67550,6 +70176,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67576,6 +70203,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67602,6 +70230,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67626,6 +70255,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67652,6 +70282,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67676,6 +70307,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67700,6 +70332,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67724,6 +70357,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67750,6 +70384,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67774,6 +70409,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67798,6 +70434,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67824,6 +70461,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67850,6 +70488,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67876,6 +70515,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67902,6 +70542,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -67926,6 +70567,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67952,6 +70594,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -67978,6 +70621,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68004,6 +70648,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68030,6 +70675,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68056,6 +70702,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68082,6 +70729,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68108,6 +70756,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -68132,6 +70781,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -68156,6 +70806,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68182,6 +70833,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68208,6 +70860,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -68232,6 +70885,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -68256,6 +70910,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -68280,6 +70935,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68306,6 +70962,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -68330,6 +70987,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -68354,6 +71012,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -68378,6 +71037,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68404,6 +71064,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68430,6 +71091,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68456,6 +71118,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    23,
 		snapshots:  []memory.Snapshot{},
@@ -68480,6 +71143,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    14,
 		snapshots:  []memory.Snapshot{},
@@ -68504,6 +71168,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 23,
 		snapshots: []memory.Snapshot{
@@ -68530,6 +71195,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x02,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 15,
 		snapshots: []memory.Snapshot{
@@ -68556,6 +71222,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    8,
 		snapshots:  []memory.Snapshot{},
@@ -68580,6 +71247,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x02,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    10,
 		snapshots:  []memory.Snapshot{},
@@ -68604,6 +71272,7 @@ var fuseResults = map[string]fuseTest{
 		r:          0x01,
 		iff1:       0,
 		iff2:       0,
+		im:         0,
 		halt:       0,
 		tstates:    7,
 		snapshots:  []memory.Snapshot{},
@@ -68628,6 +71297,7 @@ var fuseResults = map[string]fuseTest{
 		r:       0x01,
 		iff1:    0,
 		iff2:    0,
+		im:      0,
 		halt:    0,
 		tstates: 11,
 		snapshots: []memory.Snapshot{

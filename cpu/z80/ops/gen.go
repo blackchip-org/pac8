@@ -156,6 +156,16 @@ func processMain(tab *regtab, op uint8) string {
 	p := int(bits.Slice(op, 4, 5))
 	q := int(bits.Slice(op, 3, 3))
 
+	// If the instruction has a ddcb or fdcb prefix, the instruction handler
+	// will take care of it so this should never be called. Panic just
+	// in case
+	if tab.name == "dd" && op == 0xcb {
+		return "panic(\"instruction prefix ddcb should be handled elsewhere\")"
+	}
+	if tab.name == "fd" && op == 0xcb {
+		return "panic(\"instruction prefix fdcb should be handled elsewhere\")"
+	}
+
 	if x == 0 {
 		if z == 0 {
 			if y == 0 {
@@ -343,7 +353,7 @@ func processMain(tab *regtab, op uint8) string {
 				return "ex(c, c.loadDE, c.storeDE, c.loadHL, c.storeHL)"
 			}
 			if y == 6 {
-				return "todo(c)"
+				return "di(c)"
 			}
 			if y == 7 {
 				return "ei(c)"
@@ -513,10 +523,26 @@ func processED(tab *regtab, op uint8) string {
 			return "neg(c)"
 		}
 		if z == 5 {
-			return "todo(c)"
+			if y != 1 {
+				return "retn(c)"
+			}
+			if y == 1 {
+				return "reti(c)"
+			}
 		}
 		if z == 6 {
-			return "todo(c)"
+			if y == 0 || y == 4 {
+				return "im(c, 0)"
+			}
+			if y == 1 || y == 5 {
+				return "im(c, 0)"
+			}
+			if y == 2 || y == 6 {
+				return "im(c, 1)"
+			}
+			if y == 3 || y == 7 {
+				return "im(c, 2)"
+			}
 		}
 		if z == 7 {
 			if y == 0 {
@@ -596,7 +622,6 @@ func processED(tab *regtab, op uint8) string {
 				// indr
 				return "blockinr(c, -1)"
 			}
-			return "todo(c)"
 		}
 		if z == 3 {
 			if y == 4 {
@@ -721,7 +746,7 @@ func process(out *bytes.Buffer, getFn func(*regtab, uint8) string, tab *regtab) 
 	for i := 0; i < 0x100; i++ {
 		fn := getFn(tab, uint8(i))
 		if fn == "" {
-			fn = "c.skip = true"
+			fn = "panic(\"unhandled instruction\")"
 		}
 
 		emit := true

@@ -22,14 +22,11 @@ func TestOps(t *testing.T) {
 		}
 		t.Run(test.name, func(t *testing.T) {
 			cpu := load(test)
-			cpu.testing = true
+			// cpu.testing = true
 			i := 0
 			setupPorts(cpu, fuseResults[test.name])
 			for {
 				cpu.Next()
-				if cpu.skip {
-					t.SkipNow()
-				}
 				if test.name == "dd00" {
 					if cpu.PC == 0x0003 {
 						break
@@ -106,6 +103,7 @@ func load(test fuseTest) *CPU {
 	cpu.R = test.r
 	cpu.IFF1 = test.iff1 != 0
 	cpu.IFF2 = test.iff2 != 0
+	cpu.IM = uint8(test.im)
 
 	for _, snapshot := range test.snapshots {
 		memory.Import(mem, snapshot)

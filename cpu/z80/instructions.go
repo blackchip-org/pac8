@@ -542,6 +542,10 @@ func inc16(cpu *CPU, put cpu.Put16, get cpu.Get16) {
 
 func invalid() {}
 
+func im(cpu *CPU, mode int) {
+	cpu.IM = uint8(mode)
+}
+
 // jump absolute, conditional
 func jp(cpu *CPU, flag int, condition bool, get cpu.Get16) {
 	addr := get()
@@ -666,6 +670,17 @@ func ret(cpu *CPU, flag int, value bool) {
 
 // return, always
 func reta(cpu *CPU) {
+	cpu.PC = cpu.mem16.Load(cpu.SP)
+	cpu.SP += 2
+}
+
+func reti(cpu *CPU) {
+	cpu.PC = cpu.mem16.Load(cpu.SP)
+	cpu.SP += 2
+}
+
+func retn(cpu *CPU) {
+	cpu.IFF1 = cpu.IFF2
 	cpu.PC = cpu.mem16.Load(cpu.SP)
 	cpu.SP += 2
 }
@@ -944,23 +959,6 @@ func sub16(cpu *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bo
 	bits.Set(&cpu.F, FlagC, alu.Carry())
 
 	put(result)
-}
-
-func todo(cpu *CPU) {
-	if cpu.testing {
-		cpu.skip = true
-		return
-	}
-	panic("not implemented")
-}
-
-func todo2(cpu *CPU, get cpu.Get) {
-	get()
-	if cpu.testing {
-		cpu.skip = true
-		return
-	}
-	panic("not implemented")
 }
 
 // Logical exclusive or

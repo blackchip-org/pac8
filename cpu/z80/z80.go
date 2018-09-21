@@ -48,6 +48,7 @@ type CPU struct {
 
 	IFF1 bool
 	IFF2 bool
+	IM   uint8
 
 	Halt bool
 
@@ -59,9 +60,7 @@ type CPU struct {
 	mem16 memory.Memory16
 	delta uint8
 	// address used to load on the last (IX+d) or (IY+d) instruction
-	iaddr   uint16
-	skip    bool
-	testing bool
+	iaddr uint16
 }
 
 func New(m memory.Memory) *CPU {
@@ -85,7 +84,7 @@ func (cpu *CPU) String() string {
 	return fmt.Sprintf(""+
 		" pc   af   bc   de   hl   ix   iy   sp   i  r\n"+
 		"%04x %04x %04x %04x %04x %04x %04x %04x %02x %02x %v\n"+
-		"     %04x %04x %04x %04x      %v %v %v %v %v %v %v %v %v\n",
+		"im %v %04x %04x %04x %04x      %v %v %v %v %v %v %v %v %v\n",
 		// line 1
 		cpu.PC,
 		bits.Join(cpu.A, cpu.F),
@@ -99,6 +98,7 @@ func (cpu *CPU) String() string {
 		cpu.R,
 		bits.FormatB(cpu.IFF1, "", "iff1"),
 		// line 2
+		cpu.IM,
 		bits.Join(cpu.A1, cpu.F1),
 		bits.Join(cpu.B1, cpu.C1),
 		bits.Join(cpu.D1, cpu.E1),

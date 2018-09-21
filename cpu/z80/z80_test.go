@@ -92,5 +92,6 @@ func TestString(t *testing.T) {
 	cpu.IFF1 = true
 	cpu.IFF2 = true
 
-	cpu.String()
+	//fmt.Println(cpu.String())
+	//t.Fail()
 }
