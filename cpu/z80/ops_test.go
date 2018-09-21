@@ -74,9 +74,7 @@ func testHalt(t *testing.T, cpu *CPU, expected fuseTest) {
 }
 
 func setupPorts(cpu *CPU, expected fuseTest) {
-	if len(expected.portReads) > 0 {
-		cpu.Ports = newMockIO(expected.portReads)
-	}
+	cpu.Ports = newMockIO(expected.portReads)
 }
 
 func testPorts(t *testing.T, cpu *CPU, expected fuseTest) {
@@ -148,4 +146,11 @@ func (m *mockIO) Load(addr uint16) uint8 {
 	return v
 }
 
-func (m *mockIO) Store(addr uint16, value uint8) {}
+func (m *mockIO) Store(addr uint16, value uint8) {
+	stack, exists := m.data[uint8(addr)]
+	if !exists {
+		stack = make([]uint8, 0, 0)
+	}
+	stack = append(stack, value)
+	m.data[uint8(addr)] = stack
+}

@@ -231,6 +231,44 @@ func blocklr(cpu *CPU, increment int) {
 	}
 }
 
+func blockout(cpu *CPU, increment int) {
+	in := cpu.mem.Load(bits.Join(cpu.H, cpu.L))
+	alu.SetCarry(false)
+	alu.In0 = cpu.B
+	alu.In1 = 1
+	alu.Subtract()
+
+	cpu.B = alu.Out
+	cpu.H, cpu.L = bits.Split(bits.Join(cpu.H, cpu.L) + uint16(increment))
+
+	// https://github.com/mamedev/mame/blob/master/src/devices/cpu/z80/z80.cpp
+	// I was unable to figure this out by reading all the conflicting
+	// documentation for these "undefined" flags
+	t := uint16(cpu.L) + uint16(in)
+	p := uint8(t&0x07) ^ alu.Out // parity check
+	halfAndCarry := t&0x100 != 0
+
+	bits.Set(&cpu.F, FlagS, alu.Sign())
+	bits.Set(&cpu.F, FlagZ, alu.Zero())
+	bits.Set(&cpu.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&cpu.F, FlagH, halfAndCarry)
+	bits.Set(&cpu.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&cpu.F, FlagV, bits.Parity(p))
+	bits.Set(&cpu.F, FlagN, bits.Get(in, 7))
+	bits.Set(&cpu.F, FlagC, halfAndCarry)
+
+	cpu.Ports.Store(uint16(cpu.C), in)
+}
+
+func blockoutr(cpu *CPU, increment int) {
+	blockout(cpu, increment)
+	for cpu.B != 0 {
+		cpu.refreshR()
+		cpu.refreshR()
+		blockout(cpu, increment)
+	}
+}
+
 // call, conditional
 //
 // Pushes the address after the CALL instruction (PC+3) onto the stack and

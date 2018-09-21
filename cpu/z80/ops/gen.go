@@ -598,8 +598,23 @@ func processED(tab *regtab, op uint8) string {
 			}
 			return "todo(c)"
 		}
-		if z == 3 && y >= 4 && y <= 7 {
-			return "todo(c)"
+		if z == 3 {
+			if y == 4 {
+				// outi
+				return "blockout(c, 1)"
+			}
+			if y == 5 {
+				// outd
+				return "blockout(c, -1)"
+			}
+			if y == 6 {
+				// otir
+				return "blockoutr(c, 1)"
+			}
+			if y == 7 {
+				// otdr
+				return "blockoutr(c, -1)"
+			}
 		}
 		return "invalid()"
 	}
