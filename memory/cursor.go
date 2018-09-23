@@ -17,6 +17,10 @@ func (c *Cursor) Fetch() uint8 {
 	return value
 }
 
+func (c *Cursor) Peek() uint8 {
+	return c.mem.Load(c.Pos)
+}
+
 func (c *Cursor) FetchLE() uint16 {
 	lo := c.Fetch()
 	hi := c.Fetch()

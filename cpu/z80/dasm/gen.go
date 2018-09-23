@@ -60,6 +60,15 @@ import "github.com/blackchip-org/pac8/cpu"
 	}
 	out.WriteString("}\n")
 
+	// fd prefix
+	out.WriteString("var dasmFD = map[uint8]func(cpu.Eval){\n")
+	for i := lineStart; i <= lineEnd; i++ {
+		line := lines[i]
+		line = strings.ToLower(line)
+		parseTable(&out, line, 2, "fd")
+	}
+	out.WriteString("}\n")
+
 	err = ioutil.WriteFile("dasm.go", out.Bytes(), 0644)
 	if err != nil {
 		fmt.Printf("unable to write file: %v", err)
@@ -75,8 +84,12 @@ func parseTable(out *bytes.Buffer, line string, firstBreak int, prefix string) {
 	strOpcode := strings.TrimSpace(line[0:2])
 	opcode, _ := strconv.ParseUint(strOpcode, 16, 8)
 
-	if prefix == "" && opcode == 0xdd {
+	switch {
+	case prefix == "" && opcode == 0xdd:
 		out.WriteString("0xdd: func(e cpu.Eval) { opDD(e) },\n")
+		return
+	case prefix == "" && opcode == 0xfd:
+		out.WriteString("0xfd: func(e cpu.Eval) { opFD(e) },\n")
 		return
 	}
 
@@ -94,7 +107,11 @@ func parseTable(out *bytes.Buffer, line string, firstBreak int, prefix string) {
 		for _, field := range fields {
 			args = append(args, `"`+strings.TrimSpace(field)+`"`)
 		}
-		out.WriteString(strings.Join(args, ","))
+		entry := strings.Join(args, ",")
+		if prefix == "fd" {
+			entry = strings.Replace(entry, "ix", "iy", -1)
+		}
+		out.WriteString(entry)
 	}
 
 	out.WriteString(") },\n")

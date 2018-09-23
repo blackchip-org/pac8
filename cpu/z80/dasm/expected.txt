@@ -1184,120 +1184,350 @@ dd 8a
 dd 8b
 ?dd8b
 
-==
-8c adc  a,ixh
-8d adc  a,ixl
-8e adc  a,(ix+0)
-8f -
-90 -
-91 -
-92 -
-93 -
-94 sub  a,ixh
-95 sub  a,ixl
-96 sub  a,(ix+0)
-97 -
-98 -
-99 -
-9a -
-9b -
-9c sbc  a,ixh
-9d sbc  a,ixl
-9e sbc  a,(ix+0)
-9f -
-a0 -
-a1 -
-a2 -
-a3 -
-a4 and  ixh
-a5 and  ixl
-a6 and  (ix+0)
-a7 -
-a8 -
-a9 -
-aa -
-ab -
-ac xor  ixh
-ad xor  ixl
-ae xor  (ix+0)
-af -
-b0 -
-b1 -
-b2 -
-b3 -
-b4 or   ixh
-b5 or   ixl
-b6 or   (ix+0)
-b7 -
-b8 -
-b9 -
-ba -
-bb -
-bc cp   ixh
-bd cp   ixl
-be cp   (ix+0)
-bf -
-c0 -
-c1 -
-c2 -
-c3 -
-c4 -
-c5 -
-c6 -
-c7 -
-c8 -
-c9 -
-ca -
-cb -
-cc -
-cd -
-ce -
-cf -
-d0 -
-d1 -
-d2 -
-d3 -
-d4 -
-d5 -
-d6 -
-d7 -
-d8 -
-d9 -
-da -
-db -
-dc -
-dd -
-de -
-df -
-e0 -
-e1 pop  ix
-e2 -
-e3 ex   (sp),ix
-e4 -
-e5 push ix
-e6 -
-e7 -
-e8 -
-e9 jp   (ix)
-ea -
-eb -
-ec -
-ed -
-ee -
-ef -
-f0 -
-f1 -
-f2 -
-f3 -
-f4 -
-f5 -
-f6 -
-f7 -
-f8 -
-f9 -
-fa -
-fb -
-fc -
-fd -
-fe -
-ff -
+dd 8c
+adc  a,ixh
+
+dd 8d
+adc  a,ixl
+
+dd 8e 10
+adc  a,(ix+$10)
+
+dd 8f
+?dd8f
+
+dd 90
+?dd90
+
+dd 91
+?dd91
+
+dd 92
+?dd92
+
+dd 93
+?dd93
+
+dd 94
+sub  a,ixh
+
+dd 95
+sub  a,ixl
+
+dd 96 10
+sub  a,(ix+$10)
+
+dd 97
+?dd97
+
+dd 98
+?dd98
+
+dd 99
+?dd99
+
+dd 9a
+?dd9a
+
+dd 9b
+?dd9b
+
+dd 9c
+sbc  a,ixh
+
+dd 9d
+sbc  a,ixl
+
+dd 9e 10
+sbc  a,(ix+$10)
+
+dd 9f
+?dd9f
+
+dd a0
+?dda0
+
+dd a1
+?dda1
+
+dd a2
+?dda2
+
+dd a3
+?dda3
+
+dd a4
+and  ixh
+
+dd a5
+and  ixl
+
+dd a6 10
+and  (ix+$10)
+
+dd a7
+?dda7
+
+dd a8
+?dda8
+
+dd a9
+?dda9
+
+dd aa
+?ddaa
+
+dd ab
+?ddab
+
+dd ac
+xor  ixh
+
+dd ad
+xor  ixl
+
+dd ae 10
+xor  (ix+$10)
+
+dd af
+?ddaf
+
+dd b0
+?ddb0
+
+dd b1
+?ddb1
+
+dd b2
+?ddb2
+
+dd b3
+?ddb3
+
+dd b4
+or   ixh
+
+dd b5
+or   ixl
+
+dd b6 10
+or   (ix+$10)
+
+dd b7
+?ddb7
+
+dd b8
+?ddb8
+
+dd b9
+?ddb9
+
+dd ba
+?ddba
+
+dd bb
+?ddbb
+
+dd bc
+cp   ixh
+
+dd bd
+cp   ixl
+
+dd be 10
+cp   (ix+$10)
+
+dd bf
+?ddbf
+
+dd c0
+?ddc0
+
+dd c1
+?ddc1
+
+dd c2
+?ddc2
+
+dd c3
+?ddc3
+
+dd c4
+?ddc4
+
+dd c5
+?ddc5
+
+dd c6
+?ddc6
+
+dd c7
+?ddc7
+
+dd c8
+?ddc8
+
+dd c9
+?ddc9
+
+dd ca
+?ddca
+
+dd cb
+?ddcb
+
+dd cc
+?ddcc
+
+dd cd
+?ddcd
+
+dd ce
+?ddce
+
+dd cf
+?ddcf
+
+dd d0
+?ddd0
+
+dd d1
+?ddd1
+
+dd d2
+?ddd2
+
+dd d3
+?ddd3
+
+dd d4
+?ddd4
+
+dd d5
+?ddd5
+
+dd d6
+?ddd6
+
+dd d7
+?ddd7
+
+dd d8
+?ddd8
+
+dd d9
+?ddd9
+
+dd da
+?ddda
+
+dd db
+?dddb
+
+dd dc
+?dddc
+
+dd dd
+?dd
+
+dd de
+?ddde
+
+dd df
+?dddf
+
+dd e0
+?dde0
+
+dd e1
+pop  ix
+
+dd e2
+?dde2
+
+dd e3
+ex   (sp),ix
+
+dd e4
+?dde4
+
+dd e5
+push ix
+
+dd e6
+?dde6
+
+dd e7
+?dde7
+
+dd e8
+?dde8
+
+dd e9
+jp   (ix)
+
+dd ea
+?ddea
+
+dd eb
+?ddeb
+
+dd ec
+?ddec
+
+dd ed
+?dd
+
+dd ee
+?ddee
+
+dd ef
+?ddef
+
+dd f0
+?ddf0
+
+dd f1
+?ddf1
+
+dd f2
+?ddf2
+
+dd f3
+?ddf3
+
+dd f4
+?ddf4
+
+dd f5
+?ddf5
+
+dd f6
+?ddf6
+
+dd f7
+?ddf7
+
+dd f8
+?ddf8
+
+dd f9
+?ddf9
+
+dd fa
+?ddfa
+
+dd fb
+?ddfb
+
+dd fc
+?ddfc
+
+dd fd
+?dd
+
+dd fe
+?ddfe
+
+dd ff
+?ddff

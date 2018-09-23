@@ -66,7 +66,23 @@ func op1(e cpu.Eval, parts ...string) {
 }
 
 func opDD(e cpu.Eval) {
+	next := e.Cursor.Peek()
+	if next == 0xdd || next == 0xed || next == 0xfd {
+		e.Statement.Op = "?dd"
+		return
+	}
 	opcode := e.Cursor.Fetch()
 	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
 	dasmDD[opcode](e)
+}
+
+func opFD(e cpu.Eval) {
+	next := e.Cursor.Peek()
+	if next == 0xdd || next == 0xed || next == 0xfd {
+		e.Statement.Op = "?fd"
+		return
+	}
+	opcode := e.Cursor.Fetch()
+	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
+	dasmFD[opcode](e)
 }
