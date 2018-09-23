@@ -24,22 +24,36 @@ func op1(e cpu.Eval, parts ...string) {
 	var out strings.Builder
 	for i, part := range parts {
 		v := part
-		if i == 0 {
+		switch {
+		case i == 0:
 			v = fmt.Sprintf("%-4s", part)
-		} else if part == "&4546" {
+		case parts[0] == "rst" && i == 1:
+			// Reset statements have the argment encoded in the opcode. Change
+			// the hex notation from & to $ in the second part
+			v = "$" + v[1:]
+		case part == "&4546":
+			// This is an address that is a 8-bit displacement from the
+			// current program counter
 			delta := e.Cursor.Fetch()
 			addr := bits.Displace(e.Statement.Address, delta)
 			v = fmt.Sprintf("$%04x", addr)
-		} else if part == "&0000" {
+		case part == "&0000":
 			addr := e.Cursor.FetchLE()
 			v = fmt.Sprintf("$%04x", addr)
-		} else if part == "(&0000)" {
+		case part == "(&0000)":
 			addr := e.Cursor.FetchLE()
 			v = fmt.Sprintf("($%04x)", addr)
-		} else if part == "&00" {
+		case part == "&00":
 			arg := e.Cursor.Fetch()
 			v = fmt.Sprintf("$%02x", arg)
+		case part == "(&00)":
+			arg := e.Cursor.Fetch()
+			v = fmt.Sprintf("($%02x)", arg)
+		case part == "(ix+0)":
+			delta := e.Cursor.Fetch()
+			v = fmt.Sprintf("(ix+$%02x)", delta)
 		}
+
 		if i == 1 {
 			out.WriteString(" ")
 		}
@@ -49,4 +63,10 @@ func op1(e cpu.Eval, parts ...string) {
 		out.WriteString(v)
 	}
 	e.Statement.Op = strings.TrimSpace(out.String())
+}
+
+func opDD(e cpu.Eval) {
+	opcode := e.Cursor.Fetch()
+	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
+	dasmDD[opcode](e)
 }
