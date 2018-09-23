@@ -8,9 +8,8 @@ import (
 	"github.com/blackchip-org/pac8/bits"
 )
 
-var b = bits.Parse
-
 func TestSetFlags(t *testing.T) {
+	b := bits.Parse
 	tests := []struct {
 		name     string
 		flag     int
@@ -36,6 +35,7 @@ func TestSetFlags(t *testing.T) {
 }
 
 func TestClearFlags(t *testing.T) {
+	b := bits.Parse
 	tests := []struct {
 		name     string
 		flag     int

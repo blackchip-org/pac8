@@ -121,7 +121,7 @@ func Verify(a Memory, b []Snapshot) (DiffReport, bool) {
 	for _, snapshot := range b {
 		cursor.Pos = snapshot.Address
 		for i, bval := range snapshot.Values {
-			aval := cursor.Load()
+			aval := cursor.Fetch()
 			if aval != bval {
 				diff = append(diff, Diff{
 					Address: snapshot.Address + uint16(i),
