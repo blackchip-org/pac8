@@ -52,6 +52,9 @@ func op1(e cpu.Eval, parts ...string) {
 		case part == "(ix+0)":
 			delta := e.Cursor.Fetch()
 			v = fmt.Sprintf("(ix+$%02x)", delta)
+		case part == "(iy+0)":
+			delta := e.Cursor.Fetch()
+			v = fmt.Sprintf("(iy+$%02x)", delta)
 		}
 
 		if i == 1 {

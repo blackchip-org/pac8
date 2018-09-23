@@ -1531,3 +1531,773 @@ dd fe
 
 dd ff
 ?ddff
+
+# fd prefixed ----------------------------------------------------------------
+
+fd 00
+?fd00
+
+fd 01
+?fd01
+
+fd 02
+?fd02
+
+fd 03
+?fd03
+
+fd 04
+?fd04
+
+fd 05
+?fd05
+
+fd 06
+?fd06
+
+fd 07
+?fd07
+
+fd 08
+?fd08
+
+fd 09
+add  iy,bc
+
+fd 0a
+?fd0a
+
+fd 0b
+?fd0b
+
+fd 0c
+?fd0c
+
+fd 0d
+?fd0d
+
+fd 0e
+?fd0e
+
+fd 0f
+?fd0f
+
+fd 10
+?fd10
+
+fd 11
+?fd11
+
+fd 12
+?fd12
+
+fd 13
+?fd13
+
+fd 14
+?fd14
+
+fd 15
+?fd15
+
+fd 16
+?fd16
+
+fd 17
+?fd17
+
+fd 18
+?fd18
+
+fd 19
+add  iy,de
+
+fd 1a
+?fd1a
+
+fd 1b
+?fd1b
+
+fd 1c
+?fd1c
+
+fd 1d
+?fd1d
+
+fd 1e
+?fd1e
+
+fd 1f
+?fd1f
+
+fd 20
+?fd20
+
+fd 21 34 12
+ld   iy,$1234
+
+fd 22 34 12
+ld   ($1234),iy
+
+fd 23
+inc  iy
+
+fd 24
+inc  iyh
+
+fd 25
+dec  iyh
+
+fd 26 12
+ld   iyh,$12
+
+fd 27
+?fd27
+
+fd 28
+?fd28
+
+fd 29
+add  iy,iy
+
+fd 2a 34 12
+ld   iy,($1234)
+
+fd 2b
+dec  iy
+
+fd 2c
+inc  iyl
+
+fd 2d
+dec  iyl
+
+fd 2e 12
+ld   iyl,$12
+
+fd 2f
+?fd2f
+
+fd 30
+?fd30
+
+fd 31
+?fd31
+
+fd 32
+?fd32
+
+fd 33
+?fd33
+
+fd 34 10
+inc  (iy+$10)
+
+fd 35 10
+dec  (iy+$10)
+
+fd 36 10 20
+ld   (iy+$10),$20
+
+fd 37
+?fd37
+
+fd 38
+?fd38
+
+fd 39
+add  iy,sp
+
+fd 3a
+?fd3a
+
+fd 3b
+?fd3b
+
+fd 3c
+?fd3c
+
+fd 3d
+?fd3d
+
+fd 3e
+?fd3e
+
+fd 3f
+?fd3f
+
+fd 40
+?fd40
+
+fd 41
+?fd41
+
+fd 42
+?fd42
+
+fd 43
+?fd43
+
+fd 44
+ld   b,iyh
+
+fd 45
+ld   b,iyl
+
+fd 46 10
+ld   b,(iy+$10)
+
+fd 47
+?fd47
+
+fd 48
+?fd48
+
+fd 49
+?fd49
+
+fd 4a
+?fd4a
+
+fd 4b
+?fd4b
+
+fd 4c
+ld   c,iyh
+
+fd 4d
+ld   c,iyl
+
+fd 4e 10
+ld   c,(iy+$10)
+
+fd 4f
+?fd4f
+
+fd 50
+?fd50
+
+fd 51
+?fd51
+
+fd 52
+?fd52
+
+fd 53
+?fd53
+
+fd 54
+ld   d,iyh
+
+fd 55
+ld   d,iyl
+
+fd 56 10
+ld   d,(iy+$10)
+
+fd 57
+?fd57
+
+fd 58
+?fd58
+
+fd 59
+?fd59
+
+fd 5a
+?fd5a
+
+fd 5b
+?fd5b
+
+fd 5c
+ld   e,iyh
+
+fd 5d
+ld   e,iyl
+
+fd 5e 10
+ld   e,(iy+$10)
+
+fd 5f
+?fd5f
+
+fd 60
+ld   iyh,b
+
+fd 61
+ld   iyh,c
+
+fd 62
+ld   iyh,d
+
+fd 63
+ld   iyh,e
+
+fd 64
+ld   iyh,iyh
+
+fd 65
+ld   iyh,iyl
+
+fd 66 10
+ld   h,(iy+$10)
+
+fd 67
+ld   iyh,a
+
+fd 68
+ld   iyl,b
+
+fd 69
+ld   iyl,c
+
+fd 6a
+ld   iyl,d
+
+fd 6b
+ld   iyl,e
+
+fd 6c
+ld   iyl,iyh
+
+fd 6d
+ld   iyl,iyl
+
+fd 6e 10
+ld   l,(iy+$10)
+
+fd 6f
+ld   iyl,a
+
+fd 70 10
+ld   (iy+$10),b
+
+fd 71 10
+ld   (iy+$10),c
+
+fd 72 10
+ld   (iy+$10),d
+
+fd 73 10
+ld   (iy+$10),e
+
+fd 74 10
+ld   (iy+$10),h
+
+fd 75 10
+ld   (iy+$10),l
+
+fd 76
+?fd76
+
+fd 77 10
+ld   (iy+$10),a
+
+fd 78
+?fd78
+
+fd 79
+?fd79
+
+fd 7a
+?fd7a
+
+fd 7b
+?fd7b
+
+fd 7c
+ld   a,iyh
+
+fd 7d
+ld   a,iyl
+
+fd 7e 10
+ld   a,(iy+$10)
+
+fd 7f
+?fd7f
+
+fd 80
+?fd80
+
+fd 81
+?fd81
+
+fd 82
+?fd82
+
+fd 83
+?fd83
+
+fd 84
+add  a,iyh
+
+fd 85
+add  a,iyl
+
+fd 86 10
+add  a,(iy+$10)
+
+fd 87
+?fd87
+
+fd 88
+?fd88
+
+fd 89
+?fd89
+
+fd 8a
+?fd8a
+
+fd 8b
+?fd8b
+
+fd 8c
+adc  a,iyh
+
+fd 8d
+adc  a,iyl
+
+fd 8e 10
+adc  a,(iy+$10)
+
+fd 8f
+?fd8f
+
+fd 90
+?fd90
+
+fd 91
+?fd91
+
+fd 92
+?fd92
+
+fd 93
+?fd93
+
+fd 94
+sub  a,iyh
+
+fd 95
+sub  a,iyl
+
+fd 96 10
+sub  a,(iy+$10)
+
+fd 97
+?fd97
+
+fd 98
+?fd98
+
+fd 99
+?fd99
+
+fd 9a
+?fd9a
+
+fd 9b
+?fd9b
+
+fd 9c
+sbc  a,iyh
+
+fd 9d
+sbc  a,iyl
+
+fd 9e 10
+sbc  a,(iy+$10)
+
+fd 9f
+?fd9f
+
+fd a0
+?fda0
+
+fd a1
+?fda1
+
+fd a2
+?fda2
+
+fd a3
+?fda3
+
+fd a4
+and  iyh
+
+fd a5
+and  iyl
+
+fd a6 10
+and  (iy+$10)
+
+fd a7
+?fda7
+
+fd a8
+?fda8
+
+fd a9
+?fda9
+
+fd aa
+?fdaa
+
+fd ab
+?fdab
+
+fd ac
+xor  iyh
+
+fd ad
+xor  iyl
+
+fd ae 10
+xor  (iy+$10)
+
+fd af
+?fdaf
+
+fd b0
+?fdb0
+
+fd b1
+?fdb1
+
+fd b2
+?fdb2
+
+fd b3
+?fdb3
+
+fd b4
+or   iyh
+
+fd b5
+or   iyl
+
+fd b6 10
+or   (iy+$10)
+
+fd b7
+?fdb7
+
+fd b8
+?fdb8
+
+fd b9
+?fdb9
+
+fd ba
+?fdba
+
+fd bb
+?fdbb
+
+fd bc
+cp   iyh
+
+fd bd
+cp   iyl
+
+fd be 10
+cp   (iy+$10)
+
+fd bf
+?fdbf
+
+fd c0
+?fdc0
+
+fd c1
+?fdc1
+
+fd c2
+?fdc2
+
+fd c3
+?fdc3
+
+fd c4
+?fdc4
+
+fd c5
+?fdc5
+
+fd c6
+?fdc6
+
+fd c7
+?fdc7
+
+fd c8
+?fdc8
+
+fd c9
+?fdc9
+
+fd ca
+?fdca
+
+fd cb
+?fdcb
+
+fd cc
+?fdcc
+
+fd cd
+?fdcd
+
+fd ce
+?fdce
+
+fd cf
+?fdcf
+
+fd d0
+?fdd0
+
+fd d1
+?fdd1
+
+fd d2
+?fdd2
+
+fd d3
+?fdd3
+
+fd d4
+?fdd4
+
+fd d5
+?fdd5
+
+fd d6
+?fdd6
+
+fd d7
+?fdd7
+
+fd d8
+?fdd8
+
+fd d9
+?fdd9
+
+fd da
+?fdda
+
+fd db
+?fddb
+
+fd dc
+?fddc
+
+fd dd
+?fd
+
+fd de
+?fdde
+
+fd df
+?fddf
+
+fd e0
+?fde0
+
+fd e1
+pop  iy
+
+fd e2
+?fde2
+
+fd e3
+ex   (sp),iy
+
+fd e4
+?fde4
+
+fd e5
+push iy
+
+fd e6
+?fde6
+
+fd e7
+?fde7
+
+fd e8
+?fde8
+
+fd e9
+jp   (iy)
+
+fd ea
+?fdea
+
+fd eb
+?fdeb
+
+fd ec
+?fdec
+
+fd ed
+?fd
+
+fd ee
+?fdee
+
+fd ef
+?fdef
+
+fd f0
+?fdf0
+
+fd f1
+?fdf1
+
+fd f2
+?fdf2
+
+fd f3
+?fdf3
+
+fd f4
+?fdf4
+
+fd f5
+?fdf5
+
+fd f6
+?fdf6
+
+fd f7
+?fdf7
+
+fd f8
+?fdf8
+
+fd f9
+?fdf9
+
+fd fa
+?fdfa
+
+fd fb
+?fdfb
+
+fd fc
+?fdfc
+
+fd fd
+?fd
+
+fd fe
+?fdfe
+
+fd ff
+?fdff
