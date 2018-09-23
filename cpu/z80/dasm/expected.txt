@@ -1534,104 +1534,11 @@ set  7,a
 
 # dd prefixed ----------------------------------------------------------------
 
-dd 00
-?dd00
-
-dd 01
-?dd01
-
-dd 02
-?dd02
-
-dd 03
-?dd03
-
-dd 04
-?dd04
-
-dd 05
-?dd05
-
-dd 06
-?dd06
-
-dd 07
-?dd07
-
-dd 08
-?dd08
-
 dd 09
 add  ix,bc
 
-dd 0a
-?dd0a
-
-dd 0b
-?dd0b
-
-dd 0c
-?dd0c
-
-dd 0d
-?dd0d
-
-dd 0e
-?dd0e
-
-dd 0f
-?dd0f
-
-dd 10
-?dd10
-
-dd 11
-?dd11
-
-dd 12
-?dd12
-
-dd 13
-?dd13
-
-dd 14
-?dd14
-
-dd 15
-?dd15
-
-dd 16
-?dd16
-
-dd 17
-?dd17
-
-dd 18
-?dd18
-
 dd 19
 add  ix,de
-
-dd 1a
-?dd1a
-
-dd 1b
-?dd1b
-
-dd 1c
-?dd1c
-
-dd 1d
-?dd1d
-
-dd 1e
-?dd1e
-
-dd 1f
-?dd1f
-
-dd 20
-?dd20
 
 dd 21 34 12
 ld   ix,$1234
@@ -1651,12 +1558,6 @@ dec  ixh
 dd 26 12
 ld   ixh,$12
 
-dd 27
-?dd27
-
-dd 28
-?dd28
-
 dd 29
 add  ix,ix
 
@@ -1675,21 +1576,6 @@ dec  ixl
 dd 2e 12
 ld   ixl,$12
 
-dd 2f
-?dd2f
-
-dd 30
-?dd30
-
-dd 31
-?dd31
-
-dd 32
-?dd32
-
-dd 33
-?dd33
-
 dd 34 10
 inc  (ix+$10)
 
@@ -1699,44 +1585,8 @@ dec  (ix+$10)
 dd 36 10 20
 ld   (ix+$10),$20
 
-dd 37
-?dd37
-
-dd 38
-?dd38
-
 dd 39
 add  ix,sp
-
-dd 3a
-?dd3a
-
-dd 3b
-?dd3b
-
-dd 3c
-?dd3c
-
-dd 3d
-?dd3d
-
-dd 3e
-?dd3e
-
-dd 3f
-?dd3f
-
-dd 40
-?dd40
-
-dd 41
-?dd41
-
-dd 42
-?dd42
-
-dd 43
-?dd43
 
 dd 44
 ld   b,ixh
@@ -1747,21 +1597,6 @@ ld   b,ixl
 dd 46 10
 ld   b,(ix+$10)
 
-dd 47
-?dd47
-
-dd 48
-?dd48
-
-dd 49
-?dd49
-
-dd 4a
-?dd4a
-
-dd 4b
-?dd4b
-
 dd 4c
 ld   c,ixh
 
@@ -1770,21 +1605,6 @@ ld   c,ixl
 
 dd 4e 10
 ld   c,(ix+$10)
-
-dd 4f
-?dd4f
-
-dd 50
-?dd50
-
-dd 51
-?dd51
-
-dd 52
-?dd52
-
-dd 53
-?dd53
 
 dd 54
 ld   d,ixh
@@ -1795,21 +1615,6 @@ ld   d,ixl
 dd 56 10
 ld   d,(ix+$10)
 
-dd 57
-?dd57
-
-dd 58
-?dd58
-
-dd 59
-?dd59
-
-dd 5a
-?dd5a
-
-dd 5b
-?dd5b
-
 dd 5c
 ld   e,ixh
 
@@ -1818,9 +1623,6 @@ ld   e,ixl
 
 dd 5e 10
 ld   e,(ix+$10)
-
-dd 5f
-?dd5f
 
 dd 60
 ld   ixh,b
@@ -1888,23 +1690,8 @@ ld   (ix+$10),h
 dd 75 10
 ld   (ix+$10),l
 
-dd 76
-?dd76
-
 dd 77 10
 ld   (ix+$10),a
-
-dd 78
-?dd78
-
-dd 79
-?dd79
-
-dd 7a
-?dd7a
-
-dd 7b
-?dd7b
 
 dd 7c
 ld   a,ixh
@@ -1915,21 +1702,6 @@ ld   a,ixl
 dd 7e 10
 ld   a,(ix+$10)
 
-dd 7f
-?dd7f
-
-dd 80
-?dd80
-
-dd 81
-?dd81
-
-dd 82
-?dd82
-
-dd 83
-?dd83
-
 dd 84
 add  a,ixh
 
@@ -1938,21 +1710,6 @@ add  a,ixl
 
 dd 86 10
 add  a,(ix+$10)
-
-dd 87
-?dd87
-
-dd 88
-?dd88
-
-dd 89
-?dd89
-
-dd 8a
-?dd8a
-
-dd 8b
-?dd8b
 
 dd 8c
 adc  a,ixh
@@ -1963,21 +1720,6 @@ adc  a,ixl
 dd 8e 10
 adc  a,(ix+$10)
 
-dd 8f
-?dd8f
-
-dd 90
-?dd90
-
-dd 91
-?dd91
-
-dd 92
-?dd92
-
-dd 93
-?dd93
-
 dd 94
 sub  a,ixh
 
@@ -1986,21 +1728,6 @@ sub  a,ixl
 
 dd 96 10
 sub  a,(ix+$10)
-
-dd 97
-?dd97
-
-dd 98
-?dd98
-
-dd 99
-?dd99
-
-dd 9a
-?dd9a
-
-dd 9b
-?dd9b
 
 dd 9c
 sbc  a,ixh
@@ -2011,21 +1738,6 @@ sbc  a,ixl
 dd 9e 10
 sbc  a,(ix+$10)
 
-dd 9f
-?dd9f
-
-dd a0
-?dda0
-
-dd a1
-?dda1
-
-dd a2
-?dda2
-
-dd a3
-?dda3
-
 dd a4
 and  ixh
 
@@ -2034,21 +1746,6 @@ and  ixl
 
 dd a6 10
 and  (ix+$10)
-
-dd a7
-?dda7
-
-dd a8
-?dda8
-
-dd a9
-?dda9
-
-dd aa
-?ddaa
-
-dd ab
-?ddab
 
 dd ac
 xor  ixh
@@ -2059,21 +1756,6 @@ xor  ixl
 dd ae 10
 xor  (ix+$10)
 
-dd af
-?ddaf
-
-dd b0
-?ddb0
-
-dd b1
-?ddb1
-
-dd b2
-?ddb2
-
-dd b3
-?ddb3
-
 dd b4
 or   ixh
 
@@ -2082,21 +1764,6 @@ or   ixl
 
 dd b6 10
 or   (ix+$10)
-
-dd b7
-?ddb7
-
-dd b8
-?ddb8
-
-dd b9
-?ddb9
-
-dd ba
-?ddba
-
-dd bb
-?ddbb
 
 dd bc
 cp   ixh
@@ -2107,301 +1774,34 @@ cp   ixl
 dd be 10
 cp   (ix+$10)
 
-dd bf
-?ddbf
-
-dd c0
-?ddc0
-
-dd c1
-?ddc1
-
-dd c2
-?ddc2
-
-dd c3
-?ddc3
-
-dd c4
-?ddc4
-
-dd c5
-?ddc5
-
-dd c6
-?ddc6
-
-dd c7
-?ddc7
-
-dd c8
-?ddc8
-
-dd c9
-?ddc9
-
-dd ca
-?ddca
-
-dd cb
-?ddcb
-
-dd cc
-?ddcc
-
-dd cd
-?ddcd
-
-dd ce
-?ddce
-
-dd cf
-?ddcf
-
-dd d0
-?ddd0
-
-dd d1
-?ddd1
-
-dd d2
-?ddd2
-
-dd d3
-?ddd3
-
-dd d4
-?ddd4
-
-dd d5
-?ddd5
-
-dd d6
-?ddd6
-
-dd d7
-?ddd7
-
-dd d8
-?ddd8
-
-dd d9
-?ddd9
-
-dd da
-?ddda
-
-dd db
-?dddb
-
-dd dc
-?dddc
-
 dd dd
 ?dd
-
-dd de
-?ddde
-
-dd df
-?dddf
-
-dd e0
-?dde0
 
 dd e1
 pop  ix
 
-dd e2
-?dde2
-
 dd e3
 ex   (sp),ix
-
-dd e4
-?dde4
 
 dd e5
 push ix
 
-dd e6
-?dde6
-
-dd e7
-?dde7
-
-dd e8
-?dde8
-
 dd e9
 jp   (ix)
-
-dd ea
-?ddea
-
-dd eb
-?ddeb
-
-dd ec
-?ddec
 
 dd ed
 ?dd
 
-dd ee
-?ddee
-
-dd ef
-?ddef
-
-dd f0
-?ddf0
-
-dd f1
-?ddf1
-
-dd f2
-?ddf2
-
-dd f3
-?ddf3
-
-dd f4
-?ddf4
-
-dd f5
-?ddf5
-
-dd f6
-?ddf6
-
-dd f7
-?ddf7
-
-dd f8
-?ddf8
-
-dd f9
-?ddf9
-
-dd fa
-?ddfa
-
-dd fb
-?ddfb
-
-dd fc
-?ddfc
-
 dd fd
 ?dd
 
-dd fe
-?ddfe
-
-dd ff
-?ddff
-
 # fd prefixed ----------------------------------------------------------------
-
-fd 00
-?fd00
-
-fd 01
-?fd01
-
-fd 02
-?fd02
-
-fd 03
-?fd03
-
-fd 04
-?fd04
-
-fd 05
-?fd05
-
-fd 06
-?fd06
-
-fd 07
-?fd07
-
-fd 08
-?fd08
 
 fd 09
 add  iy,bc
 
-fd 0a
-?fd0a
-
-fd 0b
-?fd0b
-
-fd 0c
-?fd0c
-
-fd 0d
-?fd0d
-
-fd 0e
-?fd0e
-
-fd 0f
-?fd0f
-
-fd 10
-?fd10
-
-fd 11
-?fd11
-
-fd 12
-?fd12
-
-fd 13
-?fd13
-
-fd 14
-?fd14
-
-fd 15
-?fd15
-
-fd 16
-?fd16
-
-fd 17
-?fd17
-
-fd 18
-?fd18
-
 fd 19
 add  iy,de
-
-fd 1a
-?fd1a
-
-fd 1b
-?fd1b
-
-fd 1c
-?fd1c
-
-fd 1d
-?fd1d
-
-fd 1e
-?fd1e
-
-fd 1f
-?fd1f
-
-fd 20
-?fd20
 
 fd 21 34 12
 ld   iy,$1234
@@ -2421,12 +1821,6 @@ dec  iyh
 fd 26 12
 ld   iyh,$12
 
-fd 27
-?fd27
-
-fd 28
-?fd28
-
 fd 29
 add  iy,iy
 
@@ -2445,21 +1839,6 @@ dec  iyl
 fd 2e 12
 ld   iyl,$12
 
-fd 2f
-?fd2f
-
-fd 30
-?fd30
-
-fd 31
-?fd31
-
-fd 32
-?fd32
-
-fd 33
-?fd33
-
 fd 34 10
 inc  (iy+$10)
 
@@ -2469,44 +1848,8 @@ dec  (iy+$10)
 fd 36 10 20
 ld   (iy+$10),$20
 
-fd 37
-?fd37
-
-fd 38
-?fd38
-
 fd 39
 add  iy,sp
-
-fd 3a
-?fd3a
-
-fd 3b
-?fd3b
-
-fd 3c
-?fd3c
-
-fd 3d
-?fd3d
-
-fd 3e
-?fd3e
-
-fd 3f
-?fd3f
-
-fd 40
-?fd40
-
-fd 41
-?fd41
-
-fd 42
-?fd42
-
-fd 43
-?fd43
 
 fd 44
 ld   b,iyh
@@ -2517,21 +1860,6 @@ ld   b,iyl
 fd 46 10
 ld   b,(iy+$10)
 
-fd 47
-?fd47
-
-fd 48
-?fd48
-
-fd 49
-?fd49
-
-fd 4a
-?fd4a
-
-fd 4b
-?fd4b
-
 fd 4c
 ld   c,iyh
 
@@ -2540,21 +1868,6 @@ ld   c,iyl
 
 fd 4e 10
 ld   c,(iy+$10)
-
-fd 4f
-?fd4f
-
-fd 50
-?fd50
-
-fd 51
-?fd51
-
-fd 52
-?fd52
-
-fd 53
-?fd53
 
 fd 54
 ld   d,iyh
@@ -2565,21 +1878,6 @@ ld   d,iyl
 fd 56 10
 ld   d,(iy+$10)
 
-fd 57
-?fd57
-
-fd 58
-?fd58
-
-fd 59
-?fd59
-
-fd 5a
-?fd5a
-
-fd 5b
-?fd5b
-
 fd 5c
 ld   e,iyh
 
@@ -2588,9 +1886,6 @@ ld   e,iyl
 
 fd 5e 10
 ld   e,(iy+$10)
-
-fd 5f
-?fd5f
 
 fd 60
 ld   iyh,b
@@ -2658,23 +1953,8 @@ ld   (iy+$10),h
 fd 75 10
 ld   (iy+$10),l
 
-fd 76
-?fd76
-
 fd 77 10
 ld   (iy+$10),a
-
-fd 78
-?fd78
-
-fd 79
-?fd79
-
-fd 7a
-?fd7a
-
-fd 7b
-?fd7b
 
 fd 7c
 ld   a,iyh
@@ -2685,21 +1965,6 @@ ld   a,iyl
 fd 7e 10
 ld   a,(iy+$10)
 
-fd 7f
-?fd7f
-
-fd 80
-?fd80
-
-fd 81
-?fd81
-
-fd 82
-?fd82
-
-fd 83
-?fd83
-
 fd 84
 add  a,iyh
 
@@ -2708,21 +1973,6 @@ add  a,iyl
 
 fd 86 10
 add  a,(iy+$10)
-
-fd 87
-?fd87
-
-fd 88
-?fd88
-
-fd 89
-?fd89
-
-fd 8a
-?fd8a
-
-fd 8b
-?fd8b
 
 fd 8c
 adc  a,iyh
@@ -2733,21 +1983,6 @@ adc  a,iyl
 fd 8e 10
 adc  a,(iy+$10)
 
-fd 8f
-?fd8f
-
-fd 90
-?fd90
-
-fd 91
-?fd91
-
-fd 92
-?fd92
-
-fd 93
-?fd93
-
 fd 94
 sub  a,iyh
 
@@ -2756,21 +1991,6 @@ sub  a,iyl
 
 fd 96 10
 sub  a,(iy+$10)
-
-fd 97
-?fd97
-
-fd 98
-?fd98
-
-fd 99
-?fd99
-
-fd 9a
-?fd9a
-
-fd 9b
-?fd9b
 
 fd 9c
 sbc  a,iyh
@@ -2781,21 +2001,6 @@ sbc  a,iyl
 fd 9e 10
 sbc  a,(iy+$10)
 
-fd 9f
-?fd9f
-
-fd a0
-?fda0
-
-fd a1
-?fda1
-
-fd a2
-?fda2
-
-fd a3
-?fda3
-
 fd a4
 and  iyh
 
@@ -2804,21 +2009,6 @@ and  iyl
 
 fd a6 10
 and  (iy+$10)
-
-fd a7
-?fda7
-
-fd a8
-?fda8
-
-fd a9
-?fda9
-
-fd aa
-?fdaa
-
-fd ab
-?fdab
 
 fd ac
 xor  iyh
@@ -2829,21 +2019,6 @@ xor  iyl
 fd ae 10
 xor  (iy+$10)
 
-fd af
-?fdaf
-
-fd b0
-?fdb0
-
-fd b1
-?fdb1
-
-fd b2
-?fdb2
-
-fd b3
-?fdb3
-
 fd b4
 or   iyh
 
@@ -2852,21 +2027,6 @@ or   iyl
 
 fd b6 10
 or   (iy+$10)
-
-fd b7
-?fdb7
-
-fd b8
-?fdb8
-
-fd b9
-?fdb9
-
-fd ba
-?fdba
-
-fd bb
-?fdbb
 
 fd bc
 cp   iyh
@@ -2877,197 +2037,24 @@ cp   iyl
 fd be 10
 cp   (iy+$10)
 
-fd bf
-?fdbf
-
-fd c0
-?fdc0
-
-fd c1
-?fdc1
-
-fd c2
-?fdc2
-
-fd c3
-?fdc3
-
-fd c4
-?fdc4
-
-fd c5
-?fdc5
-
-fd c6
-?fdc6
-
-fd c7
-?fdc7
-
-fd c8
-?fdc8
-
-fd c9
-?fdc9
-
-fd ca
-?fdca
-
-fd cb
-?fdcb
-
-fd cc
-?fdcc
-
-fd cd
-?fdcd
-
-fd ce
-?fdce
-
-fd cf
-?fdcf
-
-fd d0
-?fdd0
-
-fd d1
-?fdd1
-
-fd d2
-?fdd2
-
-fd d3
-?fdd3
-
-fd d4
-?fdd4
-
-fd d5
-?fdd5
-
-fd d6
-?fdd6
-
-fd d7
-?fdd7
-
-fd d8
-?fdd8
-
-fd d9
-?fdd9
-
-fd da
-?fdda
-
-fd db
-?fddb
-
-fd dc
-?fddc
-
 fd dd
 ?fd
-
-fd de
-?fdde
-
-fd df
-?fddf
-
-fd e0
-?fde0
 
 fd e1
 pop  iy
 
-fd e2
-?fde2
-
 fd e3
 ex   (sp),iy
-
-fd e4
-?fde4
 
 fd e5
 push iy
 
-fd e6
-?fde6
-
-fd e7
-?fde7
-
-fd e8
-?fde8
-
 fd e9
 jp   (iy)
-
-fd ea
-?fdea
-
-fd eb
-?fdeb
-
-fd ec
-?fdec
 
 fd ed
 ?fd
 
-fd ee
-?fdee
-
-fd ef
-?fdef
-
-fd f0
-?fdf0
-
-fd f1
-?fdf1
-
-fd f2
-?fdf2
-
-fd f3
-?fdf3
-
-fd f4
-?fdf4
-
-fd f5
-?fdf5
-
-fd f6
-?fdf6
-
-fd f7
-?fdf7
-
-fd f8
-?fdf8
-
-fd f9
-?fdf9
-
-fd fa
-?fdfa
-
-fd fb
-?fdfb
-
-fd fc
-?fdfc
-
 fd fd
 ?fd
 
-fd fe
-?fdfe
-
-fd ff
-?fdff
