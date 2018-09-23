@@ -51,8 +51,26 @@ func TestInvalidFD(t *testing.T) {
 			mem.Store(1, uint8(i))
 			dasm := cpu.NewDisassembler(mem, ReaderZ80)
 			s := dasm.Next()
-			if s.Op[0] == '?' && i != 0xdd && i != 0xed && i != 0xfd {
+			if s.Op[0] == '?' && i != 0xdd && i != 0xed && i != 0xfd && i != 0xcb {
 				With(t).Expect(s.Op).ToBe(fmt.Sprintf("?fd%02x", i))
+			}
+		})
+	}
+}
+
+func TestInvalidFDCB(t *testing.T) {
+	for i := 0; i <= 0xff; i++ {
+		name := fmt.Sprintf("%02x", i)
+		t.Run(name, func(t *testing.T) {
+			mem := memory.NewRAM(0x20)
+			mem.Store(0, 0xfd)
+			mem.Store(1, 0xcb)
+			mem.Store(2, 0)
+			mem.Store(3, uint8(i))
+			dasm := cpu.NewDisassembler(mem, ReaderZ80)
+			s := dasm.Next()
+			if s.Op[0] == '?' {
+				With(t).Expect(s.Op).ToBe(fmt.Sprintf("?fdcb%02x", i))
 			}
 		})
 	}

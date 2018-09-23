@@ -2058,3 +2058,100 @@ fd ed
 fd fd
 ?fd
 
+# fdcb prefixed ----------------------------------------------------------------
+fd cb 10 06
+rlc  (iy+$10)
+
+fd cb 10 0e
+rrc  (iy+$10)
+
+fd cb 10 16
+rl   (iy+$10)
+
+fd cb 10 1e
+rr   (iy+$10)
+
+fd cb 10 26
+sla  (iy+$10)
+
+fd cb 10 2e
+sra  (iy+$10)
+
+fd cb 10 36
+sls  (iy+$10)
+
+fd cb 10 3e
+srl  (iy+$10)
+
+fd cb 10 46
+bit  0,(iy+$10)
+
+fd cb 10 4e
+bit  1,(iy+$10)
+
+fd cb 10 56
+bit  2,(iy+$10)
+
+fd cb 10 5e
+bit  3,(iy+$10)
+
+fd cb 10 66
+bit  4,(iy+$10)
+
+fd cb 10 6e
+bit  5,(iy+$10)
+
+fd cb 10 76
+bit  6,(iy+$10)
+
+fd cb 10 7e
+bit  7,(iy+$10)
+
+fd cb 10 86
+res  0,(iy+$10)
+
+fd cb 10 8e
+res  1,(iy+$10)
+
+fd cb 10 96
+res  2,(iy+$10)
+
+fd cb 10 9e
+res  3,(iy+$10)
+
+fd cb 10 a6
+res  4,(iy+$10)
+
+fd cb 10 ae
+res  5,(iy+$10)
+
+fd cb 10 b6
+res  6,(iy+$10)
+
+fd cb 10 be
+res  7,(iy+$10)
+
+fd cb 10 c6
+set  0,(iy+$10)
+
+fd cb 10 ce
+set  1,(iy+$10)
+
+fd cb 10 d6
+set  2,(iy+$10)
+
+fd cb 10 de
+set  3,(iy+$10)
+
+fd cb 10 e6
+set  4,(iy+$10)
+
+fd cb 10 ee
+set  5,(iy+$10)
+
+fd cb 10 f6
+set  6,(iy+$10)
+
+fd cb 10 fe
+set  7,(iy+$10)
+

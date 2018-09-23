@@ -9,6 +9,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"unicode"
 )
 
 const (
@@ -24,6 +25,8 @@ var breaks = []int{
 	33,
 	38,
 	45,
+	49,
+	62,
 }
 
 func dasm() {
@@ -48,7 +51,6 @@ import "github.com/blackchip-org/pac8/cpu"
 	out.WriteString("var dasm = map[uint8]func(cpu.Eval){\n")
 	for i := lineStart; i <= lineEnd; i++ {
 		line := lines[i]
-		line = strings.ToLower(line)
 		parseTable(&out, line, 0, "")
 	}
 	out.WriteString("}\n")
@@ -57,7 +59,6 @@ import "github.com/blackchip-org/pac8/cpu"
 	out.WriteString("var dasmDD = map[uint8]func(cpu.Eval){\n")
 	for i := lineStart; i <= lineEnd; i++ {
 		line := lines[i]
-		line = strings.ToLower(line)
 		parseTable(&out, line, 2, "dd")
 	}
 	out.WriteString("}\n")
@@ -66,7 +67,6 @@ import "github.com/blackchip-org/pac8/cpu"
 	out.WriteString("var dasmFD = map[uint8]func(cpu.Eval){\n")
 	for i := lineStart; i <= lineEnd; i++ {
 		line := lines[i]
-		line = strings.ToLower(line)
 		parseTable(&out, line, 2, "fd")
 	}
 	out.WriteString("}\n")
@@ -75,8 +75,15 @@ import "github.com/blackchip-org/pac8/cpu"
 	out.WriteString("var dasmCB = map[uint8]func(cpu.Eval){\n")
 	for i := lineStart; i <= lineEnd; i++ {
 		line := lines[i]
-		line = strings.ToLower(line)
 		parseTable(&out, line, 4, "cb")
+	}
+	out.WriteString("}\n")
+
+	// fd cb prefix
+	out.WriteString("var dasmFDCB = map[uint8]func(cpu.Eval){\n")
+	for i := lineStart; i <= lineEnd; i++ {
+		line := lines[i]
+		parseTable(&out, line, 6, "fdcb")
 	}
 	out.WriteString("}\n")
 
@@ -109,23 +116,28 @@ func parseTable(out *bytes.Buffer, line string, firstBreak int, prefix string) {
 
 	out.WriteString("0x")
 	out.WriteString(fmt.Sprintf("%02x", opcode))
-	out.WriteString(": func(e cpu.Eval) { op1(e, ")
+	if prefix == "fdcb" {
+		out.WriteString(": func(e cpu.Eval) { op2(e, ")
+	} else {
+		out.WriteString(": func(e cpu.Eval) { op1(e, ")
+	}
 
 	args := make([]string, 1)
-	args[0] = `"` + strings.TrimSpace(line[break1:break2]) + `"`
+	args[0] = strings.TrimSpace(line[break1:break2])
 
-	if args[0] == `"-"` {
+	if args[0] == "-" || unicode.IsLower(rune(args[0][0])) {
 		out.WriteString(fmt.Sprintf(`"?%v%02x"`, prefix, opcode))
 	} else {
+		args[0] = `"` + args[0] + `"`
 		fields := strings.Split(line[break2:break3], ",")
 		for _, field := range fields {
 			args = append(args, `"`+strings.TrimSpace(field)+`"`)
 		}
 		entry := strings.Join(args, ",")
 		if prefix == "fd" {
-			entry = strings.Replace(entry, "ix", "iy", -1)
+			entry = strings.Replace(entry, "IX", "IY", -1)
 		}
-		out.WriteString(entry)
+		out.WriteString(strings.ToLower(entry))
 	}
 
 	out.WriteString(") },\n")
