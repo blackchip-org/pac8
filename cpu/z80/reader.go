@@ -89,3 +89,9 @@ func opFD(e cpu.Eval) {
 	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
 	dasmFD[opcode](e)
 }
+
+func opCB(e cpu.Eval) {
+	opcode := e.Cursor.Fetch()
+	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
+	dasmCB[opcode](e)
+}

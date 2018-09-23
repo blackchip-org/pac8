@@ -762,6 +762,776 @@ cp   $12
 ff
 rst  $38
 
+# cb prefixed ----------------------------------------------------------------
+
+cb 00
+rlc  b
+
+cb 01
+rlc  c
+
+cb 02
+rlc  d
+
+cb 03
+rlc  e
+
+cb 04
+rlc  h
+
+cb 05
+rlc  l
+
+cb 06
+rlc  (hl)
+
+cb 07
+rlc  a
+
+cb 08
+rrc  b
+
+cb 09
+rrc  c
+
+cb 0a
+rrc  d
+
+cb 0b
+rrc  e
+
+cb 0c
+rrc  h
+
+cb 0d
+rrc  l
+
+cb 0e
+rrc  (hl)
+
+cb 0f
+rrc  a
+
+cb 10
+rl   b
+
+cb 11
+rl   c
+
+cb 12
+rl   d
+
+cb 13
+rl   e
+
+cb 14
+rl   h
+
+cb 15
+rl   l
+
+cb 16
+rl   (hl)
+
+cb 17
+rl   a
+
+cb 18
+rr   b
+
+cb 19
+rr   c
+
+cb 1a
+rr   d
+
+cb 1b
+rr   e
+
+cb 1c
+rr   h
+
+cb 1d
+rr   l
+
+cb 1e
+rr   (hl)
+
+cb 1f
+rr   a
+
+cb 20
+sla  b
+
+cb 21
+sla  c
+
+cb 22
+sla  d
+
+cb 23
+sla  e
+
+cb 24
+sla  h
+
+cb 25
+sla  l
+
+cb 26
+sla  (hl)
+
+cb 27
+sla  a
+
+cb 28
+sra  b
+
+cb 29
+sra  c
+
+cb 2a
+sra  d
+
+cb 2b
+sra  e
+
+cb 2c
+sra  h
+
+cb 2d
+sra  l
+
+cb 2e
+sra  (hl)
+
+cb 2f
+sra  a
+
+cb 30
+sls  b
+
+cb 31
+sls  c
+
+cb 32
+sls  d
+
+cb 33
+sls  e
+
+cb 34
+sls  h
+
+cb 35
+sls  l
+
+cb 36
+sls  (hl)
+
+cb 37
+sls  a
+
+cb 38
+srl  b
+
+cb 39
+srl  c
+
+cb 3a
+srl  d
+
+cb 3b
+srl  e
+
+cb 3c
+srl  h
+
+cb 3d
+srl  l
+
+cb 3e
+srl  (hl)
+
+cb 3f
+srl  a
+
+cb 40
+bit  0,b
+
+cb 41
+bit  0,c
+
+cb 42
+bit  0,d
+
+cb 43
+bit  0,e
+
+cb 44
+bit  0,h
+
+cb 45
+bit  0,l
+
+cb 46
+bit  0,(hl)
+
+cb 47
+bit  0,a
+
+cb 48
+bit  1,b
+
+cb 49
+bit  1,c
+
+cb 4a
+bit  1,d
+
+cb 4b
+bit  1,e
+
+cb 4c
+bit  1,h
+
+cb 4d
+bit  1,l
+
+cb 4e
+bit  1,(hl)
+
+cb 4f
+bit  1,a
+
+cb 50
+bit  2,b
+
+cb 51
+bit  2,c
+
+cb 52
+bit  2,d
+
+cb 53
+bit  2,e
+
+cb 54
+bit  2,h
+
+cb 55
+bit  2,l
+
+cb 56
+bit  2,(hl)
+
+cb 57
+bit  2,a
+
+cb 58
+bit  3,b
+
+cb 59
+bit  3,c
+
+cb 5a
+bit  3,d
+
+cb 5b
+bit  3,e
+
+cb 5c
+bit  3,h
+
+cb 5d
+bit  3,l
+
+cb 5e
+bit  3,(hl)
+
+cb 5f
+bit  3,a
+
+cb 60
+bit  4,b
+
+cb 61
+bit  4,c
+
+cb 62
+bit  4,d
+
+cb 63
+bit  4,e
+
+cb 64
+bit  4,h
+
+cb 65
+bit  4,l
+
+cb 66
+bit  4,(hl)
+
+cb 67
+bit  4,a
+
+cb 68
+bit  5,b
+
+cb 69
+bit  5,c
+
+cb 6a
+bit  5,d
+
+cb 6b
+bit  5,e
+
+cb 6c
+bit  5,h
+
+cb 6d
+bit  5,l
+
+cb 6e
+bit  5,(hl)
+
+cb 6f
+bit  5,a
+
+cb 70
+bit  6,b
+
+cb 71
+bit  6,c
+
+cb 72
+bit  6,d
+
+cb 73
+bit  6,e
+
+cb 74
+bit  6,h
+
+cb 75
+bit  6,l
+
+cb 76
+bit  6,(hl)
+
+cb 77
+bit  6,a
+
+cb 78
+bit  7,b
+
+cb 79
+bit  7,c
+
+cb 7a
+bit  7,d
+
+cb 7b
+bit  7,e
+
+cb 7c
+bit  7,h
+
+cb 7d
+bit  7,l
+
+cb 7e
+bit  7,(hl)
+
+cb 7f
+bit  7,a
+
+cb 80
+res  0,b
+
+cb 81
+res  0,c
+
+cb 82
+res  0,d
+
+cb 83
+res  0,e
+
+cb 84
+res  0,h
+
+cb 85
+res  0,l
+
+cb 86
+res  0,(hl)
+
+cb 87
+res  0,a
+
+cb 88
+res  1,b
+
+cb 89
+res  1,c
+
+cb 8a
+res  1,d
+
+cb 8b
+res  1,e
+
+cb 8c
+res  1,h
+
+cb 8d
+res  1,l
+
+cb 8e
+res  1,(hl)
+
+cb 8f
+res  1,a
+
+cb 90
+res  2,b
+
+cb 91
+res  2,c
+
+cb 92
+res  2,d
+
+cb 93
+res  2,e
+
+cb 94
+res  2,h
+
+cb 95
+res  2,l
+
+cb 96
+res  2,(hl)
+
+cb 97
+res  2,a
+
+cb 98
+res  3,b
+
+cb 99
+res  3,c
+
+cb 9a
+res  3,d
+
+cb 9b
+res  3,e
+
+cb 9c
+res  3,h
+
+cb 9d
+res  3,l
+
+cb 9e
+res  3,(hl)
+
+cb 9f
+res  3,a
+
+cb a0
+res  4,b
+
+cb a1
+res  4,c
+
+cb a2
+res  4,d
+
+cb a3
+res  4,e
+
+cb a4
+res  4,h
+
+cb a5
+res  4,l
+
+cb a6
+res  4,(hl)
+
+cb a7
+res  4,a
+
+cb a8
+res  5,b
+
+cb a9
+res  5,c
+
+cb aa
+res  5,d
+
+cb ab
+res  5,e
+
+cb ac
+res  5,h
+
+cb ad
+res  5,l
+
+cb ae
+res  5,(hl)
+
+cb af
+res  5,a
+
+cb b0
+res  6,b
+
+cb b1
+res  6,c
+
+cb b2
+res  6,d
+
+cb b3
+res  6,e
+
+cb b4
+res  6,h
+
+cb b5
+res  6,l
+
+cb b6
+res  6,(hl)
+
+cb b7
+res  6,a
+
+cb b8
+res  7,b
+
+cb b9
+res  7,c
+
+cb ba
+res  7,d
+
+cb bb
+res  7,e
+
+cb bc
+res  7,h
+
+cb bd
+res  7,l
+
+cb be
+res  7,(hl)
+
+cb bf
+res  7,a
+
+cb c0
+set  0,b
+
+cb c1
+set  0,c
+
+cb c2
+set  0,d
+
+cb c3
+set  0,e
+
+cb c4
+set  0,h
+
+cb c5
+set  0,l
+
+cb c6
+set  0,(hl)
+
+cb c7
+set  0,a
+
+cb c8
+set  1,b
+
+cb c9
+set  1,c
+
+cb ca
+set  1,d
+
+cb cb
+set  1,e
+
+cb cc
+set  1,h
+
+cb cd
+set  1,l
+
+cb ce
+set  1,(hl)
+
+cb cf
+set  1,a
+
+cb d0
+set  2,b
+
+cb d1
+set  2,c
+
+cb d2
+set  2,d
+
+cb d3
+set  2,e
+
+cb d4
+set  2,h
+
+cb d5
+set  2,l
+
+cb d6
+set  2,(hl)
+
+cb d7
+set  2,a
+
+cb d8
+set  3,b
+
+cb d9
+set  3,c
+
+cb da
+set  3,d
+
+cb db
+set  3,e
+
+cb dc
+set  3,h
+
+cb dd
+set  3,l
+
+cb de
+set  3,(hl)
+
+cb df
+set  3,a
+
+cb e0
+set  4,b
+
+cb e1
+set  4,c
+
+cb e2
+set  4,d
+
+cb e3
+set  4,e
+
+cb e4
+set  4,h
+
+cb e5
+set  4,l
+
+cb e6
+set  4,(hl)
+
+cb e7
+set  4,a
+
+cb e8
+set  5,b
+
+cb e9
+set  5,c
+
+cb ea
+set  5,d
+
+cb eb
+set  5,e
+
+cb ec
+set  5,h
+
+cb ed
+set  5,l
+
+cb ee
+set  5,(hl)
+
+cb ef
+set  5,a
+
+cb f0
+set  6,b
+
+cb f1
+set  6,c
+
+cb f2
+set  6,d
+
+cb f3
+set  6,e
+
+cb f4
+set  6,h
+
+cb f5
+set  6,l
+
+cb f6
+set  6,(hl)
+
+cb f7
+set  6,a
+
+cb f8
+set  7,b
+
+cb f9
+set  7,c
+
+cb fa
+set  7,d
+
+cb fb
+set  7,e
+
+cb fc
+set  7,h
+
+cb fd
+set  7,l
+
+cb fe
+set  7,(hl)
+
+cb ff
+set  7,a
+
 # dd prefixed ----------------------------------------------------------------
 
 dd 00

@@ -22,6 +22,8 @@ var breaks = []int{
 	18,
 	22,
 	33,
+	38,
+	45,
 }
 
 func dasm() {
@@ -69,6 +71,15 @@ import "github.com/blackchip-org/pac8/cpu"
 	}
 	out.WriteString("}\n")
 
+	// cb prefix
+	out.WriteString("var dasmCB = map[uint8]func(cpu.Eval){\n")
+	for i := lineStart; i <= lineEnd; i++ {
+		line := lines[i]
+		line = strings.ToLower(line)
+		parseTable(&out, line, 4, "cb")
+	}
+	out.WriteString("}\n")
+
 	err = ioutil.WriteFile("dasm.go", out.Bytes(), 0644)
 	if err != nil {
 		fmt.Printf("unable to write file: %v", err)
@@ -85,6 +96,9 @@ func parseTable(out *bytes.Buffer, line string, firstBreak int, prefix string) {
 	opcode, _ := strconv.ParseUint(strOpcode, 16, 8)
 
 	switch {
+	case prefix == "" && opcode == 0xcb:
+		out.WriteString("0xcb: func(e cpu.Eval) { opCB(e) },\n")
+		return
 	case prefix == "" && opcode == 0xdd:
 		out.WriteString("0xdd: func(e cpu.Eval) { opDD(e) },\n")
 		return
