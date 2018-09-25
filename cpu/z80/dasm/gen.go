@@ -27,6 +27,8 @@ var breaks = []int{
 	45,
 	49,
 	62,
+	67,
+	80,
 }
 
 func dasm() {
@@ -87,6 +89,22 @@ import "github.com/blackchip-org/pac8/cpu"
 	}
 	out.WriteString("}\n")
 
+	// dd cb prefix
+	out.WriteString("var dasmDDCB = map[uint8]func(cpu.Eval){\n")
+	for i := lineStart; i <= lineEnd; i++ {
+		line := lines[i]
+		parseTable(&out, line, 6, "ddcb")
+	}
+	out.WriteString("}\n")
+
+	// ed prefix
+	out.WriteString("var dasmED = map[uint8]func(cpu.Eval){\n")
+	for i := lineStart; i <= lineEnd; i++ {
+		line := lines[i]
+		parseTable(&out, line, 8, "ed")
+	}
+	out.WriteString("}\n")
+
 	err = ioutil.WriteFile("dasm.go", out.Bytes(), 0644)
 	if err != nil {
 		fmt.Printf("unable to write file: %v", err)
@@ -99,6 +117,10 @@ func parseTable(out *bytes.Buffer, line string, firstBreak int, prefix string) {
 	break2 := breaks[firstBreak+1]
 	break3 := breaks[firstBreak+2]
 
+	// Ensure the line is at least 80 characters long and then we don't
+	// have to worry about different line lengths when slicing.
+	line = fmt.Sprintf("%-80s", line)
+
 	strOpcode := strings.TrimSpace(line[0:2])
 	opcode, _ := strconv.ParseUint(strOpcode, 16, 8)
 
@@ -109,14 +131,27 @@ func parseTable(out *bytes.Buffer, line string, firstBreak int, prefix string) {
 	case prefix == "" && opcode == 0xdd:
 		out.WriteString("0xdd: func(e cpu.Eval) { opDD(e) },\n")
 		return
+	case prefix == "" && opcode == 0xed:
+		out.WriteString("0xed: func(e cpu.Eval) { opED(e) },\n")
+		return
 	case prefix == "" && opcode == 0xfd:
 		out.WriteString("0xfd: func(e cpu.Eval) { opFD(e) },\n")
+		return
+	case
+		prefix == "dd" && opcode == 0xcb,
+		prefix == "dd" && opcode == 0xdd,
+		prefix == "dd" && opcode == 0xed,
+		prefix == "dd" && opcode == 0xfd,
+		prefix == "fd" && opcode == 0xcb,
+		prefix == "fd" && opcode == 0xdd,
+		prefix == "fd" && opcode == 0xed,
+		prefix == "fd" && opcode == 0xfd:
 		return
 	}
 
 	out.WriteString("0x")
 	out.WriteString(fmt.Sprintf("%02x", opcode))
-	if prefix == "fdcb" {
+	if prefix == "ddcb" || prefix == "fdcb" {
 		out.WriteString(": func(e cpu.Eval) { op2(e, ")
 	} else {
 		out.WriteString(": func(e cpu.Eval) { op1(e, ")
@@ -125,7 +160,18 @@ func parseTable(out *bytes.Buffer, line string, firstBreak int, prefix string) {
 	args := make([]string, 1)
 	args[0] = strings.TrimSpace(line[break1:break2])
 
-	if args[0] == "-" || unicode.IsLower(rune(args[0][0])) {
+	switch {
+	case strings.HasPrefix(args[0], "MOS_"):
+		args[0] = "-"
+	case strings.HasPrefix(args[0], "ED_"):
+		args[0] = "-"
+	case unicode.IsLower(rune(args[0][0])):
+		args[0] = "-"
+	case args[0][0] == '[':
+		args[0] = "-"
+	}
+
+	if args[0] == "-" {
 		out.WriteString(fmt.Sprintf(`"?%v%02x"`, prefix, opcode))
 	} else {
 		args[0] = `"` + args[0] + `"`
@@ -136,6 +182,9 @@ func parseTable(out *bytes.Buffer, line string, firstBreak int, prefix string) {
 		entry := strings.Join(args, ",")
 		if prefix == "fd" {
 			entry = strings.Replace(entry, "IX", "IY", -1)
+		}
+		if prefix == "ddcb" {
+			entry = strings.Replace(entry, "IY", "IX", -1)
 		}
 		out.WriteString(strings.ToLower(entry))
 	}

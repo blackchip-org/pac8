@@ -1795,6 +1795,188 @@ dd ed
 dd fd
 ?dd
 
+# ed prefixed ----------------------------------------------------------------
+
+ed 40
+in   b,(c)
+
+ed 41
+out  (c),b
+
+ed 42
+sbc  hl,bc
+
+ed 43 34 12
+ld   ($1234),bc
+
+ed 44
+neg
+
+ed 45
+retn
+
+ed 46
+im   0
+
+ed 47
+ld   i,a
+
+ed 48
+in   c,(c)
+
+ed 49
+out  (c),c
+
+ed 4a
+adc  hl,bc
+
+ed 4b 34 12
+ld   bc,($1234)
+
+ed 4d
+reti
+
+ed 4f
+ld   r,a
+
+ed 50
+in   d,(c)
+
+ed 51
+out  (c),d
+
+ed 52
+sbc  hl,de
+
+ed 53 34 12
+ld   ($1234),de
+
+ed 56
+im   1
+
+ed 57
+ld   a,i
+
+ed 58
+in   e,(c)
+
+ed 59
+out  (c),e
+
+ed 5a
+adc  hl,de
+
+ed 5b 34 12
+ld   de,($1234)
+
+ed 5e
+im   2
+
+ed 5f
+ld   a,r
+
+ed 60
+in   h,(c)
+
+ed 61
+out  (c),h
+
+ed 62
+sbc  hl,hl
+
+ed 63 34 12
+ld   ($1234),hl
+
+ed 67
+rrd
+
+ed 68
+in   l,(c)
+
+ed 69
+out  (c),l
+
+ed 6a
+adc  hl,hl
+
+ed 6b 34 12
+ld   hl,($1234)
+
+ed 6f
+rld
+
+ed 70
+in   f,(c)
+
+ed 71
+out  (c),f
+
+ed 72
+sbc  hl,sp
+
+ed 73 34 12
+ld   ($1234),sp
+
+ed 78
+in   a,(c)
+
+ed 79
+out  (c),a
+
+ed 7a
+adc  hl,sp
+
+ed 7b 34 12
+ld   sp,($1234)
+
+ed a0
+ldi
+
+ed a1
+cpi
+
+ed a2
+ini
+
+ed a3
+oti
+
+ed a8
+ldd
+
+ed a9
+cpd
+
+ed aa
+ind
+
+ed ab
+otd
+
+ed b0
+ldir
+
+ed b1
+cpir
+
+ed b2
+inir
+
+ed b3
+otir
+
+ed b8
+lddr
+
+ed b9
+cpdr
+
+ed ba
+indr
+
+ed bb
+otdr
+
 # fd prefixed ----------------------------------------------------------------
 
 fd 09
@@ -2058,7 +2240,106 @@ fd ed
 fd fd
 ?fd
 
+# ddcb prefixed ----------------------------------------------------------------
+
+dd cb 10 06
+rlc  (ix+$10)
+
+dd cb 10 0e
+rrc  (ix+$10)
+
+dd cb 10 16
+rl   (ix+$10)
+
+dd cb 10 1e
+rr   (ix+$10)
+
+dd cb 10 26
+sla  (ix+$10)
+
+dd cb 10 2e
+sra  (ix+$10)
+
+dd cb 10 36
+sls  (ix+$10)
+
+dd cb 10 3e
+srl  (ix+$10)
+
+dd cb 10 46
+bit  0,(ix+$10)
+
+dd cb 10 4e
+bit  1,(ix+$10)
+
+dd cb 10 56
+bit  2,(ix+$10)
+
+dd cb 10 5e
+bit  3,(ix+$10)
+
+dd cb 10 66
+bit  4,(ix+$10)
+
+dd cb 10 6e
+bit  5,(ix+$10)
+
+dd cb 10 76
+bit  6,(ix+$10)
+
+dd cb 10 7e
+bit  7,(ix+$10)
+
+dd cb 10 86
+res  0,(ix+$10)
+
+dd cb 10 8e
+res  1,(ix+$10)
+
+dd cb 10 96
+res  2,(ix+$10)
+
+dd cb 10 9e
+res  3,(ix+$10)
+
+dd cb 10 a6
+res  4,(ix+$10)
+
+dd cb 10 ae
+res  5,(ix+$10)
+
+dd cb 10 b6
+res  6,(ix+$10)
+
+dd cb 10 be
+res  7,(ix+$10)
+
+dd cb 10 c6
+set  0,(ix+$10)
+
+dd cb 10 ce
+set  1,(ix+$10)
+
+dd cb 10 d6
+set  2,(ix+$10)
+
+dd cb 10 de
+set  3,(ix+$10)
+
+dd cb 10 e6
+set  4,(ix+$10)
+
+dd cb 10 ee
+set  5,(ix+$10)
+
+dd cb 10 f6
+set  6,(ix+$10)
+
+dd cb 10 fe
+set  7,(ix+$10)
+
 # fdcb prefixed ----------------------------------------------------------------
+
 fd cb 10 06
 rlc  (iy+$10)
 

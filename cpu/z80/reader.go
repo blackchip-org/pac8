@@ -75,6 +75,9 @@ func op2(e cpu.Eval, parts ...string) {
 		switch {
 		case i == 0:
 			v = fmt.Sprintf("%-4s", part)
+		case part == "(ix+0)":
+			delta := e.Statement.Bytes[len(e.Statement.Bytes)-2]
+			v = fmt.Sprintf("(ix+$%02x)", delta)
 		case part == "(iy+0)":
 			delta := e.Statement.Bytes[len(e.Statement.Bytes)-2]
 			v = fmt.Sprintf("(iy+$%02x)", delta)
@@ -99,6 +102,10 @@ func opDD(e cpu.Eval) {
 	}
 	opcode := e.Cursor.Fetch()
 	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
+	if opcode == 0xcb {
+		opDDCB(e)
+		return
+	}
 	dasmDD[opcode](e)
 }
 
@@ -123,10 +130,24 @@ func opCB(e cpu.Eval) {
 	dasmCB[opcode](e)
 }
 
+func opED(e cpu.Eval) {
+	opcode := e.Cursor.Fetch()
+	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
+	dasmED[opcode](e)
+}
+
 func opFDCB(e cpu.Eval) {
 	delta := e.Cursor.Fetch()
 	e.Statement.Bytes = append(e.Statement.Bytes, delta)
 	opcode := e.Cursor.Fetch()
 	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
 	dasmFDCB[opcode](e)
+}
+
+func opDDCB(e cpu.Eval) {
+	delta := e.Cursor.Fetch()
+	e.Statement.Bytes = append(e.Statement.Bytes, delta)
+	opcode := e.Cursor.Fetch()
+	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
+	dasmDDCB[opcode](e)
 }
