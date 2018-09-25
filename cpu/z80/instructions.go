@@ -162,7 +162,7 @@ func blockcr(c *CPU, hlfn func(*CPU, cpu.Put16, cpu.Get16)) {
 
 func blockin(c *CPU, increment int) {
 	in := c.inIndC()
-	alu.SetCarry(false)
+	alu.SetBorrow(false)
 	alu.In0 = c.B
 	alu.In1 = 1
 	alu.Subtract()
@@ -231,7 +231,7 @@ func blocklr(c *CPU, increment int) {
 
 func blockout(c *CPU, increment int) {
 	in := c.mem.Load(bits.Join(c.H, c.L))
-	alu.SetCarry(false)
+	alu.SetBorrow(false)
 	alu.In0 = c.B
 	alu.In1 = 1
 	alu.Subtract()
@@ -429,9 +429,10 @@ func ddfdcb(c *CPU, table opsTable) {
 // C flag preserved, P/V detects overflow and rest modified by definition.
 // modified by definition.
 func dec(c *CPU, put cpu.Put, get cpu.Get) {
+	alu.SetBorrow(false)
 	alu.In0 = get()
-	alu.SetCarry(false)
-	alu.Decrement()
+	alu.In1 = 1
+	alu.Subtract()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
@@ -515,9 +516,10 @@ func in(c *CPU, put cpu.Put, get cpu.Get) {
 // Preserves C flag, N flag is reset, P/V detects overflow and rest are
 // modified by definition.
 func inc(c *CPU, put cpu.Put, get cpu.Get) {
-	alu.In0 = get()
 	alu.SetCarry(false)
-	alu.Increment()
+	alu.In0 = get()
+	alu.In1 = 1
+	alu.Add()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
@@ -598,7 +600,7 @@ func ldair(c *CPU, get cpu.Get) {
 func neg(c *CPU) {
 	alu.In0 = 0
 	alu.In1 = c.A
-	alu.SetCarry(false)
+	alu.SetBorrow(false)
 	alu.Subtract()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
@@ -608,7 +610,7 @@ func neg(c *CPU) {
 	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
 	bits.Set(&c.F, FlagV, alu.Overflow())
 	bits.Set(&c.F, FlagN, true)
-	bits.Set(&c.F, FlagC, alu.Carry())
+	bits.Set(&c.F, FlagC, alu.Borrow())
 
 	c.A = alu.Out
 }
@@ -885,6 +887,7 @@ func sll(c *CPU, put cpu.Put, get cpu.Get) {
 
 func sra(c *CPU, put cpu.Put, get cpu.Get) {
 	alu.In0 = get()
+	alu.SetCarry(false)
 	alu.ShiftRightSigned()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
@@ -903,13 +906,13 @@ func sra(c *CPU, put cpu.Put, get cpu.Get) {
 //
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
-func sub(c *CPU, get cpu.Get, withCarry bool) {
+func sub(c *CPU, get cpu.Get, withBorrow bool) {
 	alu.In0 = c.A
 	alu.In1 = get()
 
-	alu.SetCarry(false)
-	if withCarry && bits.Get(c.F, FlagC) {
-		alu.SetCarry(true)
+	alu.SetBorrow(false)
+	if withBorrow && bits.Get(c.F, FlagC) {
+		alu.SetBorrow(true)
 	}
 	alu.Subtract()
 
@@ -920,20 +923,20 @@ func sub(c *CPU, get cpu.Get, withCarry bool) {
 	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
 	bits.Set(&c.F, FlagV, alu.Overflow())
 	bits.Set(&c.F, FlagN, true)
-	bits.Set(&c.F, FlagC, alu.Carry())
+	bits.Set(&c.F, FlagC, alu.Borrow())
 
 	c.A = alu.Out
 }
 
-func sub16(c *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bool) {
+func sub16(c *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withBorrow bool) {
 	in0 := get0()
 	in1 := get1()
 
 	alu.In0 = uint8(in0)
 	alu.In1 = uint8(in1)
-	alu.SetCarry(false)
-	if withCarry && bits.Get(c.F, FlagC) {
-		alu.SetCarry(true)
+	alu.SetBorrow(false)
+	if withBorrow && bits.Get(c.F, FlagC) {
+		alu.SetBorrow(true)
 	}
 	alu.Subtract()
 	lo := alu.Out
@@ -943,9 +946,9 @@ func sub16(c *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bool
 	alu.Subtract()
 	hi := alu.Out
 
-	result := uint16(hi)<<8 | uint16(lo)
+	result := bits.Join(hi, lo)
 
-	if withCarry {
+	if withBorrow {
 		bits.Set(&c.F, FlagS, alu.Sign())
 		bits.Set(&c.F, FlagZ, alu.Zero())
 		bits.Set(&c.F, FlagV, alu.Overflow())
@@ -954,7 +957,7 @@ func sub16(c *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bool
 	bits.Set(&c.F, FlagH, alu.Carry4())
 	bits.Set(&c.F, Flag3, bits.Get(hi, 3))
 	bits.Set(&c.F, FlagN, true)
-	bits.Set(&c.F, FlagC, alu.Carry())
+	bits.Set(&c.F, FlagC, alu.Borrow())
 
 	put(result)
 }
