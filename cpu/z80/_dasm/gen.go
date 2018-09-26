@@ -43,7 +43,7 @@ import "github.com/blackchip-org/pac8/cpu"
 
 `)
 
-	data, err := ioutil.ReadFile("dasm/z80oplist.txt")
+	data, err := ioutil.ReadFile("_dasm/z80oplist.txt")
 	if err != nil {
 		panic(err)
 	}
@@ -209,7 +209,7 @@ type harstonTest struct {
 var harstonTests = []harstonTest{
 `)
 
-	data, err := ioutil.ReadFile("dasm/expected.txt")
+	data, err := ioutil.ReadFile("_dasm/expected.txt")
 	if err != nil {
 		panic(err)
 	}

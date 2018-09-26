@@ -65,7 +65,7 @@ func main() {
 }
 
 func loadTests() {
-	file, err := os.Open("fuse/tests.in")
+	file, err := os.Open("_fuse/tests.in")
 	if err != nil {
 		fatal("unable to open", err)
 	}
@@ -85,7 +85,7 @@ func loadTests() {
 }
 
 func loadResults() {
-	file, err := os.Open("fuse/tests.expected")
+	file, err := os.Open("_fuse/tests.expected")
 	if err != nil {
 		fatal("unable to open", err)
 	}
