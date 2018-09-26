@@ -9,7 +9,7 @@ import (
 	"github.com/blackchip-org/pac8/memory"
 )
 
-//go:generate go run fuse/gen.go
+//go:generate go run _fuse/gen.go
 //go:generate go fmt fuse_test.go
 
 // Set a test name here to test a single test

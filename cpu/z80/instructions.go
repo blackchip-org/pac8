@@ -9,7 +9,7 @@ import (
 	"github.com/blackchip-org/pac8/cpu"
 )
 
-//go:generate go run ops/gen.go
+//go:generate go run _ops/gen.go
 //go:generate go fmt ops.go
 
 var alu bits.ALU

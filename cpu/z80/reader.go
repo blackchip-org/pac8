@@ -8,7 +8,7 @@ import (
 	"github.com/blackchip-org/pac8/cpu"
 )
 
-//go:generate go run dasm/gen.go
+//go:generate go run _dasm/gen.go
 //go:generate go fmt dasm.go
 //go:generate go fmt harston_test.go
 
