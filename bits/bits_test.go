@@ -17,6 +17,22 @@ func TestParse8Invalid(t *testing.T) {
 	With(t).Expect(func() { Parse("100x1000") }).ToPanic()
 }
 
+func ExampleFormat() {
+	n := Parse("01001010")
+	for i := 7; i >= 0; i-- {
+		fmt.Printf(Format(n, i, ".", "*"))
+	}
+	// Output: .*..*.*.
+}
+
+func ExampleFormatB() {
+	v := []bool{false, true, false, false, true, false, true, false}
+	for i := 0; i <= 7; i++ {
+		fmt.Printf(FormatB(v[i], ".", "*"))
+	}
+	// Output: .*..*.*.
+}
+
 func ExampleGet() {
 	n := Parse("101")
 	fmt.Println(Get(n, 2))
