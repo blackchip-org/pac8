@@ -58,6 +58,10 @@ func (d *Disassembler) SetPC(addr uint16) {
 	d.cursor.Pos = addr
 }
 
+func (d *Disassembler) PC() uint16 {
+	return d.cursor.Pos
+}
+
 type FormatOptions struct {
 	BytesFormat string
 }

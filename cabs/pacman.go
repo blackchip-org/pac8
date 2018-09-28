@@ -46,9 +46,9 @@ func NewPacman() *Pacman {
 	return cab
 }
 
-func (c *Pacman) Mach() mach.Mach {
-	return mach.Mach{
-		Mem: c.mem,
-		CPU: c.cpu,
-	}
+func (c *Pacman) Mach() *mach.Mach {
+	m := mach.New()
+	m.Mem = c.mem
+	m.CPU = c.cpu
+	return m
 }
