@@ -5,8 +5,8 @@ package z80
 // http://www.z80.info/zip/z80-documented.pdf
 
 import (
-	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/cpu"
+	"github.com/blackchip-org/pac8/util/bits"
 )
 
 //go:generate go run _ops/gen.go
@@ -275,8 +275,8 @@ func call(c *CPU, flag int, condition bool, get cpu.Get16) {
 	addr := get()
 	if bits.Get(c.F, flag) == condition {
 		c.SP -= 2
-		c.mem16.Store(c.SP, c.PC)
-		c.PC = addr
+		c.mem16.Store(c.SP, c.PC())
+		c.SetPC(addr)
 	}
 }
 
@@ -284,8 +284,8 @@ func call(c *CPU, flag int, condition bool, get cpu.Get16) {
 func calla(c *CPU, get cpu.Get16) {
 	addr := get()
 	c.SP -= 2
-	c.mem16.Store(c.SP, c.PC)
-	c.PC = addr
+	c.mem16.Store(c.SP, c.PC())
+	c.SetPC(addr)
 }
 
 func cb(c *CPU) {
@@ -398,7 +398,7 @@ func daa(c *CPU) {
 func ddfd(c *CPU, table opsTable, extendedTable opsTable) {
 	// Peek at the next opcode, it it doesn't have a function in the table,
 	// return now and let it execute as a normal instruction
-	opcode := c.mem.Load(c.PC)
+	opcode := c.mem.Load(c.PC())
 	fn := table[opcode]
 	if fn == nil {
 		return
@@ -462,7 +462,7 @@ func djnz(c *CPU, get cpu.Get) {
 	delta := get()
 	c.B--
 	if c.B != 0 {
-		c.PC = bits.Displace(c.PC, delta)
+		c.SetPC(bits.Displace(c.PC(), delta))
 	}
 }
 
@@ -550,27 +550,27 @@ func im(c *CPU, mode int) {
 func jp(c *CPU, flag int, condition bool, get cpu.Get16) {
 	addr := get()
 	if bits.Get(c.F, flag) == condition {
-		c.PC = addr
+		c.SetPC(addr)
 	}
 }
 
 // jump absolute, always
 func jpa(c *CPU, get cpu.Get16) {
-	c.PC = get()
+	c.SetPC(get())
 }
 
 // jump relative, conditional
 func jr(c *CPU, flag int, condition bool, get cpu.Get) {
 	delta := get()
 	if bits.Get(c.F, flag) == condition {
-		c.PC = bits.Displace(c.PC, delta)
+		c.SetPC(bits.Displace(c.PC(), delta))
 	}
 }
 
 // jump relative, always
 func jra(c *CPU, get cpu.Get) {
 	delta := get()
-	c.PC = bits.Displace(c.PC, delta)
+	c.SetPC(bits.Displace(c.PC(), delta))
 }
 
 // load
@@ -670,18 +670,18 @@ func ret(c *CPU, flag int, value bool) {
 
 // return, always
 func reta(c *CPU) {
-	c.PC = c.mem16.Load(c.SP)
+	c.SetPC(c.mem16.Load(c.SP))
 	c.SP += 2
 }
 
 func reti(c *CPU) {
-	c.PC = c.mem16.Load(c.SP)
+	c.SetPC(c.mem16.Load(c.SP))
 	c.SP += 2
 }
 
 func retn(c *CPU) {
 	c.IFF1 = c.IFF2
-	c.PC = c.mem16.Load(c.SP)
+	c.SetPC(c.mem16.Load(c.SP))
 	c.SP += 2
 }
 
@@ -782,8 +782,8 @@ func rrd(c *CPU) {
 
 func rst(c *CPU, y int) {
 	c.SP -= 2
-	c.mem16.Store(c.SP, c.PC)
-	c.PC = uint16(y) * 8
+	c.mem16.Store(c.SP, c.PC())
+	c.SetPC(uint16(y) * 8)
 }
 
 // Set carry flag

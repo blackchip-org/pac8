@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/cpu"
+	"github.com/blackchip-org/pac8/util/bits"
 )
 
 //go:generate go run _dasm/gen.go
@@ -18,6 +18,15 @@ func ReaderZ80(e cpu.Eval) cpu.Statement {
 	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
 	dasm[opcode](e)
 	return *e.Statement
+}
+
+func FormatterZ80() cpu.CodeFormatter {
+	options := cpu.FormatOptions{
+		BytesFormat: "%-11s",
+	}
+	return func(s cpu.Statement) string {
+		return cpu.Format(s, options)
+	}
 }
 
 func op1(e cpu.Eval, parts ...string) {

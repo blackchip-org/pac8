@@ -3,9 +3,8 @@ package z80
 import (
 	"testing"
 
-	. "github.com/blackchip-org/pac8/expect"
-
-	"github.com/blackchip-org/pac8/bits"
+	"github.com/blackchip-org/pac8/util/bits"
+	. "github.com/blackchip-org/pac8/util/expect"
 )
 
 func TestSetFlags(t *testing.T) {

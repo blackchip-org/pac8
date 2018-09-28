@@ -3,8 +3,10 @@ package z80
 import (
 	"fmt"
 
-	"github.com/blackchip-org/pac8/bits"
+	"github.com/blackchip-org/pac8/cpu"
+
 	"github.com/blackchip-org/pac8/memory"
+	"github.com/blackchip-org/pac8/util/bits"
 )
 
 const (
@@ -44,7 +46,7 @@ type CPU struct {
 	IYH uint8
 	IYL uint8
 	SP  uint16
-	PC  uint16
+	pc  uint16
 
 	IFF1 bool
 	IFF2 bool
@@ -80,13 +82,29 @@ func (cpu *CPU) Next() {
 	execute(cpu)
 }
 
+func (cpu *CPU) PC() uint16 {
+	return cpu.pc
+}
+
+func (cpu *CPU) SetPC(pc uint16) {
+	cpu.pc = pc
+}
+
+func (cpu *CPU) CodeReader() cpu.CodeReader {
+	return ReaderZ80
+}
+
+func (cpu *CPU) CodeFormatter() cpu.CodeFormatter {
+	return FormatterZ80()
+}
+
 func (cpu *CPU) String() string {
 	return fmt.Sprintf(""+
 		" pc   af   bc   de   hl   ix   iy   sp   i  r\n"+
 		"%04x %04x %04x %04x %04x %04x %04x %04x %02x %02x %v\n"+
 		"im %v %04x %04x %04x %04x      %v %v %v %v %v %v %v %v %v\n",
 		// line 1
-		cpu.PC,
+		cpu.pc,
 		bits.Join(cpu.A, cpu.F),
 		bits.Join(cpu.B, cpu.C),
 		bits.Join(cpu.D, cpu.E),
@@ -116,8 +134,8 @@ func (cpu *CPU) String() string {
 }
 
 func (cpu *CPU) fetch() uint8 {
-	cpu.PC++
-	return cpu.mem.Load(cpu.PC - 1)
+	cpu.pc++
+	return cpu.mem.Load(cpu.pc - 1)
 }
 
 func (cpu *CPU) fetch16() uint16 {

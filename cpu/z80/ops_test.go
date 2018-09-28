@@ -3,10 +3,9 @@ package z80
 import (
 	"testing"
 
-	. "github.com/blackchip-org/pac8/expect"
-
-	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/memory"
+	"github.com/blackchip-org/pac8/util/bits"
+	. "github.com/blackchip-org/pac8/util/expect"
 )
 
 //go:generate go run _fuse/gen.go
@@ -28,15 +27,15 @@ func TestOps(t *testing.T) {
 			for {
 				cpu.Next()
 				if test.name == "dd00" {
-					if cpu.PC == 0x0003 {
+					if cpu.PC() == 0x0003 {
 						break
 					}
 				} else if test.name == "ddfd00" {
-					if cpu.PC == 0x0004 {
+					if cpu.PC() == 0x0004 {
 						break
 					}
 				} else {
-					if cpu.mem.Load(cpu.PC) == 0 && cpu.PC != 0 {
+					if cpu.mem.Load(cpu.PC()) == 0 && cpu.PC() != 0 {
 						break
 					}
 					if test.tstates == 1 {
@@ -98,7 +97,7 @@ func load(test fuseTest) *CPU {
 	cpu.IXH, cpu.IXL = bits.Split(test.ix)
 	cpu.IYH, cpu.IYL = bits.Split(test.iy)
 	cpu.SP = test.sp
-	cpu.PC = test.pc
+	cpu.SetPC(test.pc)
 	cpu.I = test.i
 	cpu.R = test.r
 	cpu.IFF1 = test.iff1 != 0
@@ -153,4 +152,8 @@ func (m *mockIO) Store(addr uint16, value uint8) {
 	}
 	stack = append(stack, value)
 	m.data[uint8(addr)] = stack
+}
+
+func (m *mockIO) Length() int {
+	return 0
 }

@@ -1,6 +1,6 @@
 package memory
 
-import "github.com/blackchip-org/pac8/bits"
+import "github.com/blackchip-org/pac8/util/bits"
 
 type Cursor struct {
 	Pos uint16

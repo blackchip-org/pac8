@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"reflect"
 	"testing"
+
+	. "github.com/blackchip-org/pac8/util/expect"
 )
 
 func TestImport(t *testing.T) {
@@ -68,4 +70,28 @@ func TestLittleEndianStore(t *testing.T) {
 	if !reflect.DeepEqual(have, want) {
 		t.Errorf("\n have: %02x \n want: %02x", have, want)
 	}
+}
+
+func TestPageMappedStore(t *testing.T) {
+	ram1 := NewRAM(0x1000)
+	ram2 := NewRAM(0x1000)
+	mem := NewPageMapped([]Memory{ram1, ram2})
+
+	mem.Store(0x0044, 0x44)
+	WithFormat(t, "%02x").Expect(ram1.Load(0x0044)).ToBe(uint8(0x44))
+	mem.Store(0x1555, 0x55)
+	WithFormat(t, "%02x").Expect(ram2.Load(0x0555)).ToBe(uint8(0x55))
+	mem.Store(0x4000, 0xff)
+	WithFormat(t, "%02x").Expect(mem.Load(0x4000)).ToBe(uint8(0))
+}
+
+func TestPageMappedLoad(t *testing.T) {
+	ram1 := NewRAM(0x1000)
+	ram2 := NewRAM(0x1000)
+	mem := NewPageMapped([]Memory{ram1, ram2})
+
+	ram1.Store(0x0044, 0x44)
+	WithFormat(t, "%02x").Expect(mem.Load(0x0044)).ToBe(uint8(0x44))
+	ram2.Store(0x0555, 0x55)
+	WithFormat(t, "%02x").Expect(mem.Load(0x1555)).ToBe(uint8(0x55))
 }
