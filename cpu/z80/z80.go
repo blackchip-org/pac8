@@ -3,8 +3,6 @@ package z80
 import (
 	"fmt"
 
-	"github.com/blackchip-org/pac8/cpu"
-
 	"github.com/blackchip-org/pac8/memory"
 	"github.com/blackchip-org/pac8/util/bits"
 )
@@ -84,14 +82,6 @@ func (cpu *CPU) PC() uint16 {
 
 func (cpu *CPU) SetPC(pc uint16) {
 	cpu.pc = pc
-}
-
-func (cpu *CPU) CodeReader() cpu.CodeReader {
-	return ReaderZ80
-}
-
-func (cpu *CPU) CodeFormatter() cpu.CodeFormatter {
-	return FormatterZ80()
 }
 
 func (cpu *CPU) String() string {
