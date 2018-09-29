@@ -137,6 +137,55 @@ func (m PageMapped) Length() int {
 	return 0x10000
 }
 
+type Port struct {
+	Ready bool
+	Read  *uint8
+	Write *uint8
+}
+
+type IO struct {
+	Ports []Port
+}
+
+func NewIO(n int) *IO {
+	return &IO{
+		Ports: make([]Port, n, n),
+	}
+}
+
+func (i *IO) Store(address uint16, value uint8) {
+	p := i.Ports[int(address)]
+	if p.Write != nil {
+		p.Ready = true
+		*p.Write = value
+	}
+}
+
+func (i *IO) Load(address uint16) uint8 {
+	p := i.Ports[int(address)]
+	if p.Read == nil {
+		return 0
+	}
+	return *p.Read
+}
+
+func (i *IO) Length() int {
+	return len(i.Ports)
+}
+
+func (i *IO) RO(port int, v *uint8) {
+	i.Ports[port].Read = v
+}
+
+func (i *IO) WO(port int, v *uint8) {
+	i.Ports[port].Write = v
+}
+
+func (i *IO) RW(port int, v *uint8) {
+	i.Ports[port].Read = v
+	i.Ports[port].Write = v
+}
+
 type LittleEndian struct {
 	mem Memory
 }
