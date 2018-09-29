@@ -9,4 +9,4 @@ before_install:
   - docker pull blackchip/pac8
 
 script:
-  - docker run --mount type=bind,source="$(pwd)",target=/root/go/src/github.com/blackchip-org/pac8 blackchip/pac8 /bin/bash -c "cd /root/go/src/github.com/blackchip-org/pac8 ; go test"
+  - docker run --mount type=bind,source="$(pwd)",target=/root/go/src/github.com/blackchip-org/pac8 blackchip/pac8 /bin/bash -c "cd /root/go/src/github.com/blackchip-org/pac8 ; go test ./..."
