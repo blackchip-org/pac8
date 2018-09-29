@@ -82,6 +82,8 @@ func (c *Pacman) Mach() *mach.Mach {
 	m := mach.New()
 	m.Mem = c.mem
 	m.CPU = c.cpu
+	m.Reader = z80.ReaderZ80
+	m.Format = z80.FormatterZ80()
 	return m
 }
 

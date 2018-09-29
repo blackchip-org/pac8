@@ -46,6 +46,8 @@ type Status int
 type Mach struct {
 	Mem     memory.Memory
 	CPU     cpu.CPU
+	Reader  cpu.CodeReader
+	Format  cpu.CodeFormatter
 	Status  Status
 	Tracing bool
 	Err     error
@@ -65,14 +67,13 @@ func New() *Mach {
 
 func (m *Mach) Run() {
 	dasm := m.NewDisassembler()
-	format := m.CPU.CodeFormatter()
 
 	lastUpdate := time.Now()
 	for {
 		if m.Status == Run {
 			if m.Tracing {
 				dasm.SetPC(m.CPU.PC())
-				fmt.Println(format(dasm.Next()))
+				fmt.Println(m.Format(dasm.Next()))
 			}
 			m.CPU.Next()
 		}
@@ -103,7 +104,7 @@ func (m *Mach) Run() {
 }
 
 func (m *Mach) NewDisassembler() *cpu.Disassembler {
-	return cpu.NewDisassembler(m.Mem, m.CPU.CodeReader())
+	return cpu.NewDisassembler(m.Mem, m.Reader)
 }
 
 func (m *Mach) Start() {

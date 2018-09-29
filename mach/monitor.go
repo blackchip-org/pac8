@@ -54,7 +54,7 @@ func NewMonitor(m *Mach) *Monitor {
 		in:     ioutil.NopCloser(os.Stdin),
 		out:    log.New(os.Stdout, "", 0),
 		dasm:   m.NewDisassembler(),
-		format: m.CPU.CodeFormatter(),
+		format: m.Format,
 	}
 }
 
