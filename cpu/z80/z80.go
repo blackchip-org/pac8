@@ -52,11 +52,8 @@ type CPU struct {
 	IFF2 bool
 	IM   uint8
 
-	Halt bool
-
-	IOREQ  bool
-	IOAddr uint16
-	Ports  memory.Memory
+	Halt  bool
+	Ports memory.IO
 
 	mem   memory.Memory
 	mem16 memory.Memory16
@@ -69,13 +66,12 @@ func New(m memory.Memory) *CPU {
 	c := &CPU{
 		mem:   m,
 		mem16: memory.NewLittleEndian(m),
-		Ports: memory.NewRAM(0x100),
+		Ports: memory.NewIO(0x100),
 	}
 	return c
 }
 
 func (cpu *CPU) Next() {
-	cpu.IOREQ = false
 	opcode := cpu.fetch()
 	execute := ops[opcode]
 	cpu.refreshR()

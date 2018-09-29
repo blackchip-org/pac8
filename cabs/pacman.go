@@ -85,7 +85,7 @@ func (c *Pacman) Mach() *mach.Mach {
 	return m
 }
 
-func mapPorts(p *ports, io *memory.IO) {
+func mapPorts(p *ports, io memory.IO) {
 	for i := 0; i <= 0x3f; i++ {
 		io.RO(i, &p.in0)
 	}

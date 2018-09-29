@@ -111,8 +111,6 @@ func (cpu *CPU) storeLastInd(v uint8) {
 
 func (cpu *CPU) outIndImm(v uint8) {
 	addr := uint16(cpu.fetch())
-	cpu.IOREQ = true
-	cpu.IOAddr = addr
 	cpu.Ports.Store(addr, v)
 }
 
@@ -122,8 +120,6 @@ func (cpu *CPU) inIndImm() uint8 {
 }
 
 func (cpu *CPU) outIndC(v uint8) {
-	cpu.IOREQ = true
-	cpu.IOAddr = uint16(cpu.C)
 	cpu.Ports.Store(uint16(cpu.C), v)
 }
 

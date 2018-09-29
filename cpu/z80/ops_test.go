@@ -70,7 +70,7 @@ func testHalt(t *testing.T, cpu *CPU, expected fuseTest) {
 }
 
 func setupPorts(cpu *CPU, expected fuseTest) {
-	cpu.Ports = newMockIO(expected.portReads)
+	cpu.Ports = memory.NewMockIO(expected.portReads)
 }
 
 func testPorts(t *testing.T, cpu *CPU, expected fuseTest) {
@@ -109,51 +109,4 @@ func load(test fuseTest) *CPU {
 	}
 
 	return cpu
-}
-
-type mockIO struct {
-	data map[uint8][]uint8
-}
-
-func newMockIO(snapshots []memory.Snapshot) *mockIO {
-	mio := &mockIO{
-		data: make(map[uint8][]uint8),
-	}
-	for _, snapshot := range snapshots {
-		addr := uint8(snapshot.Address)
-		stack, exists := mio.data[addr]
-		if !exists {
-			stack = make([]uint8, 0, 0)
-		}
-		stack = append(stack, snapshot.Values[0])
-		mio.data[addr] = stack
-	}
-	return mio
-}
-
-func (m *mockIO) Load(addr uint16) uint8 {
-	stack, exists := m.data[uint8(addr)]
-	if !exists {
-		return 0
-	}
-	if len(stack) == 0 {
-		return 0
-	}
-	v := stack[0]
-	stack = stack[1:]
-	m.data[uint8(addr)] = stack
-	return v
-}
-
-func (m *mockIO) Store(addr uint16, value uint8) {
-	stack, exists := m.data[uint8(addr)]
-	if !exists {
-		stack = make([]uint8, 0, 0)
-	}
-	stack = append(stack, value)
-	m.data[uint8(addr)] = stack
-}
-
-func (m *mockIO) Length() int {
-	return 0
 }
