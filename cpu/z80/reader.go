@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/blackchip-org/pac8/cpu"
+	"github.com/blackchip-org/pac8/memory"
 	"github.com/blackchip-org/pac8/util/bits"
 )
 
@@ -29,6 +30,10 @@ func FormatterZ80() cpu.CodeFormatter {
 	}
 }
 
+func NewDisassembler(mem memory.Memory) *cpu.Disassembler {
+	return cpu.NewDisassembler(mem, ReaderZ80)
+}
+
 func op1(e cpu.Eval, parts ...string) {
 	var out strings.Builder
 	for i, part := range parts {
@@ -44,25 +49,38 @@ func op1(e cpu.Eval, parts ...string) {
 			// This is an address that is a 8-bit displacement from the
 			// current program counter
 			delta := e.Cursor.Fetch()
-			addr := bits.Displace(e.Statement.Address, delta)
+			e.Statement.Bytes = append(e.Statement.Bytes, delta)
+			addr := bits.Displace(e.Statement.Address+2, delta)
 			v = fmt.Sprintf("$%04x", addr)
 		case part == "&0000":
-			addr := e.Cursor.FetchLE()
+			lo := e.Cursor.Fetch()
+			e.Statement.Bytes = append(e.Statement.Bytes, lo)
+			hi := e.Cursor.Fetch()
+			e.Statement.Bytes = append(e.Statement.Bytes, hi)
+			addr := bits.Join(hi, lo)
 			v = fmt.Sprintf("$%04x", addr)
 		case part == "(&0000)":
-			addr := e.Cursor.FetchLE()
+			lo := e.Cursor.Fetch()
+			e.Statement.Bytes = append(e.Statement.Bytes, lo)
+			hi := e.Cursor.Fetch()
+			e.Statement.Bytes = append(e.Statement.Bytes, hi)
+			addr := bits.Join(hi, lo)
 			v = fmt.Sprintf("($%04x)", addr)
 		case part == "&00":
 			arg := e.Cursor.Fetch()
+			e.Statement.Bytes = append(e.Statement.Bytes, arg)
 			v = fmt.Sprintf("$%02x", arg)
 		case part == "(&00)":
 			arg := e.Cursor.Fetch()
+			e.Statement.Bytes = append(e.Statement.Bytes, arg)
 			v = fmt.Sprintf("($%02x)", arg)
 		case part == "(ix+0)":
 			delta := e.Cursor.Fetch()
+			e.Statement.Bytes = append(e.Statement.Bytes, delta)
 			v = fmt.Sprintf("(ix+$%02x)", delta)
 		case part == "(iy+0)":
 			delta := e.Cursor.Fetch()
+			e.Statement.Bytes = append(e.Statement.Bytes, delta)
 			v = fmt.Sprintf("(iy+$%02x)", delta)
 		}
 

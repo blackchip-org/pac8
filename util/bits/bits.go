@@ -124,3 +124,11 @@ func Displace(value uint16, delta uint8) uint16 {
 func Parity(value uint8) bool {
 	return bits.OnesCount8(value)%2 == 0
 }
+
+func Bytes(values ...uint8) []uint8 {
+	result := make([]uint8, len(values), len(values))
+	for i, v := range values {
+		result[i] = v
+	}
+	return result
+}

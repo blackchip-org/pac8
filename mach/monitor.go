@@ -24,6 +24,7 @@ const (
 	CmdGo          = "g"
 	CmdHalt        = "h"
 	CmdMemory      = "m"
+	CmdPokePeek    = "p"
 	CmdRegisters   = "r"
 	CmdTrace       = "t"
 	CmdQuit        = "q"
@@ -33,6 +34,7 @@ const (
 const (
 	memPageLen  = 0x100
 	dasmPageLen = 0x3f
+	maxArgs     = 0x100
 )
 
 type Monitor struct {
@@ -77,6 +79,9 @@ func (m *Monitor) Run() error {
 	m.rl = rl
 	for {
 		line, err := rl.Readline()
+		if err == io.EOF {
+			os.Exit(0)
+		}
 		if err != nil {
 			return err
 		}
@@ -102,11 +107,13 @@ func (m *Monitor) parse(line string) {
 	case CmdDisassemble:
 		err = m.disassemble(args)
 	case CmdGo:
-		err = m.go_(args)
+		err = m.goCmd(args)
 	case CmdHalt:
 		err = m.halt(args)
 	case CmdMemory:
 		err = m.memory(args, charset.AsciiDecoder)
+	case CmdPokePeek:
+		err = m.pokePeek(args)
 	case CmdRegisters:
 		err = m.registers(args)
 	case CmdTrace:
@@ -139,7 +146,7 @@ func (m *Monitor) disassemble(args []string) error {
 		if err != nil {
 			return err
 		}
-		addrStart = addr - 1
+		addrStart = addr
 	}
 	addrEnd := addrStart + uint16(dasmPageLen)
 	if len(args) > 1 {
@@ -158,7 +165,7 @@ func (m *Monitor) disassemble(args []string) error {
 	return nil
 }
 
-func (m *Monitor) go_(args []string) error {
+func (m *Monitor) goCmd(args []string) error {
 	if err := checkLen(args, 0, 1); err != nil {
 		return err
 	}
@@ -208,6 +215,35 @@ func (m *Monitor) memory(args []string, decoder charset.Decoder) error {
 	}
 	m.out.Println(memory.Dump(m.mem, addrStart, addrEnd, decoder))
 	m.memPtr = addrEnd
+	return nil
+}
+
+func (m *Monitor) pokePeek(args []string) error {
+	if err := checkLen(args, 1, maxArgs); err != nil {
+		return err
+	}
+	address, err := parseAddress(args[0])
+	if err != nil {
+		return err
+	}
+	// peek
+	if len(args) == 1 {
+		v := m.mem.Load(address)
+		m.out.Printf("$%02x +%d\n", v, v)
+		return nil
+	}
+	// poke
+	values := []uint8{}
+	for _, str := range args[1:] {
+		v, err := parseValue(str)
+		if err != nil {
+			return err
+		}
+		values = append(values, v)
+	}
+	for offset, v := range values {
+		m.mem.Store(address+uint16(offset), v)
+	}
 	return nil
 }
 
