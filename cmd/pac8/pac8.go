@@ -11,9 +11,11 @@ import (
 )
 
 var monitor bool
+var wait bool
 
 func init() {
 	flag.BoolVar(&monitor, "m", false, "start monitor")
+	flag.BoolVar(&wait, "w", false, "wait for go command")
 }
 
 func main() {
@@ -36,6 +38,8 @@ func main() {
 			}
 		}()
 	}
-	m.Start()
+	if !wait {
+		m.Start()
+	}
 	m.Run()
 }

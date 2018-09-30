@@ -21,6 +21,7 @@ import (
 
 const (
 	CmdDisassemble = "d"
+	CmdFill        = "f"
 	CmdGo          = "g"
 	CmdHalt        = "h"
 	CmdMemory      = "m"
@@ -106,6 +107,8 @@ func (m *Monitor) parse(line string) {
 	switch cmd {
 	case CmdDisassemble:
 		err = m.disassemble(args)
+	case CmdFill:
+		err = m.fill(args)
 	case CmdGo:
 		err = m.goCmd(args)
 	case CmdHalt:
@@ -162,6 +165,28 @@ func (m *Monitor) disassemble(args []string) error {
 		m.out.Println(m.format(statement))
 	}
 	m.dasmPtr = m.dasm.PC()
+	return nil
+}
+
+func (m *Monitor) fill(args []string) error {
+	if err := checkLen(args, 3, 3); err != nil {
+		return err
+	}
+	start, err := parseAddress(args[0])
+	if err != nil {
+		return err
+	}
+	end, err := parseAddress(args[1])
+	if err != nil {
+		return err
+	}
+	value, err := parseValue(args[2])
+	if err != nil {
+		return err
+	}
+	for addr := start; addr <= end; addr++ {
+		m.mem.Store(addr, value)
+	}
 	return nil
 }
 
