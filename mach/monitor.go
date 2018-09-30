@@ -12,6 +12,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/blackchip-org/pac8/util/charset"
+
 	"github.com/blackchip-org/pac8/cpu"
 	"github.com/blackchip-org/pac8/memory"
 	"github.com/chzyer/readline"
@@ -21,6 +23,7 @@ const (
 	CmdDisassemble = "d"
 	CmdGo          = "g"
 	CmdHalt        = "h"
+	CmdMemory      = "m"
 	CmdRegisters   = "r"
 	CmdTrace       = "t"
 	CmdQuit        = "q"
@@ -102,6 +105,8 @@ func (m *Monitor) parse(line string) {
 		err = m.go_(args)
 	case CmdHalt:
 		err = m.halt(args)
+	case CmdMemory:
+		err = m.memory(args, charset.AsciiDecoder)
 	case CmdRegisters:
 		err = m.registers(args)
 	case CmdTrace:
@@ -173,6 +178,36 @@ func (m *Monitor) halt(args []string) error {
 		return err
 	}
 	m.mach.Stop()
+	return nil
+}
+
+func (m *Monitor) memory(args []string, decoder charset.Decoder) error {
+	if err := checkLen(args, 0, 2); err != nil {
+		return err
+	}
+	addrStart := m.cpu.PC()
+	if len(args) == 0 {
+		if m.lastCmd == CmdMemory {
+			addrStart = m.memPtr
+		}
+	}
+	if len(args) > 0 {
+		addr, err := parseAddress(args[0])
+		if err != nil {
+			return err
+		}
+		addrStart = addr
+	}
+	addrEnd := addrStart + uint16(memPageLen)
+	if len(args) > 1 {
+		addr, err := parseAddress(args[1])
+		if err != nil {
+			return err
+		}
+		addrEnd = addr
+	}
+	m.out.Println(memory.Dump(m.mem, addrStart, addrEnd, decoder))
+	m.memPtr = addrEnd
 	return nil
 }
 
