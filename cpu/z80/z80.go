@@ -58,6 +58,7 @@ type CPU struct {
 	delta uint8
 	// address used to load on the last (IX+d) or (IY+d) instruction
 	iaddr uint16
+	irq   chan uint8
 }
 
 func New(m memory.Memory) *CPU {
@@ -65,6 +66,7 @@ func New(m memory.Memory) *CPU {
 		mem:   m,
 		mem16: memory.NewLittleEndian(m),
 		Ports: memory.NewIO(0x100),
+		irq:   make(chan uint8, 1),
 	}
 	return c
 }
@@ -74,6 +76,14 @@ func (cpu *CPU) Next() {
 	execute := ops[opcode]
 	cpu.refreshR()
 	execute(cpu)
+
+	select {
+	case v := <-cpu.irq:
+		if cpu.IFF1 {
+			cpu.intAck(v)
+		}
+	default:
+	}
 }
 
 func (cpu *CPU) PC() uint16 {
@@ -82,6 +92,22 @@ func (cpu *CPU) PC() uint16 {
 
 func (cpu *CPU) SetPC(pc uint16) {
 	cpu.pc = pc
+}
+
+func (cpu *CPU) INT(v uint8) {
+	cpu.irq <- v
+}
+
+func (cpu *CPU) intAck(v uint8) {
+	if cpu.IM != 2 {
+		panic(fmt.Sprintf("unsupported interrupt mode %v", cpu.IM))
+	}
+	cpu.IFF1 = false
+	cpu.IFF2 = false
+	cpu.SP -= 2
+	cpu.mem16.Store(cpu.SP, cpu.PC())
+	vector := bits.Join(cpu.I, v<<2)
+	cpu.pc = cpu.mem16.Load(vector)
 }
 
 func (cpu *CPU) String() string {

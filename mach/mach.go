@@ -14,6 +14,10 @@ type Cab interface {
 	Mach() Mach
 }
 
+type Device interface {
+	Service() error
+}
+
 const (
 	Init Status = iota
 	Halt
@@ -55,6 +59,9 @@ type Mach struct {
 	start chan bool
 	stop  chan bool
 	trace chan bool
+
+	now     time.Time
+	devices []Device
 }
 
 func New() *Mach {
@@ -68,18 +75,25 @@ func New() *Mach {
 func (m *Mach) Run() {
 	dasm := m.NewDisassembler()
 
-	lastUpdate := time.Now()
+	lastUpdate := m.now
 	for {
+		m.now = time.Now()
 		if m.Status == Run {
 			if m.Tracing {
 				dasm.SetPC(m.CPU.PC())
 				fmt.Println(m.Format(dasm.Next()))
 			}
 			m.CPU.Next()
+			for _, d := range m.devices {
+				err := d.Service()
+				if err != nil {
+					m.Err = err
+					m.Status = Trap
+				}
+			}
 		}
-		now := time.Now()
-		if now.Sub(lastUpdate) > time.Millisecond {
-			lastUpdate = now
+		if m.now.Sub(lastUpdate) > time.Millisecond {
+			lastUpdate = m.now
 			for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 				if _, ok := event.(*sdl.QuitEvent); ok {
 					os.Exit(0)
@@ -117,4 +131,12 @@ func (m *Mach) Stop() {
 
 func (m *Mach) Trace(v bool) {
 	m.trace <- v
+}
+
+func (m *Mach) Now() time.Time {
+	return m.now
+}
+
+func (m *Mach) AddDevice(d Device) {
+	m.devices = append(m.devices, d)
 }

@@ -13,9 +13,10 @@ import (
 )
 
 type Pacman struct {
-	mem   memory.Memory
-	cpu   *z80.CPU
-	ports ports
+	mem       memory.Memory
+	cpu       *z80.CPU
+	ports     ports
+	intSelect uint8
 }
 
 type ports struct {
@@ -74,6 +75,7 @@ func NewPacman() *Pacman {
 		io,   // $5000 - $50ff
 	})
 	cab.cpu = z80.New(cab.mem)
+	cab.cpu.Ports.WO(0, &cab.intSelect)
 
 	return cab
 }
