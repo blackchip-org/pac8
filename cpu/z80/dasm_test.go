@@ -6,7 +6,6 @@ import (
 
 	. "github.com/blackchip-org/pac8/util/expect"
 
-	"github.com/blackchip-org/pac8/cpu"
 	"github.com/blackchip-org/pac8/memory"
 )
 
@@ -15,12 +14,12 @@ func TestDasm(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			mem := memory.NewRAM(0x20)
 			c := memory.NewCursor(mem)
-			dasm := cpu.NewDisassembler(mem, ReaderZ80)
+			dasm := NewDisassembler(mem)
 			dasm.SetPC(0x10)
 			c.Pos = 0x10
 			c.PutN(test.bytes...)
 			c.Pos = 0x10
-			s := dasm.Next()
+			s := dasm.NextStatement()
 			With(t).Expect(s.Op).ToBe(test.op)
 		})
 	}
@@ -54,8 +53,8 @@ func TestInvalid(t *testing.T) {
 				cursor.Put(0) // displacement byte
 			}
 			cursor.Put(uint8(opcode))
-			dasm := cpu.NewDisassembler(mem, ReaderZ80)
-			s := dasm.Next()
+			dasm := NewDisassembler(mem)
+			s := dasm.NextStatement()
 			if s.Op[0] == '?' {
 				name := fmt.Sprintf("%v%02x", test.name, opcode)
 				t.Run(name, func(t *testing.T) {

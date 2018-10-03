@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/blackchip-org/pac8/cpu"
+	"github.com/blackchip-org/pac8/memory"
 	"github.com/blackchip-org/pac8/util/bits"
 )
 
@@ -27,6 +28,10 @@ func FormatterZ80() cpu.CodeFormatter {
 	return func(s cpu.Statement) string {
 		return cpu.Format(s, options)
 	}
+}
+
+func NewDisassembler(mem memory.Memory) *cpu.Disassembler {
+	return cpu.NewDisassembler(mem, ReaderZ80, FormatterZ80())
 }
 
 func op1(e cpu.Eval, parts ...string) {

@@ -117,7 +117,7 @@ func (c *CPU) Speed() time.Duration {
 }
 
 func (c *CPU) Disassembler() *cpu.Disassembler {
-	return cpu.NewDisassembler(c.mem, ReaderZ80, FormatterZ80())
+	return NewDisassembler(c.mem)
 }
 
 func (c *CPU) intAck(v uint8) {

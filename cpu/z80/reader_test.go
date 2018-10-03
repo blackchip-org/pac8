@@ -38,7 +38,7 @@ func TestReader(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			mem := memory.NewROM(test.bytes)
 			dasm := NewDisassembler(mem)
-			result := format(dasm.Next())
+			result := dasm.Next()
 			With(t).Expect(result).ToBe(test.str)
 		})
 	}
