@@ -1,5 +1,11 @@
 package cpu
 
+import (
+	"time"
+
+	"github.com/blackchip-org/pac8/memory"
+)
+
 type Get func() uint8
 type Put func(uint8)
 
@@ -13,6 +19,10 @@ type PC interface {
 
 type CPU interface {
 	PC
+	Memory() memory.Memory
 	Next()
 	String() string
+	Ready() bool
+	Speed() time.Duration
+	Disassembler() *Disassembler
 }

@@ -11,10 +11,12 @@ import (
 )
 
 var monitor bool
+var trace bool
 var wait bool
 
 func init() {
 	flag.BoolVar(&monitor, "m", false, "start monitor")
+	flag.BoolVar(&trace, "t", false, "enable tracing on start")
 	flag.BoolVar(&wait, "w", false, "wait for go command")
 }
 
@@ -28,6 +30,9 @@ func main() {
 	sdl.GLSetSwapInterval(1)
 
 	m := cabs.NewPacman().Mach()
+	if trace {
+		m.Proc.Trace(true)
+	}
 	if monitor {
 		mon := mach.NewMonitor(m)
 		go func() {

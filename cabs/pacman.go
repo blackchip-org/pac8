@@ -4,6 +4,9 @@ package cabs
 
 import (
 	"fmt"
+	"time"
+
+	"github.com/blackchip-org/pac8/cpu"
 
 	"os"
 
@@ -15,8 +18,10 @@ import (
 type Pacman struct {
 	mem       memory.Memory
 	cpu       *z80.CPU
+	proc      *cpu.Processor
 	ports     ports
 	intSelect uint8
+	vblank    *mach.Clock
 }
 
 type ports struct {
@@ -75,17 +80,25 @@ func NewPacman() *Pacman {
 		io,   // $5000 - $50ff
 	})
 	cab.cpu = z80.New(cab.mem)
+	cab.proc = cpu.NewProcessor(cab.cpu)
+
+	mapPorts(&cab.ports, io)
 	cab.cpu.Ports.WO(0, &cab.intSelect)
+
+	// 16.67 milliseconds for VBLANK interrupt
+	cab.vblank = mach.NewClock(16670*time.Microsecond, func() {
+		if cab.ports.interruptEnable != 0 {
+			cab.cpu.INT(cab.intSelect)
+		}
+	})
 
 	return cab
 }
 
 func (c *Pacman) Mach() *mach.Mach {
-	m := mach.New()
-	m.Mem = c.mem
-	m.CPU = c.cpu
-	m.Reader = z80.ReaderZ80
-	m.Format = z80.FormatterZ80()
+	m := mach.New(c.proc)
+	m.AddDevice(c.proc)
+	m.AddDevice(c.vblank)
 	return m
 }
 

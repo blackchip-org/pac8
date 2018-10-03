@@ -2,6 +2,9 @@ package z80
 
 import (
 	"fmt"
+	"time"
+
+	"github.com/blackchip-org/pac8/cpu"
 
 	"github.com/blackchip-org/pac8/memory"
 	"github.com/blackchip-org/pac8/util/bits"
@@ -71,98 +74,117 @@ func New(m memory.Memory) *CPU {
 	return c
 }
 
-func (cpu *CPU) Next() {
-	opcode := cpu.fetch()
-	execute := ops[opcode]
-	cpu.refreshR()
-	execute(cpu)
+func (c *CPU) Next() {
+	if !c.Halt {
+		opcode := c.fetch()
+		execute := ops[opcode]
+		c.refreshR()
+		execute(c)
+	}
 
 	select {
-	case v := <-cpu.irq:
-		if cpu.IFF1 {
-			cpu.intAck(v)
+	case v := <-c.irq:
+		if c.IFF1 {
+			c.Halt = false
+			c.intAck(v)
 		}
 	default:
 	}
 }
 
-func (cpu *CPU) PC() uint16 {
-	return cpu.pc
+func (c *CPU) PC() uint16 {
+	return c.pc
 }
 
-func (cpu *CPU) SetPC(pc uint16) {
-	cpu.pc = pc
+func (c *CPU) SetPC(pc uint16) {
+	c.pc = pc
 }
 
-func (cpu *CPU) INT(v uint8) {
-	cpu.irq <- v
+func (c *CPU) INT(v uint8) {
+	c.irq <- v
 }
 
-func (cpu *CPU) intAck(v uint8) {
-	if cpu.IM != 2 {
-		panic(fmt.Sprintf("unsupported interrupt mode %v", cpu.IM))
+func (c *CPU) Ready() bool {
+	return c.Halt != true
+}
+
+func (c *CPU) Memory() memory.Memory {
+	return c.mem
+}
+
+func (c *CPU) Speed() time.Duration {
+	return 325 * time.Nanosecond // 3.072 MHz
+}
+
+func (c *CPU) Disassembler() *cpu.Disassembler {
+	return cpu.NewDisassembler(c.mem, ReaderZ80, FormatterZ80())
+}
+
+func (c *CPU) intAck(v uint8) {
+	if c.IM != 2 {
+		panic(fmt.Sprintf("unsupported interrupt mode %v", c.IM))
 	}
-	cpu.IFF1 = false
-	cpu.IFF2 = false
-	cpu.SP -= 2
-	cpu.mem16.Store(cpu.SP, cpu.PC())
-	vector := bits.Join(cpu.I, v<<2)
-	cpu.pc = cpu.mem16.Load(vector)
+	c.IFF1 = false
+	c.IFF2 = false
+	c.SP -= 2
+	c.mem16.Store(c.SP, c.PC())
+	vector := bits.Join(c.I, v)
+	c.pc = c.mem16.Load(vector)
 }
 
-func (cpu *CPU) String() string {
+func (c *CPU) String() string {
 	return fmt.Sprintf(""+
 		" pc   af   bc   de   hl   ix   iy   sp   i  r\n"+
 		"%04x %04x %04x %04x %04x %04x %04x %04x %02x %02x %v\n"+
 		"im %v %04x %04x %04x %04x      %v %v %v %v %v %v %v %v %v\n",
 		// line 1
-		cpu.pc,
-		bits.Join(cpu.A, cpu.F),
-		bits.Join(cpu.B, cpu.C),
-		bits.Join(cpu.D, cpu.E),
-		bits.Join(cpu.H, cpu.L),
-		bits.Join(cpu.IXH, cpu.IXL),
-		bits.Join(cpu.IYH, cpu.IYL),
-		cpu.SP,
-		cpu.I,
-		cpu.R,
-		bits.FormatB(cpu.IFF1, "", "iff1"),
+		c.pc,
+		bits.Join(c.A, c.F),
+		bits.Join(c.B, c.C),
+		bits.Join(c.D, c.E),
+		bits.Join(c.H, c.L),
+		bits.Join(c.IXH, c.IXL),
+		bits.Join(c.IYH, c.IYL),
+		c.SP,
+		c.I,
+		c.R,
+		bits.FormatB(c.IFF1, "", "iff1"),
 		// line 2
-		cpu.IM,
-		bits.Join(cpu.A1, cpu.F1),
-		bits.Join(cpu.B1, cpu.C1),
-		bits.Join(cpu.D1, cpu.E1),
-		bits.Join(cpu.H1, cpu.L1),
+		c.IM,
+		bits.Join(c.A1, c.F1),
+		bits.Join(c.B1, c.C1),
+		bits.Join(c.D1, c.E1),
+		bits.Join(c.H1, c.L1),
 		// flags
-		bits.Format(cpu.F, FlagS, ".", "S"),
-		bits.Format(cpu.F, FlagZ, ".", "Z"),
-		bits.Format(cpu.F, Flag5, ".", "5"),
-		bits.Format(cpu.F, FlagH, ".", "H"),
-		bits.Format(cpu.F, Flag3, ".", "3"),
-		bits.Format(cpu.F, FlagV, ".", "V"),
-		bits.Format(cpu.F, FlagN, ".", "N"),
-		bits.Format(cpu.F, FlagC, ".", "C"),
-		bits.FormatB(cpu.IFF2, "", "iff2"))
+		bits.Format(c.F, FlagS, ".", "S"),
+		bits.Format(c.F, FlagZ, ".", "Z"),
+		bits.Format(c.F, Flag5, ".", "5"),
+		bits.Format(c.F, FlagH, ".", "H"),
+		bits.Format(c.F, Flag3, ".", "3"),
+		bits.Format(c.F, FlagV, ".", "V"),
+		bits.Format(c.F, FlagN, ".", "N"),
+		bits.Format(c.F, FlagC, ".", "C"),
+		bits.FormatB(c.IFF2, "", "iff2"))
 }
 
-func (cpu *CPU) fetch() uint8 {
-	cpu.pc++
-	return cpu.mem.Load(cpu.pc - 1)
+func (c *CPU) fetch() uint8 {
+	c.pc++
+	return c.mem.Load(c.pc - 1)
 }
 
-func (cpu *CPU) fetch16() uint16 {
-	lo := cpu.fetch()
-	hi := cpu.fetch()
+func (c *CPU) fetch16() uint16 {
+	lo := c.fetch()
+	hi := c.fetch()
 	return bits.Join(hi, lo)
 }
 
-func (cpu *CPU) fetchd() {
-	cpu.delta = cpu.fetch()
+func (c *CPU) fetchd() {
+	c.delta = c.fetch()
 }
 
-func (cpu *CPU) refreshR() {
+func (c *CPU) refreshR() {
 	// Lower 7 bits of the refresh register are incremented on an instruction
 	// fetch
-	bit7 := cpu.R & 0x80
-	cpu.R = (cpu.R+1)&0x7f | bit7
+	bit7 := c.R & 0x80
+	c.R = (c.R+1)&0x7f | bit7
 }

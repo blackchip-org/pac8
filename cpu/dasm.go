@@ -29,6 +29,7 @@ type Disassembler struct {
 	mem      memory.Memory
 	cursor   *memory.Cursor
 	read     CodeReader
+	format   CodeFormatter
 }
 
 type Eval struct {
@@ -37,21 +38,26 @@ type Eval struct {
 	Statement *Statement
 }
 
-func NewDisassembler(mem memory.Memory, r CodeReader) *Disassembler {
+func NewDisassembler(mem memory.Memory, r CodeReader, f CodeFormatter) *Disassembler {
 	return &Disassembler{
 		CodeInfo: &CodeInfo{},
 		mem:      mem,
 		cursor:   memory.NewCursor(mem),
 		read:     r,
+		format:   f,
 	}
 }
 
-func (d *Disassembler) Next() Statement {
+func (d *Disassembler) NextStatement() Statement {
 	return d.read(Eval{
 		Cursor:    d.cursor,
 		CodeInfo:  d.CodeInfo,
 		Statement: NewStatement(),
 	})
+}
+
+func (d *Disassembler) Next() string {
+	return d.format(d.NextStatement())
 }
 
 func (d *Disassembler) SetPC(addr uint16) {

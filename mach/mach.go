@@ -1,12 +1,11 @@
 package mach
 
 import (
-	"fmt"
 	"os"
 	"time"
 
 	"github.com/blackchip-org/pac8/cpu"
-	"github.com/blackchip-org/pac8/memory"
+
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -15,83 +14,40 @@ type Cab interface {
 }
 
 type Device interface {
-	Service() error
+	Start()
+	Stop()
 }
-
-const (
-	Init Status = iota
-	Halt
-	Run
-	Break
-	Breakpoint
-	Trap
-)
-
-func (s Status) String() string {
-	switch s {
-	case Init:
-		return "halt"
-	case Halt:
-		return "halt"
-	case Run:
-		return "run"
-	case Break:
-		return "break"
-	case Breakpoint:
-		return "breakpoint"
-	case Trap:
-		return "trap"
-	}
-	return "???"
-}
-
-type Status int
 
 type Mach struct {
-	Mem     memory.Memory
-	CPU     cpu.CPU
-	Reader  cpu.CodeReader
-	Format  cpu.CodeFormatter
-	Status  Status
-	Tracing bool
-	Err     error
-
+	Proc  *cpu.Processor
 	start chan bool
 	stop  chan bool
-	trace chan bool
 
 	now     time.Time
 	devices []Device
 }
 
-func New() *Mach {
+func New(proc *cpu.Processor) *Mach {
 	return &Mach{
+		Proc:  proc,
 		start: make(chan bool, 1),
 		stop:  make(chan bool, 1),
-		trace: make(chan bool, 1),
 	}
 }
 
 func (m *Mach) Run() {
-	dasm := m.NewDisassembler()
-
 	lastUpdate := m.now
 	for {
 		m.now = time.Now()
-		if m.Status == Run {
-			if m.Tracing {
-				dasm.SetPC(m.CPU.PC())
-				fmt.Println(m.Format(dasm.Next()))
-			}
-			m.CPU.Next()
-			for _, d := range m.devices {
-				err := d.Service()
-				if err != nil {
-					m.Err = err
-					m.Status = Trap
+		/*
+			if m.Status == Run {
+				if m.Tracing && m.CPU.Ready() {
+					dasm.SetPC(m.CPU.PC())
+					fmt.Println(m.Format(dasm.Next()))
 				}
+				m.CPU.Next()
 			}
-		}
+		*/
 		if m.now.Sub(lastUpdate) > time.Millisecond {
 			lastUpdate = m.now
 			for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
@@ -107,18 +63,16 @@ func (m *Mach) Run() {
 		}
 		select {
 		case <-m.stop:
-			m.Status = Halt
+			for _, d := range m.devices {
+				d.Stop()
+			}
 		case <-m.start:
-			m.Status = Run
-		case v := <-m.trace:
-			m.Tracing = v
+			for _, d := range m.devices {
+				d.Start()
+			}
 		default:
 		}
 	}
-}
-
-func (m *Mach) NewDisassembler() *cpu.Disassembler {
-	return cpu.NewDisassembler(m.Mem, m.Reader)
 }
 
 func (m *Mach) Start() {
@@ -127,10 +81,6 @@ func (m *Mach) Start() {
 
 func (m *Mach) Stop() {
 	m.stop <- true
-}
-
-func (m *Mach) Trace(v bool) {
-	m.trace <- v
 }
 
 func (m *Mach) Now() time.Time {

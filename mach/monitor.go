@@ -40,8 +40,8 @@ const (
 
 type Monitor struct {
 	dasm    *cpu.Disassembler
-	format  cpu.CodeFormatter
 	mach    *Mach
+	proc    *cpu.Processor
 	cpu     cpu.CPU
 	mem     memory.Memory
 	in      io.ReadCloser
@@ -54,13 +54,13 @@ type Monitor struct {
 
 func NewMonitor(m *Mach) *Monitor {
 	return &Monitor{
-		mach:   m,
-		cpu:    m.CPU,
-		mem:    m.Mem,
-		in:     ioutil.NopCloser(os.Stdin),
-		out:    log.New(os.Stdout, "", 0),
-		dasm:   m.NewDisassembler(),
-		format: m.Format,
+		mach: m,
+		proc: m.Proc,
+		cpu:  m.Proc.CPU,
+		mem:  m.Proc.CPU.Memory(),
+		in:   ioutil.NopCloser(os.Stdin),
+		out:  log.New(os.Stdout, "", 0),
+		dasm: m.Proc.CPU.Disassembler(),
 	}
 }
 
@@ -161,8 +161,7 @@ func (m *Monitor) disassemble(args []string) error {
 	}
 	m.dasm.SetPC(addrStart)
 	for m.dasm.PC() <= addrEnd {
-		statement := m.dasm.Next()
-		m.out.Println(m.format(statement))
+		m.out.Println(m.dasm.Next())
 	}
 	m.dasmPtr = m.dasm.PC()
 	return nil
@@ -277,10 +276,10 @@ func (m *Monitor) registers(args []string) error {
 		return err
 	}
 	reason := ""
-	if m.mach.Err != nil {
-		reason = fmt.Sprintf(": %v", m.mach.Err)
+	if m.proc.Err != nil {
+		reason = fmt.Sprintf(": %v", m.proc.Err)
 	}
-	m.out.Printf("[%v%v]\n", m.mach.Status, reason)
+	m.out.Printf("[%v%v]\n", m.proc.Status, reason)
 	m.out.Println(m.cpu.String())
 	return nil
 }
@@ -289,10 +288,10 @@ func (m *Monitor) trace(args []string) error {
 	if err := checkLen(args, 0, 0); err != nil {
 		return err
 	}
-	if m.mach.Tracing {
-		m.mach.Trace(false)
+	if m.proc.Tracing {
+		m.proc.Trace(false)
 	} else {
-		m.mach.Trace(true)
+		m.proc.Trace(true)
 	}
 	return nil
 }
