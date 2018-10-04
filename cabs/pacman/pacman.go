@@ -1,4 +1,4 @@
-package cabs
+package pacman
 
 // https://www.lomont.org/Software/Games/PacMan/PacmanEmulation.pdf
 
@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/blackchip-org/pac8/cpu"
+	"github.com/veandco/go-sdl2/sdl"
 
 	"os"
 
@@ -16,12 +17,14 @@ import (
 )
 
 type Pacman struct {
+	mach      *mach.Mach
 	mem       memory.Memory
 	cpu       *z80.CPU
 	proc      *cpu.Processor
 	ports     ports
 	intSelect uint8
 	vblank    *mach.Clock
+	tiles     *sdl.Texture
 }
 
 type ports struct {
@@ -53,7 +56,7 @@ type spriteCoord struct {
 	y uint8
 }
 
-func NewPacman() *Pacman {
+func New(renderer *sdl.Renderer) *Pacman {
 	cab := &Pacman{}
 
 	e := []error{}
@@ -64,13 +67,6 @@ func NewPacman() *Pacman {
 	ram := memory.NewRAM(0x1000)
 	io := memory.NewIO(0x100)
 
-	for _, err := range e {
-		fmt.Fprintf(os.Stderr, "%v\n", err)
-	}
-	if len(e) > 0 {
-		os.Exit(1)
-	}
-
 	cab.mem = memory.NewPageMapped([]memory.Memory{
 		rom0, // $0000 - $0fff
 		rom1, // $1000 - $1fff
@@ -79,27 +75,41 @@ func NewPacman() *Pacman {
 		ram,  // $4000 - $4fff
 		io,   // $5000 - $50ff
 	})
+
+	video := NewVideo(&e, renderer, cab.mem)
+
+	for _, err := range e {
+		fmt.Fprintf(os.Stderr, "%v\n", err)
+	}
+	if len(e) > 0 {
+		os.Exit(1)
+	}
+
 	cab.cpu = z80.New(cab.mem)
 	cab.proc = cpu.NewProcessor(cab.cpu)
 
 	mapPorts(&cab.ports, io)
 	cab.cpu.Ports.WO(0, &cab.intSelect)
 
+	cab.mach = mach.New(cab.proc)
+
 	// 16.67 milliseconds for VBLANK interrupt
 	cab.vblank = mach.NewClock(16670*time.Microsecond, func() {
 		if cab.ports.interruptEnable != 0 {
 			cab.cpu.INT(cab.intSelect)
 		}
+		cab.mach.Render()
 	})
+
+	cab.mach.Display = video
+	cab.mach.AddDevice(cab.proc)
+	cab.mach.AddDevice(cab.vblank)
 
 	return cab
 }
 
 func (c *Pacman) Mach() *mach.Mach {
-	m := mach.New(c.proc)
-	m.AddDevice(c.proc)
-	m.AddDevice(c.vblank)
-	return m
+	return c.mach
 }
 
 func mapPorts(p *ports, io memory.IO) {

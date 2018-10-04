@@ -18,10 +18,17 @@ type Device interface {
 	Stop()
 }
 
+type Display interface {
+	Render()
+}
+
 type Mach struct {
-	Proc  *cpu.Processor
-	start chan bool
-	stop  chan bool
+	Proc    *cpu.Processor
+	Display Display
+
+	start  chan bool
+	stop   chan bool
+	render chan bool
 
 	now     time.Time
 	devices []Device
@@ -29,9 +36,10 @@ type Mach struct {
 
 func New(proc *cpu.Processor) *Mach {
 	return &Mach{
-		Proc:  proc,
-		start: make(chan bool, 1),
-		stop:  make(chan bool, 1),
+		Proc:   proc,
+		start:  make(chan bool, 1),
+		stop:   make(chan bool, 1),
+		render: make(chan bool, 1),
 	}
 }
 
@@ -70,6 +78,8 @@ func (m *Mach) Run() {
 			for _, d := range m.devices {
 				d.Start()
 			}
+		case <-m.render:
+			m.Display.Render()
 		default:
 		}
 	}
@@ -85,6 +95,10 @@ func (m *Mach) Stop() {
 
 func (m *Mach) Now() time.Time {
 	return m.now
+}
+
+func (m *Mach) Render() {
+	m.render <- true
 }
 
 func (m *Mach) AddDevice(d Device) {
