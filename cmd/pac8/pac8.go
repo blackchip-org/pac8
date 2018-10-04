@@ -31,7 +31,7 @@ func main() {
 	defer sdl.Quit()
 	sdl.GLSetSwapInterval(1)
 
-	scale := 4
+	scale := 2
 	window, err := sdl.CreateWindow(
 		"pac8",
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,

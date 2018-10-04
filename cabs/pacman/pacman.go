@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/blackchip-org/pac8/cpu"
+	"github.com/blackchip-org/pac8/util/bits"
 	"github.com/veandco/go-sdl2/sdl"
 
 	"os"
@@ -100,6 +101,10 @@ func New(renderer *sdl.Renderer) *Pacman {
 		}
 		cab.mach.Render()
 	})
+
+	bits.Set(&cab.ports.in1, 4, true)
+	bits.Set(&cab.ports.dipSwitches, 1, true)
+	bits.Set(&cab.ports.dipSwitches, 7, true)
 
 	cab.mach.Display = video
 	cab.mach.AddDevice(cab.proc)

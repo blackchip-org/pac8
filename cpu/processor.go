@@ -2,6 +2,7 @@ package cpu
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/blackchip-org/pac8/memory"
 )
@@ -71,6 +72,7 @@ func (p *Processor) Trace(value bool) {
 func (p *Processor) run() {
 	p.Status = Run
 	for {
+		start := time.Now()
 		p.tick()
 		select {
 		case value := <-p.trace:
@@ -80,7 +82,8 @@ func (p *Processor) run() {
 			return
 		default:
 		}
-		//time.Sleep(p.CPU.Speed())
+		elapsed := time.Now().Sub(start)
+		time.Sleep(p.CPU.Speed() - elapsed)
 	}
 }
 

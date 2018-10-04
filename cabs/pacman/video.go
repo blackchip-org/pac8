@@ -20,7 +20,7 @@ func NewVideo(e *[]error, r *sdl.Renderer, mem memory.Memory) *Video {
 	v := &Video{r: r, mem: mem}
 	tileROM := memory.LoadROM(e, "pacman/pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9")
 	v.tiles = tileSheet(e, r, tileROM)
-	v.scale = 4
+	v.scale = 2
 	return v
 }
 
