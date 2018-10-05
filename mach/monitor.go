@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/user"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 
@@ -20,13 +21,16 @@ import (
 )
 
 const (
+	CmdBreakpoint  = "b"
 	CmdDisassemble = "d"
 	CmdFill        = "f"
 	CmdGo          = "g"
 	CmdHalt        = "h"
 	CmdMemory      = "m"
+	CmdNext        = "n"
 	CmdPokePeek    = "p"
 	CmdRegisters   = "r"
+	CmdStep        = "s"
 	CmdTrace       = "t"
 	CmdQuit        = "q"
 	CmdQuitLong    = "quit"
@@ -41,7 +45,6 @@ const (
 type Monitor struct {
 	dasm    *cpu.Disassembler
 	mach    *Mach
-	proc    *cpu.Processor
 	cpu     cpu.CPU
 	mem     memory.Memory
 	in      io.ReadCloser
@@ -52,16 +55,17 @@ type Monitor struct {
 	dasmPtr uint16
 }
 
-func NewMonitor(m *Mach) *Monitor {
-	return &Monitor{
-		mach: m,
-		proc: m.Proc,
-		cpu:  m.Proc.CPU,
-		mem:  m.Proc.CPU.Memory(),
+func NewMonitor(mach *Mach) *Monitor {
+	m := &Monitor{
+		mach: mach,
+		cpu:  mach.CPU,
+		mem:  mach.CPU.Memory(),
 		in:   ioutil.NopCloser(os.Stdin),
 		out:  log.New(os.Stdout, "", 0),
-		dasm: m.Proc.CPU.Disassembler(),
+		dasm: mach.CPU.Disassembler(),
 	}
+	mach.Callback = m.statusChange
+	return m
 }
 
 func (m *Monitor) Run() error {
@@ -93,7 +97,10 @@ func (m *Monitor) Run() error {
 func (m *Monitor) parse(line string) {
 	line = strings.TrimSpace(line)
 	if line == "" {
-		return
+		if m.lastCmd != CmdStep && m.lastCmd != CmdGo {
+			return
+		}
+		line = m.lastCmd
 	}
 	fields := strings.Split(line, " ")
 
@@ -105,6 +112,8 @@ func (m *Monitor) parse(line string) {
 	args := fields[1:]
 	var err error
 	switch cmd {
+	case CmdBreakpoint:
+		err = m.breakpoint(args)
 	case CmdDisassemble:
 		err = m.disassemble(args)
 	case CmdFill:
@@ -114,16 +123,22 @@ func (m *Monitor) parse(line string) {
 	case CmdHalt:
 		err = m.halt(args)
 	case CmdMemory:
-		err = m.memory(args, charset.AsciiDecoder)
+		// FIXME: Should not be hard coded
+		err = m.memory(args, charset.PacDecoder)
+	case CmdNext:
+		err = m.next(args)
 	case CmdPokePeek:
 		err = m.pokePeek(args)
 	case CmdRegisters:
 		err = m.registers(args)
+	case CmdStep:
+		err = m.step(args)
 	case CmdTrace:
 		err = m.trace(args)
 	case CmdQuit, CmdQuitLong:
 		m.rl.Close()
 		m.mach.Quit()
+		runtime.Goexit()
 	default:
 		err = fmt.Errorf("unknown command: %v", cmd)
 	}
@@ -133,6 +148,33 @@ func (m *Monitor) parse(line string) {
 	} else {
 		m.lastCmd = cmd
 	}
+}
+
+func (m *Monitor) breakpoint(args []string) error {
+	if err := checkLen(args, 1, 2); err != nil {
+		return err
+	}
+	address, err := parseAddress(args[0])
+	if err != nil {
+		return err
+	}
+	if len(args) == 1 {
+		if _, exists := m.mach.Breakpoints[address]; exists {
+			m.out.Println("breakpoint on")
+		} else {
+			m.out.Println("breakpoint off")
+		}
+		return nil
+	}
+	switch args[1] {
+	case "on":
+		m.mach.Breakpoints[address] = struct{}{}
+	case "off":
+		delete(m.mach.Breakpoints, address)
+	default:
+		return fmt.Errorf("invalid: %v", args[1])
+	}
+	return nil
 }
 
 func (m *Monitor) disassemble(args []string) error {
@@ -243,6 +285,15 @@ func (m *Monitor) memory(args []string, decoder charset.Decoder) error {
 	return nil
 }
 
+func (m *Monitor) next(args []string) error {
+	if err := checkLen(args, 0, 0); err != nil {
+		return err
+	}
+	m.dasm.SetPC(m.cpu.PC())
+	m.out.Println(m.dasm.Next())
+	return nil
+}
+
 func (m *Monitor) pokePeek(args []string) error {
 	if err := checkLen(args, 1, maxArgs); err != nil {
 		return err
@@ -277,11 +328,21 @@ func (m *Monitor) registers(args []string) error {
 		return err
 	}
 	reason := ""
-	if m.proc.Err != nil {
-		reason = fmt.Sprintf(": %v", m.proc.Err)
+	if m.mach.Err != nil {
+		reason = fmt.Sprintf(": %v", m.mach.Err)
 	}
-	m.out.Printf("[%v%v]\n", m.proc.Status, reason)
+	m.out.Printf("[%v%v]\n", m.mach.Status, reason)
 	m.out.Println(m.cpu.String())
+	return nil
+}
+
+func (m *Monitor) step(args []string) error {
+	if err := checkLen(args, 0, 0); err != nil {
+		return err
+	}
+	m.cpu.Next()
+	m.dasm.SetPC(m.cpu.PC())
+	m.out.Println(m.dasm.Next())
 	return nil
 }
 
@@ -289,12 +350,19 @@ func (m *Monitor) trace(args []string) error {
 	if err := checkLen(args, 0, 0); err != nil {
 		return err
 	}
-	if m.proc.Tracing {
-		m.proc.Trace(false)
+	if m.mach.Tracing {
+		m.mach.Trace(false)
 	} else {
-		m.proc.Trace(true)
+		m.mach.Trace(true)
 	}
 	return nil
+}
+
+func (m *Monitor) statusChange(s Status) {
+	if s == Breakpoint {
+		fmt.Println()
+		m.registers([]string{})
+	}
 }
 
 func checkLen(args []string, min int, max int) error {

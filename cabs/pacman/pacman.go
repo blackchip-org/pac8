@@ -4,9 +4,7 @@ package pacman
 
 import (
 	"fmt"
-	"time"
 
-	"github.com/blackchip-org/pac8/cpu"
 	"github.com/blackchip-org/pac8/util/bits"
 	"github.com/veandco/go-sdl2/sdl"
 
@@ -21,10 +19,8 @@ type Pacman struct {
 	mach      *mach.Mach
 	mem       memory.Memory
 	cpu       *z80.CPU
-	proc      *cpu.Processor
 	ports     ports
 	intSelect uint8
-	vblank    *mach.Clock
 	tiles     *sdl.Texture
 }
 
@@ -87,6 +83,14 @@ func New(renderer *sdl.Renderer) *Pacman {
 		ram,  // $4000 - $4fff
 		io,   // $5000 - $50ff
 	})
+	cab.mem = memory.NewMasked(cab.mem, 0x7fff)
+
+	/*
+		spy := memory.NewSpy(cab.mem)
+		spy.Callback(func(e memory.Event) { fmt.Println(e) })
+		spy.WatchRW(0x5000)
+		cab.mem = spy
+	*/
 
 	video, err := NewVideo(renderer, cab.mem, vroms)
 	if err != nil {
@@ -95,28 +99,31 @@ func New(renderer *sdl.Renderer) *Pacman {
 	}
 
 	cab.cpu = z80.New(cab.mem)
-	cab.proc = cpu.NewProcessor(cab.cpu)
 
 	mapPorts(&cab.ports, io)
 	cab.cpu.Ports.WO(0, &cab.intSelect)
 
-	cab.mach = mach.New(cab.proc)
+	/*
+		portSpy := memory.NewSpyIO(cab.cpu.Ports)
+		portSpy.Callback(func(e memory.Event) { fmt.Printf("PORT %v\n", e) })
+		portSpy.WatchRW(0)
+		cab.cpu.Ports = portSpy
+	*/
 
-	// 16.67 milliseconds for VBLANK interrupt
-	cab.vblank = mach.NewClock(16670*time.Microsecond, func() {
-		if cab.ports.interruptEnable != 0 {
+	cab.mach = mach.New(cab.cpu)
+
+	// VBLANK interrupt
+	video.Callback = func() {
+		if cab.mach.Status == mach.Run && cab.ports.interruptEnable != 0 {
 			cab.cpu.INT(cab.intSelect)
 		}
-		cab.mach.Render()
-	})
+	}
 
 	bits.Set(&cab.ports.in1, 4, true)
 	bits.Set(&cab.ports.dipSwitches, 1, true)
 	bits.Set(&cab.ports.dipSwitches, 7, true)
 
 	cab.mach.Display = video
-	cab.mach.AddDevice(cab.proc)
-	cab.mach.AddDevice(cab.vblank)
 
 	return cab
 }

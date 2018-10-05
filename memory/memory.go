@@ -262,3 +262,27 @@ func Dump(m Memory, start uint16, end uint16, decode charset.Decoder) string {
 	}
 	return buf.String()
 }
+
+type Masked struct {
+	mem  Memory
+	mask uint16
+}
+
+func NewMasked(mem Memory, mask uint16) *Masked {
+	return &Masked{
+		mem:  mem,
+		mask: mask,
+	}
+}
+
+func (m *Masked) Load(address uint16) uint8 {
+	return m.mem.Load(address & m.mask)
+}
+
+func (m *Masked) Store(address uint16, value uint8) {
+	m.mem.Store(address&m.mask, value)
+}
+
+func (m *Masked) Length() int {
+	return m.mem.Length()
+}

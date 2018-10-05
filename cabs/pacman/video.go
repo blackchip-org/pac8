@@ -2,7 +2,9 @@ package pacman
 
 import (
 	"fmt"
+	"time"
 
+	"github.com/blackchip-org/pac8/mach"
 	"github.com/blackchip-org/pac8/memory"
 	"github.com/blackchip-org/pac8/util/bits"
 	"github.com/veandco/go-sdl2/sdl"
@@ -11,11 +13,13 @@ import (
 // https://www.lomont.org/Software/Games/PacMan/PacmanEmulation.pdf
 
 type Video struct {
-	r       *sdl.Renderer
-	mem     memory.Memory
-	tiles   *sdl.Texture
-	sprites *sdl.Texture
-	scale   int
+	Callback func()
+	r        *sdl.Renderer
+	mem      memory.Memory
+	tiles    *sdl.Texture
+	sprites  *sdl.Texture
+	scale    int
+	cycle    *mach.Cycle
 }
 
 type VideoROM struct {
@@ -34,10 +38,18 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 		return nil, err
 	}
 	v.tiles = tiles
+
+	// 16.67 milliseconds for VBLANK interrupt
+	v.cycle = mach.NewCycle(16670 * time.Microsecond)
+
 	return v, nil
 }
 
 func (v *Video) Render() {
+	if !v.cycle.Next() {
+		return
+	}
+	v.Callback()
 	for ty := 0; ty < 36; ty++ {
 		for tx := 0; tx < 28; tx++ {
 			var addr int

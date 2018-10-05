@@ -36,7 +36,11 @@ func main() {
 		if err := pprof.StartCPUProfile(f); err != nil {
 			log.Fatal("could not start CPU profile: ", err)
 		}
-		defer pprof.StopCPUProfile()
+		fmt.Println("starting profile")
+		defer func() {
+			pprof.StopCPUProfile()
+			fmt.Println("profile saved")
+		}()
 	}
 
 	if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
@@ -65,7 +69,7 @@ func main() {
 
 	m := pacman.New(renderer).Mach()
 	if trace {
-		m.Proc.Trace(true)
+		m.Trace(true)
 	}
 	if monitor {
 		mon := mach.NewMonitor(m)
