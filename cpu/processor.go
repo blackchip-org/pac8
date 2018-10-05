@@ -83,7 +83,8 @@ func (p *Processor) run() {
 		default:
 		}
 		elapsed := time.Now().Sub(start)
-		time.Sleep(p.CPU.Speed() - elapsed)
+		remaining := p.CPU.Speed() - elapsed
+		time.Sleep(remaining)
 	}
 }
 

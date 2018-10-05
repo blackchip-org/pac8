@@ -68,6 +68,17 @@ func New(renderer *sdl.Renderer) *Pacman {
 	ram := memory.NewRAM(0x1000)
 	io := memory.NewIO(0x100)
 
+	vroms := VideoROM{
+		Tiles: memory.LoadROM(&e, "pacman/pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9"),
+	}
+
+	for _, err := range e {
+		fmt.Fprintf(os.Stderr, "%v\n", err)
+	}
+	if len(e) > 0 {
+		os.Exit(1)
+	}
+
 	cab.mem = memory.NewPageMapped([]memory.Memory{
 		rom0, // $0000 - $0fff
 		rom1, // $1000 - $1fff
@@ -77,12 +88,9 @@ func New(renderer *sdl.Renderer) *Pacman {
 		io,   // $5000 - $50ff
 	})
 
-	video := NewVideo(&e, renderer, cab.mem)
-
-	for _, err := range e {
-		fmt.Fprintf(os.Stderr, "%v\n", err)
-	}
-	if len(e) > 0 {
+	video, err := NewVideo(renderer, cab.mem, vroms)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "unable to initialize video: %v\n", err)
 		os.Exit(1)
 	}
 

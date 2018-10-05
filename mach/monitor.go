@@ -122,7 +122,8 @@ func (m *Monitor) parse(line string) {
 	case CmdTrace:
 		err = m.trace(args)
 	case CmdQuit, CmdQuitLong:
-		os.Exit(0)
+		m.rl.Close()
+		m.mach.Quit()
 	default:
 		err = fmt.Errorf("unknown command: %v", cmd)
 	}

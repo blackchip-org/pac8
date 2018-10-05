@@ -5,18 +5,21 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"runtime/pprof"
 
 	"github.com/blackchip-org/pac8/cabs/pacman"
 	"github.com/blackchip-org/pac8/mach"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
+var cprof bool
 var monitor bool
 var trace bool
 var wait bool
 var display string
 
 func init() {
+	flag.BoolVar(&cprof, "cprof", false, "enable cpu profiling")
 	flag.BoolVar(&monitor, "m", false, "start monitor")
 	flag.BoolVar(&trace, "t", false, "enable tracing on start")
 	flag.BoolVar(&wait, "w", false, "wait for go command")
@@ -24,6 +27,18 @@ func init() {
 
 func main() {
 	flag.Parse()
+
+	if cprof {
+		f, err := os.Create("./cpu.prof")
+		if err != nil {
+			log.Fatal("could not create CPU profile: ", err)
+		}
+		if err := pprof.StartCPUProfile(f); err != nil {
+			log.Fatal("could not start CPU profile: ", err)
+		}
+		defer pprof.StopCPUProfile()
+	}
+
 	if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
 		fmt.Fprintf(os.Stderr, "unable to initialize sdl: %v\n", err)
 		os.Exit(1)
@@ -57,7 +72,7 @@ func main() {
 		go func() {
 			err := mon.Run()
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "unable to start monitor: %v\n", err)
+				fmt.Fprintf(os.Stderr, "monitor error: %v\n", err)
 				os.Exit(1)
 			}
 		}()

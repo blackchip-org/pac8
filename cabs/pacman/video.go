@@ -8,6 +8,8 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
+// https://www.lomont.org/Software/Games/PacMan/PacmanEmulation.pdf
+
 type Video struct {
 	r       *sdl.Renderer
 	mem     memory.Memory
@@ -16,22 +18,37 @@ type Video struct {
 	scale   int
 }
 
-func NewVideo(e *[]error, r *sdl.Renderer, mem memory.Memory) *Video {
-	v := &Video{r: r, mem: mem}
-	tileROM := memory.LoadROM(e, "pacman/pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9")
-	v.tiles = tileSheet(e, r, tileROM)
-	v.scale = 2
-	return v
+type VideoROM struct {
+	Tiles   memory.Memory
+	Sprites memory.Memory
+}
+
+func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) {
+	v := &Video{
+		r:     r,
+		scale: 2,
+		mem:   mem,
+	}
+	tiles, err := tileSheet(r, rom.Tiles)
+	if err != nil {
+		return nil, err
+	}
+	v.tiles = tiles
+	return v, nil
 }
 
 func (v *Video) Render() {
 	for ty := 0; ty < 36; ty++ {
 		for tx := 0; tx < 28; tx++ {
-			if ty == 0 || ty == 1 || ty == 34 || ty == 35 {
-				continue
+			var addr int
+			if ty == 0 || ty == 1 {
+				addr = 0x43dd + (ty * 0x20) - tx
+			} else if ty == 34 || ty == 35 {
+				addr = 0x401d + ((ty - 34) * 0x20) - tx
+			} else {
+				addr = 0x43a0 + (ty - 2) - (tx * 0x20)
 			}
-			addr := 0x43a0 + (ty - 2) - (tx * 0x20)
-			//fmt.Printf("tx: %v, ty: %v, addr: %02x\n", tx, ty, addr)
+			// fmt.Printf("tx: %v, ty: %v, addr: %02x\n", tx, ty, addr)
 			tileN := v.mem.Load(uint16(addr))
 			sheetX := (tileN % 16) * 8
 			sheetY := (tileN / 16) * 8
@@ -73,14 +90,13 @@ func bit2(b0 bool, b1 bool) int {
 	return index
 }
 
-func tileSheet(e *[]error, r *sdl.Renderer, mem memory.Memory) *sdl.Texture {
+func tileSheet(r *sdl.Renderer, mem memory.Memory) (*sdl.Texture, error) {
 	w := 16 * 8
 	h := 16 * 8
 	t, err := r.CreateTexture(sdl.PIXELFORMAT_RGBA8888,
 		sdl.TEXTUREACCESS_TARGET, int32(w), int32(h))
 	if err != nil {
-		*e = append(*e, fmt.Errorf("unable to create tile sheet: %v", err))
-		return nil
+		return nil, fmt.Errorf("unable to create tile sheet: %v", err)
 	}
 	r.SetRenderTarget(t)
 
@@ -115,5 +131,5 @@ func tileSheet(e *[]error, r *sdl.Renderer, mem memory.Memory) *sdl.Texture {
 	t.SetBlendMode(sdl.BLENDMODE_BLEND)
 	r.SetRenderTarget(nil)
 
-	return t
+	return t, nil
 }
