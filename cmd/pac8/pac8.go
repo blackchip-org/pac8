@@ -54,6 +54,7 @@ func main() {
 	window, err := sdl.CreateWindow(
 		"pac8",
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
+		// FIXME: hard coded
 		int32(224*scale), int32(288*scale),
 		sdl.WINDOW_SHOWN,
 	)
@@ -67,7 +68,7 @@ func main() {
 		log.Fatalf("unable to initialize renderer: %v", err)
 	}
 
-	m := pacman.New(renderer).Mach()
+	m := pacman.New(renderer)
 	if trace {
 		m.Trace(true)
 	}

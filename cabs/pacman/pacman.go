@@ -4,31 +4,28 @@ package pacman
 
 import (
 	"fmt"
-
-	"github.com/blackchip-org/pac8/util/bits"
-	"github.com/veandco/go-sdl2/sdl"
-
 	"os"
 
 	"github.com/blackchip-org/pac8/cpu/z80"
 	"github.com/blackchip-org/pac8/mach"
 	"github.com/blackchip-org/pac8/memory"
+	"github.com/blackchip-org/pac8/util/bits"
+	"github.com/veandco/go-sdl2/sdl"
 )
 
 type Pacman struct {
-	mach      *mach.Mach
 	mem       memory.Memory
 	cpu       *z80.CPU
-	ports     ports
-	intSelect uint8
+	regs      registers
+	intSelect uint8 // value sent during interrupt to select vector (port 0)
 	tiles     *sdl.Texture
 }
 
-type ports struct {
+type registers struct {
 	in0             uint8 // joystick and coin slot
 	interruptEnable uint8
 	soundEnable     uint8
-	auxEnable       uint8
+	unknown0        uint8
 	flipScreen      uint8
 	player1Lamp     uint8
 	player2Lamp     uint8
@@ -53,21 +50,20 @@ type spriteCoord struct {
 	y uint8
 }
 
-func New(renderer *sdl.Renderer) *Pacman {
+func New(renderer *sdl.Renderer) *mach.Mach {
 	cab := &Pacman{}
 
+	// Load ROMs
 	e := []error{}
 	rom0 := memory.LoadROM(&e, "pacman/pacman.6e", "e87e059c5be45753f7e9f33dff851f16d6751181")
 	rom1 := memory.LoadROM(&e, "pacman/pacman.6f", "674d3a7f00d8be5e38b1fdc208ebef5a92d38329")
 	rom2 := memory.LoadROM(&e, "pacman/pacman.6h", "8e47e8c2c4d6117d174cdac150392042d3e0a881")
 	rom3 := memory.LoadROM(&e, "pacman/pacman.6j", "d4a70d56bb01d27d094d73db8667ffb00ca69cb9")
-	ram := memory.NewRAM(0x1000)
-	io := memory.NewIO(0x100)
-
 	vroms := VideoROM{
 		Tiles: memory.LoadROM(&e, "pacman/pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9"),
 	}
 
+	// Any errors while loading ROMs?
 	for _, err := range e {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 	}
@@ -75,6 +71,8 @@ func New(renderer *sdl.Renderer) *Pacman {
 		os.Exit(1)
 	}
 
+	ram := memory.NewRAM(0x1000)
+	io := memory.NewIO(0x100)
 	cab.mem = memory.NewPageMapped([]memory.Memory{
 		rom0, // $0000 - $0fff
 		rom1, // $1000 - $1fff
@@ -83,94 +81,77 @@ func New(renderer *sdl.Renderer) *Pacman {
 		ram,  // $4000 - $4fff
 		io,   // $5000 - $50ff
 	})
-	cab.mem = memory.NewMasked(cab.mem, 0x7fff)
+	// Mask out the bit 15 address line that is missing in Pacman
+	cab.mem = memory.NewAddrMasked(cab.mem, 0x7fff)
 
-	/*
-		spy := memory.NewSpy(cab.mem)
-		spy.Callback(func(e memory.Event) { fmt.Println(e) })
-		spy.WatchRW(0x5000)
-		cab.mem = spy
-	*/
+	cab.cpu = z80.New(cab.mem)
+	m := mach.New(cab.cpu)
+	mapRegisters(&cab.regs, io)
+
+	// Port 0 gets set with the partial interrupt pointer to be set
+	// by the interrupting device
+	cab.cpu.Ports.WO(0, &cab.intSelect)
 
 	video, err := NewVideo(renderer, cab.mem, vroms)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "unable to initialize video: %v\n", err)
 		os.Exit(1)
 	}
+	m.Display = video
 
-	cab.cpu = z80.New(cab.mem)
-
-	mapPorts(&cab.ports, io)
-	cab.cpu.Ports.WO(0, &cab.intSelect)
-
-	/*
-		portSpy := memory.NewSpyIO(cab.cpu.Ports)
-		portSpy.Callback(func(e memory.Event) { fmt.Printf("PORT %v\n", e) })
-		portSpy.WatchRW(0)
-		cab.cpu.Ports = portSpy
-	*/
-
-	cab.mach = mach.New(cab.cpu)
+	bits.Set(&cab.regs.in1, 4, true)         // Board test switch disabled
+	bits.Set(&cab.regs.dipSwitches, 1, true) // 1 coin per game
+	bits.Set(&cab.regs.dipSwitches, 7, true) // Normal ghost names
 
 	// VBLANK interrupt
 	video.Callback = func() {
-		if cab.mach.Status == mach.Run && cab.ports.interruptEnable != 0 {
+		if m.Status == mach.Run && cab.regs.interruptEnable != 0 {
 			cab.cpu.INT(cab.intSelect)
 		}
 	}
 
-	bits.Set(&cab.ports.in1, 4, true)
-	bits.Set(&cab.ports.dipSwitches, 1, true)
-	bits.Set(&cab.ports.dipSwitches, 7, true)
-
-	cab.mach.Display = video
-
-	return cab
+	return m
 }
 
-func (c *Pacman) Mach() *mach.Mach {
-	return c.mach
-}
-
-func mapPorts(p *ports, io memory.IO) {
+func mapRegisters(r *registers, io memory.IO) {
 	for i := 0; i <= 0x3f; i++ {
-		io.RO(i, &p.in0)
+		io.RO(i, &r.in0)
 	}
-	io.WO(0x00, &p.interruptEnable)
-	io.WO(0x01, &p.soundEnable)
-	io.WO(0x02, &p.auxEnable)
-	io.RW(0x03, &p.flipScreen)
-	io.RW(0x04, &p.player1Lamp)
-	io.RW(0x05, &p.player2Lamp)
-	io.RW(0x06, &p.coinLockout)
-	io.RW(0x07, &p.coinCounter)
+	io.WO(0x00, &r.interruptEnable)
+	io.WO(0x01, &r.soundEnable)
+	io.WO(0x02, &r.unknown0)
+	io.RW(0x03, &r.flipScreen)
+	io.RW(0x04, &r.player1Lamp)
+	io.RW(0x05, &r.player2Lamp)
+	io.RW(0x06, &r.coinLockout)
+	io.RW(0x07, &r.coinCounter)
 	for i := 0x40; i <= 0x7f; i++ {
-		io.RO(i, &p.in1)
+		io.RO(i, &r.in1)
 	}
 	for i, v := 0x40, 0; v < 3; i, v = i+6, v+1 {
-		io.WO(i+0, &p.voices[v].acc[0])
-		io.WO(i+1, &p.voices[v].acc[1])
-		io.WO(i+2, &p.voices[v].acc[2])
-		io.WO(i+3, &p.voices[v].acc[3])
-		io.WO(i+4, &p.voices[v].acc[4])
-		io.WO(i+5, &p.voices[v].waveform)
+		io.WO(i+0, &r.voices[v].acc[0])
+		io.WO(i+1, &r.voices[v].acc[1])
+		io.WO(i+2, &r.voices[v].acc[2])
+		io.WO(i+3, &r.voices[v].acc[3])
+		io.WO(i+4, &r.voices[v].acc[4])
+		io.WO(i+5, &r.voices[v].waveform)
 	}
 	for i, v := 0x50, 0; v < 3; i, v = i+6, v+1 {
-		io.WO(i+0, &p.voices[v].freq[0])
-		io.WO(i+1, &p.voices[v].freq[1])
-		io.WO(i+2, &p.voices[v].freq[2])
-		io.WO(i+3, &p.voices[v].freq[3])
-		io.WO(i+4, &p.voices[v].freq[4])
-		io.WO(i+5, &p.voices[v].vol)
+		io.WO(i+0, &r.voices[v].freq[0])
+		io.WO(i+1, &r.voices[v].freq[1])
+		io.WO(i+2, &r.voices[v].freq[2])
+		io.WO(i+3, &r.voices[v].freq[3])
+		io.WO(i+4, &r.voices[v].freq[4])
+		io.WO(i+5, &r.voices[v].vol)
 	}
 	for i, s := 0x60, 0; s < 8; i, s = i+2, s+1 {
-		io.WO(i+0, &p.spriteCoords[s].x)
-		io.WO(i+1, &p.spriteCoords[s].y)
+		io.WO(i+0, &r.spriteCoords[s].x)
+		io.WO(i+1, &r.spriteCoords[s].y)
 	}
 	for i := 0x80; i <= 0xbf; i++ {
-		io.RO(i, &p.dipSwitches)
+		io.RO(i, &r.dipSwitches)
 	}
 	for i := 0xc0; i <= 0xff; i++ {
-		io.WO(i, &p.watchdogReset)
+		io.WO(i, &r.watchdogReset)
 	}
 }

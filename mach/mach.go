@@ -9,10 +9,6 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-type Cab interface {
-	Mach() Mach
-}
-
 type Status int
 
 const (
