@@ -6,6 +6,7 @@ package z80
 
 import (
 	"github.com/blackchip-org/pac8/cpu"
+	"github.com/blackchip-org/pac8/memory"
 	"github.com/blackchip-org/pac8/util/bits"
 )
 
@@ -275,7 +276,7 @@ func call(c *CPU, flag int, condition bool, get cpu.Get16) {
 	addr := get()
 	if bits.Get(c.F, flag) == condition {
 		c.SP -= 2
-		c.mem16.Store(c.SP, c.PC())
+		memory.StoreLE(c.mem, c.SP, c.PC())
 		c.SetPC(addr)
 	}
 }
@@ -284,7 +285,7 @@ func call(c *CPU, flag int, condition bool, get cpu.Get16) {
 func calla(c *CPU, get cpu.Get16) {
 	addr := get()
 	c.SP -= 2
-	c.mem16.Store(c.SP, c.PC())
+	memory.StoreLE(c.mem, c.SP, c.PC())
 	c.SetPC(addr)
 }
 
@@ -644,14 +645,14 @@ func or(c *CPU, get cpu.Get) {
 
 // Copies the two bytes from (SP) into the operand, then increases SP by 2.
 func pop(c *CPU, put cpu.Put16) {
-	put(c.mem16.Load(c.SP))
+	put(memory.LoadLE(c.mem, c.SP))
 	c.SP += 2
 }
 
 // Decrements the SP by 2 then copies the operand into (SP)
 func push(c *CPU, get cpu.Get16) {
 	c.SP -= 2
-	c.mem16.Store(c.SP, get())
+	memory.StoreLE(c.mem, c.SP, get())
 }
 
 // Resets the specified byte to zero
@@ -670,18 +671,18 @@ func ret(c *CPU, flag int, value bool) {
 
 // return, always
 func reta(c *CPU) {
-	c.SetPC(c.mem16.Load(c.SP))
+	c.SetPC(memory.LoadLE(c.mem, c.SP))
 	c.SP += 2
 }
 
 func reti(c *CPU) {
-	c.SetPC(c.mem16.Load(c.SP))
+	c.SetPC(memory.LoadLE(c.mem, c.SP))
 	c.SP += 2
 }
 
 func retn(c *CPU) {
 	c.IFF1 = c.IFF2
-	c.SetPC(c.mem16.Load(c.SP))
+	c.SetPC(memory.LoadLE(c.mem, c.SP))
 	c.SP += 2
 }
 
@@ -782,7 +783,7 @@ func rrd(c *CPU) {
 
 func rst(c *CPU, y int) {
 	c.SP -= 2
-	c.mem16.Store(c.SP, c.PC())
+	memory.StoreLE(c.mem, c.SP, c.PC())
 	c.SetPC(uint16(y) * 8)
 }
 

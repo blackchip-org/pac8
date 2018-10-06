@@ -56,23 +56,14 @@ func ExampleVerify() {
 
 func TestLittleEndianLoad(t *testing.T) {
 	mem := NewROM([]uint8{0xcd, 0xab})
-	mem16 := NewLittleEndian(mem)
-	have := mem16.Load(0)
-	want := uint16(0xabcd)
-	if have != want {
-		t.Errorf("\n have: %02x \n want: %02x", have, want)
-	}
+	WithFormat(t, "%04x").Expect(LoadLE(mem, 0)).ToBe(uint16(0xabcd))
 }
 
 func TestLittleEndianStore(t *testing.T) {
 	mem := NewRAM(0x10)
-	mem16 := NewLittleEndian(mem)
-	mem16.Store(0, 0xabcd)
-	have := []uint8{mem.Load(0), mem.Load(1)}
-	want := []uint8{0xcd, 0xab}
-	if !reflect.DeepEqual(have, want) {
-		t.Errorf("\n have: %02x \n want: %02x", have, want)
-	}
+	StoreLE(mem, 0, 0xabcd)
+	WithFormat(t, "02x").Expect(mem.Load(0)).ToBe(uint8(0xcd))
+	WithFormat(t, "02x").Expect(mem.Load(1)).ToBe(uint8(0xab))
 }
 
 func TestPageMappedStore(t *testing.T) {

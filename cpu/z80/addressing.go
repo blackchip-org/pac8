@@ -1,13 +1,14 @@
 package z80
 
 import (
+	"github.com/blackchip-org/pac8/memory"
 	"github.com/blackchip-org/pac8/util/bits"
 )
 
 func (cpu *CPU) storeNil(v uint8) {}
 
 func (cpu *CPU) storeIndImm(v uint8)    { cpu.mem.Store(cpu.fetch16(), v) }
-func (cpu *CPU) store16IndImm(v uint16) { cpu.mem16.Store(cpu.fetch16(), v) }
+func (cpu *CPU) store16IndImm(v uint16) { memory.StoreLE(cpu.mem, cpu.fetch16(), v) }
 
 func (cpu *CPU) storeA(v uint8)   { cpu.A = v }
 func (cpu *CPU) storeB(v uint8)   { cpu.B = v }
@@ -31,7 +32,7 @@ func (cpu *CPU) storeSP(v uint16) { cpu.SP = v }
 func (cpu *CPU) storeIX(v uint16) { cpu.IXH, cpu.IXL = bits.Split(v) }
 func (cpu *CPU) storeIY(v uint16) { cpu.IYH, cpu.IYL = bits.Split(v) }
 
-func (cpu *CPU) store16IndSP(v uint16) { cpu.mem16.Store(cpu.SP, v) }
+func (cpu *CPU) store16IndSP(v uint16) { memory.StoreLE(cpu.mem, cpu.SP, v) }
 
 func (cpu *CPU) storeAF1(v uint16) { cpu.A1, cpu.F1 = bits.Split(v) }
 func (cpu *CPU) storeBC1(v uint16) { cpu.B1, cpu.C1 = bits.Split(v) }
@@ -47,7 +48,7 @@ func (cpu *CPU) loadZero() uint8      { return 0 }
 func (cpu *CPU) loadImm() uint8       { return cpu.fetch() }
 func (cpu *CPU) loadImm16() uint16    { return cpu.fetch16() }
 func (cpu *CPU) loadIndImm() uint8    { return cpu.mem.Load(cpu.fetch16()) }
-func (cpu *CPU) load16IndImm() uint16 { return cpu.mem16.Load(cpu.fetch16()) }
+func (cpu *CPU) load16IndImm() uint16 { return memory.LoadLE(cpu.mem, cpu.fetch16()) }
 
 func (cpu *CPU) loadA() uint8    { return cpu.A }
 func (cpu *CPU) loadB() uint8    { return cpu.B }
@@ -71,7 +72,7 @@ func (cpu *CPU) loadHL() uint16      { return bits.Join(cpu.H, cpu.L) }
 func (cpu *CPU) loadSP() uint16      { return cpu.SP }
 func (cpu *CPU) loadIX() uint16      { return bits.Join(cpu.IXH, cpu.IXL) }
 func (cpu *CPU) loadIY() uint16      { return bits.Join(cpu.IYH, cpu.IYL) }
-func (cpu *CPU) load16IndSP() uint16 { return cpu.mem16.Load(cpu.SP) }
+func (cpu *CPU) load16IndSP() uint16 { return memory.LoadLE(cpu.mem, cpu.SP) }
 
 func (cpu *CPU) loadAF1() uint16 { return bits.Join(cpu.A1, cpu.F1) }
 func (cpu *CPU) loadBC1() uint16 { return bits.Join(cpu.B1, cpu.C1) }

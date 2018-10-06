@@ -57,7 +57,6 @@ type CPU struct {
 	Ports memory.IO
 
 	mem   memory.Memory
-	mem16 memory.Memory16
 	delta uint8
 	// address used to load on the last (IX+d) or (IY+d) instruction
 	iaddr uint16
@@ -67,7 +66,6 @@ type CPU struct {
 func New(m memory.Memory) *CPU {
 	c := &CPU{
 		mem:   m,
-		mem16: memory.NewLittleEndian(m),
 		Ports: memory.NewIO(0x100),
 		irq:   make(chan uint8, 1),
 	}
@@ -127,9 +125,9 @@ func (c *CPU) intAck(v uint8) {
 	c.IFF1 = false
 	c.IFF2 = false
 	c.SP -= 2
-	c.mem16.Store(c.SP, c.PC())
+	memory.StoreLE(c.mem, c.SP, c.PC())
 	vector := bits.Join(c.I, v)
-	c.pc = c.mem16.Load(vector)
+	c.pc = memory.LoadLE(c.mem, vector)
 }
 
 func (c *CPU) String() string {
