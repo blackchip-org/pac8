@@ -117,6 +117,13 @@ func (v *Video) Render() {
 		coordY := int(v.spriteCoords[s].y)
 		info := v.mem.Load(uint16(0x4ff0 + (s * 2)))
 		spriteN := info >> 2
+		flip := sdl.FLIP_NONE
+		if info&0x02 > 0 {
+			flip |= sdl.FLIP_HORIZONTAL
+		}
+		if info&0x01 > 0 {
+			flip |= sdl.FLIP_VERTICAL
+		}
 
 		// do not render of off screen
 		if coordX <= 30 || coordX >= 240 {
@@ -138,7 +145,7 @@ func (v *Video) Render() {
 			W: int32(16 * v.scale),
 			H: int32(16 * v.scale),
 		}
-		v.r.Copy(v.sprites, &src, &dest)
+		v.r.CopyEx(v.sprites, &src, &dest, 0, nil, flip)
 	}
 	v.r.Present()
 }
