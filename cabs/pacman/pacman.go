@@ -33,7 +33,6 @@ type registers struct {
 	coinCounter     uint8
 	in1             uint8 // joystick and start buttons
 	voices          [3]voice
-	spriteCoords    [8]spriteCoord
 	dipSwitches     uint8
 	watchdogReset   uint8
 }
@@ -43,11 +42,6 @@ type voice struct {
 	waveform uint8
 	freq     [5]uint8
 	vol      uint8
-}
-
-type spriteCoord struct {
-	x uint8
-	y uint8
 }
 
 func New(renderer *sdl.Renderer) *mach.Mach {
@@ -60,7 +54,8 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 	rom2 := memory.LoadROM(&e, "pacman/pacman.6h", "8e47e8c2c4d6117d174cdac150392042d3e0a881")
 	rom3 := memory.LoadROM(&e, "pacman/pacman.6j", "d4a70d56bb01d27d094d73db8667ffb00ca69cb9")
 	vroms := VideoROM{
-		Tiles: memory.LoadROM(&e, "pacman/pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9"),
+		Tiles:   memory.LoadROM(&e, "pacman/pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9"),
+		Sprites: memory.LoadROM(&e, "pacman/pacman.5f", "4a937ac02216ea8c96477d4a15522070507fb599"),
 	}
 
 	// Any errors while loading ROMs?
@@ -86,11 +81,6 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 
 	cab.cpu = z80.New(cab.mem)
 	m := mach.New(cab.cpu)
-	mapRegisters(&cab.regs, io)
-
-	// Port 0 gets set with the partial interrupt pointer to be set
-	// by the interrupting device
-	cab.cpu.Ports.WO(0, &cab.intSelect)
 
 	video, err := NewVideo(renderer, cab.mem, vroms)
 	if err != nil {
@@ -98,6 +88,12 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 		os.Exit(1)
 	}
 	m.Display = video
+
+	mapRegisters(&cab.regs, io, video)
+
+	// Port 0 gets set with the partial interrupt pointer to be set
+	// by the interrupting device
+	cab.cpu.Ports.WO(0, &cab.intSelect)
 
 	bits.Set(&cab.regs.in1, 4, true)         // Board test switch disabled
 	bits.Set(&cab.regs.dipSwitches, 1, true) // 1 coin per game
@@ -113,7 +109,7 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 	return m
 }
 
-func mapRegisters(r *registers, io memory.IO) {
+func mapRegisters(r *registers, io memory.IO, v *Video) {
 	for i := 0; i <= 0x3f; i++ {
 		io.RO(i, &r.in0)
 	}
@@ -145,8 +141,8 @@ func mapRegisters(r *registers, io memory.IO) {
 		io.WO(i+5, &r.voices[v].vol)
 	}
 	for i, s := 0x60, 0; s < 8; i, s = i+2, s+1 {
-		io.WO(i+0, &r.spriteCoords[s].x)
-		io.WO(i+1, &r.spriteCoords[s].y)
+		io.WO(i+0, &v.spriteCoords[s].x)
+		io.WO(i+1, &v.spriteCoords[s].y)
 	}
 	for i := 0x80; i <= 0xbf; i++ {
 		io.RO(i, &r.dipSwitches)

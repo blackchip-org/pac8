@@ -56,6 +56,7 @@ func main() {
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
 		// FIXME: hard coded
 		int32(224*scale), int32(288*scale),
+		//int32(256*scale), int32(256*scale),
 		sdl.WINDOW_SHOWN,
 	)
 	if err != nil {
