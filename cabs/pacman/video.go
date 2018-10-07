@@ -266,11 +266,8 @@ func spriteSheet(r *sdl.Renderer, mem memory.Memory, pal palette) (*sdl.Texture,
 				v := mem.Load(uint16(baseAddr + byteN))
 				pixelValue := bit2(bits.Get(v, 0+bitOffset), bits.Get(v, 4+bitOffset))
 				colors := pal[pixelValue]
-				// Color 0 in sprite images is drawn as transparent
-				if pixelValue != 0 {
-					r.SetDrawColorArray(colors...)
-					r.DrawPoint(int32(sheetX), int32(sheetY))
-				}
+				r.SetDrawColorArray(colors...)
+				r.DrawPoint(int32(sheetX), int32(sheetY))
 			}
 		}
 	}
@@ -292,7 +289,12 @@ func (v *Video) colorTable(mem memory.Memory) {
 				b += colorWeights[bit][2]
 			}
 		}
-		v.colors[addr] = []uint8{r, g, b, 0xff}
+		alpha := uint8(0xff)
+		// Color 0 is actually transparent
+		if addr == 0 {
+			alpha = 0x00
+		}
+		v.colors[addr] = []uint8{r, g, b, alpha}
 	}
 }
 

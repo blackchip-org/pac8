@@ -101,7 +101,7 @@ func (m *Mach) tick() {
 			fmt.Println(m.dasm.Next())
 		}
 		m.CPU.Next()
-		if _, exists := m.Breakpoints[m.CPU.PC()]; exists {
+		if _, exists := m.Breakpoints[m.CPU.PC()]; exists && m.CPU.Ready() {
 			m.setStatus(Breakpoint)
 			return
 		}
