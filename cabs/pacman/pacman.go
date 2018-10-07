@@ -56,6 +56,8 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 	vroms := VideoROM{
 		Tiles:   memory.LoadROM(&e, "pacman/pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9"),
 		Sprites: memory.LoadROM(&e, "pacman/pacman.5f", "4a937ac02216ea8c96477d4a15522070507fb599"),
+		Color:   memory.LoadROM(&e, "pacman/82s123.7f", "8d0268dee78e47c712202b0ec4f1f51109b1f2a5"),
+		Palette: memory.LoadROM(&e, "pacman/82s126.4a", "19097b5f60d1030f8b82d9f1d3a241f93e5c75d6"),
 	}
 
 	// Any errors while loading ROMs?

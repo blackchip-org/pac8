@@ -17,22 +17,29 @@ type spriteCoord struct {
 	y uint8
 }
 
+type palette [4][]uint8
+
 type Video struct {
 	Callback     func()
 	r            *sdl.Renderer
 	mem          memory.Memory
-	tiles        *sdl.Texture
-	sprites      *sdl.Texture
+	tiles        [64]*sdl.Texture
+	sprites      [64]*sdl.Texture
+	colors       [16][]uint8
+	palettes     [64]palette
 	scale        int
 	cycle        *mach.Cycle
 	spriteCoords [8]spriteCoord
 	w            int
 	h            int
+	screenFill   sdl.Rect
 }
 
 type VideoROM struct {
 	Tiles   memory.Memory
 	Sprites memory.Memory
+	Color   memory.Memory
+	Palette memory.Memory
 }
 
 func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) {
@@ -43,20 +50,27 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 		w:     224,
 		h:     288,
 	}
-	tiles, err := tileSheet(r, rom.Tiles)
-	if err != nil {
-		return nil, err
-	}
-	v.tiles = tiles
+	v.screenFill = sdl.Rect{0, 0, int32(v.w * v.scale), int32(v.h * v.scale)}
 
-	sprites, err := spriteSheet(r, rom.Sprites)
-	if err != nil {
-		return nil, err
+	v.colorTable(rom.Color)
+	v.paletteTable(rom.Palette)
+
+	for pal := 0; pal < 64; pal++ {
+		tiles, err := tileSheet(r, rom.Tiles, v.palettes[pal])
+		if err != nil {
+			return nil, err
+		}
+		v.tiles[pal] = tiles
+
+		sprites, err := spriteSheet(r, rom.Sprites, v.palettes[pal])
+		if err != nil {
+			return nil, err
+		}
+		v.sprites[pal] = sprites
 	}
-	v.sprites = sprites
 
 	/*
-		r.Copy(sprites, nil, nil)
+		r.Copy(v.tiles[5], nil, nil)
 		r.Present()
 		for {
 		}
@@ -78,6 +92,9 @@ func (v *Video) Render() {
 	}
 	v.Callback()
 
+	v.r.SetDrawColorArray(0, 0, 0, 0xff)
+	v.r.FillRect(&v.screenFill)
+
 	// Render tiles
 	for ty := 0; ty < 36; ty++ {
 		for tx := 0; tx < 28; tx++ {
@@ -89,7 +106,7 @@ func (v *Video) Render() {
 			} else {
 				addr = 0x43a0 + (ty - 2) - (tx * 0x20)
 			}
-			// fmt.Printf("tx: %v, ty: %v, addr: %02x\n", tx, ty, addr)
+
 			tileN := v.mem.Load(uint16(addr))
 			sheetX := (tileN % 16) * 8
 			sheetY := (tileN / 16) * 8
@@ -107,7 +124,11 @@ func (v *Video) Render() {
 				W: int32(8 * v.scale),
 				H: int32(8 * v.scale),
 			}
-			v.r.Copy(v.tiles, &src, &dest)
+
+			caddr := addr + 0x0400
+			// Only 64 palettes, strip out the higher bits
+			pal := v.mem.Load(uint16(caddr)) & 0x3f
+			v.r.Copy(v.tiles[pal], &src, &dest)
 		}
 	}
 
@@ -145,16 +166,10 @@ func (v *Video) Render() {
 			W: int32(16 * v.scale),
 			H: int32(16 * v.scale),
 		}
-		v.r.CopyEx(v.sprites, &src, &dest, 0, nil, flip)
+		pal := v.mem.Load(uint16(0x4ff1 + (s * 2)))
+		v.r.CopyEx(v.sprites[pal], &src, &dest, 0, nil, flip)
 	}
 	v.r.Present()
-}
-
-var palette = [][]uint8{
-	[]uint8{0x00, 0x00, 0x00, 0xff},
-	[]uint8{0x77, 0x77, 0x77, 0xff},
-	[]uint8{0xbb, 0xbb, 0xbb, 0xff},
-	[]uint8{0xff, 0xff, 0xff, 0xff},
 }
 
 func bit2(b0 bool, b1 bool) int {
@@ -168,7 +183,7 @@ func bit2(b0 bool, b1 bool) int {
 	return index
 }
 
-func tileSheet(r *sdl.Renderer, mem memory.Memory) (*sdl.Texture, error) {
+func tileSheet(r *sdl.Renderer, mem memory.Memory, pal palette) (*sdl.Texture, error) {
 	w := 16 * 8
 	h := 16 * 8
 	t, err := r.CreateTexture(sdl.PIXELFORMAT_RGBA8888,
@@ -196,13 +211,13 @@ func tileSheet(r *sdl.Renderer, mem memory.Memory) (*sdl.Texture, error) {
 		pixel3 := bit2(bits.Get(val, 2), bits.Get(val, 6))
 		pixel4 := bit2(bits.Get(val, 3), bits.Get(val, 7))
 
-		r.SetDrawColorArray(palette[pixel4]...)
+		r.SetDrawColorArray(pal[pixel4]...)
 		r.DrawPoint(int32(x), int32(y+0))
-		r.SetDrawColorArray(palette[pixel3]...)
+		r.SetDrawColorArray(pal[pixel3]...)
 		r.DrawPoint(int32(x), int32(y+1))
-		r.SetDrawColorArray(palette[pixel2]...)
+		r.SetDrawColorArray(pal[pixel2]...)
 		r.DrawPoint(int32(x), int32(y+2))
-		r.SetDrawColorArray(palette[pixel1]...)
+		r.SetDrawColorArray(pal[pixel1]...)
 		r.DrawPoint(int32(x), int32(y+3))
 	}
 
@@ -212,10 +227,9 @@ func tileSheet(r *sdl.Renderer, mem memory.Memory) (*sdl.Texture, error) {
 	return t, nil
 }
 
-func spriteSheet(r *sdl.Renderer, mem memory.Memory) (*sdl.Texture, error) {
+func spriteSheet(r *sdl.Renderer, mem memory.Memory, pal palette) (*sdl.Texture, error) {
 	// 64 sprites to be placed in 8x8 matrix each with 16x16 pixels
 	w, h := 8*16, 8*16
-	// spriteW, spriteH := 16, 16
 	t, err := r.CreateTexture(sdl.PIXELFORMAT_RGBA8888,
 		sdl.TEXTUREACCESS_TARGET, int32(w), int32(h))
 	if err != nil {
@@ -251,8 +265,12 @@ func spriteSheet(r *sdl.Renderer, mem memory.Memory) (*sdl.Texture, error) {
 
 				v := mem.Load(uint16(baseAddr + byteN))
 				pixelValue := bit2(bits.Get(v, 0+bitOffset), bits.Get(v, 4+bitOffset))
-				r.SetDrawColorArray(palette[pixelValue]...)
-				r.DrawPoint(int32(sheetX), int32(sheetY))
+				colors := pal[pixelValue]
+				// Color 0 in sprite images is drawn as transparent
+				if pixelValue != 0 {
+					r.SetDrawColorArray(colors...)
+					r.DrawPoint(int32(sheetX), int32(sheetY))
+				}
 			}
 		}
 	}
@@ -261,6 +279,33 @@ func spriteSheet(r *sdl.Renderer, mem memory.Memory) (*sdl.Texture, error) {
 	r.SetRenderTarget(nil)
 
 	return t, nil
+}
+
+func (v *Video) colorTable(mem memory.Memory) {
+	for addr := 0; addr < 16; addr++ {
+		r, g, b := uint8(0), uint8(0), uint8(0)
+		c := mem.Load(uint16(addr))
+		for bit := 0; bit < 8; bit++ {
+			if bits.Get(c, bit) {
+				r += colorWeights[bit][0]
+				g += colorWeights[bit][1]
+				b += colorWeights[bit][2]
+			}
+		}
+		v.colors[addr] = []uint8{r, g, b, 0xff}
+	}
+}
+
+func (v *Video) paletteTable(mem memory.Memory) {
+	for pal := 0; pal < 64; pal++ {
+		addr := pal * 4
+		var entry [4][]uint8
+		entry[0] = v.colors[mem.Load(uint16(addr+0))]
+		entry[1] = v.colors[mem.Load(uint16(addr+1))]
+		entry[2] = v.colors[mem.Load(uint16(addr+2))]
+		entry[3] = v.colors[mem.Load(uint16(addr+3))]
+		v.palettes[pal] = entry
+	}
 }
 
 var spritePixels = [][]int{
@@ -284,4 +329,15 @@ var spritePixels = [][]int{
 	[]int{157, 153, 149, 145, 141, 137, 133, 129, 29, 25, 21, 17, 13, 9, 5, 1},
 	[]int{158, 154, 150, 146, 142, 138, 134, 130, 30, 26, 22, 18, 14, 10, 6, 2},
 	[]int{159, 155, 151, 147, 143, 139, 135, 131, 31, 27, 23, 19, 15, 11, 7, 3},
+}
+
+var colorWeights = [][]uint8{
+	[]uint8{0x21, 0x00, 0x00},
+	[]uint8{0x47, 0x00, 0x00},
+	[]uint8{0x97, 0x00, 0x00},
+	[]uint8{0x00, 0x21, 0x00},
+	[]uint8{0x00, 0x47, 0x00},
+	[]uint8{0x00, 0x97, 0x00},
+	[]uint8{0x00, 0x00, 0x51},
+	[]uint8{0x00, 0x00, 0xae},
 }
