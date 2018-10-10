@@ -31,7 +31,7 @@ Sets a **breakpoint** at *address* when using `on` and clears a breakpoint at *a
 
 **Go** to *address* and start execution of the CPU there. If *address* is not specified, use the current value of the program counter.
 
-## h
+### h
 
 **Halt** execution of the CPU.
 
