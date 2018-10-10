@@ -43,11 +43,11 @@ Dump **memory** contents to the screen from *start-address* to *end-address* inc
 
 Disassemble the next instruction to execute.
 
-### p address
+### p *address*
 
 **Peek** at the memory contents at *address*. The value is displayed in the form of `$00 +000` with the hexadecimal value listed first followed by the decimal value.
 
-### p address value
+### p *address* *value*
 
 **Poke** the memory at *address* with *value*.
 
