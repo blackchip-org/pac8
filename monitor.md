@@ -21,7 +21,7 @@ Sets a **breakpoint** at *address* when using `on` and clears a breakpoint at *a
 
 ### d [*start-address* [*end-address*]]
 
-**Disassemble** code from *start-address* to *end-address* inclusive. If *end-address* is not specified, diassemble an amount that can fit on a screen. If *start-address* is not specified, use the current program counter as the *start-address*.
+**Disassemble** code from *start-address* to *end-address* inclusive. If *end-address* is not specified, disassemble an amount that can fit on a screen. If *start-address* is not specified, use the current program counter as the *start-address*.
 
 ### f *start-address* *end-address* *value*
 
@@ -37,7 +37,7 @@ Sets a **breakpoint** at *address* when using `on` and clears a breakpoint at *a
 
 ### m [*start-address* [*end-address*]]
 
-Dump **memory** contents to the screen from *start-address* to *end-address* inclusive. If *end-address* is not sepcified, show a full memory page. If *start-address* is not specified, continue the dump from the last command.
+Dump **memory** contents to the screen from *start-address* to *end-address* inclusive. If *end-address* is not specified, show a full memory page. If *start-address* is not specified, continue the dump from the last command.
 
 ### n
 
