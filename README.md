@@ -6,8 +6,7 @@ After finding the following document I decided to give it a try:
 
 https://www.lomont.org/Software/Games/PacMan/PacmanEmulation.pdf
 
-All projects need a name so the working title is pac8, the Portable Arcade
-Cabinet, 8-bit edition.
+All projects need a name so the working title for this one is pac8, the Portable Arcade Cabinet, 8-bit edition.
 
 ## Requirements
 
