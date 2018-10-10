@@ -57,7 +57,7 @@ Display the contents of the CPU **registers**.
 
 ### s
 
-**Step** through the instruction by executing the next instruction and then halting the CPU.
+**Step** through by executing the next instruction and then halting the CPU.
 
 ### t
 
