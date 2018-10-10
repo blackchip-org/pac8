@@ -200,7 +200,7 @@ func (m *Monitor) disassemble(args []string) error {
 		if err != nil {
 			return err
 		}
-		addrEnd = addr - 1
+		addrEnd = addr
 	}
 	m.dasm.SetPC(addrStart)
 	for m.dasm.PC() <= addrEnd {
