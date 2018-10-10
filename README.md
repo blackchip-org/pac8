@@ -35,7 +35,7 @@ go get github.com/blackchip-org/pac8
 
 ```bash
 export PAC8_HOME=~/pac8
-~/bin/go/pac8
+~/go/bin/pac8
 ```
 
 Use the `-m` flag to enable the [monitor](monitor.md).
