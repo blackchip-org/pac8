@@ -32,5 +32,5 @@ func TestAddWithCarry(t *testing.T) {
 	alu.SetCarry(true)
 	alu.Add()
 
-	With(t).Expect(alu.Out).ToBe(uint8(3))
+	With(t).Expect(alu.Out).ToBe(3)
 }

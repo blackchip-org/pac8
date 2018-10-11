@@ -38,12 +38,18 @@ func (e ExpectClause) ToBe(want interface{}) {
 	have := e.have
 	haveType := reflect.TypeOf(have)
 	wantType := reflect.TypeOf(want)
-	if haveType != wantType {
-		format := fmt.Sprintf("\n have: %v(%v) \n want: %v(%v)",
-			haveType, e.format, wantType, e.format)
-		message := fmt.Sprintf(format, have, want)
-		e.t.Fatal(message)
-		return
+
+	if haveType.ConvertibleTo(wantType) {
+		have = reflect.ValueOf(have).Convert(wantType).Interface()
+		fmt.Println(reflect.TypeOf(have))
+	} else {
+		if haveType != wantType {
+			format := fmt.Sprintf("\n have: %v(%v) \n want: %v(%v)",
+				haveType, e.format, wantType, e.format)
+			message := fmt.Sprintf(format, have, want)
+			e.t.Fatal(message)
+			return
+		}
 	}
 	if !reflect.DeepEqual(have, want) {
 		format := fmt.Sprintf("\n have: %v \n want: %v", e.format, e.format)
