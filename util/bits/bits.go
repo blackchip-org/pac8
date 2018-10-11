@@ -103,7 +103,7 @@ func Split4(value uint8) (hi uint8, lo uint8) {
 	return
 }
 
-// Slice extracts a sequence of bits in value from bit lo to bit high,
+// Slice extracts a sequence of bits in value from bit lo to bit hi,
 // inclusive.
 func Slice(value uint8, lo int, hi int) uint8 {
 	value = value >> uint(lo)
@@ -123,12 +123,4 @@ func Displace(value uint16, delta uint8) uint16 {
 // returns false.
 func Parity(value uint8) bool {
 	return bits.OnesCount8(value)%2 == 0
-}
-
-func Bytes(values ...uint8) []uint8 {
-	result := make([]uint8, len(values), len(values))
-	for i, v := range values {
-		result[i] = v
-	}
-	return result
 }
