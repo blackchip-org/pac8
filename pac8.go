@@ -12,6 +12,11 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
+const (
+	defaultWidth  = 1024
+	defaultHeight = 786
+)
+
 var cprof bool
 var monitor bool
 var trace bool
@@ -50,12 +55,13 @@ func main() {
 	defer sdl.Quit()
 	sdl.GLSetSwapInterval(1)
 
-	scale := 2
+	//scale := 2
 	window, err := sdl.CreateWindow(
 		"pac8",
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
 		// FIXME: hard coded
-		int32(224*scale), int32(288*scale),
+		defaultWidth, defaultHeight,
+		//int32(224*scale), int32(288*scale),
 		//int32(256*scale), int32(256*scale),
 		sdl.WINDOW_SHOWN,
 	)

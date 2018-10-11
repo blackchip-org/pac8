@@ -12,6 +12,11 @@ import (
 
 // https://www.lomont.org/Software/Games/PacMan/PacmanEmulation.pdf
 
+const (
+	w = int32(224)
+	h = int32(288)
+)
+
 type spriteCoord struct {
 	x uint8
 	y uint8
@@ -27,12 +32,10 @@ type Video struct {
 	sprites      [64]*sdl.Texture
 	colors       [16][]uint8
 	palettes     [64]palette
-	scale        int
 	cycle        *mach.Cycle
 	spriteCoords [8]spriteCoord
-	w            int
-	h            int
-	screenFill   sdl.Rect
+	frame        mach.RenderFrame
+	frameFill    sdl.Rect
 }
 
 type VideoROM struct {
@@ -44,13 +47,20 @@ type VideoROM struct {
 
 func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) {
 	v := &Video{
-		r:     r,
-		scale: 2,
-		mem:   mem,
-		w:     224,
-		h:     288,
+		r:   r,
+		mem: mem,
 	}
-	v.screenFill = sdl.Rect{0, 0, int32(v.w * v.scale), int32(v.h * v.scale)}
+	winW, winH, err := r.GetOutputSize()
+	if err != nil {
+		return nil, err
+	}
+	v.frame = mach.FitInWindow(winW, winH, w, h)
+	v.frameFill = sdl.Rect{
+		X: v.frame.X,
+		Y: v.frame.Y,
+		W: v.frame.W,
+		H: v.frame.H,
+	}
 
 	v.colorTable(rom.Color)
 	v.paletteTable(rom.Palette)
@@ -82,10 +92,6 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 	return v, nil
 }
 
-func (v *Video) Size() (int, int) {
-	return v.w, v.h
-}
-
 func (v *Video) Render() {
 	if !v.cycle.Next() {
 		return
@@ -93,12 +99,12 @@ func (v *Video) Render() {
 	v.Callback()
 
 	v.r.SetDrawColorArray(0, 0, 0, 0xff)
-	v.r.FillRect(&v.screenFill)
+	v.r.FillRect(&v.frameFill)
 
 	// Render tiles
-	for ty := 0; ty < 36; ty++ {
-		for tx := 0; tx < 28; tx++ {
-			var addr int
+	for ty := int32(0); ty < 36; ty++ {
+		for tx := int32(0); tx < 28; tx++ {
+			var addr int32
 			if ty == 0 || ty == 1 {
 				addr = 0x43dd + (ty * 0x20) - tx
 			} else if ty == 34 || ty == 35 {
@@ -116,13 +122,13 @@ func (v *Video) Render() {
 				W: 8,
 				H: 8,
 			}
-			screenX := tx * 8 * v.scale
-			screenY := ty * 8 * v.scale
+			screenX := tx * 8 * v.frame.Scale
+			screenY := ty * 8 * v.frame.Scale
 			dest := sdl.Rect{
-				X: int32(screenX),
-				Y: int32(screenY),
-				W: int32(8 * v.scale),
-				H: int32(8 * v.scale),
+				X: screenX + v.frame.X,
+				Y: screenY + v.frame.Y,
+				W: 8 * v.frame.Scale,
+				H: 8 * v.frame.Scale,
 			}
 
 			caddr := addr + 0x0400
@@ -134,8 +140,8 @@ func (v *Video) Render() {
 
 	// Render sprites, reverse order
 	for s := 0; s < 8; s++ {
-		coordX := int(v.spriteCoords[s].x)
-		coordY := int(v.spriteCoords[s].y)
+		coordX := int32(v.spriteCoords[s].x)
+		coordY := int32(v.spriteCoords[s].y)
 		info := v.mem.Load(uint16(0x4ff0 + (s * 2)))
 		spriteN := info >> 2
 		flip := sdl.FLIP_NONE
@@ -150,8 +156,8 @@ func (v *Video) Render() {
 		if coordX <= 30 || coordX >= 240 {
 			continue
 		}
-		screenX := (v.w - coordX + 16) * v.scale
-		screenY := (v.h - coordY - 16) * v.scale
+		screenX := (w - coordX + 16) * v.frame.Scale
+		screenY := (h - coordY - 16) * v.frame.Scale
 		sheetX := (spriteN % 8) * 16
 		sheetY := (spriteN / 8) * 16
 		src := sdl.Rect{
@@ -161,10 +167,10 @@ func (v *Video) Render() {
 			H: 16,
 		}
 		dest := sdl.Rect{
-			X: int32(screenX),
-			Y: int32(screenY),
-			W: int32(16 * v.scale),
-			H: int32(16 * v.scale),
+			X: screenX + v.frame.X,
+			Y: screenY + v.frame.Y,
+			W: 16 * v.frame.Scale,
+			H: 16 * v.frame.Scale,
 		}
 		pal := v.mem.Load(uint16(0x4ff1 + (s * 2)))
 		v.r.CopyEx(v.sprites[pal], &src, &dest, 0, nil, flip)
