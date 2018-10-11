@@ -67,8 +67,8 @@ func (e ExpectClause) ToBe(want interface{}) {
 	}
 }
 
-// ToPanic fails the test if the have value does not panic when invoked. If
-// the have value is not a function, the test fails.
+// ToPanic fails the test if the have value in the ExpectClause does not panic
+// when invoked. If the have value is not a function, the test fails.
 func (e ExpectClause) ToPanic() {
 	e.t.Helper()
 	fn, ok := e.have.(func())
