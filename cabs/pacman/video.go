@@ -50,6 +50,12 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 		r:   r,
 		mem: mem,
 	}
+	// 16.67 milliseconds for VBLANK interrupt
+	v.cycle = mach.NewCycle(16670 * time.Microsecond)
+	if r == nil {
+		return v, nil
+	}
+
 	winW, winH, err := r.GetOutputSize()
 	if err != nil {
 		return nil, err
@@ -86,9 +92,6 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 		}
 	*/
 
-	// 16.67 milliseconds for VBLANK interrupt
-	v.cycle = mach.NewCycle(16670 * time.Microsecond)
-
 	return v, nil
 }
 
@@ -97,6 +100,9 @@ func (v *Video) Render() {
 		return
 	}
 	v.Callback()
+	if v.r == nil {
+		return
+	}
 
 	v.r.SetDrawColorArray(0, 0, 0, 0xff)
 	v.r.FillRect(&v.frameFill)
