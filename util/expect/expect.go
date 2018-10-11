@@ -5,6 +5,8 @@ import (
 	"reflect"
 )
 
+// Tester defines the functions in the testing.T struct that are used
+// by this package.
 type Tester interface {
 	Fatal(args ...interface{})
 	Helper()
@@ -15,10 +17,14 @@ type WithClause struct {
 	format string
 }
 
+// With starts an assertion. Use *testing.T for Tester.
 func With(t Tester) *WithClause {
 	return &WithClause{t: t, format: "%v"}
 }
 
+// With starts an assertion with the given print format. The print format
+// must contain a single verb which is used to print the both the want and
+// have value. Use *testing.T for Tester.
 func WithFormat(t Tester, format string) *WithClause {
 	return &WithClause{t, format}
 }
@@ -33,6 +39,9 @@ func (w WithClause) Expect(have interface{}) *ExpectClause {
 	return &ExpectClause{t: w.t, format: w.format, have: have}
 }
 
+// ToBe fails the test if the want value is not deeply equal to the have value
+// used in the ExpectClause. If have and want are not the same type, have
+// is converted to want if able, otherwise the test fails.
 func (e ExpectClause) ToBe(want interface{}) {
 	e.t.Helper()
 	have := e.have
@@ -41,7 +50,6 @@ func (e ExpectClause) ToBe(want interface{}) {
 
 	if haveType.ConvertibleTo(wantType) {
 		have = reflect.ValueOf(have).Convert(wantType).Interface()
-		fmt.Println(reflect.TypeOf(have))
 	} else {
 		if haveType != wantType {
 			format := fmt.Sprintf("\n have: %v(%v) \n want: %v(%v)",
@@ -59,6 +67,8 @@ func (e ExpectClause) ToBe(want interface{}) {
 	}
 }
 
+// ToPanic fails the test if the have value does not panic when invoked. If
+// the have value is not a function, the test fails.
 func (e ExpectClause) ToPanic() {
 	e.t.Helper()
 	fn, ok := e.have.(func())
