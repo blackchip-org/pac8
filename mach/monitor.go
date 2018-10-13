@@ -97,7 +97,7 @@ func (m *Monitor) Run() error {
 func (m *Monitor) parse(line string) {
 	line = strings.TrimSpace(line)
 	if line == "" {
-		if m.lastCmd != CmdStep {
+		if m.lastCmd != CmdStep && m.lastCmd != CmdGo {
 			return
 		}
 		line = m.lastCmd
