@@ -6,6 +6,7 @@ import (
 
 	"github.com/blackchip-org/pac8/cpu"
 	"github.com/blackchip-org/pac8/memory"
+	"github.com/blackchip-org/pac8/util/clock"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -79,6 +80,7 @@ func (m *Mach) setStatus(s Status) {
 func (m *Mach) Run() {
 	m.events = NewCycle(1 * time.Millisecond)
 	for {
+		clock.SetNow(time.Now())
 		select {
 		case <-m.stop:
 			m.setStatus(Stop)
@@ -110,7 +112,7 @@ func (m *Mach) tick() {
 	if m.events.Next() {
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 			if _, ok := event.(*sdl.QuitEvent); ok {
-				return
+				m.quit <- true
 			}
 		}
 	}

@@ -59,15 +59,18 @@ type CPU struct {
 	mem   memory.Memory
 	delta uint8
 	// address used to load on the last (IX+d) or (IY+d) instruction
-	iaddr uint16
-	irq   chan uint8
+	iaddr      uint16
+	requestInt chan uint8
+
+	intRequested bool
+	intData      uint8
 }
 
 func New(m memory.Memory) *CPU {
 	c := &CPU{
-		mem:   m,
-		Ports: memory.NewIO(0x100),
-		irq:   make(chan uint8, 1),
+		mem:        m,
+		Ports:      memory.NewIO(0x100),
+		requestInt: make(chan uint8, 1),
 	}
 	return c
 }
@@ -78,16 +81,28 @@ func (c *CPU) Next() {
 		execute := ops[opcode]
 		c.refreshR()
 		execute(c)
+
+		// When an EI instruction is executed, any pending interrupt request
+		// is not accepted until after the instruction following EI is
+		// executed. This single instruction delay is necessary when the
+		// next instruction is a return instruction.
+		if opcode == 0xfb {
+			return
+		}
 	}
 
 	select {
-	case v := <-c.irq:
-		if c.IFF1 {
-			c.Halt = false
-			c.intAck(v)
-		}
+	case v := <-c.requestInt:
+		c.intRequested = true
+		c.intData = v
 	default:
 	}
+
+	if c.IFF1 && c.intRequested {
+		c.intRequested = false
+		c.intAck(c.intData)
+	}
+
 }
 
 func (c *CPU) PC() uint16 {
@@ -99,7 +114,7 @@ func (c *CPU) SetPC(pc uint16) {
 }
 
 func (c *CPU) INT(v uint8) {
-	c.irq <- v
+	c.requestInt <- v
 }
 
 func (c *CPU) Ready() bool {
@@ -122,6 +137,7 @@ func (c *CPU) intAck(v uint8) {
 	if c.IM != 2 {
 		panic(fmt.Sprintf("unsupported interrupt mode %v", c.IM))
 	}
+	c.Halt = false
 	c.IFF1 = false
 	c.IFF2 = false
 	c.SP -= 2

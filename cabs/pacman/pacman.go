@@ -101,6 +101,10 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 	bits.Set(&cab.regs.dipSwitches, 1, true) // 1 coin per game
 	bits.Set(&cab.regs.dipSwitches, 7, true) // Normal ghost names
 
+	// Different type of crash when these are set
+	cab.regs.in0 = 0x3f
+	cab.regs.in1 = 0x7f
+
 	// VBLANK interrupt
 	video.Callback = func() {
 		if m.Status == mach.Run && cab.regs.interruptEnable != 0 {
