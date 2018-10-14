@@ -95,8 +95,7 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 
 	// Port 0 gets set with the partial interrupt pointer to be set
 	// by the interrupting device
-	pm := memory.NewPortMapper(cab.cpu.Ports)
-	pm.WO(0, &cab.intSelect)
+	cab.cpu.Map.WO(0, &cab.intSelect)
 
 	bits.Set(&cab.regs.in1, 4, true)         // Board test switch disabled
 	bits.Set(&cab.regs.dipSwitches, 1, true) // 1 coin per game

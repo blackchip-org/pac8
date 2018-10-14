@@ -11,30 +11,20 @@ type Port struct {
 
 // IO is memory that is mapped to input/output ports. Use PortMapper to
 // easily map memory addresses to port values.
-type IO interface {
-	Memory
-	Port(int) *Port
-}
-
-type io struct {
+type IO struct {
 	ports []Port
 }
 
 // NewIO creates new input/output memory with n ports.
 func NewIO(n int) IO {
-	return &io{
+	return IO{
 		ports: make([]Port, n, n),
 	}
 }
 
-// Port returns the port with port number p.
-func (i *io) Port(p int) *Port {
-	return &i.ports[p]
-}
-
 // Store writes the value to the port mapped at address. If no port is
 // mapped at address, this function does nothing.
-func (i *io) Store(address uint16, value uint8) {
+func (i IO) Store(address uint16, value uint8) {
 	p := i.ports[int(address)]
 	if p.Write != nil {
 		*p.Write = value
@@ -43,7 +33,7 @@ func (i *io) Store(address uint16, value uint8) {
 
 // Load reads the value from the port mapped at address. If no port is
 // mapped at address, zero is returned.
-func (i *io) Load(address uint16) uint8 {
+func (i IO) Load(address uint16) uint8 {
 	p := i.ports[int(address)]
 	if p.Read == nil {
 		return 0
@@ -52,7 +42,7 @@ func (i *io) Load(address uint16) uint8 {
 }
 
 // Length returns the number of ports.
-func (i *io) Length() int {
+func (i IO) Length() int {
 	return len(i.ports)
 }
 
@@ -68,25 +58,25 @@ func NewPortMapper(io IO) PortMapper {
 
 // RO maps the value at v to the port at p only when reading.
 func (m PortMapper) RO(p int, v *uint8) {
-	m.io.Port(p).Read = v
+	m.io.ports[p].Read = v
 }
 
 // WO maps the value at v to the port at p only when writing.
 func (m PortMapper) WO(p int, v *uint8) {
-	m.io.Port(p).Write = v
+	m.io.ports[p].Write = v
 }
 
 // RW maps the value at v to the port at p when reading or writing.
 func (m PortMapper) RW(p int, v *uint8) {
-	m.io.Port(p).Read = v
-	m.io.Port(p).Write = v
+	m.io.ports[p].Read = v
+	m.io.ports[p].Write = v
 }
 
 type mockIO struct {
 	data map[uint8][]uint8
 }
 
-func NewMockIO(snapshots []Snapshot) IO {
+func NewMockIO(snapshots []Snapshot) Memory {
 	mio := &mockIO{
 		data: make(map[uint8][]uint8),
 	}
@@ -127,8 +117,4 @@ func (m *mockIO) Store(addr uint16, value uint8) {
 
 func (m *mockIO) Length() int {
 	return 0
-}
-
-func (m *mockIO) Port(p int) *Port {
-	return nil
 }

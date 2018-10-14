@@ -101,24 +101,3 @@ func NewSpy(mem Memory) *Spy {
 		},
 	}
 }
-
-type SpyIO struct {
-	spy
-	io IO
-}
-
-func NewSpyIO(io IO) *SpyIO {
-	return &SpyIO{
-		io: io,
-		spy: spy{
-			mem:      io,
-			callback: func(e Event) {},
-			reads:    make(map[uint16]struct{}),
-			writes:   make(map[uint16]struct{}),
-		},
-	}
-}
-
-func (s *SpyIO) Port(p int) *Port {
-	return s.io.Port(p)
-}
