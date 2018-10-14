@@ -1,7 +1,6 @@
 package memory
 
 import (
-	"crypto/sha1"
 	"fmt"
 
 	"github.com/blackchip-org/pac8/util/bits"
@@ -52,10 +51,6 @@ func (r *ROM) Store(address uint16, value uint8) {}
 
 func (r *ROM) Length() int {
 	return len(r.bytes)
-}
-
-func (r *ROM) Checksum() string {
-	return fmt.Sprintf("%040x", sha1.Sum(r.bytes))
 }
 
 type Null struct {
