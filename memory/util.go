@@ -2,6 +2,7 @@ package memory
 
 import (
 	"bytes"
+	"crypto/sha1"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -144,9 +145,9 @@ func LoadROM(e *[]error, path string, checksum string) *ROM {
 		return nil
 	}
 	rom := NewROM(data)
-	romChecksum := rom.Checksum()
+	romChecksum := fmt.Sprintf("%04x", sha1.Sum(data))
 	if checksum != romChecksum {
-		*e = append(*e, fmt.Errorf("invalid checksum for file: %s\nexpected: %v\nreceived: %v", filename, romChecksum, checksum))
+		*e = append(*e, fmt.Errorf("invalid checksum for file: %s\nexpected: %v\nreceived: %v", filename, checksum, romChecksum))
 	}
 	return rom
 }
