@@ -122,15 +122,3 @@ func NewSpyIO(io IO) *SpyIO {
 func (s *SpyIO) Port(p int) *Port {
 	return s.io.Port(p)
 }
-
-func (s *SpyIO) RO(port int, v *uint8) {
-	s.io.RO(port, v)
-}
-
-func (s *SpyIO) WO(port int, v *uint8) {
-	s.io.WO(port, v)
-}
-
-func (s *SpyIO) RW(port int, v *uint8) {
-	s.io.RW(port, v)
-}

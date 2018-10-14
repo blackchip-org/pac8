@@ -95,7 +95,8 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 
 	// Port 0 gets set with the partial interrupt pointer to be set
 	// by the interrupting device
-	cab.cpu.Ports.WO(0, &cab.intSelect)
+	pm := memory.NewPortMapper(cab.cpu.Ports)
+	pm.WO(0, &cab.intSelect)
 
 	bits.Set(&cab.regs.in1, 4, true)         // Board test switch disabled
 	bits.Set(&cab.regs.dipSwitches, 1, true) // 1 coin per game
@@ -116,44 +117,45 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 }
 
 func mapRegisters(r *registers, io memory.IO, v *Video) {
+	pm := memory.NewPortMapper(io)
 	for i := 0; i <= 0x3f; i++ {
-		io.RO(i, &r.in0)
+		pm.RO(i, &r.in0)
 	}
-	io.WO(0x00, &r.interruptEnable)
-	io.WO(0x01, &r.soundEnable)
-	io.WO(0x02, &r.unknown0)
-	io.RW(0x03, &r.flipScreen)
-	io.RW(0x04, &r.player1Lamp)
-	io.RW(0x05, &r.player2Lamp)
-	io.RW(0x06, &r.coinLockout)
-	io.RW(0x07, &r.coinCounter)
+	pm.WO(0x00, &r.interruptEnable)
+	pm.WO(0x01, &r.soundEnable)
+	pm.WO(0x02, &r.unknown0)
+	pm.RW(0x03, &r.flipScreen)
+	pm.RW(0x04, &r.player1Lamp)
+	pm.RW(0x05, &r.player2Lamp)
+	pm.RW(0x06, &r.coinLockout)
+	pm.RW(0x07, &r.coinCounter)
 	for i := 0x40; i <= 0x7f; i++ {
-		io.RO(i, &r.in1)
+		pm.RO(i, &r.in1)
 	}
 	for i, v := 0x40, 0; v < 3; i, v = i+6, v+1 {
-		io.WO(i+0, &r.voices[v].acc[0])
-		io.WO(i+1, &r.voices[v].acc[1])
-		io.WO(i+2, &r.voices[v].acc[2])
-		io.WO(i+3, &r.voices[v].acc[3])
-		io.WO(i+4, &r.voices[v].acc[4])
-		io.WO(i+5, &r.voices[v].waveform)
+		pm.WO(i+0, &r.voices[v].acc[0])
+		pm.WO(i+1, &r.voices[v].acc[1])
+		pm.WO(i+2, &r.voices[v].acc[2])
+		pm.WO(i+3, &r.voices[v].acc[3])
+		pm.WO(i+4, &r.voices[v].acc[4])
+		pm.WO(i+5, &r.voices[v].waveform)
 	}
 	for i, v := 0x50, 0; v < 3; i, v = i+6, v+1 {
-		io.WO(i+0, &r.voices[v].freq[0])
-		io.WO(i+1, &r.voices[v].freq[1])
-		io.WO(i+2, &r.voices[v].freq[2])
-		io.WO(i+3, &r.voices[v].freq[3])
-		io.WO(i+4, &r.voices[v].freq[4])
-		io.WO(i+5, &r.voices[v].vol)
+		pm.WO(i+0, &r.voices[v].freq[0])
+		pm.WO(i+1, &r.voices[v].freq[1])
+		pm.WO(i+2, &r.voices[v].freq[2])
+		pm.WO(i+3, &r.voices[v].freq[3])
+		pm.WO(i+4, &r.voices[v].freq[4])
+		pm.WO(i+5, &r.voices[v].vol)
 	}
 	for i, s := 0x60, 0; s < 8; i, s = i+2, s+1 {
-		io.WO(i+0, &v.spriteCoords[s].x)
-		io.WO(i+1, &v.spriteCoords[s].y)
+		pm.WO(i+0, &v.spriteCoords[s].x)
+		pm.WO(i+1, &v.spriteCoords[s].y)
 	}
 	for i := 0x80; i <= 0xbf; i++ {
-		io.RO(i, &r.dipSwitches)
+		pm.RO(i, &r.dipSwitches)
 	}
 	for i := 0xc0; i <= 0xff; i++ {
-		io.WO(i, &r.watchdogReset)
+		pm.WO(i, &r.watchdogReset)
 	}
 }

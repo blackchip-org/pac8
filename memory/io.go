@@ -1,7 +1,10 @@
 package memory
 
+// Port represents an input/output port between the CPU and other devices.
+// Read points to a value that when reading from the device and Write points
+// to a value used when writing to the device. Set the pointers to the
+// same value if the port is read/write.
 type Port struct {
-	Ready bool
 	Read  *uint8
 	Write *uint8
 }
@@ -9,9 +12,6 @@ type Port struct {
 type IO interface {
 	Memory
 	Port(int) *Port
-	RO(int, *uint8)
-	WO(int, *uint8)
-	RW(int, *uint8)
 }
 
 type io struct {
@@ -31,7 +31,6 @@ func (i *io) Port(p int) *Port {
 func (i *io) Store(address uint16, value uint8) {
 	p := i.ports[int(address)]
 	if p.Write != nil {
-		p.Ready = true
 		*p.Write = value
 	}
 }
@@ -48,17 +47,25 @@ func (i *io) Length() int {
 	return len(i.ports)
 }
 
-func (i *io) RO(port int, v *uint8) {
-	i.ports[port].Read = v
+type PortMapper struct {
+	io IO
 }
 
-func (i *io) WO(port int, v *uint8) {
-	i.ports[port].Write = v
+func NewPortMapper(io IO) PortMapper {
+	return PortMapper{io: io}
 }
 
-func (i *io) RW(port int, v *uint8) {
-	i.ports[port].Read = v
-	i.ports[port].Write = v
+func (m PortMapper) RO(port int, v *uint8) {
+	m.io.Port(port).Read = v
+}
+
+func (m PortMapper) WO(port int, v *uint8) {
+	m.io.Port(port).Write = v
+}
+
+func (m PortMapper) RW(port int, v *uint8) {
+	m.io.Port(port).Read = v
+	m.io.Port(port).Write = v
 }
 
 type mockIO struct {
@@ -111,7 +118,3 @@ func (m *mockIO) Length() int {
 func (m *mockIO) Port(p int) *Port {
 	return nil
 }
-
-func (m *mockIO) RO(p int, v *uint8) {}
-func (m *mockIO) WO(p int, v *uint8) {}
-func (m *mockIO) RW(p int, v *uint8) {}
