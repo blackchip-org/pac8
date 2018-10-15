@@ -726,6 +726,8 @@ func rotl(c *CPU, put cpu.Put, get cpu.Get) {
 // S,Z, and P/V are preserved, H and N flags are reset
 func rotla(c *CPU) {
 	alu.In0 = c.A
+	// FIXME: Should this be here?
+	// alu.SetCarry(false)
 	alu.RotateLeft()
 
 	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
@@ -737,6 +739,8 @@ func rotla(c *CPU) {
 
 func rotr(c *CPU, put cpu.Put, get cpu.Get) {
 	alu.In0 = get()
+	// FIXME: Should this be here?
+	// alu.SetCarry(false)
 	alu.RotateRight()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
@@ -753,6 +757,8 @@ func rotr(c *CPU, put cpu.Put, get cpu.Get) {
 
 func rotra(c *CPU) {
 	alu.In0 = c.A
+	// FIXME: Should this be here?
+	// alu.SetCarry(false)
 	alu.RotateRight()
 
 	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
