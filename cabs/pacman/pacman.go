@@ -79,7 +79,7 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 		io,   // $5000 - $50ff
 	})
 	// Mask out the bit 15 address line that is missing in Pacman
-	cab.mem = memory.NewAddrMasked(cab.mem, 0x7fff)
+	cab.mem = memory.NewMasked(cab.mem, 0x7fff)
 
 	cab.cpu = z80.New(cab.mem)
 	m := mach.New(cab.cpu)

@@ -31,14 +31,14 @@ func (e Event) String() string {
 	return fmt.Sprintf("%v %04x %02x", e.Type, e.Address, e.Value)
 }
 
-type spy struct {
+type Spy struct {
 	callback EventCallback
 	mem      Memory
 	reads    map[uint16]struct{}
 	writes   map[uint16]struct{}
 }
 
-func (s *spy) Load(address uint16) uint8 {
+func (s *Spy) Load(address uint16) uint8 {
 	value := s.mem.Load(address)
 	if _, exists := s.reads[address]; exists {
 		s.callback(Event{ReadEvent, address, value})
@@ -46,58 +46,52 @@ func (s *spy) Load(address uint16) uint8 {
 	return value
 }
 
-func (s *spy) Store(address uint16, value uint8) {
+func (s *Spy) Store(address uint16, value uint8) {
 	s.mem.Store(address, value)
 	if _, exists := s.writes[address]; exists {
 		s.callback(Event{WriteEvent, address, value})
 	}
 }
 
-func (s *spy) Length() int {
+func (s *Spy) Length() int {
 	return s.mem.Length()
 }
 
-func (s *spy) Callback(e EventCallback) {
+func (s *Spy) Callback(e EventCallback) {
 	s.callback = e
 }
 
-func (s *spy) WatchR(address uint16) {
+func (s *Spy) WatchR(address uint16) {
 	s.reads[address] = struct{}{}
 }
 
-func (s *spy) WatchW(address uint16) {
+func (s *Spy) WatchW(address uint16) {
 	s.writes[address] = struct{}{}
 }
 
-func (s *spy) WatchRW(address uint16) {
+func (s *Spy) WatchRW(address uint16) {
 	s.reads[address] = struct{}{}
 	s.writes[address] = struct{}{}
 }
 
-func (s *spy) UnwatchR(address uint16) {
+func (s *Spy) UnwatchR(address uint16) {
 	delete(s.reads, address)
 }
 
-func (s *spy) UnwatchW(address uint16) {
+func (s *Spy) UnwatchW(address uint16) {
 	delete(s.writes, address)
 }
 
-func (s *spy) UnwatchRW(address uint16) {
+func (s *Spy) UnwatchRW(address uint16) {
 	delete(s.reads, address)
 	delete(s.writes, address)
-}
-
-type Spy struct {
-	spy
 }
 
 func NewSpy(mem Memory) *Spy {
 	return &Spy{
-		spy: spy{
-			mem:      mem,
-			callback: func(e Event) {},
-			reads:    make(map[uint16]struct{}),
-			writes:   make(map[uint16]struct{}),
-		},
+		mem:      mem,
+		callback: func(e Event) {},
+		reads:    make(map[uint16]struct{}),
+		writes:   make(map[uint16]struct{}),
 	}
 }

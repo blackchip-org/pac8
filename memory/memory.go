@@ -126,26 +126,26 @@ func (m PageMapped) Length() int {
 	return 0x10000
 }
 
-type AddrMasked struct {
+type masked struct {
 	mem  Memory
 	mask uint16
 }
 
-func NewAddrMasked(mem Memory, mask uint16) *AddrMasked {
-	return &AddrMasked{
+func NewMasked(mem Memory, mask uint16) Memory {
+	return masked{
 		mem:  mem,
 		mask: mask,
 	}
 }
 
-func (m *AddrMasked) Load(address uint16) uint8 {
+func (m masked) Load(address uint16) uint8 {
 	return m.mem.Load(address & m.mask)
 }
 
-func (m *AddrMasked) Store(address uint16, value uint8) {
+func (m masked) Store(address uint16, value uint8) {
 	m.mem.Store(address&m.mask, value)
 }
 
-func (m *AddrMasked) Length() int {
+func (m masked) Length() int {
 	return m.mem.Length()
 }
