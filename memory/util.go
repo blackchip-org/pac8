@@ -137,7 +137,7 @@ func home() string {
 	return home
 }
 
-func LoadROM(e *[]error, path string, checksum string) *ROM {
+func LoadROM(e *[]error, path string, checksum string) Memory {
 	filename := filepath.Join(home(), path)
 	data, err := ioutil.ReadFile(filename)
 	if err != nil {

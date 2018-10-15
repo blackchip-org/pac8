@@ -12,62 +12,62 @@ type Memory interface {
 	Length() int
 }
 
-type RAM struct {
+type ram struct {
 	bytes []uint8
 }
 
-func NewRAM(size int) *RAM {
-	return &RAM{bytes: make([]uint8, size, size)}
+func NewRAM(size int) Memory {
+	return ram{bytes: make([]uint8, size, size)}
 }
 
-func (r *RAM) Load(address uint16) uint8 {
+func (r ram) Load(address uint16) uint8 {
 	return r.bytes[address]
 }
 
-func (r *RAM) Store(address uint16, value uint8) {
+func (r ram) Store(address uint16, value uint8) {
 	r.bytes[address] = value
 }
 
-func (r *RAM) Length() int {
+func (r ram) Length() int {
 	return len(r.bytes)
 }
 
-type ROM struct {
+type rom struct {
 	bytes []uint8
 }
 
-func NewROM(data []uint8) *ROM {
-	return &ROM{bytes: data}
+func NewROM(data []uint8) Memory {
+	return rom{bytes: data}
 }
 
-func (r *ROM) Load(address uint16) uint8 {
+func (r rom) Load(address uint16) uint8 {
 	if int(address) >= len(r.bytes) {
 		return 0
 	}
 	return r.bytes[address]
 }
 
-func (r *ROM) Store(address uint16, value uint8) {}
+func (r rom) Store(address uint16, value uint8) {}
 
-func (r *ROM) Length() int {
+func (r rom) Length() int {
 	return len(r.bytes)
 }
 
-type Null struct {
+type null struct {
 	length int
 }
 
-func NewNull(length int) Null {
-	return Null{length: length}
+func NewNull(length int) Memory {
+	return null{length: length}
 }
 
-func (n Null) Load(address uint16) uint8 {
+func (n null) Load(address uint16) uint8 {
 	return 0
 }
 
-func (n Null) Store(address uint16, value uint8) {}
+func (n null) Store(address uint16, value uint8) {}
 
-func (n Null) Length() int {
+func (n null) Length() int {
 	return n.length
 }
 
@@ -92,7 +92,7 @@ func NewPageMapped(blocks []Memory) *PageMapped {
 		}
 		if remaining == 0 {
 			if blockIndex+1 == len(blocks) {
-				mem.pages[p] = page{Null{}, 0x100}
+				mem.pages[p] = page{null{}, 0x100}
 				continue
 			}
 			blockIndex++
