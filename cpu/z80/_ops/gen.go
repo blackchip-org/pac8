@@ -505,9 +505,11 @@ func processED(tab *regtab, op uint8) string {
 		}
 		if z == 2 {
 			if q == 0 {
+				// SBC HL, rp[p]
 				return fmt.Sprintf("sub16(c, c.storeHL, c.loadHL, c.load%v, true)", rp[p])
 			}
 			if q == 1 {
+				// ADC HL, rp[p]
 				return fmt.Sprintf("add16(c, c.storeHL, c.loadHL, c.load%v, true)", rp[p])
 			}
 		}

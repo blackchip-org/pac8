@@ -14,6 +14,9 @@ import (
 // Set a test name here to test a single test
 var testSingle = ""
 
+// TODO: Write single tests for:
+// ADC/SBC: Check that both bytes are zero for zero flag when doing 16-bits
+
 func TestOps(t *testing.T) {
 	for _, test := range fuseTests {
 		if testSingle != "" && test.name != testSingle {

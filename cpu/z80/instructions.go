@@ -56,18 +56,20 @@ func add16(c *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bool
 		alu.SetCarry(true)
 	}
 	alu.Add()
+	zero0 := alu.Zero()
 	lo := alu.Out
 
 	alu.In0 = uint8(in0 >> 8)
 	alu.In1 = uint8(in1 >> 8)
 	alu.Add()
+	zero1 := alu.Zero()
 	hi := alu.Out
 
 	result := uint16(hi)<<8 | uint16(lo)
 
 	if withCarry {
 		bits.Set(&c.F, FlagS, alu.Sign())
-		bits.Set(&c.F, FlagZ, alu.Zero())
+		bits.Set(&c.F, FlagZ, zero0 && zero1)
 		bits.Set(&c.F, FlagV, alu.Overflow())
 	}
 	bits.Set(&c.F, Flag5, bits.Get(hi, 5))
@@ -946,18 +948,20 @@ func sub16(c *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withBorrow boo
 		alu.SetBorrow(true)
 	}
 	alu.Subtract()
+	zero0 := alu.Zero()
 	lo := alu.Out
 
 	alu.In0 = uint8(in0 >> 8)
 	alu.In1 = uint8(in1 >> 8)
 	alu.Subtract()
+	zero1 := alu.Zero()
 	hi := alu.Out
 
 	result := bits.Join(hi, lo)
 
 	if withBorrow {
 		bits.Set(&c.F, FlagS, alu.Sign())
-		bits.Set(&c.F, FlagZ, alu.Zero())
+		bits.Set(&c.F, FlagZ, zero0 && zero1)
 		bits.Set(&c.F, FlagV, alu.Overflow())
 	}
 	bits.Set(&c.F, Flag5, bits.Get(hi, 5))

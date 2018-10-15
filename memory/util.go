@@ -36,6 +36,12 @@ func Import(m Memory, snapshot Snapshot) {
 	}
 }
 
+func ImportBinary(m Memory, data []byte, addr uint16) {
+	for i, value := range data {
+		m.Store(addr+uint16(i), value)
+	}
+}
+
 type Diff struct {
 	Address uint16
 	A       uint8
