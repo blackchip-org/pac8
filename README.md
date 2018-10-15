@@ -22,7 +22,7 @@ brew install go sdl2{,_image,_mixer,_ttf,_gfx} pkg-config
 
 ### ROMs
 
-Download the ROMs from [somewhere](http://example.org/pac8). Unpack the
+Download the ROMs from [somewhere](http://example.org). Unpack the
 tarball into your home directory.
 
 ## Installation
@@ -40,9 +40,17 @@ export PAC8_HOME=~/pac8
 
 Use the `-m` flag to enable the [monitor](monitor.md).
 
+## Inputs
+
+- `5`: Coin slot 1
+- `6`: Coin slot 2
+- `1`: One Player Start
+- `2`: Two Player Start
+- Arrow keys: Joystick
+
 ## Status
 
-Attract mode works but then crashes once the demonstration game starts.
+Game is playable with some bugs. Hexadecimal score being one of those bugs.
 
 ## License
 

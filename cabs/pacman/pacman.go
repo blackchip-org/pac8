@@ -90,6 +90,8 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 		os.Exit(1)
 	}
 	m.Display = video
+	keyboard := NewKeyboard(&cab.regs)
+	m.UI = keyboard
 
 	mapRegisters(&cab.regs, io, video)
 
@@ -97,9 +99,10 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 	// by the interrupting device
 	cab.cpu.Map.WO(0, &cab.intSelect)
 
-	bits.Set(&cab.regs.in1, 4, true)         // Board test switch disabled
-	bits.Set(&cab.regs.dipSwitches, 1, true) // 1 coin per game
-	bits.Set(&cab.regs.dipSwitches, 7, true) // Normal ghost names
+	bits.Set(&cab.regs.in1, 4, true)          // Board test switch disabled
+	bits.Set(&cab.regs.dipSwitches, 0, true)  // 1 coin per game
+	bits.Set(&cab.regs.dipSwitches, 1, false) // ...
+	bits.Set(&cab.regs.dipSwitches, 7, true)  // Normal ghost names
 
 	// Different type of crash when these are set
 	cab.regs.in0 = 0x3f

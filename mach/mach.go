@@ -40,9 +40,14 @@ type Display interface {
 	Render()
 }
 
+type UI interface {
+	SDLEvent(sdl.Event)
+}
+
 type Mach struct {
 	CPU         cpu.CPU
 	Display     Display
+	UI          UI
 	Status      Status
 	Err         error
 	Tracing     bool
@@ -113,6 +118,9 @@ func (m *Mach) tick() {
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 			if _, ok := event.(*sdl.QuitEvent); ok {
 				m.quit <- true
+			}
+			if m.UI != nil {
+				m.UI.SDLEvent(event)
 			}
 		}
 	}
