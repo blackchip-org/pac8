@@ -3,7 +3,6 @@ package memory
 import "fmt"
 
 type EventType int
-type EventCallback func(e Event)
 
 const (
 	ReadEvent EventType = iota
@@ -20,6 +19,8 @@ func (t EventType) String() string {
 		return "?"
 	}
 }
+
+type EventCallback func(e Event)
 
 type Event struct {
 	Type    EventType

@@ -299,11 +299,10 @@ func cb(c *CPU) {
 	opsCB[opcode](c)
 }
 
-// Inverts the carry flag
-//
-// Carry flag inverted. Also inverts H and clears N. Rest of the flags are
-// preserved.
+// inverts the carry flag
 func ccf(c *CPU) {
+	// The H flag was tricky. Correct definition in the Z80 User Manual
+	bits.Set(&c.F, FlagH, bits.Get(c.F, FlagC))
 	bits.Set(&c.F, FlagC, !bits.Get(c.F, FlagC))
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, Flag3, bits.Get(c.A, 3))
@@ -356,46 +355,44 @@ func cpl(c *CPU) {
 //
 // Note: some documentation omits that the adjustment is negative when the
 // N flag is set.
+//
+// Eventually ported directly from the MAME source code.
 func daa(c *CPU) {
-	result := c.A
-
+	a := c.A
 	half := false
-	carry := false
 	if bits.Get(c.F, FlagN) {
 		if bits.Get(c.F, FlagH) || c.A&0xf > 9 {
-			result -= 0x06
-			/* TODO: remove if works
-			if result < 6 {
-				half = true
-			}
-			*/
+			a -= 6
 		}
 		if bits.Get(c.F, FlagC) || c.A > 0x99 {
-			result -= 0x60
-			carry = true
+			a -= 0x60
+		}
+		if bits.Get(c.F, FlagH) && c.A&0xf <= 0x5 {
+			half = true
 		}
 	} else {
 		if bits.Get(c.F, FlagH) || c.A&0xf > 9 {
-			result += 0x06
+			a += 6
+		}
+		if bits.Get(c.F, FlagC) || c.A > 0x99 {
+			a += 0x60
+		}
+		if c.A&0xf > 0x9 {
 			half = true
 		}
-		/* TODO: remove if works
-		if bits.Get(c.F, FlagC) || c.A > 0x99 {
-			result += 0x60
-			carry = true
-		}
-		*/
 	}
 
-	bits.Set(&c.F, FlagS, bits.Get(result, 7))
-	bits.Set(&c.F, FlagZ, result == 0)
-	bits.Set(&c.F, Flag5, bits.Get(result, 5))
+	if c.A > 0x99 {
+		bits.Set(&c.F, FlagC, true)
+	}
 	bits.Set(&c.F, FlagH, half)
-	bits.Set(&c.F, Flag3, bits.Get(result, 3))
-	bits.Set(&c.F, FlagV, bits.Parity(result))
-	bits.Set(&c.F, FlagC, carry)
+	bits.Set(&c.F, FlagS, bits.Get(a, 7))
+	bits.Set(&c.F, FlagZ, a == 0)
+	bits.Set(&c.F, FlagV, bits.Parity(a))
+	bits.Set(&c.F, Flag5, bits.Get(a, 5))
+	bits.Set(&c.F, Flag3, bits.Get(a, 3))
 
-	c.A = result
+	c.A = a
 }
 
 func ddfd(c *CPU, table opsTable, extendedTable opsTable) {
@@ -688,6 +685,60 @@ func retn(c *CPU) {
 	c.SP += 2
 }
 
+// Rotate A left
+func rla(c *CPU) {
+	alu.In0 = c.A
+	alu.SetCarry(bits.Get(c.F, FlagC))
+	alu.ShiftLeft()
+
+	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, FlagH, false)
+	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, FlagH, false)
+	bits.Set(&c.F, FlagC, alu.Carry())
+
+	c.A = alu.Out
+}
+
+// Rotate left with carry
+func rlc(c *CPU, put cpu.Put, get cpu.Get) {
+	alu.In0 = get()
+	alu.SetCarry(bits.Get(c.F, FlagC))
+	alu.RotateLeft()
+
+	bits.Set(&c.F, FlagS, alu.Sign())
+	bits.Set(&c.F, FlagZ, alu.Zero())
+	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, FlagH, false)
+	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, FlagV, alu.Parity())
+	bits.Set(&c.F, FlagN, false)
+	bits.Set(&c.F, FlagC, alu.Carry())
+
+	put(alu.Out)
+}
+
+// rotate A left with carry
+func rlca(c *CPU) {
+	alu.In0 = c.A
+	alu.RotateLeft()
+
+	bits.Set(&c.F, FlagH, false)
+	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, FlagN, false)
+	bits.Set(&c.F, FlagC, alu.Carry())
+
+	v := c.A << 1
+	if c.A&0x80 > 0 {
+		v++
+	}
+	c.A = alu.Out
+	if v != c.A {
+		panic("NO")
+	}
+}
+
 func rld(c *CPU) {
 	addr := bits.Join(c.H, c.L)
 	ahi, alo := bits.Split4(c.A)
@@ -707,10 +758,11 @@ func rld(c *CPU) {
 
 }
 
-func rotl(c *CPU, put cpu.Put, get cpu.Get) {
+func rotr(c *CPU, put cpu.Put, get cpu.Get) {
 	alu.In0 = get()
-	alu.SetCarry(bits.Get(c.F, FlagC))
-	alu.RotateLeft()
+	// FIXME: Should this be here?
+	alu.SetCarry(false)
+	alu.RotateRight()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
@@ -724,47 +776,29 @@ func rotl(c *CPU, put cpu.Put, get cpu.Get) {
 	put(alu.Out)
 }
 
-// rotate A left with carry
-// S,Z, and P/V are preserved, H and N flags are reset
-func rotla(c *CPU) {
+// Rotate A right
+func rra(c *CPU) {
 	alu.In0 = c.A
-	// FIXME: Should this be here?
-	// alu.SetCarry(false)
-	alu.RotateLeft()
+	alu.SetCarry(bits.Get(c.F, FlagC))
+	alu.ShiftRight()
 
 	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, FlagH, false)
 	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
 	c.A = alu.Out
 }
 
-func rotr(c *CPU, put cpu.Put, get cpu.Get) {
-	alu.In0 = get()
-	// FIXME: Should this be here?
-	// alu.SetCarry(false)
+func rrca(c *CPU) {
+	alu.In0 = c.A
 	alu.RotateRight()
 
-	bits.Set(&c.F, FlagS, alu.Sign())
-	bits.Set(&c.F, FlagZ, alu.Zero())
 	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
 	bits.Set(&c.F, FlagH, false)
 	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
-	bits.Set(&c.F, FlagV, alu.Parity())
 	bits.Set(&c.F, FlagN, false)
-	bits.Set(&c.F, FlagC, alu.Carry())
-
-	put(alu.Out)
-}
-
-func rotra(c *CPU) {
-	alu.In0 = c.A
-	// FIXME: Should this be here?
-	// alu.SetCarry(false)
-	alu.RotateRight()
-
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
 	bits.Set(&c.F, FlagC, alu.Carry())
 
 	c.A = alu.Out
@@ -833,18 +867,6 @@ func shiftl(c *CPU, put cpu.Put, get cpu.Get, withCarry bool) {
 	put(alu.Out)
 }
 
-func shiftla(c *CPU) {
-	alu.In0 = c.A
-	alu.SetCarry(bits.Get(c.F, FlagC))
-	alu.ShiftLeft()
-
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
-	bits.Set(&c.F, FlagC, alu.Carry())
-
-	c.A = alu.Out
-}
-
 func shiftr(c *CPU, put cpu.Put, get cpu.Get, withCarry bool) {
 	alu.In0 = get()
 	alu.SetCarry(false)
@@ -863,18 +885,6 @@ func shiftr(c *CPU, put cpu.Put, get cpu.Get, withCarry bool) {
 	bits.Set(&c.F, FlagC, alu.Carry())
 
 	put(alu.Out)
-}
-
-func shiftra(c *CPU) {
-	alu.In0 = c.A
-	alu.SetCarry(bits.Get(c.F, FlagC))
-	alu.ShiftRight()
-
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
-	bits.Set(&c.F, FlagC, alu.Carry())
-
-	c.A = alu.Out
 }
 
 func sll(c *CPU, put cpu.Put, get cpu.Get) {

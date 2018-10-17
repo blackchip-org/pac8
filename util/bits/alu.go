@@ -136,7 +136,7 @@ func (a *ALU) And() {
 // Not performs a logical "not" between In0 and In1 and places the result in
 // Out.
 func (a *ALU) Not() {
-	a.Out = ^a.In0
+	a.Out = a.In0 ^ 0xff
 	a.flags = szpFlags[a.Out]
 }
 

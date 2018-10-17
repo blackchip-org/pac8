@@ -23,10 +23,20 @@ Helpful references:
 - https://floooh.github.io/2016/07/12/z80-rust-ms1.html
 - http://jeffavery.ca/computers/macintosh_z80exerciser.html
 
-Run with:
+Run the functional test with:
 
 ```bash
 go test -v -tags fn
 ```
 
-The test can take up to ten minutes to complete.
+The test can take up to ten minutes to complete. The following tests
+are currently failing:
+
+- `cpd<r>`
+- `<rlca,rrca,rla,rra>`
+
+Run the benchmarks with:
+
+```bash
+go test -run=X -tags=fn -bench=.
+```

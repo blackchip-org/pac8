@@ -34,3 +34,58 @@ func TestAddWithCarry(t *testing.T) {
 
 	With(t).Expect(alu.Out).ToBe(3)
 }
+
+func TestNot(t *testing.T) {
+	alu := ALU{}
+	alu.In0 = Parse("10101010")
+	alu.Not()
+	WithFormat(t, "%08b").Expect(alu.Out).ToBe(Parse("01010101"))
+}
+
+func TestShiftLeft(t *testing.T) {
+	alu := ALU{}
+	alu.In0 = Parse("11110000")
+	alu.ShiftLeft()
+	WithFormat(t, "%08b").Expect(alu.Out).ToBe(Parse("11100000"))
+	WithFormat(t, "carry=%v").Expect(alu.Carry()).ToBe(true)
+	alu.In0 = alu.Out
+	alu.ShiftLeft()
+	WithFormat(t, "%08b").Expect(alu.Out).ToBe(Parse("11000001"))
+	WithFormat(t, "carry=%v").Expect(alu.Carry()).ToBe(true)
+}
+
+func TestShiftRight(t *testing.T) {
+	alu := ALU{}
+	alu.In0 = Parse("00001111")
+	alu.ShiftRight()
+	WithFormat(t, "%08b").Expect(alu.Out).ToBe(Parse("00000111"))
+	WithFormat(t, "carry=%v").Expect(alu.Carry()).ToBe(true)
+	alu.In0 = alu.Out
+	alu.ShiftRight()
+	WithFormat(t, "%08b").Expect(alu.Out).ToBe(Parse("10000011"))
+	WithFormat(t, "carry=%v").Expect(alu.Carry()).ToBe(true)
+}
+
+func TestRotateLeft(t *testing.T) {
+	alu := ALU{}
+	alu.In0 = Parse("11110000")
+	alu.RotateLeft()
+	WithFormat(t, "%08b").Expect(alu.Out).ToBe(Parse("11100001"))
+	WithFormat(t, "carry=%v").Expect(alu.Carry()).ToBe(true)
+	alu.In0 = alu.Out
+	alu.RotateLeft()
+	WithFormat(t, "%08b").Expect(alu.Out).ToBe(Parse("11000011"))
+	WithFormat(t, "carry=%v").Expect(alu.Carry()).ToBe(true)
+}
+
+func TestRotateRight(t *testing.T) {
+	alu := ALU{}
+	alu.In0 = Parse("00001111")
+	alu.RotateRight()
+	WithFormat(t, "%08b").Expect(alu.Out).ToBe(Parse("10000111"))
+	WithFormat(t, "carry=%v").Expect(alu.Carry()).ToBe(true)
+	alu.In0 = alu.Out
+	alu.RotateRight()
+	WithFormat(t, "%08b").Expect(alu.Out).ToBe(Parse("11000011"))
+	WithFormat(t, "carry=%v").Expect(alu.Carry()).ToBe(true)
+}

@@ -241,20 +241,16 @@ func processMain(tab *regtab, op uint8) string {
 		}
 		if z == 7 {
 			if y == 0 {
-				// rlca
-				return "rotla(c)"
+				return "rlca(c)"
 			}
 			if y == 1 {
-				// rrca
-				return "rotra(c)"
+				return "rrca(c)"
 			}
 			if y == 2 {
-				// rla
-				return "shiftla(c)"
+				return "rla(c)"
 			}
 			if y == 3 {
-				// rra
-				return "shiftra(c)"
+				return "rra(c)"
 			}
 			if y == 4 {
 				return "daa(c)"
@@ -428,8 +424,7 @@ func processCB(tab *regtab, op uint8) string {
 
 	if x == 0 {
 		if y == 0 {
-			// rlc
-			return fmt.Sprintf("rotl(c, c.store%v, c.load%v)", r[z], r[z])
+			return fmt.Sprintf("rlc(c, c.store%v, c.load%v)", r[z], r[z])
 		}
 		if y == 1 {
 			// rrc
@@ -659,8 +654,7 @@ func processXCB(tab *regtab, op uint8) string {
 	if x == 0 {
 		if z != 6 {
 			if y == 0 {
-				// rlc
-				return fmt.Sprintf("rotl(c, c.store%v, c.load%v); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
+				return fmt.Sprintf("rlc(c, c.store%v, c.load%v); ld(c, c.storeLastInd, c.load%v)", un.r[z], r[6], un.r[z])
 			}
 			if y == 1 {
 				// rrc
@@ -691,8 +685,7 @@ func processXCB(tab *regtab, op uint8) string {
 		}
 		if z == 6 {
 			if y == 0 {
-				// rlc
-				return fmt.Sprintf("rotl(c, c.storeLastInd, c.load%v)", r[6])
+				return fmt.Sprintf("rlc(c, c.storeLastInd, c.load%v)", r[6])
 			}
 			if y == 1 {
 				// rrc
