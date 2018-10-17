@@ -13,8 +13,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/blackchip-org/pac8/util/charset"
-
 	"github.com/blackchip-org/pac8/cpu"
 	"github.com/blackchip-org/pac8/memory"
 	"github.com/chzyer/readline"
@@ -123,8 +121,7 @@ func (m *Monitor) parse(line string) {
 	case CmdHalt:
 		err = m.halt(args)
 	case CmdMemory:
-		// FIXME: Should not be hard coded
-		err = m.memory(args, charset.PacDecoder)
+		err = m.memory(args, m.mach.CharDecoder)
 	case CmdNext:
 		err = m.next(args)
 	case CmdPokePeek:
@@ -255,7 +252,7 @@ func (m *Monitor) halt(args []string) error {
 	return nil
 }
 
-func (m *Monitor) memory(args []string, decoder charset.Decoder) error {
+func (m *Monitor) memory(args []string, decoder CharDecoder) error {
 	if err := checkLen(args, 0, 2); err != nil {
 		return err
 	}
@@ -280,7 +277,7 @@ func (m *Monitor) memory(args []string, decoder charset.Decoder) error {
 		}
 		addrEnd = addr
 	}
-	m.out.Println(memory.Dump(m.mem, addrStart, addrEnd, decoder))
+	m.out.Println(Dump(m.mem, addrStart, addrEnd, decoder))
 	m.memPtr = addrEnd
 	return nil
 }

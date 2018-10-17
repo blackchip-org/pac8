@@ -1,6 +1,7 @@
 package mach
 
 import (
+	"bytes"
 	"crypto/sha1"
 	"fmt"
 	"io/ioutil"
@@ -57,6 +58,7 @@ type Mach struct {
 	Tracing     bool
 	Breakpoints map[uint16]struct{}
 	Callback    func(Status)
+	CharDecoder CharDecoder
 
 	mem    memory.Memory
 	dasm   *cpu.Disassembler
@@ -160,4 +162,44 @@ func LoadROM(e *[]error, path string, checksum string) memory.Memory {
 		*e = append(*e, fmt.Errorf("invalid checksum for file: %s\nexpected: %v\nreceived: %v", filename, checksum, romChecksum))
 	}
 	return rom
+}
+
+func Dump(m memory.Memory, start uint16, end uint16, decode CharDecoder) string {
+	var buf bytes.Buffer
+	var chars bytes.Buffer
+
+	a0 := start / 0x10 * 0x10
+	a1 := end / 0x10 * 0x10
+	if a1 != end {
+		a1 += 0x10
+	}
+	for addr := a0; addr < a1; addr++ {
+		if addr%0x10 == 0 {
+			buf.WriteString(fmt.Sprintf("$%04x", addr))
+			chars.Reset()
+		}
+		if addr < start || addr > end {
+			buf.WriteString("   ")
+			chars.WriteString(" ")
+		} else {
+			value := m.Load(addr)
+			buf.WriteString(fmt.Sprintf(" %02x", value))
+			ch, printable := decode(value)
+			if printable {
+				chars.WriteString(fmt.Sprintf("%c", ch))
+			} else {
+				chars.WriteString(".")
+			}
+		}
+		if addr%0x10 == 7 {
+			buf.WriteString(" ")
+		}
+		if addr%0x10 == 0x0f {
+			buf.WriteString(" " + chars.String())
+			if addr < end-1 {
+				buf.WriteString("\n")
+			}
+		}
+	}
+	return buf.String()
 }

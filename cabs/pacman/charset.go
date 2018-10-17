@@ -1,6 +1,4 @@
-package charset
-
-// FIXME: This needs a real home
+package pacman
 
 var chars = map[uint8]rune{
 	0x00: '0',
@@ -59,7 +57,7 @@ var chars = map[uint8]rune{
 	0x5b: '!',
 }
 
-var PacDecoder = func(code uint8) (rune, bool) {
+var PacmanDecoder = func(code uint8) (rune, bool) {
 	ch, printable := chars[code]
 	return ch, printable
 }
