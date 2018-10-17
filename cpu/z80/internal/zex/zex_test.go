@@ -1,119 +1,138 @@
 // +build fn
 
-package main
+/*
+Running the full zexdoc test takes about 7 minutes. This test instead
+breaks up each test into an individual run. The HL register is loaded
+with the address of the test and the program counter is set to the
+beginning of the normal test loop. Execution is stopped when the
+program counter returns to the top of the loop. Output is then checked
+for "ERROR" to determine if the test passes or fails.
+*/
 
-//go:generate go run gen.go
-//go:generate go fmt zexdoc_com_test.go
+package zex
 
 import (
 	"bytes"
 	"fmt"
+	"io/ioutil"
+	"path/filepath"
 	"strings"
 	"testing"
 
 	"github.com/blackchip-org/pac8/cpu/z80"
 	"github.com/blackchip-org/pac8/memory"
+	"github.com/blackchip-org/pac8/pac8"
 	"github.com/blackchip-org/pac8/util/bits"
 )
 
-const (
-	SingleTestPC = uint16(0x0122)
-	AllTestsPC   = uint16(0x0100)
-)
+func TestZexdoc(t *testing.T) {
+	var tests = []string{
+		"adc16",
+		"add16",
+		"add16x",
+		"add16y",
+		"alu8i",
+		"alu8r",
+		"alu8rx",
+		"alu8x",
+		"bitx",
+		"bitz80",
+		"cpd1",
+		"cpi1",
+		"daa",
+		"inca",
+		"incb",
+		"incbc",
+		"incc",
+		"incd",
+		"incde",
+		"ince",
+		"inch",
+		"inchl",
+		"incix",
+		"inciy",
+		"incl",
+		"incm",
+		"incsp",
+		"incx",
+		"incxh",
+		"incxl",
+		"incyh",
+		"incyl",
+		"ld161",
+		"ld162",
+		"ld163",
+		"ld164",
+		"ld165",
+		"ld166",
+		"ld167",
+		"ld168",
+		"ld16im",
+		"ld16ix",
+		"ld8bd",
+		"ld8im",
+		"ld8imx",
+		"ld8ix1",
+		"ld8ix2",
+		"ld8ix3",
+		"ld8ixy",
+		"ld8rr",
+		"ld8rrx",
+		"lda",
+		"ldd1",
+		"ldd2",
+		"ldi1",
+		"ldi2",
+		"neg",
+		"rld",
+		"rot8080",
+		"rotxy",
+		"rotz80",
+		"srz80",
+		"srzx",
+		"st8ix1",
+		"st8ix2",
+		"st8ix3",
+		"stabd",
+	}
 
-const (
-	TestAdc16 = uint16(0x013a) + (iota * 2)
-	TestAdd16
-	TestAdd16x
-	TestAdd16y
-	TestAlu8i
-	TestAlu8r
-	TestAlu8rx
-	TestAlu8x
-	TestBitx
-	TestBitz80
-	TestCpd1
-	TestCpi1
-	TestDaa
-	TestInca
-	TestIncb
-	TestIncbc
-	TestIncc
-	TestIncd
-	TestIncde
-	TestInce
-	TestInch
-	TestInchl
-	TestIncix
-	TestInciy
-	TestIncl
-	TestIncm
-	TestIncsp
-	TestIncx
-	TestIncxh
-	TestIncxl
-	TestIncyh
-	TestIncyl
-	TestLd161
-	TestLd162
-	TestLd163
-	TestLd164
-	TestLd165
-	TestLd166
-	TestLd167
-	TestLd168
-	TestLd16im
-	TestLd16ix
-	TestLd8bd
-	TestLd8im
-	TestLd8imx
-	TestLd8ix1
-	TestLd8ix2
-	TestLd8ix3
-	TestLd8ixy
-	TestLd8rr
-	TestLd8rrx
-	TestLda
-	TestLdd1
-	TestLdd2
-	TestLdi1
-	TestLdi2
-	TestNeg
-	TestRld
-	TestRot8080
-	TestRotxy
-	TestRotz80
-	TestSrz80
-	TestSrzx
-	TestSt8ix1
-	TestSt8ix2
-	TestSt8ix3
-	TestStabd
-)
+	zexdocFile := filepath.Join(pac8.Home(), "data", "zex", "zexdoc.com")
+	zexdoc, err := ioutil.ReadFile(zexdocFile)
+	if err != nil {
+		t.Fatalf("unable to read %v: %v", zexdocFile, err)
+	}
 
-// To run a single test, change:
-// - start to SingleTestPC
-// - testN to the "TestXXX" constant of the test to run
-func TestZex(t *testing.T) {
-	// start := AllTestsPC
-	// testN := uint16(0)
+	testBaseAddr := uint16(0x013a)
+	for i, test := range tests {
+		addr := testBaseAddr + (uint16(i) * 2)
+		t.Run(test, func(t *testing.T) {
+			ok := runner(zexdoc, addr)
+			if !ok {
+				t.Fail()
+			}
+		})
+	}
+}
 
-	start := SingleTestPC
-	testN := TestCpd1
+func runner(code []byte, addr uint16) bool {
+	var out bytes.Buffer
 
 	// Follow the notes at:
 	// https://floooh.github.io/2016/07/12/z80-rust-ms1.html
 	mem := memory.NewRAM(0x10000)
+	memory.ImportBinary(mem, code, 0x100)
+
 	c := z80.New(mem)
-	memory.ImportBinary(mem, zexdoc, 0x100)
-	c.SetPC(start)
-	c.H, c.L = bits.Split(testN)
 	c.SP = 0xf000
-	var out bytes.Buffer
+	// HL register is loaded with the address of the test to run
+	c.H, c.L = bits.Split(addr)
+
+	loopStart := uint16(0x0122)
+	c.SetPC(loopStart)
 	for {
 		c.Next()
-		// Tests complete on a jump to $0000
-		if c.PC() == 0 {
+		// Tests complete when back at the start of the loop
+		if c.PC() == loopStart {
 			break
 		}
 		// System call that outputs to the screen
@@ -143,10 +162,5 @@ func TestZex(t *testing.T) {
 			c.SP += 2
 		}
 	}
-	fmt.Println()
-	if strings.Contains(out.String(), "ERROR") {
-		t.Errorf("FAILURE")
-	} else {
-		fmt.Println("SUCCESS")
-	}
+	return !strings.Contains(out.String(), "ERROR")
 }

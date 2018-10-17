@@ -34,7 +34,6 @@ go get github.com/blackchip-org/pac8
 ## Run
 
 ```bash
-export PAC8_HOME=~/pac8
 ~/go/bin/pac8
 ```
 

@@ -4,23 +4,23 @@ import (
 	"fmt"
 	"testing"
 
-	. "github.com/blackchip-org/pac8/util/expect"
-
+	"github.com/blackchip-org/pac8/cpu/z80/internal/dasm"
 	"github.com/blackchip-org/pac8/memory"
+	. "github.com/blackchip-org/pac8/util/expect"
 )
 
 func TestDasm(t *testing.T) {
-	for _, test := range harstonTests {
-		t.Run(test.name, func(t *testing.T) {
+	for _, test := range dasm.Tests {
+		t.Run(test.Name, func(t *testing.T) {
 			mem := memory.NewRAM(0x20)
 			c := memory.NewCursor(mem)
 			dasm := NewDisassembler(mem)
 			dasm.SetPC(0x10)
 			c.Pos = 0x10
-			c.PutN(test.bytes...)
+			c.PutN(test.Bytes...)
 			c.Pos = 0x10
 			s := dasm.NextStatement()
-			With(t).Expect(s.Op).ToBe(test.op)
+			With(t).Expect(s.Op).ToBe(test.Op)
 		})
 	}
 }

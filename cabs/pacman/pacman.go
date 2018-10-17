@@ -49,15 +49,15 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 
 	// Load ROMs
 	e := []error{}
-	rom0 := memory.LoadROM(&e, "pacman/pacman.6e", "e87e059c5be45753f7e9f33dff851f16d6751181")
-	rom1 := memory.LoadROM(&e, "pacman/pacman.6f", "674d3a7f00d8be5e38b1fdc208ebef5a92d38329")
-	rom2 := memory.LoadROM(&e, "pacman/pacman.6h", "8e47e8c2c4d6117d174cdac150392042d3e0a881")
-	rom3 := memory.LoadROM(&e, "pacman/pacman.6j", "d4a70d56bb01d27d094d73db8667ffb00ca69cb9")
+	rom0 := mach.LoadROM(&e, "pacman/pacman.6e", "e87e059c5be45753f7e9f33dff851f16d6751181")
+	rom1 := mach.LoadROM(&e, "pacman/pacman.6f", "674d3a7f00d8be5e38b1fdc208ebef5a92d38329")
+	rom2 := mach.LoadROM(&e, "pacman/pacman.6h", "8e47e8c2c4d6117d174cdac150392042d3e0a881")
+	rom3 := mach.LoadROM(&e, "pacman/pacman.6j", "d4a70d56bb01d27d094d73db8667ffb00ca69cb9")
 	vroms := VideoROM{
-		Tiles:   memory.LoadROM(&e, "pacman/pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9"),
-		Sprites: memory.LoadROM(&e, "pacman/pacman.5f", "4a937ac02216ea8c96477d4a15522070507fb599"),
-		Color:   memory.LoadROM(&e, "pacman/82s123.7f", "8d0268dee78e47c712202b0ec4f1f51109b1f2a5"),
-		Palette: memory.LoadROM(&e, "pacman/82s126.4a", "19097b5f60d1030f8b82d9f1d3a241f93e5c75d6"),
+		Tiles:   mach.LoadROM(&e, "pacman/pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9"),
+		Sprites: mach.LoadROM(&e, "pacman/pacman.5f", "4a937ac02216ea8c96477d4a15522070507fb599"),
+		Color:   mach.LoadROM(&e, "pacman/82s123.7f", "8d0268dee78e47c712202b0ec4f1f51109b1f2a5"),
+		Palette: mach.LoadROM(&e, "pacman/82s126.4a", "19097b5f60d1030f8b82d9f1d3a241f93e5c75d6"),
 	}
 
 	// Any errors while loading ROMs?
@@ -70,13 +70,13 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 
 	ram := memory.NewRAM(0x1000)
 	io := memory.NewIO(0x100)
-	cab.mem = memory.NewPageMapped([]memory.Memory{
-		rom0, // $0000 - $0fff
-		rom1, // $1000 - $1fff
-		rom2, // $2000 - $2fff
-		rom3, // $3000 - $3fff
-		ram,  // $4000 - $4fff
-		io,   // $5000 - $50ff
+	cab.mem = memory.NewPageMapped([]memory.Block{
+		memory.NewBlock(0x0000, rom0),
+		memory.NewBlock(0x1000, rom1),
+		memory.NewBlock(0x2000, rom2),
+		memory.NewBlock(0x3000, rom3),
+		memory.NewBlock(0x4000, ram),
+		memory.NewBlock(0x5000, io),
 	})
 	// Mask out the bit 15 address line that is missing in Pacman
 	cab.mem = memory.NewMasked(cab.mem, 0x7fff)
@@ -102,6 +102,7 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 	bits.Set(&cab.regs.in1, 4, true)          // Board test switch disabled
 	bits.Set(&cab.regs.dipSwitches, 0, true)  // 1 coin per game
 	bits.Set(&cab.regs.dipSwitches, 1, false) // ...
+	bits.Set(&cab.regs.dipSwitches, 3, true)  // 3 lives
 	bits.Set(&cab.regs.dipSwitches, 7, true)  // Normal ghost names
 
 	// Different type of crash when these are set

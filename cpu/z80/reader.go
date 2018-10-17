@@ -9,15 +9,11 @@ import (
 	"github.com/blackchip-org/pac8/util/bits"
 )
 
-//go:generate go run _dasm/gen.go
-//go:generate go fmt dasm.go
-//go:generate go fmt harston_test.go
-
 func ReaderZ80(e cpu.Eval) cpu.Statement {
 	e.Statement.Address = e.Cursor.Pos
 	opcode := e.Cursor.Fetch()
 	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
-	dasm[opcode](e)
+	dasmTable[opcode](e)
 	return *e.Statement
 }
 
@@ -133,7 +129,7 @@ func opDD(e cpu.Eval) {
 		opDDCB(e)
 		return
 	}
-	dasmDD[opcode](e)
+	dasmTableDD[opcode](e)
 }
 
 func opFD(e cpu.Eval) {
@@ -148,19 +144,19 @@ func opFD(e cpu.Eval) {
 		opFDCB(e)
 		return
 	}
-	dasmFD[opcode](e)
+	dasmTableFD[opcode](e)
 }
 
 func opCB(e cpu.Eval) {
 	opcode := e.Cursor.Fetch()
 	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
-	dasmCB[opcode](e)
+	dasmTableCB[opcode](e)
 }
 
 func opED(e cpu.Eval) {
 	opcode := e.Cursor.Fetch()
 	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
-	dasmED[opcode](e)
+	dasmTableED[opcode](e)
 }
 
 func opFDCB(e cpu.Eval) {
@@ -168,7 +164,7 @@ func opFDCB(e cpu.Eval) {
 	e.Statement.Bytes = append(e.Statement.Bytes, delta)
 	opcode := e.Cursor.Fetch()
 	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
-	dasmFDCB[opcode](e)
+	dasmTableFDCB[opcode](e)
 }
 
 func opDDCB(e cpu.Eval) {
@@ -176,5 +172,5 @@ func opDDCB(e cpu.Eval) {
 	e.Statement.Bytes = append(e.Statement.Bytes, delta)
 	opcode := e.Cursor.Fetch()
 	e.Statement.Bytes = append(e.Statement.Bytes, opcode)
-	dasmDDCB[opcode](e)
+	dasmTableDDCB[opcode](e)
 }

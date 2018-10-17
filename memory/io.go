@@ -1,7 +1,7 @@
 package memory
 
 // Port represents an input/output port between the CPU and other devices.
-// Read points to a value that when reading from the device and Write points
+// Read points to a value used when reading from the device and Write points
 // to a value used when writing to the device. Set the pointers to the
 // same value if the port is read/write.
 type Port struct {
@@ -15,7 +15,7 @@ type IO struct {
 	ports []Port
 }
 
-// NewIO creates new input/output memory with n ports.
+// NewIO creates a new input/output memory with n ports.
 func NewIO(n int) IO {
 	return IO{
 		ports: make([]Port, n, n),

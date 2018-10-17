@@ -3,13 +3,11 @@ package z80
 import (
 	"testing"
 
+	"github.com/blackchip-org/pac8/cpu/z80/internal/fuse"
 	"github.com/blackchip-org/pac8/memory"
 	"github.com/blackchip-org/pac8/util/bits"
 	. "github.com/blackchip-org/pac8/util/expect"
 )
-
-//go:generate go run _fuse/gen.go
-//go:generate go fmt fuse_test.go
 
 // Set a test name here to test a single test
 var testSingle = ""
@@ -18,22 +16,21 @@ var testSingle = ""
 // ADC/SBC: Check that both bytes are zero for zero flag when doing 16-bits
 
 func TestOps(t *testing.T) {
-	for _, test := range fuseTests {
-		if testSingle != "" && test.name != testSingle {
+	for _, test := range fuse.Tests {
+		if testSingle != "" && test.Name != testSingle {
 			continue
 		}
-		t.Run(test.name, func(t *testing.T) {
+		t.Run(test.Name, func(t *testing.T) {
 			cpu := load(test)
-			// cpu.testing = true
 			i := 0
-			setupPorts(cpu, fuseResults[test.name])
+			setupPorts(cpu, fuse.Expected[test.Name])
 			for {
 				cpu.Next()
-				if test.name == "dd00" {
+				if test.Name == "dd00" {
 					if cpu.PC() == 0x0003 {
 						break
 					}
-				} else if test.name == "ddfd00" {
+				} else if test.Name == "ddfd00" {
 					if cpu.PC() == 0x0004 {
 						break
 					}
@@ -41,7 +38,7 @@ func TestOps(t *testing.T) {
 					if cpu.mem.Load(cpu.PC()) == 0 && cpu.PC() != 0 {
 						break
 					}
-					if test.tstates == 1 {
+					if test.TStates == 1 {
 						break
 					}
 				}
@@ -50,64 +47,64 @@ func TestOps(t *testing.T) {
 				}
 				i++
 			}
-			expected := load(fuseResults[test.name])
+			expected := load(fuse.Expected[test.Name])
 
-			testMemory(t, cpu, fuseResults[test.name])
+			testMemory(t, cpu, fuse.Expected[test.Name])
 			WithFormat(t, "\n%v").Expect(cpu.String()).ToBe(expected.String())
-			testHalt(t, cpu, fuseResults[test.name])
-			testPorts(t, cpu, fuseResults[test.name])
+			testHalt(t, cpu, fuse.Expected[test.Name])
+			testPorts(t, cpu, fuse.Expected[test.Name])
 		})
 	}
 
 }
 
-func testMemory(t *testing.T, cpu *CPU, expected fuseTest) {
-	diff, equal := memory.Verify(cpu.mem, expected.snapshots)
+func testMemory(t *testing.T, cpu *CPU, expected fuse.Test) {
+	diff, equal := memory.Verify(cpu.mem, expected.Snapshots)
 	if !equal {
 		t.Fatalf("\nmemory mismatch (have, want): \n%v", diff.String())
 	}
 }
 
-func testHalt(t *testing.T, cpu *CPU, expected fuseTest) {
-	WithFormat(t, "halt(%v)").Expect(cpu.Halt).ToBe(expected.halt != 0)
+func testHalt(t *testing.T, cpu *CPU, expected fuse.Test) {
+	WithFormat(t, "halt(%v)").Expect(cpu.Halt).ToBe(expected.Halt != 0)
 }
 
-func setupPorts(cpu *CPU, expected fuseTest) {
-	cpu.Ports = newMockIO(expected.portReads)
+func setupPorts(cpu *CPU, expected fuse.Test) {
+	cpu.Ports = newMockIO(expected.PortReads)
 }
 
-func testPorts(t *testing.T, cpu *CPU, expected fuseTest) {
-	diff, ok := memory.Verify(cpu.Ports, expected.portWrites)
+func testPorts(t *testing.T, cpu *CPU, expected fuse.Test) {
+	diff, ok := memory.Verify(cpu.Ports, expected.PortWrites)
 	if !ok {
 		t.Fatalf("\n write ports mismatch: \n%v", diff.String())
 	}
 }
 
-func load(test fuseTest) *CPU {
+func load(test fuse.Test) *CPU {
 	mem := memory.NewRAM(0x10000)
 	cpu := New(mem)
 
-	cpu.A, cpu.F = bits.Split(test.af)
-	cpu.B, cpu.C = bits.Split(test.bc)
-	cpu.D, cpu.E = bits.Split(test.de)
-	cpu.H, cpu.L = bits.Split(test.hl)
+	cpu.A, cpu.F = bits.Split(test.AF)
+	cpu.B, cpu.C = bits.Split(test.BC)
+	cpu.D, cpu.E = bits.Split(test.DE)
+	cpu.H, cpu.L = bits.Split(test.HL)
 
-	cpu.A1, cpu.F1 = bits.Split(test.af1)
-	cpu.B1, cpu.C1 = bits.Split(test.bc1)
-	cpu.D1, cpu.E1 = bits.Split(test.de1)
-	cpu.H1, cpu.L1 = bits.Split(test.hl1)
+	cpu.A1, cpu.F1 = bits.Split(test.AF1)
+	cpu.B1, cpu.C1 = bits.Split(test.BC1)
+	cpu.D1, cpu.E1 = bits.Split(test.DE1)
+	cpu.H1, cpu.L1 = bits.Split(test.HL1)
 
-	cpu.IXH, cpu.IXL = bits.Split(test.ix)
-	cpu.IYH, cpu.IYL = bits.Split(test.iy)
-	cpu.SP = test.sp
-	cpu.SetPC(test.pc)
-	cpu.I = test.i
-	cpu.R = test.r
-	cpu.IFF1 = test.iff1 != 0
-	cpu.IFF2 = test.iff2 != 0
-	cpu.IM = uint8(test.im)
+	cpu.IXH, cpu.IXL = bits.Split(test.IX)
+	cpu.IYH, cpu.IYL = bits.Split(test.IY)
+	cpu.SP = test.SP
+	cpu.SetPC(test.PC)
+	cpu.I = test.I
+	cpu.R = test.R
+	cpu.IFF1 = test.IFF1 != 0
+	cpu.IFF2 = test.IFF2 != 0
+	cpu.IM = uint8(test.IM)
 
-	for _, snapshot := range test.snapshots {
+	for _, snapshot := range test.Snapshots {
 		memory.Import(mem, snapshot)
 	}
 
