@@ -145,7 +145,7 @@ func (v *Video) Render() {
 	}
 
 	// Render sprites, reverse order
-	for s := 0; s < 8; s++ {
+	for s := 7; s >= 0; s-- {
 		coordX := int32(v.spriteCoords[s].x)
 		coordY := int32(v.spriteCoords[s].y)
 		info := v.mem.Load(uint16(0x4ff0 + (s * 2)))
