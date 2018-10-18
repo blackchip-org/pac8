@@ -5,8 +5,8 @@ import (
 
 	"github.com/blackchip-org/pac8/cpu"
 
+	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/memory"
-	"github.com/blackchip-org/pac8/util/bits"
 )
 
 const (

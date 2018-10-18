@@ -3,10 +3,10 @@ package z80
 import (
 	"testing"
 
+	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/cpu/z80/internal/fuse"
+	. "github.com/blackchip-org/pac8/expect"
 	"github.com/blackchip-org/pac8/memory"
-	"github.com/blackchip-org/pac8/util/bits"
-	. "github.com/blackchip-org/pac8/util/expect"
 )
 
 // Set a test name here to test a single test

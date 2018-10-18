@@ -1,8 +1,8 @@
 package z80
 
 import (
+	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/memory"
-	"github.com/blackchip-org/pac8/util/bits"
 )
 
 func (cpu *CPU) storeNil(v uint8) {}

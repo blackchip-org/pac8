@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/blackchip-org/pac8/util/bits"
+	"github.com/blackchip-org/pac8/bits"
 )
 
 type regtab struct {

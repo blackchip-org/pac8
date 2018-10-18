@@ -3,7 +3,7 @@ package memory
 import (
 	"testing"
 
-	. "github.com/blackchip-org/pac8/util/expect"
+	. "github.com/blackchip-org/pac8/expect"
 )
 
 func TestFetch(t *testing.T) {

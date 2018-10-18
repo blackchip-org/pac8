@@ -3,8 +3,8 @@ package z80
 import (
 	"testing"
 
+	. "github.com/blackchip-org/pac8/expect"
 	"github.com/blackchip-org/pac8/memory"
-	. "github.com/blackchip-org/pac8/util/expect"
 )
 
 var format = FormatterZ80()

@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
+	. "github.com/blackchip-org/pac8/expect"
 	"github.com/blackchip-org/pac8/memory"
-	. "github.com/blackchip-org/pac8/util/expect"
 )
 
 func TestDump(t *testing.T) {

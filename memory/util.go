@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/blackchip-org/pac8/util/bits"
+	"github.com/blackchip-org/pac8/bits"
 )
 
 func LoadLE(m Memory, address uint16) uint16 {

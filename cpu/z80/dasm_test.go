@@ -6,7 +6,7 @@ import (
 
 	"github.com/blackchip-org/pac8/cpu/z80/internal/dasm"
 	"github.com/blackchip-org/pac8/memory"
-	. "github.com/blackchip-org/pac8/util/expect"
+	. "github.com/blackchip-org/pac8/expect"
 )
 
 func TestDasm(t *testing.T) {

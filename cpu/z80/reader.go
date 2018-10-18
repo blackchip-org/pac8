@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/cpu"
 	"github.com/blackchip-org/pac8/memory"
-	"github.com/blackchip-org/pac8/util/bits"
 )
 
 func ReaderZ80(e cpu.Eval) cpu.Statement {

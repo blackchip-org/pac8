@@ -1,6 +1,6 @@
 package memory
 
-import "github.com/blackchip-org/pac8/util/bits"
+import "github.com/blackchip-org/pac8/bits"
 
 // Cursor points to a location in memory.
 type Cursor struct {

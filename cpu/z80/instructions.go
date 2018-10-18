@@ -5,9 +5,9 @@ package z80
 // http://www.z80.info/zip/z80-documented.pdf
 
 import (
+	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/cpu"
 	"github.com/blackchip-org/pac8/memory"
-	"github.com/blackchip-org/pac8/util/bits"
 )
 
 //go:generate go run _ops/gen.go

@@ -1,7 +1,7 @@
 package pacman
 
 import (
-	"github.com/blackchip-org/pac8/util/bits"
+	"github.com/blackchip-org/pac8/bits"
 	"github.com/veandco/go-sdl2/sdl"
 )
 

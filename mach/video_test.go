@@ -3,7 +3,7 @@ package mach
 import (
 	"testing"
 
-	. "github.com/blackchip-org/pac8/util/expect"
+	. "github.com/blackchip-org/pac8/expect"
 )
 
 func TestFitInWindow(t *testing.T) {

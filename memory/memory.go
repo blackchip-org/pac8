@@ -1,7 +1,7 @@
 package memory
 
 import (
-	"github.com/blackchip-org/pac8/util/bits"
+	"github.com/blackchip-org/pac8/bits"
 )
 
 // Memory is a chunk of 8-bit values accessed by a 16-bit address.

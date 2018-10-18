@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	. "github.com/blackchip-org/pac8/util/expect"
+	. "github.com/blackchip-org/pac8/expect"
 )
 
 func ExampleALU_Add() {

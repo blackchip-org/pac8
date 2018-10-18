@@ -20,10 +20,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/cpu/z80"
 	"github.com/blackchip-org/pac8/memory"
 	"github.com/blackchip-org/pac8/pac8"
-	"github.com/blackchip-org/pac8/util/bits"
 )
 
 var zexdocTests = []string{
