@@ -75,7 +75,7 @@ func New(mem memory.Memory, cpu cpu.CPU) *Mach {
 		Breakpoints: make(map[uint16]struct{}),
 		Callback:    func(Status) {},
 		Mem:         mem,
-		dasm:        cpu.Disassembler(),
+		dasm:        cpu.Info().NewDisassembler(mem),
 		start:       make(chan bool, 1),
 		stop:        make(chan bool, 1),
 		trace:       make(chan bool, 1),
@@ -90,7 +90,7 @@ func (m *Mach) setStatus(s Status) {
 
 func (m *Mach) Run() {
 	ticker := time.NewTicker(m.TickRate)
-	m.cyclesPerTick = int(float64(m.TickRate) / float64(time.Millisecond) * float64(m.CPU.CycleRate()))
+	m.cyclesPerTick = int(float64(m.TickRate) / float64(time.Millisecond) * float64(m.CPU.Info().CycleRate))
 	for {
 		select {
 		case <-m.stop:

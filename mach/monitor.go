@@ -60,7 +60,7 @@ func NewMonitor(mach *Mach) *Monitor {
 		mem:  mach.Mem,
 		in:   ioutil.NopCloser(os.Stdin),
 		out:  log.New(os.Stdout, "", 0),
-		dasm: mach.CPU.Disassembler(),
+		dasm: mach.CPU.Info().NewDisassembler(mach.Mem),
 	}
 	mach.Callback = m.statusChange
 	return m

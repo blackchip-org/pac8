@@ -123,19 +123,8 @@ func (c *CPU) Ready() bool {
 	return c.Halt != true
 }
 
-func (c *CPU) Memory() memory.Memory {
-	return c.mem
-}
-
-func (c *CPU) CycleRate() int {
-	// CPU is 3.072 MHz which is one T-State every 325 nanoseconds.
-	// Roughly round to 1 instruction every 2 microseconds.
-	// 500 instructions per millsecond
-	return 500
-}
-
-func (c *CPU) Disassembler() *cpu.Disassembler {
-	return NewDisassembler(c.mem)
+func (c *CPU) Info() cpu.Info {
+	return Info
 }
 
 func (c *CPU) intAck(v uint8) {
@@ -206,4 +195,14 @@ func (c *CPU) refreshR() {
 	// fetch
 	bit7 := c.R & 0x80
 	c.R = (c.R+1)&0x7f | bit7
+}
+
+var Info = cpu.Info{
+	// CPU is 3.072 MHz which is one T-State every 325 nanoseconds.
+	// Roughly round to 1 instruction every 2 microseconds.
+	// 500 instructions per millsecond
+	CycleRate:       500,
+	CodeReader:      ReaderZ80,
+	CodeFormatter:   FormatterZ80(),
+	NewDisassembler: NewDisassembler,
 }

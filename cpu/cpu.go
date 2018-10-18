@@ -1,5 +1,7 @@
 package cpu
 
+import "github.com/blackchip-org/pac8/memory"
+
 type Get func() uint8
 type Put func(uint8)
 
@@ -16,6 +18,12 @@ type CPU interface {
 	Next()
 	String() string
 	Ready() bool
-	CycleRate() int
-	Disassembler() *Disassembler
+	Info() Info
+}
+
+type Info struct {
+	CycleRate       int
+	CodeReader      CodeReader
+	CodeFormatter   CodeFormatter
+	NewDisassembler func(memory.Memory) *Disassembler
 }
