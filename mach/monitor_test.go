@@ -233,7 +233,9 @@ func TestTraceOff(t *testing.T) {
 		0x10, 0x56,
 	)
 	f.mon.mach.Breakpoints[0x0005] = struct{}{}
-	f.mon.in = testMonitorInput("t \n t \n g")
+	f.mon.in = testMonitorInput("t \n q")
+	testMonitorRun(f.mon)
+	f.mon.in = testMonitorInput("t \n g")
 	testMonitorRun(f.mon)
 	lines := strings.Split(strings.TrimSpace(f.out.String()), "\n")
 	With(t).Expect(lines[0]).ToBe("[break]")
