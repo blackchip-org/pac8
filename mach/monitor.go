@@ -57,7 +57,7 @@ func NewMonitor(mach *Mach) *Monitor {
 	m := &Monitor{
 		mach: mach,
 		cpu:  mach.CPU,
-		mem:  mach.CPU.Memory(),
+		mem:  mach.Mem,
 		in:   ioutil.NopCloser(os.Stdin),
 		out:  log.New(os.Stdout, "", 0),
 		dasm: mach.CPU.Disassembler(),

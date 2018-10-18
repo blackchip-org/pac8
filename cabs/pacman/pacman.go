@@ -83,7 +83,7 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 	cab.mem = memory.NewMasked(cab.mem, 0x7fff)
 
 	cab.cpu = z80.New(cab.mem)
-	m := mach.New(cab.cpu)
+	m := mach.New(cab.mem, cab.cpu)
 
 	video, err := NewVideo(renderer, cab.mem, vroms)
 	if err != nil {

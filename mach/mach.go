@@ -50,6 +50,7 @@ type UI interface {
 
 type Mach struct {
 	CPU           cpu.CPU
+	Mem           memory.Memory
 	Display       Display
 	UI            UI
 	Status        Status
@@ -68,12 +69,12 @@ type Mach struct {
 	quit          chan bool
 }
 
-func New(cpu cpu.CPU) *Mach {
+func New(mem memory.Memory, cpu cpu.CPU) *Mach {
 	return &Mach{
 		CPU:         cpu,
 		Breakpoints: make(map[uint16]struct{}),
 		Callback:    func(Status) {},
-		mem:         cpu.Memory(),
+		Mem:         mem,
 		dasm:        cpu.Disassembler(),
 		start:       make(chan bool, 1),
 		stop:        make(chan bool, 1),
