@@ -11,6 +11,7 @@ func (cpu *CPU) storeIndImm(v uint8)    { cpu.mem.Store(cpu.fetch16(), v) }
 func (cpu *CPU) store16IndImm(v uint16) { memory.StoreLE(cpu.mem, cpu.fetch16(), v) }
 
 func (cpu *CPU) storeA(v uint8)   { cpu.A = v }
+func (cpu *CPU) storeF(v uint8)   { cpu.F = v }
 func (cpu *CPU) storeB(v uint8)   { cpu.B = v }
 func (cpu *CPU) storeC(v uint8)   { cpu.C = v }
 func (cpu *CPU) storeD(v uint8)   { cpu.D = v }
@@ -23,6 +24,15 @@ func (cpu *CPU) storeIXH(v uint8) { cpu.IXH = v }
 func (cpu *CPU) storeIXL(v uint8) { cpu.IXL = v }
 func (cpu *CPU) storeIYH(v uint8) { cpu.IYH = v }
 func (cpu *CPU) storeIYL(v uint8) { cpu.IYL = v }
+
+func (cpu *CPU) storeA1(v uint8) { cpu.A1 = v }
+func (cpu *CPU) storeF1(v uint8) { cpu.F1 = v }
+func (cpu *CPU) storeB1(v uint8) { cpu.B1 = v }
+func (cpu *CPU) storeC1(v uint8) { cpu.C1 = v }
+func (cpu *CPU) storeD1(v uint8) { cpu.D1 = v }
+func (cpu *CPU) storeE1(v uint8) { cpu.E1 = v }
+func (cpu *CPU) storeH1(v uint8) { cpu.H1 = v }
+func (cpu *CPU) storeL1(v uint8) { cpu.L1 = v }
 
 func (cpu *CPU) storeAF(v uint16) { cpu.A, cpu.F = bits.Split(v) }
 func (cpu *CPU) storeBC(v uint16) { cpu.B, cpu.C = bits.Split(v) }
@@ -51,6 +61,7 @@ func (cpu *CPU) loadIndImm() uint8    { return cpu.mem.Load(cpu.fetch16()) }
 func (cpu *CPU) load16IndImm() uint16 { return memory.LoadLE(cpu.mem, cpu.fetch16()) }
 
 func (cpu *CPU) loadA() uint8    { return cpu.A }
+func (cpu *CPU) loadF() uint8    { return cpu.F }
 func (cpu *CPU) loadB() uint8    { return cpu.B }
 func (cpu *CPU) loadC() uint8    { return cpu.C }
 func (cpu *CPU) loadD() uint8    { return cpu.D }
@@ -64,6 +75,15 @@ func (cpu *CPU) loadIXH() uint8  { return cpu.IXH }
 func (cpu *CPU) loadIYL() uint8  { return cpu.IYL }
 func (cpu *CPU) loadIYH() uint8  { return cpu.IYH }
 func (cpu *CPU) loadIndC() uint8 { return cpu.Ports.Load(uint16(cpu.C)) }
+
+func (cpu *CPU) loadA1() uint8 { return cpu.A1 }
+func (cpu *CPU) loadF1() uint8 { return cpu.F1 }
+func (cpu *CPU) loadB1() uint8 { return cpu.B1 }
+func (cpu *CPU) loadC1() uint8 { return cpu.C1 }
+func (cpu *CPU) loadD1() uint8 { return cpu.D1 }
+func (cpu *CPU) loadE1() uint8 { return cpu.E1 }
+func (cpu *CPU) loadH1() uint8 { return cpu.H1 }
+func (cpu *CPU) loadL1() uint8 { return cpu.L1 }
 
 func (cpu *CPU) loadAF() uint16      { return bits.Join(cpu.A, cpu.F) }
 func (cpu *CPU) loadBC() uint16      { return bits.Join(cpu.B, cpu.C) }

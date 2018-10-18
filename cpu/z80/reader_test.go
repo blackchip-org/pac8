@@ -17,17 +17,17 @@ func TestReader(t *testing.T) {
 	}{
 		{
 			[]uint8{0x50},
-			"$0000:  50          ld   d,b",
+			"$0000:  50           ld   d,b",
 			"opcode 1",
 		},
 		{
 			[]uint8{0x2a, 0x82, 0x4c},
-			"$0000:  2a 82 4c    ld   hl,($4c82)",
+			"$0000:  2a 82 4c     ld   hl,($4c82)",
 			"address",
 		},
 		{
 			[]uint8{0x20, 0x02},
-			"$0000:  20 02       jr   nz,$0004",
+			"$0000:  20 02        jr   nz,$0004",
 			"relative jump",
 		},
 	}

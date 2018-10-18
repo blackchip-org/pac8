@@ -55,6 +55,14 @@ Disassemble the next instruction to execute.
 
 Display the contents of the CPU **registers**.
 
+### r *name*
+
+Display the value for the **register** with *name*.
+
+### r *name* *value*
+
+Set the *value* for **register** with *name*.
+
 ### s
 
 **Step** through by executing the next instruction and then halting the CPU.

@@ -5,6 +5,7 @@ import (
 	"crypto/sha1"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"path/filepath"
 	"time"
 
@@ -19,7 +20,6 @@ type Status int
 const (
 	Stop Status = iota
 	Run
-	Break
 	Breakpoint
 	Trap
 )
@@ -30,10 +30,8 @@ func (s Status) String() string {
 		return "stop"
 	case Run:
 		return "run"
-	case Break:
-		return "break"
 	case Breakpoint:
-		return "breakpoint"
+		return "break"
 	case Trap:
 		return "trap"
 	}
@@ -44,48 +42,61 @@ type Display interface {
 	Render()
 }
 
+type NullDisplay struct{}
+
+func (d NullDisplay) Render() {}
+
 type UI interface {
 	SDLEvent(sdl.Event)
 }
 
+type NullUI struct{}
+
+func (u NullUI) SDLEvent(e sdl.Event) {}
+
 type Mach struct {
-	CPU           cpu.CPU
-	Mem           memory.Memory
-	Display       Display
-	UI            UI
-	Status        Status
-	Err           error
-	Tracing       bool
-	Breakpoints   map[uint16]struct{}
-	Callback      func(Status)
-	CharDecoder   CharDecoder
-	TickRate      time.Duration
-	cyclesPerTick int
-	mem           memory.Memory
-	dasm          *cpu.Disassembler
-	start         chan bool
-	stop          chan bool
-	trace         chan bool
-	quit          chan bool
+	CPU            cpu.CPU
+	Mem            memory.Memory
+	Display        Display
+	UI             UI
+	Status         Status
+	Err            error
+	Tracer         *log.Logger
+	Breakpoints    map[uint16]struct{}
+	StatusCallback func(Status)
+	TickCallback   func(*Mach)
+	CharDecoder    CharDecoder
+	TickRate       time.Duration
+	cyclesPerTick  int
+	mem            memory.Memory
+	dasm           *cpu.Disassembler
+	start          chan bool
+	stop           chan bool
+	trace          chan *log.Logger
+	quit           chan bool
 }
 
 func New(mem memory.Memory, cpu cpu.CPU) *Mach {
 	return &Mach{
-		CPU:         cpu,
-		Breakpoints: make(map[uint16]struct{}),
-		Callback:    func(Status) {},
-		Mem:         mem,
-		dasm:        cpu.Info().NewDisassembler(mem),
-		start:       make(chan bool, 1),
-		stop:        make(chan bool, 1),
-		trace:       make(chan bool, 1),
-		quit:        make(chan bool, 1),
+		CPU:            cpu,
+		Breakpoints:    make(map[uint16]struct{}),
+		StatusCallback: func(Status) {},
+		TickCallback:   func(m *Mach) {},
+		Display:        NullDisplay{},
+		UI:             NullUI{},
+		CharDecoder:    AsciiDecoder,
+		Mem:            mem,
+		dasm:           cpu.Info().NewDisassembler(mem),
+		start:          make(chan bool, 1),
+		stop:           make(chan bool, 10),
+		trace:          make(chan *log.Logger, 1),
+		quit:           make(chan bool, 1),
 	}
 }
 
 func (m *Mach) setStatus(s Status) {
 	m.Status = s
-	m.Callback(s)
+	m.StatusCallback(s)
 }
 
 func (m *Mach) Run() {
@@ -98,7 +109,7 @@ func (m *Mach) Run() {
 		case <-m.start:
 			m.setStatus(Run)
 		case v := <-m.trace:
-			m.Tracing = v
+			m.Tracer = v
 		case <-m.quit:
 			return
 		case <-ticker.C:
@@ -110,9 +121,9 @@ func (m *Mach) Run() {
 func (m *Mach) tick() {
 	for i := 0; i < m.cyclesPerTick; i++ {
 		if m.Status == Run {
-			if m.Tracing && m.CPU.Ready() {
+			if m.Tracer != nil && m.CPU.Ready() {
 				m.dasm.SetPC(m.CPU.PC())
-				fmt.Println(m.dasm.Next())
+				m.Tracer.Print(m.dasm.Next())
 			}
 			m.CPU.Next()
 			if _, exists := m.Breakpoints[m.CPU.PC()]; exists && m.CPU.Ready() {
@@ -126,10 +137,9 @@ func (m *Mach) tick() {
 		if _, ok := event.(*sdl.QuitEvent); ok {
 			m.quit <- true
 		}
-		if m.UI != nil {
-			m.UI.SDLEvent(event)
-		}
+		m.UI.SDLEvent(event)
 	}
+	m.TickCallback(m)
 }
 
 func (m *Mach) Start() {
@@ -144,8 +154,8 @@ func (m *Mach) Quit() {
 	m.quit <- true
 }
 
-func (m *Mach) Trace(v bool) {
-	m.trace <- v
+func (m *Mach) Trace(l *log.Logger) {
+	m.trace <- l
 }
 
 func LoadROM(e *[]error, path string, checksum string) memory.Memory {

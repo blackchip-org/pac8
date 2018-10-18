@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestEqual(t *testing.T) {
+func TestToBeEqual(t *testing.T) {
 	dt := &debugTester{}
 	With(dt).Expect(2).ToBe(2)
 	if dt.args != nil {
@@ -12,7 +12,18 @@ func TestEqual(t *testing.T) {
 	}
 }
 
-func TestNotEqual(t *testing.T) {
+func TestNotToBeEqual(t *testing.T) {
+	dt := &debugTester{}
+	With(dt).Expect(2).NotToBe(2)
+	if dt.args == nil {
+		t.Fatalf("expected to be not equal")
+	}
+	if dt.args[0] != "\n have: 2 \n want: not 2" {
+		t.Fatalf("unexpected: %v", dt.args[0])
+	}
+}
+
+func TestToBeNotEqual(t *testing.T) {
 	dt := &debugTester{}
 	With(dt).Expect(4).ToBe(2)
 	if dt.args == nil {
@@ -20,6 +31,14 @@ func TestNotEqual(t *testing.T) {
 	}
 	if dt.args[0] != "\n have: 4 \n want: 2" {
 		t.Fatalf("unexpected: %v", dt.args[0])
+	}
+}
+
+func TestNotToBeNotEqual(t *testing.T) {
+	dt := &debugTester{}
+	With(dt).Expect(4).NotToBe(2)
+	if dt.args != nil {
+		t.Fatalf("expected to be not equal")
 	}
 }
 

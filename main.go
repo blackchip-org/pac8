@@ -7,7 +7,7 @@ import (
 	"os"
 	"runtime/pprof"
 
-	"github.com/blackchip-org/pac8/cabs/pacman"
+	"github.com/blackchip-org/pac8/cabs"
 	"github.com/blackchip-org/pac8/mach"
 	"github.com/veandco/go-sdl2/sdl"
 )
@@ -17,6 +17,7 @@ const (
 	defaultHeight = 786
 )
 
+var cabinet string
 var cprof bool
 var monitor bool
 var noVideo bool
@@ -24,6 +25,7 @@ var trace bool
 var wait bool
 
 func init() {
+	flag.StringVar(&cabinet, "c", "pacman", "use this cabinet")
 	flag.BoolVar(&cprof, "cprof", false, "enable cpu profiling")
 	flag.BoolVar(&monitor, "m", false, "start monitor")
 	flag.BoolVar(&noVideo, "no-video", false, "do not show video device")
@@ -49,17 +51,15 @@ func main() {
 		}()
 	}
 
-	if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
-		fmt.Fprintf(os.Stderr, "unable to initialize sdl: %v\n", err)
-		os.Exit(1)
-	}
-	defer sdl.Quit()
-	sdl.GLSetSwapInterval(1)
+	var r *sdl.Renderer
+	if !noVideo {
+		if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
+			fmt.Fprintf(os.Stderr, "unable to initialize sdl: %v\n", err)
+			os.Exit(1)
+		}
+		defer sdl.Quit()
+		sdl.GLSetSwapInterval(1)
 
-	var m *mach.Mach
-	if noVideo {
-		m = pacman.New(nil)
-	} else {
 		window, err := sdl.CreateWindow(
 			"pac8",
 			sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
@@ -75,11 +75,16 @@ func main() {
 		if err != nil {
 			log.Fatalf("unable to initialize renderer: %v", err)
 		}
-		m = pacman.New(renderer)
+		r = renderer
+	}
+	m, err := cabs.New(cabinet, r)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%v\n", err)
+		os.Exit(1)
 	}
 
 	if trace {
-		m.Trace(true)
+		m.Trace(log.New(os.Stdout, "", 0))
 	}
 	if monitor {
 		mon := mach.NewMonitor(m)

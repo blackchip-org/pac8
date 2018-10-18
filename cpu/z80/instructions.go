@@ -22,25 +22,23 @@ type opsTable map[uint8]func(c *CPU)
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
 func add(c *CPU, get0 cpu.Get, get1 cpu.Get, withCarry bool) {
-	alu.In0 = get0()
-	alu.In1 = get1()
-
 	alu.SetCarry(false)
 	if withCarry && bits.Get(c.F, FlagC) {
 		alu.SetCarry(true)
 	}
-	alu.Add()
+	alu.A = get0()
+	alu.Add(get1())
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, alu.Carry4())
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Overflow())
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
-	c.A = alu.Out
+	c.A = alu.A
 }
 
 // add
@@ -49,23 +47,21 @@ func add16(c *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bool
 	in0 := get0()
 	in1 := get1()
 
-	alu.In0 = uint8(in0)
-	alu.In1 = uint8(in1)
 	alu.SetCarry(false)
 	if withCarry && bits.Get(c.F, FlagC) {
 		alu.SetCarry(true)
 	}
-	alu.Add()
+	alu.A = bits.Lo(in0)
+	alu.Add(bits.Lo(in1))
 	zero0 := alu.Zero()
-	lo := alu.Out
+	lo := alu.A
 
-	alu.In0 = uint8(in0 >> 8)
-	alu.In1 = uint8(in1 >> 8)
-	alu.Add()
+	alu.A = bits.Hi(in0)
+	alu.Add(bits.Hi(in1))
 	zero1 := alu.Zero()
-	hi := alu.Out
+	hi := alu.A
 
-	result := uint16(hi)<<8 | uint16(lo)
+	result := bits.Join(hi, lo)
 
 	if withCarry {
 		bits.Set(&c.F, FlagS, alu.Sign())
@@ -86,20 +82,19 @@ func add16(c *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withCarry bool
 // C and N flags cleared, P/V is parity, rest are altered by definition.
 // H flag set.
 func and(c *CPU, get cpu.Get) {
-	alu.In0 = c.A
-	alu.In1 = get()
-	alu.And()
+	alu.A = c.A
+	alu.And(get())
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, true)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Parity())
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, false)
 
-	c.A = alu.Out
+	c.A = alu.A
 }
 
 // Tests if the specified bit is set.
@@ -132,7 +127,7 @@ func blockc(c *CPU, hlfn func(*CPU, cpu.Put16, cpu.Get16)) {
 	carry := bits.Get(c.F, FlagC)
 	in0 := c.A
 	sub(c, c.loadIndHL, false)
-	out := alu.Out
+	out := alu.A
 	c.A = in0
 
 	hlfn(c, c.storeHL, c.loadHL)
@@ -166,28 +161,27 @@ func blockcr(c *CPU, hlfn func(*CPU, cpu.Put16, cpu.Get16)) {
 func blockin(c *CPU, increment int) {
 	in := c.inIndC()
 	alu.SetBorrow(false)
-	alu.In0 = c.B
-	alu.In1 = 1
-	alu.Subtract()
+	alu.A = c.B
+	alu.Subtract(1)
 
 	// https://github.com/mamedev/mame/blob/master/src/devices/cpu/z80/z80.cpp
 	// I was unable to figure this out by reading all the conflicting
 	// documentation for these "undefined" flags
 	t := uint16(c.C+uint8(increment)) + uint16(in)
-	p := uint8(t&0x07) ^ alu.Out // parity check
+	p := uint8(t&0x07) ^ alu.A // parity check
 	halfAndCarry := t&0x100 != 0
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, halfAndCarry)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, bits.Parity(p))
 	bits.Set(&c.F, FlagN, bits.Get(in, 7))
 	bits.Set(&c.F, FlagC, halfAndCarry)
 
 	c.storeIndHL(in)
-	c.B = alu.Out
+	c.B = alu.A
 	c.H, c.L = bits.Split(bits.Join(c.H, c.L) + uint16(increment))
 }
 
@@ -235,25 +229,24 @@ func blocklr(c *CPU, increment int) {
 func blockout(c *CPU, increment int) {
 	in := c.mem.Load(bits.Join(c.H, c.L))
 	alu.SetBorrow(false)
-	alu.In0 = c.B
-	alu.In1 = 1
-	alu.Subtract()
+	alu.A = c.B
+	alu.Subtract(1)
 
-	c.B = alu.Out
+	c.B = alu.A
 	c.H, c.L = bits.Split(bits.Join(c.H, c.L) + uint16(increment))
 
 	// https://github.com/mamedev/mame/blob/master/src/devices/cpu/z80/z80.cpp
 	// I was unable to figure this out by reading all the conflicting
 	// documentation for these "undefined" flags
 	t := uint16(c.L) + uint16(in)
-	p := uint8(t&0x07) ^ alu.Out // parity check
+	p := uint8(t&0x07) ^ alu.A // parity check
 	halfAndCarry := t&0x100 != 0
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, halfAndCarry)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, bits.Parity(p))
 	bits.Set(&c.F, FlagN, bits.Get(in, 7))
 	bits.Set(&c.F, FlagC, halfAndCarry)
@@ -326,15 +319,15 @@ func cp(c *CPU, get cpu.Get) {
 //
 // Sets H and N, other flags are unmodified.
 func cpl(c *CPU) {
-	alu.In0 = c.A
+	alu.A = c.A
 	alu.Not()
 
 	bits.Set(&c.F, FlagH, true)
 	bits.Set(&c.F, FlagN, true)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 
-	c.A = alu.Out
+	c.A = alu.A
 }
 
 // decimal adjust in a
@@ -430,19 +423,18 @@ func ddfdcb(c *CPU, table opsTable) {
 // modified by definition.
 func dec(c *CPU, put cpu.Put, get cpu.Get) {
 	alu.SetBorrow(false)
-	alu.In0 = get()
-	alu.In1 = 1
-	alu.Subtract()
+	alu.A = get()
+	alu.Subtract(1)
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, alu.Carry4())
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Overflow())
 	bits.Set(&c.F, FlagN, true)
 
-	put(alu.Out)
+	put(alu.A)
 }
 
 // decrement 16-bit
@@ -517,19 +509,18 @@ func in(c *CPU, put cpu.Put, get cpu.Get) {
 // modified by definition.
 func inc(c *CPU, put cpu.Put, get cpu.Get) {
 	alu.SetCarry(false)
-	alu.In0 = get()
-	alu.In1 = 1
-	alu.Add()
+	alu.A = get()
+	alu.Add(1)
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, alu.Carry4())
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Overflow())
 	bits.Set(&c.F, FlagN, false)
 
-	put(alu.Out)
+	put(alu.A)
 }
 
 // increment 16-bit
@@ -537,7 +528,6 @@ func inc(c *CPU, put cpu.Put, get cpu.Get) {
 func inc16(c *CPU, put cpu.Put16, get cpu.Get16) {
 	in0 := get()
 	put(in0 + 1)
-
 }
 
 func invalid() {}
@@ -598,21 +588,20 @@ func ldair(c *CPU, get cpu.Get) {
 }
 
 func neg(c *CPU) {
-	alu.In0 = 0
-	alu.In1 = c.A
 	alu.SetBorrow(false)
-	alu.Subtract()
+	alu.A = 0
+	alu.Subtract(c.A)
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, alu.Carry4())
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Overflow())
 	bits.Set(&c.F, FlagN, true)
 	bits.Set(&c.F, FlagC, alu.Borrow())
 
-	c.A = alu.Out
+	c.A = alu.A
 }
 
 // no operation, no interrupt
@@ -626,20 +615,19 @@ func nop() {}
 // C and N flags cleared, P/V is parity, rest are altered by definition.
 // H flag cleared.
 func or(c *CPU, get cpu.Get) {
-	alu.In0 = c.A
-	alu.In1 = get()
-	alu.Or()
+	alu.A = c.A
+	alu.Or(get())
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Parity())
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, false)
 
-	c.A = alu.Out
+	c.A = alu.A
 }
 
 // Copies the two bytes from (SP) into the operand, then increases SP by 2.
@@ -687,45 +675,45 @@ func retn(c *CPU) {
 
 // Rotate A left
 func rla(c *CPU) {
-	alu.In0 = c.A
 	alu.SetCarry(bits.Get(c.F, FlagC))
+	alu.A = c.A
 	alu.ShiftLeft()
 
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagH, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
-	c.A = alu.Out
+	c.A = alu.A
 }
 
 // Rotate left with carry
 func rlc(c *CPU, put cpu.Put, get cpu.Get) {
-	alu.In0 = get()
 	alu.SetCarry(bits.Get(c.F, FlagC))
+	alu.A = get()
 	alu.RotateLeft()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Parity())
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
-	put(alu.Out)
+	put(alu.A)
 }
 
 // rotate A left with carry
 func rlca(c *CPU) {
-	alu.In0 = c.A
+	alu.A = c.A
 	alu.RotateLeft()
 
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
@@ -733,10 +721,7 @@ func rlca(c *CPU) {
 	if c.A&0x80 > 0 {
 		v++
 	}
-	c.A = alu.Out
-	if v != c.A {
-		panic("NO")
-	}
+	c.A = alu.A
 }
 
 func rld(c *CPU) {
@@ -755,53 +740,52 @@ func rld(c *CPU) {
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, Flag5, bits.Get(c.A, 5))
 	bits.Set(&c.F, Flag3, bits.Get(c.A, 3))
-
 }
 
 func rotr(c *CPU, put cpu.Put, get cpu.Get) {
-	alu.In0 = get()
 	// FIXME: Should this be here?
 	alu.SetCarry(false)
+	alu.A = get()
 	alu.RotateRight()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Parity())
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
-	put(alu.Out)
+	put(alu.A)
 }
 
 // Rotate A right
 func rra(c *CPU) {
-	alu.In0 = c.A
 	alu.SetCarry(bits.Get(c.F, FlagC))
+	alu.A = c.A
 	alu.ShiftRight()
 
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
-	c.A = alu.Out
+	c.A = alu.A
 }
 
 func rrca(c *CPU) {
-	alu.In0 = c.A
+	alu.A = c.A
 	alu.RotateRight()
 
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
-	c.A = alu.Out
+	c.A = alu.A
 }
 
 func rrd(c *CPU) {
@@ -848,77 +832,77 @@ func set(c *CPU, n int, put cpu.Put, get cpu.Get) {
 }
 
 func shiftl(c *CPU, put cpu.Put, get cpu.Get, withCarry bool) {
-	alu.In0 = get()
 	alu.SetCarry(false)
 	if withCarry && bits.Get(c.F, FlagC) {
 		alu.SetCarry(true)
 	}
+	alu.A = get()
 	alu.ShiftLeft()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Parity())
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
-	put(alu.Out)
+	put(alu.A)
 }
 
 func shiftr(c *CPU, put cpu.Put, get cpu.Get, withCarry bool) {
-	alu.In0 = get()
 	alu.SetCarry(false)
 	if withCarry && bits.Get(c.F, FlagC) {
 		alu.SetCarry(true)
 	}
+	alu.A = get()
 	alu.ShiftRight()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Parity())
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
-	put(alu.Out)
+	put(alu.A)
 }
 
 func sll(c *CPU, put cpu.Put, get cpu.Get) {
-	alu.In0 = get()
 	alu.SetCarry(true)
+	alu.A = get()
 	alu.ShiftLeft()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Parity())
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
-	put(alu.Out)
+	put(alu.A)
 }
 
 func sra(c *CPU, put cpu.Put, get cpu.Get) {
-	alu.In0 = get()
+	alu.A = get()
 	alu.SetCarry(false)
 	alu.ShiftRightSigned()
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Parity())
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, alu.Carry())
 
-	put(alu.Out)
+	put(alu.A)
 }
 
 // Subtract
@@ -926,46 +910,42 @@ func sra(c *CPU, put cpu.Put, get cpu.Get) {
 // N flag is reset, P/V is interpreted as overflow.
 // Rest of the flags is modified by definition.
 func sub(c *CPU, get cpu.Get, withBorrow bool) {
-	alu.In0 = c.A
-	alu.In1 = get()
-
 	alu.SetBorrow(false)
 	if withBorrow && bits.Get(c.F, FlagC) {
 		alu.SetBorrow(true)
 	}
-	alu.Subtract()
+	alu.A = c.A
+	alu.Subtract(get())
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, alu.Carry4())
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Overflow())
 	bits.Set(&c.F, FlagN, true)
 	bits.Set(&c.F, FlagC, alu.Borrow())
 
-	c.A = alu.Out
+	c.A = alu.A
 }
 
 func sub16(c *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withBorrow bool) {
 	in0 := get0()
 	in1 := get1()
 
-	alu.In0 = uint8(in0)
-	alu.In1 = uint8(in1)
 	alu.SetBorrow(false)
 	if withBorrow && bits.Get(c.F, FlagC) {
 		alu.SetBorrow(true)
 	}
-	alu.Subtract()
+	alu.A = bits.Lo(in0)
+	alu.Subtract(bits.Lo(in1))
 	zero0 := alu.Zero()
-	lo := alu.Out
+	lo := alu.A
 
-	alu.In0 = uint8(in0 >> 8)
-	alu.In1 = uint8(in1 >> 8)
-	alu.Subtract()
+	alu.A = bits.Hi(in0)
+	alu.Subtract(bits.Hi(in1))
 	zero1 := alu.Zero()
-	hi := alu.Out
+	hi := alu.A
 
 	result := bits.Join(hi, lo)
 
@@ -988,18 +968,17 @@ func sub16(c *CPU, put cpu.Put16, get0 cpu.Get16, get1 cpu.Get16, withBorrow boo
 // C and N flags cleared, P/V is parity, rest are altered by definition.
 // H flag cleared.
 func xor(c *CPU, get cpu.Get) {
-	alu.In0 = c.A
-	alu.In1 = get()
-	alu.ExclusiveOr()
+	alu.A = c.A
+	alu.ExclusiveOr(get())
 
 	bits.Set(&c.F, FlagS, alu.Sign())
 	bits.Set(&c.F, FlagZ, alu.Zero())
-	bits.Set(&c.F, Flag5, bits.Get(alu.Out, 5))
+	bits.Set(&c.F, Flag5, bits.Get(alu.A, 5))
 	bits.Set(&c.F, FlagH, false)
-	bits.Set(&c.F, Flag3, bits.Get(alu.Out, 3))
+	bits.Set(&c.F, Flag3, bits.Get(alu.A, 3))
 	bits.Set(&c.F, FlagV, alu.Parity())
 	bits.Set(&c.F, FlagN, false)
 	bits.Set(&c.F, FlagC, false)
 
-	c.A = alu.Out
+	c.A = alu.A
 }

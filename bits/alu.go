@@ -21,137 +21,132 @@ var szpFlags table
 
 // ALU is an 8-bit arithmetic-logic unit.
 type ALU struct {
-	In0   uint8
-	In1   uint8
-	Out   uint8
-	flags uint8
+	A     uint8 // Accumulator
+	flags uint8 // Flags
 }
 
-// Add adds the values of In0 and In1 and places the result in Out. If the
-// carry is set, increments the result by one.
-func (a *ALU) Add() {
-	a.Out = a.In0 + a.In1
+// Add adds the value of v to alu.A. If the carry is set, increments the
+// result by one.
+func (a *ALU) Add(v uint8) {
+	i := index2(a.A, v)
+	a.A += v
 	if a.Carry() {
-		a.Out++
-		a.flags = adcFlags[a.index2()]
+		a.A++
+		a.flags = adcFlags[i]
 	} else {
-		a.flags = addFlags[a.index2()]
+		a.flags = addFlags[i]
 	}
 }
 
-// Subtract subracts the value of In1 from In0 and places the result in Out.
-// If the borrow is set, decrements the result by one.
-func (a *ALU) Subtract() {
-	a.Out = a.In0 - a.In1
+// Subtract subracts the value of alu.A from v. If the borrow is set,
+// decrements the result by one.
+func (a *ALU) Subtract(v uint8) {
+	i := index2(a.A, v)
+	a.A -= v
 	if a.Borrow() {
-		a.Out--
-		a.flags = sbcFlags[a.index2()]
+		a.A--
+		a.flags = sbcFlags[i]
 	} else {
-		a.flags = subFlags[a.index2()]
+		a.flags = subFlags[i]
 	}
 }
 
-// RotateLeft rotates the bits of In0 to the left by one and places the result
-// in Out. Bit 7 that is shifted out becomes the value of bit 0 and the carry.
+// RotateLeft rotates the bits of alu.A to the left by one. Bit 7 that is
+// shifted out becomes the value of bit 0 and the carry.
 func (a *ALU) RotateLeft() {
-	carryOut := a.In0&0x80 != 0
-	a.Out = a.In0 << 1
+	carryOut := a.A&0x80 != 0
+	a.A <<= 1
 	if carryOut {
-		a.Out++
+		a.A++
 	}
-	a.flags = szpFlags[a.Out]
+	a.flags = szpFlags[a.A]
 	if carryOut {
 		a.flags |= flagCarry
 	}
 }
 
-// ShiftLeft shifts the bits of In0 to the left by one and places the result
-// in Out. Bit 0 becomes the value of the carry. Bit 7, that is shifted out,
-// becomes the new value of carry.
+// ShiftLeft shifts the bits of alu.A to the left by one. Bit 0 becomes the
+// value of the carry. Bit 7, that is shifted out, becomes the new value
+// of carry.
 func (a *ALU) ShiftLeft() {
-	carryOut := a.In0&0x80 != 0
-	a.Out = a.In0 << 1
+	carryOut := a.A&0x80 != 0
+	a.A <<= 1
 	if a.flags&flagCarry != 0 {
-		a.Out++
+		a.A++
 	}
-	a.flags = szpFlags[a.Out]
+	a.flags = szpFlags[a.A]
 	if carryOut {
 		a.flags |= flagCarry
 	}
 }
 
-// RotateRight rotates the bits of In0 to the right by one and places the result
-// in Out. Bit 0 that is shifted out becomes the value of bit 7 and the carry.
+// RotateRight rotates the bits of alu.A to the right by one. Bit 0 that is
+// shifted out becomes the value of bit 7 and the carry.
 func (a *ALU) RotateRight() {
-	carryOut := a.In0&0x1 != 0
-	a.Out = a.In0 >> 1
+	carryOut := a.A&0x1 != 0
+	a.A >>= 1
 	if carryOut {
-		a.Out |= (1 << 7)
+		a.A |= (1 << 7)
 	}
-	a.flags = szpFlags[a.Out]
+	a.flags = szpFlags[a.A]
 	if carryOut {
 		a.flags |= flagCarry
 	}
 }
 
-// ShiftRight shifts the bits of In0 to the right by one and places the result
-// in Out. Bit 7 becomes the value of the carry. Bit 0, that is shifted out,
-// becomes the new value of carry.
+// ShiftRight shifts the bits of alu.A to the right by one. Bit 0, that is
+// shifted out, becomes the new value of carry.
 func (a *ALU) ShiftRight() {
-	carryOut := a.In0&0x01 != 0
-	a.Out = a.In0 >> 1
+	carryOut := a.A&0x01 != 0
+	a.A >>= 1
 	if a.flags&flagCarry != 0 {
-		a.Out |= (1 << 7)
+		a.A |= (1 << 7)
 	}
-	a.flags = szpFlags[a.Out]
+	a.flags = szpFlags[a.A]
 	if carryOut {
 		a.flags |= flagCarry
 	}
 }
 
-// ShiftRightSigned shifts the lower 7 bits of In0 to the right by one and
-// places the result in Out. Bit 6 becomes the value of the carry. Bit 0,
-// that is shifted out, becomes the new value of carry. Bit 7 remains unchanged.
+// ShiftRightSigned shifts the lower 7 bits of alu.A to the right by one.
+// Bit 6 becomes the value of the carry. Bit 0, that is shifted out, becomes
+// the new value of carry. Bit 7 remains unchanged.
 func (a *ALU) ShiftRightSigned() {
-	sign := a.In0 & (1 << 7)
-	carryOut := a.In0&0x01 != 0
-	a.Out = a.In0 >> 1
+	sign := a.A & (1 << 7)
+	carryOut := a.A&0x01 != 0
+	a.A >>= 1
 	if a.flags&flagCarry != 0 {
-		a.Out |= (1 << 6)
+		a.A |= (1 << 6)
 	}
-	a.Out |= sign
-	a.flags = szpFlags[a.Out]
+	a.A |= sign
+	a.flags = szpFlags[a.A]
 	if carryOut {
 		a.flags |= flagCarry
 	}
 }
 
-// And performs a logical "and" between In0 and In1 and places the result in
-// Out.
-func (a *ALU) And() {
-	a.Out = a.In0 & a.In1
-	a.flags = szpFlags[a.Out]
+// And performs a logical "and" between alu.A and v.
+func (a *ALU) And(v uint8) {
+	a.A &= v
+	a.flags = szpFlags[a.A]
 }
 
-// Not performs a logical "not" between In0 and In1 and places the result in
-// Out.
+// Not performs a logical "not" on alu.A.
 func (a *ALU) Not() {
-	a.Out = a.In0 ^ 0xff
-	a.flags = szpFlags[a.Out]
+	a.A ^= 0xff
+	a.flags = szpFlags[a.A]
 }
 
-// Or performs a logical "or" between In0 and In1 and places the result in
-// Out.
-func (a *ALU) Or() {
-	a.Out = a.In0 | a.In1
-	a.flags = szpFlags[a.Out]
+// Or performs a logical "or" between alu.A and v.
+func (a *ALU) Or(v uint8) {
+	a.A |= v
+	a.flags = szpFlags[a.A]
 }
 
-// ExclusiveOr performs a logical "xor" between In0 and In1 and places the
-// result in Out.
-func (a *ALU) ExclusiveOr() {
-	a.Out = a.In0 ^ a.In1
-	a.flags = szpFlags[a.Out]
+// ExclusiveOr performs a logical "xor" between alu.A and v.
+func (a *ALU) ExclusiveOr(v uint8) {
+	a.A ^= v
+	a.flags = szpFlags[a.A]
 }
 
 // Carry returns true if the last operation was an addttion and the
@@ -213,8 +208,8 @@ func (a *ALU) SetBorrow(v bool) {
 	}
 }
 
-func (a ALU) index2() int {
-	return int(a.In0) | int(a.In1)<<8
+func index2(a uint8, v uint8) int {
+	return int(a) | int(v)<<8
 }
 
 func init() {

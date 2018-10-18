@@ -21,9 +21,15 @@ type CPU interface {
 	Info() Info
 }
 
+type Value struct {
+	Get interface{}
+	Put interface{}
+}
+
 type Info struct {
 	CycleRate       int
 	CodeReader      CodeReader
 	CodeFormatter   CodeFormatter
 	NewDisassembler func(memory.Memory) *Disassembler
+	Registers       map[string]Value
 }

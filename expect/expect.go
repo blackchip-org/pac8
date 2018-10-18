@@ -42,7 +42,7 @@ func (w WithClause) Expect(have interface{}) *ExpectClause {
 // ToBe fails the test if the want value is not deeply equal to the have value
 // used in the ExpectClause. If have and want are not the same type, have
 // is converted to want if able, otherwise the test fails.
-func (e ExpectClause) ToBe(want interface{}) {
+func (e ExpectClause) toBe(want interface{}, equal bool) {
 	e.t.Helper()
 	have := e.have
 	haveType := reflect.TypeOf(have)
@@ -59,12 +59,30 @@ func (e ExpectClause) ToBe(want interface{}) {
 			return
 		}
 	}
-	if !reflect.DeepEqual(have, want) {
-		format := fmt.Sprintf("\n have: %v \n want: %v", e.format, e.format)
+	var ok bool
+	if equal {
+		ok = reflect.DeepEqual(have, want)
+	} else {
+		ok = !reflect.DeepEqual(have, want)
+	}
+	if !ok {
+		not := ""
+		if !equal {
+			not = "not "
+		}
+		format := fmt.Sprintf("\n have: %v \n want: %v%v", e.format, not, e.format)
 		message := fmt.Sprintf(format, have, want)
 		e.t.Fatal(message)
 		return
 	}
+}
+
+func (e ExpectClause) ToBe(want interface{}) {
+	e.toBe(want, true)
+}
+
+func (e ExpectClause) NotToBe(want interface{}) {
+	e.toBe(want, false)
 }
 
 // ToPanic fails the test if the have value in the ExpectClause does not panic

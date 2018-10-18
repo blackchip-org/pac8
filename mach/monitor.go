@@ -62,7 +62,7 @@ func NewMonitor(mach *Mach) *Monitor {
 		out:  log.New(os.Stdout, "", 0),
 		dasm: mach.CPU.Info().NewDisassembler(mach.Mem),
 	}
-	mach.Callback = m.statusChange
+	mach.StatusCallback = m.statusChange
 	return m
 }
 
@@ -83,7 +83,7 @@ func (m *Monitor) Run() error {
 	for {
 		line, err := rl.Readline()
 		if err == io.EOF {
-			os.Exit(0)
+			return nil
 		}
 		if err != nil {
 			return err
@@ -301,8 +301,7 @@ func (m *Monitor) pokePeek(args []string) error {
 	}
 	// peek
 	if len(args) == 1 {
-		v := m.mem.Load(address)
-		m.out.Printf("$%02x +%d\n", v, v)
+		m.out.Println(formatValue(m.mem.Load(address)))
 		return nil
 	}
 	// poke
@@ -321,15 +320,55 @@ func (m *Monitor) pokePeek(args []string) error {
 }
 
 func (m *Monitor) registers(args []string) error {
-	if err := checkLen(args, 0, 0); err != nil {
+	if err := checkLen(args, 0, 2); err != nil {
 		return err
 	}
-	reason := ""
-	if m.mach.Err != nil {
-		reason = fmt.Sprintf(": %v", m.mach.Err)
+
+	// Print all registers
+	if len(args) == 0 {
+		reason := ""
+		if m.mach.Err != nil {
+			reason = fmt.Sprintf(": %v", m.mach.Err)
+		}
+		m.out.Printf("[%v%v]\n", m.mach.Status, reason)
+		m.out.Println(m.cpu.String())
+		return nil
 	}
-	m.out.Printf("[%v%v]\n", m.mach.Status, reason)
-	m.out.Println(m.cpu.String())
+
+	name := strings.ToUpper(args[0])
+	reg, ok := m.mach.CPU.Info().Registers[name]
+	if !ok {
+		return errors.New("no such register")
+	}
+
+	// Get value of register
+	if len(args) == 1 {
+		switch get := reg.Get.(type) {
+		case func() uint8:
+			m.out.Println(formatValue(get()))
+		case func() uint16:
+			m.out.Println(formatValue16(get()))
+		default:
+			panic("unexpected type")
+		}
+		return nil
+	}
+
+	// Set value of register
+	switch put := reg.Put.(type) {
+	case func(uint8):
+		v, err := parseValue(args[1])
+		if err != nil {
+			return nil
+		}
+		put(v)
+	case func(uint16):
+		v, err := parseValue16(args[1])
+		if err != nil {
+			return nil
+		}
+		put(v)
+	}
 	return nil
 }
 
@@ -347,10 +386,10 @@ func (m *Monitor) trace(args []string) error {
 	if err := checkLen(args, 0, 0); err != nil {
 		return err
 	}
-	if m.mach.Tracing {
-		m.mach.Trace(false)
+	if m.mach.Tracer != nil {
+		m.mach.Trace(nil)
 	} else {
-		m.mach.Trace(true)
+		m.mach.Trace(m.out)
 	}
 	return nil
 }
@@ -408,4 +447,12 @@ func parseValue16(str string) (uint16, error) {
 		return 0, fmt.Errorf("invalid value: %v", str)
 	}
 	return uint16(value), nil
+}
+
+func formatValue(v uint8) string {
+	return fmt.Sprintf("$%02x +%d", v, v)
+}
+
+func formatValue16(v uint16) string {
+	return fmt.Sprintf("$%04x +%d", v, v)
 }

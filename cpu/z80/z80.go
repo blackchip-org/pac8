@@ -56,6 +56,7 @@ type CPU struct {
 	Ports memory.Memory
 	Map   memory.PortMapper
 
+	info  cpu.Info
 	mem   memory.Memory
 	delta uint8
 	// address used to load on the last (IX+d) or (IY+d) instruction
@@ -73,6 +74,16 @@ func New(m memory.Memory) *CPU {
 		Ports:      io,
 		Map:        memory.NewPortMapper(io),
 		requestInt: make(chan uint8, 1),
+	}
+	c.info = cpu.Info{
+		// CPU is 3.072 MHz which is one T-State every 325 nanoseconds.
+		// Roughly round to 1 instruction every 2 microseconds.
+		// 500 instructions per millsecond
+		CycleRate:       500,
+		CodeReader:      ReaderZ80,
+		CodeFormatter:   FormatterZ80(),
+		NewDisassembler: NewDisassembler,
+		Registers:       c.registers(),
 	}
 	return c
 }
@@ -124,7 +135,7 @@ func (c *CPU) Ready() bool {
 }
 
 func (c *CPU) Info() cpu.Info {
-	return Info
+	return c.info
 }
 
 func (c *CPU) intAck(v uint8) {
@@ -197,12 +208,40 @@ func (c *CPU) refreshR() {
 	c.R = (c.R+1)&0x7f | bit7
 }
 
-var Info = cpu.Info{
-	// CPU is 3.072 MHz which is one T-State every 325 nanoseconds.
-	// Roughly round to 1 instruction every 2 microseconds.
-	// 500 instructions per millsecond
-	CycleRate:       500,
-	CodeReader:      ReaderZ80,
-	CodeFormatter:   FormatterZ80(),
-	NewDisassembler: NewDisassembler,
+func (c *CPU) registers() map[string]cpu.Value {
+	return map[string]cpu.Value{
+		"A": cpu.Value{Get: c.loadA, Put: c.storeA},
+		"F": cpu.Value{Get: c.loadF, Put: c.storeF},
+		"B": cpu.Value{Get: c.loadB, Put: c.storeB},
+		"C": cpu.Value{Get: c.loadC, Put: c.storeC},
+		"D": cpu.Value{Get: c.loadD, Put: c.storeD},
+		"E": cpu.Value{Get: c.loadE, Put: c.storeE},
+		"H": cpu.Value{Get: c.loadH, Put: c.storeH},
+		"L": cpu.Value{Get: c.loadL, Put: c.storeL},
+		"I": cpu.Value{Get: c.loadI, Put: c.storeI},
+		"R": cpu.Value{Get: c.loadR, Put: c.storeR},
+
+		"A1": cpu.Value{Get: c.loadA1, Put: c.storeA1},
+		"F1": cpu.Value{Get: c.loadF1, Put: c.storeF1},
+		"B1": cpu.Value{Get: c.loadB1, Put: c.storeB1},
+		"C1": cpu.Value{Get: c.loadC1, Put: c.storeC1},
+		"D1": cpu.Value{Get: c.loadD1, Put: c.storeD1},
+		"E1": cpu.Value{Get: c.loadE1, Put: c.storeE1},
+		"H1": cpu.Value{Get: c.loadH1, Put: c.storeH1},
+
+		"AF": cpu.Value{Get: c.loadAF, Put: c.storeAF},
+		"BC": cpu.Value{Get: c.loadBC, Put: c.storeBC},
+		"DE": cpu.Value{Get: c.loadDE, Put: c.storeDE},
+		"HL": cpu.Value{Get: c.loadHL, Put: c.storeHL},
+		"SP": cpu.Value{Get: c.loadSP, Put: c.storeSP},
+		"IX": cpu.Value{Get: c.loadIX, Put: c.storeIX},
+		"IY": cpu.Value{Get: c.loadIY, Put: c.storeIY},
+
+		"AF1": cpu.Value{Get: c.loadAF1, Put: c.storeAF1},
+		"BC1": cpu.Value{Get: c.loadBC1, Put: c.storeBC1},
+		"DE1": cpu.Value{Get: c.loadDE1, Put: c.storeDE1},
+		"HL1": cpu.Value{Get: c.loadHL1, Put: c.storeHL1},
+
+		"PC": cpu.Value{Get: c.PC, Put: c.SetPC},
+	}
 }
