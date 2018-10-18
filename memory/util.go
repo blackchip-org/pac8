@@ -7,35 +7,41 @@ import (
 	"github.com/blackchip-org/pac8/bits"
 )
 
-func LoadLE(m Memory, address uint16) uint16 {
-	lo := m.Load(address)
-	hi := m.Load(address + 1)
+// LoadLE loads a 16-bit little endian value from memory m at addr.
+func LoadLE(m Memory, addr uint16) uint16 {
+	lo := m.Load(addr)
+	hi := m.Load(addr + 1)
 	return bits.Join(hi, lo)
 }
 
-func StoreLE(m Memory, address uint16, value uint16) {
+// StoreLE stores a 16-bit little endian value to memory m at addr.
+func StoreLE(m Memory, addr uint16, value uint16) {
 	hi, lo := bits.Split(value)
-	m.Store(address, lo)
-	m.Store(address+1, hi)
+	m.Store(addr, lo)
+	m.Store(addr+1, hi)
 }
 
+// Snapshot represents a series of 8-bit memory Values starting at Address.
 type Snapshot struct {
 	Address uint16
 	Values  []uint8
 }
 
+// Import loads memory m with the values in the snapshot.
 func Import(m Memory, snapshot Snapshot) {
 	for i, value := range snapshot.Values {
 		m.Store(snapshot.Address+uint16(i), value)
 	}
 }
 
+// ImportBinary loads memory with the data starting at addr.
 func ImportBinary(m Memory, data []byte, addr uint16) {
 	for i, value := range data {
 		m.Store(addr+uint16(i), value)
 	}
 }
 
+// Diff is the difference between two memory values (A and B) at Address.
 type Diff struct {
 	Address uint16
 	A       uint8
@@ -70,6 +76,8 @@ func Compare(a Memory, b Memory) (DiffReport, bool) {
 	return diff, len(diff) == 0
 }
 
+// Verify checks that the values in snapshot b match up with the values in
+// memory a. Returns true if all snapshot values match.
 func Verify(a Memory, b []Snapshot) (DiffReport, bool) {
 	diff := make([]Diff, 0, 0)
 	cursor := NewCursor(a)

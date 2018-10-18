@@ -23,15 +23,16 @@ func (t EventType) String() string {
 type EventCallback func(e Event)
 
 type Event struct {
-	Type    EventType
-	Address uint16
-	Value   uint8
+	Type    EventType // Read or Write
+	Address uint16    // Address that was accessed
+	Value   uint8     // Value read or written
 }
 
 func (e Event) String() string {
 	return fmt.Sprintf("%v %04x %02x", e.Type, e.Address, e.Value)
 }
 
+// Spy watches for when certain memory addresses are accessed.
 type Spy struct {
 	callback EventCallback
 	mem      Memory
@@ -58,36 +59,45 @@ func (s *Spy) Length() int {
 	return s.mem.Length()
 }
 
+// Callback sets the function that is called when a watched address
+// is accessed.
 func (s *Spy) Callback(e EventCallback) {
 	s.callback = e
 }
 
-func (s *Spy) WatchR(address uint16) {
-	s.reads[address] = struct{}{}
+// WatchR watches addr and invokes the callback when read.
+func (s *Spy) WatchR(addr uint16) {
+	s.reads[addr] = struct{}{}
 }
 
+// WatchW watches addr and invokes the callback when written.
 func (s *Spy) WatchW(address uint16) {
 	s.writes[address] = struct{}{}
 }
 
+// WatchRW watches addr and invokes the callback when read or written.
 func (s *Spy) WatchRW(address uint16) {
 	s.reads[address] = struct{}{}
 	s.writes[address] = struct{}{}
 }
 
+// UnwatchR removes a previous read watch on address.
 func (s *Spy) UnwatchR(address uint16) {
 	delete(s.reads, address)
 }
 
+// UnwatchW removes a previous write watch on address.
 func (s *Spy) UnwatchW(address uint16) {
 	delete(s.writes, address)
 }
 
+// UnwatchRW removes previous read and write watches on address.
 func (s *Spy) UnwatchRW(address uint16) {
 	delete(s.reads, address)
 	delete(s.writes, address)
 }
 
+// Spy creates a new memory spy on mem.
 func NewSpy(mem Memory) *Spy {
 	return &Spy{
 		mem:      mem,
