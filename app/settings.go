@@ -1,4 +1,4 @@
-package pac8
+package app
 
 import (
 	"flag"

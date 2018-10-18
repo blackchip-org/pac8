@@ -20,10 +20,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/cpu/z80"
 	"github.com/blackchip-org/pac8/memory"
-	"github.com/blackchip-org/pac8/pac8"
 )
 
 var zexdocTests = []string{
@@ -100,7 +100,7 @@ var zexdoc []byte
 
 func init() {
 	var err error
-	zexdocFile := filepath.Join(pac8.Home(), "data", "zex", "zexdoc.com")
+	zexdocFile := filepath.Join(app.Home(), "data", "zex", "zexdoc.com")
 	zexdoc, err = ioutil.ReadFile(zexdocFile)
 	if err != nil {
 		log.Panicf("unable to read %v: %v", zexdocFile, err)

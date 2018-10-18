@@ -13,7 +13,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/blackchip-org/pac8/pac8"
+	"github.com/blackchip-org/pac8/app"
 )
 
 var out bytes.Buffer
@@ -48,7 +48,7 @@ func main() {
 }
 
 func loadTests() {
-	testsIn := filepath.Join(pac8.Home(), "data", "fuse", "tests.in")
+	testsIn := filepath.Join(app.Home(), "data", "fuse", "tests.in")
 	file, err := os.Open(testsIn)
 	if err != nil {
 		fatal("unable to open", err)
@@ -69,7 +69,7 @@ func loadTests() {
 }
 
 func loadExpected() {
-	testsExp := filepath.Join(pac8.Home(), "data", "fuse", "tests.expected")
+	testsExp := filepath.Join(app.Home(), "data", "fuse", "tests.expected")
 	file, err := os.Open(testsExp)
 	if err != nil {
 		fatal("unable to open", err)

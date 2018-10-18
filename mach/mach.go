@@ -9,9 +9,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/cpu"
 	"github.com/blackchip-org/pac8/memory"
-	"github.com/blackchip-org/pac8/pac8"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -158,22 +158,6 @@ func (m *Mach) Trace(l *log.Logger) {
 	m.trace <- l
 }
 
-func LoadROM(e *[]error, path string, checksum string) memory.Memory {
-	romDir := filepath.Join(pac8.Home(), "rom")
-	filename := filepath.Join(romDir, path)
-	data, err := ioutil.ReadFile(filename)
-	if err != nil {
-		*e = append(*e, err)
-		return nil
-	}
-	rom := memory.NewROM(data)
-	romChecksum := fmt.Sprintf("%04x", sha1.Sum(data))
-	if checksum != romChecksum {
-		*e = append(*e, fmt.Errorf("invalid checksum for file: %s\nexpected: %v\nreceived: %v", filename, checksum, romChecksum))
-	}
-	return rom
-}
-
 func Dump(m memory.Memory, start uint16, end uint16, decode CharDecoder) string {
 	var buf bytes.Buffer
 	var chars bytes.Buffer
@@ -212,4 +196,20 @@ func Dump(m memory.Memory, start uint16, end uint16, decode CharDecoder) string 
 		}
 	}
 	return buf.String()
+}
+
+func LoadROM(e *[]error, path string, checksum string) memory.Memory {
+	romDir := filepath.Join(app.Home(), "rom")
+	filename := filepath.Join(romDir, path)
+	data, err := ioutil.ReadFile(filename)
+	if err != nil {
+		*e = append(*e, err)
+		return nil
+	}
+	rom := memory.NewROM(data)
+	romChecksum := fmt.Sprintf("%04x", sha1.Sum(data))
+	if checksum != romChecksum {
+		*e = append(*e, fmt.Errorf("invalid checksum for file: %s\nexpected: %v\nreceived: %v", filename, checksum, romChecksum))
+	}
+	return rom
 }

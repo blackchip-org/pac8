@@ -12,7 +12,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/blackchip-org/pac8/pac8"
+	"github.com/blackchip-org/pac8/app"
 )
 
 const (
@@ -46,7 +46,7 @@ import "github.com/blackchip-org/pac8/cpu"
 
 `)
 
-	listFile := filepath.Join(pac8.Home(), "data", "harston", "z80oplist.txt")
+	listFile := filepath.Join(app.Home(), "data", "harston", "z80oplist.txt")
 	data, err := ioutil.ReadFile(listFile)
 	if err != nil {
 		panic(err)
