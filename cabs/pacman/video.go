@@ -2,7 +2,6 @@ package pacman
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/blackchip-org/pac8/mach"
 	"github.com/blackchip-org/pac8/memory"
@@ -32,7 +31,6 @@ type Video struct {
 	sprites      [64]*sdl.Texture
 	colors       [16][]uint8
 	palettes     [64]palette
-	cycle        *mach.Cycle
 	spriteCoords [8]spriteCoord
 	frame        mach.RenderFrame
 	frameFill    sdl.Rect
@@ -50,8 +48,6 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 		r:   r,
 		mem: mem,
 	}
-	// 16.67 milliseconds for VBLANK interrupt
-	v.cycle = mach.NewCycle(16670 * time.Microsecond)
 	if r == nil {
 		return v, nil
 	}
@@ -96,9 +92,6 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 }
 
 func (v *Video) Render() {
-	if !v.cycle.Next() {
-		return
-	}
 	v.Callback()
 	if v.r == nil {
 		return

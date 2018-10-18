@@ -1,8 +1,6 @@
 package cpu
 
 import (
-	"time"
-
 	"github.com/blackchip-org/pac8/memory"
 )
 
@@ -23,6 +21,6 @@ type CPU interface {
 	Next()
 	String() string
 	Ready() bool
-	Speed() time.Duration
+	CycleRate() int
 	Disassembler() *Disassembler
 }

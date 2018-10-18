@@ -2,7 +2,6 @@ package z80
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/blackchip-org/pac8/cpu"
 
@@ -128,8 +127,11 @@ func (c *CPU) Memory() memory.Memory {
 	return c.mem
 }
 
-func (c *CPU) Speed() time.Duration {
-	return 325 * time.Nanosecond // 3.072 MHz
+func (c *CPU) CycleRate() int {
+	// CPU is 3.072 MHz which is one T-State every 325 nanoseconds.
+	// Roughly round to 1 instruction every 2 microseconds.
+	// 500 instructions per millsecond
+	return 500
 }
 
 func (c *CPU) Disassembler() *cpu.Disassembler {

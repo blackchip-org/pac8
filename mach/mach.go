@@ -11,7 +11,6 @@ import (
 	"github.com/blackchip-org/pac8/cpu"
 	"github.com/blackchip-org/pac8/memory"
 	"github.com/blackchip-org/pac8/pac8"
-	"github.com/blackchip-org/pac8/util/clock"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -50,23 +49,23 @@ type UI interface {
 }
 
 type Mach struct {
-	CPU         cpu.CPU
-	Display     Display
-	UI          UI
-	Status      Status
-	Err         error
-	Tracing     bool
-	Breakpoints map[uint16]struct{}
-	Callback    func(Status)
-	CharDecoder CharDecoder
-
-	mem    memory.Memory
-	dasm   *cpu.Disassembler
-	events *Cycle
-	start  chan bool
-	stop   chan bool
-	trace  chan bool
-	quit   chan bool
+	CPU           cpu.CPU
+	Display       Display
+	UI            UI
+	Status        Status
+	Err           error
+	Tracing       bool
+	Breakpoints   map[uint16]struct{}
+	Callback      func(Status)
+	CharDecoder   CharDecoder
+	TickRate      time.Duration
+	cyclesPerTick int
+	mem           memory.Memory
+	dasm          *cpu.Disassembler
+	start         chan bool
+	stop          chan bool
+	trace         chan bool
+	quit          chan bool
 }
 
 func New(cpu cpu.CPU) *Mach {
@@ -89,9 +88,9 @@ func (m *Mach) setStatus(s Status) {
 }
 
 func (m *Mach) Run() {
-	m.events = NewCycle(1 * time.Millisecond)
+	ticker := time.NewTicker(m.TickRate)
+	m.cyclesPerTick = int(float64(m.TickRate) / float64(time.Millisecond) * float64(m.CPU.CycleRate()))
 	for {
-		clock.SetNow(time.Now())
 		select {
 		case <-m.stop:
 			m.setStatus(Stop)
@@ -101,33 +100,33 @@ func (m *Mach) Run() {
 			m.Tracing = v
 		case <-m.quit:
 			return
-		default:
+		case <-ticker.C:
 			m.tick()
 		}
 	}
 }
 
 func (m *Mach) tick() {
-	if m.Status == Run {
-		if m.Tracing && m.CPU.Ready() {
-			m.dasm.SetPC(m.CPU.PC())
-			fmt.Println(m.dasm.Next())
-		}
-		m.CPU.Next()
-		if _, exists := m.Breakpoints[m.CPU.PC()]; exists && m.CPU.Ready() {
-			m.setStatus(Breakpoint)
-			return
+	for i := 0; i < m.cyclesPerTick; i++ {
+		if m.Status == Run {
+			if m.Tracing && m.CPU.Ready() {
+				m.dasm.SetPC(m.CPU.PC())
+				fmt.Println(m.dasm.Next())
+			}
+			m.CPU.Next()
+			if _, exists := m.Breakpoints[m.CPU.PC()]; exists && m.CPU.Ready() {
+				m.setStatus(Breakpoint)
+				return
+			}
 		}
 	}
 	m.Display.Render()
-	if m.events.Next() {
-		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
-			if _, ok := event.(*sdl.QuitEvent); ok {
-				m.quit <- true
-			}
-			if m.UI != nil {
-				m.UI.SDLEvent(event)
-			}
+	for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
+		if _, ok := event.(*sdl.QuitEvent); ok {
+			m.quit <- true
+		}
+		if m.UI != nil {
+			m.UI.SDLEvent(event)
 		}
 	}
 }

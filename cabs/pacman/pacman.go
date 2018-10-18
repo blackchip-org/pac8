@@ -5,6 +5,7 @@ package pacman
 import (
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/blackchip-org/pac8/cpu/z80"
 	"github.com/blackchip-org/pac8/mach"
@@ -109,7 +110,8 @@ func New(renderer *sdl.Renderer) *mach.Mach {
 	cab.regs.in0 = 0x3f
 	cab.regs.in1 = 0x7f
 
-	// VBLANK interrupt
+	// 16.67 milliseconds for VBLANK interrupt
+	m.TickRate = time.Duration(16670 * time.Microsecond)
 	video.Callback = func() {
 		if m.Status == mach.Run && cab.regs.interruptEnable != 0 {
 			cab.cpu.INT(cab.intSelect)
