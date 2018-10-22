@@ -9,7 +9,6 @@ import (
 	"html/template"
 	"io/ioutil"
 	"os"
-	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -48,7 +47,7 @@ func main() {
 }
 
 func loadTests() {
-	testsIn := filepath.Join(app.Home(), "data", "fuse", "tests.in")
+	testsIn := app.PathFor(app.Ext, "fuse", "tests.in")
 	file, err := os.Open(testsIn)
 	if err != nil {
 		fatal("unable to open", err)
@@ -69,7 +68,7 @@ func loadTests() {
 }
 
 func loadExpected() {
-	testsExp := filepath.Join(app.Home(), "data", "fuse", "tests.expected")
+	testsExp := app.PathFor(app.Ext, "fuse", "tests.expected")
 	file, err := os.Open(testsExp)
 	if err != nil {
 		fatal("unable to open", err)

@@ -16,7 +16,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"path/filepath"
 	"strings"
 	"testing"
 
@@ -100,7 +99,7 @@ var zexdoc []byte
 
 func init() {
 	var err error
-	zexdocFile := filepath.Join(app.Home(), "data", "zex", "zexdoc.com")
+	zexdocFile := app.PathFor(app.Ext, "zex", "zexdoc.com")
 	zexdoc, err = ioutil.ReadFile(zexdocFile)
 	if err != nil {
 		log.Panicf("unable to read %v: %v", zexdocFile, err)

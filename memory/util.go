@@ -25,6 +25,7 @@ func StoreLE(m Memory, addr uint16, value uint16) {
 type Snapshot struct {
 	Address uint16
 	Values  []uint8
+	Values1 []uint8
 }
 
 // Import loads memory m with the values in the snapshot.

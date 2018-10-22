@@ -2,14 +2,10 @@ package mach
 
 import (
 	"bytes"
-	"crypto/sha1"
 	"fmt"
-	"io/ioutil"
 	"log"
-	"path/filepath"
 	"time"
 
-	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/cpu"
 	"github.com/blackchip-org/pac8/memory"
 	"github.com/veandco/go-sdl2/sdl"
@@ -196,20 +192,4 @@ func Dump(m memory.Memory, start uint16, end uint16, decode CharDecoder) string 
 		}
 	}
 	return buf.String()
-}
-
-func LoadROM(e *[]error, path string, checksum string) memory.Memory {
-	romDir := filepath.Join(app.Home(), "rom")
-	filename := filepath.Join(romDir, path)
-	data, err := ioutil.ReadFile(filename)
-	if err != nil {
-		*e = append(*e, err)
-		return nil
-	}
-	rom := memory.NewROM(data)
-	romChecksum := fmt.Sprintf("%04x", sha1.Sum(data))
-	if checksum != romChecksum {
-		*e = append(*e, fmt.Errorf("invalid checksum for file: %s\nexpected: %v\nreceived: %v", filename, checksum, romChecksum))
-	}
-	return rom
 }

@@ -7,7 +7,7 @@ import (
 	"os"
 	"runtime/pprof"
 
-	"github.com/blackchip-org/pac8/cabs"
+	"github.com/blackchip-org/pac8/cabinet"
 	"github.com/blackchip-org/pac8/mach"
 	"github.com/veandco/go-sdl2/sdl"
 )
@@ -17,7 +17,7 @@ const (
 	defaultHeight = 786
 )
 
-var cabinet string
+var cab string
 var cprof bool
 var monitor bool
 var noVideo bool
@@ -25,7 +25,7 @@ var trace bool
 var wait bool
 
 func init() {
-	flag.StringVar(&cabinet, "c", "pacman", "use this cabinet")
+	flag.StringVar(&cab, "c", "pacman", "use this cabinet")
 	flag.BoolVar(&cprof, "cprof", false, "enable cpu profiling")
 	flag.BoolVar(&monitor, "m", false, "start monitor")
 	flag.BoolVar(&noVideo, "no-video", false, "do not show video device")
@@ -77,7 +77,7 @@ func main() {
 		}
 		r = renderer
 	}
-	m, err := cabs.New(cabinet, r)
+	m, err := cabinet.New(cab, r)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(1)

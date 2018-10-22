@@ -2,3 +2,7 @@
 output
 cpu.prof
 build
+ext
+rom
+var
+pac8

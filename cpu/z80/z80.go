@@ -241,7 +241,6 @@ func (c *CPU) registers() map[string]cpu.Value {
 		"BC1": cpu.Value{Get: c.loadBC1, Put: c.storeBC1},
 		"DE1": cpu.Value{Get: c.loadDE1, Put: c.storeDE1},
 		"HL1": cpu.Value{Get: c.loadHL1, Put: c.storeHL1},
-
-		"PC": cpu.Value{Get: c.PC, Put: c.SetPC},
+		"PC":  cpu.Value{Get: c.PC, Put: c.SetPC},
 	}
 }

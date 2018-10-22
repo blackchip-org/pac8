@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"path/filepath"
 	"strconv"
 	"strings"
 	"unicode"
@@ -46,7 +45,7 @@ import "github.com/blackchip-org/pac8/cpu"
 
 `)
 
-	listFile := filepath.Join(app.Home(), "data", "harston", "z80oplist.txt")
+	listFile := app.PathFor(app.Ext, "harston", "z80oplist.txt")
 	data, err := ioutil.ReadFile(listFile)
 	if err != nil {
 		panic(err)

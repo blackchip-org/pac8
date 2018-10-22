@@ -1,9 +1,9 @@
-package cabs
+package cabinet
 
 import (
 	"errors"
 
-	"github.com/blackchip-org/pac8/cabs/pacman"
+	"github.com/blackchip-org/pac8/cabinet/pacman"
 	"github.com/blackchip-org/pac8/mach"
 	"github.com/veandco/go-sdl2/sdl"
 )
