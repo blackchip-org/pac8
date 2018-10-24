@@ -587,19 +587,19 @@ func processED(tab *regtab, op uint8) string {
 		if z == 1 { // b == 1
 			if y == 4 {
 				// cpi
-				return "blockc(c, inc16)"
+				return "blockc(c, 1)"
 			}
 			if y == 5 {
 				// cpd
-				return "blockc(c, dec16)"
+				return "blockc(c, -1)"
 			}
 			if y == 6 {
 				// cpir
-				return "blockcr(c, inc16)"
+				return "blockcr(c, 1)"
 			}
 			if y == 7 {
 				// cpdr
-				return "blockcr(c, dec16)"
+				return "blockcr(c, -1)"
 			}
 		}
 		if z == 2 {

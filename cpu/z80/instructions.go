@@ -10,9 +10,6 @@ import (
 	"github.com/blackchip-org/pac8/memory"
 )
 
-//go:generate go run _ops/gen.go
-//go:generate go fmt ops.go
-
 var alu bits.ALU
 
 type opsTable map[uint8]func(c *CPU)
@@ -123,28 +120,31 @@ func biti(c *CPU, n int, get cpu.Get) {
 	bits.Set(&c.F, Flag3, bits.Get(bits.Hi(c.iaddr), 3))
 }
 
-func blockc(c *CPU, hlfn func(*CPU, cpu.Put16, cpu.Get16)) {
-	carry := bits.Get(c.F, FlagC)
-	in0 := c.A
-	sub(c, c.loadIndHL, false)
-	out := alu.A
-	c.A = in0
+func blockc(c *CPU, increment int) {
+	alu.SetBorrow(false)
+	alu.A = c.A
+	alu.Subtract(c.loadIndHL())
 
-	hlfn(c, c.storeHL, c.loadHL)
-	dec16(c, c.storeBC, c.loadBC)
+	c.storeHL(c.loadHL() + uint16(increment))
+	c.storeBC(c.loadBC() - uint16(1))
 
-	bits.Set(&c.F, FlagV, c.B != 0 || c.C != 0)
-	flagResult := out
-	if bits.Get(c.F, FlagH) {
-		flagResult--
+	result := alu.A
+	if alu.Carry4() {
+		result--
 	}
-	bits.Set(&c.F, Flag3, bits.Get(flagResult, 3))
-	bits.Set(&c.F, Flag5, bits.Get(flagResult, 1)) // yes, one
-	bits.Set(&c.F, FlagC, carry)
+
+	bits.Set(&c.F, FlagS, alu.Sign())
+	bits.Set(&c.F, FlagZ, alu.Zero())
+	bits.Set(&c.F, Flag5, bits.Get(result, 1)) // yes, one
+	bits.Set(&c.F, FlagH, alu.Carry4())
+	bits.Set(&c.F, Flag3, bits.Get(result, 3))
+	bits.Set(&c.F, FlagV, c.loadBC() != 0)
+	// carry unchanged
+	bits.Set(&c.F, FlagN, true)
 }
 
-func blockcr(c *CPU, hlfn func(*CPU, cpu.Put16, cpu.Get16)) {
-	blockc(c, hlfn)
+func blockcr(c *CPU, increment int) {
+	blockc(c, increment)
 	for {
 		if c.B == 0 && c.C == 0 {
 			break
@@ -154,7 +154,7 @@ func blockcr(c *CPU, hlfn func(*CPU, cpu.Put16, cpu.Get16)) {
 		}
 		c.refreshR()
 		c.refreshR()
-		blockc(c, hlfn)
+		blockc(c, increment)
 	}
 }
 

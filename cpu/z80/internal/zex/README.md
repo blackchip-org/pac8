@@ -32,8 +32,8 @@ go test -v -tags fn
 The test can take up to ten minutes to complete. The following tests
 are currently failing:
 
-- `cpd<r>`
-- `<rlca,rrca,rla,rra>`
+- TestZexdoc/cpd1: `cpd<r>`
+- TestZexdoc/rot8080: `<rlca,rrca,rla,rra>`
 
 Run the benchmarks with:
 
