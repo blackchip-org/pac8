@@ -58,7 +58,6 @@ func main() {
 			os.Exit(1)
 		}
 		defer sdl.Quit()
-		sdl.GLSetSwapInterval(1)
 
 		window, err := sdl.CreateWindow(
 			"pac8",
@@ -76,6 +75,11 @@ func main() {
 			log.Fatalf("unable to initialize renderer: %v", err)
 		}
 		r = renderer
+
+		err = sdl.GLSetSwapInterval(1)
+		if err != nil {
+			fmt.Printf("unable to set swap interval: %v\n", err)
+		}
 	}
 	m, err := cabinet.New(cab, r)
 	if err != nil {

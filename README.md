@@ -22,8 +22,7 @@ brew install go sdl2{,_image,_mixer,_ttf,_gfx} pkg-config
 
 ### ROMs
 
-Download the ROMs from [somewhere](http://example.org). Unpack the
-tarball into your home directory.
+You will need to find [ROMs](ROMS.md) somewhere.
 
 ## Installation
 
@@ -34,30 +33,32 @@ go get github.com/blackchip-org/pac8
 ## Run
 
 ```bash
-~/go/bin/pac8
+~/go/bin/pac8 -c <game>
 ```
+
+where game is one of the following:
+
+- `pacman`
+- `mspacman`
+
 
 Use the `-m` flag to enable the [monitor](monitor.md).
 
 ## Inputs
 
-- `5`: Coin slot 1
-- `6`: Coin slot 2
+- `c`: Coin slot
 - `1`: One Player Start
 - `2`: Two Player Start
 - Arrow keys: Joystick
 
 ## Status
 
-- Pacman
+- Pacman & Ms. Pacman
     - Playable
     - No sound
     - High scores not saved
-- Ms. Pacman
-    - Playable
-    - Missing text
-    - No sound
-    - High scores not saved
+- z80
+    - Failing two [zexdoc](cpu/z80/internal/zex/README.md) tests
 
 ## License
 

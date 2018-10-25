@@ -38,7 +38,7 @@ func (k Keyboard) SDLEvent(event sdl.Event) {
 			bits.Set(&k.reg.in1, Start1, false)
 		case sdl.K_2:
 			bits.Set(&k.reg.in1, Start2, false)
-		case sdl.K_5:
+		case sdl.K_c:
 			bits.Set(&k.reg.in0, Coin1, true)
 		case sdl.K_UP:
 			bits.Set(&k.reg.in0, JoystickUp, false)
@@ -56,7 +56,7 @@ func (k Keyboard) SDLEvent(event sdl.Event) {
 			bits.Set(&k.reg.in1, Start1, true)
 		case sdl.K_2:
 			bits.Set(&k.reg.in1, Start2, true)
-		case sdl.K_5:
+		case sdl.K_c:
 			bits.Set(&k.reg.in0, Coin1, false)
 		case sdl.K_UP:
 			bits.Set(&k.reg.in0, JoystickUp, true)

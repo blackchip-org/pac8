@@ -147,6 +147,26 @@ func (m pageMapped) Length() int {
 	return 0x10000
 }
 
+type BlockMapper struct {
+	Blocks []Block
+}
+
+func NewBlockMapper() *BlockMapper {
+	return &BlockMapper{
+		Blocks: make([]Block, 0, 0),
+	}
+}
+
+func (b *BlockMapper) Map(addr uint16, mem Memory) {
+	if addr%0x100 != 0 {
+		panic("memory block must start on page boundary")
+	}
+	if mem.Length()%0x100 != 0 {
+		panic("memory block length must be a multiple of a page")
+	}
+	b.Blocks = append(b.Blocks, NewBlock(addr, mem))
+}
+
 type masked struct {
 	mem  Memory
 	mask uint16

@@ -21,6 +21,11 @@ type Pacman struct {
 	tiles     *sdl.Texture
 }
 
+type Config struct {
+	M        *memory.BlockMapper
+	VideoROM VideoROM
+}
+
 type registers struct {
 	in0             uint8 // joystick and coin slot
 	interruptEnable uint8
@@ -44,14 +49,26 @@ type voice struct {
 	vol      uint8
 }
 
-// FIXME: Parameters are ugly
-func New(renderer *sdl.Renderer, mem memory.Memory, vroms VideoROM, io memory.IO) (*mach.Mach, error) {
+func New(renderer *sdl.Renderer, config Config) (*mach.Mach, error) {
 	cab := &Pacman{}
-	cab.mem = mem
+
+	ram := memory.NewRAM(0x1000)
+	io := memory.NewIO(0x100)
+
+	config.M.Map(0x4000, ram)
+	config.M.Map(0x5000, io)
+	// Pacman is missing address line A15 so an access to $c000 is the
+	// same as accessing $4000. Ms. Pacman has additional ROMs in high
+	// memory so it has an A15 line but it appears to have the RAM mapped at
+	// $c000 as well. Text for HIGH SCORE and CREDIT accesses this high memory
+	// when writing to video memory. Copy protection?
+	config.M.Map(0xc000, ram)
+
+	cab.mem = memory.NewPageMapped(config.M.Blocks)
 	cab.cpu = z80.New(cab.mem)
 	m := mach.New(cab.mem, cab.cpu)
 
-	video, err := NewVideo(renderer, cab.mem, vroms)
+	video, err := NewVideo(renderer, cab.mem, config.VideoROM)
 	if err != nil {
 		return nil, fmt.Errorf("unable to initialize video: %v", err)
 	}
