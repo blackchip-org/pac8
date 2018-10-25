@@ -11,7 +11,7 @@ const (
 	JoystickRight = 2
 	JoystickDown  = 3
 	Coin1         = 5
-	Con2          = 6
+	Coin2         = 6
 )
 
 const (
@@ -36,6 +36,8 @@ func (k Keyboard) SDLEvent(event sdl.Event) {
 		switch e.Keysym.Sym {
 		case sdl.K_1:
 			bits.Set(&k.reg.in1, Start1, false)
+		case sdl.K_2:
+			bits.Set(&k.reg.in1, Start2, false)
 		case sdl.K_5:
 			bits.Set(&k.reg.in0, Coin1, true)
 		case sdl.K_UP:
@@ -52,6 +54,8 @@ func (k Keyboard) SDLEvent(event sdl.Event) {
 		switch e.Keysym.Sym {
 		case sdl.K_1:
 			bits.Set(&k.reg.in1, Start1, true)
+		case sdl.K_2:
+			bits.Set(&k.reg.in1, Start2, true)
 		case sdl.K_5:
 			bits.Set(&k.reg.in0, Coin1, false)
 		case sdl.K_UP:

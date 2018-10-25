@@ -65,15 +65,16 @@ func New(renderer *sdl.Renderer, mem memory.Memory, vroms VideoROM, io memory.IO
 	// by the interrupting device
 	cab.cpu.Map.WO(0, &cab.intSelect)
 
+	// FIXME: this turns the joystick "off", etc.
+	cab.regs.in0 = 0x3f
+	cab.regs.in1 = 0x7f
+
 	bits.Set(&cab.regs.in1, 4, true)          // Board test switch disabled
+	bits.Set(&cab.regs.in1, 7, true)          // Upright cabinet
 	bits.Set(&cab.regs.dipSwitches, 0, true)  // 1 coin per game
 	bits.Set(&cab.regs.dipSwitches, 1, false) // ...
 	bits.Set(&cab.regs.dipSwitches, 3, true)  // 3 lives
 	bits.Set(&cab.regs.dipSwitches, 7, true)  // Normal ghost names
-
-	// Different type of crash when these are set
-	cab.regs.in0 = 0x3f
-	cab.regs.in1 = 0x7f
 
 	// 16.67 milliseconds for VBLANK interrupt
 	m.TickRate = time.Duration(16670 * time.Microsecond)

@@ -49,7 +49,15 @@ Use the `-m` flag to enable the [monitor](monitor.md).
 
 ## Status
 
-Game is playable with some bugs. Hexadecimal score being one of those bugs.
+- Pacman
+    - Playable
+    - No sound
+    - High scores not saved
+- Ms. Pacman
+    - Playable
+    - Missing text
+    - No sound
+    - High scores not saved
 
 ## License
 
