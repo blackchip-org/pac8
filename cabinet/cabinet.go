@@ -8,8 +8,9 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-var cabs = map[string]func(*sdl.Renderer) *mach.Mach{
-	"pacman": pacman.New,
+var cabs = map[string]func(*sdl.Renderer) (*mach.Mach, error){
+	"pacman":   pacman.NewPacman,
+	"mspacman": pacman.NewMsPacman,
 }
 
 func New(name string, r *sdl.Renderer) (*mach.Mach, error) {
@@ -17,5 +18,5 @@ func New(name string, r *sdl.Renderer) (*mach.Mach, error) {
 	if !ok {
 		return nil, errors.New("no such cabinet")
 	}
-	return cab(r), nil
+	return cab(r)
 }

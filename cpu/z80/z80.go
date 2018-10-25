@@ -139,7 +139,7 @@ func (c *CPU) Info() cpu.Info {
 }
 
 func (c *CPU) intAck(v uint8) {
-	if c.IM != 2 {
+	if c.IM == 0 {
 		panic(fmt.Sprintf("unsupported interrupt mode %v", c.IM))
 	}
 	c.Halt = false
@@ -147,8 +147,12 @@ func (c *CPU) intAck(v uint8) {
 	c.IFF2 = false
 	c.SP -= 2
 	memory.StoreLE(c.mem, c.SP, c.PC())
-	vector := bits.Join(c.I, v)
-	c.pc = memory.LoadLE(c.mem, vector)
+	if c.IM == 2 {
+		vector := bits.Join(c.I, v)
+		c.pc = memory.LoadLE(c.mem, vector)
+	} else {
+		c.pc = 0x0038
+	}
 }
 
 func (c *CPU) String() string {

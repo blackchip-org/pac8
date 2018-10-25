@@ -1,7 +1,9 @@
 package app
 
 import (
+	"bytes"
 	"crypto/sha1"
+	"errors"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -69,4 +71,35 @@ func LoadROM(e *[]error, path string, checksum string) memory.Memory {
 		*e = append(*e, fmt.Errorf("%v: invalid checksum", filename))
 	}
 	return rom
+}
+
+type Loader struct {
+	e   []error
+	dir string
+}
+
+func NewLoader(dir string) *Loader {
+	return &Loader{
+		e:   make([]error, 0, 0),
+		dir: dir,
+	}
+}
+
+func (l *Loader) Load(name string, checksum string) memory.Memory {
+	path := filepath.Join(l.dir, name)
+	return LoadROM(&l.e, path, checksum)
+}
+
+func (l *Loader) Error() error {
+	if len(l.e) == 0 {
+		return nil
+	}
+	var out bytes.Buffer
+	for i, e := range l.e {
+		out.WriteString(e.Error())
+		if i != len(l.e)-1 {
+			out.WriteString("\n")
+		}
+	}
+	return errors.New(out.String())
 }
