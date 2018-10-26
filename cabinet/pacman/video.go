@@ -64,7 +64,7 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 		W: v.frame.W,
 		H: v.frame.H,
 	}
-	v.scanLines, err = mach.ScanLines(r, winW, winH, v.frame.Scale)
+	v.scanLines, err = mach.ScanLines(r, winW, winH, v.frame.Scale-1)
 	if err != nil {
 		return nil, err
 	}

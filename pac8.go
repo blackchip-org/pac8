@@ -59,11 +59,15 @@ func main() {
 		}
 		defer sdl.Quit()
 
+		fullScreen := uint32(0)
+		if !monitor {
+			fullScreen = sdl.WINDOW_FULLSCREEN
+		}
 		window, err := sdl.CreateWindow(
 			"pac8",
 			sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
 			defaultWidth, defaultHeight,
-			sdl.WINDOW_SHOWN,
+			sdl.WINDOW_SHOWN|fullScreen,
 		)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "unable to initialize window: %v", err)
@@ -76,9 +80,13 @@ func main() {
 		}
 		r = renderer
 
-		err = sdl.GLSetSwapInterval(1)
+		err = sdl.GLSetSwapInterval(-1)
 		if err != nil {
-			fmt.Printf("unable to set swap interval: %v\n", err)
+			fmt.Printf("no adaptive vsync: %v\n", err)
+			err = sdl.GLSetSwapInterval(1)
+			if err != nil {
+				fmt.Printf("unable to set swap interval: %v\n", err)
+			}
 		}
 	}
 	m, err := cabinet.New(cab, r)
