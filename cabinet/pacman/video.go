@@ -21,7 +21,7 @@ type spriteCoord struct {
 	y uint8
 }
 
-type palette [4][]uint8
+type Palette [4][]uint8
 
 type Video struct {
 	Callback     func()
@@ -30,10 +30,11 @@ type Video struct {
 	tiles        [64]*sdl.Texture
 	sprites      [64]*sdl.Texture
 	colors       [16][]uint8
-	palettes     [64]palette
+	palettes     [64]Palette
 	spriteCoords [8]spriteCoord
 	frame        mach.RenderFrame
 	frameFill    sdl.Rect
+	scanLines    *sdl.Texture
 }
 
 type VideoROM struct {
@@ -63,7 +64,10 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 		W: v.frame.W,
 		H: v.frame.H,
 	}
-
+	v.scanLines, err = mach.ScanLines(r, winW, winH, v.frame.Scale)
+	if err != nil {
+		return nil, err
+	}
 	v.colorTable(rom.Color)
 	v.paletteTable(rom.Palette)
 
@@ -80,13 +84,6 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 		}
 		v.sprites[pal] = sprites
 	}
-
-	/*
-		r.Copy(v.tiles[5], nil, nil)
-		r.Present()
-		for {
-		}
-	*/
 
 	return v, nil
 }
@@ -174,6 +171,7 @@ func (v *Video) Render() {
 		pal := v.mem.Load(uint16(0x4ff1 + (s * 2)))
 		v.r.CopyEx(v.sprites[pal], &src, &dest, 0, nil, flip)
 	}
+	v.r.Copy(v.scanLines, nil, nil)
 	v.r.Present()
 }
 
@@ -188,7 +186,7 @@ func bit2(b0 bool, b1 bool) int {
 	return index
 }
 
-func tileSheet(r *sdl.Renderer, mem memory.Memory, pal palette) (*sdl.Texture, error) {
+func tileSheet(r *sdl.Renderer, mem memory.Memory, pal Palette) (*sdl.Texture, error) {
 	w := 16 * 8
 	h := 16 * 8
 	t, err := r.CreateTexture(sdl.PIXELFORMAT_RGBA8888,
@@ -232,7 +230,7 @@ func tileSheet(r *sdl.Renderer, mem memory.Memory, pal palette) (*sdl.Texture, e
 	return t, nil
 }
 
-func spriteSheet(r *sdl.Renderer, mem memory.Memory, pal palette) (*sdl.Texture, error) {
+func spriteSheet(r *sdl.Renderer, mem memory.Memory, pal Palette) (*sdl.Texture, error) {
 	// 64 sprites to be placed in 8x8 matrix each with 16x16 pixels
 	w, h := 8*16, 8*16
 	t, err := r.CreateTexture(sdl.PIXELFORMAT_RGBA8888,

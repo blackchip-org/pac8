@@ -34,7 +34,7 @@ func init() {
 	} else {
 		userHome = u.HomeDir
 	}
-	flag.StringVar(&home, "home", "", "path to runtime data")
+	flag.StringVar(&home, "home", "", "`path` to runtime data")
 }
 
 var (
@@ -58,19 +58,18 @@ func PathFor(kind string, path ...string) string {
 	return filepath.Join(root, kind, filepath.Join(path...))
 }
 
-func LoadROM(e *[]error, path string, checksum string) memory.Memory {
+func LoadROM(path string, checksum string) (memory.Memory, error) {
 	filename := PathFor(ROM, path)
 	data, err := ioutil.ReadFile(filename)
 	if err != nil {
-		*e = append(*e, err)
-		return nil
+		return nil, err
 	}
 	rom := memory.NewROM(data)
 	romChecksum := fmt.Sprintf("%04x", sha1.Sum(data))
 	if checksum != romChecksum {
-		*e = append(*e, fmt.Errorf("%v: invalid checksum", filename))
+		return nil, fmt.Errorf("%v: invalid checksum", filename)
 	}
-	return rom
+	return rom, nil
 }
 
 type Loader struct {
@@ -87,7 +86,11 @@ func NewLoader(dir string) *Loader {
 
 func (l *Loader) Load(name string, checksum string) memory.Memory {
 	path := filepath.Join(l.dir, name)
-	return LoadROM(&l.e, path, checksum)
+	rom, err := LoadROM(path, checksum)
+	if err != nil {
+		l.e = append(l.e, err)
+	}
+	return rom
 }
 
 func (l *Loader) Error() error {
