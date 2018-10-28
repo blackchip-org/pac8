@@ -8,8 +8,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/blackchip-org/pac8/cabinet/pacman"
 	"github.com/blackchip-org/pac8/mach"
+	"github.com/blackchip-org/pac8/system/pacman"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -66,7 +66,7 @@ func main() {
 		"pac8-viz",
 		sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
 		100, 100,
-		sdl.WINDOW_SHOWN,
+		sdl.WINDOW_HIDDEN,
 	)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "unable to initialize window: %v", err)
@@ -88,21 +88,7 @@ func main() {
 	winX, winY := w*int32(scale), h*int32(scale)
 	window.SetSize(winX, winY)
 	window.SetPosition(sdl.WINDOWPOS_CENTERED, sdl.WINDOWPOS_CENTERED)
-
-	var scanlines *sdl.Texture
-	if vscan > 0 {
-		scanlines, err = mach.ScanLines(r, winX, winY, int32(vscan))
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
-
-	r.SetRenderTarget(nil)
-	r.Copy(sheet, nil, nil)
-	if scanlines != nil {
-		r.Copy(scanlines, nil, nil)
-	}
-	r.Present()
+	window.Show()
 
 	for {
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
@@ -110,5 +96,23 @@ func main() {
 				os.Exit(0)
 			}
 		}
+
+		sheet = v(r)
+		var scanlines *sdl.Texture
+		if vscan > 0 {
+			scanlines, err = mach.ScanLines(r, winX, winY, int32(vscan))
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+
+		r.SetRenderTarget(nil)
+		r.Clear()
+		r.Copy(sheet, nil, nil)
+		if scanlines != nil {
+			r.Copy(scanlines, nil, nil)
+		}
+		sdl.Delay(250)
+		r.Present()
 	}
 }

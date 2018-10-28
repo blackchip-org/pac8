@@ -7,8 +7,8 @@ import (
 	"os"
 	"runtime/pprof"
 
-	"github.com/blackchip-org/pac8/cabinet"
 	"github.com/blackchip-org/pac8/mach"
+	"github.com/blackchip-org/pac8/system/pacman"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -17,7 +17,7 @@ const (
 	defaultHeight = 786
 )
 
-var cab string
+var gameName string
 var cprof bool
 var monitor bool
 var noVideo bool
@@ -25,7 +25,7 @@ var trace bool
 var wait bool
 
 func init() {
-	flag.StringVar(&cab, "c", "pacman", "use this cabinet")
+	flag.StringVar(&gameName, "g", "pacman", "use this game")
 	flag.BoolVar(&cprof, "cprof", false, "enable cpu profiling")
 	flag.BoolVar(&monitor, "m", false, "start monitor")
 	flag.BoolVar(&noVideo, "no-video", false, "do not show video device")
@@ -33,7 +33,13 @@ func init() {
 	flag.BoolVar(&wait, "w", false, "wait for go command")
 }
 
+var games = map[string]func(*sdl.Renderer) (*mach.Mach, error){
+	"pacman":   pacman.NewPacman,
+	"mspacman": pacman.NewMsPacman,
+}
+
 func main() {
+	log.SetFlags(0)
 	flag.Parse()
 
 	if cprof {
@@ -51,11 +57,15 @@ func main() {
 		}()
 	}
 
+	newGame, ok := games[gameName]
+	if !ok {
+		log.Fatalf("no such game: %v", gameName)
+	}
+
 	var r *sdl.Renderer
 	if !noVideo {
 		if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
-			fmt.Fprintf(os.Stderr, "unable to initialize sdl: %v\n", err)
-			os.Exit(1)
+			log.Fatalf("unable to initialize sdl: %v", err)
 		}
 		defer sdl.Quit()
 
@@ -70,8 +80,7 @@ func main() {
 			sdl.WINDOW_SHOWN|fullScreen,
 		)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "unable to initialize window: %v", err)
-			os.Exit(1)
+			log.Fatalf("unable to initialize window: %v", err)
 		}
 
 		renderer, err := sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED)
@@ -82,17 +91,17 @@ func main() {
 
 		err = sdl.GLSetSwapInterval(-1)
 		if err != nil {
-			fmt.Printf("no adaptive vsync: %v\n", err)
+			log.Printf("no adaptive vsync: %v", err)
 			err = sdl.GLSetSwapInterval(1)
 			if err != nil {
-				fmt.Printf("unable to set swap interval: %v\n", err)
+				log.Printf("unable to set swap interval: %v", err)
 			}
 		}
 	}
-	m, err := cabinet.New(cab, r)
+
+	m, err := newGame(r)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "%v\n", err)
-		os.Exit(1)
+		log.Fatalf("unable to start game: %v", err)
 	}
 
 	if trace {
@@ -103,8 +112,7 @@ func main() {
 		go func() {
 			err := mon.Run()
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "monitor error: %v\n", err)
-				os.Exit(1)
+				log.Fatalf("monitor error: %v", err)
 			}
 		}()
 	}
