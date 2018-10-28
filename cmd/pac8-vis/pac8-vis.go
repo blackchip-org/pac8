@@ -90,19 +90,19 @@ func main() {
 	window.SetPosition(sdl.WINDOWPOS_CENTERED, sdl.WINDOWPOS_CENTERED)
 	window.Show()
 
+	sheet = v(r)
+	var scanlines *sdl.Texture
+	if vscan > 0 {
+		scanlines, err = mach.ScanLines(r, winX, winY, int32(vscan))
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
 	for {
 		for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 			if _, ok := event.(*sdl.QuitEvent); ok {
 				os.Exit(0)
-			}
-		}
-
-		sheet = v(r)
-		var scanlines *sdl.Texture
-		if vscan > 0 {
-			scanlines, err = mach.ScanLines(r, winX, winY, int32(vscan))
-			if err != nil {
-				log.Fatal(err)
 			}
 		}
 
