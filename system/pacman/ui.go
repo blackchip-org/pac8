@@ -20,11 +20,11 @@ const (
 )
 
 type Keyboard struct {
-	reg *registers
+	regs *Registers
 }
 
-func NewKeyboard(reg *registers) Keyboard {
-	return Keyboard{reg: reg}
+func NewKeyboard(regs *Registers) Keyboard {
+	return Keyboard{regs: regs}
 }
 
 func (k Keyboard) SDLEvent(event sdl.Event) {
@@ -35,37 +35,37 @@ func (k Keyboard) SDLEvent(event sdl.Event) {
 	if e.Type == sdl.KEYDOWN {
 		switch e.Keysym.Sym {
 		case sdl.K_1:
-			bits.Set(&k.reg.in1, Start1, false)
+			bits.Set(&k.regs.In1, Start1, false)
 		case sdl.K_2:
-			bits.Set(&k.reg.in1, Start2, false)
+			bits.Set(&k.regs.In1, Start2, false)
 		case sdl.K_c:
-			bits.Set(&k.reg.in0, Coin1, true)
+			bits.Set(&k.regs.In0, Coin1, true)
 		case sdl.K_UP:
-			bits.Set(&k.reg.in0, JoystickUp, false)
+			bits.Set(&k.regs.In0, JoystickUp, false)
 		case sdl.K_DOWN:
-			bits.Set(&k.reg.in0, JoystickDown, false)
+			bits.Set(&k.regs.In0, JoystickDown, false)
 		case sdl.K_LEFT:
-			bits.Set(&k.reg.in0, JoystickLeft, false)
+			bits.Set(&k.regs.In0, JoystickLeft, false)
 		case sdl.K_RIGHT:
-			bits.Set(&k.reg.in0, JoystickRight, false)
+			bits.Set(&k.regs.In0, JoystickRight, false)
 		}
 	}
 	if e.Type == sdl.KEYUP {
 		switch e.Keysym.Sym {
 		case sdl.K_1:
-			bits.Set(&k.reg.in1, Start1, true)
+			bits.Set(&k.regs.In1, Start1, true)
 		case sdl.K_2:
-			bits.Set(&k.reg.in1, Start2, true)
+			bits.Set(&k.regs.In1, Start2, true)
 		case sdl.K_c:
-			bits.Set(&k.reg.in0, Coin1, false)
+			bits.Set(&k.regs.In0, Coin1, false)
 		case sdl.K_UP:
-			bits.Set(&k.reg.in0, JoystickUp, true)
+			bits.Set(&k.regs.In0, JoystickUp, true)
 		case sdl.K_DOWN:
-			bits.Set(&k.reg.in0, JoystickDown, true)
+			bits.Set(&k.regs.In0, JoystickDown, true)
 		case sdl.K_LEFT:
-			bits.Set(&k.reg.in0, JoystickLeft, true)
+			bits.Set(&k.regs.In0, JoystickLeft, true)
 		case sdl.K_RIGHT:
-			bits.Set(&k.reg.in0, JoystickRight, true)
+			bits.Set(&k.regs.In0, JoystickRight, true)
 		}
 	}
 }

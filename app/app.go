@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/blackchip-org/pac8/memory"
+	"github.com/blackchip-org/pac8/component/memory"
 )
 
 const (

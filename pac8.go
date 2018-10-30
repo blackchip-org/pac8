@@ -7,7 +7,8 @@ import (
 	"os"
 	"runtime/pprof"
 
-	"github.com/blackchip-org/pac8/mach"
+	"github.com/blackchip-org/pac8/app"
+	"github.com/blackchip-org/pac8/machine"
 	"github.com/blackchip-org/pac8/system/pacman"
 	"github.com/veandco/go-sdl2/sdl"
 )
@@ -33,7 +34,7 @@ func init() {
 	flag.BoolVar(&wait, "w", false, "wait for go command")
 }
 
-var games = map[string]func(*sdl.Renderer) (*mach.Mach, error){
+var games = map[string]func(*sdl.Renderer) (*machine.Mach, error){
 	"pacman":   pacman.NewPacman,
 	"mspacman": pacman.NewMsPacman,
 }
@@ -99,16 +100,16 @@ func main() {
 		}
 	}
 
-	m, err := newGame(r)
+	mach, err := newGame(r)
 	if err != nil {
 		log.Fatalf("unable to start game: %v", err)
 	}
 
 	if trace {
-		m.Trace(log.New(os.Stdout, "", 0))
+		mach.Trace(log.New(os.Stdout, "", 0))
 	}
 	if monitor {
-		mon := mach.NewMonitor(m)
+		mon := app.NewMonitor(mach)
 		go func() {
 			err := mon.Run()
 			if err != nil {
@@ -117,7 +118,7 @@ func main() {
 		}()
 	}
 	if !wait {
-		m.Start()
+		mach.Start()
 	}
-	m.Run()
+	mach.Run()
 }

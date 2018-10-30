@@ -4,8 +4,9 @@ import (
 	"fmt"
 
 	"github.com/blackchip-org/pac8/bits"
-	"github.com/blackchip-org/pac8/mach"
-	"github.com/blackchip-org/pac8/memory"
+	"github.com/blackchip-org/pac8/component/memory"
+	"github.com/blackchip-org/pac8/component/video"
+
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -32,7 +33,7 @@ type Video struct {
 	colors       [16][]uint8
 	palettes     [64]Palette
 	spriteCoords [8]spriteCoord
-	frame        mach.RenderFrame
+	frame        video.RenderFrame
 	frameFill    sdl.Rect
 	scanLines    *sdl.Texture
 }
@@ -57,14 +58,14 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 	if err != nil {
 		return nil, err
 	}
-	v.frame = mach.FitInWindow(winW, winH, w, h)
+	v.frame = video.FitInWindow(winW, winH, w, h)
 	v.frameFill = sdl.Rect{
 		X: v.frame.X,
 		Y: v.frame.Y,
 		W: v.frame.W,
 		H: v.frame.H,
 	}
-	v.scanLines, err = mach.ScanLines(r, winW, winH, v.frame.Scale-1)
+	v.scanLines, err = video.ScanLines(r, winW, winH, v.frame.Scale-1)
 	if err != nil {
 		return nil, err
 	}

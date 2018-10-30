@@ -3,20 +3,21 @@ package pacman
 // https://www.lomont.org/Software/Games/PacMan/PacmanEmulation.pdf
 
 import (
+	"encoding/gob"
 	"fmt"
 	"time"
 
 	"github.com/blackchip-org/pac8/bits"
-	"github.com/blackchip-org/pac8/cpu/z80"
-	"github.com/blackchip-org/pac8/mach"
-	"github.com/blackchip-org/pac8/memory"
+	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/component/memory"
+	"github.com/blackchip-org/pac8/component/proc/z80"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
 type Pacman struct {
 	mem       memory.Memory
 	cpu       *z80.CPU
-	regs      registers
+	regs      Registers
 	intSelect uint8 // value sent during interrupt to select vector (port 0)
 	tiles     *sdl.Texture
 }
@@ -26,31 +27,31 @@ type Config struct {
 	VideoROM VideoROM
 }
 
-type registers struct {
-	in0             uint8 // joystick and coin slot
-	interruptEnable uint8
-	soundEnable     uint8
-	unknown0        uint8
-	flipScreen      uint8
-	player1Lamp     uint8
-	player2Lamp     uint8
-	coinLockout     uint8
-	coinCounter     uint8
-	in1             uint8 // joystick and start buttons
-	voices          [3]voice
-	dipSwitches     uint8
-	watchdogReset   uint8
+type Registers struct {
+	In0             uint8 // joystick and coin slot
+	InterruptEnable uint8
+	SoundEnable     uint8
+	Unknown0        uint8
+	FlipScreen      uint8
+	Player1Lamp     uint8
+	Player2Lamp     uint8
+	CoinLockout     uint8
+	CoinCounter     uint8
+	In1             uint8 // joystick and start buttons
+	Voices          [3]Voice
+	DipSwitches     uint8
+	WatchdogReset   uint8
 }
 
-type voice struct {
-	acc      [5]uint8
-	waveform uint8
-	freq     [5]uint8
-	vol      uint8
+type Voice struct {
+	Acc      [5]uint8
+	Waveform uint8
+	Freq     [5]uint8
+	Vol      uint8
 }
 
-func New(renderer *sdl.Renderer, config Config) (*mach.Mach, error) {
-	cab := &Pacman{}
+func New(renderer *sdl.Renderer, config Config) (*machine.Mach, error) {
+	sys := &Pacman{}
 
 	ram := memory.NewRAM(0x1000)
 	io := memory.NewIO(0x100)
@@ -64,86 +65,96 @@ func New(renderer *sdl.Renderer, config Config) (*mach.Mach, error) {
 	// when writing to video memory. Copy protection?
 	config.M.Map(0xc000, ram)
 
-	cab.mem = memory.NewPageMapped(config.M.Blocks)
-	cab.cpu = z80.New(cab.mem)
-	m := mach.New(cab.mem, cab.cpu)
+	sys.mem = memory.NewPageMapped(config.M.Blocks)
+	sys.cpu = z80.New(sys.mem)
+	m := machine.New(sys.mem, sys.cpu)
 
-	video, err := NewVideo(renderer, cab.mem, config.VideoROM)
+	video, err := NewVideo(renderer, sys.mem, config.VideoROM)
 	if err != nil {
 		return nil, fmt.Errorf("unable to initialize video: %v", err)
 	}
 	m.Display = video
-	keyboard := NewKeyboard(&cab.regs)
+	keyboard := NewKeyboard(&sys.regs)
 	m.UI = keyboard
 
-	mapRegisters(&cab.regs, io, video)
+	mapRegisters(&sys.regs, io, video)
 
 	// Port 0 gets set with the partial interrupt pointer to be set
 	// by the interrupting device
-	cab.cpu.Map.WO(0, &cab.intSelect)
+	sys.cpu.Map.WO(0, &sys.intSelect)
 
 	// FIXME: this turns the joystick "off", etc.
-	cab.regs.in0 = 0x3f
-	cab.regs.in1 = 0x7f
+	sys.regs.In0 = 0x3f
+	sys.regs.In1 = 0x7f
 
-	bits.Set(&cab.regs.in1, 4, true)          // Board test switch disabled
-	bits.Set(&cab.regs.in1, 7, true)          // Upright cabinet
-	bits.Set(&cab.regs.dipSwitches, 0, true)  // 1 coin per game
-	bits.Set(&cab.regs.dipSwitches, 1, false) // ...
-	bits.Set(&cab.regs.dipSwitches, 3, true)  // 3 lives
-	bits.Set(&cab.regs.dipSwitches, 7, true)  // Normal ghost names
+	bits.Set(&sys.regs.In1, 4, true)          // Board test switch disabled
+	bits.Set(&sys.regs.In1, 7, true)          // Upright sysinet
+	bits.Set(&sys.regs.DipSwitches, 0, true)  // 1 coin per game
+	bits.Set(&sys.regs.DipSwitches, 1, false) // ...
+	bits.Set(&sys.regs.DipSwitches, 3, true)  // 3 lives
+	bits.Set(&sys.regs.DipSwitches, 7, true)  // Normal ghost names
 
 	// 16.67 milliseconds for VBLANK interrupt
 	m.TickRate = time.Duration(16670 * time.Microsecond)
 	video.Callback = func() {
-		if m.Status == mach.Run && cab.regs.interruptEnable != 0 {
-			cab.cpu.INT(cab.intSelect)
+		if m.Status == machine.Run && sys.regs.InterruptEnable != 0 {
+			sys.cpu.INT(sys.intSelect)
 		}
 	}
 
 	return m, nil
 }
 
-func mapRegisters(r *registers, io memory.IO, v *Video) {
+func mapRegisters(r *Registers, io memory.IO, v *Video) {
 	pm := memory.NewPortMapper(io)
 	for i := 0; i <= 0x3f; i++ {
-		pm.RO(i, &r.in0)
+		pm.RO(i, &r.In0)
 	}
-	pm.WO(0x00, &r.interruptEnable)
-	pm.WO(0x01, &r.soundEnable)
-	pm.WO(0x02, &r.unknown0)
-	pm.RW(0x03, &r.flipScreen)
-	pm.RW(0x04, &r.player1Lamp)
-	pm.RW(0x05, &r.player2Lamp)
-	pm.RW(0x06, &r.coinLockout)
-	pm.RW(0x07, &r.coinCounter)
+	pm.WO(0x00, &r.InterruptEnable)
+	pm.WO(0x01, &r.SoundEnable)
+	pm.WO(0x02, &r.Unknown0)
+	pm.RW(0x03, &r.FlipScreen)
+	pm.RW(0x04, &r.Player1Lamp)
+	pm.RW(0x05, &r.Player2Lamp)
+	pm.RW(0x06, &r.CoinLockout)
+	pm.RW(0x07, &r.CoinCounter)
 	for i := 0x40; i <= 0x7f; i++ {
-		pm.RO(i, &r.in1)
+		pm.RO(i, &r.In1)
 	}
 	for i, v := 0x40, 0; v < 3; i, v = i+6, v+1 {
-		pm.WO(i+0, &r.voices[v].acc[0])
-		pm.WO(i+1, &r.voices[v].acc[1])
-		pm.WO(i+2, &r.voices[v].acc[2])
-		pm.WO(i+3, &r.voices[v].acc[3])
-		pm.WO(i+4, &r.voices[v].acc[4])
-		pm.WO(i+5, &r.voices[v].waveform)
+		pm.WO(i+0, &r.Voices[v].Acc[0])
+		pm.WO(i+1, &r.Voices[v].Acc[1])
+		pm.WO(i+2, &r.Voices[v].Acc[2])
+		pm.WO(i+3, &r.Voices[v].Acc[3])
+		pm.WO(i+4, &r.Voices[v].Acc[4])
+		pm.WO(i+5, &r.Voices[v].Waveform)
 	}
 	for i, v := 0x50, 0; v < 3; i, v = i+6, v+1 {
-		pm.WO(i+0, &r.voices[v].freq[0])
-		pm.WO(i+1, &r.voices[v].freq[1])
-		pm.WO(i+2, &r.voices[v].freq[2])
-		pm.WO(i+3, &r.voices[v].freq[3])
-		pm.WO(i+4, &r.voices[v].freq[4])
-		pm.WO(i+5, &r.voices[v].vol)
+		pm.WO(i+0, &r.Voices[v].Freq[0])
+		pm.WO(i+1, &r.Voices[v].Freq[1])
+		pm.WO(i+2, &r.Voices[v].Freq[2])
+		pm.WO(i+3, &r.Voices[v].Freq[3])
+		pm.WO(i+4, &r.Voices[v].Freq[4])
+		pm.WO(i+5, &r.Voices[v].Vol)
 	}
 	for i, s := 0x60, 0; s < 8; i, s = i+2, s+1 {
 		pm.WO(i+0, &v.spriteCoords[s].x)
 		pm.WO(i+1, &v.spriteCoords[s].y)
 	}
 	for i := 0x80; i <= 0xbf; i++ {
-		pm.RO(i, &r.dipSwitches)
+		pm.RO(i, &r.DipSwitches)
 	}
 	for i := 0xc0; i <= 0xff; i++ {
-		pm.WO(i, &r.watchdogReset)
+		pm.WO(i, &r.WatchdogReset)
 	}
+}
+
+func (p *Pacman) Encode(en *gob.Encoder) error {
+	if err := en.Encode(p.regs); err != nil {
+		return err
+	}
+	if err := en.Encode(p.cpu); err != nil {
+		return err
+	}
+	return nil
 }

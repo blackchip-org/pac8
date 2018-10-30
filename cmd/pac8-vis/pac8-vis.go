@@ -8,8 +8,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/blackchip-org/pac8/mach"
 	"github.com/blackchip-org/pac8/system/pacman"
+	"github.com/blackchip-org/pac8/component/video"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -93,7 +93,7 @@ func main() {
 	sheet = v(r)
 	var scanlines *sdl.Texture
 	if vscan > 0 {
-		scanlines, err = mach.ScanLines(r, winX, winY, int32(vscan))
+		scanlines, err = video.ScanLines(r, winX, winY, int32(vscan))
 		if err != nil {
 			log.Fatal(err)
 		}

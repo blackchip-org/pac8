@@ -58,7 +58,7 @@ Use the `-m` flag to enable the [monitor](monitor.md).
     - No sound
     - High scores not saved
 - z80
-    - Failing two [zexdoc](cpu/z80/internal/zex/README.md) tests
+    - Failing two [zexdoc](device/proc/z80/internal/zex/README.md) tests
 
 ## License
 

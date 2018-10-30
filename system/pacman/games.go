@@ -2,12 +2,12 @@ package pacman
 
 import (
 	"github.com/blackchip-org/pac8/app"
-	"github.com/blackchip-org/pac8/mach"
-	"github.com/blackchip-org/pac8/memory"
+	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-func NewPacman(renderer *sdl.Renderer) (*mach.Mach, error) {
+func NewPacman(renderer *sdl.Renderer) (*machine.Mach, error) {
 	l := app.NewLoader("pacman")
 	rom0 := l.Load("pacman.6e", "e87e059c5be45753f7e9f33dff851f16d6751181")
 	rom1 := l.Load("pacman.6f", "674d3a7f00d8be5e38b1fdc208ebef5a92d38329")
@@ -38,7 +38,7 @@ func NewPacman(renderer *sdl.Renderer) (*mach.Mach, error) {
 	return New(renderer, config)
 }
 
-func NewMsPacman(renderer *sdl.Renderer) (*mach.Mach, error) {
+func NewMsPacman(renderer *sdl.Renderer) (*machine.Mach, error) {
 	l := app.NewLoader("mspacman")
 	rom0 := l.Load("boot1", "bc2247ec946b639dd1f00bfc603fa157d0baaa97")
 	rom1 := l.Load("boot2", "13ea0c343de072508908be885e6a2a217bbb3047")
