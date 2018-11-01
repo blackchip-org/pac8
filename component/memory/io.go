@@ -12,20 +12,20 @@ type Port struct {
 // IO is memory that is mapped to input/output ports. Use PortMapper to
 // easily map memory addresses to port values.
 type IO struct {
-	ports []Port
+	Ports []Port
 }
 
 // NewIO creates a new input/output memory with n ports.
 func NewIO(n int) IO {
 	return IO{
-		ports: make([]Port, n, n),
+		Ports: make([]Port, n, n),
 	}
 }
 
 // Store writes the value to the port mapped at address. If no port is
 // mapped at address, this function does nothing.
 func (i IO) Store(address uint16, value uint8) {
-	p := i.ports[int(address)]
+	p := i.Ports[int(address)]
 	if p.Write != nil {
 		*p.Write = value
 	}
@@ -34,7 +34,7 @@ func (i IO) Store(address uint16, value uint8) {
 // Load reads the value from the port mapped at address. If no port is
 // mapped at address, zero is returned.
 func (i IO) Load(address uint16) uint8 {
-	p := i.ports[int(address)]
+	p := i.Ports[int(address)]
 	if p.Read == nil {
 		return 0
 	}
@@ -43,7 +43,7 @@ func (i IO) Load(address uint16) uint8 {
 
 // Length returns the number of ports.
 func (i IO) Length() int {
-	return len(i.ports)
+	return len(i.Ports)
 }
 
 // PortMapper maps memory addresses to port values.
@@ -58,16 +58,16 @@ func NewPortMapper(io IO) PortMapper {
 
 // RO maps the value at v to the port at p only when reading.
 func (m PortMapper) RO(p int, v *uint8) {
-	m.io.ports[p].Read = v
+	m.io.Ports[p].Read = v
 }
 
 // WO maps the value at v to the port at p only when writing.
 func (m PortMapper) WO(p int, v *uint8) {
-	m.io.ports[p].Write = v
+	m.io.Ports[p].Write = v
 }
 
 // RW maps the value at v to the port at p when reading or writing.
 func (m PortMapper) RW(p int, v *uint8) {
-	m.io.ports[p].Read = v
-	m.io.ports[p].Write = v
+	m.io.Ports[p].Read = v
+	m.io.Ports[p].Write = v
 }

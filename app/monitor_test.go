@@ -8,9 +8,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/blackchip-org/pac8/component/memory"
 	. "github.com/blackchip-org/pac8/expect"
 	"github.com/blackchip-org/pac8/machine"
-	"github.com/blackchip-org/pac8/component/memory"
 )
 
 type fixture struct {
@@ -21,9 +21,10 @@ type fixture struct {
 
 func newTestMonitor() *fixture {
 	f := &fixture{}
-	m := newFixtureCab(nil)
-	f.mon = NewMonitor(m)
-	f.cursor = memory.NewCursor(m.Mem)
+	sys := newFixtureCab(nil)
+	mach := machine.New(sys)
+	f.mon = NewMonitor(mach)
+	f.cursor = memory.NewCursor(mach.Mem)
 	f.mon.out.SetOutput(&f.out)
 	return f
 }
@@ -61,7 +62,7 @@ func TestDisassembleFirstLine(t *testing.T) {
 	f.mon.in = testMonitorInput("d \n q")
 	testMonitorRun(f.mon)
 	lines := strings.Split(f.out.String(), "\n")
-	fmt.Println(Dump(f.mon.mem, 0, 0x0f, machine.AsciiDecoder))
+	fmt.Println(Dump(f.mon.mem, 0, 0x0f, AsciiDecoder))
 	With(t).Expect(lines[0]).ToBe(
 		"$0000:  20 cd ab  i20 $abcd",
 	)
@@ -75,7 +76,7 @@ func TestDisassembleLastLine(t *testing.T) {
 	testMonitorRun(f.mon)
 	out := strings.TrimSpace(f.out.String())
 	lines := strings.Split(out, "\n")
-	fmt.Println(Dump(f.mon.mem, 0, 0x0f, machine.AsciiDecoder))
+	fmt.Println(Dump(f.mon.mem, 0, 0x0f, AsciiDecoder))
 	With(t).Expect(lines[len(lines)-1]).ToBe(
 		"$003f:  20 cd ab  i20 $abcd",
 	)
@@ -303,7 +304,7 @@ func TestDump(t *testing.T) {
 				m.Store(uint16(test.start+i), uint8(value))
 			}
 			have := Dump(m, uint16(test.showFrom), uint16(test.showTo),
-				machine.AsciiDecoder)
+				AsciiDecoder)
 			have = strings.TrimSpace(have)
 			With(t).Expect(have).ToBe(test.want)
 		})

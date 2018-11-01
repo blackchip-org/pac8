@@ -42,6 +42,8 @@ const (
 	maxArgs     = 0x100
 )
 
+type CharDecoder func(uint8) (rune, bool)
+
 type Monitor struct {
 	dasm    *proc.Disassembler
 	mach    *machine.Mach
@@ -254,7 +256,7 @@ func (m *Monitor) halt(args []string) error {
 	return nil
 }
 
-func (m *Monitor) memory(args []string, decoder machine.CharDecoder) error {
+func (m *Monitor) memory(args []string, decoder CharDecoder) error {
 	if err := checkLen(args, 0, 2); err != nil {
 		return err
 	}
@@ -459,7 +461,7 @@ func formatValue16(v uint16) string {
 	return fmt.Sprintf("$%04x +%d", v, v)
 }
 
-func Dump(m memory.Memory, start uint16, end uint16, decode machine.CharDecoder) string {
+func Dump(m memory.Memory, start uint16, end uint16, decode CharDecoder) string {
 	var buf bytes.Buffer
 	var chars bytes.Buffer
 
@@ -497,4 +499,9 @@ func Dump(m memory.Memory, start uint16, end uint16, decode machine.CharDecoder)
 		}
 	}
 	return buf.String()
+}
+
+var AsciiDecoder = func(code uint8) (rune, bool) {
+	printable := code >= 32 && code < 128
+	return rune(code), printable
 }

@@ -4,6 +4,14 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
+type Display interface {
+	Render()
+}
+
+type NullDisplay struct{}
+
+func (d NullDisplay) Render() {}
+
 type RenderFrame struct {
 	X     int32
 	Y     int32

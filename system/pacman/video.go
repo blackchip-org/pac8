@@ -90,11 +90,10 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM) (*Video, error) 
 }
 
 func (v *Video) Render() {
-	v.Callback()
+	//v.Callback()
 	if v.r == nil {
 		return
 	}
-
 	v.r.SetDrawColorArray(0, 0, 0, 0xff)
 	v.r.FillRect(&v.frameFill)
 

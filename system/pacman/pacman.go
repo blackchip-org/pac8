@@ -3,22 +3,21 @@ package pacman
 // https://www.lomont.org/Software/Games/PacMan/PacmanEmulation.pdf
 
 import (
-	"encoding/gob"
 	"fmt"
 	"time"
 
 	"github.com/blackchip-org/pac8/bits"
-	"github.com/blackchip-org/pac8/machine"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc/z80"
+	"github.com/blackchip-org/pac8/machine"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
 type Pacman struct {
-	mem       memory.Memory
-	cpu       *z80.CPU
-	regs      Registers
+	spec      *machine.Spec
+	regs      *Registers
 	intSelect uint8 // value sent during interrupt to select vector (port 0)
+	io        memory.IO
 	tiles     *sdl.Texture
 }
 
@@ -50,8 +49,10 @@ type Voice struct {
 	Vol      uint8
 }
 
-func New(renderer *sdl.Renderer, config Config) (*machine.Mach, error) {
-	sys := &Pacman{}
+func New(renderer *sdl.Renderer, config Config) (machine.System, error) {
+	sys := &Pacman{
+		regs: &Registers{},
+	}
 
 	ram := memory.NewRAM(0x1000)
 	io := memory.NewIO(0x100)
@@ -65,44 +66,53 @@ func New(renderer *sdl.Renderer, config Config) (*machine.Mach, error) {
 	// when writing to video memory. Copy protection?
 	config.M.Map(0xc000, ram)
 
-	sys.mem = memory.NewPageMapped(config.M.Blocks)
-	sys.cpu = z80.New(sys.mem)
-	m := machine.New(sys.mem, sys.cpu)
+	mem := memory.NewPageMapped(config.M.Blocks)
+	cpu := z80.New(mem)
 
-	video, err := NewVideo(renderer, sys.mem, config.VideoROM)
+	video, err := NewVideo(renderer, mem, config.VideoROM)
 	if err != nil {
 		return nil, fmt.Errorf("unable to initialize video: %v", err)
 	}
-	m.Display = video
-	keyboard := NewKeyboard(&sys.regs)
-	m.UI = keyboard
-
-	mapRegisters(&sys.regs, io, video)
+	mapRegisters(sys.regs, io, video)
 
 	// Port 0 gets set with the partial interrupt pointer to be set
 	// by the interrupting device
-	sys.cpu.Map.WO(0, &sys.intSelect)
+	cpu.Map.WO(0, &sys.intSelect)
 
 	// FIXME: this turns the joystick "off", etc.
+	// Game does not work unless this is set!
 	sys.regs.In0 = 0x3f
 	sys.regs.In1 = 0x7f
 
+	bits.Set(&sys.regs.In0, 7, true)          // Service button released
 	bits.Set(&sys.regs.In1, 4, true)          // Board test switch disabled
-	bits.Set(&sys.regs.In1, 7, true)          // Upright sysinet
+	bits.Set(&sys.regs.In1, 7, true)          // Upright cabinet
 	bits.Set(&sys.regs.DipSwitches, 0, true)  // 1 coin per game
 	bits.Set(&sys.regs.DipSwitches, 1, false) // ...
 	bits.Set(&sys.regs.DipSwitches, 3, true)  // 3 lives
 	bits.Set(&sys.regs.DipSwitches, 7, true)  // Normal ghost names
 
-	// 16.67 milliseconds for VBLANK interrupt
-	m.TickRate = time.Duration(16670 * time.Microsecond)
-	video.Callback = func() {
-		if m.Status == machine.Run && sys.regs.InterruptEnable != 0 {
-			sys.cpu.INT(sys.intSelect)
-		}
+	sys.spec = &machine.Spec{
+		CharDecoder: PacmanDecoder,
+		CPU:         cpu,
+		Display:     video,
+		Mem:         mem,
+		TickCallback: func(m *machine.Mach) {
+			if m.Status != machine.Run {
+				return
+			}
+			if sys.regs.InterruptEnable != 0 {
+				cpu.INT(sys.intSelect)
+			}
+			sys.handleInput(m)
+		},
+		TickRate: time.Duration(16670 * time.Microsecond),
 	}
+	return sys, nil
+}
 
-	return m, nil
+func (p Pacman) Spec() *machine.Spec {
+	return p.spec
 }
 
 func mapRegisters(r *Registers, io memory.IO, v *Video) {
@@ -149,12 +159,30 @@ func mapRegisters(r *Registers, io memory.IO, v *Video) {
 	}
 }
 
+/*
 func (p *Pacman) Encode(en *gob.Encoder) error {
 	if err := en.Encode(p.regs); err != nil {
 		return err
 	}
-	if err := en.Encode(p.cpu); err != nil {
+	if err := en.Encode(p.spec.Cpu); err != nil {
 		return err
 	}
 	return nil
+}
+*/
+
+func (p *Pacman) handleInput(m *machine.Mach) {
+	bits.Set(&p.regs.In0, 0, !m.In.Joysticks[0].Up)
+	bits.Set(&p.regs.In0, 1, !m.In.Joysticks[0].Left)
+	bits.Set(&p.regs.In0, 2, !m.In.Joysticks[0].Right)
+	bits.Set(&p.regs.In0, 3, !m.In.Joysticks[0].Down)
+	bits.Set(&p.regs.In0, 5, m.In.CoinSlot[0].Active)
+
+	// No second joystick
+	bits.Set(&p.regs.In1, 0, true)
+	bits.Set(&p.regs.In1, 1, true)
+	bits.Set(&p.regs.In1, 2, true)
+	bits.Set(&p.regs.In1, 3, true)
+	bits.Set(&p.regs.In1, 5, !m.In.PlayerStart[0].Active)
+	bits.Set(&p.regs.In1, 6, !m.In.PlayerStart[1].Active)
 }

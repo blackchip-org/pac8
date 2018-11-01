@@ -4,8 +4,10 @@ import (
 	"log"
 	"time"
 
+	"github.com/blackchip-org/pac8/component/input"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
+	"github.com/blackchip-org/pac8/component/video"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -32,34 +34,32 @@ func (s Status) String() string {
 	return "???"
 }
 
-type Display interface {
-	Render()
+type Spec struct {
+	CPU          proc.CPU
+	Mem          memory.Memory
+	Display      video.Display
+	TickCallback func(*Mach)
+	TickRate     time.Duration
+	CharDecoder  func(uint8) (rune, bool)
 }
 
-type NullDisplay struct{}
-
-func (d NullDisplay) Render() {}
-
-type UI interface {
-	SDLEvent(sdl.Event)
+type System interface {
+	Spec() *Spec
 }
-
-type NullUI struct{}
-
-func (u NullUI) SDLEvent(e sdl.Event) {}
 
 type Mach struct {
+	System         System
 	CPU            proc.CPU
 	Mem            memory.Memory
-	Display        Display
-	UI             UI
+	Display        video.Display
+	In             input.Input
 	Status         Status
 	Err            error
 	Tracer         *log.Logger
 	Breakpoints    map[uint16]struct{}
 	StatusCallback func(Status)
 	TickCallback   func(*Mach)
-	CharDecoder    CharDecoder
+	CharDecoder    func(uint8) (rune, bool)
 	TickRate       time.Duration
 	cyclesPerTick  int
 	mem            memory.Memory
@@ -70,17 +70,19 @@ type Mach struct {
 	quit           chan bool
 }
 
-func New(mem memory.Memory, cpu proc.CPU) *Mach {
+func New(sys System) *Mach {
+	spec := sys.Spec()
 	return &Mach{
-		CPU:            cpu,
+		System:         sys,
+		CPU:            spec.CPU,
 		Breakpoints:    make(map[uint16]struct{}),
 		StatusCallback: func(Status) {},
-		TickCallback:   func(m *Mach) {},
-		Display:        NullDisplay{},
-		UI:             NullUI{},
-		CharDecoder:    AsciiDecoder,
-		Mem:            mem,
-		dasm:           cpu.Info().NewDisassembler(mem),
+		TickCallback:   spec.TickCallback,
+		TickRate:       spec.TickRate,
+		Display:        spec.Display,
+		CharDecoder:    func(_ uint8) (rune, bool) { return 0, false },
+		Mem:            spec.Mem,
+		dasm:           spec.CPU.Info().NewDisassembler(spec.Mem),
 		start:          make(chan bool, 1),
 		stop:           make(chan bool, 10),
 		trace:          make(chan *log.Logger, 1),
@@ -135,8 +137,7 @@ func (m *Mach) tick() {
 				m.quit <- true
 			}
 		}
-
-		m.UI.SDLEvent(event)
+		handleKeyboard(event, &m.In)
 	}
 	m.TickCallback(m)
 }

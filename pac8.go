@@ -34,7 +34,7 @@ func init() {
 	flag.BoolVar(&wait, "w", false, "wait for go command")
 }
 
-var games = map[string]func(*sdl.Renderer) (*machine.Mach, error){
+var games = map[string]func(*sdl.Renderer) (machine.System, error){
 	"pacman":   pacman.NewPacman,
 	"mspacman": pacman.NewMsPacman,
 }
@@ -100,10 +100,11 @@ func main() {
 		}
 	}
 
-	mach, err := newGame(r)
+	sys, err := newGame(r)
 	if err != nil {
 		log.Fatalf("unable to start game: %v", err)
 	}
+	mach := machine.New(sys)
 
 	if trace {
 		mach.Trace(log.New(os.Stdout, "", 0))

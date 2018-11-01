@@ -6,6 +6,7 @@ import (
 
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
+	"github.com/blackchip-org/pac8/component/video"
 	"github.com/blackchip-org/pac8/machine"
 	"github.com/veandco/go-sdl2/sdl"
 )
@@ -118,24 +119,32 @@ func NewDisassembler(mem memory.Memory) *proc.Disassembler {
 	return proc.NewDisassembler(mem, fixtureReader, fixtureFormatter())
 }
 
-type fixtureCab struct {
+type fixtureSys struct {
 	mem memory.Memory
 	cpu proc.CPU
 }
 
-func newFixtureCab(renderer *sdl.Renderer) *machine.Mach {
-	cab := &fixtureCab{}
-	cab.mem = memory.NewMasked(memory.NewRAM(0x1000), 0x0fff)
-	cab.cpu = newFixtureCPU(cab.mem)
-	mach := machine.New(cab.mem, cab.cpu)
-	mach.TickRate = time.Duration(10 * time.Millisecond)
-	mach.TickCallback = func(mach *machine.Mach) {
-		if mach.Status == machine.Run && cab.mem.Load(cab.cpu.PC()) == 0x00 {
-			mach.Quit()
+func (f fixtureSys) Spec() *machine.Spec {
+	callback := func(m *machine.Mach) {
+		if m.Status == machine.Run && f.mem.Load(f.cpu.PC()) == 0x00 {
+			m.Quit()
 		}
-		if mach.Status == machine.Breakpoint {
-			mach.Quit()
+		if m.Status == machine.Breakpoint {
+			m.Quit()
 		}
 	}
-	return mach
+	return &machine.Spec{
+		CPU:          f.cpu,
+		Mem:          f.mem,
+		Display:      video.NullDisplay{},
+		TickCallback: callback,
+		TickRate:     1 * time.Millisecond,
+	}
+}
+
+func newFixtureCab(renderer *sdl.Renderer) machine.System {
+	sys := &fixtureSys{}
+	sys.mem = memory.NewMasked(memory.NewRAM(0x1000), 0x0fff)
+	sys.cpu = newFixtureCPU(sys.mem)
+	return sys
 }

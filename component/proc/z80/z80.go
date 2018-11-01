@@ -76,9 +76,9 @@ func New(m memory.Memory) *CPU {
 	}
 	c.info = proc.Info{
 		// CPU is 3.072 MHz which is one T-State every 325 nanoseconds.
-		// Roughly round to 1 instruction every 2 microseconds.
-		// 500 instructions per millsecond
-		CycleRate:       500,
+		// Roughly round to 1 instruction every 1 microsecond.
+		// 1000 instructions per millsecond
+		CycleRate:       1000,
 		CodeReader:      ReaderZ80,
 		CodeFormatter:   FormatterZ80(),
 		NewDisassembler: NewDisassembler,
