@@ -138,7 +138,7 @@ func (m *Monitor) parse(line string) {
 		err = m.trace(args)
 	case CmdQuit, CmdQuitLong:
 		m.rl.Close()
-		m.mach.Quit()
+		m.mach.Send(machine.QuitCmd{})
 		runtime.Goexit()
 	default:
 		err = fmt.Errorf("unknown command: %v", cmd)
@@ -244,7 +244,7 @@ func (m *Monitor) goCmd(args []string) error {
 		}
 		m.cpu.SetPC(address)
 	}
-	go m.mach.Start()
+	go m.mach.Send(machine.StartCmd{})
 	return nil
 }
 
@@ -252,7 +252,7 @@ func (m *Monitor) halt(args []string) error {
 	if err := checkLen(args, 0, 0); err != nil {
 		return err
 	}
-	m.mach.Stop()
+	m.mach.Send(machine.StopCmd{})
 	return nil
 }
 

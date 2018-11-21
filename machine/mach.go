@@ -14,7 +14,7 @@ import (
 type Status int
 
 const (
-	Stop Status = iota
+	Halt Status = iota
 	Run
 	Breakpoint
 	Trap
@@ -22,8 +22,8 @@ const (
 
 func (s Status) String() string {
 	switch s {
-	case Stop:
-		return "stop"
+	case Halt:
+		return "halt"
 	case Run:
 		return "run"
 	case Breakpoint:
@@ -47,6 +47,20 @@ type System interface {
 	Spec() *Spec
 }
 
+type Cmd interface{}
+
+type StartCmd struct {
+	Cmd
+}
+
+type StopCmd struct {
+	Cmd
+}
+
+type QuitCmd struct {
+	Cmd
+}
+
 type Mach struct {
 	System         System
 	CPU            proc.CPU
@@ -64,10 +78,9 @@ type Mach struct {
 	cyclesPerTick  int
 	mem            memory.Memory
 	dasm           *proc.Disassembler
-	start          chan bool
-	stop           chan bool
+	cmd            chan Cmd
 	trace          chan *log.Logger
-	quit           chan bool
+	quit           bool
 }
 
 func New(sys System) *Mach {
@@ -83,10 +96,8 @@ func New(sys System) *Mach {
 		CharDecoder:    func(_ uint8) (rune, bool) { return 0, false },
 		Mem:            spec.Mem,
 		dasm:           spec.CPU.Info().NewDisassembler(spec.Mem),
-		start:          make(chan bool, 1),
-		stop:           make(chan bool, 10),
+		cmd:            make(chan Cmd, 1),
 		trace:          make(chan *log.Logger, 1),
-		quit:           make(chan bool, 1),
 	}
 }
 
@@ -96,20 +107,20 @@ func (m *Mach) setStatus(s Status) {
 }
 
 func (m *Mach) Run() {
+	m.quit = false
 	ticker := time.NewTicker(m.TickRate)
 	m.cyclesPerTick = int(float64(m.TickRate) / float64(time.Millisecond) * float64(m.CPU.Info().CycleRate))
 	for {
 		select {
-		case <-m.stop:
-			m.setStatus(Stop)
-		case <-m.start:
-			m.setStatus(Run)
+		case c := <-m.cmd:
+			m.command(c)
 		case v := <-m.trace:
 			m.Tracer = v
-		case <-m.quit:
-			return
 		case <-ticker.C:
 			m.tick()
+		}
+		if m.quit {
+			return
 		}
 	}
 }
@@ -131,10 +142,10 @@ func (m *Mach) tick() {
 	m.Display.Render()
 	for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 		if _, ok := event.(*sdl.QuitEvent); ok {
-			m.quit <- true
+			m.quit = true
 		} else if e, ok := event.(*sdl.KeyboardEvent); ok {
 			if e.Keysym.Sym == sdl.K_ESCAPE {
-				m.quit <- true
+				m.quit = true
 			}
 		}
 		handleKeyboard(event, &m.In)
@@ -142,18 +153,23 @@ func (m *Mach) tick() {
 	m.TickCallback(m)
 }
 
-func (m *Mach) Start() {
-	m.start <- true
-}
-
-func (m *Mach) Stop() {
-	m.stop <- true
-}
-
-func (m *Mach) Quit() {
-	m.quit <- true
-}
-
 func (m *Mach) Trace(l *log.Logger) {
 	m.trace <- l
+}
+
+func (m *Mach) Send(c Cmd) {
+	m.cmd <- c
+}
+
+func (m *Mach) command(c Cmd) {
+	switch c.(type) {
+	case StartCmd:
+		m.setStatus(Run)
+	case StopCmd:
+		m.setStatus(Halt)
+	case QuitCmd:
+		m.quit = true
+	default:
+		log.Panicf("invalid command: %v", c)
+	}
 }

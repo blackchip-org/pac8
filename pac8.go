@@ -119,7 +119,7 @@ func main() {
 		}()
 	}
 	if !wait {
-		mach.Start()
+		mach.Send(machine.StartCmd{})
 	}
 	mach.Run()
 }
