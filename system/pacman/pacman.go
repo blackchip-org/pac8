@@ -77,7 +77,8 @@ func New(renderer *sdl.Renderer, config Config) (machine.System, error) {
 
 	// Port 0 gets set with the partial interrupt pointer to be set
 	// by the interrupting device
-	cpu.Map.WO(0, &sys.intSelect)
+	pm := memory.NewPortMapper(cpu.Ports)
+	pm.WO(0, &sys.intSelect)
 
 	// FIXME: this turns the joystick "off", etc.
 	// Game does not work unless this is set!

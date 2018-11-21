@@ -115,7 +115,7 @@ type mockIO struct {
 	data map[uint8][]uint8
 }
 
-func newMockIO(snapshots []memory.Snapshot) memory.Memory {
+func newMockIO(snapshots []memory.Snapshot) memory.IO {
 	mio := &mockIO{
 		data: make(map[uint8][]uint8),
 	}
@@ -156,4 +156,8 @@ func (m *mockIO) Store(addr uint16, value uint8) {
 
 func (m *mockIO) Length() int {
 	return 0
+}
+
+func (m *mockIO) Port(n int) *memory.Port {
+	return &memory.Port{}
 }

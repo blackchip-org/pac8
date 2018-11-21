@@ -52,8 +52,7 @@ type CPU struct {
 	IM   uint8
 
 	Halt  bool
-	Ports memory.Memory
-	Map   memory.PortMapper
+	Ports memory.IO
 
 	info  proc.Info
 	mem   memory.Memory
@@ -71,7 +70,6 @@ func New(m memory.Memory) *CPU {
 	c := &CPU{
 		mem:        m,
 		Ports:      io,
-		Map:        memory.NewPortMapper(io),
 		requestInt: make(chan uint8, 1),
 	}
 	c.info = proc.Info{
