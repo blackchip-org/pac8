@@ -47,18 +47,17 @@ type System interface {
 	Spec() *Spec
 }
 
-type Cmd interface{}
+type CmdType int
 
-type StartCmd struct {
-	Cmd
-}
+const (
+	StartCmd CmdType = iota
+	StopCmd
+	QuitCmd
+)
 
-type StopCmd struct {
-	Cmd
-}
-
-type QuitCmd struct {
-	Cmd
+type Cmd struct {
+	Type CmdType
+	Arg  interface{}
 }
 
 type Mach struct {
@@ -157,12 +156,12 @@ func (m *Mach) Trace(l *log.Logger) {
 	m.trace <- l
 }
 
-func (m *Mach) Send(c Cmd) {
-	m.cmd <- c
+func (m *Mach) Send(t CmdType) {
+	m.cmd <- Cmd{Type: t}
 }
 
 func (m *Mach) command(c Cmd) {
-	switch c.(type) {
+	switch c.Type {
 	case StartCmd:
 		m.setStatus(Run)
 	case StopCmd:

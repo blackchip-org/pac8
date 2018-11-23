@@ -127,10 +127,10 @@ type fixtureSys struct {
 func (f fixtureSys) Spec() *machine.Spec {
 	callback := func(m *machine.Mach) {
 		if m.Status == machine.Run && f.mem.Load(f.cpu.PC()) == 0x00 {
-			m.Send(machine.QuitCmd{})
+			m.Send(machine.QuitCmd)
 		}
 		if m.Status == machine.Breakpoint {
-			m.Send(machine.QuitCmd{})
+			m.Send(machine.QuitCmd)
 		}
 	}
 	return &machine.Spec{
