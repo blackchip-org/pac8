@@ -66,7 +66,7 @@ func NewMonitor(mach *machine.Mach) *Monitor {
 		out:  log.New(os.Stdout, "", 0),
 		dasm: mach.CPU.Info().NewDisassembler(mach.Mem),
 	}
-	mach.StatusCallback = m.statusChange
+	mach.EventCallback = m.handleEvent
 	return m
 }
 
@@ -390,18 +390,23 @@ func (m *Monitor) trace(args []string) error {
 	if err := checkLen(args, 0, 0); err != nil {
 		return err
 	}
-	if m.mach.Tracer != nil {
-		m.mach.Trace(nil)
-	} else {
-		m.mach.Trace(m.out)
-	}
+	m.mach.Send(machine.TraceCmd)
 	return nil
 }
 
-func (m *Monitor) statusChange(s machine.Status) {
-	if s == machine.Breakpoint {
-		fmt.Println()
-		m.registers([]string{})
+func (m *Monitor) handleEvent(evt machine.EventType, arg interface{}) {
+	switch evt {
+	case machine.StatusEvent:
+		s := arg.(machine.Status)
+		if s == machine.Breakpoint {
+			fmt.Println()
+			m.registers([]string{})
+		}
+	case machine.TraceEvent:
+		msg := arg.(string)
+		m.out.Println(msg)
+	default:
+		log.Panicf("unknown arg: %v", arg)
 	}
 }
 

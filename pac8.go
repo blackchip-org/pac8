@@ -107,7 +107,7 @@ func main() {
 	mach := machine.New(sys)
 
 	if trace {
-		mach.Trace(log.New(os.Stdout, "", 0))
+		mach.Send(machine.TraceCmd)
 	}
 	if monitor {
 		mon := app.NewMonitor(mach)

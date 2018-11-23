@@ -52,6 +52,7 @@ type CmdType int
 const (
 	StartCmd CmdType = iota
 	StopCmd
+	TraceCmd
 	QuitCmd
 )
 
@@ -60,49 +61,54 @@ type Cmd struct {
 	Arg  interface{}
 }
 
+type EventType int
+
+const (
+	StatusEvent EventType = iota
+	TraceEvent
+)
+
 type Mach struct {
-	System         System
-	CPU            proc.CPU
-	Mem            memory.Memory
-	Display        video.Display
-	In             input.Input
-	Status         Status
-	Err            error
-	Tracer         *log.Logger
-	Breakpoints    map[uint16]struct{}
-	StatusCallback func(Status)
-	TickCallback   func(*Mach)
-	CharDecoder    func(uint8) (rune, bool)
-	TickRate       time.Duration
-	cyclesPerTick  int
-	mem            memory.Memory
-	dasm           *proc.Disassembler
-	cmd            chan Cmd
-	trace          chan *log.Logger
-	quit           bool
+	System        System
+	CPU           proc.CPU
+	Mem           memory.Memory
+	Display       video.Display
+	In            input.Input
+	Status        Status
+	Err           error
+	Breakpoints   map[uint16]struct{}
+	EventCallback func(EventType, interface{})
+	TickCallback  func(*Mach)
+	CharDecoder   func(uint8) (rune, bool)
+	TickRate      time.Duration
+	cyclesPerTick int
+	mem           memory.Memory
+	dasm          *proc.Disassembler
+	cmd           chan Cmd
+	tracing       bool
+	quit          bool
 }
 
 func New(sys System) *Mach {
 	spec := sys.Spec()
 	return &Mach{
-		System:         sys,
-		CPU:            spec.CPU,
-		Breakpoints:    make(map[uint16]struct{}),
-		StatusCallback: func(Status) {},
-		TickCallback:   spec.TickCallback,
-		TickRate:       spec.TickRate,
-		Display:        spec.Display,
-		CharDecoder:    func(_ uint8) (rune, bool) { return 0, false },
-		Mem:            spec.Mem,
-		dasm:           spec.CPU.Info().NewDisassembler(spec.Mem),
-		cmd:            make(chan Cmd, 1),
-		trace:          make(chan *log.Logger, 1),
+		System:        sys,
+		CPU:           spec.CPU,
+		Breakpoints:   make(map[uint16]struct{}),
+		EventCallback: func(EventType, interface{}) {},
+		TickCallback:  spec.TickCallback,
+		TickRate:      spec.TickRate,
+		Display:       spec.Display,
+		CharDecoder:   func(_ uint8) (rune, bool) { return 0, false },
+		Mem:           spec.Mem,
+		dasm:          spec.CPU.Info().NewDisassembler(spec.Mem),
+		cmd:           make(chan Cmd, 10),
 	}
 }
 
 func (m *Mach) setStatus(s Status) {
 	m.Status = s
-	m.StatusCallback(s)
+	m.EventCallback(StatusEvent, s)
 }
 
 func (m *Mach) Run() {
@@ -113,8 +119,6 @@ func (m *Mach) Run() {
 		select {
 		case c := <-m.cmd:
 			m.command(c)
-		case v := <-m.trace:
-			m.Tracer = v
 		case <-ticker.C:
 			m.tick()
 		}
@@ -127,9 +131,9 @@ func (m *Mach) Run() {
 func (m *Mach) tick() {
 	for i := 0; i < m.cyclesPerTick; i++ {
 		if m.Status == Run {
-			if m.Tracer != nil && m.CPU.Ready() {
+			if m.tracing && m.CPU.Ready() {
 				m.dasm.SetPC(m.CPU.PC())
-				m.Tracer.Print(m.dasm.Next())
+				m.EventCallback(TraceEvent, m.dasm.Next())
 			}
 			m.CPU.Next()
 			if _, exists := m.Breakpoints[m.CPU.PC()]; exists && m.CPU.Ready() {
@@ -152,10 +156,6 @@ func (m *Mach) tick() {
 	m.TickCallback(m)
 }
 
-func (m *Mach) Trace(l *log.Logger) {
-	m.trace <- l
-}
-
 func (m *Mach) Send(t CmdType) {
 	m.cmd <- Cmd{Type: t}
 }
@@ -166,6 +166,8 @@ func (m *Mach) command(c Cmd) {
 		m.setStatus(Run)
 	case StopCmd:
 		m.setStatus(Halt)
+	case TraceCmd:
+		m.tracing = !m.tracing
 	case QuitCmd:
 		m.quit = true
 	default:
