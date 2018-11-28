@@ -2,6 +2,7 @@ package machine
 
 import (
 	"encoding/gob"
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -38,6 +39,7 @@ func (s Status) String() string {
 }
 
 type Spec struct {
+	Name         string
 	CPU          proc.CPU
 	Mem          memory.Memory
 	Display      video.Display
@@ -73,6 +75,7 @@ type EventType int
 const (
 	StatusEvent EventType = iota
 	TraceEvent
+	ErrorEvent
 )
 
 type Mach struct {
@@ -170,12 +173,12 @@ func (m *Mach) Send(t CmdType, args ...interface{}) {
 func (m *Mach) save(path string) {
 	out, err := os.Create(path)
 	if err != nil {
-		log.Printf("error: %v\n", err)
+		m.EventCallback(ErrorEvent, fmt.Sprintf("unable to create snapshot: %v", err))
 		return
 	}
 	enc := gob.NewEncoder(out)
 	if err := m.System.Save(enc); err != nil {
-		log.Printf("error: %v\n", err)
+		m.EventCallback(ErrorEvent, fmt.Sprintf("unable to save snapshot: %v", err))
 		return
 	}
 }
@@ -183,12 +186,12 @@ func (m *Mach) save(path string) {
 func (m *Mach) restore(path string) {
 	out, err := os.Open(path)
 	if err != nil {
-		log.Printf("error: %v\n", err)
+		m.EventCallback(ErrorEvent, fmt.Sprintf("unable to open snapshot: %v", err))
 		return
 	}
 	dec := gob.NewDecoder(out)
 	if err := m.System.Restore(dec); err != nil {
-		log.Printf("error: %v\n", err)
+		m.EventCallback(ErrorEvent, fmt.Sprintf("unable to load snapshot: %v", err))
 		return
 	}
 }

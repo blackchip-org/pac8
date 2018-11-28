@@ -30,18 +30,19 @@ const (
 	CmdNext        = "n"
 	CmdPokePeek    = "p"
 	CmdRegisters   = "r"
-	CmdRestore     = "restore"
-	CmdSave        = "save"
 	CmdStep        = "s"
+	CmdRestore     = "si"
+	CmdSave        = "so"
 	CmdTrace       = "t"
 	CmdQuit        = "q"
 	CmdQuitLong    = "quit"
 )
 
 const (
-	memPageLen  = 0x100
-	dasmPageLen = 0x3f
-	maxArgs     = 0x100
+	memPageLen       = 0x100
+	dasmPageLen      = 0x3f
+	maxArgs          = 0x100
+	SnapshotFileName = "snapshot"
 )
 
 type CharDecoder func(uint8) (rune, bool)
@@ -382,19 +383,21 @@ func (m *Monitor) registers(args []string) error {
 	return nil
 }
 
-func (m *Monitor) save(args []string) error {
-	if err := checkLen(args, 0, 0); err != nil {
-		return err
-	}
-	m.mach.Send(machine.SaveCmd, "/tmp/pac8.save")
-	return nil
-}
-
 func (m *Monitor) restore(args []string) error {
 	if err := checkLen(args, 0, 0); err != nil {
 		return err
 	}
-	m.mach.Send(machine.RestoreCmd, "/tmp/pac8.save")
+	fileName := PathFor(Store, m.mach.System.Spec().Name, SnapshotFileName)
+	m.mach.Send(machine.RestoreCmd, fileName)
+	return nil
+}
+
+func (m *Monitor) save(args []string) error {
+	if err := checkLen(args, 0, 0); err != nil {
+		return err
+	}
+	fileName := PathFor(Store, m.mach.System.Spec().Name, SnapshotFileName)
+	m.mach.Send(machine.SaveCmd, fileName)
 	return nil
 }
 
@@ -425,6 +428,9 @@ func (m *Monitor) handleEvent(evt machine.EventType, arg interface{}) {
 			m.registers([]string{})
 		}
 	case machine.TraceEvent:
+		msg := arg.(string)
+		m.out.Println(msg)
+	case machine.ErrorEvent:
 		msg := arg.(string)
 		m.out.Println(msg)
 	default:

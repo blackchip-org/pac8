@@ -67,6 +67,14 @@ Set the *value* for **register** with *name*.
 
 **Step** through by executing the next instruction and then halting the CPU.
 
+### so
+
+Save the current machine **state out** to disk .
+
+### si
+
+Load the current machine **state in** from disk.
+
 ### t
 
 Toggle **tracing** of instructions executed by the CPU.

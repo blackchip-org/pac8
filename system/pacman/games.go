@@ -32,6 +32,7 @@ func NewPacman(renderer *sdl.Renderer) (machine.System, error) {
 	m.Map(0x3000, rom3)
 
 	config := Config{
+		Name:     "pacman",
 		M:        m,
 		VideoROM: vrom,
 	}
@@ -67,6 +68,7 @@ func NewMsPacman(renderer *sdl.Renderer) (machine.System, error) {
 	m.Map(0x9000, rom5)
 
 	config := Config{
+		Name:     "mspacman",
 		M:        m,
 		VideoROM: vrom,
 	}

@@ -1,6 +1,10 @@
 package memory
 
-import "github.com/blackchip-org/pac8/component"
+import (
+	"fmt"
+
+	"github.com/blackchip-org/pac8/component"
+)
 
 // Port represents an input/output port between the CPU and other devices.
 // Read points to a value used when reading from the device and Write points
@@ -9,6 +13,18 @@ import "github.com/blackchip-org/pac8/component"
 type Port struct {
 	Read  *uint8
 	Write *uint8
+}
+
+func (p Port) String() string {
+	r := uint8(0)
+	if p.Read != nil {
+		r = *p.Read
+	}
+	w := uint8(0)
+	if p.Write != nil {
+		w = *p.Write
+	}
+	return fmt.Sprintf("r(%02x) w(%02x)", r, w)
 }
 
 // IO is memory that is mapped to input/output ports. Use PortMapper to
@@ -76,7 +92,7 @@ func (i io) Restore(dec component.Decoder) error {
 				return err
 			}
 		}
-		if p.Read != nil {
+		if p.Write != nil {
 			if err := dec.Decode(p.Write); err != nil {
 				return err
 			}

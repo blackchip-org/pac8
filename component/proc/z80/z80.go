@@ -249,7 +249,7 @@ func (cpu *CPU) registers() map[string]proc.Value {
 
 func (c *CPU) Save(enc component.Encoder) error {
 	e := check.ForError()
-	//e.Check(c.Ports.Save(enc))
+	e.Check(c.Ports.Save(enc))
 
 	e.Check(enc.Encode(c.A))
 	e.Check(enc.Encode(c.F))
@@ -286,7 +286,7 @@ func (c *CPU) Save(enc component.Encoder) error {
 
 func (c *CPU) Restore(dec component.Decoder) error {
 	e := check.ForError()
-	//e.Check(c.Ports.Restore(dec))
+	e.Check(c.Ports.Restore(dec))
 
 	e.Check(dec.Decode(&c.A))
 	e.Check(dec.Decode(&c.F))

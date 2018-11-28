@@ -18,18 +18,22 @@ const (
 	defaultHeight = 786
 )
 
-var gameName string
-var cprof bool
-var monitor bool
-var noVideo bool
-var trace bool
-var wait bool
+var (
+	gameName string
+	cprof    bool
+	monitor  bool
+	noVideo  bool
+	restore  bool
+	trace    bool
+	wait     bool
+)
 
 func init() {
 	flag.StringVar(&gameName, "g", "pacman", "use this game")
 	flag.BoolVar(&cprof, "cprof", false, "enable cpu profiling")
 	flag.BoolVar(&monitor, "m", false, "start monitor")
 	flag.BoolVar(&noVideo, "no-video", false, "do not show video device")
+	flag.BoolVar(&restore, "r", false, "restore from previous snapshot")
 	flag.BoolVar(&trace, "t", false, "enable tracing on start")
 	flag.BoolVar(&wait, "w", false, "wait for go command")
 }
@@ -100,6 +104,11 @@ func main() {
 		}
 	}
 
+	runtimeDir := app.PathFor(app.Store, gameName)
+	if err := os.MkdirAll(runtimeDir, 0755); err != nil {
+		log.Fatalf("unable to create runtime directory %v: %v", runtimeDir, err)
+	}
+
 	sys, err := newGame(r)
 	if err != nil {
 		log.Fatalf("unable to start game: %v", err)
@@ -120,6 +129,10 @@ func main() {
 	}
 	if !wait {
 		mach.Send(machine.StartCmd)
+	}
+	if restore {
+		filename := app.PathFor(app.Store, gameName, app.SnapshotFileName)
+		mach.Send(machine.RestoreCmd, filename)
 	}
 	mach.Run()
 }

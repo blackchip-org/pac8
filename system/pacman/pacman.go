@@ -23,6 +23,7 @@ type Pacman struct {
 }
 
 type Config struct {
+	Name     string
 	M        *memory.BlockMapper
 	VideoROM VideoROM
 }
@@ -95,6 +96,7 @@ func New(renderer *sdl.Renderer, config Config) (machine.System, error) {
 	bits.Set(&sys.regs.DipSwitches, 7, true)  // Normal ghost names
 
 	sys.spec = &machine.Spec{
+		Name:        config.Name,
 		CharDecoder: PacmanDecoder,
 		CPU:         cpu,
 		Display:     video,
