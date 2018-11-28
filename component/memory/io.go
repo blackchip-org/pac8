@@ -1,5 +1,7 @@
 package memory
 
+import "github.com/blackchip-org/pac8/component"
+
 // Port represents an input/output port between the CPU and other devices.
 // Read points to a value used when reading from the device and Write points
 // to a value used when writing to the device. Set the pointers to the
@@ -49,6 +51,38 @@ func (i io) Load(address uint16) uint8 {
 // Length returns the number of ports.
 func (i io) Length() int {
 	return len(i.ports)
+}
+
+func (i io) Save(enc component.Encoder) error {
+	for _, p := range i.ports {
+		if p.Read != nil {
+			if err := enc.Encode(*p.Read); err != nil {
+				return err
+			}
+		}
+		if p.Write != nil {
+			if err := enc.Encode(*p.Write); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
+func (i io) Restore(dec component.Decoder) error {
+	for _, p := range i.ports {
+		if p.Read != nil {
+			if err := dec.Decode(p.Read); err != nil {
+				return err
+			}
+		}
+		if p.Read != nil {
+			if err := dec.Decode(p.Write); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
 }
 
 // Port returns the read/write values for port n.

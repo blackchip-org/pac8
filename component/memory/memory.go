@@ -2,6 +2,7 @@ package memory
 
 import (
 	"github.com/blackchip-org/pac8/bits"
+	"github.com/blackchip-org/pac8/component"
 )
 
 // Memory is a chunk of 8-bit values accessed by a 16-bit address.
@@ -14,6 +15,10 @@ type Memory interface {
 
 	// Length is the number of 8-bit values in this memory.
 	Length() int
+
+	Save(component.Encoder) error
+
+	Restore(component.Decoder) error
 }
 
 // Block is a chunck of memory found at a specific address.
@@ -37,7 +42,7 @@ type ram struct {
 // NewRAM creates a chunk of memory with a length of len that can be
 // read and written to.
 func NewRAM(len int) Memory {
-	return ram{bytes: make([]uint8, len, len)}
+	return &ram{bytes: make([]uint8, len, len)}
 }
 
 func (r ram) Load(address uint16) uint8 {
@@ -50,6 +55,14 @@ func (r ram) Store(address uint16, value uint8) {
 
 func (r ram) Length() int {
 	return len(r.bytes)
+}
+
+func (r ram) Save(enc component.Encoder) error {
+	return enc.Encode(r.bytes)
+}
+
+func (r ram) Restore(dec component.Decoder) error {
+	return dec.Decode(&r.bytes)
 }
 
 type rom struct {
@@ -74,6 +87,14 @@ func (r rom) Length() int {
 	return len(r.bytes)
 }
 
+func (r rom) Save(enc component.Encoder) error {
+	return nil
+}
+
+func (r rom) Restore(dec component.Decoder) error {
+	return nil
+}
+
 type null struct {
 	length int
 }
@@ -92,6 +113,14 @@ func (n null) Store(address uint16, value uint8) {}
 
 func (n null) Length() int {
 	return n.length
+}
+
+func (n null) Save(enc component.Encoder) error {
+	return nil
+}
+
+func (n null) Restore(dec component.Decoder) error {
+	return nil
 }
 
 type pageMap struct {
@@ -128,6 +157,7 @@ func NewPageMapped(blocks []Block) Memory {
 			pm.pages[page] = pageMap{mem: block.Mem, offset: uint16(offset)}
 		}
 	}
+	pm.blocks = blocks
 	return pm
 }
 
@@ -145,6 +175,24 @@ func (m pageMapped) Store(address uint16, value uint8) {
 
 func (m pageMapped) Length() int {
 	return 0x10000
+}
+
+func (m pageMapped) Save(enc component.Encoder) error {
+	for _, b := range m.blocks {
+		if err := b.Mem.Save(enc); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (m pageMapped) Restore(dec component.Decoder) error {
+	for _, b := range m.blocks {
+		if err := b.Mem.Restore(dec); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BlockMapper struct {
@@ -165,32 +213,4 @@ func (b *BlockMapper) Map(addr uint16, mem Memory) {
 		panic("memory block length must be a multiple of a page")
 	}
 	b.Blocks = append(b.Blocks, NewBlock(addr, mem))
-}
-
-type masked struct {
-	mem  Memory
-	mask uint16
-}
-
-// NewMasked returns a memory that applies a mask on the address
-// value on Load/Store operations. This is useful when the full
-// 16-bit address space is not used and address lines are not
-// connected.
-func NewMasked(mem Memory, mask uint16) Memory {
-	return masked{
-		mem:  mem,
-		mask: mask,
-	}
-}
-
-func (m masked) Load(address uint16) uint8 {
-	return m.mem.Load(address & m.mask)
-}
-
-func (m masked) Store(address uint16, value uint8) {
-	m.mem.Store(address&m.mask, value)
-}
-
-func (m masked) Length() int {
-	return m.mem.Length()
 }

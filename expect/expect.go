@@ -78,10 +78,12 @@ func (e ExpectClause) toBe(want interface{}, equal bool) {
 }
 
 func (e ExpectClause) ToBe(want interface{}) {
+	e.t.Helper()
 	e.toBe(want, true)
 }
 
 func (e ExpectClause) NotToBe(want interface{}) {
+	e.t.Helper()
 	e.toBe(want, false)
 }
 

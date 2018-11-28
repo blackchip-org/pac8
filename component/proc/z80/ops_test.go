@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/blackchip-org/pac8/bits"
+	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc/z80/internal/fuse"
 	. "github.com/blackchip-org/pac8/expect"
@@ -160,4 +161,12 @@ func (m *mockIO) Length() int {
 
 func (m *mockIO) Port(n int) *memory.Port {
 	return &memory.Port{}
+}
+
+func (m *mockIO) Save(_ component.Encoder) error {
+	return nil
+}
+
+func (m *mockIO) Restore(_ component.Decoder) error {
+	return nil
 }

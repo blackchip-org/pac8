@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
 	"github.com/blackchip-org/pac8/component/video"
@@ -83,6 +84,14 @@ func (c *fixtureCPU) registers() map[string]proc.Value {
 	}
 }
 
+func (c *fixtureCPU) Save(enc component.Encoder) error {
+	return nil
+}
+
+func (c *fixtureCPU) Restore(dec component.Decoder) error {
+	return nil
+}
+
 func fixtureReader(e proc.Eval) proc.Statement {
 	e.Statement.Address = e.Cursor.Pos
 	opcode := e.Cursor.Fetch()
@@ -142,9 +151,17 @@ func (f fixtureSys) Spec() *machine.Spec {
 	}
 }
 
+func (f fixtureSys) Save(component.Encoder) error {
+	return nil
+}
+
+func (f fixtureSys) Restore(component.Decoder) error {
+	return nil
+}
+
 func newFixtureCab(renderer *sdl.Renderer) machine.System {
 	sys := &fixtureSys{}
-	sys.mem = memory.NewMasked(memory.NewRAM(0x1000), 0x0fff)
+	sys.mem = memory.NewRAM(0x1000)
 	sys.cpu = newFixtureCPU(sys.mem)
 	return sys
 }
