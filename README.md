@@ -12,6 +12,19 @@ All projects need a name so the working title for this one is pac8, the Portable
 
 Go and SDL2 are needed to build the application.
 
+### Linux
+
+Install SDL with:
+
+```bash
+sudo apt-get install libsdl2{,-image,-mixer,-ttf,-gfx}-dev
+```
+
+Install go from here:
+
+https://golang.org/dl
+
+
 ### macOS
 
 Install go and SDL with:
@@ -33,7 +46,7 @@ go get github.com/blackchip-org/pac8
 ## Run
 
 ```bash
-~/go/bin/pac8 -c <game>
+~/go/bin/pac8 -g <game>
 ```
 
 where game is one of the following:
