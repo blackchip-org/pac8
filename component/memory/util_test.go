@@ -27,8 +27,8 @@ func TestImport(t *testing.T) {
 func ExampleCompare() {
 	a := NewROM([]byte{0x12, 0x34, 0x45, 0x67})
 	b := NewROM([]byte{0x12, 0xff, 0x45, 0xff})
-	diff, equal := Compare(a, b)
-	if !equal {
+	diff, err := Compare(a, b)
+	if err != nil {
 		fmt.Println(diff.String())
 	}
 	// Output:

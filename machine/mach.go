@@ -1,9 +1,12 @@
 package machine
 
 import (
+	"encoding/gob"
 	"log"
+	"os"
 	"time"
 
+	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/input"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
@@ -45,12 +48,16 @@ type Spec struct {
 
 type System interface {
 	Spec() *Spec
+	Save(component.Encoder) error
+	Restore(component.Decoder) error
 }
 
 type CmdType int
 
 const (
-	StartCmd CmdType = iota
+	RestoreCmd CmdType = iota
+	SaveCmd
+	StartCmd
 	StopCmd
 	TraceCmd
 	QuitCmd
@@ -58,7 +65,7 @@ const (
 
 type Cmd struct {
 	Type CmdType
-	Arg  interface{}
+	Args []interface{}
 }
 
 type EventType int
@@ -156,12 +163,44 @@ func (m *Mach) tick() {
 	m.TickCallback(m)
 }
 
-func (m *Mach) Send(t CmdType) {
-	m.cmd <- Cmd{Type: t}
+func (m *Mach) Send(t CmdType, args ...interface{}) {
+	m.cmd <- Cmd{Type: t, Args: args}
+}
+
+func (m *Mach) save(path string) {
+	out, err := os.Create(path)
+	if err != nil {
+		log.Printf("error: %v\n", err)
+		return
+	}
+	enc := gob.NewEncoder(out)
+	if err := m.System.Save(enc); err != nil {
+		log.Printf("error: %v\n", err)
+		return
+	}
+}
+
+func (m *Mach) restore(path string) {
+	out, err := os.Open(path)
+	if err != nil {
+		log.Printf("error: %v\n", err)
+		return
+	}
+	dec := gob.NewDecoder(out)
+	if err := m.System.Restore(dec); err != nil {
+		log.Printf("error: %v\n", err)
+		return
+	}
 }
 
 func (m *Mach) command(c Cmd) {
 	switch c.Type {
+	case RestoreCmd:
+		path := c.Args[0].(string)
+		m.restore(path)
+	case SaveCmd:
+		path := c.Args[0].(string)
+		m.save(path)
 	case StartCmd:
 		m.setStatus(Run)
 	case StopCmd:

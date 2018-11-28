@@ -7,6 +7,8 @@ import (
 	"time"
 
 	"github.com/blackchip-org/pac8/bits"
+	"github.com/blackchip-org/pac8/check"
+	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc/z80"
 	"github.com/blackchip-org/pac8/machine"
@@ -17,7 +19,6 @@ type Pacman struct {
 	spec      *machine.Spec
 	regs      *Registers
 	intSelect uint8 // value sent during interrupt to select vector (port 0)
-	io        memory.IO
 	tiles     *sdl.Texture
 }
 
@@ -160,17 +161,21 @@ func mapRegisters(r *Registers, io memory.IO, v *Video) {
 	}
 }
 
-/*
-func (p *Pacman) Encode(en *gob.Encoder) error {
-	if err := en.Encode(p.regs); err != nil {
-		return err
-	}
-	if err := en.Encode(p.spec.Cpu); err != nil {
-		return err
-	}
-	return nil
+func (p *Pacman) Save(enc component.Encoder) error {
+	e := check.ForError()
+	e.Check(p.spec.CPU.Save(enc))
+	e.Check(p.spec.Mem.Save(enc))
+	e.Check(enc.Encode(p.regs))
+	return e.Error
 }
-*/
+
+func (p *Pacman) Restore(dec component.Decoder) error {
+	e := check.ForError()
+	e.Check(p.spec.CPU.Restore(dec))
+	e.Check(p.spec.Mem.Restore(dec))
+	e.Check(dec.Decode(&p.regs))
+	return e.Error
+}
 
 func (p *Pacman) handleInput(m *machine.Mach) {
 	bits.Set(&p.regs.In0, 0, !m.In.Joysticks[0].Up)

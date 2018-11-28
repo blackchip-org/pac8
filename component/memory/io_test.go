@@ -1,6 +1,8 @@
 package memory
 
 import (
+	"bytes"
+	"encoding/gob"
 	"testing"
 
 	. "github.com/blackchip-org/pac8/expect"
@@ -43,4 +45,28 @@ func TestIOMappedMulti(t *testing.T) {
 	WithFormat(t, "%02x").Expect(io.Load(0x12)).ToBe(0x42)
 	io.Store(0x0013, 0xff)
 	WithFormat(t, "%02x").Expect(io.Load(0x12)).ToBe(0xff)
+}
+
+func TestIOSaveRestore(t *testing.T) {
+	var buf bytes.Buffer
+	enc := gob.NewEncoder(&buf)
+	dec := gob.NewDecoder(&buf)
+	var ports1, ports2 [3]uint8
+	newMemory := func(ports *[3]uint8) Memory {
+		io := NewIO(2)
+		pm := NewPortMapper(io)
+		pm.RO(0x00, &ports[0])
+		pm.WO(0x00, &ports[1])
+		pm.RW(0x01, &ports[2])
+		return io
+	}
+	mem1 := newMemory(&ports1)
+	ports1[0] = 12
+	mem1.Store(0x00, 34)
+	mem1.Store(0x01, 56)
+	mem1.Save(enc)
+
+	mem2 := newMemory(&ports2)
+	mem2.Restore(dec)
+	With(t).Expect(ports2).ToBe(ports1)
 }

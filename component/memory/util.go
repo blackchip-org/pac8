@@ -64,16 +64,23 @@ func (d DiffReport) String() string {
 
 // Compare creates a report of all differences between memory a and
 // memory b. Returns true if the memories are identical.
-func Compare(a Memory, b Memory) (DiffReport, bool) {
+func Compare(a Memory, b Memory) (DiffReport, error) {
+	if a.Length() != b.Length() {
+		return nil, fmt.Errorf("size mismatch")
+	}
 	diff := make([]Diff, 0, 0)
-	for addr := 0; addr < 0x10000; addr++ {
+	for addr := 0; addr < a.Length(); addr++ {
 		aval := a.Load(uint16(addr))
 		bval := b.Load(uint16(addr))
 		if aval != bval {
 			diff = append(diff, Diff{Address: uint16(addr), A: aval, B: bval})
 		}
 	}
-	return diff, len(diff) == 0
+	var err error
+	if len(diff) != 0 {
+		err = fmt.Errorf("memory mismatch")
+	}
+	return diff, err
 }
 
 // Verify checks that the values in snapshot b match up with the values in

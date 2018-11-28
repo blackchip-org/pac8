@@ -1,6 +1,8 @@
 package memory
 
 import (
+	"bytes"
+	"encoding/gob"
 	"fmt"
 	"testing"
 
@@ -56,12 +58,50 @@ func TestPageMappedLoad(t *testing.T) {
 	WithFormat(t, "%02x").Expect(mem.Load(0x1555)).ToBe(uint8(0x55))
 }
 
-func ExampleNewMasked() {
-	// Address lines when indicated by A0-A15, this memory has
-	// no line A15 connected
-	mem := NewMasked(NewRAM(0x10000), 0x7fff)
-	mem.Store(0xc000, 0x42)
-	fmt.Printf("%02x", mem.Load(0x4000))
-	// Output:
-	// 42
+func TestSaveRestoreRAM(t *testing.T) {
+	var buf bytes.Buffer
+	enc := gob.NewEncoder(&buf)
+	dec := gob.NewDecoder(&buf)
+
+	ram1 := NewRAM(0x1000)
+	ram1.Store(0x123, 0xab)
+	ram1.Store(0x456, 0xbc)
+	ram1.Save(enc)
+
+	ram2 := NewRAM(0x1000)
+	ram2.Restore(dec)
+
+	report, err := Compare(ram1, ram2)
+	if err != nil {
+		t.Errorf("%v\n%v", err, report)
+	}
+}
+
+func TestSaveRestoreMapped(t *testing.T) {
+	var buf bytes.Buffer
+	enc := gob.NewEncoder(&buf)
+	dec := gob.NewDecoder(&buf)
+
+	newMemory := func() Memory {
+		ram1 := NewRAM(0x1000)
+		ram2 := NewRAM(0x1000)
+		mem := NewPageMapped([]Block{
+			NewBlock(0xa000, ram1),
+			NewBlock(0xb000, ram2),
+		})
+		return mem
+	}
+
+	mem1 := newMemory()
+	mem1.Store(0xa0cd, 0x11)
+	mem1.Store(0xb0cd, 0x22)
+	mem1.Save(enc)
+
+	mem2 := newMemory()
+	mem2.Restore(dec)
+
+	report, err := Compare(mem1, mem2)
+	if err != nil {
+		t.Errorf("%v\n%v", err, report)
+	}
 }

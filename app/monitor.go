@@ -30,6 +30,8 @@ const (
 	CmdNext        = "n"
 	CmdPokePeek    = "p"
 	CmdRegisters   = "r"
+	CmdRestore     = "restore"
+	CmdSave        = "save"
 	CmdStep        = "s"
 	CmdTrace       = "t"
 	CmdQuit        = "q"
@@ -132,6 +134,10 @@ func (m *Monitor) parse(line string) {
 		err = m.pokePeek(args)
 	case CmdRegisters:
 		err = m.registers(args)
+	case CmdRestore:
+		err = m.restore(args)
+	case CmdSave:
+		err = m.save(args)
 	case CmdStep:
 		err = m.step(args)
 	case CmdTrace:
@@ -373,6 +379,22 @@ func (m *Monitor) registers(args []string) error {
 		}
 		put(v)
 	}
+	return nil
+}
+
+func (m *Monitor) save(args []string) error {
+	if err := checkLen(args, 0, 0); err != nil {
+		return err
+	}
+	m.mach.Send(machine.SaveCmd, "/tmp/pac8.save")
+	return nil
+}
+
+func (m *Monitor) restore(args []string) error {
+	if err := checkLen(args, 0, 0); err != nil {
+		return err
+	}
+	m.mach.Send(machine.RestoreCmd, "/tmp/pac8.save")
 	return nil
 }
 

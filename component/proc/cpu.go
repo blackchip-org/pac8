@@ -1,6 +1,9 @@
 package proc
 
-import "github.com/blackchip-org/pac8/component/memory"
+import (
+	"github.com/blackchip-org/pac8/component"
+	"github.com/blackchip-org/pac8/component/memory"
+)
 
 type Get func() uint8
 type Put func(uint8)
@@ -19,6 +22,8 @@ type CPU interface {
 	String() string
 	Ready() bool
 	Info() Info
+	Save(component.Encoder) error
+	Restore(component.Decoder) error
 }
 
 type Value struct {
