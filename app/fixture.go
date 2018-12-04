@@ -138,7 +138,7 @@ func (f fixtureSys) Spec() *machine.Spec {
 		if m.Status == machine.Run && f.mem.Load(f.cpu.PC()) == 0x00 {
 			m.Send(machine.QuitCmd)
 		}
-		if m.Status == machine.Breakpoint {
+		if m.Status == machine.Break {
 			m.Send(machine.QuitCmd)
 		}
 	}

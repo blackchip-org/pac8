@@ -17,11 +17,12 @@ import (
 
 type Status int
 
+var measureTime bool
+
 const (
 	Halt Status = iota
 	Run
-	Breakpoint
-	Trap
+	Break
 )
 
 func (s Status) String() string {
@@ -30,10 +31,8 @@ func (s Status) String() string {
 		return "halt"
 	case Run:
 		return "run"
-	case Breakpoint:
+	case Break:
 		return "break"
-	case Trap:
-		return "trap"
 	}
 	return "???"
 }
@@ -85,7 +84,6 @@ type Mach struct {
 	Display       video.Display
 	In            input.Input
 	Status        Status
-	Err           error
 	Breakpoints   map[uint16]struct{}
 	EventCallback func(EventType, interface{})
 	TickCallback  func(*Mach)
@@ -147,7 +145,7 @@ func (m *Mach) tick() {
 			}
 			m.CPU.Next()
 			if _, exists := m.Breakpoints[m.CPU.PC()]; exists && m.CPU.Ready() {
-				m.setStatus(Breakpoint)
+				m.setStatus(Break)
 				return
 			}
 		}

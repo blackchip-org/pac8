@@ -340,11 +340,7 @@ func (m *Monitor) registers(args []string) error {
 
 	// Print all registers
 	if len(args) == 0 {
-		reason := ""
-		if m.mach.Err != nil {
-			reason = fmt.Sprintf(": %v", m.mach.Err)
-		}
-		m.out.Printf("[%v%v]\n", m.mach.Status, reason)
+		m.out.Printf("[%v]\n", m.mach.Status)
 		m.out.Println(m.cpu.String())
 		return nil
 	}
@@ -426,7 +422,7 @@ func (m *Monitor) handleEvent(evt machine.EventType, arg interface{}) {
 	switch evt {
 	case machine.StatusEvent:
 		s := arg.(machine.Status)
-		if s == machine.Breakpoint {
+		if s == machine.Break {
 			fmt.Println()
 			m.registers([]string{})
 		}
