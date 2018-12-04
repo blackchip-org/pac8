@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"os/user"
@@ -65,7 +64,7 @@ func NewMonitor(mach *machine.Mach) *Monitor {
 		mach: mach,
 		cpu:  mach.CPU,
 		mem:  mach.Mem,
-		in:   ioutil.NopCloser(os.Stdin),
+		in:   readline.NewCancelableStdin(os.Stdin),
 		out:  log.New(os.Stdout, "", 0),
 		dasm: mach.CPU.Info().NewDisassembler(mach.Mem),
 	}
@@ -97,6 +96,10 @@ func (m *Monitor) Run() error {
 		}
 		m.parse(line)
 	}
+}
+
+func (m *Monitor) Close() {
+	m.in.Close()
 }
 
 func (m *Monitor) parse(line string) {

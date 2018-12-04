@@ -19,19 +19,19 @@ const (
 )
 
 var (
-	gameName string
-	cprof    bool
-	monitor  bool
-	noVideo  bool
-	restore  bool
-	trace    bool
-	wait     bool
+	gameName      string
+	cprof         bool
+	monitorEnable bool
+	noVideo       bool
+	restore       bool
+	trace         bool
+	wait          bool
 )
 
 func init() {
 	flag.StringVar(&gameName, "g", "pacman", "use this game")
 	flag.BoolVar(&cprof, "cprof", false, "enable cpu profiling")
-	flag.BoolVar(&monitor, "m", false, "start monitor")
+	flag.BoolVar(&monitorEnable, "m", false, "start monitor")
 	flag.BoolVar(&noVideo, "no-video", false, "do not show video device")
 	flag.BoolVar(&restore, "r", false, "restore from previous snapshot")
 	flag.BoolVar(&trace, "t", false, "enable tracing on start")
@@ -75,7 +75,7 @@ func main() {
 		defer sdl.Quit()
 
 		fullScreen := uint32(0)
-		if !monitor {
+		if !monitorEnable {
 			fullScreen = sdl.WINDOW_FULLSCREEN
 		}
 		window, err := sdl.CreateWindow(
@@ -113,13 +113,15 @@ func main() {
 	if err != nil {
 		log.Fatalf("unable to start game: %v", err)
 	}
-	mach := machine.New(sys)
+	m := machine.New(sys)
 
 	if trace {
-		mach.Send(machine.TraceCmd)
+		m.Send(machine.TraceCmd)
 	}
-	if monitor {
-		mon := app.NewMonitor(mach)
+
+	var mon *app.Monitor
+	if monitorEnable {
+		mon = app.NewMonitor(m)
 		go func() {
 			err := mon.Run()
 			if err != nil {
@@ -128,11 +130,14 @@ func main() {
 		}()
 	}
 	if !wait {
-		mach.Send(machine.StartCmd)
+		m.Send(machine.StartCmd)
 	}
 	if restore {
 		filename := app.PathFor(app.Store, gameName, app.SnapshotFileName)
-		mach.Send(machine.RestoreCmd, filename)
+		m.Send(machine.RestoreCmd, filename)
 	}
-	mach.Run()
+	m.Run()
+	if mon != nil {
+		mon.Close()
+	}
 }
