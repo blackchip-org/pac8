@@ -37,13 +37,15 @@ func init() {
 	flag.StringVar(&home, "home", "", "`path` to runtime data")
 }
 
-var (
+const (
 	// ROM is the directory with ROM images
 	ROM = "rom"
 	// Ext is the directory with external data (test data, docs...)
 	Ext = "ext"
 	// Store is the directory with variable runtime data (high scores...)
 	Store = "var"
+
+	InitState = "init.state"
 )
 
 func PathFor(kind string, path ...string) string {

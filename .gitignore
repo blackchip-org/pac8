@@ -3,6 +3,6 @@ output
 cpu.prof
 build
 ext
-rom
+/rom
 var
 pac8

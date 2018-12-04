@@ -425,6 +425,7 @@ func (m *Monitor) handleEvent(evt machine.EventType, arg interface{}) {
 		if s == machine.Break {
 			fmt.Println()
 			m.registers([]string{})
+			m.rl.Refresh()
 		}
 	case machine.TraceEvent:
 		msg := arg.(string)

@@ -24,6 +24,7 @@ var (
 	monitorEnable bool
 	noVideo       bool
 	restore       bool
+	slowStart     bool
 	trace         bool
 	wait          bool
 )
@@ -34,6 +35,7 @@ func init() {
 	flag.BoolVar(&monitorEnable, "m", false, "start monitor")
 	flag.BoolVar(&noVideo, "no-video", false, "do not show video device")
 	flag.BoolVar(&restore, "r", false, "restore from previous snapshot")
+	flag.BoolVar(&slowStart, "s", false, "slow start -- skip any POST bypass")
 	flag.BoolVar(&trace, "t", false, "enable tracing on start")
 	flag.BoolVar(&wait, "w", false, "wait for go command")
 }
@@ -135,6 +137,12 @@ func main() {
 	if restore {
 		filename := app.PathFor(app.Store, gameName, app.SnapshotFileName)
 		m.Send(machine.RestoreCmd, filename)
+	} else if !slowStart {
+		// If there is a snapshot for bypassing POST, use it
+		filename := app.PathFor(app.ROM, gameName, app.InitState)
+		if _, err := os.Stat(filename); !os.IsNotExist(err) {
+			m.Send(machine.RestoreCmd, filename)
+		}
 	}
 	m.Run()
 	if mon != nil {
