@@ -39,16 +39,8 @@ type Registers struct {
 	CoinLockout     uint8
 	CoinCounter     uint8
 	In1             uint8 // joystick and start buttons
-	Voices          [3]Voice
 	DipSwitches     uint8
 	WatchdogReset   uint8
-}
-
-type Voice struct {
-	Acc      [5]uint8
-	Waveform uint8
-	Freq     [5]uint8
-	Vol      uint8
 }
 
 func New(renderer *sdl.Renderer, config Config) (machine.System, error) {
@@ -76,6 +68,10 @@ func New(renderer *sdl.Renderer, config Config) (machine.System, error) {
 		return nil, fmt.Errorf("unable to initialize video: %v", err)
 	}
 	mapRegisters(sys.regs, io, video)
+	synth, err := NewAudio(sys.regs)
+	if err != nil {
+		return nil, fmt.Errorf("unable to initialize audio: %v", err)
+	}
 
 	// Port 0 gets set with the partial interrupt pointer to be set
 	// by the interrupting device
@@ -100,6 +96,7 @@ func New(renderer *sdl.Renderer, config Config) (machine.System, error) {
 		CharDecoder: PacmanDecoder,
 		CPU:         cpu,
 		Display:     video,
+		Synth:       synth,
 		Mem:         mem,
 		TickCallback: func(m *machine.Mach) {
 			if m.Status != machine.Run {
@@ -135,22 +132,24 @@ func mapRegisters(r *Registers, io memory.IO, v *Video) {
 	for i := 0x40; i <= 0x7f; i++ {
 		pm.RO(i, &r.In1)
 	}
+
 	for i, v := 0x40, 0; v < 3; i, v = i+6, v+1 {
-		pm.WO(i+0, &r.Voices[v].Acc[0])
-		pm.WO(i+1, &r.Voices[v].Acc[1])
-		pm.WO(i+2, &r.Voices[v].Acc[2])
-		pm.WO(i+3, &r.Voices[v].Acc[3])
-		pm.WO(i+4, &r.Voices[v].Acc[4])
-		pm.WO(i+5, &r.Voices[v].Waveform)
+		pm.WO(i+0, &voices[v].Acc[0])
+		pm.WO(i+1, &voices[v].Acc[1])
+		pm.WO(i+2, &voices[v].Acc[2])
+		pm.WO(i+3, &voices[v].Acc[3])
+		pm.WO(i+4, &voices[v].Acc[4])
+		pm.WO(i+5, &voices[v].Waveform)
 	}
 	for i, v := 0x50, 0; v < 3; i, v = i+6, v+1 {
-		pm.WO(i+0, &r.Voices[v].Freq[0])
-		pm.WO(i+1, &r.Voices[v].Freq[1])
-		pm.WO(i+2, &r.Voices[v].Freq[2])
-		pm.WO(i+3, &r.Voices[v].Freq[3])
-		pm.WO(i+4, &r.Voices[v].Freq[4])
-		pm.WO(i+5, &r.Voices[v].Vol)
+		pm.WO(i+0, &voices[v].Freq[0])
+		pm.WO(i+1, &voices[v].Freq[1])
+		pm.WO(i+2, &voices[v].Freq[2])
+		pm.WO(i+3, &voices[v].Freq[3])
+		pm.WO(i+4, &voices[v].Freq[4])
+		pm.WO(i+5, &voices[v].Vol)
 	}
+
 	for i, s := 0x60, 0; s < 8; i, s = i+2, s+1 {
 		pm.WO(i+0, &v.spriteCoords[s].x)
 		pm.WO(i+1, &v.spriteCoords[s].y)
