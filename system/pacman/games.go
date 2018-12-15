@@ -4,10 +4,9 @@ import (
 	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/machine"
-	"github.com/veandco/go-sdl2/sdl"
 )
 
-func NewPacman(renderer *sdl.Renderer) (machine.System, error) {
+func NewPacman(ctx app.SDLContext) (machine.System, error) {
 	l := app.NewLoader("pacman")
 	rom0 := l.Load("pacman.6e", "e87e059c5be45753f7e9f33dff851f16d6751181")
 	rom1 := l.Load("pacman.6f", "674d3a7f00d8be5e38b1fdc208ebef5a92d38329")
@@ -19,6 +18,10 @@ func NewPacman(renderer *sdl.Renderer) (machine.System, error) {
 		Sprites: l.Load("pacman.5f", "4a937ac02216ea8c96477d4a15522070507fb599"),
 		Color:   l.Load("82s123.7f", "8d0268dee78e47c712202b0ec4f1f51109b1f2a5"),
 		Palette: l.Load("82s126.4a", "19097b5f60d1030f8b82d9f1d3a241f93e5c75d6"),
+	}
+	arom := AudioROM{
+		R1: l.Load("82s126.1m", "bbcec0570aeceb582ff8238a4bc8546a23430081"),
+		R2: l.Load("82s126.3m", "0c4d0bee858b97632411c440bea6948a74759746"),
 	}
 
 	if err := l.Error(); err != nil {
@@ -35,11 +38,12 @@ func NewPacman(renderer *sdl.Renderer) (machine.System, error) {
 		Name:     "pacman",
 		M:        m,
 		VideoROM: vrom,
+		AudioROM: arom,
 	}
-	return New(renderer, config)
+	return New(ctx, config)
 }
 
-func NewMsPacman(renderer *sdl.Renderer) (machine.System, error) {
+func NewMsPacman(ctx app.SDLContext) (machine.System, error) {
 	l := app.NewLoader("mspacman")
 	rom0 := l.Load("boot1", "bc2247ec946b639dd1f00bfc603fa157d0baaa97")
 	rom1 := l.Load("boot2", "13ea0c343de072508908be885e6a2a217bbb3047")
@@ -72,5 +76,5 @@ func NewMsPacman(renderer *sdl.Renderer) (machine.System, error) {
 		M:        m,
 		VideoROM: vrom,
 	}
-	return New(renderer, config)
+	return New(ctx, config)
 }

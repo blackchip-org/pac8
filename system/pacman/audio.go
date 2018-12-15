@@ -1,126 +1,140 @@
 package pacman
 
-// typedef unsigned char Uint8;
-// void Callback(void *userdata, Uint8 *stream, int len);
-import "C"
-
 import (
-	"math"
-	"reflect"
-	"unsafe"
-
-	"github.com/blackchip-org/pac8/console"
+	"github.com/blackchip-org/pac8/bits"
+	"github.com/blackchip-org/pac8/component/audio"
+	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-const bufSize = 800
+const (
+	bufSize  = 735
+	channels = 2
+	nvoices  = 3
+)
 
-type Audio struct {
-	SamplesPerSecond int32
-	ToneHz           int32
-	ToneVolume       int
+type AudioROM struct {
+	R1 memory.Memory
+	R2 memory.Memory
 }
 
-type voice struct {
+type Voice struct {
 	Acc      [5]uint8
 	Waveform uint8
 	Freq     [5]uint8
 	Vol      uint8
 }
 
-var voices [3]voice
+type Audio struct {
+	SampleRate int
+	Voices     [3]Voice
+	ToneGen    [3]*audio.ToneGenerator
+	buf        [3][]float32
+	mix        []byte
+	waveforms  [16][]float32
+}
 
-func NewAudio(reg *Registers) (*Audio, error) {
-	a := &Audio{
-		SamplesPerSecond: 48000,
-		ToneHz:           440,
-		ToneVolume:       300,
+func NewAudio(spec sdl.AudioSpec, roms AudioROM) (*Audio, error) {
+	a := &Audio{SampleRate: int(spec.Freq)}
+	for i := 0; i < nvoices; i++ {
+		a.ToneGen[i] = audio.NewToneGenerator(a.SampleRate)
+		a.buf[i] = make([]float32, bufSize, bufSize)
 	}
-	spec := sdl.AudioSpec{
-		Freq:     a.SamplesPerSecond,
-		Format:   sdl.AUDIO_U8,
-		Channels: 2,
-		Samples:  765,
-		Callback: sdl.AudioCallback(C.Callback),
-		UserData: unsafe.Pointer(&voices),
+	mixLen := int(bufSize) * int(spec.Channels)
+	a.mix = make([]byte, mixLen, mixLen)
+
+	for i := 0; i < 8; i++ {
+		addr := uint16(i * 32)
+		a.waveforms[i+0] = rescale(roms.R1, addr)
+		a.waveforms[i+8] = rescale(roms.R2, addr)
 	}
-	var got sdl.AudioSpec
-	if err := sdl.OpenAudio(&spec, &got); err != nil {
-		return nil, err
-	}
-	console.Printf("%+v\n", got)
-	sdl.PauseAudio(false)
 	return a, nil
 }
 
-func (a *Audio) Queue() error {
-	/*
-		//sdl.ClearQueuedAudio(1)
-		v := a.voices[1]
-		freq := uint32(v.Freq[0])&0x0f +
-			(uint32(v.Freq[1])&0x0f)<<4 +
-			(uint32(v.Freq[2])&0x0f)<<8 +
-			(uint32(v.Freq[3])&0x0f)<<12 +
-			(uint32(v.Freq[4])&0x0f)<<16
-		vol := v.Vol
-		vol = 15
-		freq = 440
-		console.Printf("freq: %v\n", freq)
-		console.Printf("v0 %+v\n", a.voices[0])
-		console.Printf("v1 %+v\n", a.voices[1])
-		console.Printf("v2 %+v\n\n", a.voices[2])
-		if freq == 0 {
-			return nil
-		}
-		svol := vol * 8
-		squareWavePeriod := uint32(a.SamplesPerSecond) / freq
-		if squareWavePeriod == 0 {
-			console.Printf("nil\n")
-			return nil
-		}
-		halfSquareWavePeriod := squareWavePeriod / 2
-		for i := uint32(0); i < bufSize; i++ {
-			level := (i / halfSquareWavePeriod) % 2
-			vol := uint8(128 + svol)
-			if level == 1 {
-				vol = uint8(128 - svol)
-			}
-			a.buf[i] = vol
-		}
-		return sdl.QueueAudio(1, a.buf)
-	*/
-	return nil
+func (a *Audio) toFreq(v uint32) uint32 {
+	f := (375.0 / 4096.0) * float32(v)
+	return uint32(f)
 }
 
-const (
-	toneHz   = 440
-	sampleHz = 48000
-)
+func (a *Audio) Queue() error {
+	v0 := a.Voices[0]
+	freq0 := uint32(v0.Freq[0])&0x0f +
+		(uint32(v0.Freq[1])&0x0f)<<4 +
+		(uint32(v0.Freq[2])&0x0f)<<8 +
+		(uint32(v0.Freq[3])&0x0f)<<12 +
+		(uint32(v0.Freq[4])&0x0f)<<16
+		//console.Printf("freq: %4d, vol: %3d\n", freq, v.Vol)
+	freq0 = a.toFreq(freq0)
 
-var phase float64
+	a.ToneGen[0].Freq = int(freq0) // 440
+	a.ToneGen[0].Vol = float32(v0.Vol&0xf) / 15
+	wf0 := bits.Slice(v0.Waveform, 0, 2)
+	a.ToneGen[0].Waveform = a.waveforms[wf0]
 
-//export Callback
-func Callback(userdata unsafe.Pointer, stream *C.Uint8, length C.int) {
-	n := int(length)
-	hdr := reflect.SliceHeader{Data: uintptr(unsafe.Pointer(stream)), Len: n, Cap: n}
-	buf := *(*[]C.Uint8)(unsafe.Pointer(&hdr))
+	v1 := a.Voices[1]
+	freq1 := (uint32(v1.Freq[0])&0x0f)<<4 +
+		(uint32(v1.Freq[1])&0x0f)<<8 +
+		(uint32(v1.Freq[2])&0x0f)<<12 +
+		(uint32(v1.Freq[3])&0x0f)<<16
+		//console.Printf("freq: %4d, vol: %3d\n", freq, v.Vol)
+	freq1 = a.toFreq(freq1)
 
-	v := voices[0]
-	freq := uint32(v.Freq[0])&0x0f +
-		(uint32(v.Freq[1])&0x0f)<<4 +
-		(uint32(v.Freq[2])&0x0f)<<8 +
-		(uint32(v.Freq[3])&0x0f)<<12 +
-		(uint32(v.Freq[4])&0x0f)<<16
-	dPhase := 2 * math.Pi * float64(freq) / float64(sampleHz)
-	sample := C.Uint8(0)
-	for i := 0; i < n; i += 2 {
-		phase += dPhase
-		sample = C.Uint8((math.Sin(phase) + 0.999999) * 128)
-		if v.Vol == 0 {
-			sample = 128
-		}
-		console.Printf("phase: %v, sample: %v\n", phase, sample)
-		buf[i] = sample
-		buf[i+1] = sample
+	a.ToneGen[1].Freq = int(freq1) // 440
+	a.ToneGen[1].Vol = float32(v1.Vol&0xf) / 15
+	wf1 := bits.Slice(v1.Waveform, 0, 2)
+	a.ToneGen[1].Waveform = a.waveforms[wf1]
+
+	v2 := a.Voices[2]
+	freq2 := (uint32(v2.Freq[0])&0x0f)<<4 +
+		(uint32(v2.Freq[1])&0x0f)<<8 +
+		(uint32(v2.Freq[2])&0x0f)<<12 +
+		(uint32(v2.Freq[3])&0x0f)<<16
+		//console.Printf("freq: %4d, vol: %3d\n", freq, v.Vol)
+	freq2 = a.toFreq(freq2)
+
+	a.ToneGen[2].Freq = int(freq2) // 440
+	a.ToneGen[2].Vol = float32(v2.Vol%0xf) / 15
+	wf2 := bits.Slice(v2.Waveform, 0, 2)
+	a.ToneGen[2].Waveform = a.waveforms[wf2]
+
+	/*
+		console.Printf("v[0]: %5d, %v, wf %2v\n", a.ToneGen[0].Freq, a.ToneGen[0].Vol, wf0)
+		console.Printf("v[1]: %5d, %v, wf %2v\n", a.ToneGen[1].Freq, a.ToneGen[1].Vol, wf1)
+		console.Printf("v[2]: %5d, %v, wf %2v\n", a.ToneGen[2].Freq, a.ToneGen[2].Vol, wf2)
+		console.Println()
+	*/
+
+	/*
+
+		a.ToneGen[0].Freq = 440
+		a.ToneGen[0].Vol = 0.8
+	*/
+
+	q := sdl.GetQueuedAudioSize(1)
+	if q > 0 {
+		return nil
 	}
+	n := bufSize - int(q)
+	//console.Printf("q: %v, n: %v\n", q, n)
+	a.ToneGen[0].Fill(a.buf[0], n)
+	a.ToneGen[1].Fill(a.buf[1], n)
+	a.ToneGen[2].Fill(a.buf[2], n)
+
+	for i, d := 0, 0; i < n; i, d = i+1, d+2 {
+		mix := (a.buf[0][i] + a.buf[1][i] + a.buf[2][i]) / 3.0
+		umix := uint16(((mix + 1) / 2) * float32(255))
+
+		a.mix[d+0] = byte(umix)
+		a.mix[d+1] = byte(umix)
+	}
+	return sdl.QueueAudio(1, a.mix)
+}
+
+func rescale(mem memory.Memory, addr uint16) []float32 {
+	out := make([]float32, 32, 32)
+	for i := uint16(0); i < 32; i++ {
+		v := mem.Load(addr + i)
+		out[i] = (float32(v) - 7.5) / 8
+	}
+	return out
 }

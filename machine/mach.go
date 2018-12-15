@@ -141,7 +141,8 @@ func (m *Mach) Run() {
 }
 
 func (m *Mach) tick() {
-	for i := 0; i < m.cyclesPerTick; i++ {
+	//for i := 0; i < m.cyclesPerTick; i++ {
+	for i := 0; i < 5000; i++ {
 		if m.Status == Run {
 			if m.tracing && m.CPU.Ready() {
 				m.dasm.SetPC(m.CPU.PC())
@@ -155,11 +156,9 @@ func (m *Mach) tick() {
 		}
 	}
 	m.Display.Render()
-	/*
-		if err := m.Synth.Queue(); err != nil {
-			log.Printf("error: %v", err)
-		}
-	*/
+	if err := m.Synth.Queue(); err != nil {
+		log.Printf("error: %v", err)
+	}
 	for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 		if _, ok := event.(*sdl.QuitEvent); ok {
 			m.quit = true
