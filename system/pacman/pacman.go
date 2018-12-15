@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/check"
 	"github.com/blackchip-org/pac8/component"
@@ -26,6 +27,7 @@ type Config struct {
 	Name     string
 	M        *memory.BlockMapper
 	VideoROM VideoROM
+	AudioROM AudioROM
 }
 
 type Registers struct {
@@ -39,19 +41,11 @@ type Registers struct {
 	CoinLockout     uint8
 	CoinCounter     uint8
 	In1             uint8 // joystick and start buttons
-	Voices          [3]Voice
 	DipSwitches     uint8
 	WatchdogReset   uint8
 }
 
-type Voice struct {
-	Acc      [5]uint8
-	Waveform uint8
-	Freq     [5]uint8
-	Vol      uint8
-}
-
-func New(renderer *sdl.Renderer, config Config) (machine.System, error) {
+func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	sys := &Pacman{
 		regs: &Registers{},
 	}
@@ -71,11 +65,15 @@ func New(renderer *sdl.Renderer, config Config) (machine.System, error) {
 	mem := memory.NewPageMapped(config.M.Blocks)
 	cpu := z80.New(mem)
 
-	video, err := NewVideo(renderer, mem, config.VideoROM)
+	video, err := NewVideo(ctx.Renderer, mem, config.VideoROM)
 	if err != nil {
 		return nil, fmt.Errorf("unable to initialize video: %v", err)
 	}
-	mapRegisters(sys.regs, io, video)
+	audio, err := NewAudio(ctx.AudioSpec, config.AudioROM)
+	if err != nil {
+		return nil, fmt.Errorf("unable to initialize audio: %v", err)
+	}
+	mapRegisters(sys.regs, io, video, audio)
 
 	// Port 0 gets set with the partial interrupt pointer to be set
 	// by the interrupting device
@@ -100,6 +98,7 @@ func New(renderer *sdl.Renderer, config Config) (machine.System, error) {
 		CharDecoder: PacmanDecoder,
 		CPU:         cpu,
 		Display:     video,
+		Synth:       audio,
 		Mem:         mem,
 		TickCallback: func(m *machine.Mach) {
 			if m.Status != machine.Run {
@@ -119,7 +118,7 @@ func (p Pacman) Spec() *machine.Spec {
 	return p.spec
 }
 
-func mapRegisters(r *Registers, io memory.IO, v *Video) {
+func mapRegisters(r *Registers, io memory.IO, v *Video, a *Audio) {
 	pm := memory.NewPortMapper(io)
 	for i := 0; i <= 0x3f; i++ {
 		pm.RO(i, &r.In0)
@@ -135,22 +134,45 @@ func mapRegisters(r *Registers, io memory.IO, v *Video) {
 	for i := 0x40; i <= 0x7f; i++ {
 		pm.RO(i, &r.In1)
 	}
-	for i, v := 0x40, 0; v < 3; i, v = i+6, v+1 {
-		pm.WO(i+0, &r.Voices[v].Acc[0])
-		pm.WO(i+1, &r.Voices[v].Acc[1])
-		pm.WO(i+2, &r.Voices[v].Acc[2])
-		pm.WO(i+3, &r.Voices[v].Acc[3])
-		pm.WO(i+4, &r.Voices[v].Acc[4])
-		pm.WO(i+5, &r.Voices[v].Waveform)
-	}
-	for i, v := 0x50, 0; v < 3; i, v = i+6, v+1 {
-		pm.WO(i+0, &r.Voices[v].Freq[0])
-		pm.WO(i+1, &r.Voices[v].Freq[1])
-		pm.WO(i+2, &r.Voices[v].Freq[2])
-		pm.WO(i+3, &r.Voices[v].Freq[3])
-		pm.WO(i+4, &r.Voices[v].Freq[4])
-		pm.WO(i+5, &r.Voices[v].Vol)
-	}
+
+	pm.WO(0x40, &a.Voices[0].Acc[0])
+	pm.WO(0x41, &a.Voices[0].Acc[1])
+	pm.WO(0x42, &a.Voices[0].Acc[2])
+	pm.WO(0x43, &a.Voices[0].Acc[3])
+	pm.WO(0x44, &a.Voices[0].Acc[4])
+	pm.WO(0x45, &a.Voices[0].Waveform)
+
+	pm.WO(0x46, &a.Voices[1].Acc[0])
+	pm.WO(0x47, &a.Voices[1].Acc[1])
+	pm.WO(0x48, &a.Voices[1].Acc[2])
+	pm.WO(0x49, &a.Voices[1].Acc[3])
+	pm.WO(0x4a, &a.Voices[1].Waveform)
+
+	pm.WO(0x4b, &a.Voices[2].Acc[0])
+	pm.WO(0x4c, &a.Voices[2].Acc[1])
+	pm.WO(0x4d, &a.Voices[2].Acc[2])
+	pm.WO(0x4e, &a.Voices[2].Acc[3])
+	pm.WO(0x4f, &a.Voices[2].Waveform)
+
+	pm.WO(0x50, &a.Voices[0].Freq[0])
+	pm.WO(0x51, &a.Voices[0].Freq[1])
+	pm.WO(0x52, &a.Voices[0].Freq[2])
+	pm.WO(0x53, &a.Voices[0].Freq[3])
+	pm.WO(0x54, &a.Voices[0].Freq[4])
+	pm.WO(0x55, &a.Voices[0].Vol)
+
+	pm.WO(0x56, &a.Voices[1].Freq[0])
+	pm.WO(0x57, &a.Voices[1].Freq[1])
+	pm.WO(0x58, &a.Voices[1].Freq[2])
+	pm.WO(0x59, &a.Voices[1].Freq[3])
+	pm.WO(0x5a, &a.Voices[1].Vol)
+
+	pm.WO(0x5b, &a.Voices[2].Freq[0])
+	pm.WO(0x5c, &a.Voices[2].Freq[1])
+	pm.WO(0x5d, &a.Voices[2].Freq[2])
+	pm.WO(0x5e, &a.Voices[2].Freq[3])
+	pm.WO(0x5f, &a.Voices[2].Vol)
+
 	for i, s := 0x60, 0; s < 8; i, s = i+2, s+1 {
 		pm.WO(i+0, &v.spriteCoords[s].x)
 		pm.WO(i+1, &v.spriteCoords[s].y)

@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/blackchip-org/pac8/component"
+	"github.com/blackchip-org/pac8/component/audio"
 	"github.com/blackchip-org/pac8/component/input"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
@@ -42,6 +43,7 @@ type Spec struct {
 	CPU          proc.CPU
 	Mem          memory.Memory
 	Display      video.Display
+	Synth        audio.Synth
 	TickCallback func(*Mach)
 	TickRate     time.Duration
 	CharDecoder  func(uint8) (rune, bool)
@@ -82,6 +84,7 @@ type Mach struct {
 	CPU           proc.CPU
 	Mem           memory.Memory
 	Display       video.Display
+	Synth         audio.Synth
 	In            input.Input
 	Status        Status
 	Breakpoints   map[uint16]struct{}
@@ -108,6 +111,7 @@ func New(sys System) *Mach {
 		TickRate:      spec.TickRate,
 		Display:       spec.Display,
 		CharDecoder:   spec.CharDecoder,
+		Synth:         spec.Synth,
 		Mem:           spec.Mem,
 		dasm:          spec.CPU.Info().NewDisassembler(spec.Mem),
 		cmd:           make(chan Cmd, 10),
@@ -137,7 +141,8 @@ func (m *Mach) Run() {
 }
 
 func (m *Mach) tick() {
-	for i := 0; i < m.cyclesPerTick; i++ {
+	//for i := 0; i < m.cyclesPerTick; i++ {
+	for i := 0; i < 5000; i++ {
 		if m.Status == Run {
 			if m.tracing && m.CPU.Ready() {
 				m.dasm.SetPC(m.CPU.PC())
@@ -151,6 +156,9 @@ func (m *Mach) tick() {
 		}
 	}
 	m.Display.Render()
+	if err := m.Synth.Queue(); err != nil {
+		log.Printf("error: %v", err)
+	}
 	for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 		if _, ok := event.(*sdl.QuitEvent); ok {
 			m.quit = true

@@ -22,6 +22,7 @@ var (
 	gameName      string
 	cprof         bool
 	monitorEnable bool
+	noAudio       bool
 	noVideo       bool
 	restore       bool
 	slowStart     bool
@@ -33,14 +34,15 @@ func init() {
 	flag.StringVar(&gameName, "g", "pacman", "use this game")
 	flag.BoolVar(&cprof, "cprof", false, "enable cpu profiling")
 	flag.BoolVar(&monitorEnable, "m", false, "start monitor")
-	flag.BoolVar(&noVideo, "no-video", false, "do not show video device")
+	flag.BoolVar(&noAudio, "no-audio", false, "disable audio device")
+	flag.BoolVar(&noVideo, "no-video", false, "disable video device")
 	flag.BoolVar(&restore, "r", false, "restore from previous snapshot")
 	flag.BoolVar(&slowStart, "s", false, "slow start -- skip any POST bypass")
 	flag.BoolVar(&trace, "t", false, "enable tracing on start")
 	flag.BoolVar(&wait, "w", false, "wait for go command")
 }
 
-var games = map[string]func(*sdl.Renderer) (machine.System, error){
+var games = map[string]func(app.SDLContext) (machine.System, error){
 	"pacman":   pacman.NewPacman,
 	"mspacman": pacman.NewMsPacman,
 }
@@ -72,14 +74,13 @@ func main() {
 	if !ok {
 		log.Fatalf("no such game: %v", gameName)
 	}
+	if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
+		log.Fatalf("unable to initialize sdl: %v", err)
+	}
+	defer sdl.Quit()
 
-	var r *sdl.Renderer
+	var ctx = app.SDLContext{}
 	if !noVideo {
-		if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
-			log.Fatalf("unable to initialize sdl: %v", err)
-		}
-		defer sdl.Quit()
-
 		fullScreen := uint32(0)
 		if !monitorEnable {
 			fullScreen = sdl.WINDOW_FULLSCREEN
@@ -94,20 +95,27 @@ func main() {
 			log.Fatalf("unable to initialize window: %v", err)
 		}
 
-		renderer, err := sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED)
+		r, err := sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED)
 		if err != nil {
 			log.Fatalf("unable to initialize renderer: %v", err)
 		}
-		r = renderer
-
-		err = sdl.GLSetSwapInterval(-1)
-		if err != nil {
-			log.Printf("no adaptive vsync: %v", err)
-			err = sdl.GLSetSwapInterval(1)
-			if err != nil {
-				log.Printf("unable to set swap interval: %v", err)
-			}
+		if err = sdl.GLSetSwapInterval(1); err != nil {
+			log.Printf("unable to set swap interval: %v", err)
 		}
+		ctx.Renderer = r
+	}
+
+	if !noAudio {
+		requestSpec := sdl.AudioSpec{
+			Freq:     22050,
+			Format:   sdl.AUDIO_U8,
+			Channels: 2,
+			Samples:  735,
+		}
+		if err := sdl.OpenAudio(&requestSpec, &ctx.AudioSpec); err != nil {
+			log.Fatalf("unable to initialize audio: %v", err)
+		}
+		sdl.PauseAudio(false)
 	}
 
 	runtimeDir := app.PathFor(app.Store, gameName)
@@ -115,7 +123,7 @@ func main() {
 		log.Fatalf("unable to create runtime directory %v: %v", runtimeDir, err)
 	}
 
-	sys, err := newGame(r)
+	sys, err := newGame(ctx)
 	if err != nil {
 		log.Fatalf("unable to start game: %v", err)
 	}

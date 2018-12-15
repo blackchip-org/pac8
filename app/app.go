@@ -14,6 +14,7 @@ import (
 	"strings"
 
 	"github.com/blackchip-org/pac8/component/memory"
+	"github.com/veandco/go-sdl2/sdl"
 )
 
 const (
@@ -107,4 +108,9 @@ func (l *Loader) Error() error {
 		}
 	}
 	return errors.New(out.String())
+}
+
+type SDLContext struct {
+	Renderer  *sdl.Renderer
+	AudioSpec sdl.AudioSpec
 }
