@@ -107,7 +107,7 @@ func New(sys System) *Mach {
 		TickCallback:  spec.TickCallback,
 		TickRate:      spec.TickRate,
 		Display:       spec.Display,
-		CharDecoder:   func(_ uint8) (rune, bool) { return 0, false },
+		CharDecoder:   spec.CharDecoder,
 		Mem:           spec.Mem,
 		dasm:          spec.CPU.Info().NewDisassembler(spec.Mem),
 		cmd:           make(chan Cmd, 10),

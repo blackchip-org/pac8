@@ -25,6 +25,7 @@ const (
 	CmdFill        = "f"
 	CmdGo          = "g"
 	CmdHalt        = "h"
+	CmdHelp        = "?"
 	CmdMemory      = "m"
 	CmdNext        = "n"
 	CmdPokePeek    = "p"
@@ -130,6 +131,8 @@ func (m *Monitor) parse(line string) {
 		err = m.goCmd(args)
 	case CmdHalt:
 		err = m.halt(args)
+	case CmdHelp:
+		err = m.help(args)
 	case CmdMemory:
 		err = m.memory(args, m.mach.CharDecoder)
 	case CmdNext:
@@ -263,6 +266,23 @@ func (m *Monitor) halt(args []string) error {
 		return err
 	}
 	m.mach.Send(machine.StopCmd)
+	return nil
+}
+
+func (m *Monitor) help(args []string) error {
+	if err := checkLen(args, 0, 1); err != nil {
+		return err
+	}
+	if len(args) == 0 {
+		m.out.Println(helpList)
+		return nil
+	}
+	cmd := args[0]
+	text, ok := helpCmds[cmd]
+	if !ok {
+		return errors.New("no such command")
+	}
+	m.out.Println(text)
 	return nil
 }
 
@@ -537,4 +557,153 @@ func Dump(m memory.Memory, start uint16, end uint16, decode CharDecoder) string 
 var AsciiDecoder = func(code uint8) (rune, bool) {
 	printable := code >= 32 && code < 128
 	return rune(code), printable
+}
+
+var helpList = `
+b   breakpoints
+d   disassemble code
+f   fill memory
+g   go
+h   halt
+m   memory view
+n   next
+p   poke/peek memory
+r   registers
+s   step
+si  state in
+so  state out
+t   trace
+q   quit
+`
+
+var helpCmds = map[string]string{
+	"b": `
+Breakpoints
+
+    b <address> {on|off}
+
+Sets a breakpoint at <address> when using "on" and clears a breakpoint at
+<address> when using "off". The CPU stops before executing address.
+`,
+
+	"d": `
+Disassemble
+
+    d [start-address [end-address]]
+
+Disassemble code from [start-address] to [end-address] inclusive. If
+[end-address] is not specified, disassemble an amount that can fit on a screen.
+If [start-address] is not specified, use the current program counter as the
+[start-address].
+`,
+
+	"f": `
+Fill memory
+
+    f <start-address> <end-address> <value>
+
+Fill memory with <value> from <start-address> to <end-address> inclusive.
+`,
+
+	"g": `
+Go
+
+    g [address]
+
+Go to [address] and start execution of the CPU there. If [address] is not
+specified, use the current value of the program counter.
+`,
+
+	"h": `
+Halt
+
+    h
+
+Halt execution of the CPU.
+`,
+
+	"m": `
+Memory view
+
+    m [start-address [end-address]]
+
+Dump memory contents to the screen from [start-address] to [end-address]
+inclusive. If [end-address] is not specified, show a full memory page.
+If [start-address] is not specified, continue the dump from the last command.
+`,
+
+	"n": `
+Next
+
+    n
+
+Disassemble the next instruction to execute.
+`,
+
+	"p": `
+Peek/Poke
+
+    p <address>
+
+Peek at the memory contents at <address>. The value is displayed in the form
+of $00 +000 with the hexadecimal value listed first followed by the decimal
+value.
+
+    p <address> <value>
+
+Poke the memory at <address> with <value>.
+`,
+
+	"r": `
+Registers
+
+    r <name>
+
+Display the value for the register with <name>.
+
+    r <name> <value>
+
+Set the <value> for register with <name>.
+`,
+
+	"s": `
+Step
+
+    s
+
+Step through by executing the next instruction and then halting the CPU.
+`,
+
+	"so": `
+State out
+
+    so
+
+Save the current machine state out to disk.
+`,
+
+	"si": `
+State in
+
+    si
+
+Load the current machine state in from disk.
+`,
+
+	"t": `
+Trace
+
+    t
+
+Toggle tracing of instructions executed by the CPU.
+`,
+
+	"q": `
+
+Quit
+
+    q[uit]
+
+Quit to the operating system.
+`,
 }

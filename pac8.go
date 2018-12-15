@@ -64,6 +64,10 @@ func main() {
 		}()
 	}
 
+	if noVideo || trace || wait {
+		monitorEnable = true
+	}
+
 	newGame, ok := games[gameName]
 	if !ok {
 		log.Fatalf("no such game: %v", gameName)
