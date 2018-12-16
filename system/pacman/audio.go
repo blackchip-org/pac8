@@ -57,6 +57,9 @@ func (a *Audio) toFreq(v uint32) uint32 {
 }
 
 func (a *Audio) Queue() error {
+	if a.SampleRate == 0 {
+		return nil
+	}
 	v0 := a.Voices[0]
 	freq0 := uint32(v0.Freq[0])&0x0f +
 		(uint32(v0.Freq[1])&0x0f)<<4 +
