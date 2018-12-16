@@ -136,6 +136,9 @@ func main() {
 	var mon *app.Monitor
 	if monitorEnable {
 		mon = app.NewMonitor(m)
+		defer func() {
+			mon.Close()
+		}()
 		go func() {
 			err := mon.Run()
 			if err != nil {
@@ -157,7 +160,4 @@ func main() {
 		}
 	}
 	m.Run()
-	if mon != nil {
-		mon.Close()
-	}
 }
