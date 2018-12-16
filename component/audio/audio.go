@@ -1,5 +1,9 @@
 package audio
 
+import (
+	"math"
+)
+
 type Synth interface {
 	Queue() error
 }
@@ -41,8 +45,9 @@ func (t *ToneGenerator) Fill(out []float32, n int) {
 		if t.cycleFreq == 0 || t.cycleWave == nil {
 			out[i] = 0
 		} else {
-			pos := float32(t.phase) / float32(t.period)
-			wfi := int(pos * float32(len(t.cycleWave)))
+			pos := float64(t.phase) / float64(t.period)
+			wff := math.Round(pos * float64(len(t.cycleWave)-1))
+			wfi := int(wff)
 			out[i] = t.cycleWave[wfi] * t.cycleVol
 		}
 		t.phase++

@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	bufSize  = 735
+	bufSize  = 367
 	channels = 2
 	nvoices  = 3
 )
@@ -111,10 +111,12 @@ func (a *Audio) Queue() error {
 	*/
 
 	q := sdl.GetQueuedAudioSize(1)
+	// FIXME: For now, skip if something is in the queue
 	if q > 0 {
 		return nil
 	}
 	n := bufSize - int(q)
+	//n := bufSize
 	//console.Printf("q: %v, n: %v\n", q, n)
 	a.ToneGen[0].Fill(a.buf[0], n)
 	a.ToneGen[1].Fill(a.buf[1], n)
@@ -122,8 +124,8 @@ func (a *Audio) Queue() error {
 
 	for i, d := 0, 0; i < n; i, d = i+1, d+2 {
 		mix := (a.buf[0][i] + a.buf[1][i] + a.buf[2][i]) / 3.0
+		//mix := a.buf[1][i]
 		umix := uint16(((mix + 1) / 2) * float32(255))
-
 		a.mix[d+0] = byte(umix)
 		a.mix[d+1] = byte(umix)
 	}

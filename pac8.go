@@ -110,7 +110,7 @@ func main() {
 			Freq:     22050,
 			Format:   sdl.AUDIO_U8,
 			Channels: 2,
-			Samples:  735,
+			Samples:  367,
 		}
 		if err := sdl.OpenAudio(&requestSpec, &ctx.AudioSpec); err != nil {
 			log.Fatalf("unable to initialize audio: %v", err)
