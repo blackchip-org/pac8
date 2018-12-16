@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/blackchip-org/pac8/component"
+	"github.com/blackchip-org/pac8/component/audio"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
 	"github.com/blackchip-org/pac8/component/video"
@@ -146,8 +147,10 @@ func (f fixtureSys) Spec() *machine.Spec {
 		CPU:          f.cpu,
 		Mem:          f.mem,
 		Display:      video.NullDisplay{},
+		Synth:        audio.NullSynth{},
 		TickCallback: callback,
 		TickRate:     1 * time.Millisecond,
+		CharDecoder:  AsciiDecoder,
 	}
 }
 

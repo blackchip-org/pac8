@@ -141,8 +141,7 @@ func (m *Mach) Run() {
 }
 
 func (m *Mach) tick() {
-	//for i := 0; i < m.cyclesPerTick; i++ {
-	for i := 0; i < 5000; i++ {
+	for i := 0; i < m.cyclesPerTick; i++ {
 		if m.Status == Run {
 			if m.tracing && m.CPU.Ready() {
 				m.dasm.SetPC(m.CPU.PC())

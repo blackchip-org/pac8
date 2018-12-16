@@ -4,6 +4,12 @@ type Synth interface {
 	Queue() error
 }
 
+type NullSynth struct{}
+
+func (n NullSynth) Queue() error {
+	return nil
+}
+
 type ToneGenerator struct {
 	Freq     int
 	Vol      float32
