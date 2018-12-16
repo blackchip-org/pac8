@@ -155,8 +155,10 @@ func (m *Mach) tick() {
 		}
 	}
 	m.Display.Render()
-	if err := m.Synth.Queue(); err != nil {
-		log.Printf("error: %v", err)
+	if m.Status == Run {
+		if err := m.Synth.Queue(); err != nil {
+			log.Panicf("unable to queue audio: %v", err)
+		}
 	}
 	for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 		if _, ok := event.(*sdl.QuitEvent); ok {
