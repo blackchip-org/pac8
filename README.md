@@ -68,7 +68,7 @@ Use the `-m` flag to enable the [monitor](monitor.md).
 
 - Pacman & Ms. Pacman
     - Playable
-    - No sound
+    - Sound works but is a bit glitchy
     - High scores not saved
 - z80
     - Failing two [zexdoc](component/proc/z80/internal/zex/README.md) tests
