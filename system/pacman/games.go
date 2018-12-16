@@ -58,6 +58,10 @@ func NewMsPacman(ctx app.SDLContext) (machine.System, error) {
 		Color:   l.Load("82s123.7f", "8d0268dee78e47c712202b0ec4f1f51109b1f2a5"),
 		Palette: l.Load("82s126.4a", "19097b5f60d1030f8b82d9f1d3a241f93e5c75d6"),
 	}
+	arom := AudioROM{
+		R1: l.Load("82s126.1m", "bbcec0570aeceb582ff8238a4bc8546a23430081"),
+		R2: l.Load("82s126.3m", "0c4d0bee858b97632411c440bea6948a74759746"),
+	}
 
 	if err := l.Error(); err != nil {
 		return nil, err
@@ -75,6 +79,7 @@ func NewMsPacman(ctx app.SDLContext) (machine.System, error) {
 		Name:     "mspacman",
 		M:        m,
 		VideoROM: vrom,
+		AudioROM: arom,
 	}
 	return New(ctx, config)
 }
