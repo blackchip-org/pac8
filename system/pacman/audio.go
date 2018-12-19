@@ -4,11 +4,13 @@ import (
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/component/audio"
 	"github.com/blackchip-org/pac8/component/memory"
+	"github.com/blackchip-org/pac8/console"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
 const (
-	bufSize  = 367
+	//frameSize = 367
+	//bufSize   = 550
 	channels = 2
 	nvoices  = 3
 )
@@ -32,15 +34,19 @@ type Audio struct {
 	buf        [3][]float32
 	mix        []byte
 	waveforms  [16][]float32
+	spec       sdl.AudioSpec
 }
 
 func NewAudio(spec sdl.AudioSpec, roms AudioROM) (*Audio, error) {
+	console.Printf("%+v\n", spec)
 	a := &Audio{SampleRate: int(spec.Freq)}
+	a.spec = spec
+	frameSamples := spec.Samples * 10
 	for i := 0; i < nvoices; i++ {
 		a.ToneGen[i] = audio.NewToneGenerator(a.SampleRate)
-		a.buf[i] = make([]float32, bufSize, bufSize)
+		a.buf[i] = make([]float32, frameSamples, frameSamples)
 	}
-	mixLen := int(bufSize) * int(spec.Channels)
+	mixLen := a.spec.Size * 10
 	a.mix = make([]byte, mixLen, mixLen)
 
 	for i := 0; i < 8; i++ {
@@ -113,12 +119,18 @@ func (a *Audio) Queue() error {
 		a.ToneGen[0].Vol = 0.8
 	*/
 
-	q := sdl.GetQueuedAudioSize(1)
-	// FIXME: For now, skip if something is in the queue
-	if q > 0 {
+	frameSamples := a.spec.Samples * 5
+	q := sdl.GetQueuedAudioSize(1) / 2
+	n := int(frameSamples) - int(q)
+	if n <= 0 {
+		//fmt.Println("full")
 		return nil
 	}
-	n := bufSize - int(q)
+	if q == 0 {
+		console.Println("empty")
+	}
+	//console.Printf("queue: %3d, write: %3d\n", q, n)
+
 	//n := bufSize
 	//console.Printf("q: %v, n: %v\n", q, n)
 	a.ToneGen[0].Fill(a.buf[0], n)
@@ -132,7 +144,7 @@ func (a *Audio) Queue() error {
 		a.mix[d+0] = byte(umix)
 		a.mix[d+1] = byte(umix)
 	}
-	return sdl.QueueAudio(1, a.mix)
+	return sdl.QueueAudio(1, a.mix[0:n*2])
 }
 
 func rescale(mem memory.Memory, addr uint16) []float32 {
