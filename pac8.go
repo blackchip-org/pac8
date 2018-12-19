@@ -83,7 +83,7 @@ func main() {
 	if !noVideo {
 		fullScreen := uint32(0)
 		if !monitorEnable {
-			fullScreen = sdl.WINDOW_FULLSCREEN
+			fullScreen = sdl.WINDOW_FULLSCREEN_DESKTOP
 		}
 		window, err := sdl.CreateWindow(
 			"pac8",
