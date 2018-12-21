@@ -8,16 +8,18 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/blackchip-org/pac8/system/pacman"
 	"github.com/blackchip-org/pac8/component/video"
+	"github.com/blackchip-org/pac8/system/galaga"
+	"github.com/blackchip-org/pac8/system/pacman"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-var vis = map[string]func(*sdl.Renderer) *sdl.Texture{
+var vis = map[string]func(*sdl.Renderer) (*sdl.Texture, error){
 	"mspacman:tiles":   pacman.MsPacmanTiles,
 	"mspacman:sprites": pacman.MsPacmanSprites,
 	"pacman:tiles":     pacman.PacmanTiles,
 	"pacman:sprites":   pacman.PacmanSprites,
+	"galaga:tiles":     galaga.GalagaTiles,
 }
 
 var scale int
@@ -83,14 +85,17 @@ func main() {
 		fmt.Printf("unable to set swap interval: %v\n", err)
 	}
 
-	sheet := v(r)
+	sheet, err := v(r)
+	if err != nil {
+		log.Fatalf("unable to create sheet: %v", err)
+	}
 	_, _, w, h, err := sheet.Query()
 	winX, winY := w*int32(scale), h*int32(scale)
 	window.SetSize(winX, winY)
 	window.SetPosition(sdl.WINDOWPOS_CENTERED, sdl.WINDOWPOS_CENTERED)
 	window.Show()
 
-	sheet = v(r)
+	sheet, _ = v(r)
 	var scanlines *sdl.Texture
 	if vscan > 0 {
 		scanlines, err = video.ScanLines(r, winX, winY, int32(vscan))

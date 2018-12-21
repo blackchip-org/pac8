@@ -1,63 +1,65 @@
 package pacman
 
 import (
-	"log"
-
 	"github.com/blackchip-org/pac8/app"
+	"github.com/blackchip-org/pac8/component/namco"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-var visPalette = [4][]uint8{
-	[]uint8{0, 0, 0, 0},
-	[]uint8{128, 128, 128, 255},
-	[]uint8{192, 192, 192, 255},
-	[]uint8{255, 255, 255, 255},
-}
-
-func PacmanTiles(r *sdl.Renderer) *sdl.Texture {
+func PacmanTiles(r *sdl.Renderer) (*sdl.Texture, error) {
 	mem, err := app.LoadROM("pacman/pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9")
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	tex, err := tileSheet(r, mem, visPalette)
+	info := namco.SheetInfo{
+		W:      16,
+		H:      16,
+		Colors: namco.VisPalette,
+	}
+	tex, err := namco.TileSheet(r, mem, info)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	return tex
+	return tex, nil
 }
 
-func PacmanSprites(r *sdl.Renderer) *sdl.Texture {
+func PacmanSprites(r *sdl.Renderer) (*sdl.Texture, error) {
 	mem, err := app.LoadROM("pacman/pacman.5f", "4a937ac02216ea8c96477d4a15522070507fb599")
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	tex, err := spriteSheet(r, mem, visPalette)
+	tex, err := spriteSheet(r, mem, namco.VisPalette)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	return tex
+	return tex, nil
 }
 
-func MsPacmanTiles(r *sdl.Renderer) *sdl.Texture {
+func MsPacmanTiles(r *sdl.Renderer) (*sdl.Texture, error) {
 	mem, err := app.LoadROM("mspacman/5e", "5e8b472b615f12efca3fe792410c23619f067845")
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	tex, err := tileSheet(r, mem, visPalette)
+	info := namco.SheetInfo{
+		W:      16,
+		H:      16,
+		Colors: namco.VisPalette,
+	}
+	tex, err := namco.TileSheet(r, mem, info)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	return tex
+	return tex, nil
 }
 
-func MsPacmanSprites(r *sdl.Renderer) *sdl.Texture {
+func MsPacmanSprites(r *sdl.Renderer) (*sdl.Texture, error) {
 	mem, err := app.LoadROM("mspacman/5f", "fd6a1dde780b39aea76bf1c4befa5882573c2ef4")
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	tex, err := spriteSheet(r, mem, visPalette)
+	tex, err := spriteSheet(r, mem, namco.VisPalette)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	return tex
+	return tex, nil
 }
