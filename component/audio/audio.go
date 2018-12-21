@@ -1,7 +1,6 @@
 package audio
 
 import (
-	"fmt"
 	"math"
 
 	"github.com/veandco/go-sdl2/sdl"
@@ -10,7 +9,6 @@ import (
 const (
 	SampleRate = 22050
 	Channels   = 2
-	QueueRate  = 60
 	Format     = sdl.AUDIO_U16LSB
 	Buffer     = 5
 )
@@ -45,7 +43,6 @@ func NewVoice(sampleRate int32) *Voice {
 func (v *Voice) Fill(out []float64, n int) {
 	for i := 0; i < n; i++ {
 		if v.phase == 0 {
-			v.phase = 0
 			v.cycleFreq = v.Freq
 			v.cycleVol = v.Vol
 			v.cycleWave = v.Waveform
@@ -77,16 +74,9 @@ type Synth struct {
 }
 
 func NewSynth(spec sdl.AudioSpec, voiceN int) (*Synth, error) {
+	// Assumed to be AUDIO_U16LSB and 2 Channels
 	s := &Synth{}
 	s.Spec = spec
-	/*
-		if s.Spec.Format != sdl.AUDIO_U16LSB {
-			return nil, fmt.Errorf("unsupported format: %v", s.Spec.Format)
-		}
-	*/
-	if s.Spec.Channels != Channels {
-		return nil, fmt.Errorf("unsupported channel count: %v", s.Spec.Channels)
-	}
 	s.V = make([]*Voice, voiceN)
 	samplesLen := s.Spec.Samples * Buffer
 	s.samples = make([][]float64, voiceN, voiceN)
@@ -115,24 +105,20 @@ func (s *Synth) Queue() error {
 			sample += s.samples[j][i]
 		}
 		s.mixed[i] = sample / float64(len(s.V))
-		if s.mixed[i] > 1 {
-			fmt.Println("over")
-		}
-		if s.mixed[i] < -1 {
-			fmt.Println("under")
-		}
 	}
 	for i, d := 0, 0; i < n; i, d = i+1, d+4 {
 		sample := convert(s.mixed[i])
-		fmt.Printf("%04x\n", sample)
 		s.data[d+0] = byte(sample & 0xff)
-		s.data[d+1] = byte((sample >> 8) & 0xff)
+		s.data[d+1] = byte(sample >> 8)
 		s.data[d+2] = byte(sample & 0xff)
-		s.data[d+3] = byte((sample >> 8) & 0xff)
+		s.data[d+3] = byte(sample >> 8)
 	}
 	return sdl.QueueAudio(1, s.data[0:n*4])
 }
 
 func convert(f float64) uint16 {
-	return uint16(((f + 1) / 2) * (1<<16 - 1))
+	// FIXME: shaving off the top bit removes the "blown out" effect.
+	// Better way to do this?
+	v := ((f + 1) / 2) * ((1 << 15) - 1)
+	return uint16(v)
 }

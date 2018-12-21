@@ -40,52 +40,21 @@ func NewAudio(spec sdl.AudioSpec, roms AudioROM) (*Audio, error) {
 	return a, nil
 }
 
-func (a *Audio) toFreq(v uint32) uint32 {
-	f := (375.0 / 4096.0) * float32(v)
-	return uint32(f)
-}
-
 func (a *Audio) Queue() error {
-	v0 := a.Voices[0]
-	freq0 := uint32(v0.Freq[0])&0x0f +
-		(uint32(v0.Freq[1])&0x0f)<<4 +
-		(uint32(v0.Freq[2])&0x0f)<<8 +
-		(uint32(v0.Freq[3])&0x0f)<<12 +
-		(uint32(v0.Freq[4])&0x0f)<<16
-	freq0 = a.toFreq(freq0)
-	wf0 := bits.Slice(v0.Waveform, 0, 2)
-	a.Synth.V[0].Freq = int(freq0)
-	a.Synth.V[0].Vol = float64(v0.Vol&0xf) / 15
-	a.Synth.V[0].Waveform = a.waveforms[wf0]
+	for i := 0; i < 3; i++ {
+		v := a.Voices[i]
+		wf := bits.Slice(v.Waveform, 0, 2)
 
-	a.Synth.V[0].Freq = 440
-	a.Synth.V[0].Vol = 1
-	a.Synth.V[0].Waveform = a.waveforms[0]
-
-	/*
-		v1 := a.Voices[1]
-		freq1 := (uint32(v1.Freq[0])&0x0f)<<4 +
-			(uint32(v1.Freq[1])&0x0f)<<8 +
-			(uint32(v1.Freq[2])&0x0f)<<12 +
-			(uint32(v1.Freq[3])&0x0f)<<16
-		freq1 = a.toFreq(freq1)
-		wf1 := bits.Slice(v1.Waveform, 0, 2)
-		a.Synth.V[1].Freq = int(freq1)
-		a.Synth.V[1].Vol = float64(v1.Vol&0xf) / 15
-		a.Synth.V[1].Waveform = a.waveforms[wf1]
-
-		v2 := a.Voices[2]
-		freq2 := (uint32(v2.Freq[0])&0x0f)<<4 +
-			(uint32(v2.Freq[1])&0x0f)<<8 +
-			(uint32(v2.Freq[2])&0x0f)<<12 +
-			(uint32(v2.Freq[3])&0x0f)<<16
-		freq2 = a.toFreq(freq2)
-		wf2 := bits.Slice(v2.Waveform, 0, 2)
-		a.Synth.V[2].Freq = int(freq2)
-		a.Synth.V[2].Vol = float64(v2.Vol%0xf) / 15
-		a.Synth.V[2].Waveform = a.waveforms[wf2]
-	*/
-
+		// Voice 0 has 5 bytes but Voice 1 and 2 only have 4 bytes with
+		// the missing lower byte being zero.
+		nFreq := 4
+		if i == 0 {
+			nFreq = 5
+		}
+		a.Synth.V[i].Freq = freq(v.Freq, nFreq)
+		a.Synth.V[i].Vol = float64(v.Vol&0xf) / 15
+		a.Synth.V[i].Waveform = a.waveforms[wf]
+	}
 	return a.Synth.Queue()
 }
 
@@ -96,4 +65,18 @@ func rescale(mem memory.Memory, addr uint16) []float64 {
 		out[i] = (float64(v) - 7.5) / 8
 	}
 	return out
+}
+
+func freq(f [5]uint8, n int) int {
+	val := uint32(0)
+	shift := uint(0)
+	if n == 4 {
+		shift = 4
+	}
+	for i := 0; i < n; i++ {
+		val += uint32(f[i]&0x0f) << shift
+		shift += 4
+	}
+	freq := (375.0 / 4096.0) * float32(val)
+	return int(freq)
 }
