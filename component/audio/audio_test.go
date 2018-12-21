@@ -2,6 +2,7 @@ package audio
 
 import (
 	"fmt"
+	"math"
 	"testing"
 
 	. "github.com/blackchip-org/pac8/expect"
@@ -46,11 +47,11 @@ func TestFillStretch(t *testing.T) {
 func TestConvertSample(t *testing.T) {
 	tests := []struct {
 		from float64
-		to   uint16
+		to   int16
 	}{
-		{-1, 0},
-		{1, 0xffff},
-		{0, 0x7fff},
+		{-1, -math.MaxInt16},
+		{0, 0},
+		{1, math.MaxInt16},
 	}
 	for _, test := range tests {
 		t.Run(fmt.Sprintf("%v to %v", test.from, test.to), func(t *testing.T) {

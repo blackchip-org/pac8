@@ -123,6 +123,6 @@ func (s *Synth) Queue() error {
 }
 
 func convert(f float64) int16 {
-	v := ((f + 1) / 2) * ((1 << 15) - 1)
+	v := f * ((1 << 15) - 1)
 	return int16(v)
 }
