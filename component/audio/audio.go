@@ -1,6 +1,7 @@
 package audio
 
 import (
+	"fmt"
 	"math"
 
 	"github.com/veandco/go-sdl2/sdl"
@@ -74,7 +75,12 @@ type Synth struct {
 }
 
 func NewSynth(spec sdl.AudioSpec, voiceN int) (*Synth, error) {
-	// Assumed to be AUDIO_U16LSB and 2 Channels
+	if spec.Format != sdl.AUDIO_S16LSB {
+		return nil, fmt.Errorf("expecting format %x but got %x", sdl.AUDIO_U16LSB, spec.Format)
+	}
+	if spec.Channels != 2 {
+		return nil, fmt.Errorf("expecting 2 channels but got %x", spec.Channels)
+	}
 	s := &Synth{}
 	s.Spec = spec
 	s.V = make([]*Voice, voiceN)
@@ -116,9 +122,7 @@ func (s *Synth) Queue() error {
 	return sdl.QueueAudio(1, s.data[0:n*4])
 }
 
-func convert(f float64) uint16 {
-	// FIXME: shaving off the top bit removes the "blown out" effect.
-	// Better way to do this?
+func convert(f float64) int16 {
 	v := ((f + 1) / 2) * ((1 << 15) - 1)
-	return uint16(v)
+	return int16(v)
 }
