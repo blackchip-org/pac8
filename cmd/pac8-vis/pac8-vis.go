@@ -20,6 +20,7 @@ var vis = map[string]func(*sdl.Renderer) (*sdl.Texture, error){
 	"pacman:tiles":     pacman.PacmanTiles,
 	"pacman:sprites":   pacman.PacmanSprites,
 	"galaga:tiles":     galaga.GalagaTiles,
+	"galaga:sprites":   galaga.GalagaSprites,
 }
 
 var scale int
