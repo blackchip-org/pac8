@@ -43,7 +43,7 @@ type Spec struct {
 	CPU          proc.CPU
 	Mem          memory.Memory
 	Display      video.Display
-	Synth        audio.Synth
+	Audio        audio.Audio
 	TickCallback func(*Mach)
 	TickRate     time.Duration
 	CharDecoder  func(uint8) (rune, bool)
@@ -84,7 +84,7 @@ type Mach struct {
 	CPU           proc.CPU
 	Mem           memory.Memory
 	Display       video.Display
-	Synth         audio.Synth
+	Audio         audio.Audio
 	In            input.Input
 	Status        Status
 	Breakpoints   map[uint16]struct{}
@@ -111,7 +111,7 @@ func New(sys System) *Mach {
 		TickRate:      spec.TickRate,
 		Display:       spec.Display,
 		CharDecoder:   spec.CharDecoder,
-		Synth:         spec.Synth,
+		Audio:         spec.Audio,
 		Mem:           spec.Mem,
 		dasm:          spec.CPU.Info().NewDisassembler(spec.Mem),
 		cmd:           make(chan Cmd, 10),
@@ -156,7 +156,7 @@ func (m *Mach) tick() {
 	}
 	m.Display.Render()
 	if m.Status == Run {
-		if err := m.Synth.Queue(); err != nil {
+		if err := m.Audio.Queue(); err != nil {
 			log.Panicf("unable to queue audio: %v", err)
 		}
 	}

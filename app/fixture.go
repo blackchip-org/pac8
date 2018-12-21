@@ -147,7 +147,7 @@ func (f fixtureSys) Spec() *machine.Spec {
 		CPU:          f.cpu,
 		Mem:          f.mem,
 		Display:      video.NullDisplay{},
-		Synth:        audio.NullSynth{},
+		Audio:        audio.NullAudio{},
 		TickCallback: callback,
 		TickRate:     1 * time.Millisecond,
 		CharDecoder:  AsciiDecoder,

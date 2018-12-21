@@ -98,7 +98,7 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 		CharDecoder: PacmanDecoder,
 		CPU:         cpu,
 		Display:     video,
-		Synth:       audio,
+		Audio:       audio,
 		Mem:         mem,
 		TickCallback: func(m *machine.Mach) {
 			if m.Status != machine.Run {

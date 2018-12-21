@@ -108,7 +108,7 @@ func main() {
 	if !noAudio {
 		requestSpec := sdl.AudioSpec{
 			Freq:     22050,
-			Format:   sdl.AUDIO_U8,
+			Format:   sdl.AUDIO_U16LSB,
 			Channels: 2,
 			Samples:  367,
 		}
