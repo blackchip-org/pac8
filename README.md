@@ -53,6 +53,7 @@ where game is one of the following:
 
 - `pacman`
 - `mspacman`
+- `galaga`
 
 
 Use the `-m` flag to enable the [monitor](monitor.md).
@@ -71,7 +72,8 @@ Use the `-m` flag to enable the [monitor](monitor.md).
   - Sound works but is a bit glitchy
   - High scores not saved
 - Galaga
-  - Tiles/Sprites available in pac8-vis
+  - Work in progress
+  - Boot to "RAM OK" screen
 - z80
   - Failing two [zexdoc](component/proc/z80/internal/zex/README.md) tests
 
