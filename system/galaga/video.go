@@ -3,7 +3,36 @@ package galaga
 import (
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/component/memory"
+	"github.com/blackchip-org/pac8/component/namco"
+	"github.com/veandco/go-sdl2/sdl"
 )
+
+func NewVideo(r *sdl.Renderer, mem memory.Memory, rom namco.VideoROM) (*namco.Video, error) {
+	return namco.NewVideo(r, mem, rom, layouts)
+}
+
+var layouts = namco.Layouts{
+	Tile: namco.SheetLayout{
+		CellW:        8,
+		CellH:        8,
+		W:            8 * 16,
+		H:            8 * 8,
+		PixelLayout:  tilePixels,
+		PixelReader:  pixelReader,
+		BytesPerCell: 16,
+	},
+	Sprite: namco.SheetLayout{
+		CellW:        16,
+		CellH:        16,
+		W:            16 * 16,
+		H:            16 * 8,
+		PixelLayout:  spritePixels,
+		PixelReader:  pixelReader,
+		BytesPerCell: 64,
+	},
+	VideoAddr: 0x8000,
+	Hack:      true,
+}
 
 var tilePixels = [][]int{
 	[]int{63, 59, 55, 51, 47, 43, 39, 35},

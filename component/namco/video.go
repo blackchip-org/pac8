@@ -98,8 +98,10 @@ type Video struct {
 }
 
 type Layouts struct {
-	Tile   SheetLayout
-	Sprite SheetLayout
+	Tile      SheetLayout
+	Sprite    SheetLayout
+	VideoAddr uint16
+	Hack      bool
 }
 
 type VideoROM struct {
@@ -172,18 +174,18 @@ func (v *Video) renderTiles() {
 	rowCells := v.layouts.Tile.W / cellW
 
 	// Render tiles
-	for ty := int32(0); ty < 36; ty++ {
-		for tx := int32(0); tx < 28; tx++ {
-			var addr int32
+	for ty := uint16(0); ty < 36; ty++ {
+		for tx := uint16(0); tx < 28; tx++ {
+			var addr uint16
 			if ty == 0 || ty == 1 {
-				addr = 0x43dd + (ty * 0x20) - tx
+				addr = v.addr(0x3dd) + (ty * 0x20) - tx
 			} else if ty == 34 || ty == 35 {
-				addr = 0x401d + ((ty - 34) * 0x20) - tx
+				addr = v.addr(0x01d) + ((ty - 34) * 0x20) - tx
 			} else {
-				addr = 0x43a0 + (ty - 2) - (tx * 0x20)
+				addr = v.addr(0x3a0) + (ty - 2) - (tx * 0x20)
 			}
 
-			tileN := int(v.mem.Load(uint16(addr)))
+			tileN := int(v.mem.Load(addr))
 			sheetX := (tileN % rowCells) * cellW
 			sheetY := (tileN / rowCells) * cellW
 			src := sdl.Rect{
@@ -192,8 +194,8 @@ func (v *Video) renderTiles() {
 				W: int32(v.layouts.Tile.CellW),
 				H: int32(v.layouts.Tile.CellH),
 			}
-			screenX := tx * 8 * v.frame.Scale
-			screenY := ty * 8 * v.frame.Scale
+			screenX := int32(tx) * 8 * v.frame.Scale
+			screenY := int32(ty) * 8 * v.frame.Scale
 			dest := sdl.Rect{
 				X: screenX + v.frame.X,
 				Y: screenY + v.frame.Y,
@@ -203,13 +205,17 @@ func (v *Video) renderTiles() {
 
 			caddr := addr + 0x0400
 			// Only 64 palettes, strip out the higher bits
-			pal := v.mem.Load(uint16(caddr)) & 0x3f
+			pal := v.mem.Load(caddr) & 0x3f
 			v.r.Copy(v.tiles[pal].Texture, &src, &dest)
 		}
 	}
 }
 
 func (v *Video) renderSprites() {
+	// FIXME: Galaga testing
+	if v.layouts.Hack {
+		return
+	}
 	spriteW := int32(v.layouts.Sprite.CellW)
 	spriteH := int32(v.layouts.Sprite.CellH)
 	rowCells := int32(v.layouts.Sprite.W) / spriteW
@@ -253,6 +259,10 @@ func (v *Video) renderSprites() {
 }
 
 func (v *Video) colorTable(mem memory.Memory) {
+	// FIXME: Galaga testing
+	if v.layouts.Hack {
+		return
+	}
 	for addr := 0; addr < 16; addr++ {
 		r, g, b := uint8(0), uint8(0), uint8(0)
 		c := mem.Load(uint16(addr))
@@ -274,14 +284,25 @@ func (v *Video) colorTable(mem memory.Memory) {
 
 func (v *Video) paletteTable(mem memory.Memory) {
 	for pal := 0; pal < 64; pal++ {
+		// FIXME: Galaga testing
+		if v.layouts.Hack {
+			v.palettes[pal] = VisPalette
+			continue
+		}
 		addr := pal * 4
 		var entry [4][]uint8
+
 		entry[0] = v.colors[mem.Load(uint16(addr+0))]
 		entry[1] = v.colors[mem.Load(uint16(addr+1))]
 		entry[2] = v.colors[mem.Load(uint16(addr+2))]
 		entry[3] = v.colors[mem.Load(uint16(addr+3))]
+
 		v.palettes[pal] = entry
 	}
+}
+
+func (v *Video) addr(offset int) uint16 {
+	return v.layouts.VideoAddr + uint16(offset)
 }
 
 var colorWeights = [][]uint8{

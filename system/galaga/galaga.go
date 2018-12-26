@@ -1,11 +1,13 @@
 package galaga
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
+	"github.com/blackchip-org/pac8/component/namco"
 	"github.com/blackchip-org/pac8/component/proc/z80"
 	"github.com/blackchip-org/pac8/machine"
 )
@@ -16,8 +18,9 @@ type Galaga struct {
 }
 
 type Config struct {
-	Name string
-	M    *memory.BlockMapper
+	Name     string
+	M        *memory.BlockMapper
+	VideoROM namco.VideoROM
 }
 
 type Registers struct {
@@ -38,11 +41,17 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	mem1 := memory.NewPageMapped(config.M.Blocks)
 	cpu1 := z80.New(mem1)
 
+	video, err := NewVideo(ctx.Renderer, mem1, config.VideoROM)
+	if err != nil {
+		return nil, fmt.Errorf("unable to initialize video: %v", err)
+	}
+
 	sys.spec = &machine.Spec{
 		Name:        config.Name,
 		CharDecoder: GalagaDecoder,
 		CPU:         cpu1,
 		Mem:         mem1,
+		Display:     video,
 		TickCallback: func(m *machine.Mach) {
 			if m.Status != machine.Run {
 				return
