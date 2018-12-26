@@ -9,6 +9,7 @@ import (
 
 	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/system/galaga"
 	"github.com/blackchip-org/pac8/system/pacman"
 	"github.com/veandco/go-sdl2/sdl"
 )
@@ -45,6 +46,7 @@ func init() {
 var games = map[string]func(app.SDLContext) (machine.System, error){
 	"pacman":   pacman.NewPacman,
 	"mspacman": pacman.NewMsPacman,
+	"galaga":   galaga.NewGalaga,
 }
 
 func main() {

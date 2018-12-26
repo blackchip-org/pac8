@@ -154,8 +154,10 @@ func (m *Mach) tick() {
 			}
 		}
 	}
-	m.Display.Render()
-	if m.Status == Run {
+	if m.Display != nil {
+		m.Display.Render()
+	}
+	if m.Audio != nil && m.Status == Run {
 		if err := m.Audio.Queue(); err != nil {
 			log.Panicf("unable to queue audio: %v", err)
 		}
@@ -170,7 +172,9 @@ func (m *Mach) tick() {
 		}
 		handleKeyboard(event, &m.In)
 	}
-	m.TickCallback(m)
+	if m.TickCallback != nil {
+		m.TickCallback(m)
+	}
 }
 
 func (m *Mach) Send(t CmdType, args ...interface{}) {
