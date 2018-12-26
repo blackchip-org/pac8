@@ -3,6 +3,7 @@ package pacman
 import (
 	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/component/memory"
+	"github.com/blackchip-org/pac8/component/namco"
 	"github.com/blackchip-org/pac8/machine"
 )
 
@@ -13,7 +14,7 @@ func NewPacman(ctx app.SDLContext) (machine.System, error) {
 	rom2 := l.Load("pacman.6h", "8e47e8c2c4d6117d174cdac150392042d3e0a881")
 	rom3 := l.Load("pacman.6j", "d4a70d56bb01d27d094d73db8667ffb00ca69cb9")
 
-	vrom := VideoROM{
+	vrom := namco.VideoROM{
 		Tiles:   l.Load("pacman.5e", "06ef227747a440831c9a3a613b76693d52a2f0a9"),
 		Sprites: l.Load("pacman.5f", "4a937ac02216ea8c96477d4a15522070507fb599"),
 		Color:   l.Load("82s123.7f", "8d0268dee78e47c712202b0ec4f1f51109b1f2a5"),
@@ -52,7 +53,7 @@ func NewMsPacman(ctx app.SDLContext) (machine.System, error) {
 	rom4 := l.Load("boot5", "fed6e9a2b210b07e7189a18574f6b8c4ec5bb49b")
 	rom5 := l.Load("boot6", "387010a0c76319a1eab61b54c9bcb5c66c4b67a1")
 
-	vrom := VideoROM{
+	vrom := namco.VideoROM{
 		Tiles:   l.Load("5e", "5e8b472b615f12efca3fe792410c23619f067845"),
 		Sprites: l.Load("5f", "fd6a1dde780b39aea76bf1c4befa5882573c2ef4"),
 		Color:   l.Load("82s123.7f", "8d0268dee78e47c712202b0ec4f1f51109b1f2a5"),

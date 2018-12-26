@@ -127,3 +127,22 @@ func ExampleDisplace() {
 	fmt.Printf("%04x %04x", plus, minus)
 	// Output: 8001 7fff
 }
+
+func TestPlane(t *testing.T) {
+	b := Parse
+	p := []int{0, 4}
+	tests := []struct {
+		offset int
+		in     uint8
+		out    uint8
+	}{
+		{0, b("00010001"), b("11")},
+		{1, b("00100010"), b("11")},
+		{2, b("01000100"), b("11")},
+		{3, b("10001000"), b("11")},
+	}
+	for _, test := range tests {
+		out := Plane(test.in, p, test.offset)
+		WithFormat(t, "%08b").Expect(out).ToBe(test.out)
+	}
+}

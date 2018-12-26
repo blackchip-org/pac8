@@ -11,6 +11,7 @@ import (
 	"github.com/blackchip-org/pac8/check"
 	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
+	"github.com/blackchip-org/pac8/component/namco"
 	"github.com/blackchip-org/pac8/component/proc/z80"
 	"github.com/blackchip-org/pac8/machine"
 	"github.com/veandco/go-sdl2/sdl"
@@ -26,7 +27,7 @@ type Pacman struct {
 type Config struct {
 	Name     string
 	M        *memory.BlockMapper
-	VideoROM VideoROM
+	VideoROM namco.VideoROM
 	AudioROM AudioROM
 }
 
@@ -118,7 +119,7 @@ func (p Pacman) Spec() *machine.Spec {
 	return p.spec
 }
 
-func mapRegisters(r *Registers, io memory.IO, v *Video, a *Audio) {
+func mapRegisters(r *Registers, io memory.IO, v *namco.Video, a *Audio) {
 	pm := memory.NewPortMapper(io)
 	for i := 0; i <= 0x3f; i++ {
 		pm.RO(i, &r.In0)
@@ -174,8 +175,8 @@ func mapRegisters(r *Registers, io memory.IO, v *Video, a *Audio) {
 	pm.WO(0x5f, &a.Voices[2].Vol)
 
 	for i, s := 0x60, 0; s < 8; i, s = i+2, s+1 {
-		pm.WO(i+0, &v.spriteCoords[s].x)
-		pm.WO(i+1, &v.spriteCoords[s].y)
+		pm.WO(i+0, &v.SpriteCoords[s].X)
+		pm.WO(i+1, &v.SpriteCoords[s].Y)
 	}
 	for i := 0x80; i <= 0xbf; i++ {
 		pm.RO(i, &r.DipSwitches)

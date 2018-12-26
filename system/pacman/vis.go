@@ -11,16 +11,11 @@ func PacmanTiles(r *sdl.Renderer) (*sdl.Texture, error) {
 	if err != nil {
 		return nil, err
 	}
-	info := namco.SheetInfo{
-		W:      16,
-		H:      16,
-		Colors: namco.VisPalette,
-	}
-	tex, err := namco.TileSheet(r, mem, info)
+	sheet, err := namco.NewSheet(r, mem, layouts.Tile, namco.VisPalette)
 	if err != nil {
 		return nil, err
 	}
-	return tex, nil
+	return sheet.Texture, nil
 }
 
 func PacmanSprites(r *sdl.Renderer) (*sdl.Texture, error) {
@@ -28,11 +23,11 @@ func PacmanSprites(r *sdl.Renderer) (*sdl.Texture, error) {
 	if err != nil {
 		return nil, err
 	}
-	tex, err := spriteSheet(r, mem, namco.VisPalette)
+	sheet, err := namco.NewSheet(r, mem, layouts.Sprite, namco.VisPalette)
 	if err != nil {
 		return nil, err
 	}
-	return tex, nil
+	return sheet.Texture, nil
 }
 
 func MsPacmanTiles(r *sdl.Renderer) (*sdl.Texture, error) {
@@ -40,16 +35,11 @@ func MsPacmanTiles(r *sdl.Renderer) (*sdl.Texture, error) {
 	if err != nil {
 		return nil, err
 	}
-	info := namco.SheetInfo{
-		W:      16,
-		H:      16,
-		Colors: namco.VisPalette,
-	}
-	tex, err := namco.TileSheet(r, mem, info)
+	sheet, err := namco.NewSheet(r, mem, layouts.Tile, namco.VisPalette)
 	if err != nil {
 		return nil, err
 	}
-	return tex, nil
+	return sheet.Texture, nil
 }
 
 func MsPacmanSprites(r *sdl.Renderer) (*sdl.Texture, error) {
@@ -57,9 +47,9 @@ func MsPacmanSprites(r *sdl.Renderer) (*sdl.Texture, error) {
 	if err != nil {
 		return nil, err
 	}
-	tex, err := spriteSheet(r, mem, namco.VisPalette)
+	sheet, err := namco.NewSheet(r, mem, layouts.Sprite, namco.VisPalette)
 	if err != nil {
 		return nil, err
 	}
-	return tex, nil
+	return sheet.Texture, nil
 }

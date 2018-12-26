@@ -14,16 +14,20 @@ func GalagaTiles(r *sdl.Renderer) (*sdl.Texture, error) {
 	if err != nil {
 		return nil, err
 	}
-	info := namco.SheetInfo{
-		W:      16,
-		H:      8,
-		Colors: namco.VisPalette,
+	layout := namco.SheetLayout{
+		CellW:        8,
+		CellH:        8,
+		W:            8 * 16,
+		H:            8 * 8,
+		PixelLayout:  tilePixels,
+		PixelReader:  pixelReader,
+		BytesPerCell: 16,
 	}
-	tex, err := namco.TileSheet(r, mem, info)
+	sheet, err := namco.NewSheet(r, mem, layout, namco.VisPalette)
 	if err != nil {
 		return nil, err
 	}
-	return tex, nil
+	return sheet.Texture, nil
 }
 
 func GalagaSprites(r *sdl.Renderer) (*sdl.Texture, error) {
@@ -41,14 +45,18 @@ func GalagaSprites(r *sdl.Renderer) (*sdl.Texture, error) {
 	m.Map(0x1000, ram1)
 	mem := memory.NewPageMapped(m.Blocks)
 
-	info := namco.SheetInfo{
-		W:      16,
-		H:      16,
-		Colors: namco.VisPalette,
+	info := namco.SheetLayout{
+		CellW:        16,
+		CellH:        16,
+		W:            16 * 16,
+		H:            16 * 8,
+		PixelLayout:  spritePixels,
+		PixelReader:  pixelReader,
+		BytesPerCell: 64,
 	}
-	tex, err := namco.SpriteSheet(r, mem, info)
+	sheet, err := namco.NewSheet(r, mem, info, namco.VisPalette)
 	if err != nil {
 		return nil, err
 	}
-	return tex, nil
+	return sheet.Texture, nil
 }

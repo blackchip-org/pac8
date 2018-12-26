@@ -124,3 +124,13 @@ func Displace(value uint16, delta uint8) uint16 {
 func Parity(value uint8) bool {
 	return bits.OnesCount8(value)%2 == 0
 }
+
+func Plane(n uint8, planes []int, offset int) uint8 {
+	result := 0
+	for i, start := range planes {
+		if Get(n, start+offset) {
+			result += 1 << uint(i)
+		}
+	}
+	return uint8(result)
+}
