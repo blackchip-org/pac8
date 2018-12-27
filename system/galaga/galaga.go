@@ -8,6 +8,7 @@ import (
 	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/namco"
+	"github.com/blackchip-org/pac8/component/proc"
 	"github.com/blackchip-org/pac8/component/proc/z80"
 	"github.com/blackchip-org/pac8/machine"
 )
@@ -19,12 +20,14 @@ type Galaga struct {
 
 type Config struct {
 	Name     string
-	M        *memory.BlockMapper
+	ProcROM  [3][]memory.Memory
 	VideoROM namco.VideoROM
 }
 
 type Registers struct {
+	InterruptEnable0 uint8 // low bit
 	InterruptEnable1 uint8 // low bit
+	InterruptEnable2 uint8 // low bit
 	DipSwitches      [8]uint8
 }
 
@@ -33,15 +36,25 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	ram := memory.NewRAM(0x2000)
 	io := memory.NewIO(0x100)
 
-	config.M.Map(0x6800, io)
-	config.M.Map(0x8000, ram)
+	var mem [3]memory.Memory
+	for i := 0; i < 3; i++ {
+		m := memory.NewBlockMapper()
+		m.Map(0x0000, config.ProcROM[i][0])
+		m.Map(0x1000, config.ProcROM[i][1])
+		m.Map(0x2000, config.ProcROM[i][2])
+		m.Map(0x3000, config.ProcROM[i][3])
+		m.Map(0x6800, io)
+		m.Map(0x8000, ram)
+		mem[i] = memory.NewPageMapped(m.Blocks)
+	}
 
 	mapRegisters(&sys.regs, io)
 
-	mem1 := memory.NewPageMapped(config.M.Blocks)
-	cpu1 := z80.New(mem1)
+	cpu0 := z80.New(mem[0])
+	cpu1 := z80.New(mem[1])
+	//cpu2 := z80.New(mem[2])
 
-	video, err := NewVideo(ctx.Renderer, mem1, config.VideoROM)
+	video, err := NewVideo(ctx.Renderer, mem[0], config.VideoROM)
 	if err != nil {
 		return nil, fmt.Errorf("unable to initialize video: %v", err)
 	}
@@ -49,12 +62,16 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	sys.spec = &machine.Spec{
 		Name:        config.Name,
 		CharDecoder: GalagaDecoder,
-		CPU:         cpu1,
-		Mem:         mem1,
+		CPU:         cpu0,
+		AuxCPU:      []proc.CPU{cpu1},
+		Mem:         mem[0],
 		Display:     video,
 		TickCallback: func(m *machine.Mach) {
 			if m.Status != machine.Run {
 				return
+			}
+			if sys.regs.InterruptEnable0 != 0 {
+				cpu0.INT(0)
 			}
 			if sys.regs.InterruptEnable1 != 0 {
 				cpu1.INT(0)
@@ -79,5 +96,6 @@ func (g *Galaga) Restore(dec component.Decoder) error {
 
 func mapRegisters(r *Registers, io memory.IO) {
 	pm := memory.NewPortMapper(io)
-	pm.WO(0x20, &r.InterruptEnable1)
+	pm.WO(0x20, &r.InterruptEnable0)
+	pm.WO(0x21, &r.InterruptEnable1)
 }

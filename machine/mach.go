@@ -41,6 +41,7 @@ func (s Status) String() string {
 type Spec struct {
 	Name         string
 	CPU          proc.CPU
+	AuxCPU       []proc.CPU
 	Mem          memory.Memory
 	Display      video.Display
 	Audio        audio.Audio
@@ -82,6 +83,7 @@ const (
 type Mach struct {
 	System        System
 	CPU           proc.CPU
+	AuxCPU        []proc.CPU
 	Mem           memory.Memory
 	Display       video.Display
 	Audio         audio.Audio
@@ -105,6 +107,7 @@ func New(sys System) *Mach {
 	return &Mach{
 		System:        sys,
 		CPU:           spec.CPU,
+		AuxCPU:        spec.AuxCPU,
 		Breakpoints:   make(map[uint16]struct{}),
 		EventCallback: func(EventType, interface{}) {},
 		TickCallback:  spec.TickCallback,
@@ -151,6 +154,13 @@ func (m *Mach) tick() {
 			if _, exists := m.Breakpoints[m.CPU.PC()]; exists && m.CPU.Ready() {
 				m.setStatus(Break)
 				return
+			}
+		}
+	}
+	if m.AuxCPU != nil && m.Status == Run {
+		for _, cpu := range m.AuxCPU {
+			for i := 0; i < m.cyclesPerTick; i++ {
+				cpu.Next()
 			}
 		}
 	}

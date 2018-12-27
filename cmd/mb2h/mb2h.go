@@ -9,6 +9,7 @@ import (
 )
 
 func mb2h(in string) (string, error) {
+	in = strings.Replace(in, "-", "0", -1)
 	strlo := strings.Replace(in, "x", "0", -1)
 	strhi := strings.Replace(in, "x", "1", -1)
 
