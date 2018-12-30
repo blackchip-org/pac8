@@ -21,6 +21,7 @@ import (
 
 const (
 	CmdBreakpoint  = "b"
+	CmdCore        = "c"
 	CmdDisassemble = "d"
 	CmdFill        = "f"
 	CmdGo          = "g"
@@ -110,7 +111,7 @@ func (m *Monitor) Close() {
 func (m *Monitor) getPrompt() string {
 	c := ""
 	if len(m.mach.Cores) > 1 {
-		c = fmt.Sprintf(":%v", m.selectedCore)
+		c = fmt.Sprintf(":%v", m.selectedCore+1)
 	}
 	return fmt.Sprintf("monitor%v> ", c)
 }
@@ -135,6 +136,8 @@ func (m *Monitor) parse(line string) {
 	switch cmd {
 	case CmdBreakpoint:
 		err = m.breakpoint(args)
+	case CmdCore:
+		err = m.core(args)
 	case CmdDisassemble:
 		err = m.disassemble(args)
 	case CmdFill:
@@ -200,6 +203,27 @@ func (m *Monitor) breakpoint(args []string) error {
 	default:
 		return fmt.Errorf("invalid: %v", args[1])
 	}
+	return nil
+}
+
+func (m *Monitor) core(args []string) error {
+	if err := checkLen(args, 1, 1); err != nil {
+		return err
+	}
+	n, err := parseValue(args[0])
+	if err != nil {
+		return err
+	}
+	if n < 1 || int(n) > len(m.mach.Cores) {
+		return fmt.Errorf("invalid core")
+	}
+	n = n - 1
+	m.selectedCore = int(n)
+	m.cpu = m.mach.Cores[n].CPU
+	m.mem = m.mach.Cores[n].Mem
+	m.breakpoints = m.mach.Cores[n].Breakpoints
+	m.dasm = m.mach.Cores[n].CPU.Info().NewDisassembler(m.mach.Cores[n].Mem)
+	m.rl.SetPrompt(m.getPrompt())
 	return nil
 }
 
@@ -446,7 +470,7 @@ func (m *Monitor) trace(args []string) error {
 	if err := checkLen(args, 0, 0); err != nil {
 		return err
 	}
-	m.mach.Send(machine.TraceCmd)
+	m.mach.Send(machine.TraceCmd, m.selectedCore)
 	return nil
 }
 

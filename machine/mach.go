@@ -89,11 +89,10 @@ type Mach struct {
 	TickCallback  func(*Mach)
 	CharDecoder   func(uint8) (rune, bool)
 	TickRate      time.Duration
-	SelectedCore  int
 	cyclesPerTick int
 	Cores         []Core
 	cmd           chan Cmd
-	tracing       bool
+	tracing       int
 	quit          bool
 }
 
@@ -117,6 +116,7 @@ func New(sys System) *Mach {
 		Audio:         spec.Audio,
 		cmd:           make(chan Cmd, 10),
 		Cores:         make([]Core, nCores, nCores),
+		tracing:       -1,
 	}
 	for i := 0; i < len(spec.CPU); i++ {
 		core := Core{
@@ -183,7 +183,7 @@ func (m *Mach) tick() {
 func (m *Mach) execute() {
 	for i, core := range m.Cores {
 		for t := 0; t < m.cyclesPerTick; t++ {
-			if m.SelectedCore == i && m.tracing && core.CPU.Ready() {
+			if m.tracing == i && core.CPU.Ready() {
 				core.Dasm.SetPC(core.CPU.PC())
 				m.EventCallback(TraceEvent, core.Dasm.Next())
 			}
@@ -239,7 +239,12 @@ func (m *Mach) command(c Cmd) {
 	case StopCmd:
 		m.setStatus(Halt)
 	case TraceCmd:
-		m.tracing = !m.tracing
+		core := c.Args[0].(int)
+		if m.tracing >= 0 {
+			m.tracing = -1
+		} else {
+			m.tracing = core
+		}
 	case QuitCmd:
 		m.quit = true
 	default:
