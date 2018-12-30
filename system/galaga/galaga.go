@@ -95,6 +95,6 @@ func (g *Galaga) Restore(dec component.Decoder) error {
 
 func mapRegisters(r *Registers, io memory.IO) {
 	pm := memory.NewPortMapper(io)
-	pm.WO(0x20, &r.InterruptEnable0)
-	pm.WO(0x21, &r.InterruptEnable1)
+	pm.RW(0x20, &r.InterruptEnable0)
+	pm.RW(0x21, &r.InterruptEnable1)
 }
