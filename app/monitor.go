@@ -10,6 +10,7 @@ import (
 	"os/user"
 	"path/filepath"
 	"runtime"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -180,8 +181,28 @@ func (m *Monitor) parse(line string) {
 }
 
 func (m *Monitor) breakpoint(args []string) error {
-	if err := checkLen(args, 1, 2); err != nil {
+	if err := checkLen(args, 0, 2); err != nil {
 		return err
+	}
+	if len(args) == 0 {
+		// display breakpoints
+		if len(m.breakpoints) == 0 {
+			m.out.Println("no breakpoints")
+			return nil
+		}
+		bp := make([]string, 0, len(m.breakpoints))
+		for addr := range m.breakpoints {
+			bp = append(bp, fmt.Sprintf("%04x", addr))
+		}
+		sort.Strings(bp)
+		m.out.Println(strings.Join(bp, "\n"))
+		return nil
+	}
+	if args[0] == "clear" {
+		for addr := range m.breakpoints {
+			delete(m.breakpoints, addr)
+		}
+		return nil
 	}
 	address, err := parseAddress(args[0])
 	if err != nil {
@@ -616,10 +637,18 @@ var helpCmds = map[string]string{
 	"b": `
 Breakpoints
 
+	b
+
+List active breakpoints.
+
     b <address> {on|off}
 
 Sets a breakpoint at <address> when using "on" and clears a breakpoint at
 <address> when using "off". The CPU stops before executing address.
+
+	b clear
+
+Clears all breakpoints.
 `,
 
 	"d": `

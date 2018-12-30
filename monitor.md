@@ -20,9 +20,17 @@ p 1234 +255
 When *command* is specified, show help about that command. Otherwise list
 all commands an a short description.
 
+### b
+
+Lists active **breakpoints**
+
 ### b *address* {on|off}
 
 Sets a **breakpoint** at *address* when using `on` and clears a breakpoint at *address* when using `off`. The CPU stops before executing *address*.
+
+### b clear
+
+Clears all **breakpoints**.
 
 ### d [*start-address* [*end-address*]]
 

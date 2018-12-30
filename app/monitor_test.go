@@ -56,6 +56,27 @@ func TestBreakpointOff(t *testing.T) {
 	WithFormat(t, "%04x").Expect(f.mon.cpu.PC()).NotToBe(0x0002)
 }
 
+func TestBreakpointList(t *testing.T) {
+	f := newTestMonitor()
+	f.mon.in = testMonitorInput("b cd on \n b ab on \n b \n g")
+	testMonitorRun(f.mon)
+	With(t).Expect(f.out.String()).ToBe("00ab\n00cd\n")
+}
+
+func TestBreakpointListEmpty(t *testing.T) {
+	f := newTestMonitor()
+	f.mon.in = testMonitorInput("b \n g")
+	testMonitorRun(f.mon)
+	With(t).Expect(f.out.String()).ToBe("no breakpoints\n")
+}
+
+func TestBreakpointClear(t *testing.T) {
+	f := newTestMonitor()
+	f.mon.in = testMonitorInput("b cd on \n b clear \n b \n g")
+	testMonitorRun(f.mon)
+	With(t).Expect(f.out.String()).ToBe("no breakpoints\n")
+}
+
 func TestDisassembleFirstLine(t *testing.T) {
 	f := newTestMonitor()
 	f.cursor.PutN(0x20, 0xcd, 0xab)
