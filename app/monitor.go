@@ -48,26 +48,29 @@ const (
 type CharDecoder func(uint8) (rune, bool)
 
 type Monitor struct {
-	dasm    *proc.Disassembler
-	mach    *machine.Mach
-	cpu     proc.CPU
-	mem     memory.Memory
-	in      io.ReadCloser
-	out     *log.Logger
-	rl      *readline.Instance
-	lastCmd string
-	memPtr  uint16
-	dasmPtr uint16
+	dasm         *proc.Disassembler
+	mach         *machine.Mach
+	cpu          proc.CPU
+	mem          memory.Memory
+	breakpoints  map[uint16]struct{}
+	in           io.ReadCloser
+	out          *log.Logger
+	rl           *readline.Instance
+	lastCmd      string
+	memPtr       uint16
+	dasmPtr      uint16
+	selectedCore int
 }
 
 func NewMonitor(mach *machine.Mach) *Monitor {
 	m := &Monitor{
-		mach: mach,
-		cpu:  mach.CPU,
-		mem:  mach.Mem,
-		in:   readline.NewCancelableStdin(os.Stdin),
-		out:  log.New(os.Stdout, "", 0),
-		dasm: mach.CPU.Info().NewDisassembler(mach.Mem),
+		mach:        mach,
+		cpu:         mach.Cores[0].CPU,
+		mem:         mach.Cores[0].Mem,
+		breakpoints: mach.Cores[0].Breakpoints,
+		in:          readline.NewCancelableStdin(os.Stdin),
+		out:         log.New(os.Stdout, "", 0),
+		dasm:        mach.Cores[0].CPU.Info().NewDisassembler(mach.Cores[0].Mem),
 	}
 	mach.EventCallback = m.handleEvent
 	return m
@@ -79,9 +82,10 @@ func (m *Monitor) Run() error {
 		return err
 	}
 	rl, err := readline.NewEx(&readline.Config{
-		Prompt:      "monitor> ",
-		HistoryFile: filepath.Join(usr.HomeDir, ".pac8-history"),
-		Stdin:       m.in,
+		Prompt:      m.getPrompt(),
+		HistoryFile: filepath.Join(usr.HomeDir, ".pac8-history"), // FIXME: Move this to runtime directory
+
+		Stdin: m.in,
 	})
 	if err != nil {
 		return err
@@ -101,6 +105,14 @@ func (m *Monitor) Run() error {
 
 func (m *Monitor) Close() {
 	m.in.Close()
+}
+
+func (m *Monitor) getPrompt() string {
+	c := ""
+	if len(m.mach.Cores) > 1 {
+		c = fmt.Sprintf(":%v", m.selectedCore)
+	}
+	return fmt.Sprintf("monitor%v> ", c)
 }
 
 func (m *Monitor) parse(line string) {
@@ -173,7 +185,7 @@ func (m *Monitor) breakpoint(args []string) error {
 		return err
 	}
 	if len(args) == 1 {
-		if _, exists := m.mach.Breakpoints[address]; exists {
+		if _, exists := m.breakpoints[address]; exists {
 			m.out.Println("breakpoint on")
 		} else {
 			m.out.Println("breakpoint off")
@@ -182,9 +194,9 @@ func (m *Monitor) breakpoint(args []string) error {
 	}
 	switch args[1] {
 	case "on":
-		m.mach.Breakpoints[address] = struct{}{}
+		m.breakpoints[address] = struct{}{}
 	case "off":
-		delete(m.mach.Breakpoints, address)
+		delete(m.breakpoints, address)
 	default:
 		return fmt.Errorf("invalid: %v", args[1])
 	}
@@ -366,7 +378,7 @@ func (m *Monitor) registers(args []string) error {
 	}
 
 	name := strings.ToUpper(args[0])
-	reg, ok := m.mach.CPU.Info().Registers[name]
+	reg, ok := m.cpu.Info().Registers[name]
 	if !ok {
 		return errors.New("no such register")
 	}

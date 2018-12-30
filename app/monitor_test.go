@@ -24,7 +24,7 @@ func newTestMonitor() *fixture {
 	sys := newFixtureCab(nil)
 	mach := machine.New(sys)
 	f.mon = NewMonitor(mach)
-	f.cursor = memory.NewCursor(mach.Mem)
+	f.cursor = memory.NewCursor(mach.Cores[0].Mem)
 	f.mon.out.SetOutput(&f.out)
 	return f
 }
@@ -217,7 +217,7 @@ func TestTrace(t *testing.T) {
 		0x20, 0x34, 0x12,
 		0x10, 0x56,
 	)
-	f.mon.mach.Breakpoints[0x0005] = struct{}{}
+	f.mon.breakpoints[0x0005] = struct{}{}
 	f.mon.in = testMonitorInput("t \n g")
 	testMonitorRun(f.mon)
 	lines := strings.Split(strings.TrimSpace(f.out.String()), "\n")
@@ -236,7 +236,7 @@ func TestTraceOff(t *testing.T) {
 		0x20, 0x34, 0x12,
 		0x10, 0x56,
 	)
-	f.mon.mach.Breakpoints[0x0005] = struct{}{}
+	f.mon.breakpoints[0x0005] = struct{}{}
 	f.mon.in = testMonitorInput("t \n q")
 	testMonitorRun(f.mon)
 	f.mon.in = testMonitorInput("t \n g")

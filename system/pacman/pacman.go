@@ -12,6 +12,7 @@ import (
 	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/namco"
+	"github.com/blackchip-org/pac8/component/proc"
 	"github.com/blackchip-org/pac8/component/proc/z80"
 	"github.com/blackchip-org/pac8/machine"
 	"github.com/veandco/go-sdl2/sdl"
@@ -97,10 +98,10 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	sys.spec = &machine.Spec{
 		Name:        config.Name,
 		CharDecoder: PacmanDecoder,
-		CPU:         cpu,
+		CPU:         []proc.CPU{cpu},
+		Mem:         []memory.Memory{mem},
 		Display:     video,
 		Audio:       audio,
-		Mem:         mem,
 		TickCallback: func(m *machine.Mach) {
 			if m.Status != machine.Run {
 				return
@@ -188,16 +189,16 @@ func mapRegisters(r *Registers, io memory.IO, v *namco.Video, a *Audio) {
 
 func (p *Pacman) Save(enc component.Encoder) error {
 	e := check.ForError()
-	e.Check(p.spec.CPU.Save(enc))
-	e.Check(p.spec.Mem.Save(enc))
+	e.Check(p.spec.CPU[0].Save(enc))
+	e.Check(p.spec.Mem[0].Save(enc))
 	e.Check(enc.Encode(p.regs))
 	return e.Error
 }
 
 func (p *Pacman) Restore(dec component.Decoder) error {
 	e := check.ForError()
-	e.Check(p.spec.CPU.Restore(dec))
-	e.Check(p.spec.Mem.Restore(dec))
+	e.Check(p.spec.CPU[0].Restore(dec))
+	e.Check(p.spec.Mem[0].Restore(dec))
 	e.Check(dec.Decode(&p.regs))
 	return e.Error
 }

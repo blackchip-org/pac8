@@ -40,9 +40,8 @@ func (s Status) String() string {
 
 type Spec struct {
 	Name         string
-	CPU          proc.CPU
-	AuxCPU       []proc.CPU
-	Mem          memory.Memory
+	CPU          []proc.CPU
+	Mem          []memory.Memory
 	Display      video.Display
 	Audio        audio.Audio
 	TickCallback func(*Mach)
@@ -82,43 +81,53 @@ const (
 
 type Mach struct {
 	System        System
-	CPU           proc.CPU
-	AuxCPU        []proc.CPU
-	Mem           memory.Memory
 	Display       video.Display
 	Audio         audio.Audio
 	In            input.Input
 	Status        Status
-	Breakpoints   map[uint16]struct{}
 	EventCallback func(EventType, interface{})
 	TickCallback  func(*Mach)
 	CharDecoder   func(uint8) (rune, bool)
 	TickRate      time.Duration
+	SelectedCore  int
 	cyclesPerTick int
-	mem           memory.Memory
-	dasm          *proc.Disassembler
+	Cores         []Core
 	cmd           chan Cmd
 	tracing       bool
 	quit          bool
 }
 
+type Core struct {
+	CPU         proc.CPU
+	Mem         memory.Memory
+	Breakpoints map[uint16]struct{}
+	Dasm        *proc.Disassembler
+}
+
 func New(sys System) *Mach {
 	spec := sys.Spec()
-	return &Mach{
+	nCores := len(spec.CPU)
+	m := &Mach{
 		System:        sys,
-		CPU:           spec.CPU,
-		AuxCPU:        spec.AuxCPU,
-		Breakpoints:   make(map[uint16]struct{}),
 		EventCallback: func(EventType, interface{}) {},
 		TickCallback:  spec.TickCallback,
 		TickRate:      spec.TickRate,
 		Display:       spec.Display,
 		CharDecoder:   spec.CharDecoder,
 		Audio:         spec.Audio,
-		Mem:           spec.Mem,
-		dasm:          spec.CPU.Info().NewDisassembler(spec.Mem),
 		cmd:           make(chan Cmd, 10),
+		Cores:         make([]Core, nCores, nCores),
 	}
+	for i := 0; i < len(spec.CPU); i++ {
+		core := Core{
+			CPU:         spec.CPU[i],
+			Mem:         spec.Mem[i],
+			Breakpoints: make(map[uint16]struct{}),
+			Dasm:        spec.CPU[i].Info().NewDisassembler(spec.Mem[i]),
+		}
+		m.Cores[i] = core
+	}
+	return m
 }
 
 func (m *Mach) setStatus(s Status) {
@@ -129,7 +138,8 @@ func (m *Mach) setStatus(s Status) {
 func (m *Mach) Run() {
 	m.quit = false
 	ticker := time.NewTicker(m.TickRate)
-	m.cyclesPerTick = int(float64(m.TickRate) / float64(time.Millisecond) * float64(m.CPU.Info().CycleRate))
+	// FIXME: This needs to be done better with multi-core
+	m.cyclesPerTick = int(float64(m.TickRate) / float64(time.Millisecond) * float64(m.Cores[0].CPU.Info().CycleRate))
 	for {
 		select {
 		case c := <-m.cmd:
@@ -144,25 +154,8 @@ func (m *Mach) Run() {
 }
 
 func (m *Mach) tick() {
-	for i := 0; i < m.cyclesPerTick; i++ {
-		if m.Status == Run {
-			if m.tracing && m.CPU.Ready() {
-				m.dasm.SetPC(m.CPU.PC())
-				m.EventCallback(TraceEvent, m.dasm.Next())
-			}
-			m.CPU.Next()
-			if _, exists := m.Breakpoints[m.CPU.PC()]; exists && m.CPU.Ready() {
-				m.setStatus(Break)
-				return
-			}
-		}
-	}
-	if m.AuxCPU != nil && m.Status == Run {
-		for _, cpu := range m.AuxCPU {
-			for i := 0; i < m.cyclesPerTick; i++ {
-				cpu.Next()
-			}
-		}
+	if m.Status == Run {
+		m.execute()
 	}
 	if m.Display != nil {
 		m.Display.Render()
@@ -184,6 +177,22 @@ func (m *Mach) tick() {
 	}
 	if m.TickCallback != nil {
 		m.TickCallback(m)
+	}
+}
+
+func (m *Mach) execute() {
+	for i, core := range m.Cores {
+		for t := 0; t < m.cyclesPerTick; t++ {
+			if m.SelectedCore == i && m.tracing && core.CPU.Ready() {
+				core.Dasm.SetPC(core.CPU.PC())
+				m.EventCallback(TraceEvent, core.Dasm.Next())
+			}
+			core.CPU.Next()
+			if _, exists := core.Breakpoints[core.CPU.PC()]; exists && core.CPU.Ready() {
+				m.setStatus(Break)
+				return
+			}
+		}
 	}
 }
 

@@ -36,7 +36,7 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	ram := memory.NewRAM(0x2000)
 	io := memory.NewIO(0x100)
 
-	var mem [3]memory.Memory
+	mem := make([]memory.Memory, 3, 3)
 	for i := 0; i < 3; i++ {
 		m := memory.NewBlockMapper()
 		m.Map(0x0000, config.ProcROM[i][0])
@@ -52,7 +52,7 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 
 	cpu0 := z80.New(mem[0])
 	cpu1 := z80.New(mem[1])
-	//cpu2 := z80.New(mem[2])
+	cpu2 := z80.New(mem[2])
 
 	video, err := NewVideo(ctx.Renderer, mem[0], config.VideoROM)
 	if err != nil {
@@ -62,9 +62,8 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	sys.spec = &machine.Spec{
 		Name:        config.Name,
 		CharDecoder: GalagaDecoder,
-		CPU:         cpu0,
-		AuxCPU:      []proc.CPU{cpu1},
-		Mem:         mem[0],
+		CPU:         []proc.CPU{cpu0, cpu1, cpu2},
+		Mem:         mem,
 		Display:     video,
 		TickCallback: func(m *machine.Mach) {
 			if m.Status != machine.Run {

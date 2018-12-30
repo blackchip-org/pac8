@@ -144,8 +144,8 @@ func (f fixtureSys) Spec() *machine.Spec {
 		}
 	}
 	return &machine.Spec{
-		CPU:          f.cpu,
-		Mem:          f.mem,
+		CPU:          []proc.CPU{f.cpu},
+		Mem:          []memory.Memory{f.mem},
 		Display:      video.NullDisplay{},
 		Audio:        audio.NullAudio{},
 		TickCallback: callback,
