@@ -37,6 +37,7 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	io := memory.NewIO(0x100)
 
 	mem := make([]memory.Memory, 3, 3)
+	cpu := make([]*z80.CPU, 3, 3)
 	for i := 0; i < 3; i++ {
 		m := memory.NewBlockMapper()
 		m.Map(0x0000, config.ProcROM[i][0])
@@ -46,13 +47,23 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 		m.Map(0x6800, io)
 		m.Map(0x8000, ram)
 		mem[i] = memory.NewPageMapped(m.Blocks)
+		spy := memory.NewSpy(mem[i])
+		mem[i] = spy
+		cpu[i] = z80.New(mem[i])
+
+		/*
+			nCore := i
+			coreCPU := cpu[i]
+			spy.Callback(func(e memory.Event) {
+				fmt.Printf("core %v at %04x: %v\n", nCore+1, coreCPU.PC(), e)
+			})
+			spy.WatchW(0x9100)
+		*/
 	}
+	mem[0].Store(0x9100, 0xff)
+	mem[0].Store(0x9101, 0xff)
 
 	mapRegisters(&sys.regs, io)
-
-	cpu0 := z80.New(mem[0])
-	cpu1 := z80.New(mem[1])
-	cpu2 := z80.New(mem[2])
 
 	video, err := NewVideo(ctx.Renderer, mem[0], config.VideoROM)
 	if err != nil {
@@ -62,7 +73,7 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	sys.spec = &machine.Spec{
 		Name:        config.Name,
 		CharDecoder: GalagaDecoder,
-		CPU:         []proc.CPU{cpu0, cpu1, cpu2},
+		CPU:         []proc.CPU{cpu[0], cpu[1], cpu[2]},
 		Mem:         mem,
 		Display:     video,
 		TickCallback: func(m *machine.Mach) {
@@ -70,10 +81,13 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 				return
 			}
 			if sys.regs.InterruptEnable0 != 0 {
-				cpu0.INT(0)
+				cpu[0].INT(0)
 			}
 			if sys.regs.InterruptEnable1 != 0 {
-				cpu1.INT(0)
+				cpu[1].INT(0)
+			}
+			if sys.regs.InterruptEnable2 != 0 {
+				cpu[2].INT(0)
 			}
 		},
 		TickRate: time.Duration(16670 * time.Microsecond),

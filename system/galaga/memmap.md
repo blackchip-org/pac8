@@ -23,6 +23,13 @@
 | `2000 - 2fff` | `04j_g03.bin` | | |
 | `3000 - 3fff` | `04h_g04.bin` | | |
 
+
+## RAM
+| Address | Description |
+|-|-|
+| `9100` | CPU 2 notify CPU 1 (ROM check, more?)
+| `9101` | CPU 3 notify CPU 1 (ROM check, more?)
+
 ## References
 
 - MAME source code, version 0.37b5

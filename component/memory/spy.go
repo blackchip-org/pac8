@@ -1,6 +1,10 @@
 package memory
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/blackchip-org/pac8/component"
+)
 
 type EventType int
 
@@ -95,6 +99,14 @@ func (s *Spy) UnwatchW(address uint16) {
 func (s *Spy) UnwatchRW(address uint16) {
 	delete(s.reads, address)
 	delete(s.writes, address)
+}
+
+func (s Spy) Save(enc component.Encoder) error {
+	return s.mem.Save(enc)
+}
+
+func (s Spy) Restore(dec component.Decoder) error {
+	return s.mem.Restore(dec)
 }
 
 // Spy creates a new memory spy on mem.
