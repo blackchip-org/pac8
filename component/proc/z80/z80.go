@@ -61,6 +61,7 @@ type CPU struct {
 	// address used to load on the last (IX+d) or (IY+d) instruction
 	iaddr      uint16
 	requestInt chan uint8
+	requestNmi chan bool
 
 	intRequested bool
 	intData      uint8
@@ -72,6 +73,7 @@ func New(m memory.Memory) *CPU {
 		mem:        m,
 		Ports:      io,
 		requestInt: make(chan uint8, 1),
+		requestNmi: make(chan bool, 1),
 	}
 	c.info = proc.Info{
 		// CPU is 3.072 MHz which is one T-State every 325 nanoseconds.
@@ -103,6 +105,8 @@ func (cpu *CPU) Next() {
 	}
 
 	select {
+	case <-cpu.requestNmi:
+		cpu.nmiAck()
 	case v := <-cpu.requestInt:
 		cpu.intRequested = true
 		cpu.intData = v
@@ -128,6 +132,10 @@ func (cpu *CPU) INT(v uint8) {
 	cpu.requestInt <- v
 }
 
+func (cpu *CPU) NMI() {
+	cpu.requestNmi <- true
+}
+
 func (cpu *CPU) Ready() bool {
 	return cpu.Halt != true
 }
@@ -151,6 +159,12 @@ func (cpu *CPU) intAck(v uint8) {
 	} else {
 		cpu.pc = 0x0038
 	}
+}
+
+func (cpu *CPU) nmiAck() {
+	cpu.SP -= 2
+	memory.StoreLE(cpu.mem, cpu.SP, cpu.PC())
+	cpu.pc = 0x0066
 }
 
 func (cpu *CPU) String() string {

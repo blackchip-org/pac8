@@ -73,7 +73,8 @@ Use the `-m` flag to enable the [monitor](monitor.md).
   - High scores not saved
 - Galaga
   - Work in progress
-  - Boot to "RAM OK" screen
+  - Boot to "PUSH START BUTTON" screen
+  - IO registers stuffed to advance past startup
 - z80
   - Failing two [zexdoc](component/proc/z80/internal/zex/README.md) tests
 

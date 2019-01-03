@@ -120,7 +120,7 @@ func (m *Monitor) getPrompt() string {
 func (m *Monitor) parse(line string) {
 	line = strings.TrimSpace(line)
 	if line == "" {
-		if m.lastCmd != CmdStep && m.lastCmd != CmdGo {
+		if m.lastCmd != CmdStep && m.lastCmd != CmdGo && m.lastCmd != CmdMemory {
 			return
 		}
 		line = m.lastCmd
