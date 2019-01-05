@@ -4,14 +4,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
-	"github.com/blackchip-org/pac8/component/namco"
 	"github.com/blackchip-org/pac8/component/proc"
 	"github.com/blackchip-org/pac8/component/proc/z80"
 	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/pkg/pac8"
 )
 
 type Galaga struct {
@@ -20,9 +19,7 @@ type Galaga struct {
 }
 
 type Config struct {
-	Name     string
-	ProcROM  [3][]memory.Memory
-	VideoROM namco.VideoROM
+	Name string
 }
 
 type Registers struct {
@@ -32,8 +29,11 @@ type Registers struct {
 	DipSwitches      [8]uint8
 }
 
-func New(ctx app.SDLContext, config Config) (machine.System, error) {
+var codeSegments = []string{"code1", "code2", "code3"}
+
+func New(env pac8.Env, config Config, roms memory.Set) (machine.System, error) {
 	sys := &Galaga{}
+
 	ram := memory.NewRAM(0x2000)
 	io := memory.NewIO(0x100)
 	xram := memory.NewRAM(0x1000)
@@ -43,10 +43,7 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	cpu := make([]*z80.CPU, 4, 4)
 	for i := 0; i < 3; i++ {
 		m := memory.NewBlockMapper()
-		m.Map(0x0000, config.ProcROM[i][0])
-		m.Map(0x1000, config.ProcROM[i][1])
-		m.Map(0x2000, config.ProcROM[i][2])
-		m.Map(0x3000, config.ProcROM[i][3])
+		m.Map(0x0000, roms[codeSegments[i]])
 		m.Map(0x6800, io)
 		m.Map(0x7000, xram)
 		m.Map(0x8000, ram)
@@ -70,7 +67,7 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 
 	mapRegisters(&sys.regs, io)
 
-	video, err := NewVideo(ctx.Renderer, mem[0], config.VideoROM)
+	video, err := NewVideo(env.Renderer, mem[0], roms)
 	if err != nil {
 		return nil, fmt.Errorf("unable to initialize video: %v", err)
 	}

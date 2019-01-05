@@ -25,17 +25,16 @@ type Audio struct {
 	waveforms [16][]float64
 }
 
-func NewAudio(spec sdl.AudioSpec, roms AudioROM) (*Audio, error) {
+func NewAudio(spec sdl.AudioSpec, roms memory.Set) (*Audio, error) {
 	a := &Audio{}
 	synth, err := audio.NewSynth(spec, 3)
 	if err != nil {
 		return nil, err
 	}
 	a.Synth = synth
-	for i := 0; i < 8; i++ {
+	for i := 0; i < 16; i++ {
 		addr := uint16(i * 32)
-		a.waveforms[i+0] = rescale(roms.R1, addr)
-		a.waveforms[i+8] = rescale(roms.R2, addr)
+		a.waveforms[i] = rescale(roms["waveform"], addr)
 	}
 	return a, nil
 }

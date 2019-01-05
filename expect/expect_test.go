@@ -142,6 +142,36 @@ func TestNotFuncPanic(t *testing.T) {
 	}
 }
 
+func TestExpectNil(t *testing.T) {
+	dt := &debugTester{}
+	With(dt).Expect(nil).ToBe(nil)
+	if dt.args != nil {
+		t.Fatalf("expected to be equal")
+	}
+}
+
+func TestExpectNilFail(t *testing.T) {
+	dt := &debugTester{}
+	With(dt).Expect(nil).ToBe(2)
+	if dt.args == nil {
+		t.Fatalf("expected to be not equal")
+	}
+	if dt.args[0] != "\n have: <nil> \n want: 2" {
+		t.Fatalf("unexpected: %v", dt.args[0])
+	}
+}
+
+func TestExpectToBeNilFail(t *testing.T) {
+	dt := &debugTester{}
+	With(dt).Expect(2).ToBe(nil)
+	if dt.args == nil {
+		t.Fatalf("expected to be not equal")
+	}
+	if dt.args[0] != "\n have: 2 \n want: <nil>" {
+		t.Fatalf("unexpected: %v", dt.args[0])
+	}
+}
+
 type debugTester struct {
 	args []interface{}
 }

@@ -6,15 +6,15 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/check"
 	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
-	"github.com/blackchip-org/pac8/component/namco"
 	"github.com/blackchip-org/pac8/component/proc"
 	"github.com/blackchip-org/pac8/component/proc/z80"
 	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/pkg/namco"
+	"github.com/blackchip-org/pac8/pkg/pac8"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -26,10 +26,7 @@ type Pacman struct {
 }
 
 type Config struct {
-	Name     string
-	M        *memory.BlockMapper
-	VideoROM namco.VideoROM
-	AudioROM AudioROM
+	Name string
 }
 
 type Registers struct {
@@ -47,7 +44,7 @@ type Registers struct {
 	WatchdogReset   uint8
 }
 
-func New(ctx app.SDLContext, config Config) (machine.System, error) {
+func New(env pac8.Env, config Config, roms memory.Set) (machine.System, error) {
 	sys := &Pacman{
 		regs: &Registers{},
 	}
@@ -55,23 +52,28 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	ram := memory.NewRAM(0x1000)
 	io := memory.NewIO(0x100)
 
-	config.M.Map(0x4000, ram)
-	config.M.Map(0x5000, io)
+	m := memory.NewBlockMapper()
+	m.Map(0x0000, roms["code"])
+	m.Map(0x4000, ram)
+	m.Map(0x5000, io)
+	if code2, ok := roms["code2"]; ok {
+		m.Map(0x8000, code2)
+	}
 	// Pacman is missing address line A15 so an access to $c000 is the
 	// same as accessing $4000. Ms. Pacman has additional ROMs in high
 	// memory so it has an A15 line but it appears to have the RAM mapped at
 	// $c000 as well. Text for HIGH SCORE and CREDIT accesses this high memory
 	// when writing to video memory. Copy protection?
-	config.M.Map(0xc000, ram)
+	m.Map(0xc000, ram)
 
-	mem := memory.NewPageMapped(config.M.Blocks)
+	mem := memory.NewPageMapped(m.Blocks)
 	cpu := z80.New(mem)
 
-	video, err := NewVideo(ctx.Renderer, mem, config.VideoROM)
+	video, err := NewVideo(env.Renderer, mem, roms)
 	if err != nil {
 		return nil, fmt.Errorf("unable to initialize video: %v", err)
 	}
-	audio, err := NewAudio(ctx.AudioSpec, config.AudioROM)
+	audio, err := NewAudio(env.AudioSpec, roms)
 	if err != nil {
 		return nil, fmt.Errorf("unable to initialize audio: %v", err)
 	}

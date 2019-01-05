@@ -45,6 +45,17 @@ func (w WithClause) Expect(have interface{}) *ExpectClause {
 func (e ExpectClause) toBe(want interface{}, equal bool) {
 	e.t.Helper()
 	have := e.have
+
+	if have == nil || want == nil {
+		if have == want {
+			return
+		}
+		format := fmt.Sprintf("\n have: %v \n want: %v", e.format, e.format)
+		message := fmt.Sprintf(format, have, want)
+		e.t.Fatal(message)
+		return
+	}
+
 	haveType := reflect.TypeOf(have)
 	wantType := reflect.TypeOf(want)
 

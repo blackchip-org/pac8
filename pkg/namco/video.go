@@ -106,14 +106,7 @@ type Layouts struct {
 	Hack           bool
 }
 
-type VideoROM struct {
-	Tiles   memory.Memory
-	Sprites memory.Memory
-	Color   memory.Memory
-	Palette memory.Memory
-}
-
-func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM, layouts Layouts) (*Video, error) {
+func NewVideo(r *sdl.Renderer, mem memory.Memory, rom memory.Set, layouts Layouts) (*Video, error) {
 	v := &Video{
 		r:        r,
 		mem:      mem,
@@ -139,17 +132,17 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM, layouts Layouts)
 	if err != nil {
 		return nil, err
 	}
-	v.colorTable(rom.Color)
-	v.paletteTable(rom.Palette)
+	v.colorTable(rom["color"])
+	v.paletteTable(rom["palette"])
 
 	for pal := 0; pal < v.layouts.PaletteEntries; pal++ {
-		tiles, err := NewSheet(r, rom.Tiles, layouts.Tile, v.palettes[pal])
+		tiles, err := NewSheet(r, rom["tile"], layouts.Tile, v.palettes[pal])
 		if err != nil {
 			return nil, err
 		}
 		v.tiles[pal] = tiles
 
-		sprites, err := NewSheet(r, rom.Sprites, layouts.Sprite, v.palettes[pal])
+		sprites, err := NewSheet(r, rom["sprite"], layouts.Sprite, v.palettes[pal])
 		if err != nil {
 			return nil, err
 		}

@@ -1,20 +1,13 @@
 package app
 
 import (
-	"bytes"
-	"crypto/sha1"
-	"errors"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"os/user"
 	"path/filepath"
 	"strings"
-
-	"github.com/blackchip-org/pac8/component/memory"
-	"github.com/veandco/go-sdl2/sdl"
 )
 
 const (
@@ -61,6 +54,7 @@ func PathFor(kind string, path ...string) string {
 	return filepath.Join(root, kind, filepath.Join(path...))
 }
 
+/* REMOVE ME
 func LoadROM(path string, checksum string) (memory.Memory, error) {
 	filename := PathFor(ROM, path)
 	data, err := ioutil.ReadFile(filename)
@@ -109,8 +103,4 @@ func (l *Loader) Error() error {
 	}
 	return errors.New(out.String())
 }
-
-type SDLContext struct {
-	Renderer  *sdl.Renderer
-	AudioSpec sdl.AudioSpec
-}
+*/

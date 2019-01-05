@@ -3,11 +3,11 @@ package pacman
 import (
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/component/memory"
-	"github.com/blackchip-org/pac8/component/namco"
+	"github.com/blackchip-org/pac8/pkg/namco"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-func NewVideo(r *sdl.Renderer, mem memory.Memory, rom namco.VideoROM) (*namco.Video, error) {
+func NewVideo(r *sdl.Renderer, mem memory.Memory, rom memory.Set) (*namco.Video, error) {
 	return namco.NewVideo(r, mem, rom, layouts)
 }
 
