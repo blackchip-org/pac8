@@ -30,8 +30,10 @@ var layouts = namco.Layouts{
 		PixelReader:  pixelReader,
 		BytesPerCell: 64,
 	},
-	VideoAddr: 0x8000,
-	Hack:      true,
+	PaletteEntries: 32,
+	PaletteColors:  8,
+	VideoAddr:      0x8000,
+	Hack:           true,
 }
 
 var tilePixels = [][]int{

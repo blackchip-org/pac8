@@ -37,6 +37,7 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 	ram := memory.NewRAM(0x2000)
 	io := memory.NewIO(0x100)
 	xram := memory.NewRAM(0x1000)
+	xram2 := memory.NewRAM(0x1000)
 
 	mem := make([]memory.Memory, 4, 4)
 	cpu := make([]*z80.CPU, 4, 4)
@@ -49,6 +50,7 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 		m.Map(0x6800, io)
 		m.Map(0x7000, xram)
 		m.Map(0x8000, ram)
+		m.Map(0xa000, xram2)
 		mem[i] = memory.NewPageMapped(m.Blocks)
 		spy := memory.NewSpy(mem[i])
 		mem[i] = spy
@@ -73,8 +75,9 @@ func New(ctx app.SDLContext, config Config) (machine.System, error) {
 		return nil, fmt.Errorf("unable to initialize video: %v", err)
 	}
 
+	bits.Set(&sys.regs.DipSwitches[3], 0, true)
+	bits.Set(&sys.regs.DipSwitches[5], 0, true)
 	bits.Set(&sys.regs.DipSwitches[6], 0, true)
-	bits.Set(&sys.regs.DipSwitches[7], 0, true)
 
 	hackCPU := &HackCPU{cpu: cpu[0], mem: mem[0]}
 	sys.spec = &machine.Spec{

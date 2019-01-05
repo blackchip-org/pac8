@@ -30,7 +30,9 @@ var layouts = namco.Layouts{
 		PixelReader:  pixelReader,
 		BytesPerCell: 64,
 	},
-	VideoAddr: 0x4000,
+	VideoAddr:      0x4000,
+	PaletteEntries: 64,
+	PaletteColors:  4,
 }
 
 var spritePixels = [][]int{

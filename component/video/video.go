@@ -4,6 +4,8 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
+type Color [4]int
+
 type Display interface {
 	Render()
 }

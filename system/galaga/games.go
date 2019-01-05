@@ -18,6 +18,9 @@ func NewGalaga(ctx app.SDLContext) (machine.System, error) {
 	tiles := l.Load("07m_g08.bin", "62f1279a784ab2f8218c4137c7accda00e6a3490")
 	sprites0 := l.Load("07e_g10.bin", "e697c180178cabd1d32483c5d8889a40633f7857")
 	sprites1 := l.Load("07h_g09.bin", "c340ed8c25e0979629a9a1730edc762bd72d0cff")
+	palette := l.Load("5n.bin", "1a6dea13b4af155d9cb5b999a75d4f1eb9c71346")
+	color := l.Load("2n.bin", "7323084320bb61ae1530d916f5edd8835d4d2461")
+
 	empty := memory.NewNull(0x1000)
 
 	sm := memory.NewBlockMapper()
@@ -28,6 +31,8 @@ func NewGalaga(ctx app.SDLContext) (machine.System, error) {
 	vrom := namco.VideoROM{
 		Tiles:   tiles,
 		Sprites: sprites,
+		Palette: palette,
+		Color:   color,
 	}
 
 	if err := l.Error(); err != nil {

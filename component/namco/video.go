@@ -9,7 +9,7 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-type Palette [4][]uint8
+type Palette [][]uint8
 
 const (
 	w = int32(224)
@@ -21,7 +21,7 @@ type SpriteCoord struct {
 	Y uint8
 }
 
-var VisPalette = [4][]uint8{
+var VisPalette = [][]uint8{
 	[]uint8{0, 0, 0, 0},
 	[]uint8{128, 128, 128, 255},
 	[]uint8{192, 192, 192, 255},
@@ -91,17 +91,19 @@ type Video struct {
 	tiles        [64]*Sheet
 	sprites      [64]*Sheet
 	colors       [16][]uint8
-	palettes     [64]Palette
+	palettes     []Palette
 	frame        video.RenderFrame
 	frameFill    sdl.Rect
 	scanLines    *sdl.Texture
 }
 
 type Layouts struct {
-	Tile      SheetLayout
-	Sprite    SheetLayout
-	VideoAddr uint16
-	Hack      bool
+	Tile           SheetLayout
+	Sprite         SheetLayout
+	VideoAddr      uint16
+	PaletteEntries int
+	PaletteColors  int
+	Hack           bool
 }
 
 type VideoROM struct {
@@ -113,9 +115,10 @@ type VideoROM struct {
 
 func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM, layouts Layouts) (*Video, error) {
 	v := &Video{
-		r:       r,
-		mem:     mem,
-		layouts: layouts,
+		r:        r,
+		mem:      mem,
+		layouts:  layouts,
+		palettes: make([]Palette, layouts.PaletteEntries, layouts.PaletteEntries),
 	}
 	if r == nil {
 		return v, nil
@@ -139,7 +142,7 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom VideoROM, layouts Layouts)
 	v.colorTable(rom.Color)
 	v.paletteTable(rom.Palette)
 
-	for pal := 0; pal < 64; pal++ {
+	for pal := 0; pal < v.layouts.PaletteEntries; pal++ {
 		tiles, err := NewSheet(r, rom.Tiles, layouts.Tile, v.palettes[pal])
 		if err != nil {
 			return nil, err
@@ -205,7 +208,8 @@ func (v *Video) renderTiles() {
 
 			caddr := addr + 0x0400
 			// Only 64 palettes, strip out the higher bits
-			pal := v.mem.Load(caddr) & 0x3f
+			// pal := v.mem.Load(caddr) & 0x3f
+			pal := v.mem.Load(caddr) & 0x1f
 			v.r.Copy(v.tiles[pal].Texture, &src, &dest)
 		}
 	}
@@ -283,20 +287,18 @@ func (v *Video) colorTable(mem memory.Memory) {
 }
 
 func (v *Video) paletteTable(mem memory.Memory) {
-	for pal := 0; pal < 64; pal++ {
+	for pal := 0; pal < v.layouts.PaletteEntries; pal++ {
 		// FIXME: Galaga testing
 		if v.layouts.Hack {
 			v.palettes[pal] = VisPalette
 			continue
 		}
-		addr := pal * 4
-		var entry [4][]uint8
-
-		entry[0] = v.colors[mem.Load(uint16(addr+0))]
-		entry[1] = v.colors[mem.Load(uint16(addr+1))]
-		entry[2] = v.colors[mem.Load(uint16(addr+2))]
-		entry[3] = v.colors[mem.Load(uint16(addr+3))]
-
+		addr := pal * v.layouts.PaletteColors
+		entry := make([][]uint8, v.layouts.PaletteColors, v.layouts.PaletteColors)
+		for i := 0; i < v.layouts.PaletteColors; i++ {
+			ref := mem.Load(uint16(addr+i)) & 0x0f
+			entry[i] = v.colors[ref]
+		}
 		v.palettes[pal] = entry
 	}
 }
