@@ -1,18 +1,17 @@
 package machine
 
 import (
-	"encoding/gob"
 	"fmt"
 	"log"
 	"os"
 	"time"
 
-	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/audio"
 	"github.com/blackchip-org/pac8/component/input"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
 	"github.com/blackchip-org/pac8/component/video"
+	"github.com/blackchip-org/pac8/pkg/util/state"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -51,8 +50,8 @@ type Spec struct {
 
 type System interface {
 	Spec() *Spec
-	Save(component.Encoder) error
-	Restore(component.Decoder) error
+	Save(*state.Encoder)
+	Restore(*state.Decoder)
 }
 
 type CmdType int
@@ -206,9 +205,10 @@ func (m *Mach) save(path string) {
 		m.EventCallback(ErrorEvent, fmt.Sprintf("unable to create snapshot: %v", err))
 		return
 	}
-	enc := gob.NewEncoder(out)
-	if err := m.System.Save(enc); err != nil {
-		m.EventCallback(ErrorEvent, fmt.Sprintf("unable to save snapshot: %v", err))
+	enc := state.NewEncoder(out)
+	m.System.Save(enc)
+	if enc.Err != nil {
+		m.EventCallback(ErrorEvent, fmt.Sprintf("unable to save snapshot: %v", enc.Err))
 		return
 	}
 }
@@ -219,9 +219,10 @@ func (m *Mach) restore(path string) {
 		m.EventCallback(ErrorEvent, fmt.Sprintf("unable to open snapshot: %v", err))
 		return
 	}
-	dec := gob.NewDecoder(out)
-	if err := m.System.Restore(dec); err != nil {
-		m.EventCallback(ErrorEvent, fmt.Sprintf("unable to load snapshot: %v", err))
+	dec := state.NewDecoder(out)
+	m.System.Restore(dec)
+	if dec.Err != nil {
+		m.EventCallback(ErrorEvent, fmt.Sprintf("unable to load snapshot: %v", dec.Err))
 		return
 	}
 }

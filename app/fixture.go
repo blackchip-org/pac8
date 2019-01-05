@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/audio"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
 	"github.com/blackchip-org/pac8/component/video"
 	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/pkg/util/state"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -85,13 +85,9 @@ func (c *fixtureCPU) registers() map[string]proc.Value {
 	}
 }
 
-func (c *fixtureCPU) Save(enc component.Encoder) error {
-	return nil
-}
+func (c *fixtureCPU) Save(*state.Encoder) {}
 
-func (c *fixtureCPU) Restore(dec component.Decoder) error {
-	return nil
-}
+func (c *fixtureCPU) Restore(*state.Decoder) {}
 
 func fixtureReader(e proc.Eval) proc.Statement {
 	e.Statement.Address = e.Cursor.Pos
@@ -154,13 +150,9 @@ func (f fixtureSys) Spec() *machine.Spec {
 	}
 }
 
-func (f fixtureSys) Save(component.Encoder) error {
-	return nil
-}
+func (f fixtureSys) Save(*state.Encoder) {}
 
-func (f fixtureSys) Restore(component.Decoder) error {
-	return nil
-}
+func (f fixtureSys) Restore(*state.Decoder) {}
 
 func newFixtureCab(renderer *sdl.Renderer) machine.System {
 	sys := &fixtureSys{}

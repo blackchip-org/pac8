@@ -7,14 +7,13 @@ import (
 	"time"
 
 	"github.com/blackchip-org/pac8/bits"
-	"github.com/blackchip-org/pac8/check"
-	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
 	"github.com/blackchip-org/pac8/component/proc/z80"
 	"github.com/blackchip-org/pac8/machine"
 	"github.com/blackchip-org/pac8/pkg/namco"
 	"github.com/blackchip-org/pac8/pkg/pac8"
+	"github.com/blackchip-org/pac8/pkg/util/state"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -189,20 +188,16 @@ func mapRegisters(r *Registers, io memory.IO, v *namco.Video, a *Audio) {
 	}
 }
 
-func (p *Pacman) Save(enc component.Encoder) error {
-	e := check.ForError()
-	e.Check(p.spec.CPU[0].Save(enc))
-	e.Check(p.spec.Mem[0].Save(enc))
-	e.Check(enc.Encode(p.regs))
-	return e.Error
+func (p *Pacman) Save(enc *state.Encoder) {
+	p.spec.CPU[0].Save(enc)
+	p.spec.Mem[0].Save(enc)
+	enc.Encode(p.regs)
 }
 
-func (p *Pacman) Restore(dec component.Decoder) error {
-	e := check.ForError()
-	e.Check(p.spec.CPU[0].Restore(dec))
-	e.Check(p.spec.Mem[0].Restore(dec))
-	e.Check(dec.Decode(&p.regs))
-	return e.Error
+func (p *Pacman) Restore(dec *state.Decoder) {
+	p.spec.CPU[0].Restore(dec)
+	p.spec.Mem[0].Restore(dec)
+	dec.Decode(&p.regs)
 }
 
 func (p *Pacman) handleInput(m *machine.Mach) {

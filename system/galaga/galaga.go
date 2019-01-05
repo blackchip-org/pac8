@@ -5,12 +5,12 @@ import (
 	"time"
 
 	"github.com/blackchip-org/pac8/bits"
-	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
 	"github.com/blackchip-org/pac8/component/proc/z80"
 	"github.com/blackchip-org/pac8/machine"
 	"github.com/blackchip-org/pac8/pkg/pac8"
+	"github.com/blackchip-org/pac8/pkg/util/state"
 )
 
 type Galaga struct {
@@ -107,13 +107,9 @@ func (g Galaga) Spec() *machine.Spec {
 	return g.spec
 }
 
-func (g *Galaga) Save(enc component.Encoder) error {
-	return nil
-}
+func (g *Galaga) Save(enc *state.Encoder) {}
 
-func (g *Galaga) Restore(dec component.Decoder) error {
-	return nil
-}
+func (g *Galaga) Restore(dec *state.Decoder) {}
 
 func mapRegisters(r *Registers, io memory.IO) {
 	pm := memory.NewPortMapper(io)
@@ -165,13 +161,9 @@ func (h HackCPU) Info() proc.Info {
 	}
 }
 
-func (h HackCPU) Save(component.Encoder) error {
-	return nil
-}
+func (h HackCPU) Save(*state.Encoder) {}
 
-func (h HackCPU) Restore(component.Decoder) error {
-	return nil
-}
+func (h HackCPU) Restore(*state.Decoder) {}
 
 func (h HackCPU) String() string {
 	return ""

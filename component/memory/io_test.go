@@ -2,10 +2,10 @@ package memory
 
 import (
 	"bytes"
-	"encoding/gob"
 	"testing"
 
 	. "github.com/blackchip-org/pac8/pkg/util/expect"
+	"github.com/blackchip-org/pac8/pkg/util/state"
 )
 
 func TestIONotMapped(t *testing.T) {
@@ -49,8 +49,8 @@ func TestIOMappedMulti(t *testing.T) {
 
 func TestIOSaveRestore(t *testing.T) {
 	var buf bytes.Buffer
-	enc := gob.NewEncoder(&buf)
-	dec := gob.NewDecoder(&buf)
+	enc := state.NewEncoder(&buf)
+	dec := state.NewDecoder(&buf)
 	var ports1, ports2 [3]uint8
 	newMemory := func(ports *[3]uint8) Memory {
 		io := NewIO(2)

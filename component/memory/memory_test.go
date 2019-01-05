@@ -2,11 +2,11 @@ package memory
 
 import (
 	"bytes"
-	"encoding/gob"
 	"fmt"
 	"testing"
 
 	. "github.com/blackchip-org/pac8/pkg/util/expect"
+	"github.com/blackchip-org/pac8/pkg/util/state"
 )
 
 func ExampleNewPageMapped() {
@@ -60,8 +60,8 @@ func TestPageMappedLoad(t *testing.T) {
 
 func TestSaveRestoreRAM(t *testing.T) {
 	var buf bytes.Buffer
-	enc := gob.NewEncoder(&buf)
-	dec := gob.NewDecoder(&buf)
+	enc := state.NewEncoder(&buf)
+	dec := state.NewDecoder(&buf)
 
 	ram1 := NewRAM(0x1000)
 	ram1.Store(0x123, 0xab)
@@ -79,8 +79,8 @@ func TestSaveRestoreRAM(t *testing.T) {
 
 func TestSaveRestoreMapped(t *testing.T) {
 	var buf bytes.Buffer
-	enc := gob.NewEncoder(&buf)
-	dec := gob.NewDecoder(&buf)
+	enc := state.NewEncoder(&buf)
+	dec := state.NewDecoder(&buf)
 
 	newMemory := func() Memory {
 		ram1 := NewRAM(0x1000)

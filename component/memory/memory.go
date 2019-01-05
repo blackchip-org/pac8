@@ -2,7 +2,7 @@ package memory
 
 import (
 	"github.com/blackchip-org/pac8/bits"
-	"github.com/blackchip-org/pac8/component"
+	"github.com/blackchip-org/pac8/pkg/util/state"
 )
 
 // Memory is a chunk of 8-bit values accessed by a 16-bit address.
@@ -16,9 +16,9 @@ type Memory interface {
 	// Length is the number of 8-bit values in this memory.
 	Length() int
 
-	Save(component.Encoder) error
+	Save(*state.Encoder)
 
-	Restore(component.Decoder) error
+	Restore(*state.Decoder)
 }
 
 // Block is a chunck of memory found at a specific address.
@@ -57,12 +57,12 @@ func (r ram) Length() int {
 	return len(r.bytes)
 }
 
-func (r ram) Save(enc component.Encoder) error {
-	return enc.Encode(r.bytes)
+func (r ram) Save(enc *state.Encoder) {
+	enc.Encode(r.bytes)
 }
 
-func (r ram) Restore(dec component.Decoder) error {
-	return dec.Decode(&r.bytes)
+func (r ram) Restore(dec *state.Decoder) {
+	dec.Decode(&r.bytes)
 }
 
 type rom struct {
@@ -87,13 +87,9 @@ func (r rom) Length() int {
 	return len(r.bytes)
 }
 
-func (r rom) Save(enc component.Encoder) error {
-	return nil
-}
+func (r rom) Save(enc *state.Encoder) {}
 
-func (r rom) Restore(dec component.Decoder) error {
-	return nil
-}
+func (r rom) Restore(dec *state.Decoder) {}
 
 type null struct {
 	length int
@@ -115,13 +111,9 @@ func (n null) Length() int {
 	return n.length
 }
 
-func (n null) Save(enc component.Encoder) error {
-	return nil
-}
+func (n null) Save(enc *state.Encoder) {}
 
-func (n null) Restore(dec component.Decoder) error {
-	return nil
-}
+func (n null) Restore(dec *state.Decoder) {}
 
 type pageMap struct {
 	mem    Memory
@@ -177,22 +169,16 @@ func (m pageMapped) Length() int {
 	return 0x10000
 }
 
-func (m pageMapped) Save(enc component.Encoder) error {
+func (m pageMapped) Save(enc *state.Encoder) {
 	for _, b := range m.blocks {
-		if err := b.Mem.Save(enc); err != nil {
-			return err
-		}
+		b.Mem.Save(enc)
 	}
-	return nil
 }
 
-func (m pageMapped) Restore(dec component.Decoder) error {
+func (m pageMapped) Restore(dec *state.Decoder) {
 	for _, b := range m.blocks {
-		if err := b.Mem.Restore(dec); err != nil {
-			return err
-		}
+		b.Mem.Restore(dec)
 	}
-	return nil
 }
 
 type BlockMapper struct {

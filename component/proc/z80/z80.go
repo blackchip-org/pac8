@@ -4,10 +4,9 @@ import (
 	"fmt"
 
 	"github.com/blackchip-org/pac8/bits"
-	"github.com/blackchip-org/pac8/check"
-	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc"
+	"github.com/blackchip-org/pac8/pkg/util/state"
 )
 
 const (
@@ -261,76 +260,71 @@ func (cpu *CPU) registers() map[string]proc.Value {
 	}
 }
 
-func (c *CPU) Save(enc component.Encoder) error {
-	e := check.ForError()
-	e.Check(c.Ports.Save(enc))
+func (c *CPU) Save(enc *state.Encoder) {
+	c.Ports.Save(enc)
 
-	e.Check(enc.Encode(c.A))
-	e.Check(enc.Encode(c.F))
-	e.Check(enc.Encode(c.B))
-	e.Check(enc.Encode(c.C))
-	e.Check(enc.Encode(c.D))
-	e.Check(enc.Encode(c.H))
-	e.Check(enc.Encode(c.L))
+	enc.Encode(c.A)
+	enc.Encode(c.F)
+	enc.Encode(c.B)
+	enc.Encode(c.C)
+	enc.Encode(c.D)
+	enc.Encode(c.H)
+	enc.Encode(c.L)
 
-	e.Check(enc.Encode(c.A1))
-	e.Check(enc.Encode(c.F1))
-	e.Check(enc.Encode(c.B1))
-	e.Check(enc.Encode(c.C1))
-	e.Check(enc.Encode(c.D1))
-	e.Check(enc.Encode(c.H1))
-	e.Check(enc.Encode(c.L1))
+	enc.Encode(c.A1)
+	enc.Encode(c.F1)
+	enc.Encode(c.B1)
+	enc.Encode(c.C1)
+	enc.Encode(c.D1)
+	enc.Encode(c.H1)
+	enc.Encode(c.L1)
 
-	e.Check(enc.Encode(c.I))
-	e.Check(enc.Encode(c.R))
-	e.Check(enc.Encode(c.IXH))
-	e.Check(enc.Encode(c.IXL))
-	e.Check(enc.Encode(c.IYH))
-	e.Check(enc.Encode(c.IYL))
-	e.Check(enc.Encode(c.SP))
-	e.Check(enc.Encode(c.pc))
+	enc.Encode(c.I)
+	enc.Encode(c.R)
+	enc.Encode(c.IXH)
+	enc.Encode(c.IXL)
+	enc.Encode(c.IYH)
+	enc.Encode(c.IYL)
+	enc.Encode(c.SP)
+	enc.Encode(c.pc)
 
-	e.Check(enc.Encode(c.IFF1))
-	e.Check(enc.Encode(c.IFF2))
-	e.Check(enc.Encode(c.IM))
-	e.Check(enc.Encode(c.Halt))
+	enc.Encode(c.IFF1)
+	enc.Encode(c.IFF2)
+	enc.Encode(c.IM)
+	enc.Encode(c.Halt)
 
-	return e.Error
 }
 
-func (c *CPU) Restore(dec component.Decoder) error {
-	e := check.ForError()
-	e.Check(c.Ports.Restore(dec))
+func (c *CPU) Restore(dec *state.Decoder) {
+	c.Ports.Restore(dec)
 
-	e.Check(dec.Decode(&c.A))
-	e.Check(dec.Decode(&c.F))
-	e.Check(dec.Decode(&c.B))
-	e.Check(dec.Decode(&c.C))
-	e.Check(dec.Decode(&c.D))
-	e.Check(dec.Decode(&c.H))
-	e.Check(dec.Decode(&c.L))
+	dec.Decode(&c.A)
+	dec.Decode(&c.F)
+	dec.Decode(&c.B)
+	dec.Decode(&c.C)
+	dec.Decode(&c.D)
+	dec.Decode(&c.H)
+	dec.Decode(&c.L)
 
-	e.Check(dec.Decode(&c.A1))
-	e.Check(dec.Decode(&c.F1))
-	e.Check(dec.Decode(&c.B1))
-	e.Check(dec.Decode(&c.C1))
-	e.Check(dec.Decode(&c.D1))
-	e.Check(dec.Decode(&c.H1))
-	e.Check(dec.Decode(&c.L1))
+	dec.Decode(&c.A1)
+	dec.Decode(&c.F1)
+	dec.Decode(&c.B1)
+	dec.Decode(&c.C1)
+	dec.Decode(&c.D1)
+	dec.Decode(&c.H1)
+	dec.Decode(&c.L1)
 
-	e.Check(dec.Decode(&c.I))
-	e.Check(dec.Decode(&c.R))
-	e.Check(dec.Decode(&c.IXH))
-	e.Check(dec.Decode(&c.IXL))
-	e.Check(dec.Decode(&c.IYH))
-	e.Check(dec.Decode(&c.IYL))
-	e.Check(dec.Decode(&c.SP))
-	e.Check(dec.Decode(&c.pc))
+	dec.Decode(&c.I)
+	dec.Decode(&c.R)
+	dec.Decode(&c.IXH)
+	dec.Decode(&c.IXL)
+	dec.Decode(&c.IYH)
+	dec.Decode(&c.IYL)
+	dec.Decode(&c.SP)
+	dec.Decode(&c.pc)
 
-	e.Check(dec.Decode(&c.IFF1))
-	e.Check(dec.Decode(&c.IFF2))
-	e.Check(dec.Decode(&c.IM))
-	e.Check(dec.Decode(&c.Halt))
-
-	return e.Error
+	dec.Decode(&c.IFF1)
+	dec.Decode(&c.IFF2)
+	dec.Decode(&c.IM)
+	dec.Decode(&c.Halt)
 }

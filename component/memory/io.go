@@ -3,7 +3,7 @@ package memory
 import (
 	"fmt"
 
-	"github.com/blackchip-org/pac8/component"
+	"github.com/blackchip-org/pac8/pkg/util/state"
 )
 
 // Port represents an input/output port between the CPU and other devices.
@@ -69,36 +69,26 @@ func (i io) Length() int {
 	return len(i.ports)
 }
 
-func (i io) Save(enc component.Encoder) error {
+func (i io) Save(enc *state.Encoder) {
 	for _, p := range i.ports {
 		if p.Read != nil {
-			if err := enc.Encode(*p.Read); err != nil {
-				return err
-			}
+			enc.Encode(*p.Read)
 		}
 		if p.Write != nil {
-			if err := enc.Encode(*p.Write); err != nil {
-				return err
-			}
+			enc.Encode(*p.Write)
 		}
 	}
-	return nil
 }
 
-func (i io) Restore(dec component.Decoder) error {
+func (i io) Restore(dec *state.Decoder) {
 	for _, p := range i.ports {
 		if p.Read != nil {
-			if err := dec.Decode(p.Read); err != nil {
-				return err
-			}
+			dec.Decode(p.Read)
 		}
 		if p.Write != nil {
-			if err := dec.Decode(p.Write); err != nil {
-				return err
-			}
+			dec.Decode(p.Write)
 		}
 	}
-	return nil
 }
 
 // Port returns the read/write values for port n.
