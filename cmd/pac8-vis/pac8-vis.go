@@ -8,7 +8,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/blackchip-org/pac8/component/video"
+	"github.com/blackchip-org/pac8/pkg/video"
 	"github.com/blackchip-org/pac8/system/galaga"
 	"github.com/blackchip-org/pac8/system/pacman"
 	"github.com/veandco/go-sdl2/sdl"

@@ -1,9 +1,9 @@
 package pacman
 
 import (
-	"github.com/blackchip-org/pac8/bits"
-	"github.com/blackchip-org/pac8/component/audio"
-	"github.com/blackchip-org/pac8/component/memory"
+	"github.com/blackchip-org/pac8/pkg/audio"
+	"github.com/blackchip-org/pac8/pkg/memory"
+	"github.com/blackchip-org/pac8/pkg/util/bits"
 	"github.com/veandco/go-sdl2/sdl"
 )
 

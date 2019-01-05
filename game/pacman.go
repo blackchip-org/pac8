@@ -1,8 +1,8 @@
 package game
 
 import (
-	"github.com/blackchip-org/pac8/component/memory"
-	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/pkg/machine"
+	"github.com/blackchip-org/pac8/pkg/memory"
 	"github.com/blackchip-org/pac8/pkg/pac8"
 	"github.com/blackchip-org/pac8/system/pacman"
 )

@@ -1,8 +1,8 @@
 package pac8
 
 import (
-	"github.com/blackchip-org/pac8/component/memory"
-	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/pkg/machine"
+	"github.com/blackchip-org/pac8/pkg/memory"
 	"github.com/veandco/go-sdl2/sdl"
 )
 

@@ -8,7 +8,7 @@ import (
 	"runtime/pprof"
 
 	"github.com/blackchip-org/pac8/app"
-	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/pkg/machine"
 	"github.com/blackchip-org/pac8/pkg/pac8"
 	"github.com/veandco/go-sdl2/sdl"
 )

@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/blackchip-org/pac8/component/audio"
-	"github.com/blackchip-org/pac8/component/memory"
-	"github.com/blackchip-org/pac8/component/proc"
-	"github.com/blackchip-org/pac8/component/video"
-	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/pkg/audio"
+	"github.com/blackchip-org/pac8/pkg/machine"
+	"github.com/blackchip-org/pac8/pkg/memory"
+	"github.com/blackchip-org/pac8/pkg/proc"
 	"github.com/blackchip-org/pac8/pkg/util/state"
+	"github.com/blackchip-org/pac8/pkg/video"
 	"github.com/veandco/go-sdl2/sdl"
 )
 

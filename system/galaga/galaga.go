@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/blackchip-org/pac8/bits"
-	"github.com/blackchip-org/pac8/component/memory"
-	"github.com/blackchip-org/pac8/component/proc"
-	"github.com/blackchip-org/pac8/component/proc/z80"
-	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/pkg/machine"
+	"github.com/blackchip-org/pac8/pkg/memory"
 	"github.com/blackchip-org/pac8/pkg/pac8"
+	"github.com/blackchip-org/pac8/pkg/proc"
+	"github.com/blackchip-org/pac8/pkg/util/bits"
 	"github.com/blackchip-org/pac8/pkg/util/state"
+	"github.com/blackchip-org/pac8/pkg/z80"
 )
 
 type Galaga struct {

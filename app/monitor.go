@@ -14,9 +14,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/blackchip-org/pac8/component/memory"
-	"github.com/blackchip-org/pac8/component/proc"
-	"github.com/blackchip-org/pac8/machine"
+	"github.com/blackchip-org/pac8/pkg/machine"
+	"github.com/blackchip-org/pac8/pkg/memory"
+	"github.com/blackchip-org/pac8/pkg/proc"
 	"github.com/chzyer/readline"
 )
 
