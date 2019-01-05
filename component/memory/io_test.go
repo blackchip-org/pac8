@@ -5,7 +5,7 @@ import (
 	"encoding/gob"
 	"testing"
 
-	. "github.com/blackchip-org/pac8/expect"
+	. "github.com/blackchip-org/pac8/pkg/util/expect"
 )
 
 func TestIONotMapped(t *testing.T) {

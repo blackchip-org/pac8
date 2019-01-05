@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	. "github.com/blackchip-org/pac8/expect"
+	. "github.com/blackchip-org/pac8/pkg/util/expect"
 )
 
 func resetReadFile() {

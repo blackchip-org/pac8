@@ -7,7 +7,7 @@ import (
 	"github.com/blackchip-org/pac8/component"
 	"github.com/blackchip-org/pac8/component/memory"
 	"github.com/blackchip-org/pac8/component/proc/z80/internal/fuse"
-	. "github.com/blackchip-org/pac8/expect"
+	. "github.com/blackchip-org/pac8/pkg/util/expect"
 )
 
 // Set a test name here to test a single test

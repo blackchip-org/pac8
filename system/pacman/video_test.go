@@ -6,7 +6,7 @@ import (
 
 	"github.com/blackchip-org/pac8/bits"
 	"github.com/blackchip-org/pac8/component/memory"
-	. "github.com/blackchip-org/pac8/expect"
+	. "github.com/blackchip-org/pac8/pkg/util/expect"
 )
 
 func TestPixelReader(t *testing.T) {
