@@ -4,7 +4,7 @@ Z80 tests designed for the Free Unix Spectrum Emulator (FUSE).
 
 Test files can be found in the resource pack at:
 
-- data/fuse
+- fuse
     - tests.expected
     - <nolink>tests.in</nolink>
 

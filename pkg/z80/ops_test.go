@@ -7,7 +7,6 @@ import (
 	"github.com/blackchip-org/pac8/pkg/util/bits"
 	. "github.com/blackchip-org/pac8/pkg/util/expect"
 	"github.com/blackchip-org/pac8/pkg/util/state"
-	"github.com/blackchip-org/pac8/pkg/z80/internal/fuse"
 )
 
 // Set a test name here to test a single test
@@ -17,14 +16,14 @@ var testSingle = ""
 // ADC/SBC: Check that both bytes are zero for zero flag when doing 16-bits
 
 func TestOps(t *testing.T) {
-	for _, test := range fuse.Tests {
+	for _, test := range fuseIn {
 		if testSingle != "" && test.Name != testSingle {
 			continue
 		}
 		t.Run(test.Name, func(t *testing.T) {
 			cpu := load(test)
 			i := 0
-			setupPorts(cpu, fuse.Expected[test.Name])
+			setupPorts(cpu, fuseExpected[test.Name])
 			for {
 				cpu.Next()
 				if test.Name == "dd00" {
@@ -48,40 +47,40 @@ func TestOps(t *testing.T) {
 				}
 				i++
 			}
-			expected := load(fuse.Expected[test.Name])
+			expected := load(fuseExpected[test.Name])
 
-			testMemory(t, cpu, fuse.Expected[test.Name])
+			testMemory(t, cpu, fuseExpected[test.Name])
 			WithFormat(t, "\n%v").Expect(cpu.String()).ToBe(expected.String())
-			testHalt(t, cpu, fuse.Expected[test.Name])
-			testPorts(t, cpu, fuse.Expected[test.Name])
+			testHalt(t, cpu, fuseExpected[test.Name])
+			testPorts(t, cpu, fuseExpected[test.Name])
 		})
 	}
 
 }
 
-func testMemory(t *testing.T, cpu *CPU, expected fuse.Test) {
+func testMemory(t *testing.T, cpu *CPU, expected fuseTest) {
 	diff, equal := memory.Verify(cpu.mem, expected.Snapshots)
 	if !equal {
 		t.Fatalf("\nmemory mismatch (have, want): \n%v", diff.String())
 	}
 }
 
-func testHalt(t *testing.T, cpu *CPU, expected fuse.Test) {
+func testHalt(t *testing.T, cpu *CPU, expected fuseTest) {
 	WithFormat(t, "halt(%v)").Expect(cpu.Halt).ToBe(expected.Halt != 0)
 }
 
-func setupPorts(cpu *CPU, expected fuse.Test) {
+func setupPorts(cpu *CPU, expected fuseTest) {
 	cpu.Ports = newMockIO(expected.PortReads)
 }
 
-func testPorts(t *testing.T, cpu *CPU, expected fuse.Test) {
+func testPorts(t *testing.T, cpu *CPU, expected fuseTest) {
 	diff, ok := memory.Verify(cpu.Ports, expected.PortWrites)
 	if !ok {
 		t.Fatalf("\n write ports mismatch: \n%v", diff.String())
 	}
 }
 
-func load(test fuse.Test) *CPU {
+func load(test fuseTest) *CPU {
 	mem := memory.NewRAM(0x10000)
 	cpu := New(mem)
 
@@ -166,3 +165,30 @@ func (m *mockIO) Port(n int) *memory.Port {
 func (m *mockIO) Save(_ *state.Encoder) {}
 
 func (m *mockIO) Restore(_ *state.Decoder) {}
+
+type fuseTest struct {
+	Name    string
+	AF      uint16
+	BC      uint16
+	DE      uint16
+	HL      uint16
+	AF1     uint16
+	BC1     uint16
+	DE1     uint16
+	HL1     uint16
+	IX      uint16
+	IY      uint16
+	SP      uint16
+	PC      uint16
+	I       uint8
+	R       uint8
+	IFF1    int
+	IFF2    int
+	IM      int
+	Halt    int
+	TStates int
+
+	Snapshots  []memory.Snapshot
+	PortReads  []memory.Snapshot
+	PortWrites []memory.Snapshot
+}
