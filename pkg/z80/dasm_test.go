@@ -6,11 +6,16 @@ import (
 
 	"github.com/blackchip-org/pac8/pkg/memory"
 	. "github.com/blackchip-org/pac8/pkg/util/expect"
-	"github.com/blackchip-org/pac8/pkg/z80/internal/dasm"
 )
 
+type harstonTest struct {
+	Name  string
+	Op    string
+	Bytes []uint8
+}
+
 func TestDasm(t *testing.T) {
-	for _, test := range dasm.Tests {
+	for _, test := range harstonTests {
 		t.Run(test.Name, func(t *testing.T) {
 			mem := memory.NewRAM(0x20)
 			c := memory.NewCursor(mem)

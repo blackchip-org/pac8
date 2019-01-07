@@ -5,7 +5,7 @@ Undocumented Opcodes" written by J.G. Harston.
 
 The document is parsed from the following file in the resource pack:
 
-- data/harston
+- harston
     - z80oplist.txt
 
 Document downloaded from here:
@@ -20,7 +20,7 @@ are in the following two line format:
 
 Each test is delimited by a blank line.
 
-Generate `dasm.go` and `harston.go` with:
+Generate `dasm.go` and `dasm_harston_test.go` with:
 
 ```bash
 go generate
