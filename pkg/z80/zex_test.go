@@ -1,28 +1,18 @@
 // +build fn
 
-/*
-Running the full zexdoc test takes about 7 minutes. This test instead
-breaks up each test into an individual run. The HL register is loaded
-with the address of the test and the program counter is set to the
-beginning of the normal test loop. Execution is stopped when the
-program counter returns to the top of the loop. Output is then checked
-for "ERROR" to determine if the test passes or fails.
-*/
-
-package zex
+package z80
 
 import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
 	"log"
+	"path/filepath"
 	"strings"
 	"testing"
 
-	"github.com/blackchip-org/pac8/app"
 	"github.com/blackchip-org/pac8/pkg/memory"
 	"github.com/blackchip-org/pac8/pkg/util/bits"
-	"github.com/blackchip-org/pac8/pkg/z80"
 )
 
 var zexdocTests = []string{
@@ -99,7 +89,7 @@ var zexdoc []byte
 
 func init() {
 	var err error
-	zexdocFile := app.PathFor(app.Ext, "zex", "zexdoc.com")
+	zexdocFile := filepath.Join("..", "..", "ext", "zex", "zexdoc.com")
 	zexdoc, err = ioutil.ReadFile(zexdocFile)
 	if err != nil {
 		log.Panicf("unable to read %v: %v", zexdocFile, err)
@@ -140,7 +130,7 @@ const loopStart = uint16(0x0122)
 
 type zexRunner struct {
 	mem      memory.Memory
-	cpu      *z80.CPU
+	cpu      *CPU
 	out      bytes.Buffer
 	testAddr uint16
 }
@@ -150,7 +140,7 @@ func newRunner(code []byte, addr uint16) *zexRunner {
 	// https://floooh.github.io/2016/07/12/z80-rust-ms1.html
 	mem := memory.NewRAM(0x10000)
 	memory.ImportBinary(mem, code, 0x100)
-	c := z80.New(mem)
+	c := New(mem)
 	zr := &zexRunner{mem: mem, cpu: c, testAddr: addr}
 	zr.Reset()
 	return zr

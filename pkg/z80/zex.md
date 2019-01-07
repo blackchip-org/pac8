@@ -4,7 +4,7 @@ The Z80 Instruction Exerciser written by Frank D. Cringle.
 
 Source code and compiled binaries can be found in the resource pack at:
 
-- data/zex
+- zex
     - <nolink>zexall.com</nolink>
     - zexall.z80
     - <nolink>zexdoc.com</nolink>
@@ -26,11 +26,12 @@ Helpful references:
 Run the functional test with:
 
 ```bash
-go test -v -tags fn
+go test -v -tags fn -timeout 60m
 ```
 
-The test can take up to ten minutes to complete. The following tests
-are currently failing:
+Running the full zexdoc can take more than 10 minutes. This test instead breaks up each test into an individual run. The HL register is loaded with the address of the test and the program counter is set to the beginning of the normal test loop. Execution is stopped when the program counter returns to the top of the loop. Output is then checked for "ERROR" to determine if the test passes or fails.
+
+The following tests are currently failing:
 
 - TestZexdoc/cpd1: `cpd<r>`
 - TestZexdoc/rot8080: `<rlca,rrca,rla,rra>`
