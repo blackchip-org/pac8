@@ -1,8 +1,11 @@
 .DS_Store
 output
 cpu.prof
-build
+build/*.zip
+build/**/*
+!build/*.sh
 ext
-/rom
+rom/*/*
+!rom/*/*.state
 var
 
