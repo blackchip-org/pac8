@@ -9,8 +9,6 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-type Palette [][]uint8
-
 const (
 	w = int32(224)
 	h = int32(288)
@@ -21,7 +19,7 @@ type SpriteCoord struct {
 	Y uint8
 }
 
-var ViewerPalette = [][]uint8{
+var ViewerPalette = video.Palette{
 	[]uint8{0, 0, 0, 0},
 	[]uint8{128, 128, 128, 255},
 	[]uint8{192, 192, 192, 255},
@@ -38,11 +36,11 @@ type SheetLayout struct {
 	PixelReader  func(memory.Memory, uint16, int) uint8
 }
 
-func NewSheet(r *sdl.Renderer, mem memory.Memory, l SheetLayout, pal Palette) (video.Sheet, error) {
+func NewSheet(r *sdl.Renderer, mem memory.Memory, l SheetLayout, pal video.Palette) (video.Sheet, error) {
 	t, err := r.CreateTexture(sdl.PIXELFORMAT_RGBA8888,
 		sdl.TEXTUREACCESS_TARGET, int32(l.W), int32(l.H))
 	if err != nil {
-		return video.Sheet{}, fmt.Errorf("unable to create tile sheet: %v", err)
+		return video.Sheet{}, fmt.Errorf("unable to create sheet: %v", err)
 	}
 	r.SetRenderTarget(t)
 
@@ -82,8 +80,8 @@ type Video struct {
 	config       Config
 	tiles        [64]video.Sheet
 	sprites      [64]video.Sheet
-	colors       [16][]uint8
-	palettes     []Palette
+	colors       []video.Color
+	palettes     []video.Palette
 	frame        video.RenderFrame
 	frameFill    sdl.Rect
 	scanLines    *sdl.Texture
@@ -103,7 +101,7 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom memory.Set, config Config)
 		r:        r,
 		mem:      mem,
 		config:   config,
-		palettes: make([]Palette, config.PaletteEntries, config.PaletteEntries),
+		palettes: make([]video.Palette, config.PaletteEntries, config.PaletteEntries),
 	}
 	if r == nil {
 		return v, nil
@@ -124,8 +122,8 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom memory.Set, config Config)
 	if err != nil {
 		return nil, err
 	}
-	v.colorTable(rom["color"])
-	v.paletteTable(rom["palette"])
+	v.colors = ColorTable(rom["color"], v.config)
+	v.palettes = PaletteTable(rom["palette"], v.config, v.colors)
 
 	for pal := 0; pal < v.config.PaletteEntries; pal++ {
 		tiles, err := NewSheet(r, rom["tile"], config.TileLayout, v.palettes[pal])
@@ -249,11 +247,12 @@ func (v *Video) renderSprites() {
 	}
 }
 
-func (v *Video) colorTable(mem memory.Memory) {
+func ColorTable(mem memory.Memory, config Config) []video.Color {
 	// FIXME: Galaga testing
-	if v.config.Hack {
-		return
+	if config.Hack {
+		return []video.Color{}
 	}
+	colors := make([]video.Color, 16, 16)
 	for addr := 0; addr < 16; addr++ {
 		r, g, b := uint8(0), uint8(0), uint8(0)
 		c := mem.Load(uint16(addr))
@@ -269,25 +268,28 @@ func (v *Video) colorTable(mem memory.Memory) {
 		if addr == 0 {
 			alpha = 0x00
 		}
-		v.colors[addr] = []uint8{r, g, b, alpha}
+		colors[addr] = []uint8{r, g, b, alpha}
 	}
+	return colors
 }
 
-func (v *Video) paletteTable(mem memory.Memory) {
-	for pal := 0; pal < v.config.PaletteEntries; pal++ {
+func PaletteTable(mem memory.Memory, config Config, colors []video.Color) []video.Palette {
+	palettes := make([]video.Palette, config.PaletteEntries, config.PaletteEntries)
+	for pal := 0; pal < config.PaletteEntries; pal++ {
 		// FIXME: Galaga testing
-		if v.config.Hack {
-			v.palettes[pal] = ViewerPalette
+		if config.Hack {
+			palettes[pal] = ViewerPalette
 			continue
 		}
-		addr := pal * v.config.PaletteColors
-		entry := make([][]uint8, v.config.PaletteColors, v.config.PaletteColors)
-		for i := 0; i < v.config.PaletteColors; i++ {
+		addr := pal * config.PaletteColors
+		entry := make(video.Palette, config.PaletteColors, config.PaletteColors)
+		for i := 0; i < config.PaletteColors; i++ {
 			ref := mem.Load(uint16(addr+i)) & 0x0f
-			entry[i] = v.colors[ref]
+			entry[i] = colors[ref]
 		}
-		v.palettes[pal] = entry
+		palettes[pal] = entry
 	}
+	return palettes
 }
 
 func (v *Video) addr(offset int) uint16 {

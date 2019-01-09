@@ -1,10 +1,13 @@
 package video
 
 import (
+	"fmt"
+
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-type Color [4]int
+type Color []uint8
+type Palette []Color
 
 type Display interface {
 	Render()
@@ -71,4 +74,45 @@ type Sheet struct {
 	CellW   int
 	CellH   int
 	Texture *sdl.Texture
+}
+
+func NewColorSheet(r *sdl.Renderer, palettes []Palette) (Sheet, error) {
+	cellW := 32
+	cellH := 32
+	w := 16 * cellW
+	h := 16 * cellH
+
+	t, err := r.CreateTexture(sdl.PIXELFORMAT_RGBA8888,
+		sdl.TEXTUREACCESS_TARGET, int32(w), int32(h))
+	if err != nil {
+		return Sheet{}, fmt.Errorf("unable to create sheet: %v", err)
+	}
+	r.SetRenderTarget(t)
+
+	x := 0
+	y := 0
+	for _, pal := range palettes {
+		for _, color := range pal {
+			r.SetDrawColorArray(color...)
+			r.FillRect(&sdl.Rect{
+				X: int32(x),
+				Y: int32(y),
+				W: int32(cellW),
+				H: int32(cellH),
+			})
+			x += cellW
+			if x >= w {
+				x = 0
+				y += cellH
+			}
+		}
+	}
+	r.SetRenderTarget(nil)
+	return Sheet{
+		W:       w,
+		H:       h,
+		CellW:   cellW,
+		CellH:   cellH,
+		Texture: t,
+	}, nil
 }

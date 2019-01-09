@@ -45,6 +45,25 @@ var views = map[string]view{
 				namco.ViewerPalette)
 		},
 	},
+	"mspacman:colors": view{
+		system: "mspacman",
+		roms:   game.MsPacMan.ROM,
+		render: func(r *sdl.Renderer, roms memory.Set) (video.Sheet, error) {
+			config := pacman.VideoConfig
+			colors := namco.ColorTable(roms["color"], config)
+			return video.NewColorSheet(r, []video.Palette{colors})
+		},
+	},
+	"mspacman:palettes": view{
+		system: "mspacman",
+		roms:   game.MsPacMan.ROM,
+		render: func(r *sdl.Renderer, roms memory.Set) (video.Sheet, error) {
+			config := pacman.VideoConfig
+			colors := namco.ColorTable(roms["color"], config)
+			palettes := namco.PaletteTable(roms["palette"], config, colors)
+			return video.NewColorSheet(r, palettes)
+		},
+	},
 	"mspacman:sprites": view{
 		system: "mspacman",
 		roms:   game.MsPacMan.ROM,
@@ -63,6 +82,25 @@ var views = map[string]view{
 				roms["tile"],
 				pacman.VideoConfig.TileLayout,
 				namco.ViewerPalette)
+		},
+	},
+	"pacman:colors": view{
+		system: "pacman",
+		roms:   game.PacMan.ROM,
+		render: func(r *sdl.Renderer, roms memory.Set) (video.Sheet, error) {
+			config := pacman.VideoConfig
+			colors := namco.ColorTable(roms["color"], config)
+			return video.NewColorSheet(r, []video.Palette{colors})
+		},
+	},
+	"pacman:palettes": view{
+		system: "pacman",
+		roms:   game.PacMan.ROM,
+		render: func(r *sdl.Renderer, roms memory.Set) (video.Sheet, error) {
+			config := pacman.VideoConfig
+			colors := namco.ColorTable(roms["color"], config)
+			palettes := namco.PaletteTable(roms["palette"], config, colors)
+			return video.NewColorSheet(r, palettes)
 		},
 	},
 	"pacman:sprites": view{
@@ -125,7 +163,7 @@ func main() {
 
 	roms, err := v.roms.Load(app.PathFor(app.ROM, v.system))
 	if err != nil {
-		log.Fatalf("unable to load roms:\n%v\n", roms)
+		log.Fatalf("unable to load roms:\n%v\n", err)
 	}
 
 	if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
