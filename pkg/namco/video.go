@@ -21,7 +21,7 @@ type SpriteCoord struct {
 	Y uint8
 }
 
-var VisPalette = [][]uint8{
+var ViewerPalette = [][]uint8{
 	[]uint8{0, 0, 0, 0},
 	[]uint8{128, 128, 128, 255},
 	[]uint8{192, 192, 192, 255},
@@ -38,19 +38,11 @@ type SheetLayout struct {
 	PixelReader  func(memory.Memory, uint16, int) uint8
 }
 
-type Sheet struct {
-	W       int
-	H       int
-	CellW   int
-	CellH   int
-	Texture *sdl.Texture
-}
-
-func NewSheet(r *sdl.Renderer, mem memory.Memory, l SheetLayout, pal Palette) (*Sheet, error) {
+func NewSheet(r *sdl.Renderer, mem memory.Memory, l SheetLayout, pal Palette) (video.Sheet, error) {
 	t, err := r.CreateTexture(sdl.PIXELFORMAT_RGBA8888,
 		sdl.TEXTUREACCESS_TARGET, int32(l.W), int32(l.H))
 	if err != nil {
-		return nil, fmt.Errorf("unable to create tile sheet: %v", err)
+		return video.Sheet{}, fmt.Errorf("unable to create tile sheet: %v", err)
 	}
 	r.SetRenderTarget(t)
 
@@ -73,7 +65,7 @@ func NewSheet(r *sdl.Renderer, mem memory.Memory, l SheetLayout, pal Palette) (*
 	t.SetBlendMode(sdl.BLENDMODE_BLEND)
 	r.SetRenderTarget(nil)
 
-	return &Sheet{
+	return video.Sheet{
 		W:       l.W,
 		H:       l.H,
 		CellW:   l.CellW,
@@ -87,9 +79,9 @@ type Video struct {
 	SpriteCoords [8]SpriteCoord
 	r            *sdl.Renderer
 	mem          memory.Memory
-	layouts      Layouts
-	tiles        [64]*Sheet
-	sprites      [64]*Sheet
+	config       Config
+	tiles        [64]video.Sheet
+	sprites      [64]video.Sheet
 	colors       [16][]uint8
 	palettes     []Palette
 	frame        video.RenderFrame
@@ -97,21 +89,21 @@ type Video struct {
 	scanLines    *sdl.Texture
 }
 
-type Layouts struct {
-	Tile           SheetLayout
-	Sprite         SheetLayout
+type Config struct {
+	TileLayout     SheetLayout
+	SpriteLayout   SheetLayout
 	VideoAddr      uint16
 	PaletteEntries int
 	PaletteColors  int
 	Hack           bool
 }
 
-func NewVideo(r *sdl.Renderer, mem memory.Memory, rom memory.Set, layouts Layouts) (*Video, error) {
+func NewVideo(r *sdl.Renderer, mem memory.Memory, rom memory.Set, config Config) (*Video, error) {
 	v := &Video{
 		r:        r,
 		mem:      mem,
-		layouts:  layouts,
-		palettes: make([]Palette, layouts.PaletteEntries, layouts.PaletteEntries),
+		config:   config,
+		palettes: make([]Palette, config.PaletteEntries, config.PaletteEntries),
 	}
 	if r == nil {
 		return v, nil
@@ -135,14 +127,14 @@ func NewVideo(r *sdl.Renderer, mem memory.Memory, rom memory.Set, layouts Layout
 	v.colorTable(rom["color"])
 	v.paletteTable(rom["palette"])
 
-	for pal := 0; pal < v.layouts.PaletteEntries; pal++ {
-		tiles, err := NewSheet(r, rom["tile"], layouts.Tile, v.palettes[pal])
+	for pal := 0; pal < v.config.PaletteEntries; pal++ {
+		tiles, err := NewSheet(r, rom["tile"], config.TileLayout, v.palettes[pal])
 		if err != nil {
 			return nil, err
 		}
 		v.tiles[pal] = tiles
 
-		sprites, err := NewSheet(r, rom["sprite"], layouts.Sprite, v.palettes[pal])
+		sprites, err := NewSheet(r, rom["sprite"], config.SpriteLayout, v.palettes[pal])
 		if err != nil {
 			return nil, err
 		}
@@ -166,8 +158,9 @@ func (v *Video) Render() {
 }
 
 func (v *Video) renderTiles() {
-	cellW := v.layouts.Tile.CellW
-	rowCells := v.layouts.Tile.W / cellW
+	layout := v.config.TileLayout
+	cellW := layout.CellW
+	rowCells := layout.W / cellW
 
 	// Render tiles
 	for ty := uint16(0); ty < 36; ty++ {
@@ -187,16 +180,16 @@ func (v *Video) renderTiles() {
 			src := sdl.Rect{
 				X: int32(sheetX),
 				Y: int32(sheetY),
-				W: int32(v.layouts.Tile.CellW),
-				H: int32(v.layouts.Tile.CellH),
+				W: int32(layout.CellW),
+				H: int32(layout.CellH),
 			}
 			screenX := int32(tx) * 8 * v.frame.Scale
 			screenY := int32(ty) * 8 * v.frame.Scale
 			dest := sdl.Rect{
 				X: screenX + v.frame.X,
 				Y: screenY + v.frame.Y,
-				W: int32(v.layouts.Tile.CellW) * v.frame.Scale,
-				H: int32(v.layouts.Tile.CellH) * v.frame.Scale,
+				W: int32(layout.CellW) * v.frame.Scale,
+				H: int32(layout.CellH) * v.frame.Scale,
 			}
 
 			caddr := addr + 0x0400
@@ -210,12 +203,13 @@ func (v *Video) renderTiles() {
 
 func (v *Video) renderSprites() {
 	// FIXME: Galaga testing
-	if v.layouts.Hack {
+	if v.config.Hack {
 		return
 	}
-	spriteW := int32(v.layouts.Sprite.CellW)
-	spriteH := int32(v.layouts.Sprite.CellH)
-	rowCells := int32(v.layouts.Sprite.W) / spriteW
+	layout := v.config.SpriteLayout
+	spriteW := int32(layout.CellW)
+	spriteH := int32(layout.CellH)
+	rowCells := int32(layout.W) / spriteW
 
 	for s := 7; s >= 0; s-- {
 		coordX := int32(v.SpriteCoords[s].X)
@@ -257,7 +251,7 @@ func (v *Video) renderSprites() {
 
 func (v *Video) colorTable(mem memory.Memory) {
 	// FIXME: Galaga testing
-	if v.layouts.Hack {
+	if v.config.Hack {
 		return
 	}
 	for addr := 0; addr < 16; addr++ {
@@ -280,15 +274,15 @@ func (v *Video) colorTable(mem memory.Memory) {
 }
 
 func (v *Video) paletteTable(mem memory.Memory) {
-	for pal := 0; pal < v.layouts.PaletteEntries; pal++ {
+	for pal := 0; pal < v.config.PaletteEntries; pal++ {
 		// FIXME: Galaga testing
-		if v.layouts.Hack {
-			v.palettes[pal] = VisPalette
+		if v.config.Hack {
+			v.palettes[pal] = ViewerPalette
 			continue
 		}
-		addr := pal * v.layouts.PaletteColors
-		entry := make([][]uint8, v.layouts.PaletteColors, v.layouts.PaletteColors)
-		for i := 0; i < v.layouts.PaletteColors; i++ {
+		addr := pal * v.config.PaletteColors
+		entry := make([][]uint8, v.config.PaletteColors, v.config.PaletteColors)
+		for i := 0; i < v.config.PaletteColors; i++ {
 			ref := mem.Load(uint16(addr+i)) & 0x0f
 			entry[i] = v.colors[ref]
 		}
@@ -297,7 +291,7 @@ func (v *Video) paletteTable(mem memory.Memory) {
 }
 
 func (v *Video) addr(offset int) uint16 {
-	return v.layouts.VideoAddr + uint16(offset)
+	return v.config.VideoAddr + uint16(offset)
 }
 
 var colorWeights = [][]uint8{

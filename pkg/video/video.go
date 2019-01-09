@@ -64,3 +64,11 @@ func ScanLines(r *sdl.Renderer, w int32, h int32, size int32) (*sdl.Texture, err
 	r.SetRenderTarget(nil)
 	return tex, nil
 }
+
+type Sheet struct {
+	W       int
+	H       int
+	CellW   int
+	CellH   int
+	Texture *sdl.Texture
+}

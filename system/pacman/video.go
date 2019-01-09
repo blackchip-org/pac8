@@ -8,11 +8,11 @@ import (
 )
 
 func NewVideo(r *sdl.Renderer, mem memory.Memory, rom memory.Set) (*namco.Video, error) {
-	return namco.NewVideo(r, mem, rom, layouts)
+	return namco.NewVideo(r, mem, rom, VideoConfig)
 }
 
-var layouts = namco.Layouts{
-	Tile: namco.SheetLayout{
+var VideoConfig = namco.Config{
+	TileLayout: namco.SheetLayout{
 		CellW:        8,
 		CellH:        8,
 		W:            8 * 16,
@@ -21,7 +21,7 @@ var layouts = namco.Layouts{
 		PixelReader:  pixelReader,
 		BytesPerCell: 16,
 	},
-	Sprite: namco.SheetLayout{
+	SpriteLayout: namco.SheetLayout{
 		CellW:        16,
 		CellH:        16,
 		W:            16 * 8,
