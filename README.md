@@ -1,5 +1,9 @@
 # pac8
 
+Latest development work can be found here:
+
+https://github.com/blackchip-org/retro-cs
+
 [![Build Status](https://travis-ci.com/blackchip-org/pac8.svg?branch=master)](https://travis-ci.com/blackchip-org/pac8)
 
 After finding the following document I decided to give it a try:
